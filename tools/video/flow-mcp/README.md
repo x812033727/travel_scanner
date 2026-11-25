@@ -37,21 +37,21 @@ npm run flow -- profiles
 
 ---
 
-## 二、16 個 MCP 工具與支援能力
+## 二、18 個 MCP 工具與支援能力
 
 | 階段 | 工具 | 費用 | 說明 |
 | :--- | :--- | :---: | :--- |
 | **環境與帳號** | `flow_status` / `flow_profiles` | 0 點 | 檢查登入態、`gflow-cli` 版本、多帳號剩餘點數與各 profile 互斥鎖 |
-| **開集與角色** | `flow_init_episode` | 0 點 | 綁定 `character` 與 `scenery` 隔離雙專案，記錄劇名與集數（供雲端路徑對齊） |
-| **AI 劇 Cast** | `flow_register_character` | 0 點 | 登記多角色 `cast.json`、多套服裝 `looks`、`noAccessories` 防串角註記、可選建立 Flow `@Name` Character |
+| **開集與角色** | `flow_init_episode` | 0 點 | 綁定 `character` 與 `scenery` 隔離雙專案，記錄劇名與集數，**並自動繼承同劇 `work/video-episodes/_series/<劇名>/cast.json` 固定角色表** |
+| **AI 劇 Cast** | `flow_register_character` | 0 點 | 登記多角色 `cast.json`、多套服裝 `looks`、`noAccessories` 防串角註記、`saveToSeries: true` 寫入跨集共用表、可選建立 Flow `@Name` Character |
 | **漫劇轉檔** | `flow_import_video_json` | 0 點 | 直接讀 `video.json` 轉成 `flow-shot-list.json` ＋ `cast.json`（清 `<Picture N>`、保留 `data.source` 0 點切鏡與無台詞防護句） |
 | **前置把關** | `flow_preflight_shotlist` | 0 點 | 安全詞掃描（解說嚴格／AI 劇武打分級警告）、雙專案隔離、`edit_from` / `continue_from` / `cut` 驗證、多角防串角警告、3 鏡 Pilot 與彈性秒數／模型點數試算 |
-| **0 點數生圖** | `flow_generate_stills` | 0 點 | `Nano Banana 2.1` 生首尾格；支援同機位 `edit_from` 圖編鏈、3 鏡 Pilot、16:9／9:16 二進位像素檢查（抓 1:1 靜默重置隔離進 `_rejected/`）與互動式 `stills/qa-gallery.html`（含 9:16 安全區紅框與一鍵複製 JSON 按鈕） |
+| **0 點數生圖與放大** | `flow_generate_stills` / `flow_upscale_still` | 0 Veo 點 | `Nano Banana 2.1` 生首尾格（`edit_from` 圖編鏈、3 鏡 Pilot、16:9／9:16 像素驗收與互動式 `qa-gallery.html`）；`flow_upscale_still` 支援 2K／Ultra 4K 靜圖放大 |
 | **靜圖簽核** | `flow_approve_stills` | 0 點 | 貼上網頁複製的 JSON 簽核通過／退回，解鎖付費生片 |
-| **預算帳單** | `flow_plan_clips` | 0 點 | 查先圖後片、查 `MAX_CLIP_TAKES=2` 上限、支援 `pilot: true` 與 `resumeMissingOnly: true` 斷點續跑、核發單次 SHA-256 綁定 `confirm_token` |
-| **付費生片** | `flow_generate_clips` | **扣點** | 必帶 `confirm_token`；支援 `i2v`（首尾幀）／`r2v`（多圖參考）／`continue_from`（自動抽上一鏡尾幀無縫接鏡）、彈性 3–15s 與單鏡切 Veo 3.1；歷史 Take 全留於 `flow-clips/takes/`；免費 720p 下載 → 本機 FFmpeg `1080p30 / bt709 / tv / -an` ＋ AI 劇另存 `raw-audio/*.wav` ＋ **第 0 格 PSNR ≥ 22 與中途硬切 QC** ＋ 4 格 QA 表 ＋ `import-bridge.json` |
-| **挑片與延長** | `flow_select_take` / `flow_extend_clip` | 0 / **扣點** | 切換正式選用 Take（廢片全留供雲端備份）；`flow_extend_clip` 呼叫 `gflow video extend` 無縫延長既有片段 |
-| **對帳與排程** | `flow_reconcile` / `flow_wait` / `flow_cancel` / `flow_episode_ledger` | 0 點 | 撈回 `charged: maybe` 已扣點未下載影片、防 60 秒超時輪詢、安全中止、輸出最終帳本與對應系列的 `vdrive push-episode` 指令 |
+| **預算帳單** | `flow_plan_clips` / `flow_plan_extend` | 0 點 | 查先圖後片、查 `MAX_CLIP_TAKES=2` 上限、支援 `pilot` 與 `resumeMissingOnly`、餘額不足時自動推薦其他有餘額的訂閱帳號 profile、核發單次 `confirm_token` |
+| **付費生片與延長** | `flow_generate_clips` / `flow_extend_clip` | **扣點** | 必帶 `confirm_token`；支援 `i2v`／`r2v`／`continue_from`（尾幀接龍）／`extend`（片段延長）、彈性 3–15s 與單鏡切 Veo 3.1；歷史 Take 全留於 `flow-clips/takes/`；免費 720p 下載 → 本機 FFmpeg `1080p30 / bt709 / tv / -an` ＋ AI 劇另存 `raw-audio/*.wav` ＋ **第 0 格 PSNR ≥ 22 與中途硬切 QC** ＋ `import-bridge.json` |
+| **挑片與對帳** | `flow_select_take` / `flow_reconcile` | 0 點 | 切換正式 Take（廢片全留供雲端備份）；`flow_reconcile` 撈回 `charged: maybe` 已扣點未下載影片避免重複燒點數 |
+| **排程與收工** | `flow_wait` / `flow_cancel` / `flow_episode_ledger` | 0 點 | 防 60 秒超時輪詢、安全中止、輸出最終帳本；搭配終端機 `npm run flow -- import-all --slug <slug>` 一鍵批次匯入產線與 `npm run flow -- push --slug <slug> --path "<雲端路徑>"` 驗收後直傳 Google Drive |
 
 ---
 

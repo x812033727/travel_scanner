@@ -123,3 +123,22 @@ export function resolveEpisodePaths(
     preflightFile: path.join(reviewDir, "flow-preflight.json"),
   };
 }
+
+/**
+ * Resolves the gitignored shared series Cast file for multi-episode AI dramas
+ * (`work/video-episodes/_series/<dramaName>/cast.json`).
+ */
+export function resolveSeriesCastPath(dramaName, { repoRoot = REPO_ROOT } = {}) {
+  const cleanName = String(dramaName || "")
+    .trim()
+    .replace(/[^a-zA-Z0-9._\u4e00-\u9fff-]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+  if (!cleanName || cleanName.includes("..")) {
+    throw new Error(`Invalid dramaName "${dramaName}" for shared series cast.`);
+  }
+  const seriesDir = assertEpisodeWorkdirSafe(
+    path.join(resolveWorkEpisodesRoot(repoRoot), "_series", cleanName),
+    { repoRoot },
+  );
+  return path.join(seriesDir, "cast.json");
+}

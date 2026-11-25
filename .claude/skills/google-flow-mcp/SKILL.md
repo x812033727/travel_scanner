@@ -31,21 +31,21 @@ description: 用本機 Google Flow MCP（mokaair-flow，訂閱帳號點數，路
 
 1. **建集與雙專案隔離（0 點數）**：呼叫 `flow_init_episode` 綁定獨立 `characterProjectId` 與 `sceneryProjectId`。無人空景鏡絕不放入角色參考圖。
 2. **備齊 Cast 與分鏡表（0 點數）**：
-   - AI 劇多角色先用 `flow_register_character` 寫入 `cast.json`（含多套 `looks` 與 `noAccessories` 防串角註記；需要 `@Name` 時設 `createFlowEntity: true`）。
+   - AI 劇多角色先用 `flow_register_character` 寫入 `cast.json`（含多套 `looks` 與 `noAccessories` 防串角註記；加 `saveToSeries: true` 存進跨集共用表，後續集數 `flow_init_episode` 自動繼承；需要 `@Name` 時設 `createFlowEntity: true`）。
    - 若已有漫劇 `video.json`，直接呼叫 `flow_import_video_json` 自動轉出 `flow-shot-list.json` 與 `cast.json`（保留 `data.source` 0 點數 `cut` 鏡並清除 H3 標籤）。
 3. **前置檢查（0 點數）**：必跑 `flow_preflight_shotlist`（AI 劇首輪建議加 `pilot: true`），將所有 `blocker`（未成年詞、極端血腥、版權 IP、雙專案外洩、無效 `edit_from`／`continue_from`／`cut`、超預算）清到 0 才准開 Chrome。
 4. **先圖後片（0 點數）**：
-   - 呼叫 `flow_generate_stills`（AI 劇首輪先跑 `pilot: true` 三鏡小樣），用 `flow_wait` 輪詢至完成。
+   - 呼叫 `flow_generate_stills`（AI 劇首輪先跑 `pilot: true` 三鏡小樣；高解析封面／靜圖可用 `flow_upscale_still` 拉 2K 或 Ultra 4K），用 `flow_wait` 輪詢至完成。
    - 系統會自動以二進位檔頭驗尺寸，抓到 Flow 靜默重置回 `1:1` 會隔離到 `stills/_rejected/`。
    - 請站主雙擊開啟 `stills/qa-gallery.html` 肉眼檢查（直式劇開 9:16 安全區紅框），點「複製 flow_approve_stills JSON」貼回執行 `flow_approve_stills`。
 5. **試算點數與人工簽核（0 點數 → 扣點）**：
-   - 呼叫 `flow_plan_clips`（斷點續跑加 `resumeMissingOnly: true`；Pilot 加 `pilot: true`），將預估點數、模型、秒數與剩餘額度清楚回報給站主。
+   - 呼叫 `flow_plan_clips`（斷點續跑加 `resumeMissingOnly: true`；Pilot 加 `pilot: true`）或 `flow_plan_extend`（延長既有片段）；若目前帳號點數不足，依回傳的 `suggestedProfiles` 改換餘額足夠的訂閱帳號 `profile`。
    - **未經站主同意，禁止自行呼叫 `flow_generate_clips` 或 `flow_extend_clip`。** 取得同意後才帶入該次一次性 `confirm_token` 送出，並以 `flow_wait` 分段等待避免 60 秒超時。
-6. **挑片、對帳與交付雲端（0 點數）**：
+6. **挑片、對帳、批次匯入與交付雲端（0 點數）**：
    - 每個鏡頭最多自動保留到 `MAX_CLIP_TAKES = 2`（存於 `flow-clips/takes/`，廢片全留不刪）；達上限時必先改 prompt 重設計，勿盲目重抽。
-   - 用 `flow_select_take` 選定最佳 Take 並更新 `flow-clips/import-bridge.json`。
+   - 用 `flow_select_take` 選定最佳 Take 並更新 `flow-clips/import-bridge.json`；可用 `npm run flow -- import-all --slug <slug>` 一鍵批次匯進產線。
    - 若出現斷線或 `charged: "maybe"`，**先跑 `flow_reconcile` 從 Flow 撈回已扣點影片**，再以 `flow_plan_clips({ resumeMissingOnly: true })` 補跑缺鏡，嚴禁重複扣點。
-   - 收工呼叫 `flow_episode_ledger` 核對點數與缺檔，依回傳指令執行 `npm run vdrive -- push-episode` 備份至 Google 雲端硬碟。
+   - 收工呼叫 `flow_episode_ledger` 或直接跑 `npm run flow -- push --slug <slug> --path "<雲端路徑>"` 通過防呆檢查後備份至 Google 雲端硬碟。
 
 ## 四、帳號安全鐵則
 

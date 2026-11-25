@@ -581,4 +581,36 @@ export class GflowCliDriver extends FlowDriver {
       raw: json,
     };
   }
+
+  buildUpscaleImageArgs({
+    mediaId,
+    scale = "2k",
+    projectId = null,
+    outFile = null,
+    profile = null,
+  }) {
+    const cleanScale = String(scale || "2k").toLowerCase();
+    if (cleanScale !== "2k" && cleanScale !== "4k") {
+      throw new Error(`Invalid upscale scale "${scale}". Expected "2k" or "4k".`);
+    }
+    const base = ["image", "upscale", String(mediaId), "--scale", cleanScale];
+    if (projectId) base.push("--project", String(projectId));
+    if (outFile) base.push("--out-file", String(outFile));
+    base.push("--json");
+    return this.withProfile(base, profile);
+  }
+
+  async upscaleImage(params) {
+    const args = this.buildUpscaleImageArgs(params);
+    const { json } = await this.execJson(args, {
+      signal: params.signal,
+      timeoutMs: params.timeoutMs ?? 4 * 60 * 1000,
+    });
+    return {
+      mediaId: params.mediaId,
+      scale: String(params.scale || "2k").toLowerCase(),
+      outFile: params.outFile || json?.out_file || json?.path || null,
+      raw: json,
+    };
+  }
 }

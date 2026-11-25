@@ -49,7 +49,7 @@ import {
   recordCreditEvent,
   verifyAndConsumeConfirmToken,
 } from "./guards/budget-guard.mjs";
-import { resolveEpisodePaths } from "./guards/path-boundary.mjs";
+import { resolveEpisodePaths, resolveSeriesCastPath } from "./guards/path-boundary.mjs";
 import { normalizeShots, preflightShotList, scanPromptText } from "./guards/prompt-safety.mjs";
 import { JobQueue } from "./jobs/job-queue.mjs";
 import {
@@ -354,11 +354,33 @@ export class FlowOrchestrator {
 
     atomicWriteJson(paths.workspaceFile, workspace);
 
+    // Auto-inherit shared series Cast (`work/video-episodes/_series/<dramaName>/cast.json`) when present
+    let inheritedSeriesCharacters = 0;
+    let seriesCastFile = null;
+    if (workspace.dramaName) {
+      seriesCastFile = resolveSeriesCastPath(workspace.dramaName, { repoRoot: this.repoRoot });
+      if (fs.existsSync(seriesCastFile)) {
+        const sharedCast = readJsonSafe(seriesCastFile, { characters: {} });
+        const epCast = this.#loadCast(paths, { series: preset.id });
+        for (const [charId, ch] of Object.entries(sharedCast.characters || {})) {
+          if (!epCast.characters[charId]) {
+            epCast.characters[charId] = { ...ch, inheritedFromSeries: workspace.dramaName };
+            inheritedSeriesCharacters += 1;
+          }
+        }
+        if (inheritedSeriesCharacters > 0) {
+          atomicWriteJson(paths.castFile, epCast);
+        }
+      }
+    }
+
     return {
       ok: true,
       workspaceFile: paths.workspaceFile,
       workspace,
       dualProjectsReady: Boolean(charProj && scenProj && charProj !== scenProj),
+      seriesCastFile,
+      inheritedSeriesCharacters,
       rulesHint:
         canonDiscovery.missing.length > 0
           ? "Some canon character sheets were not found in `.cache/video-drive/rules/`. Run `npm run vdrive -- pull-rules all` first."
@@ -367,12 +389,14 @@ export class FlowOrchestrator {
   }
 
   // ---------------------------------------------------------------------------
-  // Tool 4: flow_register_character (0 credits — Cast + optional @Name entity)
+  // Tool 4: flow_register_character (0 credits — Cast + shared series + @Name)
   // ---------------------------------------------------------------------------
   async flowRegisterCharacter({
     slug,
     series = null,
     workdir = null,
+    dramaName = null,
+    saveToSeries = false,
     id,
     name = null,
     appearance = "",
@@ -435,9 +459,26 @@ export class FlowOrchestrator {
     };
 
     atomicWriteJson(paths.castFile, cast);
+
+    let seriesCastFile = null;
+    const effectiveDrama = dramaName || workspace?.dramaName || null;
+    if (saveToSeries && effectiveDrama) {
+      seriesCastFile = resolveSeriesCastPath(effectiveDrama, { repoRoot: this.repoRoot });
+      const sharedCast = readJsonSafe(seriesCastFile, {
+        schemaVersion: 1,
+        dramaName: effectiveDrama,
+        series: effectiveSeries,
+        characters: {},
+      });
+      sharedCast.characters[charId] = cast.characters[charId];
+      sharedCast.updatedAt = new Date().toISOString();
+      atomicWriteJson(seriesCastFile, sharedCast);
+    }
+
     return {
       ok: true,
       castFile: paths.castFile,
+      seriesCastFile,
       character: cast.characters[charId],
       totalCharacters: Object.keys(cast.characters).length,
       mentionSyntax: flowEntity?.name ? `@${flowEntity.name}` : null,
@@ -1027,7 +1068,7 @@ export class FlowOrchestrator {
       }
     }
 
-    return planClipBudget({
+    const plan = planClipBudget({
       episodePaths: paths,
       series: preset.id,
       shotIds: eligibleShotIds,
@@ -1037,6 +1078,27 @@ export class FlowOrchestrator {
       accountCredits,
       budgetHardCapOverride,
     });
+
+    if (!plan.ok && plan.reason === "insufficient_account_credits") {
+      try {
+        const allProfiles = await this.driver.listProfiles({ refreshCredits: false });
+        const suggestedProfiles = allProfiles
+          .filter((p) => p.profile !== (profile || "default") && Number(p.credits) >= plan.plannedCredits)
+          .map((p) => ({ profile: p.profile, credits: p.credits, plan: p.plan, account: p.account }));
+        return {
+          ...plan,
+          suggestedProfiles,
+          spilloverHint:
+            suggestedProfiles.length > 0
+              ? `Switch to profile "${suggestedProfiles[0].profile}" (${suggestedProfiles[0].credits} credits available) to run this batch.`
+              : null,
+        };
+      } catch {
+        return plan;
+      }
+    }
+
+    return plan;
   }
 
   // ---------------------------------------------------------------------------
@@ -1486,6 +1548,144 @@ export class FlowOrchestrator {
       totalPreservedTakes: takes.length,
       activePath: clip.upscaledPath,
       clipsImportBridgeFile: paths.clipsImportBridgeFile,
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tool 17: flow_plan_extend (0 credits — Dry-Run + confirm_token for extend)
+  // ---------------------------------------------------------------------------
+  async flowPlanExtend({
+    slug,
+    series = null,
+    workdir = null,
+    shotId,
+    durationSec = 5,
+    creditsEstimate = null,
+    budgetHardCapOverride = null,
+    checkLiveBalance = false,
+    profile = null,
+  }) {
+    const paths = this.#paths(slug, workdir);
+    const workspace = this.#loadWorkspace(paths);
+    const effectiveSeries = series || workspace?.series || "drama-16x9";
+    const preset = getSeriesPreset(effectiveSeries);
+
+    const manifest = readJsonSafe(paths.clipsManifestFile, { clips: {} });
+    const existing = manifest.clips?.[shotId];
+    if (!existing) {
+      return {
+        ok: false,
+        reason: "clip_not_found",
+        message: `Shot "${shotId}" must exist in flow-clips/manifest.json before planning an extension.`,
+      };
+    }
+
+    const estCredits = estimateClipCredits({
+      model: existing.model || DEFAULT_VIDEO_MODEL,
+      durationSec,
+      creditsOverride: creditsEstimate,
+    });
+
+    let accountCredits = null;
+    if (checkLiveBalance) {
+      try {
+        const bal = await this.driver.getCredits({ profile });
+        accountCredits = bal.credits;
+      } catch {
+        accountCredits = null;
+      }
+    }
+
+    const plan = planClipBudget({
+      episodePaths: paths,
+      series: preset.id,
+      shotIds: [shotId],
+      shotPlans: [{ shotId, model: "extend", durationSec, credits: estCredits }],
+      model: "extend",
+      creditsPerClip: estCredits,
+      accountCredits,
+      budgetHardCapOverride,
+    });
+
+    if (!plan.ok && plan.reason === "insufficient_account_credits") {
+      try {
+        const allProfiles = await this.driver.listProfiles({ refreshCredits: false });
+        const suggestedProfiles = allProfiles
+          .filter((p) => p.profile !== (profile || "default") && Number(p.credits) >= plan.plannedCredits)
+          .map((p) => ({ profile: p.profile, credits: p.credits, plan: p.plan, account: p.account }));
+        return { ...plan, suggestedProfiles };
+      } catch {
+        return plan;
+      }
+    }
+
+    return plan;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tool 18: flow_upscale_still (0 Veo credits — 2K / Ultra 4K still upscale)
+  // ---------------------------------------------------------------------------
+  async flowUpscaleStill({
+    slug,
+    series = null,
+    workdir = null,
+    shotId,
+    scale = "2k",
+    profile = null,
+  }) {
+    const paths = this.#paths(slug, workdir);
+    const workspace = this.#loadWorkspace(paths);
+    const effectiveSeries = series || workspace?.series || "curio";
+    const preset = getSeriesPreset(effectiveSeries);
+    const qaStore = this.#loadStillsQa(paths, { slug: paths.slug, series: preset.id });
+    const record = qaStore.stills?.[shotId];
+
+    if (!record || !record.mediaId) {
+      return {
+        ok: false,
+        reason: "still_media_id_missing",
+        message: `Shot "${shotId}" does not have a recorded Flow mediaId in stills/qa-manifest.json.`,
+      };
+    }
+
+    const cleanScale = String(scale || "2k").toLowerCase();
+    const outFile = path.join(paths.stillsDir, `${sanitizeFilename(shotId)}-${cleanScale}.png`);
+    const res = await this.driver.upscaleImage({
+      mediaId: record.mediaId,
+      scale: cleanScale,
+      projectId: record.projectId || workspace?.characterProjectId || workspace?.sceneryProjectId || null,
+      outFile,
+      profile,
+    });
+
+    const finalPath = res.outFile || outFile;
+    const dimCheck = fs.existsSync(finalPath)
+      ? verifyStillDimensions(finalPath, {
+          expectedWidth: preset.targetStillWidth,
+          expectedHeight: preset.targetStillHeight,
+          allowScaledRatio: true,
+        })
+      : null;
+
+    record.upscaled = record.upscaled || {};
+    record.upscaled[cleanScale] = {
+      filePath: finalPath,
+      sha256: fs.existsSync(finalPath) ? sha256File(finalPath) : null,
+      width: dimCheck?.width ?? null,
+      height: dimCheck?.height ?? null,
+      aspectOk: dimCheck?.ok ?? null,
+      upscaledAt: new Date().toISOString(),
+    };
+    qaStore.updatedAt = new Date().toISOString();
+    atomicWriteJson(paths.stillsQaFile, qaStore);
+
+    return {
+      ok: true,
+      shotId,
+      scale: cleanScale,
+      filePath: finalPath,
+      dimensions: dimCheck ? { width: dimCheck.width, height: dimCheck.height, ok: dimCheck.ok } : null,
+      stillsQaFile: paths.stillsQaFile,
     };
   }
 

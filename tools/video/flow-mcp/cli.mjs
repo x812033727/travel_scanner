@@ -25,6 +25,7 @@ import {
   resolveRuntimeHome,
 } from "./config.mjs";
 import { GflowCliDriver, resolveGflowBinary } from "./drivers/gflow-cli-driver.mjs";
+import { resolveEpisodePaths } from "./guards/path-boundary.mjs";
 import { FlowOrchestrator } from "./orchestrator.mjs";
 import { startStdioServer } from "./server.mjs";
 
@@ -296,6 +297,151 @@ function runDoctor() {
   );
 }
 
+/**
+ * Batch-executes `tools/video/cli.mjs clips import` for every ready clip listed
+ * in `work/video-episodes/<slug>/flow-clips/import-bridge.json`.
+ */
+export function runImportBridgeBatch({
+  slug,
+  repoRoot = REPO_ROOT,
+  dryRun = false,
+  spawnFn = spawnSync,
+} = {}) {
+  const paths = resolveEpisodePaths(slug, { repoRoot });
+  if (!fs.existsSync(paths.clipsImportBridgeFile)) {
+    return {
+      ok: false,
+      reason: "missing_import_bridge",
+      message: `import-bridge.json not found at "${paths.clipsImportBridgeFile}". Run flow_generate_clips or flow_select_take first.`,
+    };
+  }
+
+  const bridge = JSON.parse(fs.readFileSync(paths.clipsImportBridgeFile, "utf8"));
+  const clipEntries = (bridge.entries || []).filter((e) => e.mode === "clip" && e.ready && e.filePath);
+  const videoCliPath = path.join(repoRoot, "tools", "video", "cli.mjs");
+
+  const imported = [];
+  const failed = [];
+
+  for (const entry of clipEntries) {
+    const args = [
+      videoCliPath,
+      "clips",
+      "import",
+      "--slug",
+      paths.slug,
+      "--shot",
+      entry.shotId,
+      "--file",
+      entry.filePath,
+      "--provider",
+      "external",
+      "--note",
+      `route=google-flow-mcp model=${entry.model || "omni-1.2-flash"} credits=${entry.credits ?? 12} dur=${entry.durationSec ?? 4}s take=${entry.selectedTake ?? 1}`,
+    ];
+
+    if (dryRun) {
+      imported.push({ shotId: entry.shotId, dryRun: true, command: `node ${args.join(" ")}` });
+      continue;
+    }
+
+    const res = spawnFn(process.execPath, args, {
+      cwd: repoRoot,
+      encoding: "utf8",
+      windowsHide: true,
+    });
+    if (res.status === 0) {
+      imported.push({ shotId: entry.shotId, filePath: entry.filePath, take: entry.selectedTake ?? 1 });
+    } else {
+      failed.push({
+        shotId: entry.shotId,
+        exitCode: res.status ?? 1,
+        stderr: (res.stderr || res.error?.message || "").trim().slice(0, 400),
+      });
+    }
+  }
+
+  return {
+    ok: failed.length === 0,
+    slug: paths.slug,
+    dryRun,
+    totalClips: clipEntries.length,
+    importedCount: imported.length,
+    failedCount: failed.length,
+    imported,
+    failed,
+  };
+}
+
+/**
+ * Validates episode ledger readiness (0 missing clips, 0 rejected stills,
+ * 0 unresolved `maybe` credits) before delegating to `vdrive.mjs push-episode`.
+ */
+export async function runValidatedDrivePush({
+  slug,
+  driveSeries,
+  drivePath,
+  series = null,
+  repoRoot = REPO_ROOT,
+  dryRun = false,
+  force = false,
+  orchestrator = null,
+  spawnFn = spawnSync,
+} = {}) {
+  const orch = orchestrator || new FlowOrchestrator({ repoRoot });
+  const ledger = await orch.flowEpisodeLedger({ slug, series });
+
+  if (!force && !ledger.readyForDrivePush) {
+    return {
+      ok: false,
+      reason: "episode_not_ready_for_push",
+      message:
+        "Refused Drive push: episode has missing clips, rejected stills, or unresolved `maybe` credits. Run flow_reconcile / finish missing shots, or pass --force.",
+      ledger,
+    };
+  }
+
+  const targetSeries = driveSeries || ledger.series;
+  if (!drivePath) {
+    return {
+      ok: false,
+      reason: "missing_drive_path",
+      message: "Missing required --path \"<Drive relative path>\" (e.g. \"第033集/製作檔/<slug>\" or \"H-歷史懸案/H01/製作檔/<slug>\").",
+      suggestedCommand: ledger.drivePushCommand,
+    };
+  }
+
+  const vdriveScript = path.join(repoRoot, "tools", "video", "vdrive.mjs");
+  const args = [
+    vdriveScript,
+    "push-episode",
+    "--series",
+    String(targetSeries),
+    "--path",
+    String(drivePath),
+    "--from",
+    ledger.workdir,
+  ];
+  if (dryRun) args.push("--dry-run");
+
+  const res = spawnFn(process.execPath, args, {
+    cwd: repoRoot,
+    encoding: "utf8",
+    windowsHide: true,
+  });
+
+  return {
+    ok: res.status === 0,
+    slug: ledger.slug,
+    series: targetSeries,
+    drivePath,
+    dryRun,
+    exitCode: res.status ?? 1,
+    stdout: (res.stdout || "").trim(),
+    stderr: (res.stderr || res.error?.message || "").trim(),
+  };
+}
+
 function printHelp() {
   console.log(`Mokaair Google Flow MCP & CLI v2 (Route A — Explainers + AI Dramas + Vertical Shorts)
 
@@ -308,6 +454,8 @@ Usage:
   npm run flow -- import-video-json --slug <slug> [--file <video.json>] [--series drama-16x9|drama-9x16|shorts|curio|sothatswhy]
   npm run flow -- preflight --slug <slug> [--series curio|sothatswhy|drama-16x9|drama-9x16|shorts] [--pilot]
   npm run flow -- reconcile --slug <slug> [--profile NAME]
+  npm run flow -- import-all --slug <slug> [--dry-run]    Batch-import ready clips from import-bridge.json into tools/video
+  npm run flow -- push --slug <slug> --path "<relDest>" [--drive-series <name>] [--dry-run] [--force]
   npm run flow -- ledger --slug <slug> [--series curio|sothatswhy|drama-16x9|drama-9x16|shorts]
   npm run flow -- mcp                                     Start JSON-RPC 2.0 stdio MCP server`);
 }
@@ -377,6 +525,38 @@ async function main() {
     }
 
     console.log(JSON.stringify(output, null, 2));
+    return;
+  }
+
+  if (command === "import-all") {
+    if (!flags.slug) {
+      console.error("Missing required flag: --slug <episode-slug>");
+      process.exit(2);
+    }
+    const result = runImportBridgeBatch({
+      slug: flags.slug,
+      dryRun: Boolean(flags["dry-run"]),
+    });
+    console.log(JSON.stringify(result, null, 2));
+    if (!result.ok) process.exit(1);
+    return;
+  }
+
+  if (command === "push") {
+    if (!flags.slug) {
+      console.error("Missing required flag: --slug <episode-slug>");
+      process.exit(2);
+    }
+    const result = await runValidatedDrivePush({
+      slug: flags.slug,
+      driveSeries: flags["drive-series"] || flags.series || null,
+      drivePath: flags.path || null,
+      series: flags.series || null,
+      dryRun: Boolean(flags["dry-run"]),
+      force: Boolean(flags.force),
+    });
+    console.log(JSON.stringify(result, null, 2));
+    if (!result.ok) process.exit(1);
     return;
   }
 
