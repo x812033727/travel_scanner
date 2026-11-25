@@ -6,6 +6,8 @@
 
 | 檔案 | 內容 |
 | --- | --- |
+| [`FLOW-PRODUCTION-RULES.md`](FLOW-PRODUCTION-RULES.md) | **Google Flow 動畫化長片與去 GitHub 化新規則（2026-11-25 起）**：方案 B 動靜混剪、全片三視角盲審、0 點數前置把關、多鏡位防卡頓、雙引擎 `-14 LUFS` 與「成片盲審定稿腳本直存雲端、0 GitHub Commit」規範 |
+| [`GITHUB-SLIMDOWN-AUDIT-20261125.md`](GITHUB-SLIMDOWN-AUDIT-20261125.md) | GitHub `docs/videos/` 1.40 GB 題庫池與舊劇 PNG 瘦身盤點報告 |
 | [`../AI-DRAMA-DRIVE.md`](../AI-DRAMA-DRIVE.md) | **備份（2026-11-10 起）**：所有檔案傳到雲端硬碟 `AI劇/<名稱>/<代碼>/製作檔/`，不再推分支 |
 | [`BACKUP-BRANCHES.md`](BACKUP-BRANCHES.md) | 已停用的備份分支規則（要備份什麼的清單仍適用） |
 | [`backup/`](backup/) | 備份工具（推分支、核對、涵蓋檢查） |

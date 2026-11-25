@@ -47,17 +47,37 @@ content phases), read [`ops/release/README.md`](ops/release/README.md): the driv
 `/root/travel-scanner-deploy.hold` from `prepare` until its last phase succeeds, through
 `ops/release/hold.py`, and leaves it in place on failure.
 
-## Video backups go to Google Drive, not to branches
+## Video rules, scripts & backups live on Google Drive (Route B SSOT, 2026-11-25)
 
-Since 2026-11-10 every file of a video production (drafts, prompts, logs, clips, recordings,
-music, keyframes, the final cut, everything a remake could need) is copied by the session that
-made it to the owner's Google Drive under `AI/備份/AI劇/<名稱>/<集數>/製作檔/`, with
-`docs/videos/ai-drama-drive/todrive.sh`. Do not push `transfer/*` or `claude/backup-*`
-branches any more, to this repository or to the backup repositories: `tobranch.sh` refuses.
-Read [`docs/videos/AI-DRAMA-DRIVE.md`](docs/videos/AI-DRAMA-DRIVE.md) before backing anything up.
-Rules and lessons are different: their only original is this repository, and Drive gets a read-only
-copy on its own (`docs/videos/rules-sync/`). Write a lesson into the matching `docs/videos/lessons/`
-file (all dramas, the two explainer series, or one drama) or the episode's `NOTES.md`, never into Drive.
+**Google Drive is the single authoritative source of truth (SSOT)** for all video rules, lessons,
+locked character sheets, pronunciation lexicons, topic pools, drafts, finalized episode scripts
+(`video.json`, `script.md`, `brief.md`, `i18n/*.json`, `review/`), and production media.
+**Never commit new episode scripts, topic pools, business rules, or binary media assets to GitHub**
+(`0 GitHub commits`; enforced by `tools/video-drive-boundary.test.mjs`). Do not push `transfer/*`
+or `claude/backup-*` branches (`tobranch.sh` refuses).
+
+Before starting any video, explainer (`sothatswhy-*`, `curio-*`), or Shorts episode, pull the
+latest authoritative rules from Google Drive into gitignored `.cache/video-drive/rules/`:
+
+```bash
+npm run vdrive -- pull-rules explainer   # 原來如此事務所 + 奇聞檔案局 + 通用
+npm run vdrive -- pull-rules sothatswhy  # 原來如此事務所 + 共用
+npm run vdrive -- pull-rules curio       # 奇聞檔案局 + 共用
+npm run vdrive -- pull-rules shorts      # 零台詞 Shorts 短劇 + 通用
+npm run vdrive -- status                 # check detected backend (G:\, rclone, or gdrive CLI)
+```
+
+| What you need | Exact Google Drive location (`AI/備份/AI劇/` / Windows `G:\我的雲端硬碟\AI\備份\AI劇\` / rclone `videobackup:AI劇/`) |
+| --- | --- |
+| **Universal entry map (works with or without GitHub)** | `AI/備份/AI劇/_START-HERE.md` |
+| **Authoritative rules, checklists, lessons & canon sheets** | `AI/備份/AI劇/_規則/` (`解說系列共用/FLOW-PRODUCTION-RULES.md`, `奇聞檔案局/CURIO-FLOW-CHECKLIST.md`, `原來如此事務所/`, `通用/lexicon.json`, `短劇與漫劇/`). Outside legacy `rules-sync` ownership so it is never overwritten. |
+| **Update a rule (owner-approved, optimistic lock)** | `npm run vdrive -- push-rule <localFile> --target <relUnderRules> --note "<reason>"` — checks remote SHA-256, archives previous copy to `_規則/_history/`, and appends `_規則/CHANGELOG.md`. |
+| **Shared assets, music libraries, outros & pools** | `<系列>/_共用/製作檔/` & `<系列>/_總表/` (exact IDs in `_START-HERE.md`). |
+| **Local workdir & finalized episode delivery (0 GitHub commits)** | Draft locally under gitignored `work/video-episodes/<slug>/`, lint with `node tools/video/cli.mjs lint --file <path>`, upload finalized `腳本定稿/` + production files with `npm run vdrive -- push-episode --series <sothatswhy|curio|shorts> --path "<分類>/<代碼>/製作檔/<slug>" --from <dir>` (SHA-256 0-diff), then publish via `node tools/video/cli.mjs import --from <import_pkg>`. |
+
+Legacy files still under `docs/videos/` are frozen for migration to Google Drive
+(`tasks/open/2026-11-25-slim-docs-videos-pools-and-plans.md`); always treat Drive `_規則/` as
+authoritative over any stale copy in `docs/videos/`.
 
 ## Multi-agent workspaces on Google Drive (`Claude`, `Codex`, `Gemini`)
 
@@ -83,7 +103,7 @@ enforces parity) so all three agent harnesses load the same rules on startup.
 
 `apps/web` is the Next.js frontend and its same-origin BFF, `apps/api` is the FastAPI
 service, worker and migrations, `ops/` is deployment, `tools/` is repository tooling,
-and `docs/` holds the long-form specifications. `architecture.md` describes the
+and `docs/` holds technical specifications. `architecture.md` describes the
 boundaries; `README.md` describes the product. `.agents/skills/` holds the skills Codex and
 Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`, and
 `npm run test:tools` keeps the two in step); start any article batch with the
@@ -93,41 +113,10 @@ Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`,
 queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CLIs),
 `backend-conventions` (migrations, session helpers, admin pages), `dev-and-ci` (local
 checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
-`youtube-video`, `curio-episode` (any 奇聞檔案局 episode, a `curio-` slug: theatrical-light
-rich-gouache keyframes via built-in `generate_image` + `keyframes import --provider external --usd 0`,
-never MiniMax images; distinct 3.5-head slender `Ada` sheet at
-`docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png` and ~45%-65%
-`nobody: true` object/scene shots; full-bleed `黑猫研究院` (`@qiqiqushi0`) emblem thumbnails defaulting to
-`thumbnail.data.layout: "heimao-left"` with subject-named top-left yellow/white bold black-stroked lines across
-all 9 locales — never nameless pronouns — over clean bright sky, lower-left character reaction, and right-half
-signature emblem/object via the 4-tier funnel: public-domain crests/monuments, everyday icons or wordless
-cartoonized/abstract brand shapes & trade-dress colors strictly excluding copyrighted IP mascots/characters, or
-signature props + `✕` stamp, compositing exact heraldry/QR via vector SVG onto `<workdir>/stock/<sha256>.jpg`
-with `thumbnail.replaces`; `zh-TW`
-Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax; 2x-zoom independent audit, post-assembly
-independent audience review fixed before Drive backup and `review-push`, and the lint gate that keeps them),
-`brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
-fact-checked and imported, and what to do when the host worker stalls),
-`minimax-h3-runpod` (H3 clips on a RunPod pod the site starts, from a paired session),
-`animation-preproduction` (planning, risk-grading, pricing and locking an
-animated episode before any clip is paid for: shot list, animatic, three-shot pilot, lock
-package and change orders; also 審劇本 — turning a script into a storyboard with shots and
-notes, then the three checks before it goes to production), `animation-camera` (how a drama scene is covered and how camera,
-prompt and motion are written so the tools and the models read them alike) and
-`animation-production` (a drama production's stage preconditions, cost per route, preflight,
-error catalogue and post-mortem). For any 原來如此事務所 episode (a `sothatswhy-` slug),
-read `docs/videos/so-thats-why/look.md`,
-`docs/videos/so-thats-why/thumbnails.md`,
-`docs/videos/so-thats-why/series-sheets/README.md`,
-`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` and
-`docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14 / 2026-11-18 / 2026-11-20:
-theatrical-light rich-gouache keyframes via built-in image generation +
-`keyframes import --provider external --usd 0`, never MiniMax images; 2.5-head chibi canonical
-sheets `chief-canon-v2.png` + `kid-canon-v2.png` strictly distinct from Curio, and ~45%-65%
-`nobody: true` mechanism/object shots; full-bleed `黑猫研究院` emblem thumbnails defaulting to
-`thumbnail.data.layout: "heimao-left"` with subject-named headlines across all 9 locales + right-half
-signature emblem/wordless abstract icon/mechanism contrast — zero brand letters and zero copyrighted IP
-mascots — + lower-left reaction; `zh-TW` Gemini `Sulafat` + `Leda`; 8-locale dubs via MiniMax;
-independent post-assembly audience review in `review/audience-review.md` with all findings fixed
-and `qa` re-passed before Google Drive backup and `review-push --gate final`). Read the matching
-skill before re-deriving a workflow from the docs.
+`youtube-video` (video tooling CLI and publishing flow), `curio-episode` (奇聞檔案局 `curio-*`
+and 原來如此事務所 `sothatswhy-*` both follow the Google Drive SSOT rules pulled via
+`npm run vdrive -- pull-rules explainer` → `_START-HERE.md` + `_規則/解說系列共用/FLOW-PRODUCTION-RULES.md`
++ `_規則/奇聞檔案局/CURIO-FLOW-CHECKLIST.md`, with 0 GitHub commits per episode),
+`brand-story`, `minimax-h3-runpod`, `animation-preproduction`, `animation-camera`, and
+`animation-production`. Read the matching skill and pull the latest Drive `_規則/` before
+starting any video production.
