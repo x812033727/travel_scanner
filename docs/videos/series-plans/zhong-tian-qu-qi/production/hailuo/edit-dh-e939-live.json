@@ -125,12 +125,12 @@
    "gain": -9,
    "fade_in": 0.4,
    "fade_out": 0.12,
-   "tail": -1.4
+   "tail": -1.33
   },
   {
    "cue": "reveal-hit",
    "from": "s40b",
-   "from_off": -0.1,
+   "from_off": 0.6,
    "to": "s40b",
    "offset": 0.0,
    "gain": -3,
@@ -377,20 +377,44 @@
   {
    "file": "cloth1",
    "at": "s40b",
-   "off": 1.25,
+   "off": 0.4,
    "gain": -2.5
   },
   {
    "file": "cloth2",
    "at": "s40b",
-   "off": 1.55,
+   "off": 0.7,
    "gain": -3.9
   },
   {
    "file": "cloth1",
    "at": "s40b",
-   "off": 1.8,
+   "off": 0.95,
    "gain": -4.5
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s40b",
+   "off": 1.35,
+   "gain": -10.6
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s40b",
+   "off": 1.8,
+   "gain": -10.1
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s40b",
+   "off": 2.25,
+   "gain": -8.6
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s40b",
+   "off": 2.7,
+   "gain": -9.1
   }
  ],
  "frame_round": true,
@@ -543,10 +567,10 @@
   "s23": "crop=iw/1.9:ih/1.9:iw*0.38:0,scale=1920:1080:flags=lanczos,setsar=1",
   "s11": "crop=iw/1.6:ih/1.6:iw*0.25:ih*0.18,scale=1920:1080:flags=lanczos,setsar=1",
   "s29b": "crop=iw/1.4:ih/1.4:iw*0.20:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s40b": "fade=t=out:st=3.05:d=0.4"
+  "s40b": "fade=t=out:st=3.68:d=0.4"
  },
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e939 真人版第一版（2026-11-25；scratchpad e939c/：mkov939.py、levall939.sh → lev939.py＋align939.py、music／beds／spots／lineat／voiceskip／vol.json、cutf0939.py、busmeter.py；跑法 scratchpad e939cut.sh）。決定、量測與已知瑕疵寫在 colab/runs/e939-live/cut-notes.md。\nREVIEW 3（2026-11-25）：s32、s39 換 fix3 9391502 重拍（片中原聲，s32 ×1.10、s39 ×0.83；s39 不再裁切）；新鏡 s40b（fix3 9391502，村民背影一齊轉頭）接在 s40 後收尾：c1.85 轉完時 reveal-hit、standoff 同時收，停約 1.65 秒，切黑 0.42 秒；s40 收到 0.4–5.10。組片用 video-plus-s40b.json。\nREVIEW 4（2026-11-25，cut-review-2）：s06 只用 3.90–6.583 連續一段（拿掉插鏡），「不用您會騎。」拆成畫外 a06p 鋪在 s05 尾（s05 0.5–8.0、尾 0.6 秒慢放成 1.0 秒）；s28 0–3.2、s28b 0–5.0；s40 3.6–6.4，a40 移到 s40b、提前 2.7 秒從 s40 鋪進來；s40b 換 fix3 9391501 0.35–3.6（草稿畫面），c1.85 轉完下重音、停 1 秒、畫面聲音一起 0.4 秒淡出；a40「殺」的聲調拉平；村民 a36 共振峰降 10%、~258；s39 ×0.80；字幕讀速過快的延長。"
+ "_note": "e939 真人版第一版（2026-11-25；scratchpad e939c/：mkov939.py、levall939.sh → lev939.py＋align939.py、music／beds／spots／lineat／voiceskip／vol.json、cutf0939.py、busmeter.py；跑法 scratchpad e939cut.sh）。決定、量測與已知瑕疵寫在 colab/runs/e939-live/cut-notes.md。\nREVIEW 3（2026-11-25）：s32、s39 換 fix3 9391502 重拍（片中原聲，s32 ×1.10、s39 ×0.83；s39 不再裁切）；新鏡 s40b（fix3 9391502，村民背影一齊轉頭）接在 s40 後收尾：c1.85 轉完時 reveal-hit、standoff 同時收，停約 1.65 秒，切黑 0.42 秒；s40 收到 0.4–5.10。組片用 video-plus-s40b.json。\nREVIEW 4（2026-11-25，cut-review-2）：s06 只用 3.90–6.583 連續一段（拿掉插鏡），「不用您會騎。」拆成畫外 a06p 鋪在 s05 尾（s05 0.5–8.0、尾 0.6 秒慢放成 1.0 秒）；s28 0–3.2、s28b 0–5.0；s40 3.6–6.4，a40 移到 s40b、提前 2.7 秒從 s40 鋪進來；s40b 換 fix3 9391501 0.35–3.6（草稿畫面），c1.85 轉完下重音、停 1 秒、畫面聲音一起 0.4 秒淡出；a40「殺」的聲調拉平；村民 a36 共振峰降 10%、~258；s39 ×0.80；字幕讀速過快的延長。\nREVIEW 5（2026-11-25）：s40b 換 fix4 9391602 精修 0.5–4.583：許硯 c1.0 右緣入鏡、c2.75 停下時下 reveal-hit，停約 0.9 秒，畫面聲音最後 0.4 秒一起淡出；村民轉頭加衣料聲、許硯腳步四下。"
 }
