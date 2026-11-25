@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # retake-run.sh NN DIR : run <runpod/a>/DIR/retake.json for episode NN, retrying every 3 min while
 # RunPod has no stock (HTTP 409) or a pod died or was switched (speed-guard), until every output
-# exists; 20 tries at most. KEEP=1 leaves the pod up for stage 2.
+# exists; 20 tries at most (then exit 1). KEEP=1 leaves the pod up for stage 2. A pod this run
+# reused (started by an earlier, killed run) is never stopped by `h3r.sh batch`: stop it yourself.
 set -u
 EP=$(printf '%03d' "$1"); R=${VIDEO_WORKDIR:-$HOME/mokaair-work/videos}/zhong-tian-qu-qi-e$EP-dh/runpod/a/$2
 REPO="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
@@ -19,3 +20,4 @@ for i in $(seq 1 20); do
   sleep 180
 done
 echo "=== gave up: no stock"
+exit 1   # a caller looping on this must see the give-up (it used to exit 0)

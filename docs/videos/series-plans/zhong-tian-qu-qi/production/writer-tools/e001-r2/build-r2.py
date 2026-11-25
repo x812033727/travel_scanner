@@ -1,0 +1,198 @@
+"""Builder for the e001 remake (r2), a copy of e051-e055/build.py with four changes: an internal working number
+(spec.EP = 901) under the published slug zhong-tian-qu-qi-e001-r2; per-shot `looks` (Xu Yan in his modern suit,
+gen-dh's character_looks); per-shot `nospeak` (a speaker on screen whose lips are not shown: his back to the camera,
+her face buried); and it never writes brief.md over the hand-written one.
+Usage: python3 build-r2.py r2                      (this folder's r2.py: e001 r2, internal number 901)
+       python3 build-r2.py ../e002-r2/r2.py         (any r2 episode: the spec sets EP = 90N and SLUG)
+"""
+from pathlib import Path
+import importlib, importlib.util, json, os, re, subprocess, sys
+
+REPO = str(Path(__file__).resolve().parents[7])  # e906 prep: a hard-coded /home/user/travel_scanner wrote into another checkout
+HERE = os.path.dirname(os.path.abspath(__file__))
+P = f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi"
+H = f"{P}/production/hailuo"
+CAST = {c["id"]: c for c in json.load(open(f"{P}/production/cast.json"))["characters"]}
+EN = {"chengshanzhang": "Headmaster Cheng", "fengxuezheng": "Examiner Feng", "weixun": "Wei Xun", "dutie": "Du Tie", "chuzhifu": "Prefect Chu", "dengyasi": "Sergeant Deng", "lengtie": "Leng Tie", "xudalang": "Xu Dalang", "hanbo": "Elder Han", "xuyan": "Xu Yan", "aling": "A-ling", "qinshuang": "Qin Shuang", "tangxiaotang": "Tang Xiaotang", "xiaohe": "little Xiaohe", "erniu": "Wang Erniu", "qianyuanwai": "Qian Yuanwai", "laisan": "Lai San", "sunzhanggui": "Sun Zhanggui", "zongbiaotou": "the escort chief", "menfang": "the gatekeeper",
+      "yayi": "the yamen runner", "tongpan": "the vice-prefect", "zhifufuren": "the prefect's wife", "xinchai": "the courier", "zhanggui": "the innkeeper", "zhaobutou": "Constable Zhao", "mianshiguan": "the interviewer", "huxianling": "Magistrate Hu",
+      "shimujiang": "Carpenter Shi",  # e013 r2 (live): the carpenter speaks from e913 on
+      "weishaoqing": "Wei Shaoqing", "hanghui": "the guild master",  # e020 r2 (live): both speak on screen in e920
+      "zhengbo": "Steward Zheng",  # e025 r2 (live): the Tang steward speaks on screen in e925 (gen-dh.mjs's name for him)
+      "tangwanjin": "Tang Wanjin",  # e029 r2 (live): Tang Wanjin's 「囡囡！」 on screen in e929 (gen-dh.mjs's name for him)
+      "diaoqi": "Diao Qi",  # e037 r2 (live): Diao Qi speaks on screen from e937 on (gen-dh.mjs's name for him)
+      "duizhang": "the guard captain",  # e038 r2 (live): the county gate's guard captain speaks on screen in e938 (a MINOR there)
+      "baidaifu": "Doctor Bai"}  # e039 r2 (live): Doctor Bai speaks on screen from e939 on (gen-dh.mjs's name for him)
+HER = {"aling", "qinshuang", "tangxiaotang", "xiaohe", "zhifufuren"}
+BASE = json.load(open(f"{REPO}/docs/videos/zhong-tian-qu-qi-e042/video.json"))
+sys.path.insert(0, f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi/production/writer-tools/e051-e055")
+
+
+
+def shot_ids(shots):
+    """A shot with its own sid (s08b, split in review) keeps the ids after it unchanged."""
+    out, n = [], 0
+    for s in shots:
+        if s.get("sid"):
+            out.append(s["sid"])
+        else:
+            n += 1
+            out.append(f"s{n:02d}")
+    return out
+
+def speak_clause(sid, texts):
+    t = [f"「{re.sub('。$', '', x)}」" for x in texts]
+    who = EN[sid][0].upper() + EN[sid][1:]
+    pro = "her" if sid in HER else "his"
+    # owner 2026-11-08 (after 祖媽 episode 2): 「很多幕都是看前面，不會面對對方說話」 — every spoken line faces the listener
+    them = "her" if sid in HER else "him"
+    gaze = (f", turned toward the person {'she' if sid in HER else 'he'} is speaking to, face in profile or three-quarter profile, "
+            f"eyes on that person, never looking at the camera")
+    if len(t) == 1:
+        return f"{who} speaks a short Mandarin line, {t[0]}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes{gaze}"
+    return f"{who} speaks {len(t)} short Mandarin lines, {' then '.join(t)}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes{gaze}"
+
+
+def main(name):
+    if name.endswith(".py"):
+        loader = importlib.util.spec_from_file_location("r2spec", os.path.abspath(name))
+        spec = importlib.util.module_from_spec(loader)
+        loader.loader.exec_module(spec)
+    else:
+        spec = importlib.import_module(name)
+    ep = spec.EP
+    slug = f"zhong-tian-qu-qi-e{ep:03d}"
+    out = f"{REPO}/docs/videos/{slug}"
+    os.makedirs(out, exist_ok=True)
+    chars = []
+    for cid in spec.CHARACTERS:
+        if cid in CAST:
+            c = CAST[cid]
+            chars.append({k: c[k] for k in ("id", "name", "appearance", "voice", "shot_looks") if k in c})
+        else:
+            chars.append(spec.MINOR[cid])
+    names = {c["id"]: c["name"] for c in chars}
+    scenes = []
+    n = 0
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        lines = []
+        on = [c for c in s.get("chars", [])]
+        by = {}
+        for (spk, text, emo, *flags) in s.get("lines", []):
+            n += 1
+            inner = "inner" in flags  # a thought in voice-over: the speaker's lips stay closed
+            if inner:
+                emo = "內心獨白，嘴閉著，" + emo
+            off = spk != "xitong" and spk not in on
+            # a thought keeps its emotion when its thinker is off screen (e001 s38 live prep: his point of view), so the
+            # recorded voice, whose cache keys on the emotion, stays valid
+            lines.append({"id": f"zq{ep}a{n:02d}", "speaker": spk, "text": text, "emotion": ("畫外，" + emo) if off and not inner and not emo.startswith("畫外") else emo})
+            if not off and not inner and spk != "xitong" and spk not in s.get("nospeak", []):
+                by.setdefault(spk, []).append(text)
+        motion = s["motion"]
+        talk = "; ".join(speak_clause(k, v) for k, v in by.items())
+        if talk:
+            motion = f"{talk}; {motion}"
+        if s.get("night"):
+            motion += f", and {spec.LIGHT[s['night']]}"
+        comp = re.sub(r"((?:close-up|shot)) of ([A-Z][\w'-]*(?: [A-Z][\w'-]*)?) on screen", r"\1, \2 on screen", s['comp'])
+        prompt = f"{spec.LOC[s['loc']]}: {comp}".replace("A-ling off screen", "Aling off screen")
+        motion = motion.replace("A-ling off screen", "Aling off screen")
+        # The off-screen sentence. e911 review (e910 s16, s31, s33): "<X> speaks off screen" / "the system voice speaks off
+        # screen" made the one person on screen move their lips, and an inner thought was announced as speech. A spec that sets
+        # OFFSCREEN_SPEECH = False gets no such sentence (it writes the silence of the people on screen itself, live action
+        # from e911 on); without it the old behaviour stays, so e901-e910 rebuild byte for byte.
+        if getattr(spec, "OFFSCREEN_SPEECH", True):
+            offs = [k for (k, *_) in s.get("lines", []) if k != "xitong" and k not in on]
+            if offs and "off screen" not in prompt:
+                prompt += f"; {EN[offs[0]]} speaks off screen"
+            if any(k == "xitong" for (k, *_) in s.get("lines", [])) and "system voice" not in prompt:
+                prompt += "; the system voice speaks off screen"
+        if len(motion) > 300: print("MOTION TOO LONG", sid, len(motion), len(motion) - len(s["motion"]))
+        if len(prompt) > 1000: print("PROMPT TOO LONG", sid, len(prompt))
+        scene = {"id": sid}
+        if s.get("chapter"):
+            scene["chapter"] = s["chapter"]
+        scene["template"] = "shot"
+        if not lines:
+            scene["action_seconds"] = s.get("act", 2)
+        scene["lines"] = lines
+        scene["data"] = {"camera": s["cam"], "prompt": prompt, "motion": motion, "characters": on}
+        if s.get("looks"):
+            scene["data"]["character_looks"] = s["looks"]
+        if s.get("nospeak"):
+            scene["data"]["nospeak"] = s["nospeak"]  # gen-dh leaves their lips out of the speaking sentence
+        buy = getattr(spec, "BUY", {}).get(sid)
+        if buy:
+            scene["data"]["buy_seconds"] = buy  # gen-dh buys this many seconds instead of 5 or 6 (the long shots)
+        scenes.append(scene)
+    doc = {k: BASE[k] for k in ["schema_version"]}
+    doc["slug"] = getattr(spec, "SLUG", "zhong-tian-qu-qi-e001-r2")
+    for k in ["format", "target_minutes", "voice", "look"]:
+        doc[k] = BASE[k]
+    doc["target_minutes"] = spec.TARGET_MINUTES
+    doc["characters"] = chars
+    doc["music"] = {"prompt": spec.MUSIC, "gain_db": -20, "duck_db": -10}
+    doc["subtitles"] = BASE["subtitles"]
+    yt = dict(BASE["youtube"])
+    yt["title"] = spec.TITLE
+    yt["description"] = spec.DESCRIPTION
+    doc["youtube"] = yt
+    doc["thumbnail"] = {"template": "thumb", "data": {"headline": spec.THUMB[0], "tag": "種田娶妻打天下", "shot": spec.THUMB[1]}}
+    doc["scenes"] = scenes
+    json.dump(doc, open(f"{out}/video.json", "w"), ensure_ascii=False, indent=2)
+    open(f"{out}/video.json", "a").write("\n")
+    ov = {}
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        if s.get("panel"):
+            ov[sid] = [{"text": t, "kind": k} for (t, k) in s["panel"]]
+    json.dump(ov, open(f"{out}/overlays.json", "w"), ensure_ascii=False, indent=2)
+    open(f"{out}/overlays.json", "a").write("\n")
+    # gen-dh
+    r = subprocess.run(["node", f"{H}/gen-dh.mjs", f"{out}/video.json", f"{H}/local/empty-lock.json", str(ep), f"{H}/ff-dh-e{ep:03d}.json", f"{H}/clips-dh-e{ep:03d}.json"], capture_output=True, text=True, cwd=REPO)
+    gen = r.stdout.strip() + r.stderr.strip()
+    print(gen)
+    ff = json.load(open(f"{H}/ff-dh-e{ep:03d}.json"))
+    clips = json.load(open(f"{H}/clips-dh-e{ep:03d}.json"))
+    secs = {}
+    for v in clips.values():
+        secs[v[2]] = secs.get(v[2], 0) + 1
+    setcount = {}
+    for j in ff:
+        st = [x for x in j["refs"] if x.startswith("dh-set-")]
+        key = st[0][:-4] if st else "NONE"
+        setcount[key] = setcount.get(key, 0) + 1
+    print("sets", setcount)
+    # timeline
+    t = json.loads(subprocess.run(["node", f"{HERE}/tl.mjs", f"{out}/video.json"], capture_output=True, text=True).stdout)
+    total = t["total"]
+    rows = []
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        st, du = t["scenes"][sid]
+        if s.get("chapter"):
+            rows.append(f"| **{s['chapter']}** |||||||")
+        ls = []
+        for (spk, text, emo, *_f) in s.get("lines", []):
+            off = spk == "xitong" or spk not in s.get("chars", [])
+            ls.append(f"{names[spk]}{'（畫外）' if off else ''}：{text}")
+        pan = "<br>".join(f"{tx}（{k}）" for (tx, k) in s.get("panel", [])) or "—"
+        tag = s.get("tag", "")
+        zh = (f"【{tag}】" if tag else "") + (s["zh"][len(tag) + 1:] if tag and s["zh"].startswith(tag + "：") else s["zh"]) + ("（無台詞）" if not ls else "")
+        rows.append(f"| {sid} | {int(st//60)}:{int(st%60):02d} | {du:.1f} | 片段 | {s['cam']} | {zh} | {'<br>'.join(ls) or '—'} | {pan} |")
+    n6 = secs.get(6, 0); n5 = secs.get(5, 0)
+    head = [f"# 第 {ep} 集〈{spec.EP_TITLE}〉分鏡表", "", "<!-- 給人讀的中文版；製作用的英文提示詞在 video.json，系統面板文字在 overlays.json。 -->", "",
+            f"- {len(spec.SHOTS)} 個鏡頭、{len([s for s in spec.SHOTS if s.get('chapter')])} 段（{'／'.join(s['chapter'] for s in spec.SHOTS if s.get('chapter'))}），估計約 {round(total)} 秒（照 lint 估法；真人語速通常再長一成左右，約 {round(total*1.1)} 秒）；細綱 {spec.OUTLINE_SECONDS} 秒",
+            f"- 預算：片段 {len(clips)} 支（靜圖 0 張），沒有「切素材」鏡。片段在 Colab 用 H3 Ref2VA 做（`production/colab/README.md`，沒有首格；第 33 集起路線 A）；`gen-dh.mjs` 算 {n6} 支 6 秒、{n5} 支 5 秒（海螺點數換算約 {int(re.search(r"total ≈ (\d+)", gen).group(1)):,} 點，只當對照；首格清單 {len(ff)} 張只當參照圖清單）"]
+    head += spec.HEAD
+    table = ["", "| 鏡 | 開始 | 秒 | 種類 | 景別、運鏡 | 畫面 | 台詞 | 面板（overlays） |", "| --- | --- | --- | --- | --- | --- | --- | --- |"] + rows + [""]
+    open(f"{out}/storyboard.md", "w").write("\n".join(head + table + spec.FOOT) + "\n")
+    # brief.md stays the hand-written one in docs/videos/zhong-tian-qu-qi-e001-r2/
+    # timings for brief writing
+    print("total", round(total, 1), "lines", n, "shots", len(spec.SHOTS))
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        st, du = t["scenes"][sid]
+        print(sid, f"{int(st//60)}:{int(st%60):02d}", f"{du:.1f}", s.get("tag", ""), "|", " / ".join(x[1] for x in s.get("lines", [])))
+
+
+if __name__ == "__main__":
+    sys.path.insert(0, HERE)
+    main(sys.argv[1])

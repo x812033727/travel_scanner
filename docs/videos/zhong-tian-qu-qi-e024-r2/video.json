@@ -1,0 +1,881 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e024-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "weijihuoji",
+      "name": "魏記夥計",
+      "appearance": "East Asian young man of about twenty, thin, an ancient Chinese Song-dynasty shop boy's dark red cloth short jacket and a black cloth head wrap, a small bronze gong in his left hand and a wooden mallet in his right",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲左右的店鋪夥計，男聲、年輕、嗓門大、在街上扯開喉嚨吆喝，句尾拉長"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a busy morning market cue of drums, gongs and bamboo flute that thins to a single note when the queue runs off, one accent on a firm refusal and one bright electronic accent on an exchange; then a low woodwind with crackling fire at night in a thatched sugar shed, turning into bright strings at first light, one light accent; then the bright strings broken off by a low suspense cue on a cold morning street, one big accent before it ends; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "對街五文一塊，他把紅糖淋成雪白｜種田娶妻打天下 第24集（重製版）",
+    "description": "鬥商第一天一早，許記剛卸下門板，對街魏記就敲鑼喊：肥皂五文一塊！排隊的人跑了一半。二牛要跟著降價，唐小棠說不降：他砸的是宰相府的錢，我們砸的是自己的命。她擺出木盆收舊皂頭換新皂，又發會員木牌，老客回頭七成。許硯知道拚價還是輸，兌換了放了九天的製糖法，拿起隔壁攤最便宜的紅糖：今晚回柳溪，我讓它變得比雪還白。當夜在柳溪糖坊，他在凝好的紅糖上淋了一勺黃泥水，二牛嚇得問淋了泥還能吃嗎。天一亮，漏斗裡的糖一層層變白。可是十斤紅糖只出一碗。第三天早上，唐小棠從糖行跑回來：全州的紅糖，昨天一夜被人買光了。對街二樓的魏少卿笑著說：全州的糖，包括鄰鎮。沒糖，看你熬什麼。《種田娶妻打天下》第 24 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "比雪還白",
+      "tag": "種田娶妻打天下",
+      "shot": "s24"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "大街與許記",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a01",
+          "speaker": "weijihuoji",
+          "text": "魏記開張，肥皂五文一塊，先到先得！",
+          "emotion": "畫外，敲鑼，扯開嗓子"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning: a narrow stone-paved street running straight away from us under a clear pale blue sky; on the left the open front of the Xu shop, its tall plank doors folded back, a dark doorway and a long low plain wooden counter along its front; on the right across the street a two-storey wooden shop front with dark lattice windows upstairs and long swags of red silk hung over a plain bare wooden beam above its wide open doorway, a long low dark table before it; plain wooden shop fronts further down both sides; low morning sun from the right, long shadows on the paving: wide shot down the street from beside the Xu shop: in the left foreground in front of the Xu shop Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, framed from the knees up, already standing still from the first frame holding one tall plank of pale wood upright beside him with both hands, a second tall plank of pale wood already leaning against the shop front behind him, his face in profile to screen right toward the shop across the street, never the lens; wary: brows drawn, lips pressed shut; across the street on the right before the red silk one thin young shop boy in a dark red cloth short jacket and a black cloth head wrap, a small bronze gong in his left hand and a wooden mallet in his right, seen side-on, his face in profile, standing on its step beside the long low table piled with rough yellow bars of soap; their hands hold only what is described here; exactly two people: Xu Yan and the shop boy across the street",
+        "motion": "the shop boy across the street strikes the gong twice and shouts with his mouth wide open, sweeping his mallet toward the heap of soap; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Xu Yan stands still holding his plank, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "High-angle wide shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning: a narrow stone-paved street running straight away from us under a clear pale blue sky; on the left the open front of the Xu shop, its tall plank doors folded back, a dark doorway and a long low plain wooden counter along its front; on the right across the street a two-storey wooden shop front with dark lattice windows upstairs and long swags of red silk hung over a plain bare wooden beam above its wide open doorway, a long low dark table before it; plain wooden shop fronts further down both sides; low morning sun from the right, long shadows on the paving: high-angle wide shot looking down on the street: in front of the long low plain wooden counter along the front of the Xu shop on the left six customers in plain Song-dynasty cotton robes and cloth head wraps standing in a loose line; Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing at the end of the line by the shop front, small in the frame, his face three-quarter to screen right toward the shop across the street, never the lens; anxious, not smiling: brows up, lips pressed shut; across the street on the right the swags of red silk and the long low table piled with rough yellow bars of soap; their hands hold only what is described here; exactly seven people, all small in the frame",
+        "motion": "three of the six customers leave the line and hurry across the street toward the shop with the red silk on the right; Wang Erniu reaches one arm out after them and lets it drop; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low morning sunlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a02",
+          "speaker": "erniu",
+          "text": "許兄弟，排隊的人跑了一半，全去對街了！",
+          "emotion": "急，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: medium shot from the street side of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing at the open front of the shop, framed from the waist up, his right arm already flung back toward the street on the right from the first frame, his open hand flat, his face three-quarter to screen left toward the dark doorway, never the lens; anxious, not smiling: brows up, eyes wide, lips moving fast between words; behind him the folded-back plank doors and the dark doorway; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「許兄弟，排隊的人跑了一半，全去對街了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu jabs his open hand back toward the street again as he speaks into the doorway, his shoulders tense; after the last word he keeps his arm out toward the street, and the low morning sunlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a03",
+          "speaker": "tangxiaotang",
+          "text": "才五文！他那塊黃皂，連豬油錢都不夠。",
+          "emotion": "不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop on a cold clear winter morning: bare dark wooden shelves along the left wall above a long low dark wooden cabinet, a few stacks of pale yellow soap bars on the lower shelves, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the bright street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, a floor of large grey stone tiles with bars of morning sunlight across it; bright morning light from the doorway, the corners of the room dim: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the counter along the right wall in the right foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; both her hands resting on the counter top; facing us beyond her in the bright doorway at the back, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing just inside the threshold, framed from the knees up, his face three-quarter to screen right toward her, never the lens; grim: brows drawn, lips pressed shut; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman's shoulders stiffen and her right hand presses flat on the counter top; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he glances back over his shoulder at the street and back at her, and the morning light from the doorway stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a04",
+          "speaker": "xuyan",
+          "text": "鬥商第一天，他就賠本賣，拿宰相府的錢砸，砸得起。",
+          "emotion": "瞇眼"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: medium close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, leaning one shoulder against the edge of the folded-back plank door, both arms already folded across his chest from the first frame, framed from the chest up with space above his head, the low morning sun lighting one side of his face, his face three-quarter to screen right toward the shop across the street, never the lens; narrow-eyed, not smiling: eyes narrowed, lips moving between words; behind him the pale plank door and the dark doorway, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「鬥商第一天，他就賠本賣，拿宰相府的錢砸，砸得起」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan narrows his eyes at the shop across the street as he speaks; after the last word he holds still, arms folded, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a05",
+          "speaker": "weishaoqing",
+          "text": "許老闆，三十天，本公子陪你慢慢玩。",
+          "emotion": "居高臨下，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, looking up at the upper floor of the shop across the street: dark wooden lattice windows under eaves of grey tiles, plain wooden boards, a swag of red silk below, a clear pale blue sky: low-angle medium shot from the street below of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, leaning his forearms on the sill of one upper-floor window whose dark lattice panel is swung outward on its hinges, the dim room open behind him, framed from the chest up, one closed folding fan held upright in his right hand like a short slim stick, its dark bamboo ribs pressed tight together, his face three-quarter to screen left looking down toward the Xu shop below, never the lens; lazy and amused: a slow smile, eyes half-lidded, lips moving lazily between words; behind him the dim room inside the window; around the window the dark lattice and the plain boards under the grey-tiled eaves",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「許老闆，三十天，本公子陪你慢慢玩」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing tilts his head and taps the closed fan twice on the window sill as he speaks, smiling down; after the last word he keeps smiling, and the low morning sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a06",
+          "speaker": "erniu",
+          "text": "那我們也降價，降到四文，看誰撐得久！",
+          "emotion": "急，拍櫃檯"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop on a cold clear winter morning: bare dark wooden shelves along the left wall above a long low dark wooden cabinet, a few stacks of pale yellow soap bars on the lower shelves, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the bright street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, a floor of large grey stone tiles with bars of morning sunlight across it; bright morning light from the doorway, the corners of the room dim: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the counter along the right wall in the right foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; both her hands resting on the counter top; facing us beyond her at the far end of the counter, a little left of the middle, Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, framed from the waist up, his right hand already raised over the counter top from the first frame, his face three-quarter to screen right toward her, never the lens; hot and anxious, not smiling: brows drawn, jaw set, lips moving fast between words; behind him the bright doorway, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「那我們也降價，降到四文，看誰撐得久！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu brings his open hand down flat on the counter top with a slap as he speaks; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the morning light from the doorway stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "erniu"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a07",
+          "speaker": "tangxiaotang",
+          "text": "不降。他砸的是宰相府的錢，我們砸的是自己的命。",
+          "emotion": "畫外，乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the Xu family shop on a cold clear winter morning, on the dark wooden counter top in soft light: insert close-up, the shot opens directly on one long flat gold abacus, as long as her forearm, a thin gold frame, lying flat on the dark wooden counter top: a long row of thin gold rods set close side by side across its width, one thin gold crossbar running along its whole length, small round gold beads above and below the crossbar on every rod, from its very first frame, one small hand in a thick opaque peach-pink silk sleeve cuff already raised flat just above it; only the hand, its sleeve cuff, the abacus and the dark counter top are in the frame",
+        "motion": "Throughout the shot the abacus keeps the long flat shape it has in <Picture 1>, lying flat on the dark wooden counter top. The pictures fix the place and the objects only, never the mood. the open hand comes down flat on the abacus with one sharp slap and stays there, the beads jumping once, and the morning light from the doorway stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a08",
+          "speaker": "tangxiaotang",
+          "text": "舊皂頭拿來換新皂，一塊折一半，只收五分！",
+          "emotion": "朝街上喊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, looking across the street from the Xu shop: a two-storey wooden shop front with long swags of red silk hung over a plain bare wooden beam above its wide open doorway and a long low dark table before it, in bright morning sunlight: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing on the stone step just outside the doorway of the Xu shop, framed from the knees up, facing straight away from us toward the street, one large round empty wooden tub already set down on the step just beside her right foot, its rim at the height of her knees at the lower right edge of the frame; she is the only young woman with two high round buns in the frame; beyond her across the street, soft, the shop with the red silk and a few customers in plain Song-dynasty cotton robes and cloth head wraps passing; their hands hold only what is described here",
+        "motion": "the young woman claps her hands once and raises her right hand, beckoning to the street; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; the passers-by across the street slow and glance toward her, small and soft, their lips closed, and the low morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the long low plain wooden counter along the front of the Xu shop, on the grey stone paving in low morning sunlight: insert close-up, the shot opens directly on one large round empty wooden tub standing on the grey stone step from its very first frame, a few small worn grey ends of soap at its bottom; a woman's rough hand in a coarse brown cloth sleeve cuff above it on the left, and a small hand in a thick opaque peach-pink silk sleeve cuff holding one new pale yellow bar of soap on the right; only the two hands, their sleeve cuffs, the soap and the tub are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the rough hand drops one small worn grey soap end into the tub, then opens, and the small hand lays the new pale yellow bar of soap into its palm, and the low morning sunlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a09",
+          "speaker": "weijihuoji",
+          "text": "喂！五文一塊，比她那邊便宜十倍啊！",
+          "emotion": "畫外，愣住，喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, looking across the street from the Xu shop: a two-storey wooden shop front with long swags of red silk hung over a plain bare wooden beam above its wide open doorway and a long low dark table before it, in bright morning sunlight: wide shot looking across the street at the shop with the red silk: on its step beside the long low table piled with rough yellow bars of soap one thin young shop boy in a dark red cloth short jacket and a black cloth head wrap, a small bronze gong in his left hand and a wooden mallet in his right, seen side-on, his face in profile, framed from the knees up, the mallet already frozen in the air above the gong from the first frame; stunned: mouth open, shouting; in the foreground three customers in plain Song-dynasty cotton robes and cloth head wraps, each with one small grey soap end in hand, walking away from the shop toward the left, seen from the side and from behind; their hands hold only what is described here; exactly four people",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the shop boy shouts after the three customers, his mouth opening and closing on the words, the mallet still in the air; the three customers keep walking away to the left, their backs to him, and the low morning sunlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a10",
+          "speaker": "tangxiaotang",
+          "text": "老客憑這塊木牌，往後每次買皂都打九折！",
+          "emotion": "甜甜地吆喝"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the Xu family shop on a cold clear winter morning: bare dark wooden shelves along the left wall above a long low dark wooden cabinet, a few stacks of pale yellow soap bars on the lower shelves, the wide open front doorway in the middle of the back wall between dark wooden lattice panels with the bright street beyond it, plain white panelled walls on the right with one long waist-high counter of plain dark wood with a thick flat top and a plain panelled front standing along them, a floor of large grey stone tiles with bars of morning sunlight across it; bright morning light from the doorway, the corners of the room dim: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing behind the counter along the right wall in the right foreground, framed from the waist up, facing across the counter toward the customers; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; a neat row of small plain pale wooden tokens, each the size of a palm, smooth and blank, each on a short red cord laid along the counter top in front of her, her right arm already lifted over them from the first frame; beyond the counter, soft, two customers in plain Song-dynasty cotton robes and cloth head wraps, a man in brown and a woman in grey, leaning in over the counter with their eyes down on the tokens, their faces half turned away, lips closed; their hands hold only what is described here; exactly three people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman sweeps her silk sleeve once over the row of tokens toward the customers; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; the two customers lean closer and look down at the tokens, their lips closed, listening, and the morning light from the doorway stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a11",
+          "speaker": "xitong",
+          "text": "叮。老客回頭，七成。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the Xu family shop on a cold clear winter morning, on the dark wooden counter top in soft light: insert close-up, the shot opens directly on one small plain pale wooden token the size of a palm, smooth and blank, on a short red cord lying in the open palm of an old man's hand in a worn brown cloth sleeve cuff above the dark wooden counter top from its very first frame, a small hand in a thick opaque peach-pink silk sleeve cuff resting on top of it; only the two hands, their sleeve cuffs, the token and the counter top are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the small hand presses the token gently into the old palm and lets go, and the old hand closes round it and draws it back toward his chest, and the morning light from the doorway stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a12",
+          "speaker": "xuyan",
+          "text": "留得住老客，可他天天五文，拚價還是輸。",
+          "emotion": "不笑，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: medium close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing by the folded-back plank door, framed from the chest up with space above his head, his right hand already at his chin from the first frame, his face three-quarter to screen right toward the shop across the street, never the lens; unsmiling and thinking: brows drawn, eyes hard, lips moving low between words; in the soft lower left foreground the shoulders of two customers in plain Song-dynasty cotton robes and cloth head wraps at the counter, out of focus; behind him the pale plank door and the dark doorway, soft; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「留得住老客，可他天天五文，拚價還是輸」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan rubs his chin slowly as he speaks, his eyes staying on the shop across the street; after the last word he lowers his hand, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a13",
+          "speaker": "xuyan",
+          "text": "得有一樣東西，是魏記做不出來的。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著"
+        },
+        {
+          "id": "zq924a14",
+          "speaker": "xitong",
+          "text": "兌換：製糖法。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing by the folded-back plank door, framed from the chest up with space above his head, his face three-quarter to screen right toward the shop across the street, never the lens; thinking hard: eyes narrowing, brows drawn, lips pressed shut; behind him the pale plank door and the dark doorway, soft",
+        "motion": "Xu Yan's eyes narrow and then go still, as if something has just been decided; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a15",
+          "speaker": "xitong",
+          "text": "宿主這個獎勵放了九天，終於想起來了。",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq924a16",
+          "speaker": "xuyan",
+          "text": "放著才叫存糧，現在拿出來剛好。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: tight close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, framed from the shoulders up with a little space above his head, his face three-quarter to screen right toward the shop across the street, never the lens; dry and wry: lips pressed shut, one corner of his mouth turned down; behind him the pale plank door, soft",
+        "motion": "one corner of Xu Yan's mouth turns down, and then slowly a closed-lipped smile spreads across his face; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a17",
+          "speaker": "xuyan",
+          "text": "最便宜的紅糖，一斤才十五文。",
+          "emotion": "畫外，賣關子"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the long low plain wooden counter along the front of the Xu shop, on the grey stone paving in low morning sunlight: insert close-up, the shot opens directly on a shallow round bamboo basket heaped with dark brown slabs of raw cane sugar, rough and pitted sitting on the long low plain wooden counter along the front of the Xu shop from its very first frame, a man's hand in a faded blue-grey sleeve rolled to the forearm already lifting one dark brown slab of raw cane sugar, rough and pitted from it; only the hand, its sleeve, the slab and the basket are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the hand raises the slab into the low sunlight and turns it once, and a few dark crumbs fall back into the basket, and the low morning sunlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a18",
+          "speaker": "tangxiaotang",
+          "text": "紅糖？黑乎乎的，拿它跟魏記比什麼？",
+          "emotion": "皺鼻子"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the long low plain wooden counter along the front of the Xu shop, on the grey stone paving in low morning sunlight: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the low counter in front of the Xu shop in the right foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; her hands low at her sides; facing us beyond her, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing behind a shallow round bamboo basket heaped with dark brown slabs of raw cane sugar, rough and pitted on the low counter, framed from the waist up, one dark brown slab of raw cane sugar, rough and pitted already held up in his right hand from the first frame, his face three-quarter to screen right toward her, never the lens; pleased with himself: one brow up, lips pressed shut; behind him the stone paving and the street, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman lifts her silk sleeve and waves it once in front of her face; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he turns the slab once in his fingers, and the low morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a19",
+          "speaker": "xuyan",
+          "text": "今晚回柳溪，我讓它變成白的，比雪還白。",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: medium close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing by the folded-back plank door, framed from the chest up with space above his head, one dark brown slab of raw cane sugar, rough and pitted already held up in his right hand beside his face from the first frame, his face three-quarter to screen right toward her off screen right, never the lens; cocky and sure: a sly smile, eyes bright, lips moving between words; behind him the pale plank door and the dark doorway, soft; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「今晚回柳溪，我讓它變成白的，比雪還白」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan tosses the slab up a hand's height and catches it again as he speaks, smiling; after the last word he holds it up beside his face, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "柳溪糖坊",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a20",
+          "speaker": "erniu",
+          "text": "熬了兩個時辰，這鍋黑糖漿，到底要變成什麼？",
+          "emotion": "邊攪邊喘"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at night: a long open shed under a deep thatched roof on rough wooden posts, a brick stove with one wide iron pan in the left foreground, a long plaster wall on the left with a wooden rack of brown clay funnels hung high on it and a low wooden bench beneath, where a row of brown clay funnels stand points down, each in a squat clay jar, their wide mouths at chest height, wooden barrels along the wall, a round stone basin on a pedestal in the middle, the open right side with a wooden railing, snow and the creek beyond it; red firelight from the stove, the warm glow of one small oil lamp on the stone basin, steam rising from the pan, cold blue night outside: wide shot down the shed: in the left foreground Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing at the brick stove, framed from the knees up, one long wooden paddle already in both hands stirring the dark bubbling syrup in the wide iron pan from the first frame, his face three-quarter to screen right toward Xu Yan, never the lens; tired, not smiling: sweat on his brow, lips moving between panting words; beyond him on the right of him at the low bench along the left wall Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed full figure, one brown clay pitcher already tilted in his right hand over the wide mouth of the nearest funnel standing in its jar on the bench from the first frame, his face turned down to the funnels, never the lens; intent: lips pressed shut; their hands hold only what is described here; exactly two people",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「熬了兩個時辰，這鍋黑糖漿，到底要變成什麼？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu keeps stirring the pan as he speaks, panting, and wipes his brow once with the back of his wrist; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he pours a thick dark stream of syrup into one funnel after another, and the red firelight and the warm lamp glow stay unchanged",
+        "characters": [
+          "erniu",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a21",
+          "speaker": "xuyan",
+          "text": "變成白糖。先讓它在漏斗裡凝住，再淋一樣東西。",
+          "emotion": ""
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at night, under the thatched shed by the brick stove: steam rising, red firelight, the warm glow of one small oil lamp, cold blue night beyond: medium close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing at the low bench by the wall, framed from the chest up with space above his head, his right hand already resting on the rim of one brown clay funnel standing in its jar on the bench beside him, at the lower edge of the frame, his face three-quarter to screen left toward Wang Erniu off screen left, never the lens; calm and sure: steady eyes, lips moving between words; steam drifting past his face, the warm lamp glow on one side of it; behind him the plaster wall and the dim shed, soft; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「變成白糖。先讓它在漏斗裡凝住，再淋一樣東西」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan taps the rim of the funnel once with his knuckle as he speaks; after the last word he looks back at the funnels, and the red firelight and the warm lamp glow stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at night, under the thatched shed by the brick stove: steam rising, red firelight, the warm glow of one small oil lamp, cold blue night beyond: high-angle insert close-up, the shot opens directly on the wide mouth of one brown clay funnel filled with set dark brown sugar from its very first frame, a man's hand in a grey cloth sleeve holding one wooden ladle full of thin opaque yellow-brown mud water, gritty with silt just above it; only the hand, its sleeve, the ladle and the funnel mouth are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the ladle tips and the thin yellow-brown mud water pours over the dark sugar, spreads across it and slowly sinks in, and the red firelight and the warm lamp glow stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a22",
+          "speaker": "erniu",
+          "text": "淋泥水？那是吃的糖，淋了泥還能吃嗎？",
+          "emotion": "嚇一跳，苦著臉"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at night, under the thatched shed by the brick stove: steam rising, red firelight, the warm glow of one small oil lamp, cold blue night beyond: low-angle medium shot from the height of the stove of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing by the stove, framed from the waist up, one long wooden paddle in his left hand, his right arm already thrust out toward the brown clay funnels beyond the right edge of the frame from the first frame, his open palm toward them, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; horrified, not smiling: his whole face screwed up, brows up, lips moving fast between words; red firelight from below on his face, steam behind him; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「淋泥水？那是吃的糖，淋了泥還能吃嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu leans back away from the funnels, his face screwing up, as he speaks; after the last word he keeps his arm out, aghast, and the red firelight and the warm lamp glow stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a23",
+          "speaker": "xuyan",
+          "text": "泥水會把黑的帶下去，能不能吃，等天亮。",
+          "emotion": "笑，不解釋"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at night, under the thatched shed by the brick stove: steam rising, red firelight, the warm glow of one small oil lamp, cold blue night beyond: medium close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, sitting on one upturned clay jar, framed from the chest up with space above his head, one rag already in his hands wiping yellow mud off his fingers from the first frame, his face three-quarter to screen left toward Wang Erniu off screen left, never the lens; amused and not explaining: a small smile, lips moving between words; the warm lamp glow on his face; behind him the dim shed and the steam, soft; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「泥水會把黑的帶下去，能不能吃，等天亮」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan wipes his fingers clean on the rag as he speaks, smiling; after the last word he tosses the rag over his shoulder, and the red firelight and the warm lamp glow stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at first light, under the thatched shed by the wall of brown clay funnels, in low warm gold sunlight from the right: insert close-up, the shot opens directly on the wide mouth of one brown clay funnel filled with set dark brown sugar, a thin dry crust of yellow-brown silt on top, in low warm morning light from its very first frame; only the funnel mouth and the sugar in it are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. slowly from the top down the dark sugar turns snow-white, layer by layer, the white creeping down into it, dry, fine and powdery like fresh snow, and the low warm gold morning light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a24",
+          "speaker": "erniu",
+          "text": "甜的！白得像雪，甜得也像雪！",
+          "emotion": "嘗一口，眼睛發亮"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at first light, under the thatched shed by the wall of brown clay funnels, in low warm gold sunlight from the right: medium shot of Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing by the wall of funnels, framed from the waist up, one cone of sugar knocked out of a brown clay funnel already in his left hand from the first frame, its wide top half snow-white and its tip brown, his face three-quarter to screen right toward Xu Yan off screen right, never the lens; curious: brows up, lips moving between words; low warm morning light on his face; their hands hold only what is described here",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「甜的！白得像雪，甜得也像雪！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu pinches a little snow-white sugar from the cone and puts it in his mouth; his eyes go wide and he breaks into a big grin as he speaks, and the low warm gold morning light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a25",
+          "speaker": "xitong",
+          "text": "叮。白糖試做，成功。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at first light, under the thatched shed by the wall of brown clay funnels, in low warm gold sunlight from the right: close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed from the chest up with space above his head, his eyes heavy and tired, his right hand raised at chest height with a little snow-white sugar on the tips of his fingers, his face three-quarter to screen left, never the lens; weary and quietly glad: lips pressed shut; low warm morning light on his face; behind him the plaster wall, soft",
+        "motion": "Xu Yan rubs the snow-white sugar between his fingertips, lets out a long breath, and a slow closed-lipped smile spreads across his face; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is listening, not speaking, and the low warm gold morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a26",
+          "speaker": "xuyan",
+          "text": "十斤紅糖只出一碗，要拿去賣，得有幾百斤才行。",
+          "emotion": "很穩"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at first light: a long open shed under a deep thatched roof on rough wooden posts, a brick stove with one wide iron pan in the left foreground, a long plaster wall on the left with a wooden rack of brown clay funnels hung high on it and a low wooden bench beneath, where a row of brown clay funnels stand points down, each in a squat clay jar, their wide mouths at chest height, wooden barrels along the wall, a round stone basin on a pedestal in the middle, the open right side with a wooden railing, snow and the creek beyond it; low warm gold sunlight from the right across the snow and the floor, long shadows: wide shot down the shed in low warm morning light: in the left foreground Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, standing by the cold stove, framed full figure, one empty hemp sack hanging from his left hand, his face three-quarter to screen right toward Xu Yan, never the lens; listening: lips pressed shut; beyond him on the right of him at the low bench along the left wall Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed full figure, already holding one shallow clay bowl heaped with fine white sugar like fresh snow in both hands from the first frame, the brown clay funnels on the bench beside him, his face three-quarter to screen left toward Wang Erniu, never the lens; steady, not smiling: lips moving between words; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「十斤紅糖只出一碗，要拿去賣，得有幾百斤才行」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lifts the bowl a little and looks down into it as he speaks; Wang Erniu says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Erniu nods slowly, and the low warm gold morning light stays unchanged",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a27",
+          "speaker": "erniu",
+          "text": "我去鄰鎮收紅糖，你進城叫小棠去糖行全訂下來！",
+          "emotion": ""
+        },
+        {
+          "id": "zq924a28",
+          "speaker": "xuyan",
+          "text": "好，分兩頭收，一斤都別漏掉。",
+          "emotion": "點頭"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the sugar workshop by the Liuxi creek at first light: a long open shed under a deep thatched roof on rough wooden posts, a brick stove with one wide iron pan in the left foreground, a long plaster wall on the left with a wooden rack of brown clay funnels hung high on it and a low wooden bench beneath, where a row of brown clay funnels stand points down, each in a squat clay jar, their wide mouths at chest height, wooden barrels along the wall, a round stone basin on a pedestal in the middle, the open right side with a wooden railing, snow and the creek beyond it; low warm gold sunlight from the right across the snow and the floor, long shadows: medium shot in low warm morning light: on the left Wang Erniu, in his coarse brown hemp short jacket with rolled sleeves, framed from the waist up, one empty hemp sack already slung over his left shoulder from the first frame, his right arm stretched out to the right toward the open side of the shed, his open hand flat, his face three-quarter to screen right toward Xu Yan, never the lens; eager: brows up, lips moving between words; on the right Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed from the waist up, one shallow clay bowl heaped with fine white sugar like fresh snow held in both hands at his chest, his face three-quarter to screen left toward Wang Erniu, never the lens; firm: lips moving between words when it is his turn; behind them the plaster wall and the brown clay funnels, soft; their hands hold only what is described here; exactly two people",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我去鄰鎮收紅糖，你進城叫小棠去糖行全訂下來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan speaks a short Mandarin line, 「好，分兩頭收，一斤都別漏掉」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wang Erniu speaks first, his open hand out toward the open side of the shed, then lowers his arm; Xu Yan nods once and answers him, and the low warm gold morning light stays unchanged",
+        "characters": [
+          "erniu",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s29",
+      "chapter": "許記門口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a29",
+          "speaker": "xuyan",
+          "text": "一碗白糖擺在這裡，等紅糖一到，就能熬第二鍋。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning: a narrow stone-paved street running straight away from us under a clear pale blue sky; on the left the open front of the Xu shop, its tall plank doors folded back, a dark doorway and a long low plain wooden counter along its front; on the right across the street a two-storey wooden shop front with dark lattice windows upstairs and long swags of red silk hung over a plain bare wooden beam above its wide open doorway, a long low dark table before it; plain wooden shop fronts further down both sides; low morning sun from the right, long shadows on the paving: wide shot down the street: in the left foreground Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing at the long low plain wooden counter along the front of the Xu shop, framed from the knees up, one shallow clay bowl heaped with fine white sugar like fresh snow already set down in the middle of the counter in front of him from the first frame, his face turned down to the bowl, never the lens; pleased and hopeful: a small smile, lips pressed shut; across the street on the right, before the doorway under the red silk, one brown ox standing still side-on in the shafts of one two-wheeled wooden cart piled high with plain hemp sacks, and two men in grey cotton short jackets and cloth head wraps carrying one sack each on their shoulders through the doorway, side-on, their lips closed; the long low table before the shop with the red silk now stands bare; their hands hold only what is described here; exactly three people: Xu Yan and the two men across the street",
+        "motion": "Xu Yan takes one step back from the counter and looks at the bowl, pleased; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; across the street behind him the two men carry the sacks in through the doorway one after the other, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a30",
+          "speaker": "tangxiaotang",
+          "text": "糖行說，全州的紅糖，昨天一夜被人買光了！",
+          "emotion": "喘著氣，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, framed from the waist up, already stopped at the open front of the Xu shop from the first frame, out of breath, her right hand already gripping the edge of the folded-back plank door, her left hand holding up her skirt; she is the only young woman with two high round buns in the frame; ahead of her the pale plank door and the dark doorway; their hands hold only what is described here",
+        "motion": "the young woman hangs on to the plank door, her shoulders heaving as she pants; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot, and the low morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a31",
+          "speaker": "xuyan",
+          "text": "全州？我們昨天訂的三百斤呢，也沒了？",
+          "emotion": "愣住"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing at the counter by the folded-back plank door, framed from the chest up with space above his head, his face three-quarter to screen right toward her off screen right, never the lens; stunned, not smiling: eyes wide, brows up, lips moving between words; behind him the pale plank door and the dark doorway, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「全州？我們昨天訂的三百斤呢，也沒了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan's hand draws back from the bowl below the frame as he speaks, his eyes fixed on her; after the last word he waits, stunned, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a32",
+          "speaker": "tangxiaotang",
+          "text": "沒了。訂金退回來了，一車一車全拉進了魏記。",
+          "emotion": ""
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the front of the Xu shop in the right foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; her right hand already holding out one small plain grey cloth pouch tied with a string toward him from the first frame; facing us beyond her, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing at the counter by the folded-back plank door, framed from the waist up, his face three-quarter to screen right toward her, never the lens; stunned: brows up, lips pressed shut; behind him the dark doorway, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman presses the pouch into Xu Yan's hand and his fingers close round it; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Point-of-view wide shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, looking across the street from the Xu shop: a two-storey wooden shop front with long swags of red silk hung over a plain bare wooden beam above its wide open doorway and a long low dark table before it, in bright morning sunlight: point-of-view wide shot looking across the street from the Xu shop: the soft rim of a shallow clay bowl heaped with fine white sugar like fresh snow at the very bottom edge of the frame, out of focus; across the street the shop with the red silk, its two tall plank doors standing half open, two men in grey cotton short jackets and cloth head wraps just inside the doorway, each with both hands on one of the two tall plank doors, small and far, side-on, their faces turned to the doors; their hands hold only what is described here; exactly two people",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the two men swing the two tall plank doors shut from inside, the closing doors hiding them, and the doorway under the red silk closes, and the low morning sunlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a33",
+          "speaker": "tangxiaotang",
+          "text": "他買光紅糖，不是要賣，是不讓我們熬。",
+          "emotion": "咬唇"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the front of the Xu shop in the right foreground, framed from the waist up, facing into the frame toward him; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; her right hand already holding his left sleeve from the first frame; facing us beyond her, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing at the counter, framed from the waist up, one small plain grey cloth pouch tied with a string in his right hand, his face three-quarter to screen right toward her, never the lens; grim, not smiling: jaw set, lips pressed shut; behind him the dark doorway, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman tugs his sleeve once, hard; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; his eyes drop to the cloth pouch in his hand and come back to her, and the low morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a34",
+          "speaker": "xuyan",
+          "text": "二牛去了鄰鎮，鄰鎮的糖行，總不會也被買光吧？",
+          "emotion": "壓低聲音，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, at the open front of the Xu shop: its tall plank doors of pale wood folded back, a dark doorway, a dark lattice transom above, in low morning sunlight: medium close-up from the street side of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled to the forearms, standing at the counter by the folded-back plank door, framed from the chest up with space above his head, already holding one shallow clay bowl heaped with fine white sugar like fresh snow in both hands at his chest from the first frame, his face three-quarter to screen right and tilted up past her toward the upper floor of the shop across the street, never the lens; grave, not smiling: brows drawn, lips moving low between words; at the right edge of the frame, soft and cut off, the back of a young woman's head with two round buns set high, a short pink silk ribbon around each, appearing only once; behind him the pale plank door, soft; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「二牛去了鄰鎮，鄰鎮的糖行，總不會也被買光吧？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lifts his eyes slowly to the upper floor across the street as he speaks, low; after the last word he holds the bowl still, and the low morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq924a35",
+          "speaker": "weishaoqing",
+          "text": "全州的糖，包括鄰鎮。沒糖，看你熬什麼。",
+          "emotion": "搖扇，慢慢地"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "On the market street of the county town on a cold clear winter morning, looking up at the upper floor of the shop across the street: dark wooden lattice windows under eaves of grey tiles, plain wooden boards, a swag of red silk below, a clear pale blue sky: low-angle medium shot from the street below of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, leaning his forearms on the sill of one upper-floor window whose dark lattice panel is swung outward on its hinges, the dim room open behind him, framed from the chest up, one closed folding fan held upright in his right hand like a short slim stick, its dark bamboo ribs pressed tight together, his face three-quarter to screen left looking down toward the Xu shop below, never the lens; coldly pleased: a thin curl at one corner of his mouth, eyes cold, lips moving slowly between words; behind him the dim room inside the window; around the window the dark lattice and the plain boards under the grey-tiled eaves",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「全州的糖，包括鄰鎮。沒糖，看你熬什麼」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing taps the closed fan once on the window sill as he speaks slowly, a cold smile; after the last word he keeps looking down, smiling, and the low morning sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    }
+  ]
+}

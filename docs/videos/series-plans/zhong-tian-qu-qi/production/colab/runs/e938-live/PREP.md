@@ -1,0 +1,236 @@
+# 第 38 集重製版 r2（e038-r2，內部 938）真人版開拍前置
+
+- 2026-11-23，第 38 集前置代理。**沒送任何生成**（Colab、RunPod 都沒開，`zt-live2`、`zt-live3` 都沒碰）、**沒有付費圖**、沒 commit、沒改第 31–37 集的檔
+  （唯一碰到的共用檔：`writer-tools/e001-r2/build-r2.py` 的 `EN` 加一個鍵 `duizhang`，舊集逐位元重建不變；refs-live README 加一段）。
+  **獨立審稿已套用（必改 1、6 的付費改圖等協調者跑，§7）**。**站台 TTS 錄音：見 §4**。
+- 依據：第 37 集前置全套（`writer-tools/e037-r2/{r2.py,review.md,review-independent.md}`、`colab/runs/e937-live/{mkspec.py,spec.json,PREP.md}`（§7 獨立審稿怎麼套）、
+  `colab/runs/e937/extras.json`、scratchpad `tools/{build937.sh,prep937.sh,rec937-slow.sh,rec937-check.sh,mkhints937.py,fw937.py,f0y937.py,span937.sh,heads937.py}`、`e937d1.sh`）、
+  `r2-bible-e031-e040.md`（拍法 1–43、〈接點〉37→38 與 38→39、〈道具〉〈人物〉〈小角色〉〈場景〉〈原版必修〉第 38 集；第 41 條馬、第 33 條不掛東西、第 42 條病房與院子）、
+  任務檔第 33–37 集的教訓、站主 2026-11-21～23 規則（§0）。稿子 `docs/videos/zhong-tian-qu-qi-e038-r2/script.md`（38 鏡、186 秒）。
+- **接點 37→38 照第 37 集定版成片寫**：`/root/mokaair-work/videos/_live-e937/zhong-tian-qu-qi-e937-dh/cut/e937-live.mp4`（205.79 秒）190 秒起每 1.4 秒抽一格
+  （scratchpad `e938prep/tail/sheet.jpg`）：s37 許硯回頭望土埂（面板「任務完成」）；s39 小禾撲進懷裡；s40 許硯蹲著抱軟下來的小禾、右手掌按她額頭（舊灰外衣、袍子沾白粉；小禾淡紫短襖、草兔子塞在腰間）。
+  s01：同一個清晨，病房，小禾已經躺在床上、額頭一塊濕布，許硯跪在床前、右手按她額頭（聖經〈接點〉37→38）。
+- scratchpad = `/tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1a/scratchpad`。
+
+## 0. 站主 11-21～23 規則（PR #2217，`production/OWNER-CHECK-20261122.md`；協調者 2026-11-23 轉達）
+
+| 規則 | 本集怎麼照做 |
+| --- | --- |
+| 品質優先、該花錢重拍就重拍；能自己決定的自己決定，最後只列站主要決定的事 | §6 只列要協調者／站主決定的事；BUY 放寬（長句一律 8 秒） |
+| 人群聲一律用本集錄音倒放（`colab/runs/_scripts/crowd-murmur.py`；Pixabay 人群床有可辨識的英文字，不用） | 本集沒有人群喊聲（守軍、弩手不出聲）；剪接若要城門或街口的人聲底，用 `crowd-murmur.py 38`（33 句錄齊後） |
+| 音效用真實音效庫（本機 `/root/mokaair-work/videos/_series/zhong-tian-qu-qi/sfx-real-20261121/`，`zhongtian-sfx-*`）；Flow 提示要寫 sound effect only, no music | 剪接照 script.md〈音樂與音效〉從這個庫挑；庫裡沒有的（弩上弦、門縫裡的燈、短刀出鞘、馬蹄踏石板）列給站主用 Flow 做 |
+| 唐小棠背影鏡附髮型參考圖 `refs-live/tangxiaotang-back-shuangji-e929-w3.png`；跪姿要拍到膝蓋 | 她的五個背影鏡都由 `spec.json` 的 `append_pictures` 加送：白天 s02 s04 s07 送站主原檔、夜裡 s16 s18 送第 37 集做的夜版 `-ye`；s01、s19 許硯跪在床前寫全身（Wide、`framed full figure with both knees on the floor`），s03 改坐床沿、s06 近景不寫跪 |
+| 柴刀固定句會被畫成劍 | 本集柴刀不寫（拍法 5），`check938.py` 擋 `chopper`、`sword`、`blade`、`saber` |
+| 風格句不寫 cinema camera；許硯不寫鬍渣；門寫明開關；only 句寫兩次；錢員外正面不笑會失敗（本集沒有他）；同場說話者差 ≥ 3 半音 | 全部照做並由 `check938.py` 斷言（§3）；音高見 §4 |
+
+## 1. 分鏡（`writer-tools/e038-r2/r2.py`，40 鏡＝c01–c38＋兩個拆鏡；獨立審稿後的改動見 §7）
+
+- build：scratchpad `tools/build938.sh`（`build-r2.py` → `docs/videos/zhong-tian-qu-qi-e038-r2/{video.json,overlays.json,storyboard.md}`、`hailuo/{ff,clips}-dh-e938.json`）；
+  `storyboard-check.py` 稿子 38 鏡 186 秒（警告 1：c19 小禾『哥……』一個字，稿子刻意）；`shot_reading` 5 個陷阱：4 個 `cast.speaker`（s11、s15 系統；s24 年輕守軍錄音；s31 白大夫門內：`OFFSCREEN_SPEECH = False` 的刻意寫法），
+  1 個 `prompt.length`（s16 三人全景的**關鍵影格** prompt 4482 字，路線 A 沒有首格，不用）。台詞 33 句逐字照稿。
+- **拆鏡**：**s15b**（c15 系統＋心裡話約 8.5 秒加停頓：心裡話拆出來，照第 37 集 s16b）、**s27b**（聖經第 41 條：躍過木柵拆成 s27『衝向木柵』與 s27b『已經落地、塵土揚起、衝進半開的門扇』，空中那一下交給剪接與馬蹄聲）。
+- **集長**：BUY 一個種子 247 秒（5 秒 9、6 秒 23、8 秒 8）；稿子估 186 秒；剪接以錄音人聲為準，預估成片約 3 分 10 秒–3 分 30 秒。
+- 照聖經與第 37 集審稿、成片審查的教訓改稿子的地方（各鏡 zh 有寫）：
+  | 稿子 | 真人版 | 為什麼 |
+  | --- | --- | --- |
+  | 許家屋內 `set-xujia-wu`、窗下木床、屋門在右 | 病房＝唐小棠房間的圖（`set-xujia-tangfang-l2`／`-chen-l1`／本集 `-xi-l1`）：門在**左**、床靠後牆在小窗下、枕頭在右、小桌在右前；進門的人從左邊來 | 聖經第 42 條、〈場景〉 |
+  | 傍晚屋裡點起油燈 | 傍晚用本集免費做的暖橘調色 `-xi`（圖上蠟燭熄著，燈不寫）；入夜才寫『桌上那一朵火』（`-l2`） | 圖文一致 |
+  | 唐小棠 t2 高立領、淡杏外衣；c02 c04 c07 c16 c18 正面或近景說話 | 五鏡都從背後拍、頭不動、加雙丸子背影圖；l1 交領短襦；**沒有正臉** | 拍法 3、4、40；站主 2026-11-22 |
+  | c01 c19 許硯跪在床邊（中景、近景） | 全景、`framed full figure with both knees on the floor`；c03 改坐床沿 | 站主 2026-11-22 跪姿拍到膝蓋 |
+  | c07 唐小棠下巴以上近景說話 | 從背後中景，她一摸額頭就縮回、按在胸前 | 拍法 40 |
+  | c09 秦霜『腰上沒有柴刀』、c09 c12 c16 c17 長槍 | 柴刀不寫；第 37 集那桿長槍（加送 `prop-changqiang-l1`） | 拍法 5、〈道具〉 |
+  | c11 c15 臉被淡藍光照亮 | 不寫 | 拍法 11 |
+  | c12 屋門外阿令虛焦 | 照寫：門外一個灰白衣的年輕女子、只到肩、虛焦、不點名不送圖 | 2026-11-06 審稿；拍法 2 |
+  | c13 用牙咬緊布條 | 用手把布條最後一拉 | 牙咬著說不了話 |
+  | 院子：井在左前、破木院門在右、柿子樹 | 照 `-ye-dong2-l1`：院門在後牆中間（門扇掛右柱往內半開）、光禿的樹在院門右、井在前右；馬拴在樹下 | 拍法 29、42；第 37 集必改 1 |
+  | c16 上馬後原地轉半圈 | 第一格左腳已經踩鐙、兩手按鞍，一翻身上馬坐穩（一個動作） | 拍法 32、41 |
+  | c18 唐小棠扶院門喊、阿令點頭 | 唐小棠背影在正中舉手喊；阿令從背後側面、馬從院門左半衝出去（點頭從背後看不到） | 拍法 40、41 |
+  | c20 前景空白石碑、c22 牆上空白告示板、c30 空白招牌 | **都不寫** | 聖經第 33 條（原版必修的來源） |
+  | c20 c21 跟拍、官道 | 官道圖是正面消失的路：側面騎馬用左半楊樹一排的裁切；s20 慢推、**s21 跟拍**（全集只有這鏡），一律由右往左 | 第 41 條；圖說了算 |
+  | 城門：大門關、門洞旁小門開、木柵橫在路上 | 照圖：左扇關、右扇往外半開（＝稿子的小門）、拒馬柵沿著門右邊的牆、兩支插在鐵架上的火把（沒人拿） | 拍法 29、23 |
+  | c23 隊長身後兩個守軍、c28 弩手從城門洞跑出來 | 不寫（人少）；弩手第三場 s32 才入鏡 | 拍法 34、31 |
+  | c24 年輕守軍敲木柵 | 側後拍、矛尾敲石板地（這張裁切沒有柵）；錄音 | 〈小角色〉 |
+  | c25 阿令下巴以上近景 | 側面中景、腰以上加馬頭頸 | 第 41 條 |
+  | c27 一個鏡頭躍過木柵 | 拆成 s27（衝到柵腳、蹄剛離地就剪）＋ s27b（已經落地、塵土、衝進門扇） | 第 41 條；lessons 第 38 集 |
+  | c29 下馬、繞韁、上石階 | 只拍翻身下馬；s30 馬已經拴在方石拴馬樁、在畫左緣只到頭頸 | 一鏡一個動作；第 41 條 |
+  | c34 弩拉滿 | 六把弩一把接一把舉平（上弦交給音效） | 一個看得見的動作 |
+  | c35 拔短刀 | 第一格短刀已經在手上 | 一鏡一個動作 |
+  | 守軍隊長 `shoujun-duizhang` 要畫 | 已有 `duizhang-portrait-l1`（試鏡第一輪 37037），`gen-dh`／`pilot.py` 沒有他的真人圖對照，由 `mkspec` 加圖送；`r2.py` `MINOR` 聲音 Iapetus（聖經） | 〈人物〉 |
+- 自審：`writer-tools/e038-r2/review.md`（不是獨立審稿）。給獨立審查者的提示在 scratchpad `e938prep/review-prompt.md`。
+
+## 2. 新圖（全部免費，寫進 `assets/refs-live/README.md`，`prep938.sh` 每次逐位元重建比對 20 張）
+
+| 圖 | 怎麼來 | 鏡 |
+| --- | --- | --- |
+| **審稿後換成**：`set-xujia-tangfang-kong-chen-l1`、`-kong-l1`（付費 Qwen，必改 1）、`set-chengmen-ye2-l1`（付費 Qwen，必改 6） | §7；免費 `kong_e938.sh`：`-kong-xi-l1` 傍晚調色、病房 `-kong-{chen,xi,}-{chuang,men,zhen}`、城門 `set-chengmen-ye2-{zha,qiang,men,lu}`、官道 `-ce2`（必改 4）；下面這幾列的舊圖不再送 | s01–s19、s20、s22–s28 |
+| `set-xujia-tangfang-xi-l1` | `xujia_tangfang_e938.sh`：`-chen-l1` 暖化成傍晚斜陽橘光 | （母圖，不送） |
+| `set-xujia-tangfang-chen-{chuang,men,zhen}-l1` | 清晨：床／左邊的門／枕頭那頭 | s01 s04／s02／s03 |
+| `set-xujia-tangfang-xi-{chuang,men,zhen}-l1` | 傍晚：同上三框 | s06 s07 s08 s10／s09／s05 s11 |
+| `set-xujia-tangfang-{chuang,men,zhen}-l1` | 夜（`-l2`）：同上三框 | s15 s15b s19／s12 s13／s14 |
+| `set-guandao-ye-ce-l1`、`-shu-l1` | `roads_e938.sh`：官道左半楊樹一排與乾田／楊樹近一點 | s20／s21 |
+| `set-chengmen-ye-{zha,qiang,men,lu}-l1` | 拒馬柵與半開的右扇／火光磚牆與火把／兩扇門／柵的另一頭與來路 | s22 s27／s23 s26／s24 s28／s25 |
+| `set-yiguan-men-ye-{men,feng,jie,di}-l1` | 醫館門板與石階、拴馬樁／門縫／石板街往遠處／石板地 | s30 s33 s36／s31（插鏡）／s32 s35 s37 s38／s34（插鏡） |
+
+沿用：第 31 集的 `set-xujia-yuan-ye-dong2-l1`（s16）、第 36 集的 `-wu`（s17）、`-zhong`（s18）；整張 `set-chengmen-ye-l1`（s27b）、`set-yiguan-men-ye-l1`（s29）。
+加在最後一張的：雙丸子背影圖（s02 s04 s07 原檔、s16 s18 `-ye`）、`prop-changqiang-l1`（s09 s12 s16 s17）、`prop-zaohongma-l1`（s16 s18 s20 s21 s22 s25 s27 s27b s29 s30）、`duizhang-portrait-l1`（s23 s26 s27 s27b s28 s32 s35 s37 s38）。
+
+## 3. d1（種子 9381101／9381102）
+
+| 檔 | 內容 |
+| --- | --- |
+| `colab/runs/e938/extras.json` | 乾淨畫面句；秦霜身分句拿掉柴刀；阿令不寫紅唇；小禾的草兔子不抱在懷裡（她整場躺在床上，構圖寫兔子在枕邊） |
+| `colab/runs/e938-live/mkspec.py` → `spec.json` | 40 鏡全部有改：唐小棠背影五鏡拿掉三張臉部圖與身分句；加圖（髮型、長槍、馬、隊長）；許硯 angle-b 不送、全景 s01 s19 只送 l1、近景 s06 s10 s11 s15 先 l1 後 angle-a；阿令 angle-b 不送、全景只送 l1、s33 先 l1 後 angle-a；插鏡 s31 s34 拿掉地點句、一張裁切只當地面與光；s24 與隊長單人的鏡（沒有人物圖）地點句開頭大寫、補表情句（`never the mood.` 分隔句）；官道、城門、東街（s20–s38）拿掉 `below the deep pool`；only 句點名不具名的人與那一匹馬（寫兩次）；鞋句；clear-and-still 句逐鏡換；視線句；大寫 |
+| scratchpad `tools/prep938.sh`＋`tools/check938.py` | 照 `prep937.sh` 的順序與檢查，改成本集（逐鏡斷言放在 `check938.py`）：免費圖逐位元重建 20 張；`append_pictures`（加在最後、句子接在場景句或上一張加圖句後、重編表頭）；唐小棠的名字與臉部圖全集沒有、五個背影都有髮型圖；病房每鏡寫小禾在床上；門寫明開關；馬只在十鏡、一匹、不寫躍起、去程右往左；不寫石碑、告示板、招牌；兵器字只在劇情要的鏡；跪的鏡是全身；沒有 cinema camera、stubble、chopper、sword、smoke。log `tools/prep938.log` |
+| scratchpad `e938d1.sh` | 80 支 494 秒，G4、session `zt-live3`（`SESSION=zt-live2` 可換；**先確認沒有別的集在跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1`／`PRECHECK_ONLY=1` 0 錯） |
+| scratchpad `tools/heads938.py` | 精修用：隊長單人的鏡（沒有 gen-dh 人像，clips-dh 開頭是場景錨句、沒有分隔句）換成點名隊長的開頭；過肩 s12 s14 |
+
+**檢查結果（2026-11-23）**：`build938.sh` 40 鏡、storyboard-check 186 秒、shot_reading 5 個（刻意／不用）；免費圖 20 張逐位元重建相同；
+`set-xujia-tangfang`（l2）、`set-xujia-yuan-ye`（l2）、`-ye-dong2`（l1）、`set-shentan`（l5）最新版；st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 0 警告；
+**80 支、494 秒**（5 秒 18、6 秒 46、8 秒 16）；分隔句每支各一次；精修句漏進 d1 0；`prompt_sha256` 與兩種子一致；送圖、點名、場景、光線逐鏡相符；
+**preflight 0 錯 0 警告**；`check_manifest.py`、`h3r.sh check` 0／0；否定名詞、會長字的名詞、掛著的東西、open、點名畫外人、插鏡地點字、泥／金箔、潭字、唐小棠被點名、cinema camera，全 0。
+`e938d1.sh` `DRY=1` 0 錯。
+
+**估價**：照第 37 集（86 支 528 秒，估 23–27 CU，實際 d1＋三輪重拍約 31.9 CU）與第 32 集實跑（78 支 518 秒約 2.4 小時），本集 80 支 494 秒約 **2.2–2.5 小時、22–25 CU（約 US$2.2–2.5）**。
+騎馬兩場是本篇最可能多花重拍點數的地方（聖經〈還沒解決的〉第 9 條）：預留一輪重拍約 5–8 CU。Colab 餘額以跑之前的數字為準（第 37 集收尾記約 158 CU）；**剩約 100 CU 時先問站主**。
+
+## 4. 錄音（`tools/rec938-slow.sh`）與錄音後核對
+
+- `rec938-slow.sh` 照 `rec937-slow.sh`：一句一呼叫、**間隔 12 秒**、失敗（429 `video_speech_upstream_busy`）等 90 秒重試；**每句最多 6 次，一句 6 次都失敗就整個停下並印出錄了幾句**（Gemini TTS 每日額度跟另一個對話共用，不無限重試）；已錄的檔跳過，重跑就續錄。
+  提示 `tools/e938-tts-hints.json`（`mkhints938.py`，8 句多音字：著 zháo a04、大夫 dàifu a08 a13 a19 a27 a30、背 bēi a08、得 děi a10、當 dàng a25、了 liǎo a30）；聲調聽寫看不出，要人耳聽過。
+- 錄音後跑 `tools/rec938-check.sh`（聽寫 `fw938all.sh` 兩種、YIN 音高 `f0y938.py`、人聲長度 `span938.sh` 對 BUY → `tools/{fw938.txt,f0y938.txt,span938.txt,span938-buy.txt}`）。
+
+- **結果（2026-11-23 13:31–13:47 UTC）**：**33／33 錄齊**（一次過，沒遇到 429）；`rec938-check.sh` 跑完、**重錄 3 句**（`tools/rec938-retake.sh`，第一次的檔在 `audio/take1/`），變調 6 句。
+  全文 `~/mokaair-work/videos/zhong-tian-qu-qi-e938-dh/audio/README-retakes.txt`；聽寫 `tools/fw938.txt`（重錄 `fw938-retake.txt`、變調 `fw938-shifted.txt`）、音高 `f0y938.txt`（`-retake`、`-shifted`）、人聲長度 `span938.txt`／`span938-buy.txt`（`span938-retake.txt`）。
+  - **人聲長度對 BUY：33 句都放得下，BUY 不改**。最緊：s31 a28 5.72／8、s09 a09 5.27／8、s19 a20＋a21 約 5.1／8、s06 a06 5.09／8、s23 a22 4.91／8；6 秒鏡最長 s24 a23 4.05、s05 a05 4.01、s13 a13 4.01（8 秒）。
+  - **聽寫**：帶上下文 33 句 r1.00；不帶上下文聽錯的都是同音或專名（韓伯→韓博、許記→徐吉、阿令→安莉、大夫→帶一副、妳→你），照前幾集接受。
+    **一個字的 a20 小禾『哥……』與 a33 隊長『放——』whisper 解不準**（a20 第一次聽成低吼、重錄後『哥』；a33 聽成『方』）：**要人耳聽聲調**。
+  - **重錄**：a07 唐小棠 356→288 Hz（用重錄）、a17 唐小棠 360→225 Hz（再升 `a17-p125` 282）、a20 小禾 148 Hz 低吼→277 Hz 細細的氣音（用重錄）。
+  - **音高**（拍法 43，≥ 3 半音）：變調 `a13-p80`（阿令 217→173，接 s12 秦霜 215：3.8）、院子三鏡 `a17-p125`（唐小棠 282）／`a18-p85`（秦霜 243→207）／`a19-p125`（唐小棠 208→281）：5.4、5.3；
+    城門 `a23-p125`（年輕守軍 200→269，前後隊長 188、阿令 187：6.2、6.3）、`a25-p85`（隊長 172→149，接 s25 阿令 187：3.9）。不變調：a05 小禾 379（哭著說胡話，喊聲到 420）、a08 許硯 150（急）、a33 隊長 266（短喊）。
+    相鄰說話者全部 ≥ 3 半音（最小 s24 阿令 187→s26 隊長 149 3.9、s31 白大夫 143→s32 隊長 179 3.9、s32 隊長 179→s33 阿令 223 3.8、s12 秦霜 215→s13 阿令 173 3.8、s08 許硯 150→s09 秦霜 188 3.9）。
+  - **第一次量**：守軍隊長（Iapetus）188／172／213／179／147／196 Hz（說話 145–215，短喊 266）、年輕守軍（Alnilam）200（用 269）、白大夫（Rasalgethi）143，已補進聖經〈人物〉〈小角色〉。
+  - **獨立審稿建議 7 後**：a20 小禾重錄 277 Hz 跟 s18 唐小棠 281 只差 0.2 個半音（同一場），升成 `a20-p122` 339 Hz（3.2 半音、回到她的 300–360），聽寫『哥』；**要人耳聽氣音**。
+  - **剪接用哪個檔**：a07 用重錄；a20 用 `a20-p122`；a13、a17、a18、a19、a23、a25 用 `-pNN`；其他用原檔。
+
+33 句、8 個聲音加系統：
+
+| 鏡 | id | 角色 | 句子 | BUY |
+| --- | --- | --- | --- | --- |
+| s01 | zq938a01 | 許硯 | 濕布換了三回，還是燙得嚇人。 | 6 |
+| s02 | zq938a02 | 唐小棠（背影） | 藥熬好了，韓伯說這方子退熱最快。 | 6 |
+| s03 | zq938a03 | 許硯 | 小禾，乖，喝一口就不燙了。 | 6 |
+| s04 | zq938a04 | 唐小棠（背影） | 中午燒退了一點，她總算睡著了。 | 6 |
+| s05 | zq938a05 | 小禾 | 哥哥……別下水……哥哥別下水…… | 6 |
+| s06 | zq938a06 | 許硯（心裡話） | 她夢裡還在喊我別下水……那天，她也在河邊。 | 8 |
+| s07 | zq938a07 | 唐小棠（背影） | 比早上還燙，這藥已經壓不住了。 | 6 |
+| s08 | zq938a08 | 許硯 | 村裡沒有大夫，我背她進城，現在就走。 | 6 |
+| s09 | zq938a09 | 秦霜 | 縣城宵禁了。昨夜流寇下山，天一黑城門就關。 | 8 |
+| s10 | zq938a10 | 許硯 | 城門關了也得去，騎馬半個時辰就到。 | 6 |
+| s11 | zq938a11 | 系統 | 叮。緊急任務：天亮前，小禾退燒。 | 6 |
+| s12 | zq938a12 | 秦霜 | 馬只有一匹。我不能走，山上還有散掉的流寇。 | 8 |
+| s13 | zq938a13 | 阿令 | 馬給我。我知道路，天亮前帶大夫回來。 | 8 |
+| s14 | zq938a14 | 許硯 | 我不問妳會不會騎。我信妳，馬給妳。 | 6 |
+| s15 | zq938a15 | 系統 | 宿主連她會不會騎馬，都不知道。 | 6 |
+| s15b | zq938a16 | 許硯（心裡話） | 不知道……可她從來不說沒把握的話。 | 6 |
+| s16 | zq938a17 | 唐小棠（背影） | 阿令姊……妳什麼時候學會騎馬的？ | 6 |
+| s17 | zq938a18 | 秦霜 | 那是騎兵上馬的法子，不是剛學的。 | 6 |
+| s18 | zq938a19 | 唐小棠（背影） | 東街的白大夫，許記的老主顧，報許家的名字！ | 8 |
+| s19 | zq938a20 | 小禾 | 哥…… | 8 |
+| s19 | zq938a21 | 許硯 | 哥在這裡。撐到阿令回來，天亮就不燙了。 | （同鏡） |
+| s23 | zq938a22 | 守軍隊長 | 宵禁！有流寇，天亮以前誰都不准進城！ | 8 |
+| s24 | zq938a23 | 年輕守軍（畫外） | 女人騎什麼馬，回家燒飯去吧！ | 6 |
+| s25 | zq938a24 | 阿令 | 家裡的妹妹燒了一整天，讓開。 | 6 |
+| s26 | zq938a25 | 守軍隊長 | 再往前一步，就當流寇拿下！ | 6 |
+| s28 | zq938a26 | 守軍隊長 | 弩手！追上去，別讓她跑出東街！ | 6 |
+| s30 | zq938a27 | 阿令 | 白大夫！柳溪許家，求您開門！ | 6 |
+| s31 | zq938a28 | 白大夫（畫外） | 來了來了，半夜拍什麼門，門都要拍壞了。 | 8 |
+| s32 | zq938a29 | 守軍隊長 | 別動！轉過身來，兩手舉高！ | 6 |
+| s33 | zq938a30 | 阿令 | 我妹妹等不了，我只要大夫。 | 6 |
+| s35 | zq938a31 | 守軍隊長 | 弩手聽令，全部對準她的背！ | 6 |
+| s37 | zq938a32 | 守軍隊長 | 再不轉身，我這隻手一落，就放箭！ | 6 |
+| s38 | zq938a33 | 守軍隊長 | 放—— | 5 |
+
+沒有台詞的鏡：s20、s21、s22、s27、s27b、s29、s34、s36（5 秒）。
+同場相鄰說話者（拍法 43，≥ 3 半音）：第一場唐小棠（中位約 252）對許硯（88–145）、小禾（300–360）——**s04 唐小棠→s05 小禾、s19 小禾→許硯**；秦霜（195–240）對許硯；阿令（170–197）對許硯；
+第一場院子 s16 唐小棠→s17 秦霜→s18 唐小棠；第二場隊長（Iapetus，第一次量）對年輕守軍（Alnilam）→阿令（s23→s24→s25→s26）；第三場阿令對白大夫（Rasalgethi，第一次量）、隊長（s30→s31→s32→s33）。
+
+## 5. 還缺、要付費才補得上的（都不擋 d1；建議，不自己跑）
+
+1. ~~城門圖沒有橫在路上的木柵~~：審稿必改 6 後已付費改圖（§7）。小門圖上本來就有（拱洞右邊往外開那扇，必改 5）。
+2. **官道圖是路往遠處消失的正面、偏 3D**：側面騎馬用裁切；若 d1 讀不出『路』，灰底重畫一張側面的月夜官道（2 支約 0.5–1 CU）。建議先看 d1。
+3. **醫館門口偏 3D**（試鏡第二輪 37039）、**病房偏 CG**（第 22 集的圖）：先看 d1。
+4. **沒有『醫館門前』的近景圖**：s30 s33 s36 用 `-men` 裁切，可以。
+
+## 6. 還擋著開拍的事（要協調者／站主決定）
+
+1. **獨立分鏡審查**：見 §7。
+2. **錄音**：見 §4。
+3. **花錢**：`e938d1.sh`（80 支 494 秒）約 22–25 CU，等協調者；先確認 `zt-live3`（或 `zt-live2`）上沒有別的集在跑。
+
+**fix／retake 的提醒（照第 37 集 §6）**：官道、城門、東街的潭字是 `mkspec.py` 拿掉的；**s20–s38 的每個 fix／retake spec 都要帶 `[R2.POOLMARK, ""]`**（插鏡 s31 s34 另外要帶拿掉整句地點句的替換）；
+fix 也要帶 `mkspec.py` 的唐小棠背影替換（身分句、三張臉部圖、`only` 句）與 `append_pictures`（髮型圖、長槍圖、馬圖、隊長圖：`retake.py` 不會加圖，要照 `check938.py` 的做法加在最後一張）、clear-air 逐鏡替換與鞋句、隊長單人鏡補的表情句。
+
+## 7. 獨立審稿怎麼套（2026-11-23，`writer-tools/e038-r2/review-independent.md`：必改 8、建議 14；協調者的決定：品質優先，必改 1、6 做付費 Qwen 改圖，其餘必改照審稿、免費建議全做、BUY 不省）
+
+改前的檔在 scratchpad `e938prep/*-before-review.*`（`r2`、`mkspec`、`spec`、`PREP`、`check938`、`prep938`、`e938d1`、`roads_e938`、`xujia_tangfang_e938`、`bible`、`refs-README`）。
+改完重跑 `build938.sh`（40 鏡、shot_reading 5 個：4 個刻意的 `cast.speaker`＋s16 不用的關鍵影格長度）、`prep938.sh`（**rc=0**：80 支 494 秒不變、st1 與 d1 preflight 0／0、`check_manifest`／`h3r` 0／0、所有掃描 0、免費圖 21 張逐位元相同；下表每項都加了 `check938.py` 斷言）、
+`DRY=1`／`PRECHECK_ONLY=1 e938d1.sh` 0 錯、`node tools/video/drama-admin/bundle.mjs build`。
+
+| 項目 | 怎麼處理 |
+| --- | --- |
+| 必改 1：病房小桌擋在枕頭那頭的床前 | **協調者付費 Qwen 改圖（建議 A，帳號 A）**：一次「搬位置」的編輯（`qwen/jobs.json`、`room-*.txt`，種子 9381201–9381204）失敗（桌子沒動）；改成兩步：`qwen/step2`（`jobs.json`、`room-day-remove.txt`／`room-night-remove.txt`、`negative-room-remove.txt`，種子 9381211–9381214）拿掉桌子 → `qwen/step3`（`jobs.json`、`room-day-stool.txt`／`room-night-stool.txt`、`negative-room-stool.txt`，種子 9381221–9381224）在床尾左角加一張矮凳與一根白蠟燭。挑定 `set-xujia-tangfang-kong-chen-l1`（9381221，蠟燭熄著）、`-kong-l1`（9381224，蠟燭點著）。免費 `kong_e938.sh`：傍晚 `-kong-xi-l1` 與三組裁切（新 id）。文字：`ROOMLAY` 寫床前空著、床尾矮凳加蠟燭；白天、傍晚『凳上的蠟燭熄著』，入夜『凳上那一朵燭火』；s01、s19 跪在床前枕頭那頭；s04 空碗與湯匙放在床尾矮凳上；s13 前景改成矮凳上的燭火；s14、s19 不再寫桌上的火。`check938` 斷言病房沒有 `table`、夜裡寫凳上的火、s01 s19 在枕頭那頭 |
+| 必改 2：s02 送門的裁切、人朝門走 | 改送 `-chen-chuang-l1`、`loc` `rm_c`；她從畫左外的門口往床走；床入鏡寫小禾（`chars` 加 `xiaohe`、三人、`only` 句點名） |
+| 必改 3：房門圖上是關著的 | s09 門在她身後關著、手按門板、長槍靠門邊牆；s12 阿令改成已經進門、背靠關著的門（虛焦）、秦霜回頭看她、拳按牆；s13 從關著的門往前一步；s15、s15b 看『關著的門』；斷言 `shut plank door`、沒有 `doorway` |
+| 必改 4：s20 路往遠處退 | 新裁切 `set-guandao-ye-ce2-l1`（`520:292:0:228`，d5383bc），文字寫楊樹腳一條土路（`path`：`track` 是掃描擋的運鏡字），沿路由右往左 |
+| 必改 5：城門大門兩扇都關、開的是旁邊小門 | `GATE` 重寫（大門兩扇關、兩個門環、拱洞右邊小門往外開、火把各在拱洞左與小門右）；s22 s24 s27 s27b s28 改寫小門，s23 s26 背景加小門的邊；zh、HEAD、r2.py 開頭的格局一起改 |
+| 必改 6：拒馬柵沒擋路 | **協調者付費 Qwen 改圖**：搬位置那次（`qwen/jobs.json` 9381205／9381206）柵整排消失；改用消失的那張 `qwen/step2/gate-nobarrier-9381205.png` 當底、只加回柵（`gate-add.txt`、`negative-gate-add.txt`，9381215／9381216），挑定 `set-chengmen-ye2-l1`（9381215）：柵從小門右邊那支火把腳下起、往右下橫過整條石板路到畫框右緣。四張城門裁切照新圖重做（`set-chengmen-ye2-{zha,qiang,men,lu}-l1`），s27b 送整張；`GATE` 寫『柵橫過石板路、擋在小門前』；s22 馬停在柵的路這一側；**s27 改側後**（聖經第 41 條）：從路這一側往左衝向柵、四蹄不離地、不寫起跳；s27b 已經在柵的小門那一側落地；隊長在柵的小門那一側（s23 s26 柵後、s27 柵那頭的小門旁、s27b 跌在柵近端後面的火把旁，建議 4）。`check938` 斷言城門鏡都送 `-ye2`、沒有 `along the foot of the wall`、s22 s27 s27b 寫 `across the paved road`、s27 側後 |
+| 必改 7：s27 寫進起跳 | 動作改成『離柵還有兩步、四蹄都在地上時剪』；斷言沒有 `lifting`、`forelegs` |
+| 必改 8：s32 全景裡馬不見 | 石階旁加馬（韁繩拴在方石樁、馬頭朝左、跟她分開）、九人一匹馬、加送馬圖（第 4 張） |
+| 建議 1：s01 四個小動作 | 第一格右手已經拿著擰好的濕布，只做『蓋上、抹平』 |
+| 建議 2：s22 半人立 | 甩頭、前蹄原地踏、四蹄在地 |
+| 建議 3：s18 她擋住門洞 | 改全景從背後、她小小在下方正中；馬肩膀把半開的門扇撞到牆上；加鞋句 |
+| 建議 4：s27b 隊長位置 | 跌在柵近端後面（接 s27 柵後） |
+| 建議 5：s10 s11 背景句對不上裁切 | s10 畫左外寫『裂紋土牆與床尾』；s11 背景寫『枕頭那頭、床頭、土牆』 |
+| 建議 6：s33 s36 的馬 | s36 弩後左邊虛焦寫拴在樁上的馬的後半身（不送馬圖）；s33 照舊（背景虛） |
+| 建議 7：a20 跟唐小棠同音高 | `a20-p122` 339 Hz（§4） |
+| 建議 8：隊長 149→213 前後差 6 半音 | 協調者沒列；照審稿『剪接時聽一次』，不像同一人再把 a26 降 0.92 |
+| 建議 9：轡頭顏色 | `HORSE`、`HORSE_SENT` 寫 `plain dark leather bridle` |
+| 建議 10：白天雙丸子背影圖送進室內 | 協調者定：五鏡都送夜版 `-w3-ye`（藍天與屋子壓暗了，只定髮型） |
+| 建議 11：熄掉的蠟燭 | 清晨、正午、傍晚的光句加 `the one white candle on the small table unlit`（`candle` 只准出現在這句；夜裡仍寫『桌上那一朵火』） |
+| 建議 12：BUY 可省 16 秒 | 不改（品質優先） |
+| 建議 13：s29 用字矛盾 | `already slowing to a halt` |
+| 建議 14：第 39 集病房也撞桌子 | 聖經〈場景〉病房那列記下：第 39 集照新圖（`-kong`）寫 |
+
+**改圖記帳**：e938 的 Qwen 改圖（三輪：搬位置失敗、拿掉、加回）由協調者在 Colab **帳號 A** 跑（帳號 B 的 G4 與 A100 一直回 Service Unavailable），**共用 8.45 CU**（207.09＋1.64 → 200.28）；前置代理自己 0 CU（`e938qwen.sh` 被自動權限擋下、沒跑）。帳號 B 的餘額 158.26 CU（跑之前查的）。
+
+**估價**（審稿與改圖後）：d1 仍 80 支 494 秒，約 22–25 CU。
+
+改圖後重跑（2026-11-23）：`build938.sh` 40 鏡、shot_reading 5 個（刻意／不用）；`prep938.sh` **rc=0**：免費圖 35 張逐位元重建相同（含 `kong_e938.sh` 的 14 張）、80 支 494 秒、st1／d1 preflight 0／0、`check_manifest`／`h3r` 0／0、掃描全 0；`DRY=1`、`PRECHECK_ONLY=1 e938d1.sh` 0 錯；`bundle.mjs build`／`check` PASS。
+
+## 8. 精修（refine）準備（2026-11-24，精修準備代理；**沒送、沒花錢、沒 commit**）
+
+- 腳本 scratchpad `e938refine.sh`（照 `e937refine.sh`）、`tools/heads938.py`（改寫前置代理的草稿版，舊版留在 `tools/heads938.py.bak-prep`）、`e938refine-verify.py`。
+  工作目錄 `~/mokaair-work/videos/_live-e938/zhong-tian-qu-qi-e938-dh`（`picks.json`、`live-clips-e938.json`、`runpod/a/st1/out`、`runpod/a/st2`）。
+- **選片只讀 `picks-final.tsv`**（40 鏡；`PREP=1` 先換成 `refine-prep.py` 的格式 `tools/e938refine-picks.tsv`，逐列查：種子屬於 source 那一輪、start < end_before、草稿存在、鏡次跟 clips-dh 一樣）。
+  **s27 兩刀都精修**：第一刀 fix1 9381302（0–0.75）就是 s27；第二刀 fix2 9381401（0.25–0.5）另立工作 **`s27c2`**（`refine-prep.py` 一鏡只收一個種子，所以由腳本照它的做法自己排：草稿、`picks.json`（`cut_of: s27`）、`live-clips` 一列、第一格、帶 fix2 動作句的提示詞、`st2-3.json`）；
+  腳本斷言 s27 的 note 寫著 `fix2 9381401 start 0.250 end_before 0.500`。精修本身只看整支草稿，不管剪點；兩刀合起來才 1 秒，但這是全集唯一的衝柵，品質優先就兩支都做（多 124 格，約 0.4 CU）。
+- **頭句**（精修沒有參考圖，只有草稿與第一格，`heads938.py`）：隊長單人鏡 s23 s26 s28 s35 s37 s38 換成點名隊長並補回分隔句；s27 s27b s27c2 s32 寫「阿令與隊長」；
+  **s11 s15 s15b**「許硯與身後床上睡著的小禾」、**s12**「秦霜、關著的門邊的阿令、床上睡著的小禾」（右下那條深藍布邊不點名，剪接裁）、**s14**「許硯、左緣前景只看得到背影的年輕女子、床上睡著的小禾」；
+  唐小棠五個背影鏡（s02 s04 s07 s16 s18）clips-dh 本來就是「the young woman seen only from behind … two high round buns」，不點名。retake 動作句的鞋句拿掉；fix2 s27 的 `half of that distance`（指的是沒帶過來的場景句）換成 `gains only a few strides`。
+- **PRECHECK**（`PREP=1 PRECHECK_ONLY=1`，log `e938refine-precheck.log`）**0 錯**：41 picks＝`picks-final.tsv`＋s27c2，草稿逐位元相同、motion_from＝source（retake 11 支：s01 s05 s11 s12 s14 s15 s15b s20 s27＜fix1，s22 s27c2＜fix2）；
+  41 支提示詞＝`live-clips-e938.json`＋頭句，分隔句／結尾各一次；掃描：唐小棠不點名、五個背影鏡雙丸子句在、無 stubble/beard、病房無 table、白天病房（s01–s11）沒有 flame/candle/lamp、夜裡病房（s12–s15b、s19）留著 `the small flame`、
+  s11 s12 s14 s15 s15b 有 `asleep in the bed`、s14 前景背影、s22 `Beyond the barrier`、s27 s27c2 `all four hooves on the ground`、沒有 leap/jump/rear/clear/over the barrier、馬只在馬的鏡、無 cinema camera、無鞋句與潭字、無 chopper/sword/blade/saber/smoke、GAZE_REFINE 保住、retake 動作句與靜止鏡頭帶到；
+  3 個 manifest、41 工作（種子＝挑的種子、σ 0.5、10 步、guide none）、`refine.py --check` 0 錯。反向測試（在 s05 塞 `candle flame`）會 STOP。
+- **兩批**：`route_a_st2.py` 分 20／20，腳本加 `st2-3`（s27c2）。**BATCH=1＝st2-1，20 支**（s01–s19＋s15b，3364 格 140 秒）在 `zt-live2`；**BATCH=2＝st2-2＋st2-3，21 支**（s20–s38＋s27b＋s27c2，3046 格 127 秒）在 `zt-live3`。兩批同一個 Colab 帳號同時跑。
+- **Colab 帳號由外部設定**：`COLAB_ACCOUNT_SLOT`（預設 `a`）、`COLAB_ACCOUNT_HOLDER`（預設 `claude-zt-e938`）、`PATH`（已是帳號 shim 開頭就不動，否則腳本把 `accounts/<slot>/bin` 放前面）、`REL`（slot a 預設 `colab-release-A.sh`，別的帳號要給）。
+  **2026-11-24 檢查時帳號 A 在本機沒有 token**（租約已還、`token.json` 被刪），PRECHECK 只記 NOTE，真跑會 STOP：先 `python3 .agents/skills/minimax-h3-colab/scripts/accounts.py claim --holder claude-zt-e938 --slot a`，再查 `colab usage` 餘額（剩約 100 CU 先問站主）與 `colab sessions` 沒有 `zt-live2`／`zt-live3`。
+- **怎麼跑**（協調者，付費）：
+  ```bash
+  cd /home/user/travel_scanner; SP=/tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1a/scratchpad
+  SESSION=zt-live2 BATCH=1 bash $SP/e938refine.sh > $SP/e938refine-b1.log 2>&1 &
+  SESSION=zt-live3 BATCH=2 bash $SP/e938refine.sh > $SP/e938refine-b2.log 2>&1 &
+  # 跑完：python3 $SP/e938refine-verify.py（41/41、.seed = picks = 草稿種子、1312×736、格數同草稿），草稿／精修並排看過
+  ```
+  不要在跑的時候 `PREP=1`（腳本會拒絕）。一批拿不到 G4（第 37 集 BATCH=2 第一次 `Service Unavailable`）就等 5 分鐘重跑同一行：已有 `.seed` 的跳過，缺 `.seed` 的由 seedfix 補。
+- **估價**：第 37 集精修 43 支 6794 格實花 **21.63 CU**（188.67 → 167.04；兩批同時、每批約 65–70 分鐘、G4 一台約 10 CU／時），每格約 0.0032 CU。
+  本集 41 支 **6410 格**（d1 30 支、fix1 9 支、fix2 2 支）→ **約 20–21 CU，抓 19–23 CU（約 US$2）**；時間兩批同時約 **70–80 分鐘**（BATCH=1 稍長）。拿不到 G4 的重試只多開機的零頭。

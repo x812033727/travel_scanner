@@ -23,6 +23,20 @@ const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unr
 const SET = [
   // e043-e060 (s01-e043-e060-registry.md): the specific places first, so "examination hall", "prefectural inn",
   // "courtyard", "granary" and "riverbank" further down do not take them.
+  // e009 r2 (live only): the four night rooms of the Xu house have no CG picture; their live pictures will be
+  // refs-live/set-xujia-{tangfang,qinfang,lingfang,zoulang}-l1.png (live-action/screen-test-e009.py). No person's name in
+  // these phrases (a name sends that person's portrait).
+  [/first bedroom of the Xu farmhouse/i, "dh-set-xujia-tangfang-t1"],
+  [/second bedroom of the Xu farmhouse/i, "dh-set-xujia-qinfang-t1"],
+  [/third bedroom of the Xu farmhouse/i, "dh-set-xujia-lingfang-t1"],
+  [/inside corridor of the Xu farmhouse/i, "dh-set-xujia-zoulang-t1"],
+  // e010 r2 (live only): the corridor by morning (the e909 picture is night, doors on the other wall), the yard by night
+  // (the yard picture is a sunny day) and the village road outside the yard gate by night have no CG picture; their live
+  // pictures will be refs-live/set-xujia-{zoulang-chen,yuan-ye,menwai}-l1.png (live-action/screen-test-e010.py). Before
+  // "yard gate" and "village lane" below.
+  [/morning corridor of the Xu farmhouse/i, "dh-set-xujia-zoulang-chen-t1"],
+  [/night yard of the Xu farmhouse/i, "dh-set-xujia-yuan-ye-t1"],
+  [/village road outside the Xu yard gate/i, "dh-set-xujia-menwai-t1"],
   [/headmaster's study/i, "dh-set-shuyuan-zhai-t1"],
   [/examination cells?\b/i, "dh-set-haoshe-t1"],
   [/sealing room/i, "dh-set-mifeng-fang-t1"],
@@ -66,11 +80,30 @@ const SET = [
   [/Qian manor gate/i, "dh-set-qianfu-men-t1"],
   [/Qian manor hall|Qian manor/i, "dh-set-qianfu-ting-t1"],
   [/village entrance/i, "dh-set-cunkou-t1"],
+  // e016 r2 (live only): the raft on the stream at night has no CG picture; its live picture is refs-live/set-zhufa-ye-l1.
+  // After "ferry landing" (the dawn shots on the raft at the landing take the landing), before "bamboo grove" and
+  // "stream|...|reeds".
+  [/bamboo raft/i, "dh-set-zhufa-ye-t1"],
   [/bamboo grove|nameless grave/i, "dh-set-zhulin-fen-t1"],
   [/carpenter's workshop/i, "dh-set-mujiang-fang-t1"],
   [/threshing ground/i, "dh-set-dagu-chang-t1"],
+  // e015 r2 (live): the autumn field after the rice harvest (live picture refs-live/set-qiutian-l1); before "ploughed
+  // field" (its furrows) and "willow" (the tree on its ridge), which would take the spring field or the stream.
+  [/autumn stubble field/i, "dh-set-qiutian-t1"],
   [/spring field|muddy field|ploughed field|plowed field/i, "dh-set-chuntian-t1"],
   [/stone bridge/i, "dh-set-shiqiao-t1"],
+  // e017 r2 (live only): the paper workshop after the fire and its new timber frame (night, dawn) have no CG picture;
+  // their live pictures are refs-live/set-zhifang-gujia-ye-l2 and set-zhifang-gujia-chen-l1 (live-action/screen-test-e017.py;
+  // the e011-e020 screen test's l1 pictures are CG renders of the wrong state). The burnt workshop has NO live picture (no
+  // seed of set-zhifang-shao-l2 was taken): its line stays so the e017 ash prompts have a set clause, which e917-live's
+  // spec.json drops (drop_set) on every one of them, and so the bamboo mat's "willow" never takes the stream.
+  // The dawn frame before the night frame, both before the burnt workshop and before "work shed|workshop".
+  [/new timber frame at dawn/i, "dh-set-zhifang-gujia-chen-t1"],
+  [/new timber frame/i, "dh-set-zhifang-gujia-ye-t1"],
+  [/burnt paper workshop/i, "dh-set-zhifang-shao-t1"],
+  // e015 r2 (live only): the shed before dawn has no CG picture; its live picture is refs-live/set-gongpeng-ye-l2
+  // (live-action/screen-test-e015.py). Before "work shed".
+  [/night work shed/i, "dh-set-gongpeng-ye-t1"],
   [/work shed|workshop|lean-to/i, "dh-set-gongpeng-t1"],
   [/kitchen/i, "dh-set-xujia-zao-t1"],
   [/dirt yard|farmhouse yard|in the yard|morning yard|courtyard|yard gate|mud wall|woodpile|wooden gate|broken gate/i, "dh-set-xujia-yuan-t1"],

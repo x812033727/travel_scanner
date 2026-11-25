@@ -8,11 +8,15 @@ set -u
 N=$1; shift
 HERE=$(cd "$(dirname "$0")" && pwd)
 V=${VIDEO_WORKDIR:-$HOME/mokaair-work/videos}
-W=$V/zhong-tian-qu-qi-e0$N-dh
+W=$V/zhong-tian-qu-qi-e$(printf %03d "$N")-dh
+# SRC=refined: stage the 1312x736 stage-2 refines instead of the 1080p finals (e001-r2 stops after stage 2; the cut scales them).
+# Route A works in runpod/a since the RunPod move (colab/a is the older Colab layout).
+RA=$W/runpod/a; [ -d "$RA" ] || RA=$W/colab/a
+if [ "${SRC:-final}" = refined ]; then GLOB="$RA/st2/refined/s*.mp4"; SUF=".mp4"; else GLOB="$RA/final/s*_1080.mp4"; SUF="_1080.mp4"; fi
 mkdir -p "$W/clips"
 trim=" $* "
-for f in "$W"/colab/a/final/s*_1080.mp4; do
-  s=$(basename "$f" _1080.mp4)
+for f in $GLOB; do
+  s=$(basename "$f" "$SUF")
   out="$W/clips/$s-t1.mp4"
   [ -f "$out" ] && [ "$out" -nt "$f" ] && continue
   at=$(printf '%s\n' $trim | sed -n "s/^$s@//p")

@@ -1,0 +1,983 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e004-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a slow quiet night suspense cue of low cello and soft guqin in the firelit kitchen, carried on from the last episode and dropping out to a single cold electronic blip on the system chime; a warm gentle guqin and soft strings in the farmhouse and the yard in the morning, one bright accent as the small casket opens and a drop-out to one cold blip on the second chime; a light playful comedy of woodblock, pipa and dizi in the sunny yard by day with one heavy hit as the pig is carried in; a low tense cue of drums and erhu by the stove at night, ending on one heavy hit as the dark figure turns; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "新娘搬出一匣金子替他還債，他卻蓋上：這是妳的退路｜種田娶妻打天下 第4集（重製版）",
+    "description": "深夜灶房，許硯回答阿令：人不是東西，不能拿來押、也不能拿來抵，阿令好感 +3，還是負的。阿令說這話她聽過很多次，許硯說那就看著，做不到她的刀還在。第二天早上米缸只剩一碗米，系統開出材料：豬油、草木灰、大鍋，家裡的小鐵鍋卻裂了縫。唐小棠跑回去抱來一匣金錠要替他還債，許硯把匣子蓋上推回去：這是她要跑時的退路，債他自己賺，唐小棠好感 +10。白天村裡的嬸子送來草木灰，二牛跟打鐵的借來大鍋，最難湊的豬油，秦霜一個人扛來一整頭豬。當晚院子灶棚開鍋熬皂，許硯進屋搬柴時，一個黑影踩上板凳，把一桶水舉到鍋口上。《種田娶妻打天下》第 4 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "這是妳的退路",
+      "tag": "種田娶妻打天下",
+      "shot": "s17"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "灶房",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a01",
+          "speaker": "xuyan",
+          "text": "阿令，人不是東西，不能拿來押，也不能拿來抵。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: medium close-up framed from the chest up with space above his head, the shot opens directly on Xu Yan from its very first frame: Xu Yan squatting on screen left, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, his body and face in three-quarter profile toward screen right, the camera about 45 degrees off his eyeline, never the lens; the glowing fire mouth of the red-brick stove low in the right foreground in front of him, one stick of firewood in his right hand with its far end resting in the fire mouth; the firelight on his face, grave: brows level and still, eyes lowered to the fire, jaw set, lips pressed firm between words",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令，人不是東西，不能拿來押，也不能拿來抵」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; his right hand pushes the stick into the fire mouth until its end disappears into the flames and the flames flare up once; only then he lifts his eyes to Aling off screen right and says the line to her slowly, his face still grave; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays steady apart from that one flare",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a02",
+          "speaker": "xitong",
+          "text": "叮。阿令好感 +3。",
+          "emotion": "冷淡，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: over-the-shoulder shot from behind Xu Yan's shoulder and his rolled-up sleeve in the left foreground, A-ling on screen right sitting on a low stool before the fire mouth of the red-brick stove, no shackles, her sleeves pulled down over her wrists, one short single-edged knife with a dull iron-grey blade about one and a half palms long and a plain wooden handle lying across her knees with its edge turned outward, her right hand on its wooden handle, her face in three-quarter profile toward Xu Yan in the left foreground, eyes on him, never the lens; cold and wary: brows level and low, eyes narrowed, lips closed in a flat line, jaw still; the system voice speaks off screen",
+        "motion": "A-ling's right hand on the knife handle slowly loosens, her fingers leave the handle and settle flat on her knee, her eyes staying on him; all lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a03",
+          "speaker": "xuyan",
+          "text": "才漲到負二，說到底還是負的啊。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，一喜又垮"
+        },
+        {
+          "id": "zq904a04",
+          "speaker": "xitong",
+          "text": "負的也是宿主自己說空話扣的。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: medium close-up of Xu Yan squatting on screen left, framed from the chest up with space above his head, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up, his body three-quarter toward screen right, his eyes on the empty air before his face, never the lens; first a flash of hope: brows jumping up, eyes widening; then his face falls: brows sinking and drawing together, eyes dropping, the corners of his mouth pulled down, lips closed; behind him only the split firewood pile of the same kitchen; the system voice speaks off screen",
+        "motion": "he clenches one fist on his knee, then opens it again and his shoulders slump with a breath out; his lips stay closed the whole shot; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a05",
+          "speaker": "aling",
+          "text": "你臉上一下高興一下發苦，在想什麼？",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Reverse medium close-up, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: reverse medium close-up of A-ling on the low stool, framed from the chest up with space above her head, no shackles, her sleeves pulled down over her wrists, the short knife across her knees, her body and face three-quarter to screen left toward Xu Yan off screen left, the camera about 40 degrees off her eyeline, never the lens; suspicious: brows drawn together and low, eyes narrowed on his face, lips pressed flat between words; behind her only the red-brick stove and its glowing fire mouth of the same kitchen",
+        "motion": "A-ling speaks a short Mandarin line, 「你臉上一下高興一下發苦，在想什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; she tilts her head, frowning at his face, and leans forward a little, eyes on him; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a06",
+          "speaker": "xuyan",
+          "text": "沒什麼，我是說……這灶火總算旺起來了。",
+          "emotion": "尷尬"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: medium shot framed wide, with clear space above Xu Yan's head so his whole head stays in frame after he stands up: Xu Yan crouching on screen left before the glowing fire mouth of the red-brick stove, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, in profile facing screen right toward A-ling, the camera about 60 degrees off his eyeline, never the lens, flustered: brows raised high, eyes darting away and back to her, a short embarrassed huff; A-ling at the right edge of the frame on the low stool, her sleeves pulled down over her wrists, in profile toward him, a cold flat stare: brows level, eyes narrowed, lips closed",
+        "motion": "Xu Yan speaks a short Mandarin line, 「沒什麼，我是說……這灶火總算旺起來了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan hurries up from his crouch to stand facing A-ling in profile, his whole head inside the frame, brushes the hem of his robe with one hand, then points one finger at the fire mouth from an arm's length away, and he stays standing to the end of the shot; A-ling's lips stay closed, and the warm orange firelight stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a07",
+          "speaker": "aling",
+          "text": "人不是東西，這話我聽過很多次，沒一個做到。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: medium shot past the glowing fire mouth of the red-brick stove in the foreground, framed with space above A-ling's head so her whole head stays inside the frame after she stands, A-ling on screen right, no shackles, her sleeves pulled down over her wrists, the short knife in her right hand, one dark brown leather sheath on the left side of her belt, in profile facing screen left toward Xu Yan, the camera about 50 degrees off her eyeline, never the lens, cold and flat: brows level, eyelids lowered, lips pressed thin between words, jaw still; Xu Yan standing at the left edge of the frame in profile facing her, his sleeves rolled up, brows drawn together, lips closed",
+        "motion": "A-ling speaks a short Mandarin line, 「人不是東西，這話我聽過很多次，沒一個做到」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling slides the knife into the sheath on her belt, rises and brushes the dust off her skirt, her eyes on Xu Yan; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a08",
+          "speaker": "xuyan",
+          "text": "那妳就看著。我要是做不到，妳那把刀還在。",
+          "emotion": "認真"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire: reverse medium close-up of Xu Yan standing, framed from the chest up with space above his head, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, the rolled red paper, rolled tight into a short plain blank tube, tucked into the left side of his belt, his body and face three-quarter to screen right toward Aling off screen right, the camera about 45 degrees off his eyeline, never the lens; earnest: brows drawn a little together, eyes steady on her and unblinking, jaw firm, lips pressing together between phrases; behind him only the split firewood pile and the earthen wall of the same kitchen",
+        "motion": "Xu Yan speaks a short Mandarin line, 「那妳就看著。我要是做不到，妳那把刀還在」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; he takes half a step forward toward her, eyes on her, and on 「刀還在」 lifts his chin once toward the sheath at her waist off screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a09",
+          "speaker": "xuyan",
+          "text": "那妳也早點睡，刀別磨到天亮了。",
+          "emotion": "畫外，試探，遠一點"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, tracking",
+        "prompt": "Inside the small earthen kitchen of the Xu farmhouse at night, the plank door on screen left with cold moonlight beyond it, one red-brick stove with a black iron wok on its top at the back right, its fire mouth glowing, split firewood piled beside it, lit by the warm orange glow of the stove fire: full shot past the kitchen door frame in the foreground, A-ling at the doorway on screen left with her back to the room, no shackles, her sleeves pulled down over her wrists, the short knife in the dark brown leather sheath on the left of her belt; at the back right Xu Yan standing by the red-brick stove, a dark silhouette against the firelight, his face in shadow",
+        "motion": "A-ling walks to the doorway with her back to Xu Yan, puts one hand on the door frame and stops there; all lips stay closed, and the warm orange firelight stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a10",
+          "speaker": "aling",
+          "text": "刀收了。記住你說的，我會一直看著。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the small earthen kitchen of the Xu farmhouse at night, at its plank doorway, cold moonlight outside and the warm orange glow of the stove fire from inside: medium close-up from inside the kitchen, the camera directly behind A-ling looking out through the open plank door at the moonlit night; the shot opens directly on A-ling's head and shoulders from its very first frame: A-ling standing on the threshold with her back to the camera, no shackles, her sleeves pulled down over her wrists, the dark brown leather sheath at the left of her belt, her left hand on the door frame; beyond her, filling the doorway, only the dark night outside and bare ground silvered by cold moonlight; the warm firelight from the stove behind the camera on her shoulders",
+        "motion": "A-ling speaks a short Mandarin line, 「刀收了。記住你說的，我會一直看著」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; she presses the sheath at her waist once and turns only her head over her right shoulder into clean profile facing screen right, toward Xu Yan at the stove behind her off screen right, never turning further toward the lens: brows level, eyes cool, lips pressed thin between words; then she steps over the threshold into the dark night and walks out of the frame on screen left, leaving the moonlit doorway empty; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "chapter": "米與金子",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a11",
+          "speaker": "xiaohe",
+          "text": "哥，米缸只剩一碗米了，煮完今天就沒了。",
+          "emotion": "委屈"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, tracking",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat by the back wall, a small clay stove on screen right, clear morning light slanting in from the door and window on the left: full shot past one squat brown clay rice crock as high as a small child's knee, with one round flat wooden lid in the foreground in the back corner, little Xiaohe in her patched lilac short jacket with red-string pigtails, her straw rabbit tucked into her sash, squatting before the crock, one wooden ladle already in her right hand from the very first frame, aggrieved: her lower lip pushed out, her brows drawn up in the middle, her eyes wet; Xu Yan far off on screen left, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, the rolled red paper, rolled tight into a short plain blank tube, tucked into the left side of his belt, brows drawn together, lips closed",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥，米缸只剩一碗米了，煮完今天就沒了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xiaohe lifts the crock's wooden lid with her left hand, scrapes the ladle round its bottom, then lifts her head and turns her face in three-quarter profile to Xu Yan on screen left, eyes on him; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the slanting morning light stays unchanged",
+        "characters": [
+          "xiaohe",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a12",
+          "speaker": "xuyan",
+          "text": "一碗米也夠撐一天，今天先把做肥皂的東西湊齊。",
+          "emotion": "平穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, clear morning light from the left: medium close-up of Xu Yan beside one squat brown clay rice crock as high as a small child's knee, with one round flat wooden lid, framed from the chest up with space above his head, its wooden lid already off and leaning against its side, its open mouth at the bottom edge of the frame, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, his body three-quarter to screen right toward little Xiaohe off screen right, the camera about 45 degrees off his eyeline, never the lens; steady: brows level, eyes calm, jaw relaxed, mouth set firm between words; her small hand in a patched lilac sleeve reaching in at the right edge of the frame holding out one wooden ladle, the rest of her off screen right; behind him only the earthen wall of the same farmhouse room",
+        "motion": "Xu Yan speaks a short Mandarin line, 「一碗米也夠撐一天，今天先把做肥皂的東西湊齊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; he crouches down by the crock, takes the ladle from the small hand in the lilac sleeve, looks down into the open crock and lowers the ladle into it, its handle left standing up out of the crock's mouth in view to the end of the shot, his face still steady; no smile at any moment, not even at the end of the shot, until the last frame, and the slanting morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a13",
+          "speaker": "xitong",
+          "text": "材料：豬油、草木灰、大鍋。",
+          "emotion": "冷淡"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat by the back wall, a clay rice crock with a wooden lid in the corner by the back wall, a small clay stove on screen right with one small iron pot on it, a low table with two stools, clear morning light slanting in from the door and window on the left: extreme close-up of Xu Yan's eyes only, the shot opens directly on his eyes from its very first frame and the frame never widens: his two eyes and brows fill the frame, his irises a natural dark brown from the first frame to the last, the whites of his eyes clear, only a tiny faint cold pale glint of reflected light in each pupil, like a catchlight, his eyeline slightly to screen right, never into the lens; nothing else in the frame, one face only, no second figure, no double exposure; the system voice speaks off screen",
+        "motion": "his eyes flick up to the upper right and he blinks once, the frame holding only his eyes and brows to the last frame; his lips stay closed, and the slanting morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a14",
+          "speaker": "xuyan",
+          "text": "大鍋？家裡這口鍋，連粥都快煮不了。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，發愁"
+        },
+        {
+          "id": "zq904a15",
+          "speaker": "xitong",
+          "text": "宿主缺的不只是鍋。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, clear morning light from the left: insert close-up of the small clay stove, the shot opens directly on the small iron pot from its very first frame: one small black iron pot on the stove and Xu Yan's two hands in his rolled-up blue-grey cuffs gripping its rim; only the hands, cuffs and pot are in the frame, his face out of the frame; behind them only the bright window of the same farmhouse room; the system voice speaks off screen",
+        "motion": "his hands lift the small pot off the stove, turn it upside down and hold its bottom up before the bright window; only then one long crack across the bottom shines bright with window light coming through it, and he holds the pot there, the bright crack clearly in view to the end of the shot, and the slanting morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a16",
+          "speaker": "xuyan",
+          "text": "缺錢又缺人手，這我比誰都清楚。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著"
+        },
+        {
+          "id": "zq904a17",
+          "speaker": "tangxiaotang",
+          "text": "鍋裂了，米也見底，說到底就是缺錢。等著別走！",
+          "emotion": "畫外，說話快"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat by the back wall, a small clay stove on screen right, clear morning light slanting in from the door and window on the left: medium shot of Xu Yan alone, standing on screen right, seen from the waist up and small in the frame with space above his head, his sleeves rolled up, in profile facing screen left toward the plank door, the camera about 70 degrees off his eyeline, never the lens, the small cracked iron pot held upside down in both hands, its long crack upward; his face: brows knotted, eyes down on the pot, lips closed the whole shot; at the left edge of the frame the dark plank door frame, and on it from the second half of the shot one small hand in a peach-pink brocade cuff gripping the edge, the rest of her out of the frame; behind him only the bright window and the earthen wall of the same farmhouse room; Tang Xiaotang speaks off screen",
+        "motion": "he turns the upside-down pot slowly in his hands and looks at the crack, lips closed; halfway through, one small hand in a peach-pink cuff takes hold of the door frame at the left edge; he lifts his eyes to the door frame, still in profile, lips closed; then the hand lets go and is gone; no one in the frame speaks; no smile at any moment, not even at the end of the shot, until the last frame, and the slanting morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 12
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a18",
+          "speaker": "xiaohe",
+          "text": "小棠姐姐跑那麼快，是要去哪裡？",
+          "emotion": "歪頭"
+        },
+        {
+          "id": "zq904a19",
+          "speaker": "xuyan",
+          "text": "不知道。她叫我們等，那就在院子等一下。",
+          "emotion": "無奈"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, locked",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat by the back wall, a small clay stove on screen right, clear morning light slanting in from the door and window on the left: full shot from inside the room past the wide-open plank door in the left foreground, everyone small in the frame: outside on the sunny bare ground Tang Xiaotang seen from behind, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, running toward the gate in the bamboo fence on the right; inside little Xiaohe at the doorway, her straw rabbit tucked into her sash, puzzled: her head tilted, brows raised, lips parted; Xu Yan on screen right by the small clay stove, his sleeves rolled up, the cracked pot in his hands, resigned: brows lifted in the middle, a small breath out",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「小棠姐姐跑那麼快，是要去哪裡？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan speaks a short Mandarin line, 「不知道。她叫我們等，那就在院子等一下」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang runs out through the gate off screen right; Xiaohe runs to the doorway and turns back in three-quarter profile to Xu Yan; Xu Yan, in three-quarter profile toward her, sets the pot on the stove and shakes his head; no smile at any moment, not even at the end of the shot, until the last frame, and the slanting morning light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xiaohe",
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a20",
+          "speaker": "tangxiaotang",
+          "text": "許硯，二十兩是吧？你看看這些夠不夠。",
+          "emotion": "精明"
+        }
+      ],
+      "data": {
+        "camera": "Full shot from behind her, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning, a bamboo fence, the house eaves along the back, a wooden table in the middle, the yard gate on screen right, warm morning sunlight from screen right: full shot from behind Tang Xiaotang, everyone small in the frame: her back, the back of her head with its two looped buns and pink ribbons, and her shoulders in the right foreground, her face turned away from the camera the whole shot, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, one small wooden casket the size of a book, two palms wide and one palm deep, with a lid hinged at the back, in dark brown lacquer with one brass clasp, small enough to carry in one hand, plain, with no writing anywhere in both hands before her; across the wooden table Xu Yan sitting at its left end on screen left, his sleeves rolled up, his face three-quarter to screen right toward her, never the lens, surprised: brows raised, eyes wide, lips closed; little Xiaohe standing beside him, eyes wide, lips closed; behind them only the bamboo fence of the same sunny yard",
+        "motion": "Tang Xiaotang, her back to the camera, walks up to the table and sets the casket down on the tabletop with a thump in front of Xu Yan, then stands straight, her chin lifting once, the back of her head toward the camera the whole shot; Xu Yan looks from the casket up to her, lips closed; Xiaohe stares at the casket, lips closed; the casket stays on the table to the end of the shot; no smile at any moment, not even at the end of the shot, until the last frame, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "xiaohe"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn morning, warm morning sunlight from screen right: insert close-up, the shot opens directly on the brass clasp of the casket on the wooden table from its very first frame: one small wooden casket the size of a book, two palms wide and one palm deep, with a lid hinged at the back, in dark brown lacquer with one brass clasp, small enough to carry in one hand, plain, with no writing anywhere, its lid shut, and Tang Xiaotang's right hand in her peach-pink brocade cuff resting on the clasp; only the one hand, the cuff and the casket are in the frame, no face and no body in the frame the whole shot; behind it only the out-of-focus tabletop of the same yard",
+        "motion": "her fingers flick the brass clasp open and lift the lid back on its hinge; only then, inside, five small yuanbao-shaped gold ingots, plain gold with no marks or writing, catch the sunlight and gleam, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a21",
+          "speaker": "xiaohe",
+          "text": "好多金子！哥，我們有錢還債了！",
+          "emotion": "驚呼"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn morning, warm morning sunlight from screen right: medium close-up of little Xiaohe framed from the chest up with space above her head, red-string pigtails and one front tooth missing, her patched lilac jacket, her small straw rabbit tucked into her sash, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 40 degrees off her eyeline, never the lens; overjoyed: eyes wide and shining, brows high, mouth open wide in delight, her cheeks lifting; behind her only the bamboo fence of the same yard",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「好多金子！哥，我們有錢還債了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; she rises on tiptoe, grips the table edge with both hands and peers into the casket below the frame, then turns her bright face to Xu Yan off screen left and says the line to him, bouncing once on her toes, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a22",
+          "speaker": "tangxiaotang",
+          "text": "這點不過是零頭，拿去還，省得錢員外再上門。",
+          "emotion": "輕描淡寫"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot from behind her right shoulder, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn morning, warm morning sunlight from screen right: over-the-shoulder medium shot from behind Tang Xiaotang's right shoulder: her back, her right shoulder and the back of her head with its two looped buns and pink ribbons fill the right foreground, the whole of both buns inside the frame, her face turned away from the camera the whole shot, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow; across the wooden table Xu Yan sitting on screen left, seen from the chest up, his sleeves rolled up, his face three-quarter to screen right toward her, his eyes on the casket and then on her, never the lens, brows drawn down, lips closed; on the tabletop between them one small dark brown lacquered wooden casket with one brass clasp, its lid open and its open side toward the camera, and inside it exactly five small yuanbao-shaped gold ingots side by side in one row, one two three four five, filling the casket from one end to the other with no gap, plain gold with no marks or writing; behind him only the bamboo fence of the same sunny yard",
+        "motion": "her two hands push the open casket across the tabletop to screen left toward Xu Yan until it stops in front of him, then draw back; she lifts her chin once, the back of her head toward the camera the whole shot; Xu Yan looks down at the five ingots, then up at her, lips closed; the five ingots stay in their row, all five in view, to the end of the shot; no smile at any moment, not even at the end of the shot, until the last frame, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a23",
+          "speaker": "xuyan",
+          "text": "這是妳的退路，我不能拿。",
+          "emotion": "畫外，溫和"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning, an autumn tree, a bamboo fence, a woodpile on screen left, the house eaves along the back, a wooden table in the middle, the yard gate in the fence on screen right, warm morning sunlight from screen right: insert close-up of the small wooden casket on the wooden table, the shot opens directly on Xu Yan's hand on the casket lid from its very first frame: his right hand in his rolled-up blue-grey cuff resting on the half-open dark brown lacquered lid, the brass clasp, the gold ingots glinting inside; only the hand, cuff and casket are in the frame, no face and no mouth; behind it only the out-of-focus tabletop of the same yard",
+        "motion": "his hand slowly closes the lid, snaps the brass clasp shut, then pushes the casket back across the table toward screen right, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a24",
+          "speaker": "tangxiaotang",
+          "text": "你不要？二十兩壓在你身上，你還跟金子客氣？",
+          "emotion": "愣住"
+        }
+      ],
+      "data": {
+        "camera": "Reverse medium close-up, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn morning, warm morning sunlight from screen right: reverse medium close-up of Tang Xiaotang across the wooden table, her whole face in the upper part of the frame from her hair buns down to her collar, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 40 degrees off her eyeline, never the lens; frozen in disbelief: eyes wide, brows raised and drawn together, lips parted, the corners of her mouth level; both her hands resting on one small wooden casket the size of a book, two palms wide and one palm deep, with a lid hinged at the back, in dark brown lacquer with one brass clasp, small enough to carry in one hand, plain, with no writing anywhere, the casket at the bottom edge of the frame, its lid closed; behind her only the bamboo fence and the autumn tree of the same yard",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「你不要？二十兩壓在你身上，你還跟金子客氣？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; she stays frozen, both hands resting on the closed casket the whole shot, and leans forward a little over the table, looking hard at Xu Yan off screen left, her face staying stunned; no smile at any moment, not even at the end of the shot, until the last frame, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a25",
+          "speaker": "xuyan",
+          "text": "妳說過在躲一個人。真到要跑那天，妳得有盤纏。",
+          "emotion": "認真"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn morning, warm morning sunlight from screen right: medium close-up of Xu Yan sitting at the wooden table, framed from the chest up with space above his head, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, the rolled red paper, rolled tight into a short plain blank tube, tucked into the left side of his belt, his body and face three-quarter to screen right toward Tang Xiaotang off screen right, the camera about 45 degrees off his eyeline, never the lens; earnest: brows drawn a little together, eyes steady on her, jaw firm, lips pressing together between phrases; behind him only the bamboo fence and the autumn tree of the same yard",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳說過在躲一個人。真到要跑那天，妳得有盤纏」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; he draws his hand back from the casket, sits up straight and looks at her, eyes on her the whole line; no smile at any moment, not even at the end of the shot, until the last frame, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a26",
+          "speaker": "xuyan",
+          "text": "債是我欠的，我自己賺。後天日落前，夠了。",
+          "emotion": "畫外，認真"
+        }
+      ],
+      "data": {
+        "camera": "Side medium shot, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn morning, warm morning sunlight from screen right: side medium shot of Tang Xiaotang alone, standing at the right end of the wooden table, seen from the waist up and small in the frame, clear empty space above her hair buns, her eyes in the upper third of the frame the whole shot, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, in profile facing screen left toward Xu Yan off screen left, the camera about 60 degrees off her eyeline, never the lens; her face: brows drawn together, eyes glistening wet and fixed on him, lips closed in a flat line, mouth corners level; both her hands on the shut lid of one small wooden casket the size of a book, two palms wide and one palm deep, with a lid hinged at the back, in dark brown lacquer with one brass clasp, small enough to carry in one hand, plain, with no writing anywhere on the tabletop before her; behind her only the bamboo fence of the same sunny yard",
+        "motion": "she holds still in profile, her head level and her eyes on him the whole shot, only her fingers slowly tightening on the casket lid and her eyes glistening; her head does not lower and her lips stay closed in a flat line to the last frame; no smile at any moment, not even at the end of the shot, until the last frame, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a27",
+          "speaker": "xitong",
+          "text": "叮。唐小棠好感 +10。",
+          "emotion": "冷淡，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning, an autumn tree, a bamboo fence, a woodpile on screen left, the house eaves along the back, a wooden table in the middle, the yard gate in the fence on screen right, warm morning sunlight from screen right: extreme close-up of Xu Yan's eyes only, the shot opens directly on his eyes from its very first frame and the frame never widens: his two eyes and brows fill the frame, his irises a natural dark brown from the first frame to the last, the whites of his eyes clear, only a tiny faint cold pale glint of reflected light in each pupil, like a catchlight, his eyeline slightly down to screen right, never into the lens; nothing else in the frame, one face only, no second figure, no double exposure; the system voice speaks off screen",
+        "motion": "his eyes blink once and his gaze settles down and to the right on the bowed head off screen, the frame holding only his eyes and brows to the last frame; his lips stay closed, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a28",
+          "speaker": "tangxiaotang",
+          "text": "那我先記在帳上。後天日落賺不到，我可要笑你。",
+          "emotion": "帶一點笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning, an autumn tree, a bamboo fence, a woodpile on screen left, the house eaves along the back, a wooden table in the middle, the yard gate in the fence on screen right, warm morning sunlight from screen right: medium shot, everyone small in the frame: Tang Xiaotang on screen right, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, one small wooden casket the size of a book, two palms wide and one palm deep, with a lid hinged at the back, in dark brown lacquer with one brass clasp, small enough to carry in one hand, plain, with no writing anywhere, its lid closed, held easily against her side in one arm, no bigger than a book, teasing: one brow raised, eyes bright on Xu Yan, the corners of her mouth lifting a little; Xu Yan and little Xiaohe on screen left at the left end of the wooden table, watching her, lips closed; the house eaves on screen right",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「那我先記在帳上。後天日落賺不到，我可要笑你」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang turns with the casket, walks two steps right, looks back left over her shoulder at Xu Yan in three-quarter profile and says the line to him, then walks on under the house eaves and out of the frame on screen right; the shot ends with her gone; the others' lips stay closed, and the warm morning sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "湊材料",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a29",
+          "speaker": "xuyan",
+          "text": "多謝各位嬸子，有了這些草木灰，肥皂就成了一半。",
+          "emotion": "誠懇"
+        }
+      ],
+      "data": {
+        "camera": "Full shot over his shoulder, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, a wooden table in the middle, the yard gate in the fence on screen right, bright slanting sunlight from screen right: full shot from behind Xu Yan's left shoulder: his back, his shoulders and the back of his head with its topknot in the left foreground, his face turned away from the camera the whole shot, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, beside one wooden bucket; on screen right three village women in Song-dynasty cross-collared coarse cotton short jackets, cloth head-wraps and cloth shoes, seen side-on, their faces never shown, each carrying one bamboo basket of grey-white plant ash; the bamboo fence of the same sunny yard behind them",
+        "motion": "the women tip the grey-white ash from their baskets into the bucket in a small puff; Xu Yan, his back to the camera, bends, takes the empty baskets and hands them back one by one with a small bow of his head, the back of his head toward the camera the whole shot; the women's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a30",
+          "speaker": "erniu",
+          "text": "秀才！大鍋來了，我跟村頭打鐵的借來的！",
+          "emotion": "大嗓門"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, a bamboo fence, a woodpile on screen left, the yard gate in the fence on screen right, bright slanting sunlight from screen right: full shot past the yard gate in the foreground, both small in the frame: Wang Erniu standing just outside the gate in his coarse brown short jacket with rolled sleeves, one black iron wok about 80 cm across, slung upside down on his back by a rope across his chest, its rim reaching from his shoulders to his waist, no wider than his shoulders and arms, his hands gripping the rope at his chest, the wok the one thing he carries, his face three-quarter to screen left toward Xu Yan, never the lens, proud and loud: his mouth open wide showing his teeth, cheeks bunched up, eyes crinkled; Xu Yan inside the yard on screen left, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, watching him, brows raised, lips closed",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「秀才！大鍋來了，我跟村頭打鐵的借來的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Erniu starts outside the gate and steps in sideways; only then the wok's rim bangs on the gate frame with a clang, and he twists sideways through into the yard, calling the line to Xu Yan; Xu Yan's lips stay closed, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "erniu",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a31",
+          "speaker": "xuyan",
+          "text": "二牛，好兄弟，這口鍋的情我記下了。",
+          "emotion": "感激"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder full shot from behind him, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, a wooden table in the middle, the yard gate in the fence on screen right, bright slanting sunlight from screen right: over-the-shoulder full shot from behind Xu Yan's left shoulder, both seen from the knees up with space above their heads and the bare ground of the yard in the lower part of the frame: Xu Yan's back, his shoulder and the back of his head with its topknot in the left foreground, his face turned away from the camera the whole shot, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows; Wang Erniu on screen right facing him, three-quarter toward the camera side, never the lens, his coarse brown short jacket with rolled sleeves, one black iron wok about 80 cm across, slung upside down on his back by a rope across his chest, its rim reaching from his shoulders to his waist, no wider than his shoulders and arms, puffing and proud: chest heaving, chin up, eyes bright, mouth closed; behind them only the bamboo fence of the same sunny yard",
+        "motion": "Erniu unties the rope, swings the wok off his back and sets it down upside down on the ground in the frame with a thud, Xu Yan's hand steadying its rim; then Xu Yan, his back to the camera, pats Erniu's shoulder once; Erniu's lips stay closed, his chin up; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a32",
+          "speaker": "erniu",
+          "text": "可外頭的人都在笑，說你連熬油的豬都沒有。",
+          "emotion": "不服氣，小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, a wooden table in the middle, the yard gate in the fence on screen right, bright slanting sunlight from screen right: medium shot of Wang Erniu framed from the waist up with space above his head, both hands empty, sweat beading on his forehead, his face three-quarter to screen left toward Xu Yan off screen left, the camera about 45 degrees off his eyeline, never the lens; sulking: brows pulled down, lower lip pushed out, eyes sliding to the fence and back; behind him the bamboo fence with about five villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps showing only their upper bodies, soft and out of focus, pointing and whispering",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「可外頭的人都在笑，說你連熬油的豬都沒有」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; he wipes the sweat off with the back of his hand, ducks his head low, glances at the fence and leans in toward Xu Yan off screen left, saying the line low to him; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a33",
+          "speaker": "xuyan",
+          "text": "他們說得沒錯，豬油是最難湊的那一樣。",
+          "emotion": "沉著"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn day, bright slanting sunlight from screen right: reverse medium close-up of Xu Yan from the chest up with space above his head, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, the rolled red paper, rolled tight into a short plain blank tube, tucked into the left side of his belt, one big black iron wok about two and a half feet across with an ear handle on each side standing empty on the ground in front of him, its rim running across the bottom edge of the frame, his body three-quarter to screen right toward Erniu off screen right, the camera about 45 degrees off his eyeline, never the lens; composed: brows level, eyes lowered to the wok and then lifting to Erniu on the line, mouth set firm between words, jaw calm; his face stays in the upper part of the frame the whole shot; behind him only the woodpile of the same yard",
+        "motion": "Xu Yan speaks a short Mandarin line, 「他們說得沒錯，豬油是最難湊的那一樣」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; he looks down at the empty wok and reaches out with his right hand to touch its cold rim once, then lifts his eyes to Erniu off screen right for the line, his face staying in frame and composed; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Low-angle full shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, a wooden table in the middle, the yard gate in the fence on screen right, bright slanting sunlight from screen right: low-angle full shot past the shoulders and cloth head-wraps of villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps outside the fence in the foreground, Qin Shuang at the yard gate in her dark brown cross-collared short jacket, wide leather belt with her old chopping knife in its right side, black trousers and leather boots, carrying on her right shoulder one whole black-haired pig, dead and limp with its eyes closed, its four legs tied together with straw rope, no blood and no wound, her right hand gripping the straw rope, her face set: brows level and low, eyes fixed ahead on the yard, lips pressed in a flat line, jaw firm",
+        "motion": "the villagers at the fence gasp and shrink aside, and Qin Shuang strides in through the gate with the pig on her shoulder, every step landing heavy; all lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a34",
+          "speaker": "qinshuang",
+          "text": "豬油要多少？這一頭夠不夠你熬？",
+          "emotion": "爽快"
+        }
+      ],
+      "data": {
+        "camera": "Medium full shot, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, a bamboo fence, a woodpile on screen left, the yard gate in the fence on screen right, bright slanting sunlight from screen right: medium full shot framed from the heads down to the feet with space above their heads, the bare dirt ground at Qin Shuang's feet across the bottom of the frame, Qin Shuang in the middle, her old chopping knife tucked in the right side of her belt, carrying on her right shoulder one whole black-haired pig, dead and limp with its eyes closed, its four legs tied together with straw rope, no blood and no wound, her face three-quarter to screen left toward Xu Yan, never the lens, brisk and bold: chin up, eyes level on him, lips pressed between words; Xu Yan on screen left, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, staring: mouth fallen open, eyes wide, brows shot up; Wang Erniu at the back right, both hands empty, eyes wide, lips closed",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「豬油要多少？這一頭夠不夠你熬？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang bends her knees and lowers the pig off her right shoulder onto the ground at her feet, a puff of dust rising; the pig stays lying there in plain view at the bottom of the frame while she straightens up, brushes her two empty hands together and says the line to Xu Yan; the others' lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a35",
+          "speaker": "xuyan",
+          "text": "妳一個人，從哪裡扛回來的？",
+          "emotion": "傻眼"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn day, bright slanting sunlight from screen right: medium close-up of Xu Yan from the chest up with space above his head, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, his body three-quarter to screen right toward Qin Shuang off screen right, the camera about 45 degrees off his eyeline, never the lens; dumbfounded: mouth hanging open between words, eyes wide, brows shot up; the frame holds only Xu Yan and, behind him, the woodpile of the same yard",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳一個人，從哪裡扛回來的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; he takes half a step back, his eyes going down to the black pig on the ground below the frame and up to Qin Shuang off screen right, and he points one finger down at the pig below the frame; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a36",
+          "speaker": "qinshuang",
+          "text": "別問。你要是熬不出東西，下次扛的就是你。",
+          "emotion": "嗤一聲"
+        }
+      ],
+      "data": {
+        "camera": "Reverse medium close-up, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on an autumn day, bright slanting sunlight from screen right: reverse medium close-up of Qin Shuang framed from the chest up with space above her head, her belt below the frame, in her dark brown cross-collared short jacket, a few black pig bristles on the cloth of her right shoulder, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 40 degrees off her eyeline, never the lens; scornful: one corner of her mouth pulled down, eyes narrowed, chin up, a short snort through her nose; behind her only the yard gate of the same yard",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「別問。你要是熬不出東西，下次扛的就是你」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; she snorts, brushes the bristles off her shoulder with one hand and says the line to Xu Yan off screen left, eyes on him; only then she turns and walks out of the frame on screen left; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a37",
+          "speaker": "xuyan",
+          "text": "夠了。豬油、灶灰、大鍋都齊了，今晚就開鍋熬。",
+          "emotion": "定下來"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, a wooden table in the middle, the yard gate in the fence on screen right, bright slanting sunlight from screen right: two-shot, both small in the frame with space above their heads, Xu Yan on screen left, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up, in profile facing screen right toward Erniu, never the lens, decided: brows level, eyes firm on him, jaw set; Wang Erniu on screen right, both hands empty, in three-quarter profile toward Xu Yan, eager: eyes wide, lips closed; in the foreground on the ground the whole black pig, the big black iron wok and one wooden bucket of grey-white plant ash",
+        "motion": "Xu Yan speaks a short Mandarin line, 「夠了。豬油、灶灰、大鍋都齊了，今晚就開鍋熬」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan looks over the pig, the wok and the ash, pushes his sleeves higher, slaps the wok rim with a clang and says the line to Erniu; Erniu nods, lips closed; no smile at any moment, not even at the end of the shot, until the last frame, and the bright slanting sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s36",
+      "chapter": "夜裡",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a38",
+          "speaker": "erniu",
+          "text": "秀才，這鍋豬油加灶灰，真能洗衣服？",
+          "emotion": "憨，懷疑"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, locked",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn night, at the cooking shelter on the east side of the yard: one wooden shelter post on screen left, a clay stove in the middle with one big black iron wok on it giving off white steam, the house door on screen right about six paces from the stove, the bamboo fence and the yard gate at the back left, only a few broken twigs left beside the stove, lit by the warm orange glow of the stove fire and cold moonlight: full shot past the stove fire in the foreground, both small in the frame: Xu Yan in the middle standing at the big wok, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, red-eyed and tired, both hands on one long plain wooden stirring pole taller than a man, his eyes heavy on the wok, lips closed; Wang Erniu squatting before the fire mouth of the stove, his face three-quarter up toward Xu Yan, never the lens, puzzled: brows knitted, head tilted, lips pressing between words",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「秀才，這鍋豬油加灶灰，真能洗衣服？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan stirs round and round; Erniu pushes one broken twig into the fire mouth, sparks fly up, and he looks up at Xu Yan and says the line to him; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight and the cold moonlight stay unchanged",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a39",
+          "speaker": "xuyan",
+          "text": "能。等天亮開了模你就知道。柴燒完了，我進屋搬。",
+          "emotion": "累，但有把握"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn night, at the cooking shelter on the east side of the yard: one wooden shelter post on screen left, a clay stove in the middle with one big black iron wok on it giving off white steam, the house door on screen right about six paces from the stove, the bamboo fence and the yard gate at the back left, only a few broken twigs left beside the stove, lit by the warm orange glow of the stove fire and cold moonlight: medium shot framed with space above their heads, Xu Yan at the big wok in the middle, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, red-eyed and tired, his face three-quarter to screen left toward Erniu, never the lens, tired but sure: heavy eyelids, eyes steady on Erniu, mouth set between words, both hands on one long plain wooden stirring pole taller than a man; at the left edge Wang Erniu getting up before the fire mouth, his eyes drooping, lips closed",
+        "motion": "Xu Yan speaks a short Mandarin line, 「能。等天亮開了模你就知道。柴燒完了，我進屋搬」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan says the line to Erniu, glances at the few twigs, leans the pole against the wok's rim and walks off right toward the house door, seen from behind; Erniu yawns and walks out of the yard gate at the back left, lips closed; the pole stays leaning on the rim; no smile at any moment, not even at the end of the shot, until the last frame, and the warm orange firelight and the cold moonlight stay unchanged",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Full shot from behind, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn night, at the cooking shelter on the east side of the yard: one wooden shelter post on screen left, a clay stove in the middle with one big black iron wok on it giving off white steam, the house door on screen right about six paces from the stove, the bamboo fence and the yard gate at the back left, only a few broken twigs left beside the stove, lit by the warm orange glow of the stove fire and cold moonlight: full shot from inside the dark house through the half-open door, the dark door frame on screen left and one bundle of firewood edging the bottom of the frame in the foreground: beyond the doorway, about six paces away, the steaming big wok on the stove with the orange fire glowing under it, one low wooden stool beside it, and one thin grown man with narrow bony shoulders, in a grey-brown short jacket and an old cloth head-wrap, back-lit by the stove fire, his face in deep shadow, seen from behind, his back to the camera, facing the wok and the fire, one wooden bucket full of water in both hands; the fire is in front of him, so his back is a dark silhouette rimmed with orange; his face is never turned toward the camera",
+        "motion": "the dark figure, his back to the camera, steps up onto the low stool, first one foot and then the other, until he stands on it with both feet; then he lifts the full bucket level with both hands and holds it above the mouth of the wok; the bucket stays above the wok, never set into it, and the water stays inside the bucket; his face stays turned away toward the fire to the last frame; no one speaks, and the warm orange firelight and the cold moonlight stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq904a40",
+          "speaker": "xuyan",
+          "text": "誰在那裡！把水桶給我放下，別碰那口鍋！",
+          "emotion": "厲聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the poor thatched farmhouse of the Xu family at night, just behind the half-open plank door, only darkness inside the house, a faint orange glow of a fire far outside the doorway: medium close-up of Xu Yan standing just inside the house door, framed from the chest up with space above his head, his blue-grey scholar's robe with both shoulders whole, his sleeves rolled up to the elbows, red-eyed and tired, one bundle of firewood in both arms, his body and face three-quarter to screen left toward the doorway and the figure by the wok off screen left, the camera about 45 degrees off his eyeline, never the lens; shocked and furious: brows slammed down, eyes wide and glaring, nostrils flared, jaw clenched between words; behind him only the darkness inside the house; no stove or wok in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「誰在那裡！把水桶給我放下，別碰那口鍋！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the firewood in his arms crashes down to the floor all at once and he braces one hand against the door frame, shouting the line out through the doorway at the figure; no smile at any moment, not even at the end of the shot, until the last frame, and the faint orange glow from outside stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Side full shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at night, at the cooking shelter, the house door on screen right about six paces from the stove, lit by the orange stove fire and cold moonlight: side full shot from his left at a distance, everything small in the frame: one thin grown man with narrow bony shoulders, in a grey-brown short jacket and an old cloth head-wrap, back-lit by the stove fire, his face in deep shadow, standing upright with both feet on one low wooden stool beside the big wok on its stove, the whole stool and his feet in the frame, facing screen right toward the wok, one wooden bucket full of water held level in both hands above the mouth of the wok; the stove fire and the white steam on screen right, so the fire lights only the far side of him and the side of him toward the camera, his face included, stays dark; the dark yard and the house wall on screen left; his face is never lit",
+        "motion": "he holds the full bucket level above the wok's mouth; then he snaps his head round to his left, away from the fire, toward the house door off screen left, his face turning into deep shadow, a dark shape with no features; the bucket only tilts a little, the water sloshing up to its rim and staying inside the bucket, none falling; he freezes on both feet on the stool and the shot ends on that moment, and the warm orange firelight and the cold moonlight stay unchanged",
+        "characters": []
+      }
+    }
+  ]
+}

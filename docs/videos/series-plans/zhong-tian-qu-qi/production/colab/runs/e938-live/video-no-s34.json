@@ -1,0 +1,969 @@
+{
+ "schema_version": 1,
+ "slug": "zhong-tian-qu-qi-e038-r2",
+ "format": "drama",
+ "target_minutes": [
+  3,
+  4
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+ },
+ "look": {
+  "preset": "custom",
+  "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+  "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+  "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+  "candidates": 2
+ },
+ "characters": [
+  {
+   "id": "xuyan",
+   "name": "許硯",
+   "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Umbriel",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+   },
+   "shot_looks": [
+    {
+     "id": "modern",
+     "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+    }
+   ]
+  },
+  {
+   "id": "tangxiaotang",
+   "name": "唐小棠",
+   "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+   "voice": {
+    "provider": "gemini",
+    "name": "Laomedeia",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+   }
+  },
+  {
+   "id": "xiaohe",
+   "name": "許小禾",
+   "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+   }
+  },
+  {
+   "id": "qinshuang",
+   "name": "秦霜",
+   "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+   "voice": {
+    "provider": "gemini",
+    "name": "Autonoe",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+   }
+  },
+  {
+   "id": "aling",
+   "name": "阿令",
+   "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+   "voice": {
+    "provider": "gemini",
+    "name": "Achernar",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+   }
+  },
+  {
+   "id": "duizhang",
+   "name": "守軍隊長",
+   "appearance": "East Asian man of about forty-five, a square face and a short black beard, hard steady eyes, black iron lamellar armour with small red studs over a dark undercoat, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown",
+   "voice": {
+    "provider": "gemini",
+    "name": "Iapetus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的縣城守軍隊長，男聲、低沉粗硬、發號施令，吼的時候一個字一個字砸出來"
+   }
+  },
+  {
+   "id": "shoujun",
+   "name": "年輕守軍",
+   "appearance": "East Asian young man of about twenty, in black iron lamellar armour and a plain iron helmet; seen only from behind and the side",
+   "voice": {
+    "provider": "gemini",
+    "name": "Alnilam",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的年輕守軍，男聲、輕佻、起鬨，笑得很賤"
+   }
+  },
+  {
+   "id": "baidaifu",
+   "name": "白大夫",
+   "appearance": "East Asian old man of sixty-eight, lean and spare, white hair and a white beard, bright sharp eyes, a faded moon-white old long gown under a quilted cotton vest, a black lacquered medicine chest at his side",
+   "voice": {
+    "provider": "gemini",
+    "name": "Rasalgethi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；六十八歲的老大夫，男聲、蒼老清癯、慢而清楚、句句有把握"
+   }
+  },
+  {
+   "id": "xitong",
+   "name": "系統",
+   "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+   "voice": {
+    "provider": "gemini",
+    "name": "Callirrhoe",
+    "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+   }
+  }
+ ],
+ "music": {
+  "prompt": "one cue per scene: a very soft piano in a grey morning sickroom, turning to low dark strings at a feverish whisper in the orange late afternoon, one hard accent on an urgent task, one accent as a rider swings up onto a horse in a moonlit yard and urgent drums after it, then a single lonely erhu by one small flame; then fast galloping drums on a moonlit road of poplars, one huge accent on a charge at a barrier by a torchlit city gate, the drums running on; then urgent drums in a dark stone street, turning to taut rising strings as crossbows are raised, held at the highest note and cut off unresolved; ancient Chinese rural drama, no vocals",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "subtitles": {
+  "burn_in": false,
+  "style": "drama"
+ },
+ "youtube": {
+  "category_id": 24,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "「馬給我。」小禾燒到說胡話，阿令一騎闖宵禁、躍過城門木柵，弩箭對準她的背｜種田娶妻打天下 第38集（重製版）",
+  "description": "石灰陣那一夜的清晨，小禾燒得通紅。中午退了一點，傍晚又燒上來，她在夢裡喊：哥哥別下水。村裡沒有大夫，縣城因為流寇宵禁，馬只有一匹，秦霜得守村子。系統下了緊急任務：天亮前，小禾退燒。阿令開口：馬給我。許硯什麼都沒問——我信妳。她一翻身就上了馬，秦霜看出那是騎兵上馬的法子。月夜官道一騎狂奔；城門守軍喊宵禁、笑她女人騎什麼馬，她退馬三步，一夾馬腹躍過木柵。東街醫館，她拍門喊白大夫，身後一排弩對準她的背，隊長舉起手：放——。《種田娶妻打天下》第 38 集（重製版）。",
+  "tags": [
+   "種田娶妻打天下",
+   "AI短劇",
+   "穿越",
+   "種田",
+   "系統"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "馬給我",
+   "tag": "種田娶妻打天下",
+   "shot": "s27"
+  }
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "chapter": "許家屋內與院子，清晨到入夜",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a01",
+     "speaker": "xuyan",
+     "text": "濕布換了三回，還是燙得嚇人。",
+     "emotion": "啞，擔心"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at first light on the morning after the battle, at the bedside; cold grey-white morning light from the small window, the room grey and still, the one white candle on the low stool at the foot of the bed unlit: wide shot at the bedside, one shallow wooden basin of water on the floor soft in the lower foreground: in the bed against the back wall, little Xiaohe, eight years old, lying on her back in the bed under the pink quilted cover drawn up to her chest, her whole face flushed deep red with fever, strands of her hair stuck to her forehead, her lips dry and cracked, one folded damp white cloth across her forehead, a small woven straw rabbit lying beside her pillow, her eyes shut, her brows drawn in pain, her lips closed; kneeling on the clear floor at the near side of the bed by its pillow end, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, framed full figure with both knees on the floor, his right hand already holding one folded damp white cloth, freshly wrung, just above her forehead from the first frame, his face lowered three-quarter to screen right toward her, never the lens; hoarse and worried, not smiling: brows knotted, eyes red-rimmed, lips moving low between words; behind them, soft, the plaster wall under the small window; their hands hold only what is described here; exactly two people",
+    "motion": "Xu Yan speaks a short Mandarin line, 「濕布換了三回，還是燙得嚇人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lays the cloth gently across her forehead and smooths it down with his palm as he speaks; little Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the grey morning light stays unchanged",
+    "characters": [
+     "xuyan",
+     "xiaohe"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s02",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a02",
+     "speaker": "tangxiaotang",
+     "text": "藥熬好了，韓伯說這方子退熱最快。",
+     "emotion": "急"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot from behind, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at first light on the morning after the battle, at the bedside; cold grey-white morning light from the small window, the room grey and still, the one white candle on the low stool at the foot of the bed unlit: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, just in from the doorway beyond the left edge of the frame, walking in toward the bed, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one coarse clay medicine bowl of dark steaming broth already held before her in both hands from the first frame, steam rising from it; one step beyond her in the left third of the frame, by the foot of the bed, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, already risen to his feet from the first frame, framed from the waist up, his face three-quarter to screen right toward her, never the lens, his lips closed, not smiling: brows drawn, eyes tired; behind them, soft, in the bed under the small window, little Xiaohe, eight years old, lying in the bed under the pink quilted cover, her face flushed deep red, a folded damp white cloth on her forehead, her eyes shut, her lips closed; she stays in the middle of the frame the whole shot; their hands hold only what is described here; exactly three people, the young woman in the middle seen only from behind",
+    "motion": "the bowl tips as she hurries two steps on, and her fingers jerk off its hot rim and close round it again, only her arms moving, and Xu Yan reaches out both hands toward the bowl; Xu Yan and little Xiaohe say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the grey morning light stays unchanged",
+    "characters": [
+     "tangxiaotang",
+     "xuyan",
+     "xiaohe"
+    ],
+    "nospeak": [
+     "tangxiaotang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s03",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a03",
+     "speaker": "xuyan",
+     "text": "小禾，乖，喝一口就不燙了。",
+     "emotion": "放軟"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at first light on the morning after the battle, at the bedside; cold grey-white morning light from the small window, the room grey and still, the one white candle on the low stool at the foot of the bed unlit: close-up at the bedside: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, already sitting on the edge of the bed beside her from the first frame, framed from the chest up, one coarse clay medicine bowl of dark steaming broth in his left hand and one plain wooden spoon in his right, his face lowered three-quarter to screen right toward her, never the lens; tender and tired, not smiling: brows soft, lips moving gently between words; along the bottom of the frame, little Xiaohe, eight years old, lying in the bed under the pink quilted cover, her face flushed deep red, a folded damp white cloth on her forehead, her head already lifted a little on his right forearm from the first frame, her eyes half shut, her lips closed; behind him, soft, only the small window glowing grey-white and the dark wooden bedpost; their hands hold only what is described here; exactly two people",
+    "motion": "Xu Yan speaks a short Mandarin line, 「小禾，乖，喝一口就不燙了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan blows on the spoonful, holds it to her lips and tips it in, and little Xiaohe frowns and swallows; little Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the grey morning light stays unchanged",
+    "characters": [
+     "xuyan",
+     "xiaohe"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s04",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a04",
+     "speaker": "tangxiaotang",
+     "text": "中午燒退了一點，她總算睡著了。",
+     "emotion": "小聲，鬆一口氣"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot from behind, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at midday, at the bedside; flat bright white daylight from the small window, the room pale and still, the one white candle on the low stool at the foot of the bed unlit: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting on the near edge of the bed, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; beyond her in the bed under the small window, little Xiaohe, eight years old, lying in the bed under the pink quilted cover, her face flushed deep red, a folded damp white cloth on her forehead, asleep, her breathing easier, her lips closed; at the right, by the pillow end of the bed, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing leaning one shoulder against the dark wooden bedpost, framed from the waist up, his face three-quarter to screen left toward the young woman, never the lens, his lips closed, not smiling: tired, brows easing; the empty clay medicine bowl and one plain wooden spoon on the low stool at the foot of the bed at the left; she stays in the middle of the frame the whole shot; their hands hold only what is described here; exactly three people, the young woman in the middle seen only from behind",
+    "motion": "she lays her flat right hand on the girl's forehead for a moment and draws it back, her shoulders sinking with relief, only her arm moving, and Xu Yan gives one slow nod; Xu Yan and little Xiaohe say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the white midday light stays unchanged",
+    "characters": [
+     "tangxiaotang",
+     "xuyan",
+     "xiaohe"
+    ],
+    "nospeak": [
+     "tangxiaotang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s05",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a05",
+     "speaker": "xiaohe",
+     "text": "哥哥……別下水……哥哥別下水……",
+     "emotion": "說胡話，含糊，哭腔"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, at the bedside; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: close-up of little Xiaohe, eight years old, lying on her back in the bed under the pink quilted cover drawn up to her chest, her whole face flushed deep red with fever, strands of her hair stuck to her forehead, her lips dry and cracked, one folded damp white cloth across her forehead, a small woven straw rabbit lying beside her pillow, framed from the chin up on the pillow with a little space above her head, her eyes shut tight, her face redder than the morning, her head already turned to screen left on the pillow from the first frame, never the lens; she is the only person in the frame; delirious and frightened, close to tears, not smiling: brows pinched, lips trembling and moving between mumbled words; behind her, soft, only the pink pillow, the dark wooden bed head and the plaster wall in the warm orange light; their hands hold only what is described here",
+    "motion": "Little Xiaohe speaks a short Mandarin line, 「哥哥……別下水……哥哥別下水……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe tosses her head slowly from side to side on the pillow and her small fingers clutch at the edge of the quilt as she mumbles, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "xiaohe"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s06",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a06",
+     "speaker": "xuyan",
+     "text": "她夢裡還在喊我別下水……那天，她也在河邊。",
+     "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, at the bedside; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, at the bedside, framed from the chest up with space above his head, his right hand already raised halfway toward her forehead from the first frame, frozen in mid-air at the bottom edge, his face lowered three-quarter to screen right, his eyes on the pillow below the right edge of the frame, never the lens; he is the only person in the frame; stricken, not smiling: brows drawn, eyes fixed and wide, lips pressed shut; behind him, soft, only the dark wooden bedpost and the plaster wall in the warm orange light; their hands hold only what is described here",
+    "motion": "Xu Yan's raised hand stops dead in the air and slowly draws back, his eyes never leaving the pillow; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "xuyan"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s07",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a07",
+     "speaker": "tangxiaotang",
+     "text": "比早上還燙，這藥已經壓不住了。",
+     "emotion": "聲音發抖，快哭了"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot from behind, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, at the bedside; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, sitting on the near edge of the bed, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; beyond her in the bed, little Xiaohe, eight years old, lying in the bed under the pink quilted cover, her face flushed deep red, a folded damp white cloth on her forehead, her eyes shut, her lips closed; behind them, soft, the plaster wall under the small window in the warm orange light; she stays in the middle of the frame the whole shot; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+    "motion": "she touches the girl's forehead with her flat right hand and snatches the hand back at once, pressing it to her own chest, only her arm moving; little Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "tangxiaotang",
+     "xiaohe"
+    ],
+    "nospeak": [
+     "tangxiaotang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s08",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a08",
+     "speaker": "xuyan",
+     "text": "村裡沒有大夫，我背她進城，現在就走。",
+     "emotion": "咬牙"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, at the bedside; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: medium shot at the bedside, the dark wooden bedpost soft in the right foreground: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, already standing by the bed from the first frame with the old grey outer coat already pulled off his shoulders and spread wide in both hands, framed from the waist up, his face lowered three-quarter to screen right toward the bed, never the lens; desperate, not smiling: jaw clenched, brows knotted, lips moving hard between words; in the bed below him, little Xiaohe, eight years old, lying in the bed under the pink quilted cover, her face flushed deep red, a folded damp white cloth on her forehead, her eyes shut, her lips closed; behind them, soft, the plaster wall in the warm orange light; their hands hold only what is described here; exactly two people",
+    "motion": "Xu Yan speaks a short Mandarin line, 「村裡沒有大夫，我背她進城，現在就走」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan leans low over the bed and spreads the coat over the girl to wrap her in it as he speaks; little Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "xuyan",
+     "xiaohe"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s09",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a09",
+     "speaker": "qinshuang",
+     "text": "縣城宵禁了。昨夜流寇下山，天一黑城門就關。",
+     "emotion": "喘，直說"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, by the plank door; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: medium shot by the plank door at the left: the plank door at the left standing shut behind her; at the left, just inside the shut door, Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain leather belt, fitted black trousers and leather boots, her sleek high ponytail tied with black cord, already in from the first frame, out of breath, framed from the waist up, her right hand pressed flat on the shut plank door behind her, one long spear: a plain wooden shaft taller than she is, a small plain iron spearhead, the shaft bare below the head already leaning upright against the plaster wall beside the shut door, well apart from her, her face three-quarter to screen right toward him, never the lens; urgent and blunt, not smiling: brows drawn, eyes hard, lips moving fast between breaths; at the right, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing, the old grey outer coat bundled over his left arm, framed from the waist up, his face three-quarter to screen left toward her, his lips closed, not smiling, never the lens; behind them, soft, the cracked plaster wall in the warm orange light; their hands hold only what is described here; exactly two people",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「縣城宵禁了。昨夜流寇下山，天一黑城門就關」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang thrusts her flat left hand out toward his chest to stop him as she speaks between breaths, and Xu Yan stops short; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "qinshuang",
+     "xuyan"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s10",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a10",
+     "speaker": "xuyan",
+     "text": "城門關了也得去，騎馬半個時辰就到。",
+     "emotion": "咬牙"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, at the bedside; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing in the room, framed from the chest up with space above his head, the old grey outer coat already back over his shoulders from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the cracked plaster wall and the foot of the bed all the way to the edge, and he is the only person in the frame; hard and stubborn, not smiling: jaw clenched, eyes hard, lips moving tight between words; behind him, soft, only the plaster wall and the edge of the small window in the warm orange light; their hands hold only what is described here",
+    "motion": "Xu Yan speaks a short Mandarin line, 「城門關了也得去，騎馬半個時辰就到」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan's right hand closes into a hard fist at his side and he lifts his chin as he speaks, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "xuyan"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s11",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a11",
+     "speaker": "xitong",
+     "text": "叮。緊急任務：天亮前，小禾退燒。",
+     "emotion": "冷，宣布"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse in the late afternoon, at the bedside; low warm orange light of the late afternoon from the small window, the room dim and warm, the one white candle on the low stool at the foot of the bed unlit: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing in the room, framed from the chest up with space above his head, his face three-quarter to screen left, his eyes already lifted to the empty air before him from the first frame, never the lens; he is the only person in the frame; grim, not smiling: brows drawn, lips pressed shut; behind him, soft, only the pillow end of the bed, the bed head and the plaster wall in the warm orange light; their hands hold only what is described here",
+    "motion": "Xu Yan's clenched fist slowly loosens at his side; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the warm orange late-afternoon light stays unchanged",
+    "characters": [
+     "xuyan"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s12",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a12",
+     "speaker": "qinshuang",
+     "text": "馬只有一匹。我不能走，山上還有散掉的流寇。",
+     "emotion": "直說，不容商量"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot over the shoulder, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at nightfall, by the plank door; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow, the small window dark blue: medium shot over a shoulder: at the right edge of the frame, cut by it, soft and out of focus, only one shoulder and upper arm of a man in an old grey cloth outer coat, toward us the whole shot; beyond it, in the left half of the frame, Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain leather belt, fitted black trousers and leather boots, her sleek high ponytail tied with black cord, standing just inside the shut plank door, one long spear: a plain wooden shaft taller than she is, a small plain iron spearhead, the shaft bare below the head upright in her right hand, its butt on the floor, framed from the waist up, her face three-quarter to screen right toward the man at the right edge, never the lens; firm and grim, not smiling: brows level, jaw set, lips moving short and plain between words; behind her at the far left, soft and out of focus, a young woman in grey-white standing still with her back to the shut plank door, only her head and shoulders, listening, her lips closed; their hands hold only what is described here; exactly three people, the one at the edge seen only in part, the young woman by the door soft",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「馬只有一匹。我不能走，山上還有散掉的流寇」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang glances back once over her shoulder at the young woman by the door and turns back, pressing her free left fist against the plaster wall as she speaks, and the small flame and the shadows stay unchanged",
+    "characters": [
+     "qinshuang"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s13",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a13",
+     "speaker": "aling",
+     "text": "馬給我。我知道路，天亮前帶大夫回來。",
+     "emotion": "冷，很穩"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at nightfall, by the plank door; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow, the small window dark blue: medium shot in the room, the one small flame on the low stool at the foot of the bed soft in the lower right foreground: A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, already stepped forward from the shut plank door from the first frame and stopped in the middle of the room, framed from the knees up, her left cuff bound with a strip of grey cloth, the end of the strip in her right hand, her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark wooden bed head and the plaster wall all the way to the edge, and she is the only person in the frame; cold and steady, not smiling: eyes level, brows still, lips moving evenly between words; behind her, soft, the shut plank door and the cracked plaster wall in the warm small light; their hands hold only what is described here",
+    "motion": "A-ling speaks a short Mandarin line, 「馬給我。我知道路，天亮前帶大夫回來」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling gives the grey cloth strip round her left cuff one last hard pull and lets both hands fall to her sides as she speaks, and the small flame and the shadows stay unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s14",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a14",
+     "speaker": "xuyan",
+     "text": "我不問妳會不會騎。我信妳，馬給妳。",
+     "emotion": "很穩"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up over the shoulder, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at nightfall, at the bedside; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow, the small window dark blue: medium close-up over a shoulder: at the left edge of the frame, cut by it, soft and out of focus, only the back of a young woman's head with black hair pinned up with one plain wooden hairpin and one grey-white shoulder, toward us the whole shot; beyond it, in the right half of the frame, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing, framed from the waist up, one short riding whip with a plain bamboo handle and a plaited leather lash already held out level in his right hand from the first frame toward the young woman at the left edge, its lash trailing down, his face three-quarter to screen left toward her, never the lens; steady, not smiling: brows level, eyes calm, lips moving evenly between words; behind him, soft, the dark wooden bed head and the plaster wall in the warm small light; their hands hold only what is described here; exactly two people, the one at the edge seen only from behind",
+    "motion": "Xu Yan speaks a short Mandarin line, 「我不問妳會不會騎。我信妳，馬給妳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan presses the bamboo handle of the whip into the young woman's hand at the left edge and lets go as he speaks, and the small flame and the shadows stay unchanged",
+    "characters": [
+     "xuyan"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s15",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a15",
+     "speaker": "xitong",
+     "text": "宿主連她會不會騎馬，都不知道。",
+     "emotion": "冷，毒舌"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at nightfall, at the bedside; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow, the small window dark blue: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing in the room, framed from the chest up with space above his head, his face three-quarter to screen left, his eyes on the shut plank door beyond the left edge of the frame, never the lens; he is the only person in the frame; uneasy, not smiling: brows tight, lips pressed shut; the small warm light on one side of his face; behind him, soft, only the plaster wall and the dark blue window; their hands hold only what is described here",
+    "motion": "Xu Yan's eyes follow something toward the door and his throat moves as he swallows once; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the small flame and the shadows stay unchanged",
+    "characters": [
+     "xuyan"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s15b",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a16",
+     "speaker": "xuyan",
+     "text": "不知道……可她從來不說沒把握的話。",
+     "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at nightfall, at the bedside; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow, the small window dark blue: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, standing in the room, framed from the waist up, both his hands resting at his sides from the first frame, his face three-quarter to screen left, his eyes on the shut plank door beyond the left edge of the frame, never the lens; he is the only person in the frame; quietly certain, not smiling: brows easing, lips pressed shut; behind him, soft, only the plaster wall and the dark blue window; their hands hold only what is described here",
+    "motion": "Xu Yan draws one slow deep breath, his shoulders rising and settling, his eyes still on the door; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the small flame and the shadows stay unchanged",
+    "characters": [
+     "xuyan"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s16",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a17",
+     "speaker": "tangxiaotang",
+     "text": "阿令姊……妳什麼時候學會騎馬的？",
+     "emotion": "驚"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the night yard of the Xu farmhouse after nightfall: the yard exactly as in the picture: the farmhouse on the left with its dark doorway at the far left and split firewood stacked against its front, the yard gate under its small tiled roof in the middle of the back wall with its slatted plank leaf hinged on the right gate post and standing half swung back inward, the left half of the gateway clear, a bare tree just right of the gate, the low earth-and-stone back wall running from the gate to the right edge, the round stone well with its wooden windlass in the front right, a wooden bucket in the middle of the yard, dark fields and far dark hills beyond the wall; cool pale moonlight from above, the yard dark and still, a faint warm glow from the house doorway at the left: wide shot from beside the dark house doorway across the night yard, like the picture; in the lower left foreground, seen only from behind, one young woman seen only from behind, appearing only once, her black hair in just two round buns set high on her head tied with short pink silk ribbons, in a light peach-pink silk jacket and skirt, standing before the house doorway, framed full figure, facing straight away from us; beside her at the left, Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain leather belt, fitted black trousers and leather boots, her sleek high ponytail tied with black cord, one long spear: a plain wooden shaft taller than she is, a small plain iron spearhead, the shaft bare below the head upright in her right hand, standing side-on, framed full figure, her face toward the tree, her lips closed, not smiling, never the lens; beside the bare tree, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, side-on, head to the left, untied; at its near side, A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, one short riding whip with a plain bamboo handle and a plaited leather lash tucked into her sash, framed full figure, her left foot already in the stirrup and both hands on the saddle from the first frame, her lips closed, not smiling, never the lens; their hands hold only what is described here; exactly three people and one horse",
+    "motion": "A-ling swings herself up into the saddle in one smooth fast move and sits firm, gathering the reins, while the horse shifts one step; Qin Shuang and A-ling say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the cool moonlight stays unchanged",
+    "characters": [
+     "tangxiaotang",
+     "qinshuang",
+     "aling"
+    ],
+    "nospeak": [
+     "tangxiaotang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s17",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a18",
+     "speaker": "qinshuang",
+     "text": "那是騎兵上馬的法子，不是剛學的。",
+     "emotion": "很輕"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the night yard of the Xu farmhouse after nightfall, before the dark house doorway; cool pale moonlight from above, the yard dark and still, a faint warm glow from the house doorway at the left: close-up of Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain leather belt, fitted black trousers and leather boots, her sleek high ponytail tied with black cord, standing before the dark house doorway, framed from the chest up with space above her head, the wooden shaft of one long spear: a plain wooden shaft taller than she is, a small plain iron spearhead, the shaft bare below the head upright in her right hand at the edge of the frame, her face three-quarter to screen right, her eyes on the horse under the tree beyond the right edge of the frame, never the lens; she is the only person in the frame; seeing it clearly, not smiling: eyes narrowing, brows level, lips moving quietly between words; behind her, soft, only the dark doorway and the split firewood in the moonlight; their hands hold only what is described here",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「那是騎兵上馬的法子，不是剛學的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang's eyes narrow and her hand tightens on the spear shaft as she speaks very quietly, and the cool moonlight stays unchanged",
+    "characters": [
+     "qinshuang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s18",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a19",
+     "speaker": "tangxiaotang",
+     "text": "東街的白大夫，許記的老主顧，報許家的名字！",
+     "emotion": "揚聲"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot from behind, slow push in",
+    "prompt": "In the night yard of the Xu farmhouse after nightfall, inside the yard gate; cool pale moonlight from above, the yard dark and still, a faint warm glow from the house doorway at the left: wide shot from behind one young woman seen only from behind, appearing only once, her black hair in just two round buns set high on her head tied with short pink silk ribbons, in a light peach-pink silk jacket and skirt, standing in the yard a few steps inside the gate, her flat right hand raised beside her shoulder, framed full figure, small, in the lower middle of the frame, facing straight away from us; she is the only young woman with two high round buns in the frame; beyond her, above her head, at the yard gate in the middle of the back wall, the slatted plank gate leaf hinged on the right gate post standing half swung back inward from the first frame; in the gateway, A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, already in the saddle of one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth from the first frame, seen from behind and the side, framed full figure, small, already riding away from us into the gateway, never the lens, well clear of the young woman; their hands hold only what is described here; exactly two people and one horse, the young woman in the lower middle seen only from behind",
+    "motion": "A-ling digs her heels in and the horse bursts out through the gateway into the dark, its shoulder knocking the half-swung slatted gate leaf back against the wall, while the young woman calls after her with her hand still raised, only her arm moving; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the cool moonlight stays unchanged",
+    "characters": [
+     "tangxiaotang",
+     "aling"
+    ],
+    "nospeak": [
+     "tangxiaotang"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s19",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a20",
+     "speaker": "xiaohe",
+     "text": "哥……",
+     "emotion": "很弱，氣音，嘴唇微動"
+    },
+    {
+     "id": "zq938a21",
+     "speaker": "xuyan",
+     "text": "哥在這裡。撐到阿令回來，天亮就不燙了。",
+     "emotion": "低，像在求她"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the first bedroom of the Xu farmhouse at nightfall, at the bedside; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow, the small window dark blue: wide shot at the bedside by night: in the bed against the back wall, little Xiaohe, eight years old, lying on her back in the bed under the pink quilted cover drawn up to her chest, her whole face flushed deep red with fever, strands of her hair stuck to her forehead, her lips dry and cracked, one folded damp white cloth across her forehead, a small woven straw rabbit lying beside her pillow, her eyes already half lifted from the first frame, her lips barely moving; kneeling on the clear floor at the near side of the bed by its pillow end, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, pale white lime powder dusted over the lower half of the robe, with an old grey cloth outer coat worn loose over his shoulders, framed full figure with both knees on the floor, both his hands already folded round her small left hand from the first frame, his face lowered three-quarter to screen right toward her, never the lens; pleading and tender, not smiling: brows drawn, eyes wet, lips moving low between words; the warm light of the one small flame on the low stool at the foot of the bed falling on them from the left; behind them, soft, the dark blue window and the plaster wall; their hands hold only what is described here; exactly two people",
+    "motion": "Little Xiaohe speaks a short Mandarin line, 「哥……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan speaks a short Mandarin line, 「哥在這裡。撐到阿令回來，天亮就不燙了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe's small fingers stir in his hands, and Xu Yan lifts her small hand to his chin, bows his head and closes his eyes, and the small flame and the shadows stay unchanged",
+    "characters": [
+     "xuyan",
+     "xiaohe"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s20",
+   "chapter": "夜裡的官道與縣城城門",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Low-angle wide shot, slow push in",
+    "prompt": "On the wide dirt road to the county town below the deep pool in the second watch of the same night; cold blue moonlight, the deep blue night sky, the long shadows of the poplars across the field: low-angle wide shot from the side of the road at ground height, side-on: a long line of tall dark poplars across the frame against the deep blue night sky and a pale beaten earth path along their foot running across the frame from the right edge to the left; on the path, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, already galloping in from the right edge from the first frame, seen side-on, with A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, crouched low over its neck, framed full figure; dust kicking up behind the hooves; she is the only person in the frame; their hands hold only what is described here",
+    "motion": "the horse gallops across the frame from right to left along the path at the foot of the poplars and on toward the left edge, dust billowing behind it, her body low and still over its neck, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s21",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Medium shot, tracking",
+    "prompt": "On the wide dirt road to the county town below the deep pool in the second watch of the same night; cold blue moonlight, the deep blue night sky, the long shadows of the poplars across the field: medium tracking shot alongside the galloping horse, side-on: A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, one short riding whip with a plain bamboo handle and a plaited leather lash tucked into her sash, riding one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth at full gallop toward the left, framed from the waist up with the horse's head and neck before her, crouched low, her face in profile to screen left, her eyes on the road ahead beyond the left edge of the frame, never the lens; she is the only person in the frame; tense, not smiling: lips bitten together, eyes hard; behind her, sliding past soft and dark, the line of tall poplars and the moonlit field; their hands hold only what is described here",
+    "motion": "A-ling snaps the reins and drives her heels hard into the horse's flanks, and the horse lunges forward and stretches out faster, its mane streaming; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s22",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, at the barrier of crossed stakes; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: wide shot at the barrier, like the picture: at the left edge the swung-out small side door of studded planks with one torch fixed upright in an iron holder beside it, nobody holding it; the long waist-high barrier of crossed wooden stakes standing across the paved road in front of the side door; on the road side of the barrier, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, already reined in hard three steps short of the barrier from the first frame, seen side-on with its head toward the left, with A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, in the saddle, framed full figure, her face in profile to screen left toward the gate, never the lens, her lips closed, not smiling; she is the only person in the frame; their hands hold only what is described here",
+    "motion": "the horse tosses its head and stamps its forefeet on the spot, snorting, all four hooves staying on the paving, while A-ling holds the reins tight, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s23",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a22",
+     "speaker": "duizhang",
+     "text": "宵禁！有流寇，天亮以前誰都不准進城！",
+     "emotion": "吼"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, at the barrier of crossed stakes; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: medium shot behind the barrier of crossed stakes, the tops of the crossed stakes soft along the bottom of the frame: the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, standing behind the barrier, framed from the waist up, one long spear: a plain dark wooden shaft taller than he is, a small plain iron spearhead, the shaft bare below the head in his right hand, his face lifted three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark road along the wall all the way to the edge, and he is the only person in the frame; harsh and loud, not smiling: brows down, jaw hard, mouth wide between shouted words; behind him, soft, the lit brick wall and one torch fixed upright in an iron holder, nobody holding it, and at the left edge the edge of the swung-out small side door; their hands hold only what is described here",
+    "motion": "The guard captain speaks a short Mandarin line, 「宵禁！有流寇，天亮以前誰都不准進城！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the guard captain steps forward and slaps the spear shaft down level across the top of the barrier with both hands as he shouts, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang"
+    ],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s24",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a23",
+     "speaker": "shoujun",
+     "text": "女人騎什麼馬，回家燒飯去吧！",
+     "emotion": "畫外，起鬨，笑得很賤"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot from behind, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, by the swung-out small side door; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: medium shot by the swung-out small side door, from behind and a little to one side: one young guard in black iron lamellar armour and a plain iron helmet, seen only from behind and the side, only the edge of his cheek and jaw showing past the cheek flap of his helmet, leaning one shoulder against the swung-out small side door of studded planks, framed from the waist up, one long spear: a plain dark wooden shaft taller than he is, a small plain iron spearhead, the shaft bare below the head in his right hand with its butt on the paving, his face turned toward the road at the right, never the lens; jeering, his shoulders shaking with a mocking laugh; one torch fixed upright in an iron holder by the arch, nobody holding it; behind him, soft, the two shut leaves of the big gate under the brick arch; their hands hold only what is described here; he is the only person in the frame",
+    "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the young guard knocks the butt of the spear twice on the paving and tips his head to one side, laughing, his face staying turned away from us, and the cool moonlight stays unchanged",
+    "characters": [],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s25",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a24",
+     "speaker": "aling",
+     "text": "家裡的妹妹燒了一整天，讓開。",
+     "emotion": "冷到底"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, on the road along the wall; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: medium shot on the road along the wall, side-on: A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, sitting in the saddle of one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, framed from the waist up with the horse's head and neck before her, the horse's head toward the left, her face lowered three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the torchlit barrier of crossed stakes all the way to the edge, and she is the only person in the frame; cold to the bone, not smiling: eyes narrowed, brows level, lips moving low and hard between words; behind her, soft, the long dark wall and the road back the way she came under the moon; their hands hold only what is described here",
+    "motion": "A-ling speaks a short Mandarin line, 「家裡的妹妹燒了一整天，讓開」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling's hands tighten on the reins and draw them in short as she speaks, the horse tossing its head once, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s26",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a25",
+     "speaker": "duizhang",
+     "text": "再往前一步，就當流寇拿下！",
+     "emotion": "喝令，拒絕"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, at the barrier of crossed stakes; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: medium shot behind the barrier of crossed stakes, the tops of the crossed stakes soft along the bottom of the frame: the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, standing behind the barrier, framed from the waist up, one long spear: a plain dark wooden shaft taller than he is, a small plain iron spearhead, the shaft bare below the head already lowered level in both hands from the first frame, its spearhead pointing out past the right edge of the frame, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark road along the wall all the way to the edge, and he is the only person in the frame; hard and final, not smiling: brows down, eyes hard, lips moving hard between words; behind him, soft, the lit brick wall and one torch fixed upright in an iron holder, nobody holding it, and at the left edge the edge of the swung-out small side door; their hands hold only what is described here",
+    "motion": "The guard captain speaks a short Mandarin line, 「再往前一步，就當流寇拿下！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the guard captain thrusts the spear forward one short hard jab toward the right and holds it there as he barks the order, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s27",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, at the barrier of crossed stakes; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: wide shot from behind and a little to the side at the barrier, the whole charge inside the frame: at the left the swung-out small side door of studded planks with one torch fixed upright in an iron holder beside it, nobody holding it; the long waist-high barrier of crossed wooden stakes standing across the paved road before it; on the road side of the barrier, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, already charging at full gallop away from us toward the barrier at the left from the first frame, seen from behind and a little to the side, its head toward the left, with A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, crouched flat over its neck, framed full figure; beyond the barrier, by the side door, the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, framed full figure, small, already flinching back from the first frame, his face toward the horse, never the lens, his mouth wide in alarm; their hands hold only what is described here; exactly two people and one horse",
+    "motion": "the horse pounds across the paving straight toward the barrier, closing in stride by stride, still two strides short of the stakes with all four hooves on the ground as the shot ends, while the guard captain throws himself aside; A-ling and the guard captain say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling",
+     "duizhang"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s27b",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night: the place exactly as in the picture: the big arched gate in the grey brick city wall at the left, both its tall leaves of dark studded planks shut, two iron ring knockers at their middle; just right of the arch, a smaller side door of studded planks standing swung out toward us from the wall, its dark doorway hidden behind it; one torch fixed upright in an iron holder left of the arch and one right of the side door, nobody holding them; a long waist-high barrier of crossed wooden stakes standing across the paved road from the foot of the torch right of the side door out to the right edge, blocking the way to the side door; the road running back along the wall toward the right; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: wide shot of the city gate, like the picture; a thick billow of dust already rising on the paving beside the barrier from the first frame; on the side-door side of the barrier, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, already landed on the paving from the first frame and running on at full gallop toward the swung-out small side door, seen from the side and behind, with A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, crouched low in the saddle, framed full figure; on the paving just behind the near end of the barrier, by the torch beside the side door, the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, already sprawled on the stones from the first frame, framed full figure, small, his spear lying beside him, his face toward the gate, never the lens; their hands hold only what is described here; exactly two people and one horse",
+    "motion": "the horse runs on through the dust and plunges past the edge of the side door into the dark doorway behind it, gone from sight, while the guard captain pushes himself up on one elbow; A-ling and the guard captain say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling",
+     "duizhang"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s28",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a26",
+     "speaker": "duizhang",
+     "text": "弩手！追上去，別讓她跑出東街！",
+     "emotion": "吼"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "Before the gate of the county town below the deep pool in the second watch of the same night, by the swung-out small side door; cold blue moonlight from the moon high at the right, the two torches by the gate the only warm light: medium shot by the swung-out small side door: the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, already back on his feet from the first frame, a dusting of grey dust over his black armour, framed from the waist up, his face three-quarter to screen left toward the dark doorway behind the swung-out small side door, never the lens; he is the only person in the frame; furious, not smiling: brows crushed down, mouth wide between shouted words; one torch fixed upright in an iron holder by the arch, nobody holding it; behind him, soft, the two shut leaves of the big gate under the brick arch; their hands hold only what is described here",
+    "motion": "The guard captain speaks a short Mandarin line, 「弩手！追上去，別讓她跑出東街！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the guard captain sweeps his flat right hand toward the dark doorway of the side door and roars the order into it, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s29",
+   "chapter": "縣城東街，醫館門口",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night: the street exactly as in the picture: the stone-paved street running away to its far end at the left, a long row of shut plank shopfronts under deep tiled eaves along the right, the nearest one a two-leaf plank door with two stone steps before it and a square stone hitching post at its left; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: wide shot down the street, like the picture: the stone-paved street running away to its far end at the left, a long row of shut plank shopfronts under deep tiled eaves along the right, the nearest one a two-leaf plank door with two stone steps before it and a square stone hitching post at its left; before the steps of the nearest two-leaf plank door at the right, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, already slowing to a halt from the first frame, side-on with its head toward the right, with A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, in the saddle, framed full figure, her face toward the door, never the lens, her lips closed, not smiling; the two leaves of the plank door shut; she is the only person in the frame; their hands hold only what is described here",
+    "motion": "A-ling swings down out of the saddle before the horse has quite stopped and lands on her feet on the paving beside it, the reins in her hand; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s30",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a27",
+     "speaker": "aling",
+     "text": "白大夫！柳溪許家，求您開門！",
+     "emotion": "拍門，第一次這麼大聲"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, at the two-leaf plank door; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: medium shot at the two-leaf plank door, from the side: A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, one short riding whip with a plain bamboo handle and a plaited leather lash tucked into her sash, standing on the top stone step facing the door at the right, side-on, framed from the waist up, both her palms already raised flat against the shut door leaves from the first frame, her face in profile to screen right toward the door, never the lens; desperate, not smiling: brows drawn, mouth wide, shouting loud between words; at the left edge of the frame, the head and neck of one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, its reins looped round the square stone hitching post, well apart from her; she is the only person in the frame; their hands hold only what is described here",
+    "motion": "A-ling speaks a short Mandarin line, 「白大夫！柳溪許家，求您開門！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling pounds both flat palms on the door leaves, one after the other, hard, and the leaves shudder at every blow as she shouts, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s31",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a28",
+     "speaker": "baidaifu",
+     "text": "來了來了，半夜拍什麼門，門都要拍壞了。",
+     "emotion": "畫外，門裡，慢，不慌，加一點悶"
+    }
+   ],
+   "data": {
+    "camera": "Insert close-up, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: insert close-up, the very first frame is already a close view of the narrow seam between two shut leaves of dark wooden planks, a thin line of warm light already glowing through the seam, and one hand in a grey-white sleeve bound at the wrist with a strip of grey cloth pressed flat on the planks beside it; the planks fill the background to every edge; only the planks, the seam of light and the one hand are in the frame",
+    "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the thin line of warm light in the seam brightens slowly and wavers once, as if a small flame is carried closer behind the door, and the hand on the planks goes still, and the cool moonlight stays unchanged",
+    "characters": [],
+    "buy_seconds": 8
+   }
+  },
+  {
+   "id": "s32",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a29",
+     "speaker": "duizhang",
+     "text": "別動！轉過身來，兩手舉高！",
+     "emotion": "吼"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, in the street; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: wide shot up the street toward its far end at the left, the square stone hitching post soft in the right foreground: coming up the middle of the stone-paved street, already halted in a ragged line from the first frame, six crossbowmen in the same black iron lamellar armour and plain iron helmets, their faces in the shadow of their helmets, each with one plain wooden crossbow held level in both hands, seen side-on and from the front at a distance, small, framed full figure, and one more guard in black armour holding up one burning torch in his right hand; one step in front of their line, the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, framed full figure, small, his face three-quarter to screen right toward the clinic steps, never the lens; harsh, not smiling: mouth wide between shouted words; at the right edge beside the steps, one chestnut-red horse, its mane and tail the same deep red-brown as its body, a plain dark leather bridle and an old plain brown leather saddle on a folded dark cloth, tied by its reins to the square stone hitching post, standing side-on with its head toward the left, well apart from her; at the right edge, on the top step of the nearest plank door, A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, seen only from behind, framed full figure, her back to the street, both her hands on the door leaves; their hands hold only what is described here; exactly nine people and one horse",
+    "motion": "The guard captain speaks a short Mandarin line, 「別動！轉過身來，兩手舉高！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the guard captain strides one step forward ahead of the line and throws up his flat right hand as he shouts, while the six crossbowmen stand still with their crossbows level; A-ling and the crossbowmen say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang",
+     "aling"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s33",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a30",
+     "speaker": "aling",
+     "text": "我妹妹等不了，我只要大夫。",
+     "emotion": "冷，不回頭"
+    }
+   ],
+   "data": {
+    "camera": "Close-up from the side, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, at the two-leaf plank door; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: close-up from the side at the two-leaf plank door: A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, a few strands of her hair blown loose from the hairpin, standing on the top step facing the shut door leaves at the right, side-on, framed from the chest up, her flat right palm already on the planks, her face in profile to screen right toward the door, her back to the street, never the lens; she is the only person in the frame; cold and unbending, not smiling: eyes narrowed, jaw set, lips moving low and hard between words; at the left, soft and out of focus, only a warm orange smudge of torchlight far down the dark street; their hands hold only what is described here",
+    "motion": "A-ling speaks a short Mandarin line, 「我妹妹等不了，我只要大夫」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling, her head held still toward the door, slaps her flat palm once more against the door as she speaks, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s35",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a31",
+     "speaker": "duizhang",
+     "text": "弩手聽令，全部對準她的背！",
+     "emotion": "低，狠"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, in the street; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: medium shot in the street: the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, standing in the middle of the line, one short plain single-edged knife with a dark wooden grip already held out in his right hand from the first frame, its point toward the right, framed from the waist up, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark street and the shut shopfronts all the way to the edge, and he is the only person in the frame; low and vicious, not smiling: eyes narrowed, jaw hard, lips moving low between words; behind him at the left, soft and out of focus, two crossbowmen in the same black armour and iron helmets seen side-on, their faces in the shadow of their helmets, each with one plain wooden crossbow held level in both hands; their hands hold only what is described here; exactly three people",
+    "motion": "The guard captain speaks a short Mandarin line, 「弩手聽令，全部對準她的背！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the guard captain thrusts the knife point out toward the right and holds it there as he gives the order low, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s36",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Medium shot over a crossbow, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, at the two-leaf plank door; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: medium shot from behind a raised crossbow: the plain wooden stock of a crossbow held level in two hands in black armoured cuffs soft and dark in the lower left foreground, aimed toward the clinic door; at the left, soft and dark beyond the crossbow, the hindquarters of the chestnut-red horse tied at the stone post; beyond it, A-ling, in her plain grey-white cotton dress tailored close at the waist with a long grey cloth sash, its long sleeves bound tight at both wrists with strips of grey cloth, dark cloth leg wraps below the hem of the dress, her long black hair pinned up with one plain wooden hairpin, seen only from behind and a little to the side, standing on the top stone step, framed from the knees up, both her hands on the shut plank door leaves, her head bowed toward the door; a thin line of warm light glowing through the seam between the leaves; their hands hold only what is described here; exactly two people, the one holding the crossbow seen only as two hands",
+    "motion": "the crossbow wavers a hair and steadies, A-ling's shoulders rise and fall with her breathing, and the line of light in the door seam grows brighter; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the cool moonlight stays unchanged",
+    "characters": [
+     "aling"
+    ],
+    "buy_seconds": 5
+   }
+  },
+  {
+   "id": "s37",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a32",
+     "speaker": "duizhang",
+     "text": "再不轉身，我這隻手一落，就放箭！",
+     "emotion": "吼"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, in the street; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: medium shot in the street: the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, standing in the middle of the line, one short plain single-edged knife with a dark wooden grip already moved to his left hand from the first frame and held down at his side, framed from the waist up, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark street and the shut shopfronts all the way to the edge, and he is the only person in the frame; cold and final, not smiling: brows down, eyes hard, mouth wide between shouted words; behind him at the left, soft and out of focus, two crossbowmen in the same black armour and iron helmets seen side-on, their faces in the shadow of their helmets, each with one plain wooden crossbow held level in both hands; their hands hold only what is described here; exactly three people",
+    "motion": "The guard captain speaks a short Mandarin line, 「再不轉身，我這隻手一落，就放箭！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the guard captain raises his empty right hand slowly straight up high over his head and holds it at the top as he shouts, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang"
+    ],
+    "buy_seconds": 6
+   }
+  },
+  {
+   "id": "s38",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq938a33",
+     "speaker": "duizhang",
+     "text": "放——",
+     "emotion": "短喊"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the east street of the county town below the deep pool a little later in the same night, in the street; cold blue moonlight on the stone paving, the deep eaves in black shadow, every shopfront shut and dark: close-up of the guard captain, a middle-aged man with a square face and a short black beard, in black iron lamellar armour with small red studs, a round iron helmet with cheek flaps that leaves his whole face bare and a small tuft of red horsehair on its crown, standing in the street, framed from the chest up with his raised right hand already high above his helmet from the first frame, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the dark street and the shut shopfronts all the way to the edge, and he is the only person in the frame; merciless, not smiling: brows crushed down, mouth wide on one long shouted word; behind him, soft and out of focus, only the dark street and the cold moonlight; their hands hold only what is described here",
+    "motion": "the guard captain's raised right hand starts to sweep down as he shouts the one long word, and the cool moonlight stays unchanged",
+    "characters": [
+     "duizhang"
+    ],
+    "nospeak": [
+     "duizhang"
+    ],
+    "buy_seconds": 5
+   }
+  }
+ ]
+}

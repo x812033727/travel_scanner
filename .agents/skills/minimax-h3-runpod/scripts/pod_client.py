@@ -165,6 +165,10 @@ def open_pod(label: str, slug: str | None) -> tuple[Pod, bool]:
         if status == 200 and not view.get("stopped_at"):
             print(f"[h3r] reusing pod {state['pod_id']}", flush=True)
             return Pod(site, state), False
+        if status not in (200, 404):
+            # the site did not answer (a container restart, the proxy coming up): keep the gate token, or the
+            # running pod is orphaned and bills until it is stopped by hand (zhong-tian r2, 2026-11-07, twice)
+            raise RunnerError(f"could not check pod session {state['session_id']}: HTTP {status} {detail(view)}; run again")
         clear_state()
     status, running = site.json("GET", "/api/video/runpod/pods")
     if status == 403:

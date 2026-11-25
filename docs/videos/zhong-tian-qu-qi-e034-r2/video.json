@@ -1,0 +1,970 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e034-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: only a hot dry wind and the whir of a paper pinwheel by a still wooden waterwheel at noon, one bright note on a sudden idea and quickening strings; then a lively work tune of drums and plucked strings by a green pond in the white afternoon sun, one strong beat as the last paddle goes on; then breathless strings at sunset, the full orchestra rising as a great waterwheel turns faster and faster and water runs into cracked fields, a pause under a sour landlord, warm strings, then everything swallowed by a low rising hum and a deep bass as a dark band darkens the sky; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "葉板裝反了！水車轉起來，北邊壓來一片黑雲｜種田娶妻打天下 第34集（重製版）",
+    "description": "水車轉了半圈就停住，小禾的紙風車在風裡倒著轉——許硯想通了：十二片葉板，角度跟水流反了。系統：今日日落到期。秦霜站上大石：一班下水卸板，二班扛板，三班上架釘！阿令提著一籃饅頭來，冷冷一句「妳數慢了，第八片已經上架了」。一個時辰，十二片全翻完。日落前，韓伯親手拉起閘門，水車顛一下、越轉越快，水頭衝進乾裂的田；韓伯跪在田邊捧起泥水，錢員外的壩白守了十天。旱災任務完成，稻種保住——笑聲裡，北邊的天一下子黑了。那不是雲，是蝗蟲。《種田娶妻打天下》第 34 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "水上來了！",
+      "tag": "種田娶妻打天下",
+      "shot": "s27"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "深潭邊，水車停住（第十日正午）",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: medium shot on the stone edge of the pond, like the picture: in the left half of the frame Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, framed from the waist up, both flat hands already resting on one wet wooden paddle on the rim of the still wheel at the right of the frame from the first frame, as in the shot before, his face three-quarter to screen right toward the paddle under his hands, his eyes on it, never the lens; drained and stunned, not smiling: brows drawn, lips pressed shut; beside him at the right, the near rim, spokes and paddles of the still wheel; at the lower left corner of the frame, cut by it, soft and out of focus, only a small hand in a patched lilac cotton sleeve holding up a little pinwheel of four plain white paper vanes on a thin bamboo stick, its four white vanes turning in the wind; he is the only person in the frame, with the small hand at its corner; their hands hold only what is described here",
+        "motion": "a gust of hot wind from the left sets the pinwheel spinning fast, and Xu Yan's fingers slowly curl against the paddle; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a01",
+          "speaker": "xiaohe",
+          "text": "哥，你看，我的風車也轉反了。",
+          "emotion": "鼓起臉"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: low-angle close-up of little Xiaohe, an eight-year-old girl in her patched lilac cotton jacket, her two little pigtails tied with red string, one front tooth missing, a small woven straw rabbit tucked into the cloth sash at her waist, seen from below, framed from the chest up with space above her head, a little pinwheel of four plain white paper vanes on a thin bamboo stick already held up before her chest in her right hand from the first frame, its vanes spinning in the wind, her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the pale clear sky and the long top beam of the tall wooden frame all the way to the edge, and she is the only person in the frame; pouting, not smiling: cheeks puffed out, brows drawn together, lips moving between words; behind her, soft, the pale clear sky and the top paddles of the still wheel at the left; their hands hold only what is described here",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥，你看，我的風車也轉反了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Little Xiaohe holds the spinning pinwheel out toward the right edge of the frame as she speaks, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a02",
+          "speaker": "xuyan",
+          "text": "轉反了……風從這邊來，葉子卻斜向那邊。",
+          "emotion": "畫外，愣住"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: insert close-up, the very first frame is already a close view of a little pinwheel of four plain white paper vanes on a thin bamboo stick, held upright by its stick in a small hand with a patched lilac cotton cuff, its four white vanes spinning fast in the wind, every vane tilted the same way; beyond it, soft and out of focus, only the pale clear sky fills the background to every edge; only the pinwheel, the small hand and the cuff are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the gust keeps blowing from the left and the pinwheel spins faster and faster, and the harsh white noon light stays unchanged",
+        "characters": [],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a03",
+          "speaker": "xuyan",
+          "text": "是葉板的角度，跟這段水流反了！",
+          "emotion": "想通了"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: medium shot on the stone edge of the pond by the stone steps, framed from the waist up: in the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, already turned to face the still wheel at the right from the first frame, his face three-quarter to screen right toward one wet wooden paddle on its rim at the right edge of the frame, his eyes on it, never the lens; that side of the frame is only the rough fieldstone edge of the pond, the green water and the near rim and paddles of the wheel all the way to the edge, and he is the only person in the frame; struck by a sudden thought, not smiling: eyes wide and bright, brows lifted, lips moving fast between words; behind him, soft, the stone steps, the small wooden landing and the low wooden frame in the hard noon sun; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「是葉板的角度，跟這段水流反了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slaps his flat right hand down hard on the paddle as he speaks, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a04",
+          "speaker": "shimujiang",
+          "text": "反了？那就是十二片全拆下來，翻個面再釘？",
+          "emotion": "粗啞"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: medium shot over a shoulder, looking up: at the left edge of the frame, cut by it, soft and out of focus, only the back of one shoulder in a faded blue-grey robe and the back of a man's topknot, toward us the whole shot; beyond it, up on the wheel's wooden trestle in the water in the middle of the frame, Carpenter Shi, in his faded light tan cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, his eyes red-rimmed and tired, his grey stubble grown rough, crouching, framed from the waist up, already leaning down toward the man in the foreground from the first frame, his left hand gripping one spoke of the still wheel, his face three-quarter to screen left toward him, never the lens; frowning hard, not smiling: brows knotted, eyes narrowed, lips moving roughly between words; behind him, soft, the still spokes and paddles of the wheel and the pale sky; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「反了？那就是十二片全拆下來，翻個面再釘？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi leans further down from the edge of the trestle as he speaks, and the harsh white noon light stays unchanged",
+        "characters": [
+          "shimujiang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a05",
+          "speaker": "xuyan",
+          "text": "對，翻過來它就轉。一片都不能漏。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot over the shoulder, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: reverse medium shot over a shoulder, looking down: at the upper right edge of the frame, cut by it, soft and out of focus, only the back of one shoulder in a faded light tan work jacket with the strap of a leather apron across it and the back of a grey topknot with one plain wooden stick through it, toward us the whole shot; beyond it, below in the left half of the frame, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, standing on the stone edge of the pond, framed from the waist up, his face tipped up three-quarter to screen right toward the man in the foreground, never the lens; sure and firm, not smiling: brows level, eyes steady, lips moving evenly between words; behind him, soft, the stone steps and the small wooden landing in the hard noon sun; their hands hold only what is described here; exactly two people, the one in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「對，翻過來它就轉。一片都不能漏」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan tilts his flat right hand to show the slant of a paddle and turns it over, palm up, as he speaks, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a06",
+          "speaker": "hanbo",
+          "text": "十二片葉板，日落前翻得完嗎？",
+          "emotion": "擔心"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: medium shot on the stone edge of the pond by the stone steps, framed from the waist up: Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, his polished old bamboo walking staff in one hand, the staff in his right hand, already arrived from the left from the first frame, his face lifted three-quarter to screen right toward the high sun beyond the upper right edge of the frame, eyes narrowed against the glare, never the lens; that side of the frame is only the rough fieldstone edge of the pond, the green water and the near rim and paddles of the wheel all the way to the edge, and he is the only person in the frame; worried, not smiling: brows knotted, lips moving slowly between words; behind him, soft, the stone steps, the small wooden landing and the low wooden frame in the hard noon sun; their hands hold only what is described here",
+        "motion": "Elder Han speaks a short Mandarin line, 「十二片葉板，日落前翻得完嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han raises his flat free left hand to shade his eyes against the sun as he speaks, and the harsh white noon light stays unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a07",
+          "speaker": "xitong",
+          "text": "叮。旱災任務，今日日落到期。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq934a08",
+          "speaker": "xuyan",
+          "text": "不用你說，太陽我自己看得見。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, standing on the stone edge in the left half of the frame, framed from the chest up with space above his head, his eyes already lifted toward the high sun beyond the upper left edge of the frame from the first frame, squinting, never the lens; he is the only person in the frame; tired and dry, not smiling: brows drawn, lips pressed shut; beside him at the right, the near rim, spokes and paddles of the still wheel; their hands hold only what is described here",
+        "motion": "Xu Yan lowers his eyes from the sun to the empty air before him and the corners of his mouth press down; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a09",
+          "speaker": "xitong",
+          "text": "看得見太陽，看不見葉板裝反了。",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq934a10",
+          "speaker": "xuyan",
+          "text": "行，這一句算你罵得對，我認。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, standing on the stone edge in the left half of the frame, framed from the chest up with space above his head, his eyes already lowered from the first frame, never the lens; he is the only person in the frame; resigned, not smiling: brows level, lips pressed shut; beside him at the right, the near rim, spokes and paddles of the still wheel; their hands hold only what is described here",
+        "motion": "Xu Yan lets out one long breath and turns his face toward the big grey boulder beyond the right edge of the frame; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a11",
+          "speaker": "xuyan",
+          "text": "秦霜，三班一起上，一個時辰翻完！",
+          "emotion": "急，交代"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought, by the big grey boulder on the stone edge at the right of the pond, beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: medium shot on the stone edge of the pond by the big grey boulder, like the picture: on top of the boulder at the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, framed from the knees up, already standing there from the first frame, both hands on her belt, her face three-quarter to screen left, looking down toward the man below her, her lips pressed shut, never the lens; sharp, not smiling; at the foot of the boulder, on the flat sandy bank just behind the stone edge in the middle of the frame, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, framed from the waist up, already arrived from the first frame, his face tipped up three-quarter to screen right toward her, never the lens; urgent, not smiling: brows drawn, lips moving fast between words; beside them, soft, the lower paddles of the still wheel at the left edge and the posts of the tall frame; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「秦霜，三班一起上，一個時辰翻完！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan swings his flat right hand up toward her as he speaks; Qin Shuang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the harsh white noon light stays unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a12",
+          "speaker": "qinshuang",
+          "text": "一班下水卸板，二班扛板，三班上架釘！",
+          "emotion": "颯爽"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: low-angle medium shot of Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, seen from below, framed from the waist up, already up on the very top of the big grey boulder from the first frame, her face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, never the lens; that side of the frame is only the pale clear sky and the top paddles of the still wheel all the way to the edge, and she is the only person in the frame; bold and commanding, not smiling: brows level, eyes bright, lips moving fast and clear between words; behind her, soft, only the pale clear sky and the long top beam of the tall wooden frame; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「一班下水卸板，二班扛板，三班上架釘！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang sweeps both flat hands out sharply, one to the left and one to the right, as she speaks, and the harsh white noon light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "chapter": "深潭邊，翻葉板（午後）",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a13",
+          "speaker": "qinshuang",
+          "text": "第一片下來了！二班接住，別讓它沉下去！",
+          "emotion": "喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought: the pool exactly as in the picture: a round pond of still deep green water edged with rough fieldstones in the foreground, two tall wooden frames standing at its far edge, stone steps and a small wooden landing at the left, a big grey boulder on the stone edge at the right, a flat sandy bank beyond, dry furrowed fields to the horizon, and the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: wide shot at standing eye height, like the picture, the whole wheel in the frame: standing waist-deep in the green water at the foot of the wheel, small, four men in Song-dynasty cross-collared homespun short jackets and grey cloth head wraps, each a different colour and age: a lean young man in a rust-red jacket, a stocky middle-aged man in a dull olive-green jacket, an older man with a short grey beard in a faded undyed hemp-beige jacket and a young man in a faded maroon jacket, all four with both hands on one loose flat wooden paddle at the bottom of the rim, already prying it free from the first frame; on the stone edge at the left by the stone steps, small, two men in Song-dynasty cross-collared homespun short jackets, faded indigo cloth head wraps and cloth shoes, a broad young man in a dark charcoal jacket and a thin man of about thirty in a faded green jacket, their hands reaching toward the water; three new plain wooden planks lying in a low stack on the stone edge in the left foreground; on top of the big grey boulder at the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, framed full figure, her flat right hand raised toward the men in the water, her face three-quarter to screen left toward them, never the lens; loud and quick, not smiling: lips moving fast between shouted words; the six men's lips closed, never the lens; their hands hold only what is described here; exactly seven people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「第一片下來了！二班接住，別讓它沉下去！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the four men in the water heave the loose paddle up onto the stone edge and the two men there catch it; The six men say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a14",
+          "speaker": "shimujiang",
+          "text": "斜三分，翻過來，釘在這裡。下一片！",
+          "emotion": "粗啞"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: medium shot on the flat sandy bank by the stone steps, both framed from the waist up, standing behind a rough plank trestle-table with one flat wooden paddle lying across it: on the left Carpenter Shi, in his faded light tan cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, his eyes red-rimmed and tired, his grey stubble grown rough, both flat hands already pressing the paddle down on the table from the first frame, his face three-quarter to screen right toward Xu Yan, never the lens; gruff and hoarse, not smiling: brows knotted, lips moving roughly between words; on the right Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, one iron hammer with a plain wooden handle raised in his right hand from the first frame, one long dark iron nail held upright on the paddle in his left fingers, well apart from the hammer's handle, his face bent toward the nail, his lips pressed shut, never the lens; intent, not smiling; behind them, soft, the stone steps, the small wooden landing and the still wheel in the white afternoon sun; their hands hold only what is described here; exactly two people",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「斜三分，翻過來，釘在這裡。下一片！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan brings the hammer down once on the nail as Carpenter Shi speaks; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "shimujiang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a15",
+          "speaker": "xiaohe",
+          "text": "阿令嫂嫂來了！籃子裡是小棠嫂嫂蒸的饅頭！",
+          "emotion": "雀躍"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: wide shot on the flat sandy bank at the left by the stone steps, both framed full figure: at the left A-ling, in her plain grey-white cotton dress tailored close at the waist with a cloth sash, its long sleeves covering both wrists, her long black hair pinned up with one plain wooden hairpin, one round bamboo basket with a dozen plain white steamed buns heaped in it on her left forearm, already arrived from the first frame, her face three-quarter to screen right toward the girl, her lips pressed shut, never the lens; cool and quiet, not smiling; beside her at the right little Xiaohe, an eight-year-old girl in her patched lilac cotton jacket, her two little pigtails tied with red string, one front tooth missing, a small woven straw rabbit tucked into the cloth sash at her waist, already holding the edge of A-ling's sleeve in her left hand from the first frame, a little pinwheel of four plain white paper vanes on a thin bamboo stick in her right hand, her face turned three-quarter to screen right toward the wheel at the right of the frame, never the lens; happy and loud: a wide gap-toothed smile, lips moving eagerly between words; behind them, soft, the stone steps, the small wooden landing and the low wooden frame in the white afternoon sun; their hands hold only what is described here; exactly two people",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「阿令嫂嫂來了！籃子裡是小棠嫂嫂蒸的饅頭！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Little Xiaohe tugs at the sleeve and calls out toward the wheel; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "aling",
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a16",
+          "speaker": "aling",
+          "text": "先給下水的人，他們冷。妳拿兩個給哥哥。",
+          "emotion": "淡淡的"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: medium shot on the stone edge of the pond by the stone steps, framed from the waist up: in the middle A-ling, in her plain grey-white cotton dress tailored close at the waist with a cloth sash, its long sleeves covering both wrists, her long black hair pinned up with one plain wooden hairpin, one round bamboo basket with a dozen plain white steamed buns heaped in it already set down on a flat stone of the edge beside her from the first frame, two plain white steamed buns in her right hand held out toward the man at the right, her face three-quarter to screen right toward him, never the lens; cool and even, not smiling: brows level, lips moving calmly between words; at the right two men in Song-dynasty cross-collared homespun short jackets and grey cloth head wraps, just up out of the water, their trousers rolled to the knees, a lean young man in a rust-red jacket and a stocky middle-aged man in a dull olive-green jacket, the nearer one reaching out a flat hand for the buns, their lips closed, never the lens; at the left beside her little Xiaohe, an eight-year-old girl in her patched lilac cotton jacket, her two little pigtails tied with red string, one front tooth missing, a small woven straw rabbit tucked into the cloth sash at her waist, two plain white steamed buns held against her chest in both hands, a little pinwheel of four plain white paper vanes on a thin bamboo stick tucked into her sash, her lips pressed shut, never the lens; their hands hold only what is described here; exactly four people",
+        "motion": "A-ling speaks a short Mandarin line, 「先給下水的人，他們冷。妳拿兩個給哥哥」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling puts the two buns into the nearer man's hand as she speaks; Little Xiaohe and the two men say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "aling",
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a17",
+          "speaker": "qinshuang",
+          "text": "第四片翻好了！後面還剩幾片？",
+          "emotion": "喘"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought; bright white afternoon sun high in a pale clear sky, shadows still short: low-angle close-up of Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, seen from below, framed from the chest up with space above her head, standing on top of the big grey boulder, a few strands of hair stuck to her damp forehead, her left fist already planted on her hip from the first frame, her face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, never the lens; that side of the frame is only the pale clear sky and the top paddles of the wheel all the way to the edge, and she is the only person in the frame; out of breath, not smiling: brows level, chest heaving, lips moving fast between panting words; behind her, soft, only the pale clear sky and the long top beam of the tall wooden frame; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「第四片翻好了！後面還剩幾片？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang raises her flat right hand high toward the wheel as she calls out, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a18",
+          "speaker": "aling",
+          "text": "妳數慢了。第八片已經上架了，剩四片。",
+          "emotion": "冷冷地"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: medium shot on the stone edge of the pond in the left half of the frame, framed from the waist up: A-ling, in her plain grey-white cotton dress tailored close at the waist with a cloth sash, its long sleeves covering both wrists, her long black hair pinned up with one plain wooden hairpin, her hands folded before her waist from the first frame, her face three-quarter to screen right toward the wheel at the right, her eyes on its paddles, never the lens; she is the only person in the frame; cold and flat, not smiling: brows level, eyes cool, lips moving evenly between words; beside her at the right, the near rim, spokes and paddles of the wheel; their hands hold only what is described here",
+        "motion": "A-ling speaks a short Mandarin line, 「妳數慢了。第八片已經上架了，剩四片」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling lifts her flat right hand toward the top of the wheel as she speaks, her eyes staying on it, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a19",
+          "speaker": "qinshuang",
+          "text": "眼睛倒尖。三班，最後四片，一起上！",
+          "emotion": "挑眉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, by the big grey boulder on the stone edge at the right of the pond, beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: medium shot of Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, standing on top of the big grey boulder at the right of the frame, framed from the knees up, her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the stone edge of the pond and the lower paddles of the wheel all the way to the edge, and she is the only person in the frame; dry and amused: one brow raised, a corner of her mouth tugged up, lips moving crisply between words; behind her, soft, the posts of the tall frame and the dry furrowed field in the white afternoon sun; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「眼睛倒尖。三班，最後四片，一起上！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang steps to the very edge of the boulder, ready to jump down, as she speaks, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a20",
+          "speaker": "qinshuang",
+          "text": "十二片，一個時辰，全翻完了！",
+          "emotion": "喘著，爽快"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought: the pool exactly as in the picture: a round pond of still deep green water edged with rough fieldstones in the foreground, two tall wooden frames standing at its far edge, stone steps and a small wooden landing at the left, a big grey boulder on the stone edge at the right, a flat sandy bank beyond, dry furrowed fields to the horizon, and the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: wide shot at standing eye height, like the picture, the whole wheel in the frame: up on the wheel's wooden trestle in the water Carpenter Shi, in his faded light tan cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, his eyes red-rimmed and tired, his grey stubble grown rough, framed full figure, small, one wooden mallet with a plain wooden handle already lowered in his right hand from the first frame, his face toward the paddle before him, his lips pressed shut, never the lens; standing knee-deep in the green water at the foot of the wheel Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, framed full figure, small, her face three-quarter to screen left toward the bank, never the lens; breathless and fierce, not smiling: lips moving fast between shouted words; a step further out beside her, waist-deep in the water, two men in Song-dynasty cross-collared homespun short jackets and earth-yellow cloth head wraps, a tall young man in a dark teal jacket and a wiry middle-aged man in a deep wine-red jacket, their hands resting on the lowest paddle, their lips closed, never the lens; on the stone edge at the left by the stone steps Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, framed full figure, small, his face toward the wheel, his lips pressed shut, never the lens; their hands hold only what is described here; exactly five people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「十二片，一個時辰，全翻完了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang thrusts her flat right hand high above her head as she shouts; Carpenter Shi, Xu Yan and the two men say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "shimujiang",
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a21",
+          "speaker": "xuyan",
+          "text": "韓伯，這一閘是柳溪的，您來開。",
+          "emotion": "把繩子遞給他"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: medium shot on the stone edge of the pond at the narrow gap by the stone steps, beside a small wooden sluice gate of three plain wet planks set upright in the narrow gap of the stone edge, one thick rope tied to its top, both framed from the waist up: on the left Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, his polished old bamboo walking staff in one hand, the staff in his left hand at his far side, his face three-quarter to screen right toward Xu Yan, his lips pressed shut, never the lens; moved, not smiling; on the right Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, already holding the loose end of the gate's rope out in both hands from the first frame, his face three-quarter to screen left toward Elder Han, never the lens; warm and steady, not smiling: brows level, lips moving gently between words; the staff stays well apart from the rope; behind them, soft, the stone steps and the small wooden landing in the white afternoon sun; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「韓伯，這一閘是柳溪的，您來開」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lays the rope's end in Elder Han's free right hand and steps back one pace as he speaks; Elder Han says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "hanbo",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a22",
+          "speaker": "hanbo",
+          "text": "好。祖宗的梁，就看這一下了。",
+          "emotion": "重重點頭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi in the early afternoon of the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; bright white afternoon sun high in a pale clear sky, shadows still short: close-up of Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, standing at the narrow gap of the stone edge, framed from the chest up with space above his head, both hands already gripping the thick rope tied to the top of the small wooden sluice gate before him from the first frame, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the rough fieldstone edge of the pond, the green water and the near rim and paddles of the wheel all the way to the edge, and he is the only person in the frame; resolute, not smiling: brows level, eyes wet, lips moving slowly and firmly between words; behind him, soft, only the stone steps and the green water in the white afternoon sun; their hands hold only what is described here",
+        "motion": "Elder Han speaks a short Mandarin line, 「好。祖宗的梁，就看這一下了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han gives one slow heavy nod as he speaks, and the bright white afternoon light stays unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s22",
+      "chapter": "深潭、新渠與田，日落",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a23",
+          "speaker": "xiaohe",
+          "text": "轉啊……求求你，這次一定要轉。",
+          "emotion": "屏住呼吸，小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at sunset on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; low warm golden sunset light: medium shot on the stone edge of the pond by the stone steps, both framed from the waist up: in the left foreground Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, side-on to us, already gripping in both hands from the first frame the thick rope tied to the top of the small wooden sluice gate of three plain wet planks set upright in the narrow gap between the two flights of stone steps just beyond him, his face toward the gate, his lips pressed shut, never the lens; straining, not smiling: teeth set; his bamboo staff leaning against the stone edge beside the gate, well apart from the rope; a step behind him at the right little Xiaohe, an eight-year-old girl in her patched lilac cotton jacket, her two little pigtails tied with red string, one front tooth missing, a small woven straw rabbit tucked into the cloth sash at her waist, a little pinwheel of four plain white paper vanes on a thin bamboo stick held upright between her two pressed palms before her chest, her face three-quarter to screen right toward the wheel at the right edge of the frame, never the lens; holding her breath, not smiling: eyes wide, lips moving in a whisper; behind them, soft, the stone steps and the small wooden landing in the low golden sunset light; their hands hold only what is described here; exactly two people",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「轉啊……求求你，這次一定要轉」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han throws his weight back on the rope, the sluice gate is pulled up out of the gap and a white rush of water pours through the gap toward the wheel at the right; Elder Han says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden sunset light stays unchanged",
+        "characters": [
+          "hanbo",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a24",
+          "speaker": "qinshuang",
+          "text": "轉了！",
+          "emotion": "畫外，短喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, static",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at sunset on the tenth day of the drought: the pool exactly as in the picture: a round pond of still deep green water edged with rough fieldstones in the foreground, two tall wooden frames standing at its far edge, stone steps and a small wooden landing at the left, a big grey boulder on the stone edge at the right, a flat sandy bank beyond, dry furrowed fields to the horizon, and the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; low warm golden sunset light: wide shot at standing eye height, side-on, like the picture, the whole wheel in the frame from the first frame, the camera still: a white surge of water already rushing along the stone edge from the left into the pond under the wheel; only the wheel, its frames, the pond, the stone edge and the fields are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. In this shot the wheel starts turning and keeps turning: the rushing water strikes the lowest paddles, the big wheel jerks a quarter turn, pauses for a moment, then turns again, faster and faster, its paddles sweeping round steadily to the last frame while the water churns white under it, and the low golden sunset light stays unchanged",
+        "characters": [],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, static",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at sunset on the tenth day of the drought; low warm golden sunset light: close-up of the top of the turning wheel exactly as in the picture against the sky, from the first frame: one flat wooden paddle after another sweeping up over the top of the rim, each lifting a sheet of pond water that streams off it and falls away in bright drops; only the wheel and the sky are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. The wheel turns steadily, the paddles rising over the top one after another, water pouring off each in a sheet, and the low golden sunset light stays unchanged",
+        "characters": [],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a25",
+          "speaker": "shimujiang",
+          "text": "轉起來了！七天沒白熬，梁沒白拆！",
+          "emotion": "啞著嗓子，難得笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at sunset on the tenth day of the drought, on the stone edge of the pond beside the big wooden water wheel exactly as in the picture, standing in the pond against the far stone edge, its twelve flat wooden paddles round its rim; low warm golden sunset light: medium shot on the stone edge beside the turning wheel, framed from the waist up: Carpenter Shi, in his faded light tan cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, his eyes red-rimmed and tired, his grey stubble grown rough, his face already tipped up toward the turning wheel above him from the first frame, his eyes on it, never the lens; he is the only person in the frame; laughing hoarsely at last: his mouth wide, eyes creased, lips moving between bursts of laughing words; behind him, soft, the spokes and paddles of the turning wheel and its trestle in the low golden sunset light; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「轉起來了！七天沒白熬，梁沒白拆！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi thumps his fist once against the wheel's wooden trestle beside him as he speaks, and the low golden sunset light stays unchanged",
+        "characters": [
+          "shimujiang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the deep pool on the flat dry fields of Liuxi at sunset on the tenth day of the drought, beside a new dry earthen channel dug across the cracked furrowed fields past two tall wooden posts and a big grey boulder; low warm golden sunset light: wide shot at standing eye height along the channel, like the picture: in the foreground the dry cracked earth of the channel's bank; a head of brown water already rushing along the dry earthen channel away from us toward the far fields, pouring into the cracks; running along the channel bank beside the water, small, framed full figure, four people in Song-dynasty cross-collared homespun jackets and cloth shoes, each a different colour and age: a boy of about ten in a mustard-yellow jacket, a young woman in a rust-red jacket, a broad middle-aged man in a dull olive-green jacket and a lean middle-aged man in a dark charcoal jacket, their hands empty, never the lens; their hands hold only what is described here; exactly four people",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. The head of water runs on along the channel into the far fields and the four people run with it, their arms raised high, and the low golden sunset light stays unchanged",
+        "characters": [],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a26",
+          "speaker": "hanbo",
+          "text": "水……水上來了！柳溪的田，有水了！",
+          "emotion": "哭出來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: medium shot on the low grassy ridge at the edge of the field, framed from the waist up: in the middle Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, already kneeling on the ridge from the first frame, both hands cupped before his chest holding a double handful of cloudy brown water from the furrow, his bamboo staff lying on the grass beside him, his face bent toward the water in his hands, never the lens; weeping: eyes wet and squeezed, his mouth trembling, lips moving brokenly between words; behind him, soft, two women standing side-on in Song-dynasty cross-collared homespun jackets and cloth shoes, a bent old woman in a faded deep plum jacket with a white head cloth and a middle-aged woman in a dark grey jacket with a faded indigo head cloth, their hands empty, their lips closed, never the lens; beyond them the furrows with a thin sheet of brown water spreading along them, the houses and the far hills in the low golden sunset light; their hands hold only what is described here; exactly three people",
+        "motion": "Elder Han speaks a short Mandarin line, 「水……水上來了！柳溪的田，有水了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the brown water runs out between Elder Han's trembling fingers as he speaks; The two women behind him say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden sunset light stays unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a27",
+          "speaker": "hanbo",
+          "text": "許先生，老頭子替全村，給您磕個頭。",
+          "emotion": "很重"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: medium close-up of Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, kneeling on the grassy ridge, framed from the waist up, his empty hands already resting on his knees from the first frame, his face lifted three-quarter to screen right toward someone out of sight beyond the upper right edge of the frame, never the lens; that side of the frame is only the sky over the far hills and a few drooping branches of the big old tree all the way to the edge, and he is the only person in the frame; grave and heavy, not smiling: eyes wet, brows lifted, lips moving slowly and heavily between words; behind him, soft, only the strip of field, the houses and the far hills in the low golden sunset light; their hands hold only what is described here",
+        "motion": "Elder Han speaks a short Mandarin line, 「許先生，老頭子替全村，給您磕個頭」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Elder Han bends slowly forward from the waist toward the ground to bow as he speaks, and the low golden sunset light stays unchanged",
+        "characters": [
+          "hanbo"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a28",
+          "speaker": "xuyan",
+          "text": "韓伯快起來！梁是大家拆的，水是大家引的！",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: medium shot on the low grassy ridge at the edge of the field, both framed from the waist up: at the left Elder Han, in his faded grey cotton cross-collared long robe, his long white beard down to his chest, his white hair in a small topknot, kneeling, his face lifted three-quarter to screen right toward Xu Yan, his lips pressed shut, never the lens; overcome, not smiling; at the right Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, already down on one knee in front of him from the first frame, both hands gripping the old man's forearms, his face three-quarter to screen left toward him, never the lens; urgent, not smiling: brows drawn, lips moving fast between words; behind them, soft, the furrows with a thin sheet of brown water, the houses and the far hills in the low golden sunset light; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「韓伯快起來！梁是大家拆的，水是大家引的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan rises and lifts Elder Han up to his feet by the forearms as he speaks; Elder Han says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden sunset light stays unchanged",
+        "characters": [
+          "hanbo",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a29",
+          "speaker": "qianyuanwai",
+          "text": "我的壩……白守了十天，就這樣沒用了？",
+          "emotion": "笑凍住，擠出來的"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the grassy bank under the big old tree at the edge of the field; low warm golden sunset light: wide shot at standing eye height across the furrows toward the grassy bank under the big old tree at the right, like the picture: on the bank, framed full figure, Qian Yuanwai, short and portly with a round face and a thin eight-shaped moustache, in his dark gold silk robe woven with small round medallions, the front of the robe plain brocade, three gold rings on his fingers, already backing away a step from the first frame, his face three-quarter to screen left toward the water in the furrows before him, never the lens; his mouth stuck in a stiff frozen stretch, eyes staring, his face drained pale, not smiling; lips moving stiffly between words; one step behind him two men in identical Song-dynasty black cross-collared short jackets, black cloth head wraps and cloth shoes, their hands empty at their sides, their lips closed, never the lens; their hands hold only what is described here; exactly three people",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「我的壩……白守了十天，就這樣沒用了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qian Yuanwai fans himself with one wide sleeve as he speaks; The two men behind him say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden sunset light stays unchanged",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a30",
+          "speaker": "qinshuang",
+          "text": "員外，你的壩沒用了，留著洗腳吧。",
+          "emotion": "不屑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the grassy bank under the big old tree at the edge of the field; low warm golden sunset light: medium shot on the grassy bank under the big old tree, framed from the waist up: Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, already arrived up on the bank from the first frame, both hands planted on her belt, her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the grassy bank and the trunk of the big old tree all the way to the edge, and she is the only person in the frame; scornful: a cold curl at one corner of her mouth, eyes narrowed, lips moving crisply between words; behind her, soft, the furrows of the field and the far hills in the low golden sunset light; their hands hold only what is described here",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「員外，你的壩沒用了，留著洗腳吧」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang lifts her chin a little toward the right edge of the frame as she speaks, and the low golden sunset light stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a31",
+          "speaker": "qianyuanwai",
+          "text": "哼，有水算什麼。田裡長不出糧，一樣得求我。",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the grassy bank under the big old tree at the edge of the field; low warm golden sunset light: medium shot on the grassy bank under the big old tree, framed from the waist up: Qian Yuanwai, short and portly with a round face and a thin eight-shaped moustache, in his dark gold silk robe woven with small round medallions, the front of the robe plain brocade, three gold rings on his fingers, already turning away to the right from the first frame, his face looking back over his right shoulder toward the field beyond the lower left edge of the frame, never the lens; he is the only person in the frame; sour and dark, not smiling: his face fallen, jaw clenched, lips moving through gritted teeth between words; behind him, soft, the trunk of the big old tree and the far hills in the low golden sunset light; their hands hold only what is described here",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「哼，有水算什麼。田裡長不出糧，一樣得求我」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qian Yuanwai gives his sleeve one sharp shake, walks away toward the right edge of the frame and throws the words back over his shoulder as he goes, and the low golden sunset light stays unchanged",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a32",
+          "speaker": "xitong",
+          "text": "叮。旱災任務完成，稻種保住。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq934a33",
+          "speaker": "xuyan",
+          "text": "保住了。小棠顧著的那碗芽，今晚就能下田。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, standing at the edge of the field, framed from the chest up with space above his head, his eyes already lowered from the first frame, the low golden sunset light on one side of his face, never the lens; he is the only person in the frame; relieved, not smiling: brows easing, lips pressed shut; behind him, soft, only the strip of field, the houses and the far hills in the sunset; their hands hold only what is described here",
+        "motion": "Xu Yan lets out one long slow breath and lifts his eyes again toward the field; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the low golden sunset light stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a34",
+          "speaker": "xiaohe",
+          "text": "哥，你看，風車轉對了，水車也轉對了！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: medium shot at the edge of the field, framed from the waist up: in the middle Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, standing, both hands holding the ankles of little Xiaohe, an eight-year-old girl in her patched lilac cotton jacket, her two little pigtails tied with red string, one front tooth missing, a small woven straw rabbit tucked into the cloth sash at her waist, who already sits astride his shoulders from the first frame, a little pinwheel of four plain white paper vanes on a thin bamboo stick held up high in her right hand; his face lifted toward her, a tired warm smile, never the lens; her face tipped down toward him, a wide gap-toothed smile, lips moving eagerly between words, never the lens; behind them, soft, the furrows with a thin sheet of brown water, the houses and the far hills in the low golden sunset light; their hands hold only what is described here; exactly two people",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥，你看，風車轉對了，水車也轉對了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the pinwheel spins fast in the wind as little Xiaohe holds it up high, and the low golden sunset light stays unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a35",
+          "speaker": "qinshuang",
+          "text": "阿令，妳剛才嘴角動了，我看見了。",
+          "emotion": "側頭，笑著"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: medium shot at the edge of the field where the channel water runs in, both framed from the waist up, side by side facing us; at their feet the brown channel water running in along the nearest furrow, glinting in the low sun, its rippling light playing on their faces: on the left A-ling, in her plain grey-white cotton dress tailored close at the waist with a cloth sash, its long sleeves covering both wrists, her long black hair pinned up with one plain wooden hairpin, her hands folded before her waist, her eyes down on the water, her lips pressed shut, never the lens; cool, not smiling; on the right Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, already turning her head toward A-ling from the first frame, never the lens; teasing: a sly grin, lips moving lightly between words; behind them, soft, the furrows, the houses and the far hills in the low golden sunset light; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「阿令，妳剛才嘴角動了，我看見了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang nudges A-ling's arm once with her right elbow as she speaks; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden sunset light stays unchanged",
+        "characters": [
+          "aling",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a36",
+          "speaker": "aling",
+          "text": "沒有。是水光晃到妳眼睛了。",
+          "emotion": "冷冷的"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool at sunset on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; low warm golden sunset light: close-up of A-ling, in her plain grey-white cotton dress tailored close at the waist with a cloth sash, its long sleeves covering both wrists, her long black hair pinned up with one plain wooden hairpin, framed from the chest up with space above her head, the corner of her mouth already pressed flat again from the first frame, her face three-quarter to screen left toward the water running along the furrows below, her eyes on it, never the lens; she is the only person in the frame; cold and flat, not smiling: brows level, lips moving evenly between words; behind her, soft, only the furrows, the brown water running along them glinting in the low golden light; their hands hold only what is described here",
+        "motion": "A-ling speaks a short Mandarin line, 「沒有。是水光晃到妳眼睛了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling turns her face a little further away toward the water as she speaks, and the low golden sunset light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a37",
+          "speaker": "xiaohe",
+          "text": "哥……北邊的天，怎麼一下子黑了？",
+          "emotion": "笑容沒了"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool as the sunset dies on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; the golden sunset light dimming fast to a cold dull grey, the sky darkening: low-angle close-up of little Xiaohe, an eight-year-old girl in her patched lilac cotton jacket, her two little pigtails tied with red string, one front tooth missing, a small woven straw rabbit tucked into the cloth sash at her waist, seen from below, high against the sky, framed from the chest up with space above her head, a little pinwheel of four plain white paper vanes on a thin bamboo stick already lowered in her left hand from the first frame, its vanes still, her face lifted three-quarter to screen right toward the far hills beyond the upper right edge of the frame, her eyes on them, never the lens; she is the only person in the frame; frightened, not smiling: eyes wide, lips moving uncertainly between words; behind her, soft, only the darkening grey sky; their hands hold only what is described here",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥……北邊的天，怎麼一下子黑了？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Little Xiaohe stretches her flat right hand out toward the far hills at the upper right as she speaks, and the light keeps dimming to a cold grey",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a38",
+          "speaker": "aling",
+          "text": "風是冷的，還帶著嗡嗡的聲音。",
+          "emotion": "很輕，警覺"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool as the sunset dies on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; the golden sunset light dimming fast to a cold dull grey, the sky darkening: close-up of A-ling, in her plain grey-white cotton dress tailored close at the waist with a cloth sash, its long sleeves covering both wrists, her long black hair pinned up with one plain wooden hairpin, framed from the chest up with space above her head, her face already lifted three-quarter to screen right toward the far hills beyond the right edge of the frame from the first frame, her eyes on them, never the lens; she is the only person in the frame; alert, not smiling: eyes narrowed, head tilted a little to listen, lips moving softly between words; behind her, soft, only the darkening grey sky; their hands hold only what is described here",
+        "motion": "A-ling speaks a short Mandarin line, 「風是冷的，還帶著嗡嗡的聲音」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling tilts her head sharply to listen and holds still as she speaks, and the light keeps dimming to a cold grey",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a39",
+          "speaker": "xuyan",
+          "text": "小禾，抓緊哥。大家先別出聲，聽。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool as the sunset dies on the tenth day of the drought, on the low grassy ridge at the edge of the dry cracked furrows; the golden sunset light dimming fast to a cold dull grey, the sky darkening: medium shot at the edge of the field, framed from the waist up: Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves rolled up to the elbows, dark shadows under his eyes and a short dark stubble on his jaw after seven short nights, standing, his face three-quarter to screen right toward the far hills beyond the right edge of the frame, his eyes on them, never the lens; tense, not smiling: jaw set, teeth clenched, lips moving low between words; across his shoulders at the top edge of the frame, cut by it, only a small girl's two legs in patched lilac trousers and cloth shoes and a small woven straw rabbit at her sash, his two hands already gripping her ankles from the first frame; behind him, soft, the furrows and the far houses under the darkening grey sky; their hands hold only what is described here; he is the only one whose face is in the frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小禾，抓緊哥。大家先別出聲，聽」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan takes half a step back, gripping the small ankles tight, as he speaks, and the light keeps dimming to a cold grey",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq934a40",
+          "speaker": "hanbo",
+          "text": "那不是雲，是蝗蟲！蝗蟲過山了！",
+          "emotion": "畫外，大喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the three small dry fields of Liuxi below the deep pool as the sunset dies on the tenth day of the drought: the fields exactly as in the picture: rows of dry cracked furrows with short dry stubble, a thin sheet of brown water spreading along the furrows, a low grassy ridge across the field, a big old tree at the right, a row of small houses and far hills at the left; the golden sunset light dimming fast to a cold dull grey, the sky darkening: wide shot from low behind the people at the field edge toward the far hills, like the picture: at the bottom edge of the frame, cut by it, soft and out of focus, the backs of the heads and shoulders of three people in Song-dynasty homespun jackets: an old man with a short grey beard in a faded undyed hemp-beige jacket and head wrap, a young woman in a rust-red jacket and a boy of about ten in a mustard-yellow jacket; far beyond the fields and the row of small houses, a low dark brown band made of countless tiny dark specks, already pressing over the far hills from the first frame, its leading edge breaking up into scattered specks; their hands hold only what is described here; exactly three people, all seen only from behind",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the dark band of tiny specks rolls slowly over the hills toward us, the last warm light on the fields fades to grey, and the three people lift their heads toward it, and the light keeps dimming to a cold grey",
+        "characters": [],
+        "buy_seconds": 8
+      }
+    }
+  ]
+}

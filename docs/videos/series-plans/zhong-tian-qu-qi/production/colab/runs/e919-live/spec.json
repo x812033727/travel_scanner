@@ -1,0 +1,633 @@
+{
+ "_note": "e919 live d1 (e918-live/spec.json's way after its review and fixes, written by mkspec.py). Tang Xiaotang never shows her mouth: s18 (alone, the page held up toward the dais), s28 (alone, the box of silver), s36, s39, s41 (Xu Yan facing us beyond her) are from behind her (nospeak, recordings laid in): her three face pictures and her identity sentence go, and the 'only' sentence says she is seen from behind and appears once; s19 is Qian Yuanwai's face with her line off screen; s27 her hand only. s06, s07, s20, s38 are her silent face: e907's neutral face sentences. Hand inserts s11 (Lai San) and s13 (Lai San and Qian Yuanwai) send only the sleeve crops (no face, no name) and no set picture. Qian Yuanwai's sentence takes the portrait's tall round smooth cap and round collar (e918 fix1); the gold rings only where his hands are seen (s12; s23 is an unnamed costume sentence with no picture of him); his angle-b is sent nowhere (s09, s15, s17, s19: portrait + angle-a); s04 has his unnamed back, s37 is Qin Shuang alone (review 必改). Sets by swap_pictures (prep919.sh, absolute paths): set-xianya-ceting-l1 (s01-s03), set-xianya-gongtang-floor-l1 (the floor), set-xianya-gongtang-dais-l1 (Magistrate Hu s05, s22, s24), and two new crops: set-xianya-steps-l2 (s28-s37) and set-wuding-eave-l2 (s38; s39-s41 no set picture). The speaking gaze names the listener off screen or the thing looked at. Crowded shots drop the profile pictures. No off-screen sentence is in these prompts (r2.py OFFSCREEN_SPEECH = False). Seeds 9191101/9191102.",
+ "seeds": [
+  9191101,
+  9191102
+ ],
+ "shots": {
+  "s01": {
+   "replace": [
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, long wide sleeves, his hands hidden inside them;"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-ceting-l1.png"
+   }
+  },
+  "s02": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the back of the young man's head and his shoulder in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ],
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, long wide sleeves, his hands hidden inside them;"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-ceting-l1.png"
+   }
+  },
+  "s03": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-ceting-l1.png"
+   }
+  },
+  "s04": {
+   "replace": [
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people and the one portly man kneeling with his back to us at the right edge are in the frame, his face out of the frame; no second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face tipped up toward the high dais above the top of the frame, her eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s05": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left, his eyes on the two men on the floor below him, moving from screen left to screen right"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-dais-l1.png"
+   }
+  },
+  "s06": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face tipped up toward the high dais, then turning three-quarter to screen right toward Qian Yuanwai off screen right, his eyes on him"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s07": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s08": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the backs of the two townsmen's heads and shoulders at the bottom edge the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s09": {
+   "replace": [
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, long wide sleeves, his hands hidden inside them;"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "qianyuanwai-angle-a-l1.png": "qianyuanwai-portrait-l1.png",
+    "qianyuanwai-angle-b-l1.png": "angles/qianyuanwai-angle-a-l1.png",
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s10": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward Lai San kneeling beside him, his eyes on him"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s11": {
+   "drop_set": true,
+   "replace": [
+    [
+     "Lai San shown in <Picture 1> keeps exactly the same face, hair and costume as the pictures: East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, an ancient Chinese Song-dynasty peasant's grey-brown hemp cross-collared short jacket and an old cloth head wrap; ",
+     "The two thin hands come out of grey-brown hemp cuffs of the cloth shown in <Picture 1>; "
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Only the two thin hands and the two slim hands in dark brown sleeves holding their wrists are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood. ",
+     ""
+    ],
+    [
+     "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
+     "Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
+    ]
+   ],
+   "swap_pictures": {
+    "laisan-portrait-l1.png": "laisan-sleeve-l1.png"
+   }
+  },
+  "s12": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the two hands in black sleeves gripping his forearms at the edges the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ],
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, three gold rings on his fingers;"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left, his eyes on the hands that grip his arms, darting between them"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s13": {
+   "drop_set": true,
+   "drop_pictures": [
+    "qianyuanwai-angle-a-l1.png",
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "replace": [
+    [
+     "Lai San shown in <Picture 1> keeps exactly the same face, hair and costume as the pictures: East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, an ancient Chinese Song-dynasty peasant's grey-brown hemp cross-collared short jacket and an old cloth head wrap; ",
+     "The two thin hands come out of grey-brown hemp cuffs of the cloth shown in <Picture 1>; "
+    ],
+    [
+     "Qian Yuanwai shown in <Picture 2>, <Picture 3> and <Picture 4> (the same man from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, an ancient Chinese Song-dynasty rich landlord's dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers; ",
+     "the two plump hands with three gold rings come out of the dark gold silk sleeves with roundel patterns shown in <Picture 2>; the arms leave the frame at the bottom edge; "
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only the four hands and their sleeves are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood. ",
+     ""
+    ],
+    [
+     "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
+     "Only hands move in this shot; the frame stays on the hands and what they hold from the first frame to the last."
+    ]
+   ],
+   "swap_pictures": {
+    "laisan-portrait-l1.png": "laisan-sleeve-l1.png",
+    "qianyuanwai-portrait-l1.png": "qianyuanwai-sleeve-l1.png"
+   }
+  },
+  "s14": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the one orange-red hand in the soft right foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right, his eyes on Lai San off screen left and then on the hand in the right foreground"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s15": {
+   "replace": [
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, his hands out of sight behind his back;"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "qianyuanwai-angle-a-l1.png": "qianyuanwai-portrait-l1.png",
+    "qianyuanwai-angle-b-l1.png": "angles/qianyuanwai-angle-a-l1.png",
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s16": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face lowered toward the bundle, his eyes on it, then lifting toward screen right"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s17": {
+   "replace": [
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, his hands out of sight behind his back;"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward Xu Yan off screen left, his eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "qianyuanwai-angle-a-l1.png": "qianyuanwai-portrait-l1.png",
+    "qianyuanwai-angle-b-l1.png": "angles/qianyuanwai-angle-a-l1.png",
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s18": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; the location",
+     "The location"
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "She is the only person in the frame, seen only from behind the whole shot; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s19": {
+   "replace": [
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, his hands out of sight behind his back;"
+    ]
+   ],
+   "swap_pictures": {
+    "qianyuanwai-angle-a-l1.png": "qianyuanwai-portrait-l1.png",
+    "qianyuanwai-angle-b-l1.png": "angles/qianyuanwai-angle-a-l1.png",
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s20": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face tipped up toward the high dais above the top of the frame, his eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s21": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face tipped up toward the high dais above the top of the frame, his eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s22": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face turning from screen left to three-quarter to screen right toward Qian Yuanwai off screen right below him, his eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-dais-l1.png"
+   }
+  },
+  "s23": {
+   "drop_pictures": [
+    "qianyuanwai-portrait-l1.png",
+    "qianyuanwai-angle-a-l1.png",
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "replace": [
+    [
+     "Qian Yuanwai shown in <Picture 1>, <Picture 2> and <Picture 3> (the same man from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, an ancient Chinese Song-dynasty rich landlord's dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers; the location",
+     "The one man in this shot is a short, portly man in a dark gold silk round-collared robe with roundel patterns, a white inner collar, long wide sleeves bunched at his elbows, and a tall round smooth black cap, plain and smooth all the way round down to its rim; the location"
+    ],
+    [
+     "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood. ",
+     ""
+    ],
+    [
+     "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are neutral studio portraits, never copy their blank expression.",
+     "Natural, realistic human motion of a real actor: the weight of his heavy body sinks with each breath, and the gold silk folds over his back and shoulders."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s24": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward Qian Yuanwai off screen right below him, his eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-dais-l1.png"
+   }
+  },
+  "s25": {
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s26": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the two hands in black sleeves gripping his upper arms at the edges the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ],
+    [
+     "dark gold silk cross-collared robe with roundel patterns and a small black cap, three gold rings on his fingers;",
+     "dark gold silk round-collared robe with roundel patterns, a white inner collar at his neck, and a tall round smooth black cap, plain and smooth all the way round down to its rim, long wide sleeves, his hands below the frame;"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his head turned back over his left shoulder toward Xu Yan off screen right, his face three-quarter toward us, his eyes on him"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s27": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the one small hand in a pink sleeve at the right edge the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-gongtang-floor-l1.png"
+   }
+  },
+  "s28": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; the location",
+     "The location"
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "She is the only person in the frame, seen only from behind the whole shot; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s29": {
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s30": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward Qin Shuang off screen right, his eyes on her"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s31": {
+   "replace": [
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward Xu Yan off screen right, her eyes on him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s32": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the back of the young woman's head and her shoulder in the foreground the composition describes is in the frame, belonging to someone whose face is out of the frame; no second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s33": {
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s34": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left, his eyes on a point in the air in front of him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s35": {
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s36": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us beyond her; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s37": {
+   "replace": [
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her head turned back over her left shoulder toward screen right, toward the others coming down the steps behind her off screen right, her eyes on them"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xianya-l1.png": "set-xianya-steps-l2.png"
+   }
+  },
+  "s38": {
+   "replace": [
+    [
+     "dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks,",
+     "a delicate beauty: big round clear eyes with long lashes, soft peach-pink lips, light rosy cheeks,"
+    ],
+    [
+     "flowing sleeves, a small gold abacus hanging at her waist",
+     "flowing sleeves, a small gold abacus hanging at her waist, her resting face composed, her lips closed"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-wuding-l1.png": "set-wuding-eave-l2.png"
+   }
+  },
+  "s39": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us beyond her; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "drop_set": true
+  },
+  "s40": {
+   "replace": [
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face tipped up toward the moon beyond the upper right of the frame, his eyes on it"
+    ]
+   ],
+   "drop_set": true
+  },
+  "s41": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan facing us beyond her; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "drop_set": true
+  }
+ }
+}

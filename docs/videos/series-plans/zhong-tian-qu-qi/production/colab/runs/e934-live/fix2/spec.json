@@ -1,0 +1,53 @@
+{
+ "base": "fix1 job and prompt as sent: s28 9341212, s32 9341211",
+ "shots": {
+  "s28": {
+   "base": "fix1 s28-9341212",
+   "seeds": [
+    9341311,
+    9341312
+   ],
+   "duration_seconds": 8,
+   "replace": [
+    [
+     "a deeply lined face, a long white beard down to his chest, white hair in a neat small topknot, grave steady eyes,",
+     "a worn, grieving old face, deeply lined, a long white beard down to his chest, white hair in a neat small topknot, grave steady eyes,"
+    ],
+    [
+     "his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, his face three-quarter to screen right, his eyes on the spot beyond the upper right edge of the frame as he starts to bow, never looking at the camera;",
+     "his lips moving with every syllable in small natural talking mouth shapes, his mouth parting only a little on each word under the white moustache, his upper teeth covered, his cheeks slack and hanging, his lips trembling, his face three-quarter to screen right, his eyes on the spot beyond the upper right edge of the frame for the first words and then on the grass in front of him as he goes down, never looking at the camera;"
+    ],
+    [
+     "By the last word Elder Han has bowed low: his body bent forward from the waist, his two hands slid forward off his knees onto the grass in front of him, his head lowered toward the ground, all of him still in the frame; he starts to bend forward slowly with the first words and keeps going down as he speaks,",
+     "By the middle of the line Elder Han has already bowed low: his body bent forward from the waist, his two hands slid forward off his knees onto the grass in front of him, his head lowered toward the ground, all of him still in the frame, and he says the last words with his face turned down toward the grass, only his white topknot and brow toward the camera; he starts to bend forward with the first word and keeps going down as he speaks,"
+    ]
+   ]
+  },
+  "s32": {
+   "base": "fix1 s32-9341211",
+   "seeds": [
+    9341313,
+    9341314
+   ],
+   "duration_seconds": 8,
+   "replace": [
+    [
+     "Qian Yuanwai, short and portly with a round face and a thin eight-shaped moustache, in his dark gold silk robe",
+     "Qian Yuanwai, in his dark gold silk robe"
+    ],
+    [
+     "his head turned back over his right shoulder, his face in profile looking back down toward the field beyond the lower left edge of the frame, never the lens;",
+     "his head turned back over his right shoulder, so that we see only the side of his face past his right shoulder: his ear, his cheek and the tip of his moustache, his eyes cast down toward the field below the lower left edge of the frame, never the lens;"
+    ],
+    [
+     "sour and dark: his face fallen, brows pulled down hard, the corners of his mouth pulled down, jaw clenched, lips tight and moving hard between words, no smile at any moment, not even at the end of the shot, until the last frame;",
+     "sulking and sour: his lower lip pushed out in a sulk, the corners of his mouth dragged down hard, his eyes narrowed under the heavy brows, his cheeks hanging flat and heavy, his nostrils flared, his lips tight and moving hard between words, no smile at any moment, not even at the end of the shot, until the last frame;"
+    ],
+    [
+     "his head turned back over his right shoulder, his eyes on the field beyond the lower left edge of the frame, looking back down to the lower left, never looking at the camera;",
+     "his head turned back over his right shoulder, his eyes on the field below the lower left edge of the frame, cast down toward it, never looking at the camera;"
+    ]
+   ]
+  }
+ }
+}

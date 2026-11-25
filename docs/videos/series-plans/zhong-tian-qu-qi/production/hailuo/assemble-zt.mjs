@@ -25,7 +25,7 @@ const COLORS = { panel: "0x5ec8ff", task: "0xffd75e", affection: "0xff8fb8", rew
 function panelFilters(shot, dur) {
   const items = overlays[shot] ?? [];
   if (!items.length) return "";
-  const lines = items.slice(0, 2);
+  const lines = items.slice(0, items.length > 3 ? 2 : 3);  // as assemble-v4: up to three rows, a longer list keeps the old two
   const h = 70 + 64 * lines.length;
   const y0 = 120;
   const start = 0.15;

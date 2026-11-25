@@ -7,6 +7,10 @@ lips follow that voice, owner 2026-11-07), and the pick's trim (start@S / end-be
 Writes ~/mokaair-work/videos/_live-e90N/zhong-tian-qu-qi-e90N-dh/clips/sNN-t1.mp4, and links the episode's recorded
 audio/ (system, off-screen and inner lines) and music/ next to it, so the live cut is assembled in that folder with
 VIDEO_WORKDIR=~/mokaair-work/videos/_live-e90N and clip_voice: true.
+
+`--draft-picture sNN[,sNN...]` (e928 REVIEW 3 s07): those shots take their picture from the picked draft itself, scaled
+lanczos to the refined 1312x736, because the pick changed to a draft that was never refined (refined/sNN.mp4 is still the
+earlier pick's refine and is left in place). Without the flag every shot is staged exactly as before.
 """
 import json
 import os
@@ -15,9 +19,13 @@ import sys
 from pathlib import Path
 
 N = int(sys.argv[1])
+DRAFT_PICTURE = set()
+for i, a in enumerate(sys.argv[2:], 2):
+    if a == "--draft-picture":
+        DRAFT_PICTURE |= set(sys.argv[i + 1].split(","))
 V = Path.home() / "mokaair-work" / "videos"
-E = V / f"_live-e90{N}" / f"zhong-tian-qu-qi-e90{N}-dh"
-CG = V / f"zhong-tian-qu-qi-e90{N}-dh"
+E = V / f"_live-e{900 + N}" / f"zhong-tian-qu-qi-e{900 + N}-dh"
+CG = V / f"zhong-tian-qu-qi-e{900 + N}-dh"
 picks = json.loads((E / "picks.json").read_text(encoding="utf-8"))
 (E / "clips").mkdir(exist_ok=True)
 for name in ("audio", "music"):
@@ -25,15 +33,20 @@ for name in ("audio", "music"):
         os.symlink(CG / name, E / name)
 done = missing = 0
 for shot, p in sorted(picks.items()):
-    pic = E / "runpod" / "a" / "st2" / "refined" / f"{shot}.mp4"
+    pic = Path(p["draft"]) if shot in DRAFT_PICTURE else E / "runpod" / "a" / "st2" / "refined" / f"{shot}.mp4"
     if not pic.exists():
         print(f"{shot}: not refined yet"); missing += 1; continue
     start = p["trim"].get("start", 0.0)
     cut = ["-to", f"{p['trim']['end-before']:.3f}"] if "end-before" in p["trim"] else []
     # a crop from the pick is given on the 960x544 draft; the refined picture is 1312x736, so it is scaled to match
-    vf = []
+    vf = ["-vf", "scale=1312:736:flags=lanczos,setsar=1"] if shot in DRAFT_PICTURE else []
+    if p.get("crop") and shot in DRAFT_PICTURE:
+        sys.exit(f"{shot}: --draft-picture with a crop is not supported")
     if p.get("crop"):
         w, h, x, y = (int(v) for v in p["crop"].split(":")); k = 1312 / 960
+        # e905: a picker wrote 1920x1080 numbers and ffmpeg failed on a box bigger than the picture; stop here instead
+        if x + w > 960 or y + h > 544:
+            sys.exit(f"{shot}: crop {p['crop']} is outside the 960x544 draft (write crop= in draft pixels)")
         vf = ["-vf", f"crop={round(w * k)}:{round(h * k)}:{round(x * k)}:{round(y * k)},scale=1312:736:flags=lanczos,setsar=1"]
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{start:.3f}", *cut, "-i", str(pic),
                     "-ss", f"{start:.3f}", *cut, "-i", p["draft"],

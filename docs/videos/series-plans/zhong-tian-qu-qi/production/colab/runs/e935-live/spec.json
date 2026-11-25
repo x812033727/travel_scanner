@@ -1,0 +1,922 @@
+{
+ "_note": "e935 live d1 (e934-live's way, with e931/e933-live's Tang Xiaotang back shots; written by mkspec.py). Tang Xiaotang from behind in s03, s09, s11b, s12b, s14, s23, s26, s28, s32 (pictures and identity sentence dropped); her one front face s11 (portrait and angle-a, no gold abacus); unlisted backs s04, s08, s18, s34. No person sent in the inserts s07, s21, s35 (no place sentence, one crop written as the ground and the light only), s12, s17b, s29. Xu Yan's angle-b nowhere; s26, s34 his portrait only; s02, s10, s27, s30 his portrait then angle-a. A-ling never angle-b; s16, s19, s20, s34 her portrait only; s17 her portrait then angle-a. Qian Yuanwai never angle-b; s22 his portrait only. The field prompts lose ' below the deep pool' (every later fix of s12-s25 must too). The clean sentence's 'clear and still' replaced in s14 (wind), s20-s25 (dawn mist), s26 (breeze). The refugees in straw sandals (s29). Sets: see mkspec.py. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9351101/9351102.",
+ "seeds": [
+  9351101,
+  9351102
+ ],
+ "shots": {
+  "s01": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "never the mood. one small dark shape thu",
+     "never the mood. One small dark shape thu"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
+   }
+  },
+  "s02": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-chuang-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s02b": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right, his eyes on the empty air before him"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-chuang-l1.png"
+   }
+  },
+  "s03": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "never the mood. she steps up to the edge",
+     "never the mood. She steps up to the edge"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
+   }
+  },
+  "s04": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the young woman seen from behind at the right edge of the frame the composition describes is in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
+   }
+  },
+  "s05": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left toward the small window beyond the left edge of the frame, her eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-di-l1.png"
+   }
+  },
+  "s06": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face turned three-quarter to screen right over his shoulder toward someone out of sight beyond the right edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-chuang-l1.png"
+   }
+  },
+  "s07": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The dark wooden tabletop shown in <Picture 1> gives only the ground and the light of the background."
+    ],
+    [
+     "Initial composition: Inside the farmhouse of the Xu family late at night on the tenth day of the drought; the one small warm flame on the table the only light, the corners of the room deep in shadow, the small window dark blue with night: insert close-up",
+     "Initial composition: Insert close-up"
+    ],
+    [
+     "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. ",
+     "Throughout the shot the framing stays as it is. The picture gives the ground and the light of the background only, never the mood. "
+    ],
+    [
+     "never the mood. the fingers push the rou",
+     "never the mood. The fingers push the rou"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-zhuo-l1.png"
+   }
+  },
+  "s08": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the young woman seen from behind at the right edge of the frame the composition describes is in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
+   }
+  },
+  "s09": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "never the mood. her right hand comes up ",
+     "never the mood. Her right hand comes up "
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
+   }
+  },
+  "s10": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-chuang-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s11": {
+   "replace": [
+    [
+     ", a small gold abacus hanging at her waist; ",
+     "; "
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-qiang-l1.png"
+   }
+  },
+  "s11b": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "never the mood. she hugs the abacus tigh",
+     "never the mood. She hugs the abacus tigh"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-wu-l1.png": "set-xujia-wu-ye-table-l1.png"
+   }
+  },
+  "s12": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only the four men the composition describes, each in a different colour, are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ],
+    [
+     "never the mood. more and more white duck",
+     "never the mood. More and more white duck"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-l1.png"
+   }
+  },
+  "s12b": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ],
+    [
+     "never the mood. her right arm swings out",
+     "never the mood. Her right arm swings out"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-liu-l1.png"
+   }
+  },
+  "s13": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ],
+    [
+     "never the mood. the duck on his head fla",
+     "never the mood. The duck on his head fla"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-an-l1.png"
+   }
+  },
+  "s14": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "She is the only person in the frame, seen only from behind; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "cinema camera. the location shown in <Picture 4>",
+     "cinema camera. The location shown in <Picture 4>"
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air is clear, a dry wind blowing, a clean natural film image"
+    ],
+    [
+     "never the mood. her right arm swings up ",
+     "never the mood. Her right arm swings up "
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-tian-l1.png"
+   }
+  },
+  "s15": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward the white ducks scattering across the water, his eyes on them"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-geng-l1.png"
+   }
+  },
+  "s16": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the one man holding the pole the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward the long bamboo pole, her eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-liu-l1.png"
+   }
+  },
+  "s17": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-an-l1.png",
+    "aling-angle-a-l1.png": "aling-portrait-l1.png",
+    "aling-angle-b-l1.png": "angles/aling-angle-a-l1.png"
+   }
+  },
+  "s17b": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ],
+    [
+     "never the mood. at the same moment all s",
+     "never the mood. At the same moment all s"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-shui-l1.png"
+   }
+  },
+  "s18": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the young woman seen from behind at the right edge of the frame the composition describes is in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air dim and dusty under the dull brown sky, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-zong2-geng-l1.png"
+   }
+  },
+  "s19": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-xi-l1.png"
+   }
+  },
+  "s20": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "never the mood. the white line of ducks ",
+     "never the mood. The white line of ducks "
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-l1.png"
+   }
+  },
+  "s20b": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left toward the white ducks on the water beyond the left edge of the frame, her eyes on them"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-liu-l1.png"
+   }
+  },
+  "s21": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The misty water shown in <Picture 1> gives only the ground and the light of the background."
+    ],
+    [
+     "Initial composition: On the three small fields of Liuxi below the deep pool at dawn the next morning; soft grey-gold dawn light, a thin white mist lying low over the water: insert close-up",
+     "Initial composition: Insert close-up"
+    ],
+    [
+     "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. ",
+     "Throughout the shot the framing stays as it is. The picture gives the ground and the light of the background only, never the mood. "
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "never the mood. the duck's bill darts fo",
+     "never the mood. The duck's bill darts fo"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-shui-l1.png"
+   }
+  },
+  "s22": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward the ducks on the water below the bank, his eyes on them"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png",
+    "qianyuanwai-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-liu-l1.png"
+   }
+  },
+  "s23": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Qian Yuanwai one step beyond her in the right third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "never the mood. her right arm swings out",
+     "never the mood. Her right arm swings out"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-liu-l1.png"
+   }
+  },
+  "s24": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face looking back over his right shoulder toward the paddy beyond the lower left edge of the frame, his eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-liu-l1.png"
+   }
+  },
+  "s25": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a thin white mist lying low over the water, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left toward the ducks on the water beyond the left edge of the frame, her eyes on them"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-hantian-yang-chen2-an-l1.png"
+   }
+  },
+  "s26": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, both seen from behind: the young woman with the buns and Xu Yan one step to her left; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a light evening breeze in the air, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-l1.png"
+   }
+  },
+  "s27": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-kong-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s28": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a light evening breeze in the air, a clean natural film image"
+    ],
+    [
+     "never the mood. her left hand tugs once ",
+     "never the mood. Her left hand tugs once "
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-men-l1.png"
+   }
+  },
+  "s29": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Every person in the frame wears worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the warm evening air, the torch flames wavering, a clean natural film image"
+    ],
+    [
+     "never the mood. the people behind press ",
+     "never the mood. The people behind press "
+    ]
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-wai-l1.png"
+   }
+  },
+  "s30": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the warm evening air, the torch flames wavering, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-kong-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s31": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a light evening breeze in the air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right, looking down toward someone out of sight beyond the lower right edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-ding-l1.png"
+   }
+  },
+  "s32": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Xu Yan, the young woman with the buns seen only from behind and the two men at the gate the composition describes are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the warm evening air, the torch flames wavering, a clean natural film image"
+    ],
+    [
+     "never the mood. her left hand grips the ",
+     "never the mood. Her left hand grips the "
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-men-l1.png"
+   }
+  },
+  "s33": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the one man seen from behind at the left edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a light evening breeze in the air, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-dao-l1.png"
+   }
+  },
+  "s34": {
+   "replace": [
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Xu Yan, A-ling, the young woman with the buns seen only from behind and the two men at the gate the composition describes are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the warm evening air, the torch flames wavering, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png",
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-men-l1.png"
+   }
+  },
+  "s35": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The rough wood shown in <Picture 1> gives only the wood and the light of the background."
+    ],
+    [
+     "Initial composition: At the village entrance of Liuxi at dusk five days after the swarm night; a warm orange-red evening sky, the sun just gone below the far hills: insert close-up",
+     "Initial composition: Insert close-up"
+    ],
+    [
+     "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. ",
+     "Throughout the shot the framing stays as it is. The picture gives the ground and the light of the background only, never the mood. "
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the warm evening air, the torch flames wavering, a clean natural film image"
+    ],
+    [
+     "never the mood. the fingers close one by",
+     "never the mood. The fingers close one by"
+    ]
+   ],
+   "swap_pictures": {
+    "set-cunkou-l1.png": "set-cunkou-zha2-zha-l1.png"
+   }
+  }
+ }
+}

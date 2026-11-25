@@ -1,0 +1,478 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "tension",
+   "from": "s01",
+   "to": "s04",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.2,
+   "tail": 0
+  },
+  {
+   "cue": "comedy",
+   "from": "s05",
+   "to": "s11",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 0.6,
+   "fade_out": 1.5,
+   "tail": 0
+  },
+  {
+   "cue": "warm",
+   "from": "s13",
+   "to": "s17",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 0.8
+  },
+  {
+   "cue": "river",
+   "from": "s18",
+   "to": "s23",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 0.8,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "comedy",
+   "from": "s24",
+   "to": "s28",
+   "offset": 25.0,
+   "gain": -22,
+   "fade_in": 0.4,
+   "fade_out": 1.5,
+   "tail": 0.6
+  },
+  {
+   "cue": "market",
+   "from": "s29",
+   "to": "s34",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 0.5,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "suspense",
+   "from": "s35",
+   "to": "s39",
+   "offset": 0.0,
+   "gain": -21,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  },
+  {
+   "cue": "tension",
+   "from": "s40",
+   "to": "s42",
+   "offset": 0.0,
+   "gain": -22,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "Wind",
+   "at": "s01",
+   "off": 0,
+   "gain": -9,
+   "to": "s08"
+  },
+  {
+   "file": "wind1",
+   "at": "s01",
+   "off": 1.75,
+   "gain": -10,
+   "to": "s08"
+  },
+  {
+   "file": "birds",
+   "at": "s01",
+   "off": 0,
+   "gain": -21,
+   "to": "s08"
+  },
+  {
+   "synth": "river",
+   "at": "s01",
+   "off": 0,
+   "gain": -14,
+   "to": "s08",
+   "fade": 0.6
+  },
+  {
+   "file": "birds",
+   "at": "s09",
+   "off": 0,
+   "gain": -18,
+   "to": "s17"
+  },
+  {
+   "file": "Wind",
+   "at": "s08",
+   "off": 4.25,
+   "gain": -7,
+   "to": "s17"
+  },
+  {
+   "file": "wind1",
+   "at": "s09",
+   "off": 0.25,
+   "gain": -7,
+   "to": "s17"
+  },
+  {
+   "synth": "river",
+   "at": "s17",
+   "off": 5.25,
+   "gain": -8,
+   "to": "s28",
+   "fade": 0.6
+  },
+  {
+   "file": "wind1",
+   "at": "s18",
+   "off": 0,
+   "gain": -12,
+   "to": "s28"
+  },
+  {
+   "file": "Wind",
+   "at": "s28",
+   "off": 3.6,
+   "gain": -8,
+   "to": "s38"
+  },
+  {
+   "file": "wind1",
+   "at": "s29",
+   "off": 1.25,
+   "gain": -9,
+   "to": "s38"
+  },
+  {
+   "file": "birds",
+   "at": "s29",
+   "off": 0,
+   "gain": -17,
+   "to": "s38"
+  },
+  {
+   "synth": "river",
+   "at": "s39",
+   "off": 0,
+   "gain": -8,
+   "to": "s42",
+   "fade": 0.6
+  },
+  {
+   "file": "Wind",
+   "at": "s38",
+   "off": 4.3,
+   "gain": -10,
+   "to": "s42"
+  },
+  {
+   "file": "fire",
+   "at": "s41",
+   "off": 0,
+   "gain": -28,
+   "to": "s42"
+  },
+  {
+   "file": "paper_02",
+   "at": "s01",
+   "off": 2.0,
+   "gain": -26
+  },
+  {
+   "file": "paper_01",
+   "at": "s02",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "splash_02",
+   "at": "s09",
+   "off": 1.5,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s13",
+   "off": 3.6,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s16",
+   "off": 0.5,
+   "gain": -24
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s16",
+   "off": 1.45,
+   "gain": -22
+  },
+  {
+   "file": "splash_01",
+   "at": "s18",
+   "off": 1.8,
+   "gain": -28
+  },
+  {
+   "file": "splash_02",
+   "at": "s19",
+   "off": 1.0,
+   "gain": -30
+  },
+  {
+   "file": "creak1",
+   "at": "s20",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "bookPlace1",
+   "at": "s24",
+   "off": 1.4,
+   "gain": -24
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s24",
+   "off": 3.45,
+   "gain": -22
+  },
+  {
+   "file": "paper_03",
+   "at": "s27",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s28",
+   "off": 2.8,
+   "gain": -28
+  },
+  {
+   "file": "paper_04",
+   "at": "s29",
+   "off": 0.4,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s29",
+   "off": 0.8,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s29",
+   "off": 1.4,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s29",
+   "off": 2.0,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s29",
+   "off": 2.5999999999999996,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s29",
+   "off": 3.2,
+   "gain": -32
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s29",
+   "off": 3.8,
+   "gain": -32
+  },
+  {
+   "file": "paper_03",
+   "at": "s31",
+   "off": 0.5,
+   "gain": -30
+  },
+  {
+   "file": "paper_03",
+   "at": "s31",
+   "off": 3.3,
+   "gain": -30
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s31",
+   "off": 4.5,
+   "gain": -16
+  },
+  {
+   "file": "handleCoins",
+   "at": "s33",
+   "off": 1.2,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s35",
+   "off": 5.9,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s38",
+   "off": 1.5,
+   "gain": -26
+  },
+  {
+   "file": "splash_01",
+   "at": "s39",
+   "off": 1.2,
+   "gain": -30
+  },
+  {
+   "file": "splash_02",
+   "at": "s39",
+   "off": 2.6,
+   "gain": -30
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s41",
+   "off": 0.0,
+   "gain": -6
+  },
+  {
+   "file": "splash_02",
+   "at": "s42",
+   "off": 0.6,
+   "gain": -28
+  },
+  {
+   "file": "gong_02",
+   "at": "s42",
+   "off": 3.95,
+   "gain": -4
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s42",
+   "off": 3.95,
+   "gain": -4
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {},
+ "clip_af": {
+  "s05": {
+   "from": 0,
+   "af": "asendcmd=c='2.2 rubberband pitch 1.0',rubberband=pitch=0.85:formant=preserved"
+  },
+  "s07": {
+   "from": 0,
+   "af": "rubberband=pitch=0.93:formant=preserved"
+  },
+  "s09": {
+   "from": 0,
+   "af": "rubberband=pitch=0.68:formant=preserved,volume=5.5dB"
+  },
+  "s10": {
+   "from": 0,
+   "af": "rubberband=pitch=0.88:formant=preserved"
+  },
+  "s11": {
+   "from": 0,
+   "af": "asendcmd=c='1.5 rubberband pitch 1.0',rubberband=pitch=0.85:formant=preserved"
+  },
+  "s13": {
+   "from": 0,
+   "af": "asendcmd=c='3.45 rubberband pitch 0.86;4.9 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s15": {
+   "from": 0,
+   "af": "asendcmd=c='1.725 rubberband pitch 1.0',rubberband=pitch=0.73:formant=preserved"
+  },
+  "s19": {
+   "from": 0,
+   "af": "rubberband=pitch=0.78:formant=preserved,volume=3dB"
+  },
+  "s28": {
+   "from": 0,
+   "af": "asendcmd=c='0.95 rubberband pitch 0.86',rubberband=pitch=1.0:formant=preserved"
+  },
+  "s30": {
+   "from": 0,
+   "af": "asendcmd=c='1.78 rubberband pitch 0.8',rubberband=pitch=0.66:formant=preserved"
+  },
+  "s40": {
+   "from": 0,
+   "af": "asendcmd=c='1.6 rubberband pitch 0.92;2.85 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
+  }
+ },
+ "voice_off": [],
+ "move_lines": {},
+ "min": {
+  "s42": 6.25
+ },
+ "line_at": {},
+ "panel_y": {},
+ "panel_until": {},
+ "vf": {
+  "s18": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s19": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s20": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s21": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s22": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s23": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s24": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s25": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s26": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s27": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s28": "eq=saturation=0.88:contrast=0.97,noise=alls=3:allf=t",
+  "s36": "crop=1714:964:0:60,scale=1920:1080:flags=lanczos,setsar=1",
+  "s39": "eq=brightness=-0.04:gamma=0.86:saturation=0.85,colorbalance=bs=0.03:bm=0.02",
+  "s42": "split[qaa][qab];[qab]crop=560:340:1360:0,hue=s=0,eq=brightness=-0.06,gblur=sigma=2,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((r(X\\,Y)-g(X\\,Y))-55)/30\\,0\\,1)*clip((330-Y)/24\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=1360:0,format=yuv420p,fade=t=out:st=4.200:d=0.55",
+  "s31": "split[qba][qbb];[qbb]crop=700:180:210:420,format=gbrp,split[qbc][qbd];[qbd]gblur=sigma=9[qbe];[qbc][qbe]blend=all_expr='A+(min(A\\,B)-A)*clip((T-2.8)/1.2\\,0\\,1)',format=yuv420p[qbf];[qba][qbf]overlay=210:420",
+  "s38": "split[qca][qcb];[qcb]gblur=sigma=10,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*max(clip((300-X)/40\\,0\\,1)\\,clip((X-1620)/40\\,0\\,1))*clip((740-Y)/40\\,0\\,1)'[qcc];[qca]format=rgba[qcd];[qcd][qcc]overlay=0:0,format=yuv420p"
+ },
+ "subtitle_lines": [],
+ "_note": "live action, written 2026-11-16 from edit-dh-e915-live.json (its form, REVIEW 3 lessons) and edit-dh-e914-live.json, on the refined, staged clips (_live-e916/zhong-tian-qu-qi-e916-dh/clips/sNN-t1.mp4, 42 shots): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card (s01 goes straight on from e915 s42, the same moment at the bridge), names {}. Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e016-r2; picks.json rebuilt by refine-prep.py 16 from colab/runs/e916-live/picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (in that order, run in colab/runs/e916-live) and re-staged with stage.py 16 (e916cut.sh re-stages when picks.json is newer than a clip); e916cut.sh's want table holds every trim (whole frames, tolerance 0.001) and the seeds. The fix1 retakes s26 s27 s32 s39 s42 (9161201/9161202) are trimmed as fix1/review-picks.tsv says. REVIEW3-TRIMS (first cut; ends only, each about 0.55-0.65 s after the last word, starts kept): s02 6.584 -> 5.25 (a02 c0.12-4.63), s03 6.584 -> 6.125 (= c4.375; a03 c0.12-3.79), s10 5.084 -> 4.125 (his voice ends c3.55, -64 dB at the cut), s23 8.0 -> 7.5 (a21 + a22 end c6.86), s24 5.0 -> 4.25 (= c4.0; a23 c0.12-3.43), s29 6.584 -> 5.375 (= c4.875; a28 ends c4.33, the papers still raised, they drop at c5.0), s30 5.334 -> 4.5 (his voice ends c3.85), s34 4.5 -> 3.375 (system a32 ends c2.58, the panel holds 0.8 s), s38 6.584 -> 5.625 (= c4.875; a36 ends c4.25, the oilcloth bundle disappears into her arms from c5.0). MEASURED: faster-whisper medium (scratchpad fw env, wav first) on every clip-voiced staged clip and again on the processed segments, plus 50 ms RMS at both ends of every staged clip: heads -51..-80 dB, tails decayed, no cut syllable; tightest s17, whose last word 城 decays into the clip's own end (draft end 6.56: -39 dB at c6.50, -70 at c6.525), and s05 (-68 dB in the last 50 ms). Whisper heard every clip-voiced line (homophones only: 脂肪 for 紙坊, 連 for 簾, 柳西, 上乏/上伐, 頭辮, 行賄, 書訪/書房, 筆給, 同一地墨, 再紮, 哪裡有湯). PITCH: YIN (au.py) read these takes erratically (octave jumps on Qin's and Shi's voices; the raw-vs-processed ratios came out 0.85-1.0 for a 0.75 shift), so the ranges were measured with a cepstral f0 (scratchpad tools/f0n.py, 40 ms frames) whose raw-vs-processed ratios match the rubberband factors (s09 0.70/0.69, s15 0.73, s35 1.15-1.23); clip_af rubberband formant preserved, a change inside a shot by asendcmd at a pause, timing unchanged, re-measured on the segments. Xu 106-145: s05 0.85 until 2.7 (走水路 168 by YIN, the cepstrum reads no pitch there), s07 0.93 (139/152/153 -> 137/142/141), s10 0.84 until 1.75 (168 -> 150, listen), s28 0.86 at 0.95-2.4 (就在書院門口 160 -> 137), s30 0.66 until 1.78 then 0.8 (202/175/176 -> about 160/141/142; whisper still hears 左邊是書房的紙); kept s01 s14 s17 s22 s25 s36 (113-145; YIN's 94 on s22 was wrong). Shi 110-160: s09 0.68 (219/181 -> 155/124), s11 0.85 until 1.5 (三百張？ 210 -> 190; 0.74 and 0.8 made whisper drop 三百張 entirely, 0.85 hears it -- a raised repeat, listen), rest of s11 kept (158/163). Qin 219-255: s13 0.86 at 3.45-4.9 (竹篙我削好了 278 -> 242), s15 0.73 until 2.1 (哪裡有灘 333 -> 242; the rest 242/260/253 kept), s19 0.78 (280/313/301 -> 219/246/250), s40 0.92 at 1.6-2.85 (是煙 266 -> 242; 從村子那邊來的 reads 180 on the cepstrum and 250 on YIN, kept, listen); kept s21 (246/225). Sun Zhanggui (s35, his only shot; e907 had him 105-155): his take reads 101/139/109, kept. Lai San has no clip voice this episode (s02 s08 are recordings from behind): a02 108-125 Hz (不賣？ rises to ~228), a08 85-105 (咬牙, low), kept as recorded. Tang: all fourteen lines are recordings, kept as recorded. VOICE_OFF none: every clip voice is the right speaker within 0.65-1.0x. RECORDINGS (audio/, originals in audio/orig/, e909's recipe acompressor 3:1 at -20 dB + volume + alimiter 0.84, integrated LUFS before -> after): Lai a02 -15.7 -> -14.5, a08 -19.0 -> -14.6; Tang a03 -15.3, a04 -16.8, a06 -16.0, a15 -15.3, a18 -16.1, a23 -16.1, a25 -14.9, a26 -15.5, a35 -16.9, a36 -16.5, a39 -15.3 -> -14.5/-14.6; Xu inner a22 -17.3 -> -14.6; system a21 -18.0 -> -14.6, a32 -19.7 -> -14.6. Untouched: a28 -13.1, a30 -14.5, a31 -12.5 (Tang calling out to the crowd), Shi off screen a38 -14.2, the lines the clips voice, the raw-tts files and audio/trim-takes/. LAID LINES (all at the default LEAD 0.12, no line_at): s02 a02, s03 a03, s04 a04, s06 a06, s08 a08, s16 a15, s20 a18, s23 a21 + a22, s24 a23, s26 a25, s27 a26, s29 a28, s32 a30, s33 a31, s34 a32 (panel), s37 a35, s38 a36, s41 a38, s42 a39; every one fits its clip (nothing held or slowed except the end). subtitle_lines none: a21 (s23, the system's jab) has no panel and is subtitled anyway (whisper reads 受阻...效率增高 -- listen); a32 is word for word on the s34 panel. PANEL: s34 at the default top (y 120-254): the high-angle wide's top band is the gate and the street end, faces start below it; no burned subtitles (soft CC track), so the panel and subtitles never overlap. MUSIC (library cues only, no new cue: Lyria is a paid service; music linked as zhong-tian-qu-qi-e916-dh/music -> _series/zhong-tian-qu-qi/music, the e915 way): (1) tension s01-s04 from 0 (-22, 1.0/1.2): the light standoff at the bridge; (2) comedy s05-s12 from 0 (-22, 0.6/1.5): 走水路 turns it bright, through the paper-making banter; (3) warm s13-s17 + 0.8 from 0 (-21, 1.0/1.5): Qin's pole, the 320 sheets, 天一黑就上筏; (4) river s18-s23 from 0 (-21, 0.8/1.0): the quiet night on the stream; (5) comedy from cue 25, s24-s28 + 0.6 (-22, 0.4/1.5): 直接賣給書生, the rhythm picks up; (6) market s29-s34 from 0 (-21, 0.5/1.0): the gate of the county school; (7) suspense s35-s39 from 0 (-21, 1.0/1.0): Sun Zhanggui's carriage, Tang going pale, the night back upstream; (8) tension s40-s42 from 0 (-22, 1.0/1.0) to the end. Ducked 3.5 : 1, release 900 ms. SFX (_series/zhong-tian-qu-qi/sfx; the library has no water, so the stream is assemble-v4's synth river: brown noise band-passed at 900 Hz, -31 LUFS at gain 0). Beds: bridge s01-s08 Wind -9 + wind1 -10 (1.75 s later) + birds -21 + river -14; workshop s09-s17 birds -18 + Wind -9 + wind1 -9 (s09 c1.25); raft s17 c6.0-s28 river -8 + wind1 -12 (started 0.54 s before the cut so the first night frame is not a hole); school gate s28 c3.6-s38 Wind -10, s29 wind1 -11 (c1.25) + birds -17; upstream and the landing s39-s42 river -8 + Wind -10, s41-s42 fire -28 (distant). The first cut had the beds at the e915 gains (Wind -13, river -24/-30): 0.5-1.2 s stretches at -45..-50 M between lines; raised as above, and the music tails/fades at s17->s18 and s28->s29 overlapped. ACCENTS: the system ding (auto, s34); s31 c4.5 impactBell_heavy_001 -16 as the second stroke stays clean (墨不洇, light); s41 c0.0 impactSoft_heavy_000 -6 under the start of Shi's shout (a low thump, the shout from c0.12; listen that it does not cover 許秀才); s42 c3.95 after her last word gong_02 -4 + impactSoft_heavy_000 -4, ringing out in the fade and the black. Spot effects: s01 paper 2.0; s02 paper 0.3; s09 screen into the vat 2.5; s12 drip 1.2; s13 pole against the post 3.6; s16 paper 0.5; s17 rope 0.4; s18 pole in the water 1.8; s19 water on the rock 1.0; s20 raft creak 0.3; s24 hand on the bundle 1.4; s27 paper 0.3; s28 paper folded 2.8; s29 papers raised 0.4, steps 0.8-3.8; s31 brush 1.5/3.6; s33 coins 1.2; s35 curtain 5.9; s38 pouch tied 1.5; s39 pole 1.2/2.6; s42 raft lunges 0.6. VF (on the 1920x1080 picture before the grade; blur and tone only, no darkening box): s18-s28 (night on the raft, post list: reads CG) a common light grade, saturation 0.88, contrast 0.97 and a little temporal grain (noise alls 3), so the eleven night shots sit together and the clean stars read less rendered; s36 (post list: her nose tip and mouth corner at the top right edge around draft 2.5 = c1.0) pushed in 1.12x anchored left (crop 1714x964 at 0,60, scaled back): everything right of x 1714 goes, Xu's bun stays in frame; s39 (blue dusk, post list: may be darkened to meet the night) brightness -0.04, gamma 0.86, saturation 0.85, a touch bluer; s42 (post list: dark any open flame; the take has one or two orange-red points at the smoke base, c2.0 and c4.6, x ~1530-1610, y ~190-220) only strongly red pixels (R-G over ~55, ramped over 30) in the top right 560x340 (x 1360-1920, y 0-330, feathered over the last 24 px) are replaced by a desaturated, slightly darker copy (hue s=0, brightness -0.06, sigma 2), so the flame points read as smoke; her face (R-G ~33), the house windows (y > 380) and her earring (y ~340-360) are outside the mask; then the picture fades out over c4.20-4.75. Not done: s15's two knotted ropes in the background (left edge and beside the post; cropping them needs a 1.3x push-in that takes her pole hand), accepted; s26 Xu's raised hand, s32 two hands on the paper, s21 lantern pole, s02 Lai's jaw line, all accepted in the post list. JITTER: cut-qa's jitter() on every staged clip 0.00 (s02 0.02, s15 0.08): no deshake, no vidstab. SLOWED/HELD: none slowed; the only hold is s42 (min 7.0: 2.25 s after the clip, all of it black after the fade). END: s42 is Tang's recording a39 (ends c3.81); the gong at c3.95 is hit in a lit picture, the picture fades over c4.20-4.75 and holds black to 7.0 while the gong rings; e916cut.sh fades the sound over the last 1.5 s.\nRESULT (e916cut.sh as written): 213.26 s (5118 frames; script estimate 222); -14.0 LUFS, LRA 6.2, peak -2.5 dBFS; loudnorm2 linear (pre -15.02 LUFS, -4.09 dBTP + 1.02 = -3.07 <= -2.2); cut-qa: fps 24, jitter 42 steady, held FAIL s42 1.77 s and black FAIL 2.29 s -- the intended end (the picture is faded out at c4.75 and the black holds the gong), motion FAIL 6.6 / static 4 % on the clips (5.1 / 11 % after grade) -- the refined slow push-ins, as e915; cut-jumps 0; audio-qa 39 lines 0 problems (gap notes before a12, a30, a37: s12, s31, s39 have no lines, on purpose). Floor: one 0.5 s dip to -41.7 M at 152.2-152.7 (the end of s30 into the brush insert), the last 0.6 s fade; nothing else under -40 M after the first 0.5 s. Accents (0.4 s momentary): s31 bell -22.1 at 157.7; s41 -15.5 at 201.3 (the shout itself); s42 gong at 210.2, RMS 0.25 s -15 at 210.25, -21 at 211.0, -30 at 212.0, -45 at 212.75 -- it rings out under the fade. Whisper (medium) on the processed segments heard every pitched line (s11 三百張 included) and every recording except two TTS readings: a21 宿主 -> 受阻, 真高 -> 增高 (s23) and a39 紙坊燒起來了 -> 植放燒氣來了 (s42), recordings unchanged. BY EAR / EYE: 5.0-10.3 s02 a02 (Lai, raised 1.2 dB) and 32.8-37.6 s08 a08 (raised 4.4 dB, low and gritted: does it sound like the same man?); 18.9-19.9 s05 走水路 at 0.85; 28.4-32.0 s07 at 0.93; 37.6-44.6 s09 Shi at 0.68; 45.0-46.1 s10 天黑前 at 0.84 (still ~150); 49.0-49.9 s11 三百張？ at 0.85 (~190, a raised repeat) and 54.7 the nasal hm after his line (kept); 62.2-63.5 s13 the 0.86 phrase; 71.3-72.2 s15 哪裡有灘 at 0.73; 87.5 s17 城 ends on the cut; 87.6-143.4 the night grade and grain on s18-s28; 90.8-94.2 s19 at 0.78; 110.5-117.4 s23 the system jab a21 and a22 on his closed mouth; 139.1-143.4 s28 at 0.86; 148.3-152.1 s30 at 0.66 / 0.8 (first phrase still ~155); 152.2-152.7 the -41.7 dip; 157.7 s31 bell; 167.9-171.3 s34 panel; 171.3-177.8 s35 Sun at his own pitch; 177.8-182.9 s36 the 1.12x push-in (no face at the right edge); 192.0-196.0 s39 darkened dusk; 198.1-200.2 s40 從村子那邊來的 (180 by cepstrum, 250 by YIN); 200.75 s41 the thump under 許秀才; 206.25-213.26 s42 the smoke mask (no orange at the smoke base), a39, the gong in the fade and 2.3 s of black; Tang a03 10.4, a18 94.9, a25 127.5, a39 206.4 against each other. REVIEW 3 (2026-11-16, colab/runs/e916-live/review3-plan.md: cut-review.md + cut-review-2.md merged, the coordinator's picks; nothing paid -- no Colab, RunPod or site TTS; work files in the session scratchpad e916r3/, deleted after the cut). ACCEPTED (coordinator, no action): s26 palms (both seeds and the fallback are worse), Lai San's side of the beam after e015 s42 (e015 delivered), the leaf on the screens differing shot to shot (for e029: draw a bamboo-screen prop picture before the watermark episode), s20 Tang's cheek (no mouth), s27 round lantern, s37 purse/abacus on the table, Tang's bun shapes, the dusk-looking return. DELETED s12 (the insert's set reads as an outdoor deck, a raised gold leaf on the screen; no lines): assemble-v4.mjs cuts every scene video.json lists and has no skip, so e916cut.sh writes $E/video-live.json (video.json without DROP=\"s12\") for the cut, audio-qa and the sheets; picks.json and clips/s12-t1.mp4 stay, unused; sfx splash_01 @ s12 deleted; music comedy s05-s11 (was s12). PICKS: refine-prep.py 16 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv review4-trims.tsv, then stage.py 16; e916cut.sh's want table follows. TRIMS (review4-trims.tsv; whole frames, start floor / end ceil to 3 decimals; checked with faster-whisper word times on the restaged clips plus 50 ms RMS at each cut, no syllable cut): s05 start 2.375 (-59 dB there; 走 from draft 2.80, c0.425), s09 start 2.0 (room tone -48 dB; 第 from draft 3.12, c1.12), s15 start 0.625 (-61 dB; 哪裡 from draft 1.08, c0.455; the -12 dB pole tick at draft 0.75 stays, as before), s17 start 0.75 (reviewers 0.75 / 0.5; -62 dB there, a breath at draft 0.95-1.15, 好 from draft 1.55 by RMS -- whisper's 2.06 is late -- so c0.80), s31 end 5.75 (c5.00: the right stroke still clean; reviewer 2), s39 end 4.0 (reviewers 4.0 / 4.5, chosen frame by frame: at c2.5-2.92 the pole still slants into the water, poling; from c3.0 it is lifted level across her chest like a spear). Moved with the starts: clip_af s05 asendcmd 2.7 -> 2.2 (in the 1.74-2.78 pause), s15 2.1 -> 1.725 (in the 1.60-1.85 pause); sfx s09 splash_02 2.5 -> 1.5, s17 cloth2 0.4 deleted, river bed s17 off 6.0 -> 5.25 (still 0.54 s before the cut). SFX: s31 paper_03 1.5/3.6 -> 0.5/3.3 (the brush lands at c0.375-0.5 and c3.25-3.375, frame by frame; reviewer 1: the pen sound was 1 s late, the cause of the -41.7 dip); accents (reviewer 2, light): impactBell_heavy_001 -22 at s16 c1.45 (after 三百二十張, in the pause before 一張不少) and at s24 c3.45 (after 賣給書生); 0.4 s momentary stays at or under the lines (-13..-15 / -22 falling to -36). Beds (re-measured: with Tang louder, loudnorm2 takes the whole mix ~0.3 dB lower and the floor dropped): workshop Wind -9 -> -7 and started at s08 c4.25 (was s09 c0: the two beds' 0.6/0.5 s fades left -43.9 M at the s08/s09 cut), wind1 s09 1.25 -> 0.25, -9 -> -7; school gate Wind -10 -> -8, wind1 -11 -> -9; the upstream Wind starts at s38 c4.3 (was s39 c0). VOICE: Tang's recordings, measured first (0.4 s momentary p75 per line, 48 kHz): her plain lines -13.2..-14.3 against Xu -10.3..-13.3 and Qin -10.2..-12.1 in the same scenes, ~2.5 dB under; level.py (e909's recipe from audio/orig/, integrated LUFS): a03 a04 a06 a15 a18 a23 a25 a26 a36 a39 -14.5 -> -12.0 (+2.5), a35 and a30 -> -13.0 (+1.5; a35 sat next to s36 at -12.6, a30 next to s30), a28 -13.1 -> -12.2 and a31 -12.5 -> -11.5 (+1.0 only: the calls to the crowd were already as loud as Xu; first time through the recipe, originals now in audio/orig/); Lai a02 -14.5 -> -12.5 (+2). The louder floor of the re-levelled files lengthened six laid lines by 0.1-0.3 s past -45 dB (silenceremove) and slowed s20/s33 on the first re-cut, so every re-levelled file is cut back to the span its previous version's -45 dB edges had (20 ms fades); laid lengths back within 0.02 s (a35 0.1 s shorter at the head). Result (p75 in the cut): Tang -12.1..-13.6, Xu -11.5..-14.6, Qin -10.9..-13.0; pairs s05/s06 -12.2/-13.0, s15/s16/s17 -13.0/-12.9/-13.6, s19/s20/s21 -12.9/-12.9/-11.9, s24/s25/s26 -12.6/-12.4/-12.8, s30/s32 -14.1/-13.6, s36/s37 -13.2/-13.1, s40/s42 -10.9/-12.1; s27/s28 -12.7/-14.6 (s28 is at 0.86). Lai a02 -14.0, a08 -14.7. PITCH: a22 (Xu's inner voice, recording 164 Hz) rubberband 0.86 formant preserved from orig -> 144 Hz (Xu 106-145), whisper word for word; a08 (Lai, 98 Hz, ~4-5 semitones under a02) x1.12 -> 111 Hz, whisper word for word; clip_af s10 the whole line 0.88 (was 0.84 until 1.75: 天黑前 sat outside the window), s28 0.86 from 0.95 to the end of the line (was back to 1.0 at 2.4: 當場 outside); whisper on the segments: 三張連一起抄，天黑前能抄到三百張嗎 / 好。就在書院門口，當場筆給他們看. s09 and s19 clip_af + volume: s19 +3 dB (segment -11.4 LUFS against Qin's -10.3..-11.9), s09 +5.5 dB, not 3: the 0.68 shift costs ~4 dB of loudness and +3 left it 2.9 dB under s11 (segment -14.1 vs -11.2); at +5.5 the cut reads a09 -13.2 / a11 -12.6 p75, whisper 第三張簾子剛做好. VF: s31 the left (yellow-paper) stroke 'bleeds': in the box x 210-910, y 420-600 only, the darker of the picture and its sigma-9 blur, ramped in over c2.8-4.0 (blend all_expr), so a soft grey halo spreads round the stroke while its core and the paper stay as they were; no box edge at c2.5/4.0/4.9 at full size; the brush is over the right sheet from c2.75. s38 the background at the two sides (x < 300, x > 1620, above the table y < 740; feathered 40 px) blurred sigma 10: no sleeve enters those bands in the shot (checked every second), the stone lanterns go softer. Not done: the night-sky darken/blur (reviewer 1 minor 11): heads and buns sit in the top 35 % in ten of the eleven night shots, the e915 s06 reason. END: min s42 7.0 -> 6.25 (black 2.25 -> 1.5 s), measured: the gong hits at 202.28, 0.25 s RMS -14.5 at 202.4, -18 at 202.9, the picture black and the 1.5 s sound fade from 203.08, -24 at 203.4, -33 at 203.9, -40 at 204.15: it rings out in the black. RESULT (e916cut.sh as written): 204.58 s (4910 frames; was 213.26); -14.0 LUFS, peak -3.2 dBFS; loudnorm2 linear (pre -14.72 LUFS, -3.94 dBTP + 0.72 = -3.22 <= -2.2); cut-qa: fps 24, jitter 41 steady, held FAIL s42 1.02 s and black FAIL 1.54 s (the intended end), motion FAIL 6.5 / static 4 % (5.1 / 11 % after grade), as before; cut-jumps 0; audio-qa 39 lines 0 problems (gap note before a30: s30 c3.85 -> s31 has no line, on purpose). Floor: 0.1-0.5 s dips to -40.1..-41.2 M at 99.1-99.6 (s21/s22), 134.1, 146.4-146.6 (the end of s30: was -41.7 for 0.5 s), the last fade; nothing else under -40 M. Whisper (medium, numpy input, one clip per process) on every changed segment heard every line (homophones as before: 現成, 渣煮法, 哪裡有湯, 上伐, 行賄 / 書訪 / 不熟, 受阻 / 增高, 筆, 柳西, 不櫻墨, 惠記, 實書, 脂肪, 植放燒氣來了 -- recordings' words unchanged). BY EAR / EYE (new timeline): 5.12 a02 (Lai +2) and 32.41 a08 (x1.12): the same man?; 18.56 s05 走水路 after the new start; 37.08-38.3 s09 the new start and 第三張 at 0.68 +5.5 dB; 43.08-46.6 s10 at 0.88 throughout; 47.5 s11 三百張？; 53.75 s11 -> s13 (s12 gone); 65.25-66.9 s15 new start, 哪裡有灘; 72.62 s16 the bell after 三百二十張; 75.67-81.46 s17 new start, 好 at 76.47, 城 ends 81.44 on the 81.46 cut into night; 99.65-104.0 s22 a20 行會 (xing?) and 不收; 104.54 a21 宿主 / 真高; 107.17-111.3 a22 at 0.86 against s22/s25; 115.37 s24 the bell after 賣給書生; 133.9-137.3 s28 0.86 to the end of the line; 146.67-151.67 s31 the pen at 147.17 / 149.97, the halo from 149.47, the cut at 151.67 before the right stroke frays; 176.08 a35 魏記; 180.21-185.08 s38 the side blur; 185.08-188.08 s39 ends before the pole is levelled; 192.95 a38 Shi's shout pitch (216 Hz against his 126/147); 198.45-204.58 s42 a39, the gong in 1.5 s of black; Tang's lines raised: 10.37, 14.74, 22.41, 71.29, 88.83, 112.04, 121.33, 127.33, 137.41, 151.79, 156.79, 176.08, 180.33, 198.45 -- level against Xu and Qin?"
+}

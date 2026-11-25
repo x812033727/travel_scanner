@@ -1,0 +1,979 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e022-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: cold sparse strings in a grey inn room, one light accent as gold is pushed back and one on a deadline; then a warm homely dinner cue that thins out to a low held note when a quiet warning is spoken, one soft accent at the end; then wind and a few celesta notes in an empty room at night, one accent on a firm word, one electronic sting, then a low drum pulse building; then a single long erhu note over fog at a river landing, one accent on a final cry before it fades; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "妻子寫休書，律上不算｜種田娶妻打天下 第22集（重製版）",
+    "description": "唐小棠一個人走進縣城客棧，把五錠金子倒在魏少卿桌上：這是我全部的家當，我拿它買我自己。魏少卿用摺扇把金子推回去：宰相府不缺金子，我要的是人。三日內，她自己到縣城碼頭上他回京的船，他就不再碰許家。傍晚回到柳溪，她帶回滷肉、給每個人夾菜，第一次叫許硯「相公」。她一回房，阿令低聲說：她今晚會走，子時有一班船。亥時末許硯去敲門，房裡沒人，帳冊疊得整整齊齊，上面壓著一封她自己落款的休書。許硯笑出一聲又紅了眼：妻子寫休書，律上不算。他撕了休書，提著燈籠追到渡口，小船剛離岸，船上的人抱著膝，沒有回頭。《種田娶妻打天下》第 22 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "妻子寫休書，律上不算",
+      "tag": "種田娶妻打天下",
+      "shot": "s33"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "客棧",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a01",
+          "speaker": "tangxiaotang",
+          "text": "魏公子，我一個人來的，有一筆帳想跟你談。",
+          "emotion": "聲音發緊、慢，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking shot that follows the subject",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning: a wide window in the left wall with one dark wooden lattice shutter folded back, grey tiled roofs and a flat white overcast sky beyond it, a long low plain wooden bench under the window, a square dark-red wooden table in the middle of the room with one brown clay teapot and two small clay cups on it, a small square side table and a four-panel folding screen of plain cream panels against the dark back wall, a closed double door of dark wood in the right wall, dark wooden walls and a dark plank floor; cold flat grey daylight from the window on the left, the room cool and dim: medium shot from just inside the closed double door, following close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, a small peach-pink silk pouch with a drawstring hanging from her left hand at her side, walking into the room toward the right side of the square dark-red wooden table from the first frame; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; beyond the table a little left of the middle Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting on a long low plain wooden bench under the window, framed from the knees up, one folding fan of plain cream paper with a few large flakes of gold leaf closed in his right hand on his knee, his face three-quarter to screen right toward her, never the lens; cool and watchful: eyes narrowed, lips closed; their hands hold only what is described here; exactly two people, the young woman seen only from behind",
+        "motion": "the young woman walks three steps to the right side of the table and stops there, standing straight; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she faces straight ahead across the table at the man on the bench the whole shot; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he turns his head slowly to follow her, and the cold grey window light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a02",
+          "speaker": "weishaoqing",
+          "text": "一個人來？許秀才捨得放妳出門？",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning, cold grey window light from the left: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting on the bench under the window, framed from the chest up with space above his head, one folding fan of plain cream paper with a few large flakes of gold leaf closed in his right hand, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; mocking: one brow raised, one corner of his mouth curling up, lips moving lazily between words; behind him the window and the flat white overcast sky over grey roof tiles, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「一個人來？許秀才捨得放妳出門？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing points the closed fan once at the empty side of the table across from him, then leans back against the window frame as he speaks; after the last word he lets the fan rest on his knee, smiling, and the cold grey window light stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a03",
+          "speaker": "tangxiaotang",
+          "text": "他不知道。這是我跟你之間的事，跟許家無關。",
+          "emotion": "聲音發緊，下巴抬起"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning: a wide window in the left wall with one dark wooden lattice shutter folded back, grey tiled roofs and a flat white overcast sky beyond it, a long low plain wooden bench under the window, a square dark-red wooden table in the middle of the room with one brown clay teapot and two small clay cups on it, a small square side table and a four-panel folding screen of plain cream panels against the dark back wall, a closed double door of dark wood in the right wall, dark wooden walls and a dark plank floor; cold flat grey daylight from the window on the left, the room cool and dim: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the right side of the square dark-red wooden table in the right foreground, framed from the waist up, facing across the table; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; one small peach-pink silk pouch with a drawstring in her left hand held just above the table top from the first frame; facing us beyond the table a little left of the middle Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting on a long low plain wooden bench under the window, framed from the waist up with clear space above his head, the closed fan in his right hand, his face three-quarter to screen right looking up at her, never the lens; amused: eyes narrowed, lips closed; behind him the window and the grey overcast sky, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman sets the pouch down on the table top and straightens up, lifting her chin; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks straight ahead at Wei Shaoqing the whole shot; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; one corner of his mouth lifts, and the cold grey window light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the county inn guest room upstairs, on the dark-red wooden table top in cold grey window light: insert close-up, the shot opens directly on a small hand in a peach-pink silk sleeve cuff holding one small peach-pink silk pouch with a drawstring upside down with its mouth open, a hand's height above the dark-red wooden table top from its very first frame; only the hand, its sleeve cuff, the pouch, the gold and the table top are in the frame; the brown clay teapot soft at the back",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. five small gold ingots, each shaped like a little boat tumble out of the pouch onto the table one after another and roll to a stop on the wood, one of them spinning on its spot before it settles; the pouch hangs empty and limp, and the cold grey light on the wood stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a04",
+          "speaker": "tangxiaotang",
+          "text": "五錠金子，是我全部的家當。我拿它買我自己。",
+          "emotion": "慢，一字一句，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning: a wide window in the left wall with one dark wooden lattice shutter folded back, grey tiled roofs and a flat white overcast sky beyond it, a long low plain wooden bench under the window, a square dark-red wooden table in the middle of the room with one brown clay teapot and two small clay cups on it, a small square side table and a four-panel folding screen of plain cream panels against the dark back wall, a closed double door of dark wood in the right wall, dark wooden walls and a dark plank floor; cold flat grey daylight from the window on the left, the room cool and dim: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the right side of the square dark-red wooden table in the right foreground, framed from the waist up, facing across the table; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; in the soft foreground on the table top five small gold ingots, each shaped like a little boat lying in a loose row, her two hands already flat on the table on either side of them from the first frame; facing us beyond the table a little left of the middle Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting on a long low plain wooden bench under the window, framed from the waist up with clear space above his head, the closed fan in his right hand, his face three-quarter to screen right toward her, never the lens; idle: eyes half closed, lips closed; behind him the window and the grey overcast sky, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman leans forward over the table and pushes the gold ingots a little toward the man with both hands; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; she looks straight ahead at Wei Shaoqing the whole shot; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; his eyes drop to the gold, and the cold grey window light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a05",
+          "speaker": "weishaoqing",
+          "text": "宰相府缺妳這五錠金子？我要的，是人。",
+          "emotion": "輕飄飄"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning, cold grey window light from the left: low-angle close-up from the height of the table top, Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting on the bench under the window, framed from the chest up with space above his head, one folding fan of plain cream paper with a few large flakes of gold leaf closed in his right hand, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; lightly scornful: a short laugh in his eyes, one corner of his mouth up, lips moving lightly between words; behind him the window and the flat white overcast sky, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「宰相府缺妳這五錠金子？我要的，是人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing taps the closed fan twice on the palm of his left hand as he speaks; he pauses after the question, then says the last words slowly; after the last word he holds the fan still against his palm and looks up at her, and the cold grey window light stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the county inn guest room upstairs, on the dark-red wooden table top in cold grey window light: insert close-up, the shot opens directly on a man's right hand in a wide sapphire-blue brocade sleeve woven with gold thread holding one folding fan of plain cream paper with a few large flakes of gold leaf closed, its closed tip already resting against five small gold ingots, each shaped like a little boat lying together on the dark-red wooden table top from its very first frame; at the far edge of the table a small hand in a peach-pink silk sleeve cuff resting flat on the wood; only the two hands, their sleeve cuffs, the fan, the gold and the table top are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the closed fan pushes the gold ingots slowly across the table until they bump against the small hand; the small hand jerks back a little and stays there, and the cold grey light on the wood stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a06",
+          "speaker": "weishaoqing",
+          "text": "妳不回魏家，許家的鋪子、紙坊，一樣都別想安寧。",
+          "emotion": "笑裡帶刀"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning, cold grey window light from the left: medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, leaning forward over the table with his left elbow on the table top, framed from the chest up with space above his head, one folding fan of plain cream paper with a few large flakes of gold leaf closed, held upright against his chest in his right hand, his face three-quarter to screen right toward Tang Xiaotang off screen right, close to her, never the lens; a smile with an edge: eyes cold and narrowed, one corner of his mouth curled, lips moving slowly between words; behind him the window and the grey overcast sky, soft",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「妳不回魏家，許家的鋪子、紙坊，一樣都別想安寧」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing leans his face a little closer toward her across the table as he speaks; after the last word he holds still, close, smiling coldly, and the cold grey window light stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a07",
+          "speaker": "tangxiaotang",
+          "text": "你要怎樣才肯不碰許家？說個日子。",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder close shot, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning, cold grey window light from the left: close over-the-shoulder shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the right side of the table in the right foreground, framed from the shoulders up; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; her right hand at the lower right edge of the frame already gripping the neck of one small peach-pink silk pouch with a drawstring on the table top from the first frame; facing us beyond her shoulder, soft, Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting back on the bench under the window, framed from the chest up, his face three-quarter to screen right toward her, never the lens; waiting: eyes half closed, lips closed; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman's fingers tighten hard on the neck of the pouch, the silk bunching in her fist; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he lets the question hang, unmoving, and the cold grey window light stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a08",
+          "speaker": "weishaoqing",
+          "text": "三日。三日內妳自己到縣城碼頭，上我回京的船。",
+          "emotion": "拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning: a wide window in the left wall with one dark wooden lattice shutter folded back, grey tiled roofs and a flat white overcast sky beyond it, a long low plain wooden bench under the window, a square dark-red wooden table in the middle of the room with one brown clay teapot and two small clay cups on it, a small square side table and a four-panel folding screen of plain cream panels against the dark back wall, a closed double door of dark wood in the right wall, dark wooden walls and a dark plank floor; cold flat grey daylight from the window on the left, the room cool and dim: medium shot across the table, the brown clay teapot and two small clay cups in the soft foreground on the square dark-red wooden table: Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting back on a long low plain wooden bench under the window on screen left, framed from the knees up with clear space above his head, one folding fan of plain cream paper with a few large flakes of gold leaf closed in his right hand, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; lazily sure of himself: eyes half closed, a slow smile, lips moving slowly between words; behind him the window and the grey overcast sky over the roofs",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「三日。三日內妳自己到縣城碼頭，上我回京的船」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing flicks the fan open with one turn of his wrist and fans himself slowly as he speaks; after the last word he keeps fanning, slowly, and the cold grey window light stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a09",
+          "speaker": "tangxiaotang",
+          "text": "好。我上了船，你就不准再找許家。",
+          "emotion": "畫外，很輕"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the county inn guest room upstairs, on the dark-red wooden table top in cold grey window light: insert close-up, the shot opens directly on two small hands in peach-pink silk sleeve cuffs at the near edge of the dark-red wooden table top, the left hand holding one small peach-pink silk pouch with a drawstring open at the table edge, the right fingertips already on the first of five small gold ingots, each shaped like a little boat lying together on the wood from its very first frame; only the two hands, their sleeve cuffs, the pouch, the gold and the table top are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the right fingers slide the gold ingots one at a time over the edge of the table into the open pouch until the table is bare, then both hands pull the drawstring tight, and the cold grey light on the wood stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a10",
+          "speaker": "weishaoqing",
+          "text": "一言為定。三日之內，我在碼頭等妳。",
+          "emotion": "搖扇，得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the county inn guest room upstairs on an overcast late morning: a wide window in the left wall with one dark wooden lattice shutter folded back, grey tiled roofs and a flat white overcast sky beyond it, a long low plain wooden bench under the window, a square dark-red wooden table in the middle of the room with one brown clay teapot and two small clay cups on it, a small square side table and a four-panel folding screen of plain cream panels against the dark back wall, a double door of dark wood in the right wall, its right leaf standing wide open onto a dim landing, dark wooden walls and a dark plank floor; cold flat grey daylight from the window on the left, the room cool and dim: medium shot from beside the near corner of the table, the corner of the square dark-red wooden table in the soft foreground: on screen left Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, sitting on a long low plain wooden bench under the window, framed from the knees up, one folding fan of plain cream paper with a few large flakes of gold leaf open in his right hand, his face three-quarter to screen right toward the open doorway, never the lens; satisfied: eyes half closed, a thin smile; on the right, further back, one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, already stepping into the open right leaf of the double door in the right wall from the first frame, the leaf standing wide open onto a dim landing, the pouch in her left hand; she is the only young woman with two high round buns in the frame; their hands hold only what is described here; exactly two people, the young woman seen only from behind",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「一言為定。三日之內，我在碼頭等妳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the young woman walks straight on through the open doorway into the dim landing and is gone from the frame by the middle of the shot, the back of her head toward us all the way; Wei Shaoqing fans himself slowly at the open doorway as he speaks, and the cold grey window light stays unchanged",
+        "characters": [
+          "weishaoqing",
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "chapter": "晚飯",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a11",
+          "speaker": "tangxiaotang",
+          "text": "城裡帶回來的滷肉，今天加菜，大家多吃點。",
+          "emotion": "甜甜地，硬撐出來的甜"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium-wide shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall: rough mud-brick walls, dark beams and thatch overhead, a small square window in the back wall showing deep blue night, one large dark clay water jar in the left corner, loose dry straw on the earth floor, one small square dark wooden table at sitting height in the middle, plain round wooden stools around it, one red candle burning in a small holder on the table among clay bowls and plates; warm candlelight on the faces near it, the corners dark: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the near right corner of the small table in the right foreground, framed from the waist up, facing across the table; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; one big clay plate heaped with dark braised pork already set down on the middle of the table in her two hands from the first frame; across the table, facing us, a little left of the middle Qin Shuang, in her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, sitting on a plain round wooden stool, the table edge at her waist, framed from the waist up, her face three-quarter to screen right, never the lens; suspicious: one brow raised, lips closed; on screen right across the table A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with one plain wooden hairpin, the rest falling long and straight down her back, sitting on a plain round wooden stool, the table edge at her waist, framed from the waist up, her face three-quarter to screen left, never the lens; quiet and wary: eyes lowered, lips closed; the red candle burning between them; their hands hold only what is described here; exactly three people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman lets go of the plate and picks up a pair of chopsticks from the table; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Qin Shuang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; Qin Shuang and A-ling look at each other once across the table, then back at the plate, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang",
+          "aling"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a12",
+          "speaker": "xiaohe",
+          "text": "棠姐姐，今天是過年嗎？這麼多肉！",
+          "emotion": "嘴裡塞滿，眼睛發亮"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall: rough mud-brick walls, dark beams and thatch overhead, a small square window in the back wall showing deep blue night, one large dark clay water jar in the left corner, loose dry straw on the earth floor, one small square dark wooden table at sitting height in the middle, plain round wooden stools around it, one red candle burning in a small holder on the table among clay bowls and plates; warm candlelight on the faces near it, the corners dark: low-angle medium shot from a child's eye height at the table: on screen left little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, kneeling up on a plain round wooden stool at the table, framed from the waist up, a clay bowl in front of her, both cheeks puffed full of food, her face three-quarter to screen right toward the young woman, never the lens; delighted: eyes shining wide, lips moving around her food; on screen right Tang Xiaotang, in her peach-pink cross-collared short jacket wrapped shut across her chest, leaning in from the right over the table, framed from the waist up, a pair of chopsticks in her right hand, her face three-quarter to screen left toward the little girl, never the lens; a sweet smile, the rims of her eyes red, lips closed; the red candle soft between them; their hands hold only what is described here; exactly two people",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「棠姐姐，今天是過年嗎？這麼多肉！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang drops a big piece of braised pork into the little girl's bowl with her chopsticks, then pinches her cheek once with her left hand; Tang Xiaotang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; she keeps smiling with reddened eyes, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "xiaohe",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a13",
+          "speaker": "tangxiaotang",
+          "text": "不是過年，是棠姐姐今天收帳，收得特別順。",
+          "emotion": "笑著，甜"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder close shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: close over-the-shoulder shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, leaning a little over the small table in the right foreground, framed from the shoulders up; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; facing us beyond her shoulder a little left of the middle little Xiaohe, in her patched lilac cotton jacket, her two little pigtails tied with red string, kneeling up on a plain round wooden stool, framed from the chest up, her face three-quarter to screen right looking up at her, never the lens; happy: cheeks full, eyes bright, lips closed and chewing; behind her the dark mud-brick wall in candlelight, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman pushes the little girl's clay bowl a little closer to her with one hand; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Xiaohe says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; the little girl keeps chewing, beaming, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xiaohe"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a14",
+          "speaker": "qinshuang",
+          "text": "妳一早說進城收帳，怎麼到天黑才回來？",
+          "emotion": "挑眉，懷疑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: close-up of Qin Shuang, in her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, sitting at the table, framed from the chest up with space above her head, a clay bowl at the lower edge with a pair of chopsticks in a small hand in a peach-pink sleeve cuff reaching in from the right edge of the frame laying a big heap of green vegetables into it, her face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; suspicious: one brow raised, eyes narrowed, lips moving flatly between words; behind her the dark mud-brick wall in candlelight, soft",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「妳一早說進城收帳，怎麼到天黑才回來？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang looks down at the greens piled in her bowl, sets her own chopsticks down on the table and raises one brow at the young woman beyond the right edge of the frame as she speaks; after the last word she keeps the brow raised, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a15",
+          "speaker": "tangxiaotang",
+          "text": "好幾家，一家一家對，就晚了。相公，你最辛苦，多吃塊肉。",
+          "emotion": "避開，轉向許硯，笑得甜"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall: rough mud-brick walls, dark beams and thatch overhead, a small square window in the back wall showing deep blue night, one large dark clay water jar in the left corner, loose dry straw on the earth floor, one small square dark wooden table at sitting height in the middle, plain round wooden stools around it, one red candle burning in a small holder on the table among clay bowls and plates; warm candlelight on the faces near it, the corners dark: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, standing at the near right corner of the small table in the right foreground, framed from the waist up, facing across the table; she is the only young woman with two high round buns in the frame, and she stays in the right foreground from the first frame to the last; a pair of chopsticks in her right hand; on screen left at the left end of the table Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, sitting on a plain round wooden stool, the table edge at his waist, framed from the waist up with clear space above his head, holding up in both hands one clay bowl, side-on, his face three-quarter to screen right toward her, never the lens; surprised: brows up, lips closed; behind him the dark mud-brick wall in candlelight, soft; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman reaches across the table and piles pork and greens into his bowl one chopstickful after another until it is heaped high; the young woman with the two high round buns keeps her head still, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; his eyes go from the growing heap to her and back, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a16",
+          "speaker": "xuyan",
+          "text": "妳今天叫我相公，又夾這麼多，到底什麼日子？",
+          "emotion": "摸不著頭腦"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, sitting at the table, framed from the chest up with space above his head, holding up in both hands one clay bowl heaped high with pork and greens, candlelight on his face, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; baffled and amused: brows up, a bewildered grin, lips moving between words; behind him the dark mud-brick wall, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳今天叫我相公，又夾這麼多，到底什麼日子？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lifts the heaped bowl a little higher to show it as he speaks, then lets out one puzzled laugh after the last word, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a17",
+          "speaker": "tangxiaotang",
+          "text": "平常的日子。快吃，菜要涼了。",
+          "emotion": "畫外，笑著"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, under the small wooden table in warm candlelight: insert close-up under the table, the shot opens directly on a small hand in a peach-pink silk sleeve cuff, seated, resting on a peach-pink pleated silk skirt over her lap, beside one long flat gold abacus as long as her forearm: a long narrow rectangular gold frame, a long row of thin gold rods set close side by side across its width, one thin gold crossbar running along its whole length, small round gold beads above and below the crossbar on every rod lying flat across her lap from its very first frame; only the hand, its sleeve cuff, the gold abacus and the folds of the skirt are in the frame",
+        "motion": "Throughout the shot the abacus keeps the long flat shape it has in <Picture 1>, and the pleated peach-pink silk skirt fills the rest of the frame. The pictures fix the place and the objects only, never the mood. the hand suddenly clamps tight around the long gold abacus, the knuckles going pale, and holds on, trembling a little; the abacus stays flat across her lap, and the warm candlelight from above stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a18",
+          "speaker": "tangxiaotang",
+          "text": "湯也熱好了，我去灶房盛一鍋來。",
+          "emotion": "笑，輕快"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: medium shot from behind the table, one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, already one step away from the table, holding one empty dark clay soup pot in both hands in front of her from the first frame; she is the only young woman with two high round buns in the frame; ahead of her the dark far right corner of the room where the candlelight does not reach; their hands hold only what is described here; exactly one person, the young woman seen only from behind",
+        "motion": "the young woman walks straight away from us into the dark far right corner, carrying the empty pot, and the darkness swallows her by the middle of the shot; for the rest of the shot only the dark mud-brick wall and the warm candlelight remain, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a19",
+          "speaker": "aling",
+          "text": "她今晚會走。下午我在渡口洗衣，看見她問船家時辰。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with one plain wooden hairpin, the rest falling long and straight down her back, sitting at the table, framed from the chest up with space above her head, holding one clay bowl in both hands just above the table from the first frame, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; grave and quiet: brows level, eyes steady, lips moving softly between words; behind her only the dark mud-brick wall and the candlelight, soft",
+        "motion": "A-ling speaks a short Mandarin line, 「她今晚會走。下午我在渡口洗衣，看見她問船家時辰」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling sets her clay bowl down softly and leans a little toward the left as she speaks, her eyes flicking once to the doorway beyond the right edge of the frame and back; after the last word she holds still, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a20",
+          "speaker": "xuyan",
+          "text": "她要走？她今天在城裡，到底見了誰？",
+          "emotion": "低，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, sitting at the table, framed from the chest up with space above his head, a pair of chopsticks held up in his right hand, his face three-quarter to screen right toward Aling off screen right, never the lens; the smile gone: brows drawn together, eyes darkening, lips moving low between words; behind him only the dark mud-brick wall and the candlelight, soft",
+        "motion": "Xu Yan speaks a short Mandarin line, 「她要走？她今天在城裡，到底見了誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan's chopsticks stop in mid-air and he lowers them slowly to the table as he speaks, his eyes moving from her to the doorway beyond the right edge of the frame; after the last word he keeps looking at the doorway, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a21",
+          "speaker": "aling",
+          "text": "見了誰，她沒說。開船的時辰，是子時那一班。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: over-the-shoulder medium close-up, the blurred dark shoulder of one young man seen only from behind in the soft left foreground, appearing only once; facing us a little right of the middle A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with one plain wooden hairpin, the rest falling long and straight down her back, sitting at the table, framed from the chest up with space above her head, her face three-quarter to screen left toward him, never the lens; calm and certain: eyes level, lips moving evenly between words; behind her the dark mud-brick wall in candlelight, soft; their hands hold only what is described here; exactly two people, the man in the foreground seen only from behind",
+        "motion": "A-ling speaks a short Mandarin line, 「見了誰，她沒說。開船的時辰，是子時那一班」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling shakes her head once, then taps two fingertips twice on the table top as she speaks; the man in the foreground keeps his head still, the back of his head toward us the whole shot, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a22",
+          "speaker": "qinshuang",
+          "text": "還能有誰？昨晚那個搖扇子的，說的就是三日。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall: rough mud-brick walls, dark beams and thatch overhead, a small square window in the back wall showing deep blue night, one large dark clay water jar in the left corner, loose dry straw on the earth floor, one small square dark wooden table at sitting height in the middle, plain round wooden stools around it, one red candle burning in a small holder on the table among clay bowls and plates; warm candlelight on the faces near it, the corners dark: medium shot, the red candle burning in the soft foreground on the small table: Qin Shuang, in her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, sitting across the table on a plain round wooden stool, the table edge at her waist, framed from the waist up with clear space above her head, her face three-quarter to screen right toward the doorway beyond the right edge of the frame, never the lens; cold and angry: eyes narrowed, jaw tight, lips moving hard between words; behind her the dark mud-brick wall and the small dark window; their hands hold only what is described here; exactly one person",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「還能有誰？昨晚那個搖扇子的，說的就是三日」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang drops her chopsticks onto the table, folds her arms across her chest and glares toward the doorway beyond the right edge of the frame as she speaks; after the last word she keeps glaring, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a23",
+          "speaker": "tangxiaotang",
+          "text": "湯來了。我今天走累了，先回房歇著。",
+          "emotion": "畫外，笑得勉強，尾音往下掉"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall: rough mud-brick walls, dark beams and thatch overhead, a small square window in the back wall showing deep blue night, one large dark clay water jar in the left corner, loose dry straw on the earth floor, one small square dark wooden table at sitting height in the middle, plain round wooden stools around it, one red candle burning in a small holder on the table among clay bowls and plates; warm candlelight on the faces near it, the corners dark: wide shot from the near side of the room: on the left, in the soft foreground, one young woman seen only from behind, appearing only once: the back of her head with all of her black hair gathered up into two round buns set high on her head, a short pink silk ribbon wrapped around each bun, the nape of her neck bare above a pink inner collar, and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, already walking away from us toward the dark left edge of the room from the first frame, her hands empty at her sides; she is the only young woman with two high round buns in the frame; on the right, the small square table with one steaming dark clay soup pot set down in its middle from the first frame, and at it, each sitting on a plain round wooden stool, seen full figure and small in the frame: nearest her Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, his face turned toward her, never the lens; in the middle Qin Shuang, in her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, her face turned toward her, never the lens; on the far right A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with one plain wooden hairpin, the rest falling long and straight down her back, her face turned toward her, never the lens; all three watching her, unsmiling, lips closed; their hands hold only what is described here; exactly four people, the young woman seen only from behind",
+        "motion": "the young woman walks steadily away from us past the large clay water jar and out of the frame at the left by the middle of the shot, the back of her head toward us all the way; Xu Yan, Qin Shuang and A-ling say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words; their eyes follow her to the dark left edge and stay there to the last frame, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a24",
+          "speaker": "xuyan",
+          "text": "子時才開船……等小禾睡了，我就去敲她的門。",
+          "emotion": "內心獨白，嘴閉著，心裡話，低"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the farmhouse of the Xu family at nightfall, warm candlelight in a dark mud-brick room: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, sitting at the table, framed from the chest up with space above his head, his face three-quarter to screen left toward the dark passage beyond the left edge of the frame, never the lens; quietly resolved: brows drawn, eyes steady and dark, lips pressed shut; at the lower right edge a small child's hand in a patched lilac sleeve lifting from the table, and his right hand coming down over it; behind him only the dark mud-brick wall and the candlelight, soft",
+        "motion": "Xu Yan's eyes follow the passage beyond the left edge of the frame while his right hand settles gently over the small hand on the table and keeps it there; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the warm candlelight and the dark corners stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "休書",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a25",
+          "speaker": "xuyan",
+          "text": "小棠，睡了嗎？我有話跟妳說，就幾句。",
+          "emotion": "放輕聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking shot that follows the subject",
+        "prompt": "In the inside corridor of the Xu farmhouse late at night: dark wooden posts along the left, a row of plain closed wooden doors along the right wall with small candles burning on iron brackets beside them, an uneven stone-paved floor, an open doorway at the far end with cold blue night beyond it: medium shot down the corridor, a dark wooden post in the soft left foreground: Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed from the knees up with clear space above his head, holding one small clay oil lamp with a short warm flame in his left hand, already standing before a closed plain wooden door in the right wall from the first frame, his face in profile to screen right toward the door, never the lens; gentle and uneasy: brows a little drawn, lips moving softly between words; their hands hold only what is described here; exactly one person",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小棠，睡了嗎？我有話跟妳說，就幾句」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan knocks twice on the door with the knuckles of his right hand as he speaks, and the unlatched door swings in a finger's width at the touch; after the last word he frowns at the gap, and the warm candle glow and the cold blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium-wide shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night: a plain dark plank door in the left wall, a narrow wooden bed along the back wall with a quilted pink cover lying smooth and flat and a quilted pink pillow, a small shut window above the bed, dark blue-grey with night, a small square wooden table in the right foreground, rough cracked plaster walls: point-of-view shot from the open doorway of the small bedroom, a man's left hand in a grey cloth sleeve holding one small clay oil lamp with a short warm flame coming in at the lower left edge of the frame from its very first frame: the bedroom empty of people, the bed with its smooth flat pink cover, the dark window above it, and on the small table in the right foreground two low neat stacks of thin flat packets wrapped in plain pale brown cloth, their tops plain and even pale brown, one sheet of plain paper folded in three lying on the nearer stack, one thick white pillar candle beside them",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the lamp in the hand sways a little and its light slides across the plaster walls; the candle flame on the table leans in the draught from the door, and the low warm candlelight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, on the small wooden table top in warm candlelight: insert close-up, the shot opens directly on a man's left hand in a wide old grey cloth sleeve setting one small clay oil lamp with a short warm flame down on the small wooden table top from its very first frame, beside two low neat stacks of thin flat packets wrapped in plain pale brown cloth, their tops plain and even pale brown, one sheet of plain paper folded in three lying on the nearer stack, one thick white pillar candle at the right; only his two hands, their grey sleeves, the lamp, the stacks, the folded paper, the candle and the table top are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the left hand lets go of the lamp, then the right hand in the same grey sleeve comes in from the right edge and lifts the folded paper off the stack; the paper stays folded in three, its plain outside up, and the low warm candlelight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a26",
+          "speaker": "tangxiaotang",
+          "text": "今立休書：唐小棠自請離去，十本帳目，一筆一筆兩清。",
+          "emotion": "畫外，忍著哭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, dim warm candlelight against rough plaster walls: close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing by the small table, framed from the chest up with space above his head, holding open in both hands at the lower edge of the frame one sheet of plain paper folded in three now unfolded, its plain blank back toward us, opaque, the warm candlelight on his face from below, his face lowered toward the paper, never the lens; reading and stricken: brows drawing tighter and tighter, eyes moving down line by line, lips pressed shut; behind him the dark plaster wall, soft",
+        "motion": "Xu Yan's eyes move slowly down the paper line by line and his brows knot tighter with every line; the paper stays still in his hands, its plain back toward us; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words, and the low warm candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a27",
+          "speaker": "tangxiaotang",
+          "text": "從此互不相欠。相公，你別來找我。",
+          "emotion": "畫外，聲音一抖"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, on the small wooden table top in warm candlelight: insert close-up, the shot opens directly on a man's thumb and fingers holding one corner of one sheet of plain paper just above the small wooden table top from its very first frame, the corner of the paper blank and plain, one small red thumbprint smudge on it and beside it one dried round water stain; only the fingers, the paper corner and the table top are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the thumb moves slowly across the dried round water stain, and the paper trembles a little in the fingers, and the low warm candlelight stays unchanged",
+        "characters": [],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a28",
+          "speaker": "qinshuang",
+          "text": "她寫休書？她是妻子，休的是誰啊？",
+          "emotion": "瞪眼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, dim warm candlelight against rough plaster walls: medium shot at the open door in the left wall, the dark edge of the door frame in the soft left foreground: Qin Shuang, in her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, leaning one shoulder against the door frame, framed from the waist up with clear space above her head, her face three-quarter to screen right toward Xu Yan off screen right, never the lens; incredulous: eyes wide, brows up, lips moving sharply between words; just behind her shoulder A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with one plain wooden hairpin, the rest falling long and straight down her back, framed from the chest up, her face three-quarter to screen right, never the lens; subdued: eyes lowered, lips closed; warm candlelight on both faces; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「她寫休書？她是妻子，休的是誰啊？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang glances at the paper in his hands beyond the right edge of the frame, folds her arms and huffs once in disbelief as she speaks; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; A-ling lowers her eyes, and the low warm candlelight stays unchanged",
+        "characters": [
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a29",
+          "speaker": "xuyan",
+          "text": "妻子寫休書，律上不算，這張紙作不了數。",
+          "emotion": "眼眶紅，笑出一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, dim warm candlelight against rough plaster walls: close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing by the small table, framed from the chest up with space above his head, one sheet of plain paper folded in three unfolded in his right hand at the lower edge of the frame, its plain blank back toward us, his face three-quarter to screen left toward Qin Shuang off screen left, never the lens; hurt and stubborn: the rims of his eyes red and wet, a short bitter laugh, lips moving between words",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妻子寫休書，律上不算，這張紙作不了數」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lets out one short laugh through his nose and shakes his head once as he speaks, his eyes glistening; after the last word he looks down at the paper, and the low warm candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night: a plain dark plank door in the left wall, a narrow wooden bed along the back wall with a quilted pink cover lying smooth and flat and a quilted pink pillow, a small shut window above the bed, dark blue-grey with night, a small square wooden table in the right foreground, rough cracked plaster walls: wide shot from just inside the door: in the soft left foreground, blurred and cut off by the left edge of the frame, two young women seen only from behind, appearing only once each: one tall young woman with a high black ponytail tied with black cord in a dark brown jacket, and beside her one young woman in a plain grey-white cotton dress with long black hair falling straight down her back; the backs of their heads toward us the whole shot; Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing by the small table on the right, framed from the knees up with clear space above his head, one sheet of plain paper folded in three unfolded in both hands at his chest, its plain blank back toward us, two low neat stacks of thin flat packets wrapped in plain pale brown cloth, their tops plain and even pale brown, one small clay oil lamp with a short warm flame and one thick white pillar candle on the table beside him, his face lowered to the paper, never the lens; grim: jaw set, lips pressed shut; their hands hold only what is described here",
+        "motion": "Xu Yan tears the paper in two with both hands, puts the halves together and tears them again, and lets the pieces drop onto the stacks on the table, one piece sliding off the edge to the floor; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; the two women in the foreground keep still, and the low warm candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a30",
+          "speaker": "xitong",
+          "text": "叮。警告，唐小棠正在遠離。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq922a31",
+          "speaker": "xitong",
+          "text": "休書撕了，人也不會自己走回來，宿主。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, dim warm candlelight against rough plaster walls: close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing by the small table, framed from the chest up with space above his head, his face three-quarter to screen left, his head bowed toward the torn pieces on the table, never the lens; his face lit from below, calm and empty, lips pressed shut; behind him only the dark plaster wall and the low candlelight, soft",
+        "motion": "Xu Yan's head snaps up and his breath catches; he stays frozen, staring at the point in the air, his chest rising once; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is listening, not speaking, and the low warm candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a32",
+          "speaker": "xuyan",
+          "text": "不用妳說，我這就去把她追回來。",
+          "emotion": "內心獨白，嘴閉著，心裡話，咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, dim warm candlelight against rough plaster walls: tight close-up of Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing by the small table, framed from the shoulders up with a little space above his head, his face three-quarter to screen left, his eyes on a point in the air in front of him, never the lens; set: brows drawn hard, eyes narrowing, jaw clenched, lips pressed shut; behind him only the dark plaster wall and the low candlelight, soft",
+        "motion": "Xu Yan's jaw tightens and his eyes harden and settle, fixed ahead; then he draws one quick breath through his nose, ready to move; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the low warm candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a33",
+          "speaker": "aling",
+          "text": "快去。船家說子時開船，現在已經亥時末了。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night, dim warm candlelight against rough plaster walls: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair pinned up on the crown with one plain wooden hairpin, the rest falling long and straight down her back, standing in the open door, framed from the chest up with space above her head, the blurred dark brown sleeve and shoulder of a second woman standing beside her, cut off by the left edge of the frame, appearing only once, her face three-quarter to screen right toward Xu Yan off screen right, never the lens; urgent but calm: eyes lifted and steady, lips moving softly between words; behind her the dark doorway, soft",
+        "motion": "A-ling speaks a short Mandarin line, 「快去。船家說子時開船，現在已經亥時末了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling lifts her eyes to him and tips her head once toward the dark doorway behind her as she speaks; after the last word she holds his gaze, and the low warm candlelight stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a34",
+          "speaker": "qinshuang",
+          "text": "還愣著幹嘛？追啊！燈籠就在屋簷下！",
+          "emotion": "推他一把，吼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking shot that follows the subject",
+        "prompt": "In the first bedroom of the Xu farmhouse late at night: a plain dark plank door in the left wall, a narrow wooden bed along the back wall with a quilted pink cover lying smooth and flat and a quilted pink pillow, a small shut window above the bed, dark blue-grey with night, a small square wooden table in the right foreground, rough cracked plaster walls: medium shot in the small bedroom: on screen right Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, standing by the small table, framed from the waist up with clear space above his head, his face three-quarter to screen left toward her, never the lens; stunned: eyes wide, lips closed; on screen left Qin Shuang, in her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, already striding in from the door in the left wall from the first frame, framed from the waist up, her face three-quarter to screen right toward him, never the lens; fierce: brows down, eyes blazing, lips moving hard between words; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「還愣著幹嘛？追啊！燈籠就在屋簷下！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang shoves Xu Yan hard on the shoulder with her right hand, turning him toward the door at screen left, and jerks her chin at the doorway as she speaks; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; he stumbles one step toward the door, and the low warm candlelight stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, tracking shot that follows the subject",
+        "prompt": "In the night yard of the Xu farmhouse under a clear deep-blue night sky: the thatched house with its dark open doorway on the left, a woodpile against its wall, the yard gate of wooden planks standing open in the middle of the back wall under its own little tiled roof, one bare iron hook under that little roof, a persimmon tree, a round stone well in the right foreground, a mud wall on the right: wide shot of the yard: Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed full length, already running across the middle of the yard toward the open yard gate from the first frame, the one lantern of this shot, a round plain white paper lantern glowing warm on its bamboo handle, swinging in his right hand, his face in profile to screen right, never the lens; desperate: brows drawn, mouth set; small in the dark house doorway at the left one young woman with a high ponytail in a dark brown jacket, seen dimly, appearing only once; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan runs through the open yard gate and out into the dark beyond it, the lantern light swinging on the gateposts; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; the young woman in the doorway stays where she is, and the deep blue night and the warm swinging lantern light stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "chapter": "渡口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a35",
+          "speaker": "xuyan",
+          "text": "小棠——！",
+          "emotion": "短喊，邊跑邊喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking shot that follows the subject",
+        "prompt": "At the ferry landing of Liuxi at midnight in thick fog: an old wooden pier on thin posts running out over the water from the left, a few tall bare wooden poles standing up along it, flat still dark water filling the right, a low line of reeds far off on the right fading into the fog; everything cold grey-blue: wide side-on shot along the pier, a weathered wooden post in the soft foreground: Xu Yan, in an old plain grey cloth outer coat worn open over his faded blue-grey scholar's robe, framed full length, already running along the old planks of the pier toward its far end from the first frame, one round plain white paper lantern glowing warm on its bamboo handle in his right hand, his face in profile to screen right, never the lens; frantic: brows up, eyes straining ahead; far off on the right in the fog the dim dark shape of one small dark wooden boat with an arched canopy of woven bamboo over its middle; their hands hold only what is described here; exactly one person",
+        "motion": "Xu Yan runs flat out along the pier toward the right, the lantern swinging and its light jumping over the planks, and halfway he opens his mouth wide and shouts one long call toward the fog, then runs on with his lips parted, panting, and the thick cold grey-blue fog and the one warm lantern glow stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a36",
+          "speaker": "tangxiaotang",
+          "text": "別回頭，唐小棠。回頭，就走不了了。",
+          "emotion": "內心獨白，嘴閉著，心裡話，忍著"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Out on the water just off the ferry landing of Liuxi at midnight in thick fog: flat still dark water and grey fog all around, tall reeds dim far off on the right: medium shot from the water's edge, the dark wet side of the boat and the drifting fog in the soft foreground: one small dark wooden boat with an arched canopy of woven bamboo over its middle, just pushed off, its prow pointing away to the right into the fog, one round paper lantern glowing on a bamboo pole at the near end of the boat; at the far end one boatman in a conical bamboo hat and a straw rain cape, seen only from behind, standing, both hands on one long bamboo pole; under the arched canopy, sitting low with her forehead already pressed down on her drawn-up knees from the first frame, her arms wrapped around them, one young woman in a light peach-pink silk jacket with her black hair in two round buns set high on her head, a short pink silk ribbon wrapped around each bun, only her two buns, the nape of her neck and her back toward us, a folded grey blanket on the boards beside her; exactly two people, both seen only from behind",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the boatman leans his weight on the pole and the boat glides slowly away from us into the fog; her shoulders shake once and she presses her forehead harder onto her knees; she keeps her back to us the whole shot, and the thick cold grey-blue fog and the one warm lantern glow stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq922a37",
+          "speaker": "xuyan",
+          "text": "休書我撕了！妳寫的不算，聽見沒有！",
+          "emotion": "畫外，喊，聲音發抖"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the ferry landing of Liuxi at midnight in thick fog: an old wooden pier on thin posts running out over the water from the left, a few tall bare wooden poles standing up along it, flat still dark water filling the right, a low line of reeds far off on the right fading into the fog; everything cold grey-blue: wide shot from behind on the pier, the old planks in the soft foreground: one young man in an old plain grey cloth outer coat, his black hair in a topknot tied with a cloth band, seen only from behind, standing at the very end of the pier a little left of the middle, framed full length, holding one round plain white paper lantern glowing warm high above his head in his right hand; beyond him on the right one small dark wooden boat with an arched canopy of woven bamboo over its middle, already ten metres out on the flat water, sliding into the thick fog; at the far end of the boat one boatman in a conical bamboo hat and a straw rain cape, a small dark shape seen only from behind, both hands on one long bamboo pole; under the canopy one small figure in light peach-pink silk with two round buns set high on her head, sitting hunched with her arms around her knees, her back to the pier; exactly three people, all seen only from behind: the young man on the pier, the boatman and the small figure under the canopy",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. the young man holds the lantern higher, his shoulders heaving as he shouts toward the boat, the back of his head toward us the whole shot; the boat keeps sliding away into the fog, and the small figure on it never turns round, and the thick cold grey-blue fog and the one warm lantern glow stay unchanged",
+        "characters": []
+      }
+    }
+  ]
+}

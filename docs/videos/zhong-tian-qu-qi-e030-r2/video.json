@@ -1,0 +1,1015 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e030-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "tangwanjin",
+      "name": "唐萬金",
+      "appearance": "East Asian man of fifty, a round lucky face, smiling narrowed eyes, a short neat beard, a little plump, a dark purple silk robe woven with gold ingot patterns, a string of gold keys hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的江南首富，男聲、和氣生財、笑呵呵，哭窮時很誇張"
+      }
+    },
+    {
+      "id": "weishaoqing",
+      "name": "魏少卿",
+      "appearance": "East Asian man of twenty-six, handsome but frivolous, peach-blossom eyes, thin lips always curled in a scornful smile, fair skin, tall and slender, a sapphire-blue brocade robe woven with gold thread, a fine white jade pendant at his waist, a gold-flecked folding fan in his hand, hair in a neat topknot with a small jade crown",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的宰相之子，男聲、輕佻慵懶、拖著尾音、帶著居高臨下的笑意"
+      }
+    },
+    {
+      "id": "zhengbo",
+      "name": "鄭伯",
+      "appearance": "East Asian man of sixty, a little plump, kind eyebrows and a gentle smile, a neat grey-white goatee, a dark brown silk-faced padded long robe, a small writing brush tucked at his cuff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的唐家老管事，男聲、溫厚穩重、說話客氣有禮，壓低聲音時帶著擔憂"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: warm uneasy strings on a town square in the afternoon, one pause when a father glares; then a warm homely cue in a farm yard at sunset turning bright and a little sweet, cut off at a whisper, low strings, one big accent when paper is torn, back to the warm cue; then only the wind, one faint high note when a veil lifts and one deep heavy accent at the end; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "這門親退了，井邊的面巾｜種田娶妻打天下 第30集（重製版）",
+    "description": "唐萬金哭著追到廣場，停在一步外：囡囡，妳躲在一個窮秀才後頭做什麼？魏少卿叫他岳父，說許家的牆是泥糊的。傍晚，大車停在許家院門外，小禾端來一碗缺了角的井水，倒是真的甜。魏少卿亮出唐萬金親筆簽的婚書，許硯不爭，只請唐老爺先看一本帳——被人賠本壓價，三十天還贏人家兩倍？帳是小棠做的。鄭伯在他耳邊一句「京裡那筆鹽船的帳」，唐萬金的笑收得乾乾淨淨：八條鹽船，這張婚書就是抵押。他把婚書撕成兩半：八條船不要了，女兒要。魏少卿走到院門口，一陣風吹起井邊阿令的面巾——你……怎麼會在這裡？《種田娶妻打天下》第 30 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "婚書撕成兩半",
+      "tag": "種田娶妻打天下",
+      "shot": "s31"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "廣場邊，大車旁",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a01",
+          "speaker": "tangwanjin",
+          "text": "囡囡，妳躲在一個窮秀才後頭做什麼？",
+          "emotion": "喘，帶哭腔"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the town square of the county town in the afternoon of the same cold clear winter day, on the packed pale earth at the edge of the square before the long low tiled building with its plank doors; warm golden low afternoon sun from the upper right behind, long shadows stretching far to the left across the earth: medium shot on the packed pale earth at the edge of the square: Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, already stopped from the first frame, framed from the knees up, his arms still spread a little from his run, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the packed pale earth and the plank doors all the way to the edge, and he is the only person in the frame; tearful and out of breath, not smiling: wet red eyes, tears on his round cheeks, brows pulled up, chest heaving, lips moving between gasping words; behind him, soft, the black lacquered carriage body and the head and neck of one horse at the right edge and the long low tiled building in the warm afternoon sun",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「囡囡，妳躲在一個窮秀才後頭做什麼？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin slowly lowers his spread arms to his sides as he speaks, still breathing hard, and the warm low afternoon sunlight stays unchanged",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a02",
+          "speaker": "tangxiaotang",
+          "text": "他不是窮秀才，他是我拜過堂的相公。",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the town square of the county town in the afternoon of the same cold clear winter day, on the packed pale earth at the edge of the square before the long low tiled building with its plank doors; warm golden low afternoon sun from the upper right behind, long shadows stretching far to the left across the earth: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed pale earth, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord tucked under her left arm, her right hand already gripping the left sleeve of the young man before her from the first frame; one step beyond her in the right third of the frame, his upper body clear of her head and shoulders, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing, framed from the waist up, his back three-quarter to us, facing screen right toward the far side of the square, his shoulders squared, his lips pressed shut; beyond them, soft, the long low tiled building and its plank doors in the warm afternoon sun; she stays in the middle of the frame the whole shot, her right arm reaching out to his left sleeve; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+        "motion": "her right hand pulls his left sleeve once toward her, only her arm moving; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the warm low afternoon sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a03",
+          "speaker": "tangwanjin",
+          "text": "你就是那個窮秀才？憑什麼娶我女兒？",
+          "emotion": "瞪著許硯"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the town square of the county town in the afternoon of the same cold clear winter day, on the packed pale earth at the edge of the square before the long low tiled building with its plank doors; warm golden low afternoon sun from the upper right behind, long shadows stretching far to the left across the earth: close-up of Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, framed from the chest up with space above his head, his right sleeve already raised to his wet eyes from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the packed pale earth and the plank doors all the way to the edge, and he is the only person in the frame; hurt turning hard, not smiling: red-rimmed eyes, brows pressed down, jaw set, lips moving hard between words; behind him, soft, the black lacquered carriage body and the head and neck of one horse at the right edge in the warm afternoon sun",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「你就是那個窮秀才？憑什麼娶我女兒？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin drags his purple sleeve once across his eyes and lowers it, glaring, as he speaks, and the warm low afternoon sunlight stays unchanged",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a04",
+          "speaker": "xuyan",
+          "text": "晚輩許硯。窮是真的，婚書是縣衙蓋了印的。",
+          "emotion": "不卑不亢"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the town square of the county town in the afternoon of the same cold clear winter day, on the packed pale earth at the edge of the square before the long low tiled building with its plank doors; warm golden low afternoon sun from the upper right behind, long shadows stretching far to the left across the earth: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing on the packed pale earth, framed from the chest up with space above his head, his two hands already joined in a cupped salute before his chest from the first frame, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the packed pale earth and the plank doors all the way to the edge, and he is the only person in the frame; steady and level, polite but unbowed, not smiling: calm eyes, brows level, lips moving evenly between words; behind him, soft, the long low tiled building in the warm afternoon sun; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「晚輩許硯。窮是真的，婚書是縣衙蓋了印的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan gives one short bow over his joined hands and straightens as he speaks, and the warm low afternoon sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a05",
+          "speaker": "weishaoqing",
+          "text": "岳父，他家的牆是泥糊的，您去看一眼就明白。",
+          "emotion": "笑，本鏡可以笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the town square of the county town in the afternoon of the same cold clear winter day, the bare branches of a tree and the low tiled roofs against the clear sky, warm golden low afternoon sun from the right: low-angle medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, already standing on the packed earth from the first frame, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick held before his chest, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the bare branches and the clear sky all the way to the edge, and he is the only person in the frame; smooth and smug: a thin easy smile, eyes half lidded, lips moving lazily between words; behind him the bare branches of a tree and the low tiled roofs against the clear sky in the warm afternoon light",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「岳父，他家的牆是泥糊的，您去看一眼就明白」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing dips his head in one small bow toward the left edge of the frame as he speaks, and the warm low afternoon sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a06",
+          "speaker": "tangwanjin",
+          "text": "好，帶路！我倒要看看，我囡囡住的是什麼地方。",
+          "emotion": "一甩袖"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the town square of the county town in the afternoon of the same cold clear winter day, on the packed pale earth at the edge of the square before the long low tiled building with its plank doors; warm golden low afternoon sun from the upper right behind, long shadows stretching far to the left across the earth: medium shot on the packed pale earth at the edge of the square: Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed from the knees up, his face three-quarter to screen right toward the carriage at the right edge of the frame, never the lens; at the right edge the black lacquered carriage body with its door already swung back, and beyond it the head and neck of one horse; he is the only person in the frame; decided and stiff, not smiling: chin up, brows down, lips moving firmly between words; behind them, soft, the long low tiled building in the warm afternoon sun",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「好，帶路！我倒要看看，我囡囡住的是什麼地方」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin flings his wide purple sleeve once toward the carriage as he speaks, and the warm low afternoon sunlight stays unchanged",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "許家院子，傍晚",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a07",
+          "speaker": "qinshuang",
+          "text": "小棠，這位老爺是誰？一進門就東張西望。",
+          "emotion": "擋在門邊"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, by the yard gate of weathered planks under its small tiled roof in the low mud-and-stone back wall, the corner of the thatched farmhouse at its left, the bare tree and the golden field beyond; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot at standing eye height just inside the yard gate, the gate swung back behind them: on the right Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, already a step inside the gate from the first frame, framed from the knees up, facing us, his head turned toward screen right, looking the yard over, his lips pressed shut, never the lens; on the left, half a step before him and a little to the side, Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, framed from the knees up, her left arm already held out across his way from the first frame, her face three-quarter to screen right toward him, never the lens; blunt and wary, not smiling: brows level, eyes narrowed, lips moving clearly between words; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「小棠，這位老爺是誰？一進門就東張西望」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin slowly turns his head from screen right to screen left, looking the yard over; Tang Wanjin says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "qinshuang",
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a08",
+          "speaker": "tangxiaotang",
+          "text": "秦姐姐，這是我爹，從江南追到這裡來的。",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, by the yard gate of weathered planks under its small tiled roof in the low mud-and-stone back wall, the corner of the thatched farmhouse at its left, the bare tree and the golden field beyond; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth just inside the yard gate, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord held against her chest in her right arm from the first frame, her left arm already reaching out to the sleeve of the woman beside the gatepost; half a step beyond her in the left third of the frame, her whole figure clear of the young woman's head and shoulders, Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, standing, framed from the waist up, one hand on the swung-back plank gate, her face three-quarter toward her, never the lens, her lips pressed shut; beyond them, soft, the yard gate under its small tiled roof and the golden field in the low evening sun; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+        "motion": "her left hand tugs once at the sleeve of the woman beside the gatepost, only her arm moving; Qin Shuang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, beside the round stone well with its wooden windlass in the front right of the yard, a few planks leaning against the low mud-and-stone wall behind it; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, a veil of soft, finely woven pale grey gauze over her nose, mouth and chin, tied behind both ears, falling down to the middle of her chest, standing beside the round stone well, framed from the waist up, the round stone rim of the well along the bottom of the frame, her right hand already on the rope handle of one round wooden bucket of well water with a rope handle standing on the rim from the first frame, her face three-quarter to screen left, her eyes lowered, never the lens; she is the only person in the frame; cool and watchful, not smiling: steady narrow eyes above the veil, brows level; behind her the low mud-and-stone wall and a few planks leaning against it in the low evening sun; their hands hold only what is described here",
+        "motion": "A-ling's right hand eases the bucket a little closer along the well's stone rim as her eyes lift once toward the yard gate beyond the left edge of the frame and drop back to the bucket; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, her lips still under the veil, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a09",
+          "speaker": "weishaoqing",
+          "text": "岳父請看，泥牆茅草，這就是他的家。",
+          "emotion": "嫌棄，拖長音，本鏡可以笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, by the yard gate of weathered planks under its small tiled roof in the low mud-and-stone back wall, the corner of the thatched farmhouse at its left, the bare tree and the golden field beyond; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, already a step inside the yard gate from the first frame, framed from the waist up, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick raised before his chest, the swung-back plank gate and the golden field behind him, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall and the bare tree all the way to the edge, and he is the only person in the frame; sneering and fastidious: a thin disdainful smile, nose wrinkled, eyes half lidded, lips moving slowly between drawled words",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「岳父請看，泥牆茅草，這就是他的家」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing sweeps the tip of the closed fan slowly across the yard before him as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a10",
+          "speaker": "xiaohe",
+          "text": "伯伯，喝碗井水，我們家的井水是甜的！",
+          "emotion": "踮腳，本鏡可以笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the thatched mud-and-stone farmhouse on the left of the yard, its dark doorway, a small lattice window and split firewood stacked against its wall; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot at a child's height before the thatched farmhouse: little Xiaohe, eight years old, in her patched lilac cotton jacket, two little pigtails tied with red string, a small woven straw rabbit tucked into the cloth sash at her waist, already stopped on the packed earth from the first frame, framed from the knees up, one rough brown clay bowl with one small chip broken out of its rim, full of clear well water held in both her hands at her chest, the dark doorway behind her, her face turned up three-quarter to screen right toward someone out of sight beyond the upper right edge of the frame, never the lens; that side of the frame is only the mud-and-stone wall of the farmhouse and the firewood all the way to the edge, and she is the only person in the frame; bright and eager: wide shining eyes, a big gap-toothed smile, lips moving brightly between words; their hands hold only what is described here",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「伯伯，喝碗井水，我們家的井水是甜的！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe rises up on her toes and lifts the bowl high toward the upper right with both hands as she speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a11",
+          "speaker": "tangwanjin",
+          "text": "碗缺了一角，這井水倒是真的甜。",
+          "emotion": "愣了一下"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up of Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed from the chest up with space above his head, one rough brown clay bowl with one small chip broken out of its rim, full of clear well water already held in both his hands at his chin from the first frame, his eyes on the chipped rim, never the lens; he is the only person in the frame; wary turning surprised, not smiling: brows drawn at first, then lifting, eyes widening a little, lips moving slowly between words; behind him, soft, the low mud-and-stone wall and the golden field in the low evening light; their hands hold only what is described here",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「碗缺了一角，這井水倒是真的甜」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin takes one small sip from the chipped bowl and his brows lift in surprise as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a12",
+          "speaker": "tangwanjin",
+          "text": "囡囡，跟爹回江南，爹不罵妳。",
+          "emotion": "放軟"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth of the yard, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord held against her chest in her left arm from the first frame; one step beyond her in the right third of the frame, his whole figure clear of her head and shoulders, Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed from the waist up, facing her, his face three-quarter toward her, never the lens, both his hands empty; softened and coaxing, not smiling: brows raised, eyes pleading, lips moving gently between words; beyond them, soft, the low mud-and-stone wall and the golden field in the low evening sun; she stays in the middle of the frame the whole shot; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「囡囡，跟爹回江南，爹不罵妳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin reaches his right hand out toward her as he speaks; she stays where she is; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "tangwanjin"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a13",
+          "speaker": "tangxiaotang",
+          "text": "爹，我不回去。這裡是我的家。",
+          "emotion": "眼眶紅，不退"
+        }
+      ],
+      "data": {
+        "camera": "Close-up from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth of the yard, in the middle of the frame, framed from the shoulders up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord held against her chest in both arms from the first frame, only its pale edge showing at her sides; beyond her, soft, the low mud-and-stone wall and the golden field in the low evening sun; their hands hold only what is described here",
+        "motion": "her shoulders draw up and square, and she holds her ground, only her shoulders moving; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a14",
+          "speaker": "weishaoqing",
+          "text": "婚書在此，岳父親筆簽的，她說了不算。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: low-angle medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, already standing by the low mud-and-stone wall from the first frame, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick, one folded sheet of cream paper with a thin gold edge, plain, only its plain back showing already in his left hand from the first frame, held before his chest, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall and the golden field all the way to the edge, and he is the only person in the frame; cold and sure: a cold thin smile, eyes narrowed, lips moving coolly between words; behind him, soft, the golden field in the low evening light; their hands hold only what is described here",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「婚書在此，岳父親筆簽的，她說了不算」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing raises the folded sheet in his left hand toward the left edge of the frame as he speaks, its plain back toward us, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a15",
+          "speaker": "xuyan",
+          "text": "唐老爺，回不回江南先別急，先看一本帳。",
+          "emotion": "平穩，有禮"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the thatched mud-and-stone farmhouse on the left of the yard, its dark doorway, a small lattice window and split firewood stacked against its wall; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing on the packed earth before the thatched farmhouse, framed from the waist up, one thick stack of plain blank paper sheets stitched along one edge with cord already held in both his hands at his chest from the first frame, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the mud-and-stone wall of the farmhouse and the split firewood all the way to the edge, and he is the only person in the frame; calm and courteous, not smiling: steady eyes, brows level, lips moving evenly between words; behind him, soft, the dark doorway and the mud-and-stone wall of the farmhouse in the low evening light; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「唐老爺，回不回江南先別急，先看一本帳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan holds the stack of paper out toward the right edge of the frame with both hands, his head bowing a little, as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a16",
+          "speaker": "tangwanjin",
+          "text": "每批編號，記買家……一筆都不漏。",
+          "emotion": "畫外，喃喃"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: warm golden low evening light from the right: insert close-up seen from slightly above, looking down, the very first frame is already a close view of the edge of one thick stack of plain blank paper sheets stitched along one edge with cord, held level in two plump hands in deep purple silk sleeve cuffs woven with small gold ingot shapes, one plain gold ring on the right hand, its top sheet blank and pale; far below, soft and out of focus, only packed yellow earth with long evening shadows fills the background to every edge; only the stack of blank sheets, the two hands and their sleeve cuffs are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. The right hand turns the blank pages over one after another, faster and faster, the paper fluttering, and the low golden evening sunlight stays unchanged",
+        "characters": [],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a17",
+          "speaker": "tangwanjin",
+          "text": "被人賠本壓價，三十天還贏人家兩倍？",
+          "emotion": "眉毛挑到額頭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up of Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed from the chest up with space above his head, one thick stack of plain blank paper sheets stitched along one edge with cord already raised before his face in both hands from the first frame, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall and the golden field all the way to the edge, and he is the only person in the frame; astonished, not smiling: brows shooting up his forehead, narrow eyes going wide, mouth slack between words; behind him, soft, the golden field in the low evening light; their hands hold only what is described here",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「被人賠本壓價，三十天還贏人家兩倍？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin lowers the stack of paper from before his face, his brows shooting up and his narrow eyes going wide, as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a18",
+          "speaker": "xuyan",
+          "text": "帳是小棠做的，價是她定的，三十天的功勞都是她的。",
+          "emotion": "平穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the thatched mud-and-stone farmhouse on the left of the yard, its dark doorway, a small lattice window and split firewood stacked against its wall; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing before the thatched farmhouse, framed from the chest up with space above his head, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; both sides of the frame are only the mud-and-stone wall of the farmhouse and the split firewood all the way to the edges, and he is the only person in the frame; modest and warm, not smiling: steady eyes softening, brows level, lips moving evenly between words; behind him, soft, the dark doorway in the low evening light",
+        "motion": "Xu Yan speaks a short Mandarin line, 「帳是小棠做的，價是她定的，三十天的功勞都是她的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan turns his head once toward the left edge of the frame as he speaks, his eyes softening, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a19",
+          "speaker": "xitong",
+          "text": "叮。唐小棠，好感加六，突破四十。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth of the yard, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; both her hands already clasped behind her back at her waist from the first frame, nothing in them; beyond her, soft, the low mud-and-stone wall and the golden field glowing in the low evening sun; their hands hold only what is described here",
+        "motion": "her clasped fingers twist together once behind her back and her shoulders lift a little, only her hands and shoulders moving; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot; the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a20",
+          "speaker": "xitong",
+          "text": "開箱獎勵：高產糧種一小袋，六十日可收。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq930a21",
+          "speaker": "xitong",
+          "text": "功勞送人，倒是送對了一次。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the thatched mud-and-stone farmhouse on the left of the yard, its dark doorway, a small lattice window and split firewood stacked against its wall; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes level on a spot beyond the right edge of the frame, never the lens; he is the only person in the frame; quiet and dry: steady eyes, brows level, lips pressed shut; behind him, soft, the dark doorway and the mud-and-stone wall of the farmhouse in the low evening light",
+        "motion": "Xu Yan's eyes settle on that spot and his brows lift a little, then level again; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is listening, not speaking, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s21b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a22",
+          "speaker": "xuyan",
+          "text": "不是送她的，本來就是她算出來的。",
+          "emotion": "內心獨白，嘴閉著，心裡話，錄得近、輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the thatched mud-and-stone farmhouse on the left of the yard, its dark doorway, a small lattice window and split firewood stacked against its wall; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: close-up of Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, framed from the chest up with space above his head, his face three-quarter to screen right, his eyes lowered a little, never the lens; he is the only person in the frame; quiet and certain: steady eyes, brows level, lips pressed shut; behind him, soft, the dark doorway and the mud-and-stone wall of the farmhouse in the low evening light",
+        "motion": "one corner of Xu Yan's mouth twitches once and is pressed straight again; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: warm golden low evening light from the right: insert close-up seen from slightly above, looking down, the very first frame is already a close view of a man's right hand in a faded blue-grey sleeve cuff, held low at his side, palm up, one small plain cloth pouch, its neck loosened, full of plump golden rice grains lying on the palm; far below, soft and out of focus, only packed yellow earth fills the background to every edge; only the hand, its sleeve cuff and the pouch are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. The fingers slowly close over the little pouch until it is hidden in the hand, and the low golden evening sunlight stays unchanged",
+        "characters": [],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a23",
+          "speaker": "weishaoqing",
+          "text": "鄉下鋪子的小帳而已，岳父何必當真？",
+          "emotion": "笑得很僵"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing by the low mud-and-stone wall, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick held still in mid-air before his chest from the first frame, one folded sheet of cream paper with a thin gold edge, plain, only its plain back showing in his left hand at his side, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall and the golden field all the way to the edge, and he is the only person in the frame; strained: a stiff forced smile, eyes hard and darting, lips moving tightly between words; behind him, soft, the golden field in the low evening light; their hands hold only what is described here",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「鄉下鋪子的小帳而已，岳父何必當真？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing takes one small step toward the left edge of the frame as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a24",
+          "speaker": "zhengbo",
+          "text": "老爺，京裡那筆鹽船的帳，今天能算了。",
+          "emotion": "貼耳壓低，錄得很近、很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up of two men by the low mud-and-stone wall: in the middle Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed from the chest up, one thick stack of plain blank paper sheets stitched along one edge with cord held at his chest in both hands, his face mild and at ease from the first frame, his eyes on the paper, never the lens; at the left of the frame, close behind Tang Wanjin's right shoulder and bent down to his right ear, Steward Zheng, tall and thin with a slight stoop, a long lined face, a neat grey-white goatee and a thin moustache, grey hair in a small topknot bound with a black cloth band, in his dark brown satin long robe, framed from the chest up, his right hand already cupped against the side of his own mouth from the first frame, the cupped hand between his mouth and Tang Wanjin's ear, his lips hidden behind it, his eyes lowered, never the lens; behind them, soft, the golden field in the low evening light; their hands hold only what is described here; exactly two people",
+        "motion": "the warmth drains from Tang Wanjin's face, his brows press down and his narrow eyes turn cold and slide toward the right edge of the frame; Tang Wanjin says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words; Steward Zheng's cupped hand stays between his mouth and Tang Wanjin's ear, his lips hidden behind it, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin",
+          "zhengbo"
+        ],
+        "nospeak": [
+          "zhengbo"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a25",
+          "speaker": "tangwanjin",
+          "text": "五年前，你爹說借我八條鹽船，一條都沒還。",
+          "emotion": "笑全收了"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: medium shot by the low mud-and-stone wall, both men framed from the waist up, side-on to us: on the left Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, already standing one step before the other man from the first frame, one thick stack of plain blank paper sheets stitched along one edge with cord held in his left hand at his side, facing screen right, never the lens; grim, every trace of warmth gone, not smiling: brows pressed down, eyes cold, lips moving hard between words; on the right Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick, one folded sheet of cream paper with a thin gold edge, plain, only its plain back showing in his left hand, facing screen left, never the lens, his lips pressed shut, not smiling; behind them, soft, the golden field in the low evening light; their hands hold only what is described here; exactly two people",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「五年前，你爹說借我八條鹽船，一條都沒還」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin tucks the stack of paper up under his left arm as he speaks; Wei Shaoqing says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin",
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a26",
+          "speaker": "weishaoqing",
+          "text": "宰相府跟你借幾條船，那又如何？",
+          "emotion": "抬下巴，乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing by the low mud-and-stone wall, framed from the chest up with space above his head, one folded sheet of cream paper with a thin gold edge, plain, only its plain back showing held in his left hand, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall and the golden field all the way to the edge, and he is the only person in the frame; brittle and defiant, not smiling: a frozen contemptuous curl of the lip, chin raised, eyes hard, lips moving sharply between words; behind him, soft, the golden field in the low evening light; their hands hold only what is described here",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「宰相府跟你借幾條船，那又如何？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing draws the folded sheet back against his chest as he speaks, his chin up, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a27",
+          "speaker": "tangwanjin",
+          "text": "船扣在你家，這張婚書，就是押給你們的抵押。",
+          "emotion": "咬牙，眼眶紅"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up of Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, framed from the chest up with space above his head, one thick stack of plain blank paper sheets stitched along one edge with cord under his left arm, his right hand already raised before his chest from the first frame, his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall and the golden field all the way to the edge, and he is the only person in the frame; bitter and grieved, not smiling: jaw clenched, teeth set, eyes red-rimmed, lips moving hard between words; behind him, soft, the golden field in the low evening light",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「船扣在你家，這張婚書，就是押給你們的抵押」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin thrusts his flat right hand, fingers together and palm down, toward the right edge of the frame as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a28",
+          "speaker": "tangxiaotang",
+          "text": "抵押……爹，你簽字不是為了賣我？",
+          "emotion": "發抖"
+        }
+      ],
+      "data": {
+        "camera": "Close-up from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth of the yard, in the middle of the frame, framed from the shoulders up, facing straight away from us; she is the only young woman with two high round buns in the frame; both her hands empty at her sides; beyond her, soft, the low mud-and-stone wall and the golden field in the low evening sun; their hands hold only what is described here",
+        "motion": "her right hand comes up toward her mouth, only her arm moving, her shoulders trembling a little; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a29",
+          "speaker": "tangwanjin",
+          "text": "傻囡囡，爹不簽，他們就要動妳。",
+          "emotion": "放軟"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth of the yard, in the middle of the frame, framed from the waist up, facing straight away from us; she is the only young woman with two high round buns in the frame; both her arms raised a little before her chest; half a step beyond her in the right third of the frame, his whole figure clear of her head and shoulders, Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed from the waist up, facing her, his face three-quarter toward her, never the lens, both his hands already holding one thick stack of plain blank paper sheets stitched along one edge with cord out against her arms from the first frame; softened and tender, not smiling: brows raised, eyes wet, lips moving gently between words; beyond them, soft, the low mud-and-stone wall and the golden field in the low evening sun; she stays in the middle of the frame the whole shot; their hands hold only what is described here; exactly two people, the young woman in the middle seen only from behind",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「傻囡囡，爹不簽，他們就要動妳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin presses the stack of paper into her arms and her arms close round it as he speaks; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "tangwanjin"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a30",
+          "speaker": "weishaoqing",
+          "text": "唐萬金，你敢為了一個女兒，跟宰相府翻臉？",
+          "emotion": "輕佻全沒了"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, the bare branches of a tree against the glowing evening sky, the low golden sun behind them at the right: low-angle medium close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick held at his side, one folded sheet of cream paper with a thin gold edge, plain, only its plain back showing already raised high in his left hand from the first frame, its plain back toward us, his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the bare branches and the glowing evening sky all the way to the edge, and he is the only person in the frame; every trace of ease gone, not smiling: jaw tight, eyes hard and wide, the corners of his mouth pulled down, lips moving sharply between words; behind him the bare branches of a tree against the glowing evening sky; their hands hold only what is described here",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「唐萬金，你敢為了一個女兒，跟宰相府翻臉？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing thrusts the folded sheet forward toward the left edge of the frame as he speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a31",
+          "speaker": "tangwanjin",
+          "text": "八條船，我不要了！女兒，我要！",
+          "emotion": "用喊的"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: a courtyard of packed earth: on the left a low thatched mud-and-stone farmhouse with a dark doorway, a small lattice window and split firewood stacked against its wall; in the middle of the low mud-and-stone back wall a yard gate of weathered planks under a small tiled roof; one bare leafless tree just behind the wall at its right, a golden field beyond; one round stone well with a wooden windlass in the front right; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: wide shot at standing eye height, like the picture: in the middle of the yard before the low mud-and-stone wall Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, framed full figure, side-on to us facing screen right, one folded sheet of cream paper with a thin gold edge, plain, only its plain back showing already gripped in both his fists from the first frame, his face red and furious, not smiling, lips moving in a shout between words, never the lens; a step before him on the right Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing, framed full figure, side-on facing screen left, his left hand empty and half raised, one closed folding fan held down at his side in his right hand, its dark bamboo ribs pressed tight together like a short slim stick, his lips pressed shut, not smiling, never the lens; further back on the left before the thatched farmhouse Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing, framed full figure, small, facing them, his lips pressed shut, never the lens; their hands hold only what is described here; exactly three people",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「八條船，我不要了！女兒，我要！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin tears the folded sheet in two with one hard pull as he shouts; Wei Shaoqing and Xu Yan say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin",
+          "weishaoqing",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: warm golden low evening light from the right: insert close-up seen from above, looking down, the very first frame is already a close view of two torn halves of one sheet of cream paper with a thin gold edge, only their plain backs showing, tumbling down a hand's width above packed yellow earth, lit gold by the low evening sun; the earth fills the frame to every edge; only the two torn halves and the earth below them are in the frame",
+        "motion": "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. The two torn halves turn over slowly in the air and settle onto the earth, only their plain backs showing, and the low golden evening sunlight stays unchanged",
+        "characters": [],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a32",
+          "speaker": "tangxiaotang",
+          "text": "魏公子，賭約你輸了。撤婚，不許再提冒名。",
+          "emotion": "擦掉眼淚"
+        }
+      ],
+      "data": {
+        "camera": "Close-up from behind, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, standing on the packed earth of the yard, in the middle of the frame, framed from the shoulders up, facing straight away from us; she is the only young woman with two high round buns in the frame; one thick stack of plain blank paper sheets stitched along one edge with cord held against her chest in her left arm from the first frame; beyond her, soft, the low mud-and-stone wall and the golden field in the low evening sun; their hands hold only what is described here",
+        "motion": "the back of her right wrist comes up to her eyes once and goes down again, only her arm moving; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a33",
+          "speaker": "weishaoqing",
+          "text": "……撤。商會那三位老人，我會去說。",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, before the low mud-and-stone wall of the yard with the golden field beyond it, warm golden low evening sun from the right: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing by the low mud-and-stone wall, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick squeezed in his right fist, his face three-quarter to screen left, his eyes lowered, never the lens; he is the only person in the frame; beaten and bitter, not smiling: jaw clenched hard, the corners of his mouth pulled down, lips moving tightly between words; behind him, soft, the golden field in the low evening light",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「……撤。商會那三位老人，我會去說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing turns his face away toward the right edge of the frame as he speaks, the closed fan tightening in his fist, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a34",
+          "speaker": "tangwanjin",
+          "text": "女婿，車後那匹棗紅馬留給你，算見面禮！",
+          "emotion": "拍肩，本鏡可以笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, by the yard gate of weathered planks under its small tiled roof in the low mud-and-stone back wall, the corner of the thatched farmhouse at its left, the bare tree and the golden field beyond; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot near the yard gate, both men framed from the waist up: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, standing, side-on to us facing screen right, never the lens, his lips pressed shut, not smiling; on the right Tang Wanjin, a little plump, with a round ruddy face, a short black moustache and a short black goatee, a small gold crown on his topknot, in his deep purple silk robe woven all over with small gold ingot shapes, a string of small gold keys at his waist, standing, side-on facing screen left, his right hand already raised beside the young man's shoulder from the first frame, never the lens; beaming now: a broad warm smile, eyes crinkled, lips moving heartily between words; behind them, soft, the yard gate under its small tiled roof and the golden field in the low evening sun; their hands hold only what is described here; exactly two people",
+        "motion": "Tang Wanjin speaks a short Mandarin line, 「女婿，車後那匹棗紅馬留給你，算見面禮！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Wanjin claps his right hand down on Xu Yan's shoulder and Xu Yan sways a little as he speaks; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "tangwanjin",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a35",
+          "speaker": "qinshuang",
+          "text": "好馬，腳力夠。許硯，這匹我替你養。",
+          "emotion": "接過韁繩，本鏡可以淡淡地笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, by the yard gate of weathered planks under its small tiled roof in the low mud-and-stone back wall, the corner of the thatched farmhouse at its left, the bare tree and the golden field beyond; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot in the yard gate: Qin Shuang, in her fitted dark brown cross-collared short jacket cinched with a wide plain black leather belt, black trousers and leather boots, her high ponytail tied with black cord, standing, framed from the waist up, the reins of one chestnut-red horse with a plain leather bridle already wound round her right hand from the first frame, the horse's head and neck beside her at the right of the frame; her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, never the lens; that side of the frame is only the plank gate and the corner of the thatched farmhouse all the way to the edge, and she is the only person in the frame; easy and pleased: a faint easy smile, bright eyes, lips moving brightly between words; behind them, soft, the golden field in the low evening sun; their hands hold only what is described here; exactly one person and one horse",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「好馬，腳力夠。許硯，這匹我替你養」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang strokes the horse's neck once with her left hand as she speaks, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "chapter": "許家井邊，起風",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a36",
+          "speaker": "weishaoqing",
+          "text": "唐家的事算了，這筆帳，我回京再算。",
+          "emotion": "背對院子，咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: a courtyard of packed earth: on the left a low thatched mud-and-stone farmhouse with a dark doorway, a small lattice window and split firewood stacked against its wall; in the middle of the low mud-and-stone back wall a yard gate of weathered planks under a small tiled roof; one bare leafless tree just behind the wall at its right, a golden field beyond; one round stone well with a wooden windlass in the front right; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: wide shot at standing eye height, like the picture: at the very right edge of the frame, cut by it, soft and out of focus beside the round stone well, only the back of one grey-white cotton shoulder and the back of a high black bun with one plain wooden hairpin, turned fully away from us toward the yard gate, the back of her head toward us the whole shot; in the middle of the yard Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed full figure, small, his back to us, the back of his head toward us, walking stiffly toward the yard gate in the back wall, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick; their hands hold only what is described here; exactly two people",
+        "motion": "Wei Shaoqing walks stiffly up to the yard gate and stops before it, his back to us the whole shot; the woman in the foreground stays still, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "nospeak": [
+          "weishaoqing"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, beside the round stone well with its wooden windlass in the front right of the yard, a few planks leaning against the low mud-and-stone wall behind it; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: medium shot of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, standing beside the round stone well, framed from the waist up, the round stone rim of the well along the bottom of the frame, a long strip of soft, half-transparent pale grey gauze hangs from a thin grey tie looped over her left ear only, its free end blown out past her left cheek and shoulder in the wind, her nose, mouth and chin bare from the first frame, her right hand already gripping the rope handle of one round wooden bucket of well water with a rope handle standing on the rim from the first frame, her face three-quarter to screen left, never the lens; she is the only person in the frame; cold and still, not smiling: level unblinking eyes, lips closed; behind her the low mud-and-stone wall and a few planks leaning against it in the low evening sun; their hands hold only what is described here",
+        "motion": "A-ling lifts the bucket off the well's stone rim with her right hand; only the loose strip of pale grey gauze and a few strands of her hair stir in the wind, her dress still; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, beside the round stone well with its wooden windlass in the front right of the yard, a few planks leaning against the low mud-and-stone wall behind it; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: close-up of A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, framed from the shoulders up, a long strip of soft, half-transparent pale grey gauze hangs from a thin grey tie looped over her left ear only, its free end blown out past her left cheek and shoulder in the wind, her nose, mouth and chin bare from the first frame, a few loose strands of black hair blown across her cheek, her face three-quarter to screen left, her eyes lowered, never the lens; she is the only person in the frame; cold and unreadable, not smiling: still eyes, brows level, lips closed; behind her, soft, the low mud-and-stone wall in the low evening sun",
+        "motion": "A-ling's eyes rise slowly and fix on the yard gate beyond the left edge of the frame, unblinking; A-ling says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq930a37",
+          "speaker": "weishaoqing",
+          "text": "你……怎麼會在這裡？",
+          "emotion": "整個人僵住，聲音發緊，不要喊"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west, by the yard gate of weathered planks under its small tiled roof in the low mud-and-stone back wall, the corner of the thatched farmhouse at its left, the bare tree and the golden field beyond; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: close-up of Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, standing in the yard gate, his body half turned back toward the yard from the first frame, framed from the chest up with space above his head, one closed folding fan in his right hand, its dark bamboo ribs pressed tight together like a short slim stick loose in his fingers, his face three-quarter to screen right toward the well beyond the right edge of the frame, never the lens; that side of the frame is only the low mud-and-stone wall all the way to the edge, and he is the only person in the frame; stunned, not smiling: his peach-blossom eyes going wide, his face draining, lips parting tightly between words; behind him, soft, the plank gate and the golden field in the low evening sun",
+        "motion": "Wei Shaoqing speaks a short Mandarin line, 「你……怎麼會在這裡？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Wei Shaoqing's eyes go wide and his whole body freezes as he speaks, the closed fan slipping a little down through his fingers, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "weishaoqing"
+        ],
+        "buy_seconds": 5
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the courtyard of the Xu farmhouse at the end of the same cold clear early-winter day, the sun low in the west: the yard exactly as in the picture: the farmhouse on the left, the yard gate in the middle of the back wall, the well in the front right; low golden evening sun from the upper right behind, long shadows stretching toward the lower left across the earth: wide shot at standing eye height, like the picture: in the right foreground beside the round stone well A-ling, in her plain grey-white cotton dress with long sleeves covering her wrists, her black hair in a high bun with one plain wooden hairpin, standing, framed full figure, one round wooden bucket of well water with a rope handle held low in her right hand, a long strip of soft, half-transparent pale grey gauze hangs from a thin grey tie looped over her left ear only, its free end blown out past her left cheek and shoulder in the wind, her nose, mouth and chin bare from the first frame, her body turned toward the yard gate, her face in left profile, her eyes on the gate, her lips closed, never the lens; far back in the yard gate in the middle of the back wall, small, Wei Shaoqing, in his sapphire-blue brocade robe woven with gold thread, a white jade pendant at his waist, a small green jade ornament at the front of his topknot, framed full figure, half turned back toward the yard, frozen, his lips pressed shut, never the lens; in the middle of the yard, small, side by side with their backs to us, facing the yard gate: on the left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, its sleeves down, and on his right one young woman seen only from behind, appearing only once: the back of her head with every strand of her black hair combed smooth and gathered up into just two round buns set high on her head, one bun on each side, one short pink silk ribbon wrapped around each bun, the nape of her neck bare and clear above a pink inner collar, and her light peach-pink silk shoulders; the back of her head facing straight away from us the whole time, her head still, her ear the furthest round her head we ever see, one thick stack of plain blank paper sheets stitched along one edge with cord held against her chest, she is the only young woman with two high round buns in the frame; their hands hold only what is described here; exactly four people",
+        "motion": "nobody moves; only the loose strip of pale grey gauze, a few strands of A-ling's hair and the hems of their clothes stir in the wind; A-ling, Wei Shaoqing and Xu Yan say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words; the young woman with the two high round buns keeps her head still, facing straight away from us, the back of her head toward us the whole shot, and the low golden evening sunlight stays unchanged",
+        "characters": [
+          "aling",
+          "weishaoqing",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    }
+  ]
+}

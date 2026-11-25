@@ -1,0 +1,668 @@
+{
+ "_note": "e934 live d1 (e933-live's way; written by mkspec.py). No Tang Xiaotang. No person sent in s03 (the pinwheel insert: no place sentence, one sky crop written as the colour of the sky only), s23, s24 (the wheel), s26 (the channel), s40 (the swarm). Xu Yan's angle-b nowhere; the wide s19 his portrait only; s08, s09, s33 his portrait then angle-a. A-ling never angle-b; s14 her portrait only; s36, s38 her portrait then angle-a. Qian Yuanwai never angle-b; s30 his portrait only. The clean sentence's 'clear and still' replaced in s01-s03, s34 (wind), s38 (cold wind), s40 (the swarm). Sets: see mkspec.py (the pool at noon and afternoon set-shentan-l3 and crops, the free sunset -xi, the channel -qu-xi, the fields set-hantian crops and the grey -hui); the pool words leave the field and channel prompts. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9341101/9341102.",
+ "seeds": [
+  9341101,
+  9341102
+ ],
+ "shots": {
+  "s01": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the small hand holding the pinwheel at the lower left corner of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air is clear, a steady wind blowing, a clean natural film image"
+    ],
+    [
+     "never the mood. a gust of hot wind from ",
+     "never the mood. A gust of hot wind from "
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-bian-l3.png"
+   }
+  },
+  "s02": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air is clear, a steady wind blowing, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, her eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-tian-l3.png"
+   }
+  },
+  "s03": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The pale sky shown in <Picture 1> gives only the colour of the background."
+    ],
+    [
+     "Initial composition: At the deep pool on the flat dry fields of Liuxi at noon on the tenth day of the drought; harsh white noon sun high overhead in a pale clear sky, short hard shadows, a hot dry wind: insert close-up",
+     "Initial composition: Insert close-up"
+    ],
+    [
+     "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. ",
+     "Throughout the shot the framing stays as it is. The picture gives the colour of the sky only, never the mood. "
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air is clear, a steady wind blowing, a clean natural film image"
+    ],
+    [
+     "never the mood. the gust keeps blowing f",
+     "never the mood. The gust keeps blowing f"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-tian-l3.png"
+   }
+  },
+  "s04": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward the paddle under his hand, his eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s05": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the one man seen from behind at the left edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-lun-l3.png"
+   }
+  },
+  "s06": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the one man seen from behind at the upper right edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s07": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face lifted three-quarter to screen right toward the high sun beyond the upper right edge of the frame, his eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s08": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-bian-l3.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s09": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-bian-l3.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s10": {
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-shi2-l3.png"
+   }
+  },
+  "s11": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, her eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-tian-l3.png"
+   }
+  },
+  "s12": {
+   "replace": [
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Qin Shuang wears her leather boots and the two men on the stone edge dark cloth shoes on both feet."
+    ]
+   ]
+  },
+  "s13": {
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s14": {
+   "replace": [
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward the wheel at the right of the frame, her eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s15": {
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s16": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left, looking down toward someone out of sight beyond the lower left edge of the frame, her eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-tian-l3.png"
+   }
+  },
+  "s17": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward the wheel at the right, her eyes on its paddles"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-bian-l3.png"
+   }
+  },
+  "s18": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, her eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-shi2-l3.png"
+   }
+  },
+  "s19": {
+   "replace": [
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Xu Yan and Carpenter Shi wear dark cloth shoes on both feet."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ]
+  },
+  "s20": {
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s21": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     ", leaning on a polished old bamboo walking staff",
+     ""
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-an-l3.png"
+   }
+  },
+  "s22": {
+   "replace": [
+    [
+     ", leaning on a polished old bamboo walking staff",
+     ""
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward the wheel at the right edge of the frame, her eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-xi-an-l3.png"
+   }
+  },
+  "s23": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet. ",
+     ""
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-xi-l3.png"
+   }
+  },
+  "s24": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-xi-ye-l3.png"
+   }
+  },
+  "s25": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face tipped up toward the turning wheel above him, his eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-xi-lun-l3.png"
+   }
+  },
+  "s26": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     "At the deep pool on the flat dry fields of Liuxi at sunset on the tenth day of the drought, beside",
+     "On the flat dry fields of Liuxi at sunset on the tenth day of the drought, beside"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-shentan-qu-xi2-l1.png"
+   }
+  },
+  "s27": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     ", leaning on a polished old bamboo walking staff",
+     ""
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face bent toward the water in his cupped hands, his eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-geng-l1.png"
+   }
+  },
+  "s28": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     ", leaning on a polished old bamboo walking staff",
+     ""
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face lifted three-quarter to screen right toward someone out of sight beyond the upper right edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-tian-l1.png"
+   }
+  },
+  "s29": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     ", leaning on a polished old bamboo walking staff",
+     ""
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-geng-l1.png"
+   }
+  },
+  "s30": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward the water in the furrows before him, his eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png",
+    "qianyuanwai-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-liu-l1.png"
+   }
+  },
+  "s31": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, her eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-liu-l1.png"
+   }
+  },
+  "s32": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face looking back over his right shoulder toward the field beyond the lower left edge of the frame, his eyes on it"
+    ]
+   ],
+   "drop_pictures": [
+    "qianyuanwai-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-liu-l1.png"
+   }
+  },
+  "s33": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-tian-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s34": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the air is clear, a steady wind blowing, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-geng-l1.png"
+   }
+  },
+  "s35": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-geng-l1.png"
+   }
+  },
+  "s36": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left toward the water running along the furrows below, her eyes on it"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-di-l1.png",
+    "aling-angle-a-l1.png": "aling-portrait-l1.png",
+    "aling-angle-b-l1.png": "angles/aling-angle-a-l1.png"
+   }
+  },
+  "s37": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face lifted three-quarter to screen right toward the far hills beyond the upper right edge of the frame, her eyes on them"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-hui-tian-l1.png"
+   }
+  },
+  "s38": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a cold wind rising, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face lifted three-quarter to screen right toward the far hills beyond the right edge of the frame, her eyes on them"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-hui-tian-l1.png",
+    "aling-angle-a-l1.png": "aling-portrait-l1.png",
+    "aling-angle-b-l1.png": "angles/aling-angle-a-l1.png"
+   }
+  },
+  "s39": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the small girl's two legs across his shoulders at the top edge of the frame the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward the far hills beyond the right edge of the frame, his eyes on them"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-hui-geng-l1.png"
+   }
+  },
+  "s40": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only the three people seen from behind at the bottom edge of the frame the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "a clean natural film image"
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet. ",
+     ""
+    ],
+    [
+     "never the mood. the dark band of tiny sp",
+     "never the mood. The dark band of tiny sp"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l3.png": "set-hantian-hui-l1.png"
+   }
+  }
+ }
+}

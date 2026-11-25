@@ -1,0 +1,1026 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e016-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "shimujiang",
+      "name": "石木匠",
+      "appearance": "East Asian man of fifty-five, lean and wiry with weathered tanned skin, a grey stubbled jaw, deep frown lines and suspicious narrow eyes, grey hair tied in a small rough topknot with a pencil-like wooden stick, a faded brown short work jacket with sleeves rolled up, a leather apron covered in wood shavings, calloused hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的老木匠，男聲、粗啞低沉，脾氣硬、說話短、帶著不耐煩"
+      }
+    },
+    {
+      "id": "laisan",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, tall and lean with a long narrow face and hollow cheeks, a thin grey-streaked beard and moustache, narrow smiling eyes that are always half closed, a green satin robe with a jade belt hook, both hands empty (no jade balls)",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a light tense cue of muted plucks on a misty stone bridge at dawn turning into a bright quick rhythm of wooden percussion and strings in a busy paper workshop, one bright accent when three hundred and twenty sheets are counted; then a quiet night cue of a bamboo flute and soft water on a starlit river, a light accent and the rhythm lifting when a young woman sits up with an idea; then a bright busy market cue at an academy gate, one accent when the ink stays clean, sinking into low strings at a dark carriage, a low drone before dawn and one big heavy accent on a distant shout; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "書院門口賣白紙｜種田娶妻打天下 第16集（重製版）",
+    "description": "石橋頭，賴三要五十兩買紙坊換一條路；許硯把那張紙摺好塞回他手裡：不賣。橋是錢家的，橋下的柳溪可不是。三張竹簾抄了一整天，抄到三百二十張；當夜秦霜撐著竹筏順流而下，唐小棠在紙堆上打哈欠，許硯擔心行會一張都不收，她卻說：不賣書坊，直接賣給書生。第二天上午，縣學書院門口同一支筆、同一滴墨當場比，柳溪白紙寫字不洇墨，書生排到街角，三百張賣完。街角那輛黑篷馬車裡，魏記的孫掌櫃低聲吩咐「報給少爺」。逆水撐了一夜，天亮回到柳溪口，紙坊的方向冒起濃煙。《種田娶妻打天下》第 16 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "書院門口賣白紙",
+      "tag": "種田娶妻打天下",
+      "shot": "s29"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "不賣",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a01",
+          "speaker": "xuyan",
+          "text": "紙坊不賣，五十兩你留著買別的。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: over-the-shoulder medium shot from close behind one thin young man seen only from behind, appearing only once: only the back of his head with a small topknot above a wide grey-brown cloth band and his shoulders in a grey-brown hemp jacket, soft and dark, his face never in the frame, standing behind the thick rough log barrier in the right foreground, the log lying level across the lower frame between him and the others, at its left end one hand in a plain grey sleeve resting on it, only that sleeved hand showing at the frame's left edge; the thin young man's right arm reaching across the log, one small slip of plain paper folded in half, only its blank back toward us, thick and opaque, lit from the front held out between his right thumb and fingers; facing us beyond the log on screen left, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves tied back above his forearms with cloth strips, standing beside the front of one wooden wheelbarrow with a single wooden wheel at the front and two long wooden handles, one square bundle wrapped in brown oilcloth and tied with rope on it, framed from the waist up with clear space above his head, his left hand resting on the oilcloth bundle on the cart, his right hand at his side, his face three-quarter to screen right toward the man, his eyes on him just right of the lens, never the lens; calm and cool: brows level, eyes steady, lips moving evenly between words; one step behind him on the right side of the cart Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, the small gold abacus hanging at her right hip, framed from the waist up, soft, her face three-quarter to screen right toward the man, never the lens; composed: brows level, lips closed; behind them only the stone-paved path, the bamboo and the mist; their hands hold only what is described here; exactly two faces, the man in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「紙坊不賣，五十兩你留著買別的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the thin young man in the right foreground keeps his head still, the back of his head toward us the whole shot; Xu Yan lifts his right hand and closes the man's fingers over the folded slip with his own fingers, then pushes the man's closed hand back across the log toward the man's chest; the slip stays folded inside the man's fist, only a corner of its blank back showing; Tang Xiaotang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word Xu Yan's lips press flat and his brows stay level, eyes steady on the man, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a02",
+          "speaker": "laisan",
+          "text": "不賣？那就讓你的紙，全爛在村裡。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: over-the-shoulder medium shot from close behind one thin young man seen only from behind, appearing only once: only the back of his head with a small topknot above a wide grey-brown cloth band and his shoulders in a grey-brown hemp jacket, soft and dark, his face never in the frame, behind the thick rough log barrier in the right foreground, his right fist still closed around the folded slip; facing us beyond the log on screen left a step away, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves tied back above his forearms with cloth strips, framed from the waist up with clear space above his head, standing beside the cart near its front, his face three-quarter to screen right toward the man, never the lens; cool and unmoved: brows level, eyes steady, lips pressed shut; behind him only the stone-paved path and the mist; their hands hold only what is described here; exactly two people, the man in the foreground seen only from behind",
+        "motion": "the thin young man in the foreground keeps his head still, the back of his head toward us the whole shot, while he stuffs the slip into the front of his jacket with his right hand, drags his left foot one limping step back and slaps the log once with his left palm; Xu Yan steps back along the side of the cart to its two handles and takes them in both hands; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "laisan",
+          "xuyan"
+        ],
+        "nospeak": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a03",
+          "speaker": "tangxiaotang",
+          "text": "橋是他錢家的，橋底下的柳溪可不是。",
+          "emotion": "不慌"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: medium shot from behind and a little above: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing at the low grey stone parapet at the near foot of the bridge, a little right of the middle, both her hands resting on the top of the parapet, the small gold abacus hanging at her right hip; beyond the parapet below her only the slow misty water, the round stones and the green bamboo of the far bank; she is the only one in the frame with buns and pink ribbons, and she stays in the middle foreground from the first frame to the last; nobody else in the frame",
+        "motion": "the young woman leans a little forward over the parapet and looks down at the water, both hands staying flat on the stone; she keeps her head still and never turns it, the back of her head toward us the whole shot, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a04",
+          "speaker": "tangxiaotang",
+          "text": "順著溪往下漂一夜，天亮就是縣城。",
+          "emotion": "畫外，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view medium shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: point-of-view shot looking down over the low grey stone parapet of the stone bridge in the near foreground at the slow shallow water below, about two body-lengths wide, flowing gently toward screen left, round stones under the clear water, green bamboo along the bank; nobody anywhere in the frame; only the parapet, the water, the stones and the bamboo",
+        "motion": "the thin mist on the water drifts apart and one bamboo leaf floats slowly away on the current toward screen left, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a05",
+          "speaker": "xuyan",
+          "text": "走水路？我們家連一條小船都沒有。",
+          "emotion": "意外，半信半疑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing at the low stone parapet in the right foreground; she is the only one in the frame with buns and pink ribbons, and she stays in the right foreground from the first frame to the last; a step to her left beyond her, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves tied back above his forearms with cloth strips, framed from the waist up with clear space above his head, both hands on the top of the parapet, bending to look down over it at the water, his face three-quarter to screen right, never the lens; surprised and doubtful: brows lifting, eyes widening, lips moving between words; behind him only the bamboo and the mist; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「走水路？我們家連一條小船都沒有」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan glances down over the parapet at the water, his eyes light up, then he straightens and turns his face to her; she keeps her head still and never turns it, the back of her head toward us the whole shot; after the last word his brows stay lifted, lips pressed, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a06",
+          "speaker": "tangxiaotang",
+          "text": "石叔教過二牛紮竹筏，村後的竹子要多少有多少。",
+          "emotion": "有一點得意"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing at the low stone parapet in the right foreground, the small gold abacus hanging at her right hip; she is the only one in the frame with buns and pink ribbons, and she stays in the right foreground from the first frame to the last; facing us a step away, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves tied back above his forearms with cloth strips, framed from the waist up with clear space above his head, his hands at his sides, his face three-quarter to screen right toward her, his eyes on her face just right of the lens, never the lens; listening: brows raised, eyes quick, lips pressed shut; behind him only the stone-paved path running back toward the village at the left and the bamboo; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman lifts her left arm (on screen left) and points straight back along the path toward the village at the left; Xu Yan's eyes follow her arm to the left and come back to her, and he nods once slowly; she keeps her head still and never turns it, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a07",
+          "speaker": "xuyan",
+          "text": "三爺，這座橋你留著，自己慢慢走。",
+          "emotion": "回頭，不冷不熱"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the near foot of the stone bridge into the county town in the early morning: an old grey stone arch bridge over the misty water, a stone-paved path running from the left foreground to a small flat stone landing at the near foot of the bridge, green bamboo along both banks, open misty water with round stones and reeds along the bank at the right, tiled houses on the far bank; one thick rough log laid across the small stone landing at the foot of the bridge as a barrier, each end resting on a low wooden trestle; thin white mist lying on the water; low cold golden morning light from the right: wide shot from behind the log barrier, the rough log lying across the bottom of the frame, one hand in a plain grey sleeve resting on its left end, only that sleeved hand showing at the frame's left edge; in the right foreground one thin young man seen only from behind, appearing only once: only the back of his head with a small topknot above a wide grey-brown cloth band and his shoulders in a grey-brown hemp jacket, soft and dark, his face never in the frame, standing behind the log; beyond the log on the stone-paved path, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves tied back above his forearms with cloth strips, gripping the two handles of one wooden wheelbarrow with a single wooden wheel at the front and two long wooden handles, one square bundle wrapped in brown oilcloth and tied with rope on it, turning it round toward the village, framed full length, his face three-quarter to screen right toward the man as he looks back over his right shoulder, never the lens; cool: brows level, eyes flat, lips moving evenly between words; walking beside the cart on its right side Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, the small gold abacus hanging at her right hip, framed full length, small, her face three-quarter to screen right, never the lens; composed: brows level, lips closed; behind them only the path, the bamboo and the misty morning; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「三爺，這座橋你留著，自己慢慢走」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the thin young man in the right foreground keeps his head still, the back of his head toward us the whole shot; Xu Yan swings the wheelbarrow round and pushes it two steps away up the path, then turns his head back over his right shoulder toward the man and speaks; Tang Xiaotang walks on beside the cart; the hand on the log stays still; Tang Xiaotang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a08",
+          "speaker": "laisan",
+          "text": "好，看你的紙，能漂到哪裡去！",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the foot of the stone bridge in the early morning, thin white mist on the water and low cold golden light from the right: low-angle medium shot from the height of the stone landing: one thin young man seen only from behind, appearing only once: only the back of his head with a small topknot above a wide grey-brown cloth band and his shoulders in a grey-brown hemp jacket, soft and dark, his face never in the frame, framed from the knees up with clear space above his head, standing behind the thick rough log at the near foot of the bridge, the low wooden trestle under the log's end beside his left foot; far up the stone-paved path beyond him, small and blurred, the wheelbarrow being pushed away toward the village by two small figures; the mist and the bamboo; he is the only person near the camera",
+        "motion": "the man lurches one limping step forward after them, dragging his left foot, stops, and kicks the low wooden trestle hard with his left foot so the log jolts; he keeps his head still and never turns it, the back of his head toward us the whole shot, and the thin mist on the water and the low cold golden light from the right stay unchanged",
+        "characters": [
+          "laisan"
+        ],
+        "nospeak": [
+          "laisan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "chapter": "三張簾",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a09",
+          "speaker": "shimujiang",
+          "text": "第三張簾子剛做好，要多少紙就抄多少。",
+          "emotion": "頭也不抬"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse on a clear autumn day: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; warm daylight slanting in from the open right side, leaf shadows on the walls: wide shot: at the big round tub in the left foreground Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, standing behind it on its far side, framed from the knees up with clear space above his head, holding a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips level in both hands over the open pulp, the crossed stirring sticks resting against the tub's far left rim away from his hands, his face lowered to the mat, never the lens; gruff and busy: brows knotted, lips moving curtly between words; coming in through the open right side Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, framed full length, both hands on the two handles of one wooden wheelbarrow with a single wooden wheel at the front and two long wooden handles, one square bundle wrapped in brown oilcloth and tied with rope on it, his face three-quarter to screen left toward the old man, never the lens; brisk, lips closed; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「第三張簾子剛做好，要多少紙就抄多少」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi dips the flat mat straight down into the milky pulp, lifts it out level with a thin even layer of pulp on it and gives it one small shake, his eyes on the mat the whole time; Xu Yan pushes the wheelbarrow in through the open right side and stops it beside the table; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "shimujiang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a10",
+          "speaker": "xuyan",
+          "text": "三張簾一起抄，天黑前能抄到三百張嗎？",
+          "emotion": "盤算，問"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse on a clear autumn day: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; warm daylight slanting in from the open right side, leaf shadows on the walls: over-the-shoulder medium shot from close behind one lean old man seen only from behind, appearing only once: only the back of his grey topknot with a plain wooden stick through it, his shoulder in a faded brown jacket and the strap of a worn leather apron, soft, his face never in the frame, in the right foreground; facing us a few steps away on screen left, a little left of the middle, standing at a second big round wooden tub of the same milky pulp, its rim bare, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, framed from the waist up with clear space above his head, holding a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips flat at waist height in both hands like a tray, just lifted out of the pulp, his two hands only on the bamboo mat, his face three-quarter to screen right toward the old man, never the lens; keen and quick: brows up, eyes bright, lips moving between words; behind him only the bare stone back wall; their hands hold only what is described here; exactly two people, the man in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「三張簾一起抄，天黑前能抄到三百張嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the old man in the right foreground keeps his head still, the back of his grey topknot toward us the whole shot; Xu Yan holds the mat level while the water drips off its underside, then lifts his eyes from it to the old man; after the last word his brows stay up, lips pressed, eyes on the old man, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a11",
+          "speaker": "shimujiang",
+          "text": "三百張？我手不停，你們兩個別拖累我就行。",
+          "emotion": "嘴硬，短促"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse on a clear autumn day: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; warm daylight slanting in from the open right side, leaf shadows on the walls: medium shot: a little left of the middle Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, framed from the knees up with clear space above his head, standing beside the big tub at the left, next to a low board with a small stack of wet blank sheets on it, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips with a wet sheet on it held face down in both his hands over the stack, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; gruff and curt: brows knotted low, one eye narrowed, the corners of his mouth pulled down, lips moving curtly between words and pressed flat between them; on screen right, a few steps behind him, at the new small tub in front of the old table, Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, the small gold abacus hanging at her right hip, framed from the waist up, her sleeves pushed back, pressing a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as her shoulders and as deep as her forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips down into the pulp with both hands, her face lowered to the tub, never the lens; intent: brows drawn together in concentration, lips closed; their hands hold only what is described here",
+        "motion": "Carpenter Shi speaks a short Mandarin line, 「三百張？我手不停，你們兩個別拖累我就行」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi turns the mat over and lays the wet sheet down flat on the stack, then peels the mat away; Tang Xiaotang pushes her mat down into the pulp the way he does; after the last word he snorts once through his nose and presses his lips into a hard flat line; Tang Xiaotang says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "shimujiang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the open-sided work shed on a clear autumn day, warm daylight from the open right side: insert close-up, the shot opens directly on a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips rising level out of the milky white pulp in a round wooden tub from its very first frame, held flat by Xu Yan's two hands at its two sides, his blue-grey sleeves rolled up to the elbows; only the hands, the forearms, the mat and the pulp are in the frame; warm daylight from the right",
+        "motion": "the two hands lift the mat level out of the pulp; milky water streams down through the fine gaps between the strips and drips back into the tub, and a thin even layer of white pulp settles smooth across the whole mat, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a12",
+          "speaker": "qinshuang",
+          "text": "小棠說要走水路。竹篙我削好了，筏子二牛照石叔說的在紮。",
+          "emotion": "乾脆，交代"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse on a clear autumn day: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; warm daylight slanting in from the open right side, leaf shadows on the walls: wide shot following her past one rough timber post in the foreground: coming in through the open right side Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, framed full length with clear space above her head, one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat resting on her right shoulder, held by her right hand, her face three-quarter to screen left toward Xu Yan, never the lens; brisk and direct: brows level, eyes steady, lips moving crisply between words; on screen left at a second big round wooden tub of the same milky pulp, its rim bare Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, framed full length, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips held flat in both hands over the pulp, turning his head toward her, never the lens; lips closed; Qin Shuang's green bamboo pole is the only thing anyone carries, and Xu Yan's two hands are only on the bamboo mat; their hands hold only what is described here; exactly two people",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「小棠說要走水路。竹篙我削好了，筏子二牛照石叔說的在紮」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang lowers the bamboo pole from her shoulder and stands it upright against the timber post, then walks over and stops a step to his right, facing him; Xu Yan stops working and turns round toward her, the mat still flat in his hands; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a13",
+          "speaker": "xuyan",
+          "text": "柳溪夜裡有灘，妳一個人撐得了一整夜？",
+          "emotion": "皺眉，擔心"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse on a clear autumn day: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; warm daylight slanting in from the open right side, leaf shadows on the walls: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: only the back of her head with her high ponytail tied with black cord and her shoulder in a dark brown jacket, soft, her head turned fully away from us, her ear, cheek and profile never visible, her face never in the frame, her hands below the frame, in the right foreground; facing us a step away beside a second big round wooden tub of the same milky pulp, its rim bare on screen left, a little left of the middle, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, framed from the waist up with clear space above his head, a flat rectangular mat of thin split bamboo strips laid close side by side, as wide as his shoulders and as deep as his forearm is long, edged with a thin plain wooden border, pale straw-coloured all over, one small willow-leaf shape woven into its middle in the same pale strips in both hands, his face three-quarter to screen right toward her, never the lens; worried: brows knotted, eyes searching hers, lips moving between words; behind him only the stone back wall; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Xu Yan speaks a short Mandarin line, 「柳溪夜裡有灘，妳一個人撐得了一整夜？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lays the mat down flat across the rim of his tub, wipes both wet hands on the front hem of his robe and frowns at her; the young woman in the foreground keeps her head still, the back of her head toward us the whole shot; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a14",
+          "speaker": "qinshuang",
+          "text": "哪裡有灘、哪裡有石頭，我都記得，你坐穩就好。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, low angle, slow push in",
+        "prompt": "In the open-sided work shed on a clear autumn day, warm daylight from the open right side: low-angle close-up of Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, framed from the chest up with space above her head, her right hand on one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat standing upright beside her, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; sure and proud: brows level, chin lifted, eyes steady, lips moving firmly between words; behind her only one rough timber post and the bright open side of the shed",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「哪裡有灘、哪裡有石頭，我都記得，你坐穩就好」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang grips the upright pole, lifts it a hand's width and thumps its flat end down once on the earth, then lifts her chin; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the warm daylight from the open right side stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a15",
+          "speaker": "tangxiaotang",
+          "text": "三百二十張，一張不少，還多一張給你試筆。",
+          "emotion": "擦汗，眼睛亮，累但開心"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse at sunset: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; low golden evening sunlight slanting straight in through the open right side, long warm shadows: medium shot from behind and a little above: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, crouching in the right foreground beside the old wooden table, a neat stack of fresh plain white paper, every sheet blank, thick and matte, square knee-high on a low board in front of her, both her hands flat on top of it, the small gold abacus hanging at her right hip; she is the only one in the frame with buns and pink ribbons, and she stays in the right foreground from the first frame to the last; beyond her across the shed at the big tub on screen left, soft, Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows and Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, each lifting a flat bamboo mat out of the pulp and setting it upright against the tub's side, their faces three-quarter toward each other, never the lens, tired, lips closed; the low sunset light from the open right side falls across the top of the stack; their hands hold only what is described here",
+        "motion": "the young woman presses the last few sheets flat with both palms, taps the top of the stack twice with her right forefinger (on screen right) and straightens her back; the two men at the tub set their mats aside; she keeps her head still and never turns it, the back of her head toward us the whole shot; Xu Yan and Carpenter Shi say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the low golden evening sunlight from the right stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "shimujiang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a16",
+          "speaker": "xuyan",
+          "text": "好。天一黑就上筏，天亮前進縣城。",
+          "emotion": "定下來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the open-sided work shed beside the Xu farmhouse at sunset: a dark timber roof on rough wooden posts, open on the right side, a low back wall of fitted stone with green plants at its foot and grey tiled roofs and green trees beyond it; at the front left one big round wooden tub filled with smooth milky white bamboo pulp, two plain wooden stirring sticks crossed and resting in it against its far left rim; a squat dark stone mortar in the middle; an old plain wooden table at the right and in front of the table one new small round wooden tub of the same milky pulp; the floor of flat cracked earth-coloured flagstones; low golden evening sunlight slanting straight in through the open right side, long warm shadows: medium shot: on screen left Xu Yan, in his faded blue-grey scholar's robe patched at one elbow, the sleeves rolled up to his elbows, framed from the knees up with clear space above his head, bending to lift one square bundle of paper wrapped in dark brown oilcloth and tied with rope from the floor in both hands, his face three-quarter to screen right toward the old man, never the lens; decided: brows level, eyes firm, lips moving between words; on screen right a step away Carpenter Shi, in his faded brown cross-collared short work jacket with the sleeves rolled up and his worn brown leather apron, one plain wooden stick through his grey topknot, bent over a second one square bundle of paper wrapped in dark brown oilcloth and tied with rope on the floor, pulling its rope tight with both hands, his face lowered to the knot, never the lens; gruff, lips pressed shut; low golden sunset light from the open right side; their hands hold only what is described here; exactly two people",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好。天一黑就上筏，天亮前進縣城」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Carpenter Shi yanks the rope tight and ties it off; Xu Yan swings his bundle up onto his right shoulder, steadies it with his right hand and nods once; Carpenter Shi says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the low golden evening sunlight from the right stays unchanged",
+        "characters": [
+          "xuyan",
+          "shimujiang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": "夜裡的柳溪",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Low-angle wide shot, tracking",
+        "prompt": "On a bamboo raft drifting down a quiet river at night: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo pole standing at its stern on the right with a short crossbar from which hangs one plain blank pale paper lantern with a small candle burning inside, its warm glow on the water; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; deep dark night, only cold stars in the black sky, the black water lit only by starlight and the lantern's warm glow: low-angle wide shot skimming the water past drooping dark leaves in the foreground, keeping the whole raft in the frame: at the bow on screen left Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, standing, framed full length, one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat in both her hands, her face three-quarter to screen left down the river, never the lens; intent: brows level, lips closed; sitting on the oilcloth bundles in the middle Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, framed full length, small, her face three-quarter to screen left, never the lens; sleepy, lips closed; at the stern on screen right beside the lantern pole Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting, framed full length, small, his face three-quarter to screen left, never the lens; quiet, lips closed; the only long things in the frame are the bamboo poles of the raft and her one green bamboo punting pole; exactly three people",
+        "motion": "Qin Shuang plants the pole in the river bed and pushes back along it; the raft glides off toward screen left and rings of ripples spread out behind it in the lantern light; Qin Shuang, Tang Xiaotang and Xu Yan say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a17",
+          "speaker": "qinshuang",
+          "text": "坐穩，前面有灘，石頭在左邊。",
+          "emotion": "頭也不回"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On a bamboo raft on a quiet river at night, deep dark night, cold starlight and the warm glow of one blank paper lantern: medium shot of Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, standing at the bow of the raft, framed from the knees up with clear space above her head, one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat in both her hands, the warm lantern light from behind her on the right rimming her cheek and ponytail, her ponytail lifting in the night wind, her face three-quarter to screen left toward the dark water ahead, never the lens; alert: brows drawn, eyes narrowed ahead, lips moving crisply between words; ahead of her at the left edge one big dark rock in the water with white water foaming round it; behind her only the black river and the stars; the only long things in the frame are the bamboo poles of the raft and her one green bamboo punting pole",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「坐穩，前面有灘，石頭在左邊」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang swings the pole across to her left side, plants it against the river bed and shoves, and the raft slides past the big rock; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a18",
+          "speaker": "tangxiaotang",
+          "text": "天亮前到得了縣城嗎？我眼皮都快黏起來了。",
+          "emotion": "打哈欠"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On a bamboo raft drifting down a quiet river at night: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo pole standing at its stern on the right with a short crossbar from which hangs one plain blank pale paper lantern with a small candle burning inside, its warm glow on the water; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; deep dark night, only cold stars in the black sky, the black water lit only by starlight and the lantern's warm glow: medium shot from behind and a little to her right, looking across the raft toward the dark left bank: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, sitting on the oilcloth bundles in the middle of the raft, a little right of the middle, her knees drawn up, the small gold abacus hanging at her right hip; she is the only one in the frame with buns and pink ribbons, and she stays in the middle foreground from the first frame to the last; the bow beyond the left edge of the picture; beyond her only the dark water, the black reeds of the left bank and the stars; the lantern glow from behind the camera warm on her shoulders and ribbons; nobody else in the frame",
+        "motion": "the raft rocks once; the young woman puts her left hand (on screen left) down flat on the oilcloth beside her to steady herself, then lifts her right sleeve up in front of her face as her shoulders rise and sag in a long yawn; she keeps her head still and never turns it, the back of her head toward us the whole shot, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a19",
+          "speaker": "qinshuang",
+          "text": "雞叫頭遍的時候，就到縣城外的碼頭了。",
+          "emotion": "穩"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "On a bamboo raft drifting down a quiet river at night: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo pole standing at its stern on the right with a short crossbar from which hangs one plain blank pale paper lantern with a small candle burning inside, its warm glow on the water; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; deep dark night, only cold stars in the black sky, the black water lit only by starlight and the lantern's warm glow: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, sitting on the oilcloth bundles in the right foreground; she is the only one in the frame with buns and pink ribbons, and she stays in the right foreground from the first frame to the last; beyond her at the bow on screen left, a little left of the middle, Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, standing, framed from the knees up with clear space above her head, one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat in both her hands, her face three-quarter to screen right over her shoulder toward the young woman, never the lens; steady: brows level, eyes calm, lips moving evenly between words; behind her only the black river and a sky full of stars; the only long things in the frame are the bamboo poles of the raft and her one green bamboo punting pole; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「雞叫頭遍的時候，就到縣城外的碼頭了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the young woman with the two buns and pink ribbons in the right foreground keeps her head still, the back of her head toward us the whole shot; Qin Shuang glances up once at the stars, then plants the pole and pushes the raft on with one long stroke; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a20",
+          "speaker": "xuyan",
+          "text": "到了也沒用，行會的告示一貼，書坊一張都不收。",
+          "emotion": "皺眉，發愁"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On a bamboo raft on a quiet river at night, deep dark night, cold starlight and the warm glow of one blank paper lantern: close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting at the stern of the raft, framed from the chest up with space above his head, the paper lantern just behind him on the right lighting half his face warm and leaving the other half in cold starlight, his left hand on the oilcloth of a bundle beside him, his face three-quarter to screen left toward the middle of the raft, never the lens; worried: brows knotted, eyes lowered, lips moving low between words; behind him only the black water and the lantern glow",
+        "motion": "Xu Yan speaks a short Mandarin line, 「到了也沒用，行會的告示一貼，書坊一張都不收」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan presses his palm once on the oilcloth of the bundle beside him and lets out a long breath; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a21",
+          "speaker": "xitong",
+          "text": "宿主還沒到就先認輸，效率真高。",
+          "emotion": "冷，毒舌"
+        },
+        {
+          "id": "zq916a22",
+          "speaker": "xuyan",
+          "text": "我在想辦法，不是認輸……雖然還沒想到。",
+          "emotion": "內心獨白，嘴閉著，嘴硬，心裡回嘴"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On a bamboo raft on a quiet river at night, deep dark night, cold starlight and the warm glow of one blank paper lantern: close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting at the stern of the raft, framed from the chest up with space above his head, the lantern behind him on the right lighting half his face, his face three-quarter to screen left, never the lens; stung and stubborn: brows pulled together, eyes narrowing, lips pressed flat; behind him only the black water and the lantern glow",
+        "motion": "Xu Yan rubs the bridge of his nose between two fingers with his right hand, then drops the hand and lifts his eyes to look ahead down the river, his jaw set; He says nothing in this shot: his lips stay pressed together from the first frame to the last, his jaw still, no talking, no mouthing words; he is thinking, not speaking, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a23",
+          "speaker": "tangxiaotang",
+          "text": "誰說要賣書坊？我們直接賣給書生。",
+          "emotion": "眼睛一亮"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "On a bamboo raft drifting down a quiet river at night: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo pole standing at its stern on the right with a short crossbar from which hangs one plain blank pale paper lantern with a small candle burning inside, its warm glow on the water; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; deep dark night, only cold stars in the black sky, the black water lit only by starlight and the lantern's warm glow: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, sitting on the oilcloth bundles in the left foreground, the small gold abacus hanging at her right hip; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; facing us a step away at the stern, a little right of the middle, Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting, framed from the waist up with clear space above his head, the paper lantern on its pole just behind him on the right, his face three-quarter to screen left toward her, his eyes on her face just left of the lens, never the lens; gloomy at first: brows knotted, lips pressed shut; behind him only the black water and the stars; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman sits up straight all at once and slaps the oilcloth of the bundle beside her once with her right palm (on screen right); Xu Yan's eyes lift to her face and his brows rise; she keeps her head still and never turns it, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a24",
+          "speaker": "xuyan",
+          "text": "一家一家去敲書生的門？三百張要賣到哪天？",
+          "emotion": "不信，反問"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On a bamboo raft on a quiet river at night, deep dark night, cold starlight and the warm glow of one blank paper lantern: close-up of Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting at the stern of the raft, framed from the chest up with space above his head, the paper lantern just behind him on the right lighting half his face warm and leaving the other half in cold starlight, his face three-quarter to screen left toward the middle of the raft, never the lens; doubtful: one brow up, eyes narrowed, lips moving between words; behind him only the black water and the lantern glow",
+        "motion": "Xu Yan speaks a short Mandarin line, 「一家一家去敲書生的門？三百張要賣到哪天？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan sits up and leans forward toward the bundles, his forearms coming to rest on his knees; after the last word his brow stays up and his lips press flat, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a25",
+          "speaker": "tangxiaotang",
+          "text": "不用敲門。縣學書院門口，一早就有幾百個書生進出。",
+          "emotion": "胸有成竹"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "On a bamboo raft drifting down a quiet river at night: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo pole standing at its stern on the right with a short crossbar from which hangs one plain blank pale paper lantern with a small candle burning inside, its warm glow on the water; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; deep dark night, only cold stars in the black sky, the black water lit only by starlight and the lantern's warm glow: over-the-shoulder medium close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, in the left foreground, her right hand raised at the height of her shoulder (on screen right) with one forefinger pointing up; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; facing us an arm's length away, a little right of the middle, Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the chest up with space above his head, the lantern glow on his face from the right, his face three-quarter to screen left toward her, his eyes on her finger and then on her face, never the lens; curious: brows raised, lips pressed shut; behind him only the black water; their hands hold only what is described here; exactly two people, the young woman in the foreground seen only from behind",
+        "motion": "the young woman wags her raised forefinger from side to side twice; Xu Yan's eyes follow the finger and then come back to her; she keeps her head still and never turns it, the back of her head toward us the whole shot; Xu Yan says nothing in this shot: his lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a26",
+          "speaker": "tangxiaotang",
+          "text": "拿他們自己的筆墨當場比，寫了不洇，自然就排隊。",
+          "emotion": "篤定，舉著紙"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "On a bamboo raft on a quiet river at night, deep dark night, cold starlight and the warm glow of one blank paper lantern: insert close-up, the shot opens directly on one slender hand in a peach-pink silk sleeve holding up one sheet of fresh plain white paper the size of a book page, thick and opaque, completely blank from its very first frame, the sheet held just to the left of one plain blank pale paper lantern hanging from a bamboo crossbar, a small candle burning inside it, the sheet lit warmly from the side by the lantern, thick and opaque, its plain matte face clean and even; only the hand, the sleeve, the sheet and the lantern are in the frame; black night behind",
+        "motion": "the hand lifts the sheet a little higher beside the lantern and turns it slowly so the warm light slides across its plain blank face, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a27",
+          "speaker": "xuyan",
+          "text": "好，就在書院門口，當場比給他們看。",
+          "emotion": "定下來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On a bamboo raft drifting down a quiet river at night: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, two rounded bundles wrapped in worn brown oilcloth and tied with rope stacked low in its middle, one tall bamboo pole standing at its stern on the right with a short crossbar from which hangs one plain blank pale paper lantern with a small candle burning inside, its warm glow on the water; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; deep dark night, only cold stars in the black sky, the black water lit only by starlight and the lantern's warm glow: medium shot: Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, sitting at the stern of the raft, framed from the waist up with clear space above his head, the paper lantern on its pole just behind him on the right; held into the frame low at the left edge, below the lantern's height, by one slender hand in a peach-pink silk sleeve, one sheet of fresh plain white paper the size of a book page, thick and opaque, completely blank, its blank back toward us lit softly from the side by the lantern glow on his right, plain matte white, the lantern light falling on its edge; his right hand reaching out to take it, his face three-quarter to screen left toward the hand, never the lens; decided: brows level, eyes bright and firm, lips moving between words; behind him only the black water and the stars; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好，就在書院門口，當場比給他們看」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan takes the sheet low with his right hand, folds it in half and in half again at once and tucks it into the front of his robe under the grey coat, then nods once; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the deep night, the cold starlight and the one warm lantern glow stay unchanged, the sky stays black",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "chapter": "書院門口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a28",
+          "speaker": "tangxiaotang",
+          "text": "各位公子，柳溪白紙，同一支筆，當場比給您看！",
+          "emotion": "揚聲，招呼"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning, seen from the gate steps looking out over one long plain wooden table: the stone-paved street running away to the right between long plain white plaster walls and dark wooden plank shop fronts, every eave plain dark wood; far down the street on the right, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; every scholar wears pale blue-green and a black cap, and nobody else wears pink; bright clear morning sunlight, crisp shadows on the stone: wide shot from behind the long table: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing on a low wooden stool behind the table in the left foreground, both her arms raised high with one sheet of fresh plain white paper in each hand, the small gold abacus hanging at her right hip; the morning sun is behind the camera on the left, lighting the backs of both sheets toward us flat and even, both sheets thick and opaque, plain matte white; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; beyond her across the table about eight young scholars in Song-dynasty pale blue-green cross-collared long robes and black square soft caps, cloth shoes, small and soft, their faces seen only from the side or from behind, walking up the street from the right toward the table and the camera and turning their heads toward her; the white walls and the dark shop fronts of the street behind them",
+        "motion": "the young woman lifts both sheets higher and gives them one flourish in the air; the scholars slow down, stop and drift toward the table; she keeps her head still and never turns it, the back of her head toward us the whole shot, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a29",
+          "speaker": "xuyan",
+          "text": "左邊是書坊的紙，右邊是我們的，同一滴墨。",
+          "emotion": "清楚，當眾"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning: three wide stone steps at the right up to a pair of open vermilion doors under a dark tiled gate roof, one smooth blank wooden plaque of plain brown wood with fine straight grain above the doors; through the open doors only a stone-paved courtyard and one green tree; the stone-paved street running away to the left between long plain white plaster walls with dark tiled copings and dark wooden plank shop fronts, every eave plain dark wood; one long plain wooden table standing in front of the steps, two rounded bundles in dark brown oilcloth on its right end, one plain dark inkstone and one writing brush on its left end; far down the street at the left, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; bright clear morning sunlight, crisp shadows on the stone: medium shot of Xu Yan behind the long table: Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the waist up with clear space above his head, on the table in front of him one blank sheet of thin yellowish bamboo paper on the left and one blank sheet of fresh plain white paper on the right lying side by side, one plain writing brush with a thin bamboo handle and a soft black tip in his right hand above the inkstone, his left hand flat beside the sheets, his face three-quarter to screen left toward the scholars, never the lens; brisk and sure: brows level, eyes quick, lips moving between words; at the left edge of the frame, across the table, two young scholars in pale blue-green cross-collared robes and black square caps standing side-on in profile facing screen right, small and soft, round young faces different from his, their caps covering their hair; Xu Yan appears only once, behind the table; behind him only the vermilion doors and the white wall in the sun; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「左邊是書坊的紙，右邊是我們的，同一滴墨」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan smooths the two sheets flat side by side with his left palm, dips the brush into the inkstone and lifts it, the black tip wet; the two scholars lean in; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, top-down, locked",
+        "prompt": "At the county academy gate on a clear autumn morning, bright clear sunlight: insert close-up looking straight down, seen from the street side of the table, the shot opens directly on two sheets lying side by side on the plain wooden table from its very first frame, one blank sheet of thin yellowish bamboo paper on screen left and one blank sheet of fresh plain white paper on screen right; Xu Yan's right hand in a grey sleeve reaching in from the top edge of the frame, holding one plain writing brush with a thin bamboo handle and a soft black tip, its wet black tip just above the yellowish sheet; only the hand, the sleeve, the brush, the two sheets and the wood are in the frame",
+        "motion": "the brush draws one single straight horizontal line across the middle of the yellowish sheet, then one across the white sheet; on the yellowish sheet the black ink slowly creeps outward into a fuzzy blurred edge, on the white sheet the line stays crisp and clean; only that one line is on each sheet, the rest of both sheets plain and blank, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a30",
+          "speaker": "tangxiaotang",
+          "text": "不洇墨，寫小楷也不毛邊，一張只要五文。",
+          "emotion": "輕快"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning, seen from the gate steps looking out over one long plain wooden table: the stone-paved street running away to the right between long plain white plaster walls and dark wooden plank shop fronts, every eave plain dark wood; far down the street on the right, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; every scholar wears pale blue-green and a black cap, and nobody else wears pink; bright clear morning sunlight, crisp shadows on the stone: over-the-shoulder medium close-up from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing behind the long table in the left foreground, the small gold abacus hanging at her right hip, her right hand (on screen right) holding one blank sheet of fresh plain white paper up at shoulder height, the sun from the left grazing its edge, thick and opaque, plain matte white; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; across the table in front of her, soft, the heads of five or six young scholars in Song-dynasty pale blue-green cross-collared long robes and black square soft caps, cloth shoes, small and soft, their faces seen only from the side or from behind, bending over the table shoulder to shoulder and craning to look; the table edge and the inkstone soft in the lower frame",
+        "motion": "the young woman holds the sheet a little higher and turns it once; the scholars push closer and crane their necks to look; she keeps her head still and never turns it, the back of her head toward us the whole shot; the scholars say nothing, their lips closed, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a31",
+          "speaker": "tangxiaotang",
+          "text": "排好隊，一人限十張，賣完就沒有了！",
+          "emotion": "笑開，招呼"
+        }
+      ],
+      "data": {
+        "camera": "Medium-wide shot, slight high angle, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning, seen from the gate steps looking out over one long plain wooden table: the stone-paved street running away to the right between long plain white plaster walls and dark wooden plank shop fronts, every eave plain dark wood; far down the street on the right, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; every scholar wears pale blue-green and a black cap, and nobody else wears pink; bright clear morning sunlight, crisp shadows on the stone: slightly high medium-wide shot from behind her right shoulder: one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing behind the long table in the left foreground, one small plain blue cloth money pouch tied at the front of her sash, and the small gold abacus hanging at her right hip, her left hand (on screen left) flat on a neat stack of fresh plain white paper, every sheet blank, thick and matte, square on the table; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; across the table the whole queue of about fifteen young scholars in Song-dynasty pale blue-green cross-collared long robes and black square soft caps, cloth shoes, small and soft, their faces seen only from the side or from behind, running away from the table down the street on the right, the nearest one holding out a few round copper coins on his open palm",
+        "motion": "the young woman's right hand (on screen right) takes the coins from the nearest scholar's open palm and drops them into the blue pouch at the front of her sash, then the same right hand slides one small stack of paper across the table to him, while her left hand stays flat on the stack of blank paper the whole shot; the next scholar steps up; she keeps her head still and never turns it, the back of her head toward us the whole shot; the scholars say nothing, their lips closed, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a32",
+          "speaker": "xitong",
+          "text": "叮。白紙進城，售出三百張。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Wide high-angle shot, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning, seen from the gate steps looking out over one long plain wooden table: the stone-paved street running away to the right between long plain white plaster walls and dark wooden plank shop fronts, every eave plain dark wood; far down the street on the right, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; every scholar wears pale blue-green and a black cap, and nobody else wears pink; bright clear morning sunlight, crisp shadows on the stone: wide high-angle shot past the dark tiled corner of the gate roof in the top foreground: a long queue of about thirty young scholars in Song-dynasty pale blue-green cross-collared long robes and black square soft caps, cloth shoes, small and soft, their faces seen only from the side or from behind, winding from the long table along the street and round the corner at the right; behind the table, small: at its right end Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, one big sheet of empty brown oilcloth in her hands; beside her Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, already holding the last small stack of blank paper out across the table to the scholar in front of him; at the left end Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, one small plain blue cloth money pouch tied at the front of her sash, and the small gold abacus hanging at her right hip, her left hand resting on one small square packet wrapped in brown oilcloth and tied with string, the size of a book on the table, her face three-quarter to screen right toward the queue, never the lens; busy: brows lifted, lips closed; every face small; Xu Yan appears only once, behind the table in his grey outer coat; the scholars are other young men with round faces and black square caps; their hands hold only what is described here",
+        "motion": "Xu Yan hands the last stack across the table to the scholar; Qin Shuang rolls up the empty oilcloth and tucks it under her left arm; Tang Xiaotang keeps her left hand resting on the oilcloth packet the whole shot; Qin Shuang, Xu Yan and Tang Xiaotang say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a33",
+          "speaker": "sunzhanggui",
+          "text": "肥皂不賣，紙也不賣……回去報給少爺。",
+          "emotion": "低聲，慢條斯理"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Inside a closed carriage at a street corner near the county academy gate on a clear autumn morning: dark wooden walls and a plain dark wooden bench, one small window with a plain indigo cloth curtain, bright daylight outside the window: medium shot past the dark wooden frame of the small carriage window in the foreground: inside the carriage Sun Zhanggui, in his green satin cross-collared robe with a jade belt hook, his long narrow face and thin grey-streaked beard, seated on the bench, framed from the waist up with clear space above his head, his right hand holding up one corner of the plain indigo curtain, his narrow half-closed eyes on the street outside through the gap; cool and shrewd: eyes narrowed, a thin closed-lip smile; behind him only the dark wooden wall of the carriage; he is alone in the carriage",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「肥皂不賣，紙也不賣……回去報給少爺」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; from the first frame he is already speaking low toward the front of the carriage on screen left, his eyes still on the street through the gap; on his last word his right hand lets the indigo curtain fall half shut, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a34",
+          "speaker": "xuyan",
+          "text": "街角那輛黑篷車停了快一個時辰，是誰的？",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning: three wide stone steps at the right up to a pair of open vermilion doors under a dark tiled gate roof, one smooth blank wooden plaque of plain brown wood with fine straight grain above the doors; through the open doors only a stone-paved courtyard and one green tree; the stone-paved street running away to the left between long plain white plaster walls with dark tiled copings and dark wooden plank shop fronts, every eave plain dark wood; one long plain wooden table standing in front of the steps, two rounded bundles in dark brown oilcloth on its right end, one plain dark inkstone and one writing brush on its left end; far down the street at the left, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; bright clear morning sunlight, crisp shadows on the stone: medium shot: behind the long table, a little left of the middle, Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed from the waist up with clear space above his head, one plain writing brush with a thin bamboo handle and a soft black tip in his right hand over the inkstone, his face three-quarter to screen left toward the street, never the lens; wary: brows drawing together, eyes narrowing, lips moving low between words; at the right edge of the frame, soft, only the peach-pink silk shoulder and one hanging pink ribbon of the young woman beside him, her face out of the frame; far down the street at the left, small and soft, the closed black-canopied carriage; their hands hold only what is described here",
+        "motion": "Xu Yan speaks a short Mandarin line, 「街角那輛黑篷車停了快一個時辰，是誰的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan's hand stops with the brush above the inkstone; he frowns, nudges the young woman beside him once with his right elbow and tips his chin toward the carriage down the street at the left; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a35",
+          "speaker": "tangxiaotang",
+          "text": "魏記商行的孫掌櫃，我在江南見過他。",
+          "emotion": "很小聲，發白"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the county academy gate in the county town on a clear autumn morning, seen from the gate steps looking out over one long plain wooden table: the stone-paved street running away to the right between long plain white plaster walls and dark wooden plank shop fronts, every eave plain dark wood; far down the street on the right, small, one closed carriage with a black canopy, a plain dark blue curtain and one brown horse, standing still; every scholar wears pale blue-green and a black cap, and nobody else wears pink; bright clear morning sunlight, crisp shadows on the stone: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, standing behind the long table in the left foreground, one small plain blue cloth money pouch tied at the front of her sash, and the small gold abacus hanging at her right hip, her right hand (on screen right) on the small gold abacus at her right hip; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; beyond her far down the sunlit street on the right, small, the closed carriage with its black canopy and brown horse; the scholars soft along the street; the white walls in the sun",
+        "motion": "from the first frame her right forefinger flicks the beads of the small gold abacus at her right hip, two quick flicks; then the finger stops dead on a bead and her shoulders go stiff and still to the last frame, looking down the street at the carriage; she keeps her head still and never turns it, the back of her head toward us the whole shot, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a36",
+          "speaker": "tangxiaotang",
+          "text": "三百張收了一兩五錢，石叔那一成，我記在帳上。",
+          "emotion": "收好，盤算"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "At the county academy gate on a clear autumn morning, bright clear sunlight: insert close-up, the shot opens directly on her waist from its very first frame: one small plain blue cloth money pouch tied at the front of her sash, its drawstring held in two slender hands in peach-pink silk sleeves, and the small gold abacus hanging at her right hip; on the edge of the plain wooden table just beyond them one small square packet wrapped in brown oilcloth and tied with string, the size of a book; only her waist, her hands, the sleeves, the pouch, the abacus, the packet and the table edge are in the frame; bright sunlight",
+        "motion": "the two hands pull the drawstring of the blue pouch tight and tuck the pouch into the front of her sash, then pick the oilcloth packet up off the table and draw it in against her, holding it with both arms, and the bright clear morning sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "chapter": "柳溪口",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "On a bamboo raft moving slowly up a quiet river just before dawn: one long bamboo raft of eight thick green-yellow bamboo poles with natural nodes lashed side by side with rough hemp rope, its bow on screen right, only one rolled-up empty oilcloth lying in its middle, one tall bamboo pole standing at its stern on screen left with a short crossbar from which hangs one plain blank pale paper lantern burning low; dark reeds and dark bamboo along both banks, black trees and low hills beyond them; the sky a deep cold blue just before dawn, the water dark: wide shot past drooping dark leaves in the foreground, keeping the whole raft in the frame, the raft heading toward screen right: at the bow on screen right Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, framed full length, leaning hard on one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat, her face three-quarter to screen right up the river, never the lens; straining: jaw set, brows drawn; at the stern on screen left Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, framed full length, small, pushing on one short pole of plain green bamboo as long as a man, smooth and round along its whole length, his face three-quarter to screen right, never the lens, lips closed; in the middle Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, small, curled up asleep against the one rolled-up empty oilcloth, one small square packet wrapped in brown oilcloth and tied with string, the size of a book hugged in her arms, her eyes closed; the lantern on its pole at the stern on screen left burning low; the only long things in the frame are the bamboo poles of the raft and the two green bamboo poles in their hands",
+        "motion": "Qin Shuang plants the pole and walks it back stroke after stroke, and the raft creeps upstream toward screen right; Xu Yan pushes on his short pole beside the stern; Tang Xiaotang sleeps on; Qin Shuang, Xu Yan and Tang Xiaotang say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the deep cold blue before dawn stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a37",
+          "speaker": "qinshuang",
+          "text": "什麼味道？是煙，從村子那邊來的。",
+          "emotion": "聲音一沉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the ferry landing below the village at dawn: wide calm water reflecting the sky, a few tall bare wooden mooring posts standing in the water, a low wooden jetty running out from the right bank, standing empty, its grey planks bare to its end, dry grass along the right bank, a dirt path up the bank to a cluster of low thatched and tiled village houses on the right, blue hills far off at the left; from behind the village houses on the right one thick column of black smoke rising and rolling into the pale dawn sky above the village, the red glow low on the far left horizon; cool dawn light: medium shot of Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, standing at the bow of the raft, she stands on the green bamboo poles of the raft, framed from the knees up with clear space above her head, one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat in both her hands, her face three-quarter to screen right up the river toward the village, never the lens; the open water and the red dawn sky behind her on screen left; at first steady, then darkening: brows drawing down hard, eyes narrowing, lips moving low between words; the only long things in the frame are the bamboo poles of the raft and her one green bamboo punting pole",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「什麼味道？是煙，從村子那邊來的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang's hands stop on the pole; she lifts her head and draws one breath through her nose, and her face darkens as her eyes find the smoke up the river; after the last word the lips press flat and the jaw sets, the brows stay drawn, held to the last frame, and the red dawn light and the column of smoke stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a38",
+          "speaker": "shimujiang",
+          "text": "許秀才——紙坊燒起來了！快回來！",
+          "emotion": "畫外，從坡上的院子遠遠嘶喊"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view wide shot, slow push in",
+        "prompt": "At the ferry landing below the village at dawn: wide calm water reflecting the sky, a few tall bare wooden mooring posts standing in the water, a low wooden jetty running out from the right bank, standing empty, its grey planks bare to its end, dry grass along the right bank, a dirt path up the bank to a cluster of low thatched and tiled village houses on the right, blue hills far off at the left; from behind the village houses on the right one thick column of black smoke rising and rolling into the pale dawn sky above the village, the red glow low on the far left horizon; cool dawn light: point-of-view wide shot from a standing man's eye height over the front ends of the raft's bamboo poles in the bottom foreground, looking up the calm water to the ferry landing: the bare mooring posts, the low wooden jetty standing empty, the dirt path up the bank to the village houses on the right, and behind the houses the thick column of black smoke rising and rolling into the pale dawn sky above the village, the red glow low on the far left horizon; nobody anywhere on the bank or the jetty",
+        "motion": "the column of smoke rolls and climbs higher over the village roofs; the raft drifts slowly closer to the landing, and the red dawn light and the column of smoke stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq916a39",
+          "speaker": "tangxiaotang",
+          "text": "紙坊燒起來了……裡面，還有人嗎？",
+          "emotion": "驚"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the ferry landing below the village at dawn: wide calm water reflecting the sky, a few tall bare wooden mooring posts standing in the water, a low wooden jetty running out from the right bank, standing empty, its grey planks bare to its end, dry grass along the right bank, a dirt path up the bank to a cluster of low thatched and tiled village houses on the right, blue hills far off at the left; from behind the village houses on the right one thick column of black smoke rising and rolling into the pale dawn sky above the village, the red glow low on the far left horizon; cool dawn light: over-the-shoulder medium shot from close behind one young woman seen only from behind, appearing only once: the back of her head with two looped buns tied with pink silk ribbons and pearl pins, two long pink silk ribbons hanging from the buns down over her shoulders, a pink inner collar at the nape of her neck and her light peach-pink silk shoulders; the back of her head toward us the whole time, her ear the furthest round her head we ever see, only hair, ribbons and shoulders, her face turned fully away, kneeling on the raft in the left foreground, one small square packet wrapped in brown oilcloth and tied with string, the size of a book held against her in her left arm, her right hand (on screen right) gripping the grey sleeve of the young man in front of her; she is the only one in the frame with buns and pink ribbons, and she stays in the left foreground from the first frame to the last; they are on the open bamboo raft of eight lashed green bamboo poles; facing us a step away, a little right of the middle, Xu Yan, in an old plain grey cloth outer coat over his faded blue-grey scholar's robe, standing, framed from the waist up with clear space above his head, his face three-quarter to screen right toward the smoke up the river, never the lens; shocked: eyes wide, brows drawn, jaw tight, lips pressed shut; at the right edge at the bow Qin Shuang, her dark brown cross-collared short jacket, wide plain leather belt with nothing tucked in it and nothing hanging from it, black trousers, leather boots and high ponytail tied with black cord, framed from the waist up, soft, both hands driving one long punting pole of plain green bamboo about twice a man's height and as thick as a wrist, smooth and round along its whole length, both ends cut flat down into the water, her face in profile to screen right, never the lens, jaw set, lips closed; the far bank and the black smoke beyond them in the pale dawn sky; exactly three people",
+        "motion": "the young woman with the two buns and pink ribbons in the left foreground keeps her head still, the back of her head toward us the whole shot, and tugs his sleeve hard twice; Xu Yan's eyes stay fixed on the smoke; Qin Shuang drives the pole down and the raft lurches toward the bank; Xu Yan and Qin Shuang say nothing in this shot: their lips stay pressed together from the first frame to the last, no talking, no mouthing words, the face set and still, and the red dawn light and the column of smoke stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "qinshuang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    }
+  ]
+}
