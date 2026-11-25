@@ -7,6 +7,16 @@
 
 這份會自動同步到雲端硬碟兩個系列的 `_規則與教訓/教訓/解說系列共用教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-25 · sothatswhy-p02-cloud-rain-flow · 首支 Google Flow 動靜混剪長片實戰教訓與去 GitHub 化定案
+站主核定首支 Google Flow 動畫化試作長片 P02（39 支 Flow 動態＋40 張 1376×768 厚塗靜圖，468 點、0 重拍，獨立盲審 9.03/10），並將實戰踩坑與架構優化收斂為雙系列共用新規則：
+- **先 0 點數 `Nano Banana 2.1` 生圖 QA 才花 12 點生片＋雙專案隔離**：有角色鏡與無人科普／歷史空景分置兩個 Flow 專案，避免人物參考圖污染純物理或空景畫面；全部首尾格先 0 點數出圖、人工逐張驗過構圖（防站上書桌／陽台護欄、防所長耳筆、防小問戴眼鏡、防水壺壺嘴無透明氣態間隙）才進 `Omni 1.2 Flash`，並下載 0 額外點數 720p 原檔後製 Lanczos 升 1080p30＋`-an` 去原聲。
+- **Flow 安全過濾詞與 16:9 比例靜默重置陷阱**：小問影片提示詞寫 `"8-year-old / girl / child / bare face / thrusts"` 會觸發未成年過濾，一律改寫 `"the cute 2D cartoon mascot character in a navy coat with yellow hood"`（奇聞 H/G/F 軸亦避開血腥／暴力直擊詞）；在 Flow 從 Video 切回 Image 時比例常靜默跳回 `1:1`，每次生圖必確認寬銀幕並程式驗 `1376×768`。
+- **多鏡位剪輯與 P03+ 留存紅線**：依 Unique Story Beats 切鏡；`> 7.5s` 長 Flow 鏡自動切「全景＋`1.24x` 關鍵動作慢放特寫＋尾格運鏡」，`> 6.5s / > 9.5s` 靜圖切 2–3 段交替 `beat-motion-v5`；依盲審回饋新增紅線：**單章不連超 3 顆靜圖、單靜圖規劃 ≤ 8 秒**。
+- **逐句 CPS 自動巡檢＋MiniMax 日文單位避雷＋`TP=-1.5` 裕度**：中文配音合成後掃描每句字速（`< 3.5` 或 `> 7.0` 必抽聽），成功攔截 Gemini `p088` 雙重朗讀；日文 MiniMax 把 `500トンも` 誤唸為 `500もんも`，含數字＋外來語量詞需抽聽或加平假名／空白防呆；混音雙階段 `loudnorm` 設 `TP=-1.5` 可預留 AAC 編碼裕度，確保雙引擎 `loudnorm` 與 `ebur128` 穩定落在 `-14.0 ± 1.0 LUFS`、`TP ≤ -1.0 dBTP`。
+- **`heimao-left` 本機字體鎖定**：離線算圖 `templates.mjs` HTML 時若未將 `https://video.local/...` 改指本機 `@fontsource-variable/noto-sans-*`，數字會退回系統襯線體；鎖定本機字體後 9 語系（含先前爆框的 `vi`）全數過關。
+- **成片盲審後定稿腳本直存雲端、0 GitHub Commit**：盤點發現 `docs/videos/` 已膨脹至 `1.58 GB`（前 4 大項題庫池與舊劇 PNG 佔 `1.40 GB`）。自本集起新集盲審定稿腳本、`i18n`、審片報告一律直存雲端 `製作檔/<slug>/腳本定稿/` 並透過 `cli.mjs import` 上後台，不再進 GitHub。
+- 已升為規則：`docs/videos/explainer-series/FLOW-PRODUCTION-RULES.md`、`docs/videos/history-curiosity/CURIO-FLOW-CHECKLIST.md`、`docs/videos/explainer-series/README.md`、`docs/videos/so-thats-why/CURRENT.md`、`docs/videos/history-curiosity/README.md`。
+
 ## 2026-11-18 · 奇聞檔案局／原來如此事務所 · 縮圖全面升級正宗黑猫研究院（`@qiqiqushi0`）滿版置頂雙行粗黑邊＋「巨型代表物×戲劇衝突／反應」公式
 站主連看兩系列縮圖後指出：「縮圖可能要思考一下應該要放題目的代表性標誌或圖形或物品，如果真的沒有再用現在這樣，不然好像縮圖沒有甚麼魅力而且每一部都長得差不多」「可以參考黑貓研究所」「試試看用黑貓那樣全版的圖再放字看看」。實際抓取拆解黑猫研究院（`@qiqiqushi0`）高點閱原片縮圖（泡麵計時器、SEIKO 石英革命、充電器安規標誌）並對比我們原先的左字右圖分割版（`layout: "e"`／`subject: "right"`）與暗調全版圖後，確認三個決定點擊率的關鍵差異並定案為兩系列統一規格：
 - **版型全面改採滿版置頂雙行粗黑邊（`thumbnail.data.layout: "heimao"`／`"heimao-left"`，禁設 `subject`）**：取消分割側欄、底部黑漸層、印章與膠囊；置頂第一行 `headline` 用純亮黃 `#FFE600`＋`22px` 圓角純黑外框（**單行不換行、≤ 10 單位**；外語濃縮在 ≤ 約 20 拉丁字元以保手機 `320px` 寬度字高 `≥ 24 px`），第二行 `sub` 用純白 `#FFFFFF`＋`15px` 純黑外框（**單行 ≤ 14 字**，外語零孤字換行），大標與副標嚴禁破梗答案。當巨型主體衝入右上角天空時改用 `"heimao-left"` 置頂靠左。

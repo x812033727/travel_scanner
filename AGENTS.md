@@ -59,6 +59,19 @@ Rules and lessons are different: their only original is this repository, and Dri
 copy on its own (`docs/videos/rules-sync/`). Write a lesson into the matching `docs/videos/lessons/`
 file (all dramas, the two explainer series, or one drama) or the episode's `NOTES.md`, never into Drive.
 
+### Explainer series (原來如此事務所 / 奇聞檔案局) Google Flow & Drive quick map (2026-11-25)
+
+Every new session working on《原來如此事務所》(`sothatswhy-*`) or《奇聞檔案局》(`curio-*`) starts here
+so you immediately know where to read rules, fetch assets, save finalized scripts, and back up — with
+**zero per-episode GitHub commits**:
+
+| What you need | Exact location (Google Drive on Windows: `G:\我的雲端硬碟\AI\備份\AI劇\` / rclone: `videobackup:AI劇/`) |
+| --- | --- |
+| **Read latest rules & checklists** | Repo `docs/videos/explainer-series/FLOW-PRODUCTION-RULES.md` (shared) & `docs/videos/history-curiosity/CURIO-FLOW-CHECKLIST.md` (Curio); Drive read copies in `<系列>\_規則與教訓\規則\` and `<系列>\_共用\製作檔\規則與規範\` |
+| **Fetch shared assets, music, pools & catalogs** | Reusable outros, music libraries & topic pools: `<系列>\_共用\製作檔\` (e.g. `stamp-outro-flow-20261125\`, `sothatswhy-music-library\`, `curio-music-library\`, `題庫-*`); episode index: `<系列>\_總表\`; locked canon character sheets: `chief-canon-v2.png`, `kid-canon-v2.png`, `ada-canon-v2.png` |
+| **Save finalized script after blind QA (0 GitHub commits)** | `<系列>\<分類>\<代碼>\製作檔\<slug>\腳本定稿\` (`video.json`, `script.md`, `brief.md`, `flow-shot-list.json`, `timeline.json`, `i18n/*.json`) — do **not** commit new episode scripts/i18n to GitHub; lint locally with `node tools/video/cli.mjs lint --file <path>` |
+| **Full episode backup (SHA-256 0-diff)** | `<系列>\<分類>\<代碼>\製作檔\<slug>\` (`成片與上架包/`, `flow-clips/`, `stills/`, `audio_raw/`, `dubs_raw/`, `review/`, `scripts/`, `SHA256SUMS`); then push to `/admin/videos` via `node tools/video/cli.mjs import --from <import_pkg>` (`--languages`, `--publish --clips ... --recordings ...`) |
+
 ## Multi-agent workspaces on Google Drive (`Claude`, `Codex`, `Gemini`)
 
 Never place a live `.git` worktree, `node_modules` or `.venv` directly on a mounted Google Drive
