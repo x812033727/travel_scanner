@@ -1,28 +1,36 @@
 /**
- * Full-axis prompt safety scanner, dual-project isolation verifier, and
- * retention redline preflight checker.
+ * Full-axis prompt safety scanner, dual-project isolation verifier, AI drama
+ * continuity/cast checks, and retention redline preflight checker.
  *
- * Implements the rules documented in:
- *   - FLOW-PRODUCTION-RULES.md §4 (dual-project isolation, safety filters) & §5 (retention)
+ * Implements:
+ *   - FLOW-PRODUCTION-RULES.md §4 & §5 (explainers)
  *   - CURIO-FLOW-CHECKLIST.md §2 (full-axis minor/violence scan across W/H/G/F)
+ *   - shorts-PRODUCTION-ROUTES.md §3.8 (multi-character accessory anti-bleed)
+ *   - animation-production (`data.source` 0-credit cuts, 3-shot Pilot mode, drama combat nuance)
  */
 
-import { getSeriesPreset } from "../config.mjs";
+import { DEFAULT_PILOT_MAX_SHOTS, estimateClipCredits, getSeriesPreset } from "../config.mjs";
 
 const MINOR_TERMS_RE =
   /\b(?:8-year-old|\d{1,2}-year-old\s+(?:boy|girl|child|kid)|elementary\s+school\s+(?:child|student|boy|girl)|high\s+school\s+student|schoolgirl|schoolboy|schoolchild|schoolchildren|toddler|toddlers|infant|infants|baby|babies|child|children|kid|kids|boy|boys|girl|girls|minor|minors|teenager|teenagers|teen|teens|little\s+(?:boy|girl))\b/gi;
 
 const SOTHATSWHY_FILTER_TERMS_RE = /\b(?:bare\s+face|thrusts?)\b/gi;
 
-const VIOLENCE_GORE_TERMS_RE =
-  /\b(?:bloody|gore|gory|corpse|corpses|dead\s+bod(?:y|ies)|cadaver|decapitat\w*|dismember\w*|stabbing|stabbed|gunshot\s+wound|severed\s+\w+|mutilat\w*|bleeding\s+out|blood\s+splatter|murder\s+scene|tortur\w*|slaughter\w*)\b/gi;
+const EXTREME_GORE_TERMS_RE =
+  /\b(?:gore|gory|corpse|corpses|dead\s+bod(?:y|ies)|cadaver|decapitat\w*|dismember\w*|gunshot\s+wound|severed\s+\w+|mutilat\w*|bleeding\s+out|blood\s+splatter|murder\s+scene|tortur\w*|slaughter\w*)\b/gi;
+
+// Action/conflict terms that are hard blockers on explainers (Flow safety filter)
+// but reviewable warnings on historical/martial AI dramas
+const DRAMA_ACTION_TERMS_RE = /\b(?:bloody|stabbing|stabbed)\b/gi;
 
 const COPYRIGHT_IP_RE =
   /\b(?:pikachu|doraemon|mickey\s+mouse|minnie\s+mouse|hello\s+kitty|super\s+mario|spongebob|donald\s+duck|spider-?man|batman|iron\s+man)\b/gi;
 
-const CHARACTER_REF_NAME_RE = /(?:canon|ada|chief|kid|character)/i;
+const CHARACTER_REF_NAME_RE = /(?:canon|ada|chief|kid|character|cast)/i;
 
 const REPEATED_STYLE_RE = /(?:theatrical\s+gouache|thick\s+gouache\s+painting)/gi;
+
+const ACCESSORY_EXCLUSION_RE = /\b(?:no\s+glasses|without\s+glasses|unbespectacled|no\s+hat|without\s+\w+|wearing\s+.+while\s+.+wearing)\b/i;
 
 function findRegexMatches(text, regex) {
   const results = [];
@@ -71,7 +79,7 @@ export function scanPromptText(
     });
   }
 
-  for (const hit of findRegexMatches(text, VIOLENCE_GORE_TERMS_RE)) {
+  for (const hit of findRegexMatches(text, EXTREME_GORE_TERMS_RE)) {
     findings.push({
       severity: "blocker",
       category: "violence_gore_term",
@@ -80,6 +88,21 @@ export function scanPromptText(
       match: hit.match,
       index: hit.index,
       suggestion: `Replace "${hit.match}" with suspenseful candlelight/silhouette/evidence close-up or narrator reaction framing.`,
+    });
+  }
+
+  for (const hit of findRegexMatches(text, DRAMA_ACTION_TERMS_RE)) {
+    const isDrama = preset.safetyProfile === "drama";
+    findings.push({
+      severity: isDrama ? "warning" : "blocker",
+      category: isDrama ? "drama_action_caution" : "violence_gore_term",
+      shotId,
+      field,
+      match: hit.match,
+      index: hit.index,
+      suggestion: isDrama
+        ? `"${hit.match}" may trigger Flow's violence filter in AI drama shots; consider stylized impact sparks, silhouette, or weapon clash wording.`
+        : `Replace "${hit.match}" with suspenseful candlelight/silhouette/evidence close-up or reaction framing.`,
     });
   }
 
@@ -134,16 +157,20 @@ export function normalizeShots(shotList) {
  * Runs a complete 0-credit preflight check over an episode's `flow-shot-list.json`:
  *   1. Full-axis safety term scan across top-level + per-shot still/video prompts.
  *   2. Dual-project isolation (`scenery` track cannot carry character refs).
- *   3. Retention redlines (max consecutive stills <= 3, single still <= 8s, dynamic ratio).
- *   4. Series Flow credit budget check (500 for sothatswhy, 550 soft / 600 hard for curio).
+ *   3. AI drama continuity links (`edit_from`, `continue_from`, `mode: "cut"` + `source`)
+ *      and multi-character accessory anti-bleed check.
+ *   4. Retention redlines & 3-shot Pilot mode check.
+ *   5. Per-shot model/duration Flow credit budget check against series caps.
  */
-export function preflightShotList(shotList, { series } = {}) {
+export function preflightShotList(shotList, { series, pilot = false, cast = null } = {}) {
   const effectiveSeries = series || shotList?.series || "curio";
   const preset = getSeriesPreset(effectiveSeries);
   const shots = normalizeShots(shotList);
 
   const findings = [];
   const seenIds = new Set();
+  const shotIndexById = new Map();
+  const shotModeById = new Map();
 
   if (shots.length === 0) {
     findings.push({
@@ -156,7 +183,17 @@ export function preflightShotList(shotList, { series } = {}) {
     });
   }
 
-  // Scan optional top-level prompt field too (per CURIO-FLOW-CHECKLIST §2)
+  if (pilot && shots.length > DEFAULT_PILOT_MAX_SHOTS) {
+    findings.push({
+      severity: "warning",
+      category: "pilot_shot_count",
+      shotId: null,
+      field: "shots",
+      match: `${shots.length} shots`,
+      suggestion: `Pilot mode recommends <= ${DEFAULT_PILOT_MAX_SHOTS} consecutive shots first; pass shotIds to flow_plan_clips / flow_generate_stills for the 3-shot pilot.`,
+    });
+  }
+
   if (typeof shotList?.prompt === "string" && shotList.prompt.trim()) {
     findings.push(
       ...scanPromptText(shotList.prompt, {
@@ -169,10 +206,11 @@ export function preflightShotList(shotList, { series } = {}) {
 
   let clipCount = 0;
   let stillCount = 0;
+  let cutCount = 0;
   let sceneryCount = 0;
   let characterCount = 0;
+  let estimatedCredits = 0;
 
-  // Track consecutive stills per chapter (or globally when chapter is omitted)
   let currentChapter = "__default__";
   let consecutiveStills = 0;
 
@@ -191,8 +229,13 @@ export function preflightShotList(shotList, { series } = {}) {
       });
     }
     seenIds.add(shotId);
+    shotIndexById.set(shotId, i);
 
-    const track = String(shot.track || (shot.has_character ? "character" : "scenery")).toLowerCase();
+    const hasChars =
+      shot.has_character === true ||
+      (Array.isArray(shot.characters) && shot.characters.length > 0) ||
+      (Array.isArray(shot.character_refs) && shot.character_refs.length > 0);
+    const track = String(shot.track || (hasChars ? "character" : "scenery")).toLowerCase();
     if (track !== "character" && track !== "scenery") {
       findings.push({
         severity: "blocker",
@@ -208,16 +251,47 @@ export function preflightShotList(shotList, { series } = {}) {
       characterCount += 1;
     }
 
-    const mode = String(shot.mode || (shot.video_prompt || shot.motion_prompt ? "clip" : "still")).toLowerCase();
-    if (mode !== "still" && mode !== "clip") {
+    const mode = String(
+      shot.mode || (shot.source ? "cut" : shot.video_prompt || shot.motion_prompt ? "clip" : "still"),
+    ).toLowerCase();
+    shotModeById.set(shotId, mode);
+
+    if (!["still", "clip", "cut"].includes(mode)) {
       findings.push({
         severity: "blocker",
         category: "invalid_mode",
         shotId,
         field: "mode",
         match: mode,
-        suggestion: `Shot "${shotId}" has invalid mode "${mode}". Must be "still" or "clip".`,
+        suggestion: `Shot "${shotId}" has invalid mode "${mode}". Must be "still", "clip", or "cut".`,
       });
+    }
+
+    // Cut shot (`data.source`) validation — 0 Flow credits
+    if (mode === "cut") {
+      cutCount += 1;
+      const src = String(shot.source || "").trim();
+      if (!src || !shotIndexById.has(src)) {
+        findings.push({
+          severity: "blocker",
+          category: "invalid_cut_source",
+          shotId,
+          field: "source",
+          match: src,
+          suggestion: `Cut shot "${shotId}" must reference an earlier shot id in \`source\` (got "${src}").`,
+        });
+      } else if (shotModeById.get(src) !== "clip") {
+        findings.push({
+          severity: "blocker",
+          category: "cut_source_not_clip",
+          shotId,
+          field: "source",
+          match: src,
+          suggestion: `Cut shot "${shotId}" references "${src}", which is mode="${shotModeById.get(src)}" instead of "clip".`,
+        });
+      }
+      consecutiveStills = 0;
+      continue;
     }
 
     // Dual-project isolation guard
@@ -225,7 +299,11 @@ export function preflightShotList(shotList, { series } = {}) {
       ...(Array.isArray(shot.refs) ? shot.refs : []),
       ...(Array.isArray(shot.character_refs) ? shot.character_refs : []),
     ];
-    if (track === "scenery" && (refs.some((r) => CHARACTER_REF_NAME_RE.test(String(r))) || (Array.isArray(shot.character_refs) && shot.character_refs.length > 0))) {
+    if (
+      track === "scenery" &&
+      (refs.some((r) => CHARACTER_REF_NAME_RE.test(String(r))) ||
+        (Array.isArray(shot.character_refs) && shot.character_refs.length > 0))
+    ) {
       findings.push({
         severity: "blocker",
         category: "dual_project_leak",
@@ -233,6 +311,55 @@ export function preflightShotList(shotList, { series } = {}) {
         field: "character_refs",
         match: refs.join(", "),
         suggestion: `Scenery shot "${shotId}" cannot include character references (dual-project isolation rule). Remove character refs or set track: "character".`,
+      });
+    }
+
+    // Same-camera `edit_from` chain check
+    if (shot.edit_from) {
+      const parent = String(shot.edit_from);
+      if (parent === shotId || !shotIndexById.has(parent)) {
+        findings.push({
+          severity: "blocker",
+          category: "invalid_edit_from",
+          shotId,
+          field: "edit_from",
+          match: parent,
+          suggestion: `Shot "${shotId}" edit_from="${parent}" must reference an earlier shot in the same shot list so its approved still exists first.`,
+        });
+      }
+    }
+
+    // Exact-Join `continue_from` chain check
+    if (shot.continue_from) {
+      const prev = String(shot.continue_from);
+      if (prev === shotId || !shotIndexById.has(prev) || shotModeById.get(prev) !== "clip") {
+        findings.push({
+          severity: "blocker",
+          category: "invalid_continue_from",
+          shotId,
+          field: "continue_from",
+          match: prev,
+          suggestion: `Shot "${shotId}" continue_from="${prev}" must reference an earlier clip shot so its last frame can be extracted cleanly.`,
+        });
+      }
+    }
+
+    // Multi-character accessory anti-bleed check (shorts-PRODUCTION-ROUTES.md §3.8)
+    const charNames = Array.isArray(shot.characters) ? shot.characters : [];
+    const combinedPromptText = [shot.still_prompt, shot.video_prompt, shot.prompt].filter(Boolean).join(" ");
+    if (charNames.length >= 2 && !ACCESSORY_EXCLUSION_RE.test(combinedPromptText)) {
+      const castHasNoAccessoryHint =
+        cast?.characters &&
+        charNames.some((c) => Array.isArray(cast.characters[c]?.noAccessories) && cast.characters[c].noAccessories.length > 0);
+      findings.push({
+        severity: "warning",
+        category: "multi_character_accessory_bleed",
+        shotId,
+        field: "still_prompt",
+        match: charNames.join(", "),
+        suggestion: castHasNoAccessoryHint
+          ? `Shot "${shotId}" includes multiple characters (${charNames.join(", ")}); specify distinguishing traits/no-accessory cues (cast.json notes will be appended automatically if configured).`
+          : `Shot "${shotId}" includes multiple characters (${charNames.join(", ")}); explicitly state who does NOT wear glasses/hats/props so Flow does not bleed accessories across faces.`,
       });
     }
 
@@ -270,7 +397,7 @@ export function preflightShotList(shotList, { series } = {}) {
       });
     }
 
-    // Retention checks
+    // Retention & per-shot credit calculation
     const chapter = String(shot.chapter ?? "__default__");
     if (chapter !== currentChapter) {
       currentChapter = chapter;
@@ -280,6 +407,22 @@ export function preflightShotList(shotList, { series } = {}) {
     if (mode === "clip") {
       clipCount += 1;
       consecutiveStills = 0;
+      const dur = Number(shot.clip_duration_sec ?? 4);
+      if (shot.end_still_prompt && dur > 10) {
+        findings.push({
+          severity: "blocker",
+          category: "end_frame_duration_limit",
+          shotId,
+          field: "clip_duration_sec",
+          match: `${dur}s`,
+          suggestion: `Shot "${shotId}" uses end_still_prompt with duration ${dur}s; Omni 1.2 Flash supports at most 10s when --end-frame is passed.`,
+        });
+      }
+      estimatedCredits += estimateClipCredits({
+        model: shot.model,
+        durationSec: dur,
+        creditsOverride: shot.credits_override,
+      });
     } else if (mode === "still") {
       stillCount += 1;
       consecutiveStills += 1;
@@ -308,9 +451,9 @@ export function preflightShotList(shotList, { series } = {}) {
   }
 
   const totalShots = shots.length;
-  const dynamicRatio = totalShots > 0 ? clipCount / totalShots : 0;
+  const dynamicShots = clipCount + cutCount;
+  const dynamicRatio = totalShots > 0 ? dynamicShots / totalShots : 0;
   const sceneryRatio = totalShots > 0 ? sceneryCount / totalShots : 0;
-  const estimatedCredits = clipCount * preset.clipCredits;
 
   if (totalShots > 0 && dynamicRatio < preset.minDynamicRatio) {
     findings.push({
@@ -319,7 +462,7 @@ export function preflightShotList(shotList, { series } = {}) {
       shotId: null,
       field: "shots",
       match: `${(dynamicRatio * 100).toFixed(1)}%`,
-      suggestion: `Dynamic clip share is ${(dynamicRatio * 100).toFixed(1)}% (${clipCount}/${totalShots}); ${preset.label} targets >= ${(preset.minDynamicRatio * 100).toFixed(0)}%.`,
+      suggestion: `Dynamic shot share is ${(dynamicRatio * 100).toFixed(1)}% (${dynamicShots}/${totalShots}); ${preset.label} targets >= ${(preset.minDynamicRatio * 100).toFixed(0)}%.`,
     });
   }
 
@@ -330,7 +473,7 @@ export function preflightShotList(shotList, { series } = {}) {
       shotId: null,
       field: "shots",
       match: `${estimatedCredits} credits`,
-      suggestion: `Estimated Flow spend is ${estimatedCredits} credits (${clipCount} clips × ${preset.clipCredits}), exceeding ${preset.label} hard cap of ${preset.budgetHardCap} credits.`,
+      suggestion: `Estimated Flow spend is ${estimatedCredits} credits (${clipCount} clips, ${cutCount} zero-credit cuts), exceeding ${preset.label} hard cap of ${preset.budgetHardCap} credits.`,
     });
   } else if (estimatedCredits > preset.budgetSoftCap) {
     findings.push({
@@ -350,10 +493,12 @@ export function preflightShotList(shotList, { series } = {}) {
     ok: blockers.length === 0,
     series: preset.id,
     seriesLabel: preset.label,
+    pilot: Boolean(pilot),
     summary: {
       totalShots,
       clipCount,
       stillCount,
+      cutCount,
       characterCount,
       sceneryCount,
       dynamicRatio: Number(dynamicRatio.toFixed(4)),

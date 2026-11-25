@@ -297,15 +297,18 @@ function runDoctor() {
 }
 
 function printHelp() {
-  console.log(`Mokaair Google Flow MCP & CLI (Route A — gflow-cli + Mokaair production guards)
+  console.log(`Mokaair Google Flow MCP & CLI v2 (Route A — Explainers + AI Dramas + Vertical Shorts)
 
 Usage:
   npm run flow -- doctor                                  Check Node 22+, uv, gflow-cli, Chrome, FFmpeg & hazards
   npm run flow -- login [--profile NAME]                  Open visible Chrome to sign into Google Flow manually
-  npm run flow -- status [--profile NAME]                 Check Flow session, subscription credits & lock
-  npm run flow -- setup [--client all|claude-code|claude-desktop|codex|antigravity] [--platform win32|darwin|linux] [--write]
-  npm run flow -- preflight --slug <slug> [--series curio|sothatswhy|shorts]
-  npm run flow -- ledger --slug <slug> [--series curio|sothatswhy|shorts]
+  npm run flow -- status [--profile NAME]                 Check Flow session, gflow version, credits & lock
+  npm run flow -- profiles [--refresh]                    List all signed-in Google AI subscription profiles & credits
+  npm run flow -- setup [--client all|claude-code|claude-desktop|codex|antigravity] [--platform win32|darwin|linux] [--repo-root PATH] [--write]
+  npm run flow -- import-video-json --slug <slug> [--file <video.json>] [--series drama-16x9|drama-9x16|shorts|curio|sothatswhy]
+  npm run flow -- preflight --slug <slug> [--series curio|sothatswhy|drama-16x9|drama-9x16|shorts] [--pilot]
+  npm run flow -- reconcile --slug <slug> [--profile NAME]
+  npm run flow -- ledger --slug <slug> [--series curio|sothatswhy|drama-16x9|drama-9x16|shorts]
   npm run flow -- mcp                                     Start JSON-RPC 2.0 stdio MCP server`);
 }
 
@@ -389,6 +392,28 @@ async function main() {
     return;
   }
 
+  if (command === "profiles") {
+    const result = await orchestrator.flowProfiles({
+      refreshCredits: Boolean(flags.refresh),
+    });
+    console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+
+  if (command === "import-video-json") {
+    if (!flags.slug) {
+      console.error("Missing required flag: --slug <episode-slug>");
+      process.exit(2);
+    }
+    const result = await orchestrator.flowImportVideoJson({
+      slug: flags.slug,
+      series: flags.series || null,
+      videoJsonPath: flags.file || null,
+    });
+    console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+
   if (command === "preflight") {
     if (!flags.slug) {
       console.error("Missing required flag: --slug <episode-slug>");
@@ -397,6 +422,22 @@ async function main() {
     const result = await orchestrator.flowPreflightShotlist({
       slug: flags.slug,
       series: flags.series || null,
+      pilot: Boolean(flags.pilot),
+    });
+    console.log(JSON.stringify(result, null, 2));
+    if (!result.ok) process.exit(1);
+    return;
+  }
+
+  if (command === "reconcile") {
+    if (!flags.slug) {
+      console.error("Missing required flag: --slug <episode-slug>");
+      process.exit(2);
+    }
+    const result = await orchestrator.flowReconcile({
+      slug: flags.slug,
+      series: flags.series || null,
+      profile: flags.profile || null,
     });
     console.log(JSON.stringify(result, null, 2));
     if (!result.ok) process.exit(1);
