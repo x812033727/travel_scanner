@@ -48,10 +48,17 @@ authoritative archive.
      untouched in Phase A so `sync.test.mjs` stays green.
    - Open a PR removing the verified static pools and binary images from GitHub and update any
      `so-thats-why`/`history-curiosity` pool CLI paths to accept a local/Drive directory flag.
-2. **Phase B (Optional cloud-authoritative rules)**:
-   - Confirm with the owner whether to turn off `docs/videos/rules-sync` (similar to disabling
-     `VIDEO_BRANCH_MIRROR` on 2026-11-10) so `_規則與教訓/` is edited directly on Drive without
-     hourly GitHub-to-Drive overwrites.
+2. **Phase B (Confirmed 2026-11-25 — Route B Google Drive SSOT)**:
+   - Owner approved Route B on 2026-11-25: all video data, rules, lessons, scripts, and pools live on
+     Google Drive (`AI/備份/AI劇/_START-HERE.md` & `AI/備份/AI劇/_規則/`), pulled via
+     `npm run vdrive -- pull-rules` (`tools/video/vdrive.mjs`) with zero per-episode GitHub commits.
+   - Disable the legacy production-host `rules-sync` root cron (note: `_規則/` is already outside
+     `rules-sync` FILTERS so it cannot be overwritten in the meantime), then retire `docs/videos/rules-sync/`.
+   - Decouple the remaining runtime/test references before removing legacy `docs/videos/` content:
+     - `ops/video/Dockerfile` & `ops/video/sync-docs.mjs` (keep minimal seed or sync `lexicon.json` from Drive).
+     - `tools/video/pool-admin/bundle.mjs` & `apps/api/app/video_pools/data/pools.json` (accept `--pool-dir` from Drive/cache and serve `pools.json` from host volume instead of GitHub).
+     - `tools/video/qa/duration.test.mjs` & `tools/video/qa/facts.mjs` (switch from `docs/videos/` to synthetic fixtures / `--file` workdir).
+     - Lower `LEGACY_EPISODE_DIRS` and `MAX_LEGACY_BINARY_FILES` in `tools/video-drive-boundary.test.mjs` as legacy files are removed.
 
 ## Definition of done
 
@@ -59,6 +66,7 @@ authoritative archive.
       `SHA256SUMS` and independent 0-difference check.
 - [ ] All binary images in `series-plans/zhong-tian-qu-qi` and `series-plans/top40-2025-2026`
       archived on Google Drive with `SHA256SUMS` and independent 0-difference check.
-- [ ] Verified pools and binary images removed from GitHub via PR without breaking `rules-sync`
-      or `tools/video` tests (`node --test docs/videos/rules-sync/sync.test.mjs` passes).
-- [ ] Owner decision recorded on Phase B (`rules-sync` keep vs disable).
+- [ ] Runtime/test couplings (`ops/video/sync-docs.mjs`, `pool-admin/bundle.mjs`, `qa/facts.mjs`,
+      `qa/duration.test.mjs`) decoupled and `tools/video-drive-boundary.test.mjs` ceilings lowered.
+- [ ] Verified pools, legacy episodes, and binary images removed from GitHub via PR with CI green.
+- [x] Owner decision recorded on Phase B (2026-11-25: Route B approved — disable `rules-sync` cron on host and use Drive `AI/備份/AI劇/_規則/` as SSOT via `npm run vdrive`).
