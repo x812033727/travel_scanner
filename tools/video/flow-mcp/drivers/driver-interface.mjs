@@ -156,6 +156,10 @@ export class FlowDriver {
     throw new Error(`${this.name}: downloadMedia() not implemented`);
   }
 
+  async upscaleImage() {
+    throw new Error(`${this.name}: upscaleImage() not implemented`);
+  }
+
   async getVersion() {
     return null;
   }

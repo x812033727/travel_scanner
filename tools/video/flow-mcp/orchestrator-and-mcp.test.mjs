@@ -241,8 +241,8 @@ test("MCP JSON-RPC 2.0 server handles initialize, tools/list (10 tools), and too
     { jsonrpc: "2.0", id: 2, method: "tools/list" },
     { dispatch },
   );
-  assert.equal(listResp.result.tools.length, 16);
-  assert.equal(MCP_TOOLS.length, 16);
+  assert.equal(listResp.result.tools.length, 18);
+  assert.equal(MCP_TOOLS.length, 18);
 
   // Live subprocess check using both newline JSON-RPC and Content-Length framing
   const child = spawn(process.execPath, [SERVER_SCRIPT], { stdio: ["pipe", "pipe", "pipe"] });
@@ -270,7 +270,7 @@ test("MCP JSON-RPC 2.0 server handles initialize, tools/list (10 tools), and too
     assert.equal(responses[0].id, 10);
     assert.equal(responses[0].result.serverInfo.name, "mokaair-flow");
     assert.equal(responses[1].id, 11);
-    assert.equal(responses[1].result.tools.length, 16);
+    assert.equal(responses[1].result.tools.length, 18);
   } finally {
     child.kill("SIGTERM");
   }

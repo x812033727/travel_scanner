@@ -77,6 +77,8 @@ export const MCP_TOOLS = Object.freeze([
       properties: {
         slug: { type: "string" },
         series: { type: "string", enum: SERIES_ENUM },
+        dramaName: { type: "string", description: "Drama series identifier for shared cross-episode Cast." },
+        saveToSeries: { type: "boolean", description: "Also save this character to shared work/video-episodes/_series/<dramaName>/cast.json." },
         id: { type: "string", description: "Character key used in shot.characters[] (e.g. protagonist, ada)." },
         name: { type: "string", description: "Display or @Name for Flow Character." },
         appearance: { type: "string" },
@@ -254,9 +256,48 @@ export const MCP_TOOLS = Object.freeze([
     },
   },
   {
+    name: "flow_plan_extend",
+    description:
+      "Dry-run a seamless clip extension: checks series credit cap, live balance (suggesting alternate profiles on spillover), and mints a single-use confirm_token for flow_extend_clip. Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "shotId"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        shotId: { type: "string" },
+        durationSec: { type: "number", description: "Extension seconds (default 5)." },
+        creditsEstimate: { type: "number" },
+        budgetHardCapOverride: { type: "number" },
+        checkLiveBalance: { type: "boolean" },
+        profile: { type: "string" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_upscale_still",
+    description:
+      "Upscale a generated still via gflow image upscale to 2k (or 4k on Google AI Ultra) for high-res thumbnails/key art and record verified dimensions in stills/qa-manifest.json. Spends 0 Veo credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "shotId"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        shotId: { type: "string" },
+        scale: { type: "string", enum: ["2k", "4k"], description: "Target scale (default 2k; 4k requires Ultra)." },
+        profile: { type: "string" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
     name: "flow_extend_clip",
     description:
-      "PAID TOOL (spends Flow credits). Requires confirm_token minted with model='extend'. Extends an existing clip seamlessly via gflow video extend, archives as a new take, and upscales to 1080p30 bt709 tv.",
+      "PAID TOOL (spends Flow credits). Requires confirm_token from flow_plan_extend. Extends an existing clip seamlessly via gflow video extend, archives as a new take, and upscales to 1080p30 bt709 tv.",
     annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: true },
     inputSchema: {
       type: "object",
@@ -354,6 +395,8 @@ export function createToolDispatcher(orchestrator) {
     flow_plan_clips: (args) => orchestrator.flowPlanClips(args),
     flow_generate_clips: (args) => orchestrator.flowGenerateClips(args),
     flow_select_take: (args) => orchestrator.flowSelectTake(args),
+    flow_plan_extend: (args) => orchestrator.flowPlanExtend(args),
+    flow_upscale_still: (args) => orchestrator.flowUpscaleStill(args),
     flow_extend_clip: (args) => orchestrator.flowExtendClip(args),
     flow_reconcile: (args) => orchestrator.flowReconcile(args),
     flow_wait: (args) => orchestrator.flowWait(args),

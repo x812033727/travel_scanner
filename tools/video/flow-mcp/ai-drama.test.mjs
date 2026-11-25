@@ -515,3 +515,120 @@ test("full AI drama lifecycle: cast + @Name, edit_from chain, continue_from last
     fs.rmSync(runtimeHome, { recursive: true, force: true });
   }
 });
+
+test("Phase 3 polish: shared series Cast inheritance, flow_plan_extend + spillover profiles, 2K still upscale, import-all, and validated Drive push", async () => {
+  const { runImportBridgeBatch, runValidatedDrivePush } = await import("./cli.mjs");
+  const fakeRepo = fs.mkdtempSync(path.join(os.tmpdir(), "flow-p3-repo-"));
+  const runtimeHome = fs.mkdtempSync(path.join(os.tmpdir(), "flow-p3-home-"));
+
+  const driver = new DramaMockDriver();
+  driver.credits = 5; // Force insufficient balance on default profile to test spillover recommendation!
+  driver.upscaleImage = async ({ mediaId, scale, outFile }) => {
+    fs.mkdirSync(path.dirname(outFile), { recursive: true });
+    fs.writeFileSync(outFile, makePngBuffer(2752, 1536));
+    return { mediaId, scale, outFile };
+  };
+
+  const cliDriver = new GflowCliDriver({ binary: "gflow", profile: "pro-2", runtimeHome });
+  assert.deepEqual(
+    cliDriver.buildUpscaleImageArgs({ mediaId: "m-1", scale: "4k", projectId: "p1", outFile: "/tmp/u.png" }),
+    ["image", "upscale", "m-1", "--scale", "4k", "--project", "p1", "--out-file", "/tmp/u.png", "--json", "--profile", "pro-2"],
+  );
+
+  const queue = new JobQueue({ runtimeHome, minPauseMs: 0, maxPauseMs: 0 });
+  const orchestrator = new FlowOrchestrator({
+    driver,
+    queue,
+    repoRoot: fakeRepo,
+    runtimeHome,
+    upscaleFn: async ({ inputPath, outputPath }) => {
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+      fs.writeFileSync(outputPath, Buffer.from("fake-1080p"));
+      return { inputPath, outputPath, qa4Path: null, rawSha256: "r", upscaledSha256: "u", spec: { width: 1920, height: 1080, fps: 30, colorspace: "bt709", colorRange: "tv", audioStripped: true } };
+    },
+  });
+
+  try {
+    // 1. Register character on Ep 33 with saveToSeries: true -> Ep 34 auto-inherits it!
+    await orchestrator.flowInitEpisode({ slug: "zt-e033", series: "drama-16x9", dramaName: "zhong-tian-qu-qi", createProjects: true });
+    const reg = await orchestrator.flowRegisterCharacter({
+      slug: "zt-e033",
+      id: "hero",
+      name: "LinChen",
+      noAccessories: ["glasses"],
+      saveToSeries: true,
+    });
+    assert.ok(reg.seriesCastFile && fs.existsSync(reg.seriesCastFile));
+
+    const ep34Init = await orchestrator.flowInitEpisode({ slug: "zt-e034", series: "drama-16x9", dramaName: "zhong-tian-qu-qi", createProjects: true });
+    assert.equal(ep34Init.inheritedSeriesCharacters, 1);
+    const ep34Cast = JSON.parse(fs.readFileSync(path.join(fakeRepo, "work", "video-episodes", "zt-e034", "cast.json"), "utf8"));
+    assert.equal(ep34Cast.characters.hero.name, "LinChen");
+
+    // 2. Generate still on Ep 34 -> upscale to 2K (0 Veo credits)
+    const ep34Dir = path.join(fakeRepo, "work", "video-episodes", "zt-e034");
+    fs.writeFileSync(
+      path.join(ep34Dir, "flow-shot-list.json"),
+      JSON.stringify({
+        series: "drama-16x9",
+        shots: [{ id: "s01", track: "character", mode: "clip", characters: ["hero"], still_prompt: "Hero on mountain ridge", video_prompt: "Wind blows cloak" }],
+      }),
+    );
+    await orchestrator.flowGenerateStills({ slug: "zt-e034", waitMs: 5000 });
+    await orchestrator.flowApproveStills({ slug: "zt-e034", approved: ["s01"] });
+
+    const upStill = await orchestrator.flowUpscaleStill({ slug: "zt-e034", shotId: "s01", scale: "2k" });
+    assert.equal(upStill.ok, true);
+    assert.equal(upStill.dimensions.width, 2752);
+    assert.equal(upStill.dimensions.ok, true);
+
+    // 3. Spillover profile suggestion when default account has only 5 credits (< 12 needed)
+    const lowPlan = await orchestrator.flowPlanClips({ slug: "zt-e034", checkLiveBalance: true });
+    assert.equal(lowPlan.ok, false);
+    assert.equal(lowPlan.reason, "insufficient_account_credits");
+    assert.equal(lowPlan.suggestedProfiles[0].profile, "pro-2");
+    assert.match(lowPlan.spilloverHint, /pro-2/);
+
+    // 4. Restore credits, generate clip, then use flow_plan_extend -> flow_extend_clip seamlessly
+    driver.credits = 500;
+    const okPlan = await orchestrator.flowPlanClips({ slug: "zt-e034", checkLiveBalance: true });
+    await orchestrator.flowGenerateClips({ slug: "zt-e034", confirm_token: okPlan.confirm_token, waitMs: 5000 });
+
+    const extPlan = await orchestrator.flowPlanExtend({ slug: "zt-e034", shotId: "s01", durationSec: 5, checkLiveBalance: true });
+    assert.equal(extPlan.ok, true);
+    assert.equal(extPlan.plannedCredits, 15);
+    const extRun = await orchestrator.flowExtendClip({
+      slug: "zt-e034",
+      shotId: "s01",
+      prompt: "Clouds drift over valley",
+      confirm_token: extPlan.confirm_token,
+      durationSec: 5,
+      waitMs: 5000,
+    });
+    assert.equal(extRun.job.status, "completed");
+
+    // 5. Batch import-all & validated Drive push CLI helpers
+    const importDry = runImportBridgeBatch({ slug: "zt-e034", repoRoot: fakeRepo, dryRun: true });
+    assert.equal(importDry.ok, true);
+    assert.equal(importDry.importedCount, 1);
+
+    const spawned = [];
+    const pushRes = await runValidatedDrivePush({
+      slug: "zt-e034",
+      driveSeries: "zhong-tian-qu-qi",
+      drivePath: "第034集/製作檔/zt-e034",
+      repoRoot: fakeRepo,
+      orchestrator,
+      spawnFn: (_bin, args) => {
+        spawned.push(args);
+        return { status: 0, stdout: "vdrive: pushed OK", stderr: "" };
+      },
+    });
+    assert.equal(pushRes.ok, true);
+    assert.ok(spawned[0].includes("push-episode"));
+    assert.ok(spawned[0].includes("第034集/製作檔/zt-e034"));
+  } finally {
+    fs.rmSync(fakeRepo, { recursive: true, force: true });
+    fs.rmSync(runtimeHome, { recursive: true, force: true });
+  }
+});
