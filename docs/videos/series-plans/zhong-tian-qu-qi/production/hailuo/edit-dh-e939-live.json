@@ -125,7 +125,7 @@
    "gain": -9,
    "fade_in": 0.4,
    "fade_out": 0.12,
-   "tail": -2.07
+   "tail": -1.4
   },
   {
    "cue": "reveal-hit",
@@ -135,7 +135,7 @@
    "offset": 0.0,
    "gain": -6,
    "fade_in": 0.02,
-   "fade_out": 1.2,
+   "fade_out": 1.0,
    "tail": 0.0
   }
  ],
@@ -377,19 +377,19 @@
   {
    "file": "cloth1",
    "at": "s40b",
-   "off": 0.6,
+   "off": 1.05,
    "gain": -2.5
   },
   {
    "file": "cloth2",
    "at": "s40b",
-   "off": 0.9,
+   "off": 1.35,
    "gain": -3.9
   },
   {
    "file": "cloth1",
    "at": "s40b",
-   "off": 1.2,
+   "off": 1.6,
    "gain": -4.5
   }
  ],
@@ -503,7 +503,7 @@
   },
   "s39": {
    "from": 0,
-   "af": "rubberband=pitch=0.83:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.8:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   }
  },
  "voice_off": [
@@ -513,17 +513,19 @@
   "s38",
   "s40"
  ],
- "move_lines": {},
- "min": {
-  "s40b": 3.92
+ "move_lines": {
+  "zq939a40": "s40b"
  },
+ "min": {},
  "line_at": {
   "zq939a01": 0.05,
   "zq939a03": 0.33,
-  "zq939a38": 0.45,
-  "zq939a40": 0.25
+  "zq939a38": 0.45
  },
- "line_lead": {},
+ "line_lead": {
+  "zq939a06p": 0.88,
+  "zq939a40": 2.7
+ },
  "panel_y": {
   "s25": 20,
   "s28": 20,
@@ -537,13 +539,12 @@
   "s18": "crop=iw/1.15:ih/1.15:0:ih-ih/1.15,scale=1920:1080:flags=lanczos,setsar=1",
   "s22": "crop=iw/1.8:ih/1.8:iw*0.28:0,scale=1920:1080:flags=lanczos,setsar=1",
   "s23": "crop=iw/1.9:ih/1.9:iw*0.38:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s06": "split=3[s06a][s06b][s06e];[s06a]trim=end=1.3,setpts=PTS-STARTPTS[s06c];[s06b]trim=start=1.3:end=3.8,setpts=PTS-STARTPTS,crop=iw/1.67:ih/1.67:iw*0.25:ih*0.40,scale=1920:1080:flags=lanczos,setsar=1[s06d];[s06e]trim=start=3.8,setpts=PTS-STARTPTS[s06f];[s06c][s06d][s06f]concat=n=3:v=1:a=0",
   "s11": "crop=iw/1.6:ih/1.6:iw*0.25:ih*0.18,scale=1920:1080:flags=lanczos,setsar=1",
   "s29b": "crop=iw/1.4:ih/1.4:iw*0.20:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s40b": "fade=t=out:st=3.5:d=0.042"
+  "s40b": "fade=t=out:st=2.85:d=0.4"
  },
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e939 真人版第一版（2026-11-25；scratchpad e939c/：mkov939.py、levall939.sh → lev939.py＋align939.py、music／beds／spots／lineat／voiceskip／vol.json、cutf0939.py、busmeter.py；跑法 scratchpad e939cut.sh）。決定、量測與已知瑕疵寫在 colab/runs/e939-live/cut-notes.md。\nREVIEW 3（2026-11-25）：s32、s39 換 fix3 9391502 重拍（片中原聲，s32 ×1.10、s39 ×0.83；s39 不再裁切）；新鏡 s40b（fix3 9391502，村民背影一齊轉頭）接在 s40 後收尾：c1.85 轉完時 reveal-hit、standoff 同時收，停約 1.65 秒，切黑 0.42 秒；s40 收到 0.4–5.10。組片用 video-plus-s40b.json。"
+ "_note": "e939 真人版第一版（2026-11-25；scratchpad e939c/：mkov939.py、levall939.sh → lev939.py＋align939.py、music／beds／spots／lineat／voiceskip／vol.json、cutf0939.py、busmeter.py；跑法 scratchpad e939cut.sh）。決定、量測與已知瑕疵寫在 colab/runs/e939-live/cut-notes.md。\nREVIEW 3（2026-11-25）：s32、s39 換 fix3 9391502 重拍（片中原聲，s32 ×1.10、s39 ×0.83；s39 不再裁切）；新鏡 s40b（fix3 9391502，村民背影一齊轉頭）接在 s40 後收尾：c1.85 轉完時 reveal-hit、standoff 同時收，停約 1.65 秒，切黑 0.42 秒；s40 收到 0.4–5.10。組片用 video-plus-s40b.json。\nREVIEW 4（2026-11-25，cut-review-2）：s06 只用 3.90–6.583 連續一段（拿掉插鏡），「不用您會騎。」拆成畫外 a06p 鋪在 s05 尾（s05 0.5–8.0、尾 0.6 秒慢放成 1.0 秒）；s28 0–3.2、s28b 0–5.0；s40 3.6–6.4，a40 移到 s40b、提前 2.7 秒從 s40 鋪進來；s40b 換 fix3 9391501 0.35–3.6（草稿畫面），c1.85 轉完下重音、停 1 秒、畫面聲音一起 0.4 秒淡出；a40「殺」的聲調拉平；村民 a36 共振峰降 10%、~258；s39 ×0.80；字幕讀速過快的延長。"
 }
