@@ -120,22 +120,22 @@
   {
    "cue": "standoff",
    "from": "s38",
-   "to": "s40",
+   "to": "s40b",
    "offset": 20.0,
    "gain": -9,
    "fade_in": 0.4,
-   "fade_out": 0.15,
-   "tail": -0.9
+   "fade_out": 0.12,
+   "tail": -2.07
   },
   {
    "cue": "reveal-hit",
-   "from": "s40",
-   "from_off": 2.6,
-   "to": "s40",
+   "from": "s40b",
+   "from_off": -0.25,
+   "to": "s40b",
    "offset": 0.0,
    "gain": -6,
    "fade_in": 0.02,
-   "fade_out": 0.3,
+   "fade_out": 1.2,
    "tail": 0.0
   }
  ],
@@ -194,7 +194,7 @@
    "at": "s36",
    "off": 0,
    "gain": -11.7,
-   "to": "s40"
+   "to": "s40b"
   },
   {
    "file": "murmur39",
@@ -214,8 +214,8 @@
    "file": "murmur39",
    "at": "s39",
    "off": 0,
-   "gain": -14.6,
-   "to": "s40"
+   "gain": -18.6,
+   "to": "s40b"
   },
   {
    "file": "wind1",
@@ -373,6 +373,24 @@
    "at": "s39",
    "off": 0.3,
    "gain": -3.1
+  },
+  {
+   "file": "cloth1",
+   "at": "s40b",
+   "off": 0.6,
+   "gain": -2.5
+  },
+  {
+   "file": "cloth2",
+   "at": "s40b",
+   "off": 0.9,
+   "gain": -3.9
+  },
+  {
+   "file": "cloth1",
+   "at": "s40b",
+   "off": 1.2,
+   "gain": -4.5
   }
  ],
  "frame_round": true,
@@ -469,7 +487,7 @@
   },
   "s32": {
    "from": 0,
-   "af": "rubberband=pitch=1.19:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.1:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s34": {
    "from": 0,
@@ -485,7 +503,7 @@
   },
   "s39": {
    "from": 0,
-   "af": "rubberband=pitch=1:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.87:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   }
  },
  "voice_off": [
@@ -496,7 +514,9 @@
   "s40"
  ],
  "move_lines": {},
- "min": {},
+ "min": {
+  "s40b": 3.92
+ },
  "line_at": {
   "zq939a01": 0.05,
   "zq939a03": 0.33,
@@ -520,10 +540,10 @@
   "s06": "split=3[s06a][s06b][s06e];[s06a]trim=end=1.3,setpts=PTS-STARTPTS[s06c];[s06b]trim=start=1.3:end=3.8,setpts=PTS-STARTPTS,crop=iw/1.67:ih/1.67:iw*0.25:ih*0.40,scale=1920:1080:flags=lanczos,setsar=1[s06d];[s06e]trim=start=3.8,setpts=PTS-STARTPTS[s06f];[s06c][s06d][s06f]concat=n=3:v=1:a=0",
   "s11": "crop=iw/1.6:ih/1.6:iw*0.25:ih*0.18,scale=1920:1080:flags=lanczos,setsar=1",
   "s29b": "crop=iw/1.4:ih/1.4:iw*0.20:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s39": "crop=iw/1.3:ih/1.3:iw*0.20:0,scale=1920:1080:flags=lanczos,setsar=1"
+  "s40b": "fade=t=out:st=3.5:d=0.042"
  },
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e939 真人版第一版（2026-11-25；scratchpad e939c/：mkov939.py、levall939.sh → lev939.py＋align939.py、music／beds／spots／lineat／voiceskip／vol.json、cutf0939.py、busmeter.py；跑法 scratchpad e939cut.sh）。決定、量測與已知瑕疵寫在 colab/runs/e939-live/cut-notes.md。"
+ "_note": "e939 真人版第一版（2026-11-25；scratchpad e939c/：mkov939.py、levall939.sh → lev939.py＋align939.py、music／beds／spots／lineat／voiceskip／vol.json、cutf0939.py、busmeter.py；跑法 scratchpad e939cut.sh）。決定、量測與已知瑕疵寫在 colab/runs/e939-live/cut-notes.md。\nREVIEW 3（2026-11-25）：s32、s39 換 fix3 9391502 重拍（片中原聲，s32 ×1.10、s39 ×0.87；s39 不再裁切）；新鏡 s40b（fix3 9391502，村民背影一齊轉頭）接在 s40 後收尾：c1.85 轉完時 reveal-hit、standoff 同時收，停約 1.65 秒，切黑 0.42 秒；s40 收到 0.4–5.10。組片用 video-plus-s40b.json。"
 }
