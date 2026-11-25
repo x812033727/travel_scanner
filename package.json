@@ -18,6 +18,8 @@
     "tasks:board": "node tools/tasks.mjs board",
     "ws": "node tools/workspace-sync.mjs",
     "vdrive": "node tools/video/vdrive.mjs",
+    "flow": "node tools/video/flow-mcp/cli.mjs",
+    "flow:mcp": "node tools/video/flow-mcp/server.mjs",
     "crawl:airlines:chrome": "node tools/airline-chrome-crawler.mjs"
   },
   "engines": {
