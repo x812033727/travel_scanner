@@ -59,11 +59,11 @@
   {
    "cue": "farewell",
    "from": "s14",
-   "to": "s22",
+   "to": "s23",
    "offset": 30.0,
    "gain": -11,
    "fade_in": 1.0,
-   "fade_out": 1.2,
+   "fade_out": 2.0,
    "tail": 0.0
   },
   {
@@ -124,7 +124,18 @@
    "offset": 20.0,
    "gain": -9,
    "fade_in": 0.4,
-   "fade_out": 0.05,
+   "fade_out": 0.15,
+   "tail": -0.9
+  },
+  {
+   "cue": "reveal-hit",
+   "from": "s40",
+   "from_off": 2.6,
+   "to": "s40",
+   "offset": 0.0,
+   "gain": -6,
+   "fade_in": 0.02,
+   "fade_out": 0.3,
    "tail": 0.0
   }
  ],
@@ -168,12 +179,12 @@
    "file": "zhongtian-sfx-night-crickets-loop",
    "at": "s14",
    "off": 0,
-   "gain": -15.5,
-   "to": "s22"
+   "gain": -13.5,
+   "to": "s23"
   },
   {
    "file": "birds",
-   "at": "s23",
+   "at": "s24",
    "off": 0,
    "gain": -18.7,
    "to": "s35"
@@ -197,6 +208,13 @@
    "at": "s38",
    "off": 0,
    "gain": -20.6,
+   "to": "s38"
+  },
+  {
+   "file": "murmur39",
+   "at": "s39",
+   "off": 0,
+   "gain": -14.6,
    "to": "s40"
   },
   {
@@ -473,17 +491,29 @@
  "move_lines": {},
  "min": {},
  "line_at": {
-  "zq939a01": 0.35,
-  "zq939a03": 0.33
+  "zq939a01": 0.05,
+  "zq939a03": 0.33,
+  "zq939a38": 0.45,
+  "zq939a40": 0.25
  },
  "line_lead": {},
- "panel_y": {},
+ "panel_y": {
+  "s25": 20,
+  "s28": 20,
+  "s28b": 20
+ },
  "panel_from": {},
  "panel_color": {},
  "panel_until": {},
  "vf": {
   "s12": "crop=iw/1.05:ih/1.05:0:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s18": "crop=iw/1.05:ih/1.05:0:ih-ih/1.05,scale=1920:1080:flags=lanczos,setsar=1"
+  "s18": "crop=iw/1.15:ih/1.15:0:ih-ih/1.15,scale=1920:1080:flags=lanczos,setsar=1",
+  "s22": "crop=iw/1.8:ih/1.8:iw*0.28:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s23": "crop=iw/1.9:ih/1.9:iw*0.38:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s06": "split=3[s06a][s06b][s06e];[s06a]trim=end=1.3,setpts=PTS-STARTPTS[s06c];[s06b]trim=start=1.3:end=3.8,setpts=PTS-STARTPTS,crop=iw/1.67:ih/1.67:iw*0.25:ih*0.40,scale=1920:1080:flags=lanczos,setsar=1[s06d];[s06e]trim=start=3.8,setpts=PTS-STARTPTS[s06f];[s06c][s06d][s06f]concat=n=3:v=1:a=0",
+  "s11": "crop=iw/1.6:ih/1.6:iw*0.25:ih*0.18,scale=1920:1080:flags=lanczos,setsar=1",
+  "s29b": "crop=iw/1.4:ih/1.4:iw*0.20:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s39": "crop=iw/1.3:ih/1.3:iw*0.20:0,scale=1920:1080:flags=lanczos,setsar=1"
  },
  "slow_shot": {},
  "subtitle_lines": [],
