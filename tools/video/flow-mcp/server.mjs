@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * Zero-dependency MCP (Model Context Protocol) JSON-RPC 2.0 stdio server for
- * Mokaair's subscription-backed Google Flow workflow (`mokaair-flow`).
+ * Mokaair's subscription-backed Google Flow workflow (`mokaair-flow` v2).
  *
- * Compatible with Claude Code, Claude Desktop, Codex, Antigravity, Cursor, and
- * VS Code. Handles both newline-delimited JSON-RPC (MCP 2024-11-05 / 2025-03-26)
- * and Content-Length framed messages cleanly. Never writes non-JSON to stdout.
+ * Supports explainers (`sothatswhy`, `curio`), AI dramas (`drama-16x9`,
+ * `drama-9x16`), and zero-dialogue vertical Shorts (`shorts`) across
+ * Claude Code, Claude Desktop, Codex, Antigravity, Cursor, and VS Code.
  */
 
 import { fileURLToPath } from "node:url";
@@ -13,12 +13,13 @@ import { MCP_SERVER_NAME, MCP_SERVER_VERSION } from "./config.mjs";
 import { FlowOrchestrator } from "./orchestrator.mjs";
 
 const SUPPORTED_PROTOCOL_VERSIONS = ["2025-03-26", "2024-11-05"];
+const SERIES_ENUM = ["sothatswhy", "curio", "drama-16x9", "drama-9x16", "shorts", "custom"];
 
 export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_status",
     description:
-      "Check Google Flow Chrome session authentication, subscription credit balance, and cross-client profile lock status. Spends 0 credits.",
+      "Check Google Flow Chrome session auth, gflow-cli version, subscription credit balance, and per-profile lock status. Spends 0 credits.",
     annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       type: "object",
@@ -30,22 +31,86 @@ export const MCP_TOOLS = Object.freeze([
     },
   },
   {
+    name: "flow_profiles",
+    description:
+      "List all signed-in Google AI subscription profiles, their remaining Flow credits, and per-profile lock states for multi-account production. Spends 0 credits.",
+    annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      properties: {
+        refreshCredits: { type: "boolean" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
     name: "flow_init_episode",
     description:
-      "Initialize or bind dual isolated Google Flow projects (character vs scenery) for work/video-episodes/<slug>/ and discover locked canon character sheets. Spends 0 credits.",
+      "Initialize or bind dual isolated Google Flow projects (character vs scenery) for work/video-episodes/<slug>/ across explainers, AI dramas, or Shorts. Spends 0 credits.",
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
     inputSchema: {
       type: "object",
       required: ["slug"],
       properties: {
-        slug: { type: "string", description: "Episode slug (e.g. curio-w31-topic or sothatswhy-p03-topic)." },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
-        characterProjectId: { type: "string", description: "Existing Flow project ID for character shots." },
-        sceneryProjectId: { type: "string", description: "Existing Flow project ID for zero-character scenery shots." },
-        createProjects: { type: "boolean", description: "Auto-create missing character/scenery projects in Flow." },
-        uploadCanonRefs: { type: "boolean", description: "Upload series canon sheets to the character project." },
-        extraCharacterRefs: { type: "array", items: { type: "string" }, description: "Extra local character ref paths." },
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        dramaName: { type: "string", description: "Optional Drive series folder/code (e.g. zhong-tian-qu-qi, tai-nainai)." },
+        episodeLabel: { type: "string", description: "Optional Drive episode folder (e.g. 第033集)." },
+        characterProjectId: { type: "string" },
+        sceneryProjectId: { type: "string" },
+        createProjects: { type: "boolean" },
+        uploadCanonRefs: { type: "boolean" },
+        extraCharacterRefs: { type: "array", items: { type: "string" } },
         profile: { type: "string" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_register_character",
+    description:
+      "Register a character in episode cast.json (multiple wardrobe looks, noAccessories anti-bleed notes, local ref sheets) and optionally mint a reusable Flow @Name Character entity. Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "id"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        id: { type: "string", description: "Character key used in shot.characters[] (e.g. protagonist, ada)." },
+        name: { type: "string", description: "Display or @Name for Flow Character." },
+        appearance: { type: "string" },
+        refs: { type: "array", items: { type: "string" }, description: "Local paths to face/body reference sheets." },
+        looks: { type: "object", description: "Map of named outfit/look keys to local reference image paths." },
+        noAccessories: {
+          type: "array",
+          items: { type: "string" },
+          description: "Items this character NEVER wears (e.g. ['glasses', 'hat']) to prevent multi-character bleed.",
+        },
+        voice: { type: "string" },
+        createFlowEntity: { type: "boolean", description: "Call gflow character create to mint a Flow @Name character." },
+        facePrompt: { type: "string" },
+        bodyPrompt: { type: "string" },
+        profile: { type: "string" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_import_video_json",
+    description:
+      "Convert a Mokaair video.json drama/shorts/explainer script into flow-shot-list.json + cast.json (stripping H3 <Picture N> tags, preserving data.source 0-credit cuts, end_frame, and silent comedy guards). Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      required: ["slug"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        videoJsonPath: { type: "string", description: "Optional explicit path to video.json (defaults to work/video-episodes/<slug>/video.json)." },
+        defaultModel: { type: "string" },
+        defaultDurationSec: { type: "number" },
+        silentAudioGuard: { type: "boolean" },
       },
       additionalProperties: false,
     },
@@ -53,14 +118,15 @@ export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_preflight_shotlist",
     description:
-      "Run 0-credit preflight on work/video-episodes/<slug>/flow-shot-list.json: full-axis safety prompt scan (minor/violence/IP terms), dual-project isolation, retention redlines (<=3 consecutive stills, <=8s still), and series credit cap check.",
+      "Run 0-credit preflight on flow-shot-list.json: safety scan, dual-project isolation, edit_from/continue_from/cut continuity validation, multi-character anti-bleed warnings, retention redlines, 3-shot pilot checks, and variable per-shot credit estimate.",
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       type: "object",
       required: ["slug"],
       properties: {
         slug: { type: "string" },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
+        series: { type: "string", enum: SERIES_ENUM },
+        pilot: { type: "boolean", description: "Check as a 3-shot pilot run." },
       },
       additionalProperties: false,
     },
@@ -68,19 +134,20 @@ export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_generate_stills",
     description:
-      "Generate 0-credit 16:9 stills/keyframes with Nano Banana 2.1 (nano2.1), enforce 1376x768 binary dimensions (quarantining silent 1:1 resets), and build stills/qa-gallery.html. Returns job_id immediately for flow_wait.",
+      "Generate 0-credit stills/keyframes with Nano Banana 2.1 (supports multi-character cast refs, same-camera edit_from i2i chaining, 3-shot pilot mode, 16:9/9:16 binary dimension check quarantining 1:1 resets, and interactive HTML QA gallery with one-click copy). Returns job_id.",
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
     inputSchema: {
       type: "object",
       required: ["slug"],
       properties: {
         slug: { type: "string" },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
-        shotIds: { type: "array", items: { type: "string" }, description: "Optional subset of shot IDs to generate." },
-        model: { type: "string", description: "Image model alias (default: nano2.1)." },
-        overwriteApproved: { type: "boolean", description: "Regenerate even if already QA-approved (default: false)." },
+        series: { type: "string", enum: SERIES_ENUM },
+        shotIds: { type: "array", items: { type: "string" } },
+        pilot: { type: "boolean", description: "Run only the first 3 non-cut shots for a pilot." },
+        model: { type: "string" },
+        overwriteApproved: { type: "boolean" },
         profile: { type: "string" },
-        waitMs: { type: "number", description: "Optional bounded wait in ms before returning (max 45000)." },
+        waitMs: { type: "number" },
       },
       additionalProperties: false,
     },
@@ -88,14 +155,14 @@ export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_approve_stills",
     description:
-      "Record visual QA approvals/rejections for generated stills (re-verifying 1376x768 on disk) to unlock paid clip generation. Spends 0 credits.",
+      "Record visual QA approvals/rejections for generated stills (re-verifying target dimensions on disk) to unlock paid clip generation. Spends 0 credits.",
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       type: "object",
       required: ["slug"],
       properties: {
         slug: { type: "string" },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
+        series: { type: "string", enum: SERIES_ENUM },
         approved: {
           type: "array",
           items: {
@@ -122,19 +189,22 @@ export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_plan_clips",
     description:
-      "Dry-run paid video generation for QA-approved clip shots: verifies Stills-First gate, checks series credit cap (sothatswhy<=500, curio<=550/600), and mints a single-use confirm_token for owner confirmation. Spends 0 credits.",
+      "Dry-run paid video generation: verifies Stills-First gate, MAX_CLIP_TAKES=2 cap, variable per-shot model/duration credits, pilot or resumeMissingOnly filtering, series hard caps, and mints a single-use confirm_token. Spends 0 credits.",
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       type: "object",
       required: ["slug"],
       properties: {
         slug: { type: "string" },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
+        series: { type: "string", enum: SERIES_ENUM },
         shotIds: { type: "array", items: { type: "string" } },
-        model: { type: "string", description: "Video model alias (default: omni-1.2-flash)." },
-        creditsPerClip: { type: "number", description: "Expected credits per clip (default: 12)." },
-        budgetHardCapOverride: { type: "number", description: "Optional explicit owner budget override." },
-        checkLiveBalance: { type: "boolean", description: "Verify live account credit balance via gflow." },
+        pilot: { type: "boolean", description: "Plan only the first 3 clip shots for a pilot." },
+        resumeMissingOnly: { type: "boolean", description: "Plan only clips not yet present in flow-clips/manifest.json." },
+        forceRetake: { type: "boolean", description: "Allow exceeding MAX_CLIP_TAKES=2 after prompt redesign." },
+        model: { type: "string" },
+        creditsPerClip: { type: "number" },
+        budgetHardCapOverride: { type: "number" },
+        checkLiveBalance: { type: "boolean" },
         profile: { type: "string" },
       },
       additionalProperties: false,
@@ -143,20 +213,22 @@ export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_generate_clips",
     description:
-      "PAID TOOL (spends Google AI subscription Flow credits). Requires a single-use confirm_token from flow_plan_clips after owner approval. Generates 4s Omni 1.2 Flash clips, downloads free 720p raw MP4, locally upscales to 1080p30 bt709 tv -an via FFmpeg, and writes 4-frame QA sheets + SHA-256 manifest. Returns job_id for flow_wait.",
+      "PAID TOOL (spends Google AI subscription Flow credits). Requires single-use confirm_token from flow_plan_clips. Supports i2v (start/end frame), r2v (multi-ref), Exact-Join continue_from last-frame extraction, multi-take archival in takes/, local FFmpeg 1080p30 bt709 tv -an + optional raw-audio WAV sidecar + PSNR/hard-cut QC + import-bridge.json.",
     annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: true },
     inputSchema: {
       type: "object",
       required: ["slug", "confirm_token"],
       properties: {
         slug: { type: "string" },
-        confirm_token: { type: "string", description: "Single-use token from flow_plan_clips after owner approval." },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
+        confirm_token: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
         shotIds: { type: "array", items: { type: "string" } },
         model: { type: "string" },
         durationSec: { type: "number" },
         creditsPerClip: { type: "number" },
         maxCreditsPerClip: { type: "number" },
+        forceRetake: { type: "boolean" },
+        runQc: { type: "boolean", description: "Run FFmpeg frame-0 PSNR & mid-clip hard-cut QC (auto-on for drama series)." },
         skipPostprocess: { type: "boolean" },
         profile: { type: "string" },
         waitMs: { type: "number" },
@@ -165,16 +237,75 @@ export const MCP_TOOLS = Object.freeze([
     },
   },
   {
+    name: "flow_select_take",
+    description:
+      "Promote a chosen take (e.g. take 1 or 2) from flow-clips/takes/ as the active clip while preserving all rejected takes for Google Drive backup, and refresh import-bridge.json. Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "shotId", "take"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        shotId: { type: "string" },
+        take: { type: "number" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_extend_clip",
+    description:
+      "PAID TOOL (spends Flow credits). Requires confirm_token minted with model='extend'. Extends an existing clip seamlessly via gflow video extend, archives as a new take, and upscales to 1080p30 bt709 tv.",
+    annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: true },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "shotId", "prompt", "confirm_token"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        shotId: { type: "string" },
+        prompt: { type: "string" },
+        confirm_token: { type: "string" },
+        durationSec: { type: "number" },
+        refs: { type: "array", items: { type: "string" } },
+        creditsEstimate: { type: "number" },
+        maxCredits: { type: "number" },
+        skipPostprocess: { type: "boolean" },
+        profile: { type: "string" },
+        waitMs: { type: "number" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_reconcile",
+    description:
+      "Reconcile any `charged: maybe` ledger entries against Flow's catalog (`gflow data list videos`), download orphaned billed clips without double-paying, and list remaining missing clips for resume. Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
+    inputSchema: {
+      type: "object",
+      required: ["slug"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        downloadMissing: { type: "boolean" },
+        profile: { type: "string" },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
     name: "flow_wait",
     description:
-      "Wait up to 45s for a background stills or clips job_id to progress or complete without tripping MCP client 60s timeouts. Spends 0 credits.",
+      "Wait up to 45s for a background stills/clips/extend job_id to progress or complete without tripping MCP client 60s timeouts. Spends 0 credits.",
     annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       type: "object",
       required: ["job_id"],
       properties: {
         job_id: { type: "string" },
-        timeout_ms: { type: "number", description: "Max wait milliseconds (default 25000, max 45000)." },
+        timeout_ms: { type: "number" },
       },
       additionalProperties: false,
     },
@@ -196,14 +327,14 @@ export const MCP_TOOLS = Object.freeze([
   {
     name: "flow_episode_ledger",
     description:
-      "Inspect an episode's full Flow credit ledger, stills QA summary, missing clips, and readiness for `npm run vdrive -- push-episode`. Spends 0 credits.",
+      "Inspect an episode's full Flow credit ledger, multi-take count, 0-credit cuts, stills QA summary, import-bridge.json path, and exact series-aware `npm run vdrive -- push-episode` command. Spends 0 credits.",
     annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       type: "object",
       required: ["slug"],
       properties: {
         slug: { type: "string" },
-        series: { type: "string", enum: ["sothatswhy", "curio", "shorts", "custom"] },
+        series: { type: "string", enum: SERIES_ENUM },
       },
       additionalProperties: false,
     },
@@ -213,12 +344,18 @@ export const MCP_TOOLS = Object.freeze([
 export function createToolDispatcher(orchestrator) {
   const handlers = {
     flow_status: (args) => orchestrator.flowStatus(args),
+    flow_profiles: (args) => orchestrator.flowProfiles(args),
     flow_init_episode: (args) => orchestrator.flowInitEpisode(args),
+    flow_register_character: (args) => orchestrator.flowRegisterCharacter(args),
+    flow_import_video_json: (args) => orchestrator.flowImportVideoJson(args),
     flow_preflight_shotlist: (args) => orchestrator.flowPreflightShotlist(args),
     flow_generate_stills: (args) => orchestrator.flowGenerateStills(args),
     flow_approve_stills: (args) => orchestrator.flowApproveStills(args),
     flow_plan_clips: (args) => orchestrator.flowPlanClips(args),
     flow_generate_clips: (args) => orchestrator.flowGenerateClips(args),
+    flow_select_take: (args) => orchestrator.flowSelectTake(args),
+    flow_extend_clip: (args) => orchestrator.flowExtendClip(args),
+    flow_reconcile: (args) => orchestrator.flowReconcile(args),
     flow_wait: (args) => orchestrator.flowWait(args),
     flow_cancel: (args) => orchestrator.flowCancel(args),
     flow_episode_ledger: (args) => orchestrator.flowEpisodeLedger(args),
@@ -260,7 +397,6 @@ export async function handleJsonRpcMessage(msg, { dispatch }) {
     };
   }
 
-  // Notifications have no `id` and expect no response
   if (msg.id === undefined || msg.id === null) {
     return null;
   }
@@ -286,7 +422,7 @@ export async function handleJsonRpcMessage(msg, { dispatch }) {
             version: MCP_SERVER_VERSION,
           },
           instructions:
-            "Mokaair Google Flow production MCP. Always run flow_preflight_shotlist -> flow_generate_stills (0 credits) -> flow_approve_stills -> flow_plan_clips -> owner confirmation -> flow_generate_clips(confirm_token). Never invent or bypass confirm_token.",
+            "Mokaair Google Flow MCP v2 (explainers + AI dramas + vertical Shorts). Workflow: flow_status/flow_profiles -> flow_init_episode -> flow_register_character or flow_import_video_json -> flow_preflight_shotlist -> flow_generate_stills (0 credits, pilot first for AI dramas) -> flow_approve_stills -> flow_plan_clips -> owner confirmation -> flow_generate_clips(confirm_token) -> flow_select_take / flow_reconcile -> flow_episode_ledger.",
         },
       };
     }
@@ -319,11 +455,6 @@ export async function handleJsonRpcMessage(msg, { dispatch }) {
   }
 }
 
-/**
- * Starts the stdio transport supporting both newline-delimited JSON-RPC and
- * `Content-Length` framed input. Echoes back in the same framing style the
- * client used.
- */
 export function startStdioServer({
   orchestrator = new FlowOrchestrator(),
   stdin = process.stdin,
@@ -374,7 +505,6 @@ export function startStdioServer({
 
   const drain = () => {
     while (buffer.length > 0) {
-      // Check for Content-Length framing
       const headPreview = buffer.subarray(0, Math.min(buffer.length, 64)).toString("ascii");
       if (/^Content-Length:\s*\d+/i.test(headPreview)) {
         useContentLength = true;
@@ -395,7 +525,6 @@ export function startStdioServer({
         continue;
       }
 
-      // Newline-delimited JSON-RPC framing
       const nlIdx = buffer.indexOf("\n");
       if (nlIdx === -1) return;
       const line = buffer.subarray(0, nlIdx).toString("utf8").trim();

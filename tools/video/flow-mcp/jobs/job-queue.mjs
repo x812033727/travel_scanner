@@ -8,7 +8,7 @@
 import { randomBytes } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { resolveRuntimeHome } from "../config.mjs";
+import { resolveProfileLockPath, resolveRuntimeHome } from "../config.mjs";
 import { atomicWriteJson, readJsonSafe } from "../guards/budget-guard.mjs";
 
 function isPidAlive(pid) {
@@ -126,7 +126,7 @@ export class JobQueue {
   } = {}) {
     this.runtimeHome = runtimeHome;
     this.jobsDir = path.join(runtimeHome, "jobs");
-    this.lock = new RuntimeLock(path.join(runtimeHome, "runtime.lock"));
+    this.lock = new RuntimeLock(resolveProfileLockPath(runtimeHome, null));
     this.minPauseMs = minPauseMs;
     this.maxPauseMs = maxPauseMs;
     this.random = random;
@@ -137,6 +137,11 @@ export class JobQueue {
     this.activeAbortController = null;
     this.waiters = new Map();
     this.runningLoop = false;
+  }
+
+  lockForProfile(profile = null) {
+    if (!profile || profile === "default") return this.lock;
+    return new RuntimeLock(resolveProfileLockPath(this.runtimeHome, profile));
   }
 
   jobFile(jobId) {
@@ -154,8 +159,8 @@ export class JobQueue {
     set.clear();
   }
 
-  getLockStatus() {
-    return this.lock.inspect();
+  getLockStatus(profile = null) {
+    return this.lockForProfile(profile).inspect();
   }
 
   getJob(jobId) {
@@ -170,12 +175,13 @@ export class JobQueue {
    * Enqueues a multi-item sequential Flow job. Returns immediately with the
    * initial job snapshot (non-blocking).
    */
-  enqueue({ kind, slug, items, worker, onComplete = null }) {
+  enqueue({ kind, slug, profile = null, items, worker, onComplete = null }) {
     const jobId = `job_${Date.now().toString(36)}_${randomBytes(4).toString("hex")}`;
     const job = {
       jobId,
       kind,
       slug,
+      profile: profile || "default",
       status: "queued",
       createdAt: new Date().toISOString(),
       startedAt: null,
@@ -193,7 +199,7 @@ export class JobQueue {
 
     this.jobs.set(jobId, job);
     this.persistJob(job);
-    this.pendingQueue.push({ jobId, items, worker, onComplete });
+    this.pendingQueue.push({ jobId, profile, items, worker, onComplete });
 
     // Kick the single-worker background pump
     void this.#pump();
@@ -210,7 +216,8 @@ export class JobQueue {
         const job = this.jobs.get(entry.jobId);
         if (!job || job.cancelled) continue;
 
-        const lockResult = this.lock.acquire({ jobId: job.jobId, kind: job.kind, slug: job.slug });
+        const activeLock = this.lockForProfile(entry.profile);
+        const lockResult = activeLock.acquire({ jobId: job.jobId, kind: job.kind, slug: job.slug, profile: entry.profile || "default" });
         if (!lockResult.acquired) {
           job.status = "failed";
           job.finishedAt = new Date().toISOString();
@@ -219,7 +226,7 @@ export class JobQueue {
             code: "profile_locked",
             retryable: false,
             charged: "no",
-            message: `Another Flow client (PID ${lockResult.holder?.pid ?? "unknown"}) is currently using the Chrome profile. Wait for it to finish before starting a new job.`,
+            message: `Another Flow client (PID ${lockResult.holder?.pid ?? "unknown"}) is currently using Chrome profile "${entry.profile || "default"}". Wait for it to finish before starting a new job.`,
           });
           this.persistJob(job);
           this.notifyWaiters(job.jobId);
@@ -318,7 +325,7 @@ export class JobQueue {
         } finally {
           this.activeJobId = null;
           this.activeAbortController = null;
-          this.lock.release();
+          activeLock.release();
           this.notifyWaiters(job.jobId);
         }
       }

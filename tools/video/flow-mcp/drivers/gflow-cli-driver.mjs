@@ -426,4 +426,159 @@ export class GflowCliDriver extends FlowDriver {
       raw: json,
     };
   }
+
+  async getVersion({ signal } = {}) {
+    try {
+      const res = await this.runProcess(this.binary, ["--version"], {
+        env: this.buildEnv(),
+        signal,
+        timeoutMs: 10_000,
+      });
+      if (res.exitCode !== 0) return null;
+      return `${res.stdout || ""}${res.stderr || ""}`.trim().split(/\r?\n/)[0] || null;
+    } catch {
+      return null;
+    }
+  }
+
+  async listProfiles({ refreshCredits = false, signal } = {}) {
+    const authRes = await this.execJson(["auth", "list", "--json"], {
+      signal,
+      allowNonZeroJson: true,
+      timeoutMs: 30_000,
+    });
+    const rawProfiles = Array.isArray(authRes.json)
+      ? authRes.json
+      : Array.isArray(authRes.json?.profiles)
+        ? authRes.json.profiles
+        : [];
+
+    let creditsMap = {};
+    try {
+      const credArgs = ["credits", "list", "--json"];
+      if (refreshCredits) credArgs.push("--refresh");
+      const credRes = await this.execJson(credArgs, { signal, timeoutMs: 45_000 });
+      const rows = Array.isArray(credRes.json)
+        ? credRes.json
+        : Array.isArray(credRes.json?.profiles)
+          ? credRes.json.profiles
+          : [];
+      for (const row of rows) {
+        const key = row?.profile || row?.name;
+        if (key) creditsMap[key] = row;
+      }
+    } catch {
+      creditsMap = {};
+    }
+
+    return rawProfiles.map((p) => {
+      const name = typeof p === "string" ? p : p.name || p.profile || "default";
+      const cred = creditsMap[name] || {};
+      return {
+        profile: name,
+        isDefault: Boolean(p?.default || p?.is_default),
+        authenticated: p?.authenticated ?? true,
+        account: p?.email || p?.account || cred?.email || null,
+        plan: p?.plan || cred?.plan || cred?.tier || null,
+        credits: cred?.credits ?? cred?.balance ?? cred?.remaining ?? null,
+      };
+    });
+  }
+
+  buildCreateCharacterArgs({
+    projectId,
+    name,
+    imagePath = null,
+    bodyImagePath = null,
+    facePrompt = null,
+    bodyPrompt = null,
+    voice = null,
+    profile = null,
+  }) {
+    const base = ["character", "create", "--project", String(projectId), "--name", String(name)];
+    if (imagePath) base.push("--image", String(imagePath));
+    if (bodyImagePath) base.push("--body-image", String(bodyImagePath));
+    if (facePrompt) base.push("--face-prompt", String(facePrompt));
+    if (bodyPrompt) base.push("--body-prompt", String(bodyPrompt));
+    if (voice) base.push("--voice", String(voice));
+    base.push("--json");
+    return this.withProfile(base, profile);
+  }
+
+  async createCharacter(params) {
+    const args = this.buildCreateCharacterArgs(params);
+    const { json } = await this.execJson(args, {
+      signal: params.signal,
+      timeoutMs: params.timeoutMs ?? 4 * 60 * 1000,
+    });
+    return {
+      entityId: json?.entity_id || json?.id || null,
+      name: json?.name || params.name,
+      projectId: params.projectId,
+      raw: json,
+    };
+  }
+
+  async listCharacters({ projectId, profile = null, signal }) {
+    const args = this.withProfile(["character", "list", "--project", String(projectId), "--json"], profile);
+    const { json } = await this.execJson(args, { signal, timeoutMs: 45_000 });
+    return Array.isArray(json) ? json : Array.isArray(json?.characters) ? json.characters : [];
+  }
+
+  buildExtendVideoArgs({
+    source,
+    prompt,
+    projectId = null,
+    durationSec = null,
+    refs = [],
+    maxCredits = DEFAULT_MAX_CREDITS_PER_CLIP,
+    outFile = null,
+    profile = null,
+  }) {
+    const base = ["video", "extend", String(source), String(prompt)];
+    if (projectId) base.push("--project", String(projectId));
+    if (durationSec != null) base.push("--duration", String(durationSec));
+    for (const ref of (refs || []).filter(Boolean)) {
+      base.push("--ref", String(ref));
+    }
+    if (maxCredits != null) base.push("--max-credits", String(maxCredits));
+    if (outFile) base.push("--out-file", String(outFile));
+    base.push("--json");
+    return this.withProfile(base, profile);
+  }
+
+  async extendVideo(params) {
+    const args = this.buildExtendVideoArgs(params);
+    const { json } = await this.execJson(args, {
+      signal: params.signal,
+      timeoutMs: params.timeoutMs ?? 8 * 60 * 1000,
+    });
+    return {
+      outFile: params.outFile || json?.out_file || json?.path || json?.video_path || null,
+      mediaId: json?.media_id || json?.id || null,
+      projectId: params.projectId || json?.project_id || null,
+      creditsSpent: json?.credits_spent ?? json?.quoted_credits ?? null,
+      charged: json?.charged || "yes",
+      raw: json,
+    };
+  }
+
+  async listRemoteVideos({ limit = 50, profile = null, signal } = {}) {
+    const args = this.withProfile(["data", "list", "videos", "--limit", String(limit), "--json"], profile);
+    const { json } = await this.execJson(args, { signal, timeoutMs: 45_000 });
+    return Array.isArray(json) ? json : Array.isArray(json?.videos) ? json.videos : Array.isArray(json?.items) ? json.items : [];
+  }
+
+  async downloadMedia({ mediaId, outDir, profile = null, signal }) {
+    const base = ["data", "download", String(mediaId)];
+    if (outDir) base.push("--out", String(outDir));
+    base.push("--json");
+    const args = this.withProfile(base, profile);
+    const { json } = await this.execJson(args, { signal, timeoutMs: 3 * 60 * 1000 });
+    return {
+      mediaId,
+      outFile: json?.out_file || json?.path || json?.file || null,
+      raw: json,
+    };
+  }
 }

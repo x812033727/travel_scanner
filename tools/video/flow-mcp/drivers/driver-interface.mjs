@@ -132,6 +132,34 @@ export class FlowDriver {
     throw new Error(`${this.name}: generateVideo() not implemented`);
   }
 
+  async extendVideo() {
+    throw new Error(`${this.name}: extendVideo() not implemented`);
+  }
+
+  async createCharacter() {
+    throw new Error(`${this.name}: createCharacter() not implemented`);
+  }
+
+  async listCharacters() {
+    throw new Error(`${this.name}: listCharacters() not implemented`);
+  }
+
+  async listProfiles() {
+    throw new Error(`${this.name}: listProfiles() not implemented`);
+  }
+
+  async listRemoteVideos() {
+    throw new Error(`${this.name}: listRemoteVideos() not implemented`);
+  }
+
+  async downloadMedia() {
+    throw new Error(`${this.name}: downloadMedia() not implemented`);
+  }
+
+  async getVersion() {
+    return null;
+  }
+
   getLoginCommand() {
     throw new Error(`${this.name}: getLoginCommand() not implemented`);
   }

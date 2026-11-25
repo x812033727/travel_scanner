@@ -2,9 +2,8 @@
  * Per-episode credit ledger, series budget hard cap enforcement, and
  * single-use SHA-256 bound `confirm_token` approvals.
  *
- * Ensures no agent can spend paid Flow credits without:
- *   1. Staying inside the series cap (`sothatswhy <= 500`, `curio <= 550/600`).
- *   2. Obtaining a fresh `confirm_token` from `flow_plan_clips` and owner sign-off.
+ * Supports both uniform per-clip credits (explainers) and variable per-shot
+ * credits (AI dramas mixing 4s/6s/8s/10s Omni 1.2 Flash, Veo 3.1, and Extend).
  */
 
 import { createHash, randomBytes } from "node:crypto";
@@ -44,6 +43,16 @@ export function loadCreditLedger(ledgerFile, { slug, series = "curio" } = {}) {
   };
 }
 
+export function recalculateLedgerTotals(ledger) {
+  ledger.totalSpentCredits = (ledger.entries || [])
+    .filter((e) => e.charged === "yes")
+    .reduce((sum, e) => sum + (Number(e.credits) || 0), 0);
+  ledger.totalMaybeCredits = (ledger.entries || [])
+    .filter((e) => e.charged === "maybe")
+    .reduce((sum, e) => sum + (Number(e.credits) || 0), 0);
+  return ledger;
+}
+
 export function recordCreditEvent(
   ledgerFile,
   {
@@ -54,6 +63,8 @@ export function recordCreditEvent(
     credits = DEFAULT_CLIP_CREDITS,
     charged = "yes", // "yes" | "maybe" | "no"
     mediaId = null,
+    operation = "clip", // "clip" | "extend" | "reconcile"
+    take = null,
     note = "",
     timestamp = new Date().toISOString(),
   },
@@ -65,6 +76,8 @@ export function recordCreditEvent(
   ledger.entries.push({
     timestamp,
     shotId,
+    operation,
+    take,
     model,
     credits: amount,
     charged: normalizedCharged,
@@ -72,13 +85,7 @@ export function recordCreditEvent(
     note,
   });
 
-  ledger.totalSpentCredits = ledger.entries
-    .filter((e) => e.charged === "yes")
-    .reduce((sum, e) => sum + e.credits, 0);
-  ledger.totalMaybeCredits = ledger.entries
-    .filter((e) => e.charged === "maybe")
-    .reduce((sum, e) => sum + e.credits, 0);
-
+  recalculateLedgerTotals(ledger);
   atomicWriteJson(ledgerFile, ledger);
   return ledger;
 }
@@ -94,13 +101,14 @@ function hashApprovalPayload({ slug, shotIds, model, plannedCredits }) {
 }
 
 /**
- * Evaluates a clip generation plan against series caps, existing spend, and
- * optional account balance. When valid, mints a single-use `confirm_token`.
+ * Evaluates a clip/extend generation plan against series caps, existing spend,
+ * and optional live account balance. Mints a single-use `confirm_token`.
  */
 export function planClipBudget({
   episodePaths,
   series = "curio",
   shotIds,
+  shotPlans = null, // optional [{ shotId, model, durationSec, credits }]
   model = DEFAULT_VIDEO_MODEL,
   creditsPerClip = DEFAULT_CLIP_CREDITS,
   accountCredits = null,
@@ -125,7 +133,9 @@ export function planClipBudget({
   });
 
   const committedCredits = ledger.totalSpentCredits + ledger.totalMaybeCredits;
-  const plannedCredits = cleanShotIds.length * creditsPerClip;
+  const plannedCredits = Array.isArray(shotPlans) && shotPlans.length > 0
+    ? shotPlans.reduce((sum, p) => sum + (Number(p.credits) || 0), 0)
+    : cleanShotIds.length * creditsPerClip;
   const projectedTotal = committedCredits + plannedCredits;
   const hardCap =
     budgetHardCapOverride != null ? Number(budgetHardCapOverride) : preset.budgetHardCap;
@@ -138,6 +148,7 @@ export function planClipBudget({
       series: preset.id,
       shotCount: cleanShotIds.length,
       creditsPerClip,
+      shotPlans: shotPlans || null,
       alreadyCommittedCredits: committedCredits,
       plannedCredits,
       projectedTotal,
@@ -169,7 +180,6 @@ export function planClipBudget({
   const expiresAt = new Date(now + ttlMs).toISOString();
 
   const store = readJsonSafe(episodePaths.pendingApprovalsFile, { approvals: {} });
-  // Prune expired approvals while adding the fresh one
   for (const [key, entry] of Object.entries(store.approvals || {})) {
     if (!entry.expiresAt || Date.parse(entry.expiresAt) <= now) {
       delete store.approvals[key];
@@ -181,6 +191,7 @@ export function planClipBudget({
     shotIds: cleanShotIds,
     model,
     plannedCredits,
+    shotPlans: shotPlans || null,
     createdAt: new Date(now).toISOString(),
     expiresAt,
     consumedAt: null,
@@ -194,6 +205,7 @@ export function planClipBudget({
     shotIds: cleanShotIds,
     shotCount: cleanShotIds.length,
     creditsPerClip,
+    shotPlans: shotPlans || null,
     alreadyCommittedCredits: committedCredits,
     plannedCredits,
     projectedTotal,
@@ -206,7 +218,7 @@ export function planClipBudget({
     accountCredits: accountCredits != null ? Number(accountCredits) : null,
     confirm_token: token,
     expiresAt,
-    ownerPrompt: `Confirm spending ${plannedCredits} Flow credits (${cleanShotIds.length} × ${creditsPerClip}, model=${model}; episode total ${projectedTotal}/${hardCap}) before calling flow_generate_clips with confirm_token.`,
+    ownerPrompt: `Confirm spending ${plannedCredits} Flow credits (${cleanShotIds.length} shot(s), model=${model}; episode total ${projectedTotal}/${hardCap}) before calling flow_generate_clips / flow_extend_clip with confirm_token.`,
   };
 }
 
@@ -219,13 +231,14 @@ export function verifyAndConsumeConfirmToken({
   shotIds,
   model = DEFAULT_VIDEO_MODEL,
   creditsPerClip = DEFAULT_CLIP_CREDITS,
+  plannedCreditsOverride = null,
   now = Date.now(),
 }) {
   if (!token || typeof token !== "string") {
     return {
       ok: false,
       reason: "missing_confirm_token",
-      message: "Paid clip generation requires a confirm_token from flow_plan_clips after owner approval.",
+      message: "Paid generation requires a confirm_token from flow_plan_clips after owner approval.",
     };
   }
 
@@ -254,11 +267,15 @@ export function verifyAndConsumeConfirmToken({
   }
 
   const cleanShotIds = [...new Set((shotIds || []).map(String).filter(Boolean))];
+  const plannedCredits =
+    plannedCreditsOverride != null
+      ? Number(plannedCreditsOverride)
+      : cleanShotIds.length * creditsPerClip;
   const expectedHash = hashApprovalPayload({
     slug: episodePaths.slug,
     shotIds: cleanShotIds,
     model,
-    plannedCredits: cleanShotIds.length * creditsPerClip,
+    plannedCredits,
   });
 
   if (record.payloadHash !== expectedHash) {
