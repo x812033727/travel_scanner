@@ -60,14 +60,31 @@ def _require_flow(token: VideoToolToken) -> None:
         )
 
 
-def _require_gateway(settings: Settings) -> tuple[str, str]:
+def _gateway_target(settings: Settings) -> tuple[str, str | None]:
+    socket_path = (settings.flow_mcp_gateway_socket or "").strip()
+    if socket_path.startswith("/"):
+        return "http://flow-gateway.local", socket_path
+    return settings.flow_mcp_gateway_url.rstrip("/"), None
+
+
+def _require_gateway(settings: Settings) -> tuple[str, str | None, str]:
     if not settings.flow_mcp_gateway_configured or not settings.flow_mcp_gateway_secret:
         raise AppError(
             503,
             "flow_mcp_gateway_disabled",
             "Flow MCP 雲端閘道尚未啟用或未完成設定",
         )
-    return settings.flow_mcp_gateway_url.rstrip("/"), settings.flow_mcp_gateway_secret
+    base_url, socket_path = _gateway_target(settings)
+    return base_url, socket_path, settings.flow_mcp_gateway_secret
+
+
+def _build_gateway_client(timeout: float, socket_path: str | None) -> httpx.AsyncClient:
+    if socket_path:
+        return httpx.AsyncClient(
+            timeout=timeout,
+            transport=httpx.AsyncHTTPTransport(uds=socket_path),
+        )
+    return httpx.AsyncClient(timeout=timeout)
 
 
 def sign_gateway_headers(
@@ -103,10 +120,10 @@ async def flow_mcp_health(
     if not settings.flow_mcp_gateway_configured or not settings.flow_mcp_gateway_secret:
         return {"ok": False, "enabled": False, "reachable": False, "services": []}
 
-    base_url = settings.flow_mcp_gateway_url.rstrip("/")
+    base_url, socket_path = _gateway_target(settings)
     headers = sign_gateway_headers(settings.flow_mcp_gateway_secret, "GET", "/health", b"")
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with _build_gateway_client(10.0, socket_path) as client:
             res = await client.get(f"{base_url}/health", headers=headers)
         if res.status_code == 200:
             data = res.json()
@@ -133,7 +150,7 @@ async def proxy_flow_mcp(
     response.headers["Cache-Control"] = "no-store"
     _require_flow(token)
     settings = get_settings()
-    base_url, secret = _require_gateway(settings)
+    base_url, socket_path, secret = _require_gateway(settings)
 
     await enforce_named_rate_limit(
         "video_flow_mcp",
@@ -184,7 +201,9 @@ async def proxy_flow_mcp(
     gateway_path = f"/mcp/{service}"
     headers = sign_gateway_headers(secret, "POST", gateway_path, body)
     try:
-        async with httpx.AsyncClient(timeout=settings.flow_mcp_gateway_timeout_seconds) as client:
+        async with _build_gateway_client(
+            settings.flow_mcp_gateway_timeout_seconds, socket_path
+        ) as client:
             upstream = await client.post(
                 f"{base_url}{gateway_path}",
                 content=body,

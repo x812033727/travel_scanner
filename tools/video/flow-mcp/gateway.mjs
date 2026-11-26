@@ -14,6 +14,7 @@
  */
 
 import { createHash, createHmac, timingSafeEqual } from "node:crypto";
+import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -200,11 +201,17 @@ export function createGatewayServer({
 export function startGatewayServer({
   host = process.env.FLOW_MCP_GATEWAY_HOST || DEFAULT_GATEWAY_HOST,
   port = Number(process.env.FLOW_MCP_GATEWAY_PORT || DEFAULT_GATEWAY_PORT),
+  socketPath = process.env.FLOW_MCP_GATEWAY_SOCKET || "",
   secret = process.env.FLOW_MCP_GATEWAY_SECRET || "",
   flowOrchestrator,
   musicOrchestrator,
 } = {}) {
-  if (!LOOPBACK_HOSTS.has(String(host))) {
+  const normalizedSocket = String(socketPath || "").trim();
+  if (normalizedSocket) {
+    if (!path.isAbsolute(normalizedSocket)) {
+      throw new Error(`Refusing to bind Flow MCP Gateway to non-absolute socket path "${normalizedSocket}".`);
+    }
+  } else if (!LOOPBACK_HOSTS.has(String(host))) {
     throw new Error(`Refusing to bind Flow MCP Gateway to non-loopback host "${host}". Use 127.0.0.1.`);
   }
   if (!secret || secret.length < 32) {
@@ -213,17 +220,31 @@ export function startGatewayServer({
   const server = createGatewayServer({ secret, flowOrchestrator, musicOrchestrator });
   return new Promise((resolve, reject) => {
     server.on("error", reject);
+    if (normalizedSocket) {
+      fs.mkdirSync(path.dirname(normalizedSocket), { recursive: true });
+      fs.rmSync(normalizedSocket, { force: true });
+      server.listen(normalizedSocket, () => {
+        try {
+          fs.chmodSync(normalizedSocket, 0o660);
+        } catch {
+          // Best-effort on platforms where chmod on sockets is unsupported
+        }
+        resolve({ server, socketPath: normalizedSocket, host: null, port: null });
+      });
+      return;
+    }
     server.listen(port, host, () => {
       const addr = server.address();
-      resolve({ server, host, port: typeof addr === "object" && addr ? addr.port : port });
+      resolve({ server, socketPath: null, host, port: typeof addr === "object" && addr ? addr.port : port });
     });
   });
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
   startGatewayServer()
-    .then(({ host, port }) => {
-      console.log(`[mokaair-flow-gateway] Listening on http://${host}:${port} (services: flow, flow-music)`);
+    .then(({ socketPath, host, port }) => {
+      const target = socketPath ? `unix://${socketPath}` : `http://${host}:${port}`;
+      console.log(`[mokaair-flow-gateway] Listening on ${target} (services: flow, flow-music)`);
     })
     .catch((err) => {
       console.error(`[mokaair-flow-gateway] Failed to start: ${err?.message || err}`);

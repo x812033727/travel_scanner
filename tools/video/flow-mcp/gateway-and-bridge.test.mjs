@@ -1,4 +1,8 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import http from "node:http";
+import os from "node:os";
+import path from "node:path";
 import test from "node:test";
 import { signGatewayRequest, startGatewayServer, verifyGatewaySignature } from "./gateway.mjs";
 import { forwardRpcOverHttps } from "./remote-bridge.mjs";
@@ -89,4 +93,43 @@ test("remote-bridge forwards JSON-RPC over HTTPS with Bearer mkv_ token and repo
   assert.equal(seen[0].url, "https://mokaair.com/api/video/mcp/flow-music");
   assert.match(seen[0].headers.Authorization, /^Bearer mkv_/);
   assert.deepEqual(ok, { jsonrpc: "2.0", id: 7, result: {} });
+});
+
+test("Flow MCP Gateway supports Unix domain socket binding and rejects relative socket paths", async () => {
+  assert.throws(
+    () => startGatewayServer({ socketPath: "relative/gateway.sock", secret: TEST_SECRET }),
+    /non-absolute socket path/,
+  );
+
+  if (process.platform === "win32") return;
+
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "mokaair-flow-gw-"));
+  const socketPath = path.join(tmpDir, "gateway.sock");
+  const { server } = await startGatewayServer({ socketPath, secret: TEST_SECRET });
+  try {
+    const headers = signGatewayRequest({
+      secret: TEST_SECRET,
+      method: "GET",
+      reqPath: "/health",
+      bodyBuffer: Buffer.alloc(0),
+      nonce: "unix-health-nonce-1",
+    });
+    const res = await new Promise((resolve, reject) => {
+      const req = http.request({ socketPath, path: "/health", method: "GET", headers }, (response) => {
+        const chunks = [];
+        response.on("data", (c) => chunks.push(c));
+        response.on("end", () =>
+          resolve({ status: response.statusCode, json: JSON.parse(Buffer.concat(chunks).toString("utf8")) }),
+        );
+      });
+      req.on("error", reject);
+      req.end();
+    });
+    assert.equal(res.status, 200);
+    assert.equal(res.json.ok, true);
+    assert.deepEqual(res.json.services, ["flow", "flow-music"]);
+  } finally {
+    await new Promise((resolve) => server.close(resolve));
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
 });

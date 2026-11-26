@@ -1,5 +1,5 @@
 [Unit]
-Description=Mokaair Flow & Flow Music MCP Loopback Gateway (Xvfb + Chrome CDP)
+Description=Mokaair Flow & Flow Music MCP Unix-Socket Gateway (Xvfb + Chrome CDP)
 After=network-online.target
 Wants=network-online.target
 
@@ -8,12 +8,17 @@ Type=simple
 User=flowbot
 Group=flowbot
 WorkingDirectory=/opt/mokaair-flow-gateway/travel_scanner
-EnvironmentFile=/etc/mokaair/flow-gateway.env
+EnvironmentFile=/etc/travel-scanner/flow-gateway.env
+Environment=HOME=/home/flowbot
 Environment=DISPLAY=:99
-Environment=FLOW_MCP_GATEWAY_HOST=127.0.0.1
-Environment=FLOW_MCP_GATEWAY_PORT=8792
-ExecStartPre=/bin/sh -c 'pgrep -u flowbot -f "Xvfb :99" >/dev/null || (nohup /usr/bin/Xvfb :99 -screen 0 1366x900x24 -ac >/var/log/mokaair-flow-xvfb.log 2>&1 </dev/null & sleep 1)'
+Environment=PATH=/home/flowbot/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=FLOW_MCP_GATEWAY_SOCKET=/run/mokaair-flow-gateway/gateway.sock
+# /run is tmpfs: recreate the socket directory with the group the API container joins.
+# `+` runs these with root privileges; the gateway itself runs as non-root flowbot.
+ExecStartPre=+/bin/sh -c 'install -d -m 0750 -o flowbot -g travel-api /run/mokaair-flow-gateway && rm -f /run/mokaair-flow-gateway/gateway.sock'
+ExecStartPre=/bin/sh -c 'mkdir -p /home/flowbot/logs && (pgrep -u flowbot -f "Xvfb :99" >/dev/null || (nohup /usr/bin/Xvfb :99 -screen 0 1366x900x24 -ac >/home/flowbot/logs/xvfb.log 2>&1 </dev/null & sleep 1))'
 ExecStart=/usr/bin/node tools/video/flow-mcp/gateway.mjs
+ExecStartPost=+/bin/sh -c 'for i in $(seq 1 100); do [ -S /run/mokaair-flow-gateway/gateway.sock ] && chgrp travel-api /run/mokaair-flow-gateway/gateway.sock && chmod 0660 /run/mokaair-flow-gateway/gateway.sock && exit 0; sleep 0.1; done; echo "gateway.sock never appeared" >&2; exit 1'
 Restart=on-failure
 RestartSec=5
 NoNewPrivileges=true
