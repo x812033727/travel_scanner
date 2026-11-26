@@ -1,6 +1,6 @@
 ---
 name: google-flow-music-mcp
-description: 用本機 Google Flow Music MCP（mokaair-flow-music，直連 www.flowmusic.app / Lyria 3.5，零外部依賴 Chrome CDP）製作與管理 Mokaair 全系列底樂（bed）、短音樂（cue）與音效（sfx）：多帳號隔離登入、底樂禁人聲／禁爆點與版權前置把關、同源批次下載防覆蓋（-takeN）、FFmpeg EBU R128 響度與靜音切段、互動式 qa-gallery.html 試聽簽核、匯出通過 sfxSetProblems 的第 2 版 _sfx/<set>/manifest.json、部署 _music/ 與 SHA-256 0 差異同步 Google 雲端硬碟。要用 Flow Music 生音樂、拉曲目、試聽既有配樂庫（如 flow-music-20261117）、剪短音樂或音效組時，先讀這個 skill。Produce, audition, slice, and sync Mokaair background beds, cues, and SFX with the local Google Flow Music MCP server (mokaair-flow-music).
+description: 用本機 Google Flow Music MCP（mokaair-flow-music，直連 www.flowmusic.app / Lyria 3.5，零外部依賴 Chrome CDP）製作與管理 Mokaair 全系列底樂（bed）、短音樂（cue）與音效（sfx）：多帳號隔離登入、底樂禁人聲／禁爆點與版權前置把關、同源批次下載防覆蓋（-takeN）、FFmpeg EBU R128 響度與靜音切段、互動式 qa-gallery.html 試聽簽核、匯出通過 sfxSetProblems 的第 2 版 _sfx 音效組 manifest.json、部署 _music/ 與 SHA-256 0 差異同步 Google 雲端硬碟。要用 Flow Music 生音樂、拉曲目、試聽既有配樂庫（如 flow-music-20261117）、剪短音樂或音效組時，先讀這個 skill。Produce, audition, slice, and sync Mokaair background beds, cues, and SFX with the local Google Flow Music MCP server (mokaair-flow-music).
 ---
 # Google Flow Music 本機 MCP（`google-flow-music-mcp`）
 
