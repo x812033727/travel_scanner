@@ -239,6 +239,7 @@ test("GflowCliDriver builds verified args for character create and video extend"
     "20",
     "--out-file",
     "/tmp/ext.mp4",
+    "--yes",
     "--json",
     "--profile",
     "pro-2",
@@ -532,7 +533,7 @@ test("Phase 3 polish: shared series Cast inheritance, flow_plan_extend + spillov
   const cliDriver = new GflowCliDriver({ binary: "gflow", profile: "pro-2", runtimeHome });
   assert.deepEqual(
     cliDriver.buildUpscaleImageArgs({ mediaId: "m-1", scale: "4k", projectId: "p1", outFile: "/tmp/u.png" }),
-    ["image", "upscale", "m-1", "--scale", "4k", "--project", "p1", "--out-file", "/tmp/u.png", "--json", "--profile", "pro-2"],
+    ["image", "upscale", "m-1", "--scale", "4k", "--project", "p1", "--out", path.dirname("/tmp/u.png"), "--profile", "pro-2"],
   );
 
   const queue = new JobQueue({ runtimeHome, minPauseMs: 0, maxPauseMs: 0 });
