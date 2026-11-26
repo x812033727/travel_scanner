@@ -1,6 +1,6 @@
 """Allow video tool tokens to call the host Flow & Flow Music MCP gateway (flow_access).
 
-Revision ID: 0148_video_tool_token_flow_access
+Revision ID: 0148_video_token_flow_access
 Revises: 0147_video_project_shelf
 
 Cloud sessions (Claude, Codex, Antigravity, Colab) pair via `login --flow` and receive a
@@ -13,7 +13,7 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0148_video_tool_token_flow_access"
+revision: str = "0148_video_token_flow_access"
 down_revision: str | None = "0147_video_project_shelf"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
