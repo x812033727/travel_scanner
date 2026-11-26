@@ -124,6 +124,13 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "runpod_session_not_found": "This RunPod pod could not be found.",
         "runpod_stop_failed": "RunPod could not stop the pod.",
         "video_tool_token_no_runpod": "This video tool token has no RunPod access.",
+        "video_tool_token_no_flow": "This video tool token has no Flow / Flow Music MCP access.",
+        "flow_mcp_gateway_disabled": "The Flow MCP gateway is not enabled or configured yet.",
+        "flow_mcp_gateway_unavailable": "The host Flow MCP gateway is not responding.",
+        "flow_mcp_body_too_large": "The MCP request body exceeds the 1 MiB limit.",
+        "flow_mcp_invalid_json": "The MCP request must be valid JSON.",
+        "flow_mcp_invalid_jsonrpc": "The MCP request must be a valid JSON-RPC 2.0 object.",
+        "flow_mcp_method_not_allowed": "This MCP method is not allowed.",
         "password_not_set": "This account does not have a password yet",
         "password_too_common": (
             "That password is too easy to guess. Choose one that is not a common string "
@@ -340,6 +347,17 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "runpod_session_not_found": "この RunPod の pod が見つかりません。",
         "runpod_stop_failed": "RunPod で pod を停止できませんでした。",
         "video_tool_token_no_runpod": "この動画ツールトークンには RunPod の権限がありません。",
+        "video_tool_token_no_flow": (
+            "この動画ツールトークンには Flow / Flow Music MCP の権限がありません。"
+        ),
+        "flow_mcp_gateway_disabled": "Flow MCP ゲートウェイはまだ有効化または設定されていません。",
+        "flow_mcp_gateway_unavailable": "ホストの Flow MCP ゲートウェイが応答していません。",
+        "flow_mcp_body_too_large": "MCP リクエスト本文が 1 MiB の上限を超えています。",
+        "flow_mcp_invalid_json": "MCP リクエストは有効な JSON である必要があります。",
+        "flow_mcp_invalid_jsonrpc": (
+            "MCP リクエストは有効な JSON-RPC 2.0 オブジェクトである必要があります。"
+        ),
+        "flow_mcp_method_not_allowed": "この MCP メソッドは許可されていません。",
         "password_not_set": "このアカウントにはまだパスワードがありません",
         "password_too_common": (
             "このパスワードは推測されやすすぎます。よくある文字列ではなく、"
@@ -544,6 +562,13 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "runpod_session_not_found": "이 RunPod pod를 찾을 수 없습니다.",
         "runpod_stop_failed": "RunPod에서 pod를 중지하지 못했습니다.",
         "video_tool_token_no_runpod": "이 영상 도구 토큰에는 RunPod 권한이 없습니다.",
+        "video_tool_token_no_flow": "이 영상 도구 토큰에는 Flow / Flow Music MCP 권한이 없습니다.",
+        "flow_mcp_gateway_disabled": "Flow MCP 게이트웨이가 아직 활성화되거나 설정되지 않았습니다.",
+        "flow_mcp_gateway_unavailable": "호스트 Flow MCP 게이트웨이가 응답하지 않습니다.",
+        "flow_mcp_body_too_large": "MCP 요청 본문이 1 MiB 제한을 초과했습니다.",
+        "flow_mcp_invalid_json": "MCP 요청은 유효한 JSON이어야 합니다.",
+        "flow_mcp_invalid_jsonrpc": "MCP 요청은 유효한 JSON-RPC 2.0 객체여야 합니다.",
+        "flow_mcp_method_not_allowed": "허용되지 않는 MCP 메서드입니다.",
         "password_not_set": "이 계정에는 아직 비밀번호가 없습니다",
         "password_too_common": (
             "이 비밀번호는 너무 쉽게 추측됩니다. 흔한 문자열이 아니고 "
@@ -765,6 +790,13 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "runpod_session_not_found": "找不到这个 RunPod pod。",
         "runpod_stop_failed": "RunPod 无法停止 pod。",
         "video_tool_token_no_runpod": "这组视频工具令牌没有 RunPod 权限。",
+        "video_tool_token_no_flow": "这组视频工具令牌没有 Flow / Flow Music MCP 权限。",
+        "flow_mcp_gateway_disabled": "Flow MCP 云端网关尚未启用或未完成设置。",
+        "flow_mcp_gateway_unavailable": "主机 Flow MCP 网关目前无法响应。",
+        "flow_mcp_body_too_large": "MCP 请求内容超过 1 MiB 上限。",
+        "flow_mcp_invalid_json": "MCP 请求必须是有效的 JSON。",
+        "flow_mcp_invalid_jsonrpc": "MCP 请求必须是有效的 JSON-RPC 2.0 对象。",
+        "flow_mcp_method_not_allowed": "不支持此 MCP 方法。",
         "password_not_set": "这个账号尚未设置密码",
         "password_too_common": (
             "这个密码太容易被猜到，请换一个不是常见字符串、也和 Email 无关的密码。"

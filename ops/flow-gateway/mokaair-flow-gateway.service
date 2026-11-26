@@ -1,0 +1,23 @@
+[Unit]
+Description=Mokaair Flow & Flow Music MCP Loopback Gateway (Xvfb + Chrome CDP)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=flowbot
+Group=flowbot
+WorkingDirectory=/opt/mokaair-flow-gateway/travel_scanner
+EnvironmentFile=/etc/mokaair/flow-gateway.env
+Environment=DISPLAY=:99
+Environment=FLOW_MCP_GATEWAY_HOST=127.0.0.1
+Environment=FLOW_MCP_GATEWAY_PORT=8792
+ExecStartPre=/bin/sh -c 'pgrep -u flowbot -f "Xvfb :99" >/dev/null || (nohup /usr/bin/Xvfb :99 -screen 0 1366x900x24 -ac >/var/log/mokaair-flow-xvfb.log 2>&1 </dev/null & sleep 1)'
+ExecStart=/usr/bin/node tools/video/flow-mcp/gateway.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

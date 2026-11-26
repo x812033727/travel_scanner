@@ -284,6 +284,7 @@ def _view(row: VideoToolToken) -> VideoToolTokenView:
         revoked_at=row.revoked_at,
         colab_access=bool(row.colab_access),
         runpod_access=bool(row.runpod_access),
+        flow_access=bool(row.flow_access),
     )
 
 
@@ -316,6 +317,7 @@ def _mint_token(
     via: str,
     colab_access: bool = False,
     runpod_access: bool = False,
+    flow_access: bool = False,
 ) -> tuple[VideoToolToken, str]:
     """A new token row and its plaintext, added to the session with its audit entry."""
     token = new_token()
@@ -330,6 +332,7 @@ def _mint_token(
         updated_at=now,
         colab_access=colab_access,
         runpod_access=runpod_access,
+        flow_access=flow_access,
     )
     session.add(row)
     session.add(
@@ -343,6 +346,7 @@ def _mint_token(
                 "via": via,
                 "colab_access": colab_access,
                 "runpod_access": runpod_access,
+                "flow_access": flow_access,
             },
         )
     )
@@ -364,6 +368,7 @@ async def create_video_tool_token(
         via="admin",
         colab_access=payload.colab_access,
         runpod_access=payload.runpod_access,
+        flow_access=payload.flow_access,
     )
     await session.commit()
     return VideoToolTokenCreated(**_view(row).model_dump(), token=token)
@@ -400,6 +405,7 @@ def _pairing_view(pairing: Pairing) -> PairingView:
         status=pairing.status,
         colab=pairing.colab,
         runpod=pairing.runpod,
+        flow=pairing.flow,
     )
 
 
@@ -1221,6 +1227,7 @@ async def start_video_tool_pairing(payload: PairingStartIn, request: Request) ->
         client_ip=address,
         colab=payload.colab,
         runpod=payload.runpod,
+        flow=payload.flow,
     )
     return PairingStarted(
         device_code=device_code,
@@ -1252,6 +1259,7 @@ async def poll_video_tool_pairing(
         via="pairing",
         colab_access=grant.colab,
         runpod_access=grant.runpod,
+        flow_access=grant.flow,
     )
     await session.commit()
     return PairingPollOut(

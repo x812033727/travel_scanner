@@ -27,6 +27,7 @@ import {
   resolveLocalDriveAiDramaRoot,
   resolveRuntimeHome,
 } from "./config.mjs";
+import { startRemoteStdioBridge } from "../flow-mcp/remote-bridge.mjs";
 import { ChromeCdpMusicDriver } from "./drivers/chrome-cdp-driver.mjs";
 import { FlowMusicOrchestrator } from "./orchestrator.mjs";
 import { startStdioServer } from "./server.mjs";
@@ -344,6 +345,10 @@ async function main() {
       startStdioServer();
       return;
 
+    case "remote-mcp":
+      startRemoteStdioBridge({ service: "flow-music", site: flags.site || null });
+      return;
+
     default:
       console.log(`Mokaair Google Flow Music MCP CLI (npm run flow-music -- <command>)
 
@@ -357,6 +362,7 @@ Commands:
   measure --collection <slug>           Measure duration, LUFS, peak, silences, and SHA-256
   gallery --collection <slug>           Generate interactive HTML audition & sign-off gallery
   mcp                                   Start JSON-RPC 2.0 MCP server on stdio
+  remote-mcp [--site <url>]             Bridge stdio MCP over HTTPS using paired mkv_ video tool token
 `);
   }
 }

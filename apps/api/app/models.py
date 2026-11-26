@@ -2187,6 +2187,12 @@ class VideoToolToken(Timestamped, Base):
     runpod_access: Mapped[bool] = mapped_column(
         Boolean, default=False, server_default=text("false")
     )
+    # Migration 0148: may this token call the host Google Flow & Flow Music MCP gateway
+    # (app.video_flow_mcp)? Off unless a pairing asked for it and the owner allowed it, or the
+    # owner checked the box when making the token.
+    flow_access: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default=text("false")
+    )
 
 
 # What kind of video a tutorial is, for the list's filters (migration 0116): the pipeline

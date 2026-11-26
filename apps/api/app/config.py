@@ -142,6 +142,13 @@ class Settings(BaseSettings):
     ai_accounts_agent_hmac_key: str | None = None
     # Starting a login runs a CLI on the host; the web proxy allows 30 s for these routes.
     ai_accounts_agent_timeout_seconds: float = Field(default=25.0, gt=0, le=28)
+    # Paired cloud MCP proxy for Google Flow & Flow Music (`app.video_flow_mcp`).
+    # The gateway runs on the host loopback (127.0.0.1:8792) or over a reverse SSH tunnel;
+    # never exposed publicly.
+    flow_mcp_gateway_enabled: bool = False
+    flow_mcp_gateway_url: str = "http://host.docker.internal:8792"
+    flow_mcp_gateway_secret: str | None = None
+    flow_mcp_gateway_timeout_seconds: float = Field(default=65.0, gt=0, le=180)
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
@@ -760,6 +767,20 @@ class Settings(BaseSettings):
             and self.ai_accounts_agent_hmac_key
             and len(self.ai_accounts_agent_hmac_key) >= 32
             and self.ai_accounts_agent_socket.startswith("/")
+        )
+
+    @property
+    def flow_mcp_gateway_configured(self) -> bool:
+        allowed_prefixes = (
+            "http://127.0.0.1:",
+            "http://localhost:",
+            "http://host.docker.internal:",
+        )
+        return bool(
+            self.flow_mcp_gateway_enabled
+            and self.flow_mcp_gateway_secret
+            and len(self.flow_mcp_gateway_secret) >= 32
+            and self.flow_mcp_gateway_url.startswith(allowed_prefixes)
         )
 
     @property

@@ -91,6 +91,7 @@ from app.video_automation.admin_api import tool_router as video_automation_route
 from app.video_backup.admin_api import admin_router as admin_video_backup_router
 from app.video_backup.admin_api import tool_router as video_backup_router
 from app.video_dramas.router import router as admin_video_dramas_router
+from app.video_flow_mcp.router import router as video_flow_mcp_router
 from app.video_media.admin_api import media_router as video_media_router
 from app.video_plans.router import router as admin_video_plans_router
 from app.video_pools.router import router as admin_video_pools_router
@@ -223,6 +224,7 @@ app.include_router(colab_accounts_router, prefix="/api/v1")
 app.include_router(runpod_tool_router, prefix="/api/v1")
 app.include_router(gpu_routes_router, prefix="/api/v1")
 app.include_router(runpod_admin_router, prefix="/api/v1")
+app.include_router(video_flow_mcp_router, prefix="/api/v1")
 app.include_router(video_speech_align_router, prefix="/api/v1")
 app.include_router(video_reviews_router, prefix="/api/v1")
 app.include_router(admin_video_reviews_router, prefix="/api/v1")

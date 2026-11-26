@@ -27,6 +27,7 @@ import {
 import { GflowCliDriver, resolveGflowBinary } from "./drivers/gflow-cli-driver.mjs";
 import { resolveEpisodePaths } from "./guards/path-boundary.mjs";
 import { FlowOrchestrator } from "./orchestrator.mjs";
+import { startRemoteStdioBridge } from "./remote-bridge.mjs";
 import { startStdioServer } from "./server.mjs";
 
 function parseArgs(argv) {
@@ -471,6 +472,11 @@ async function main() {
 
   if (command === "mcp") {
     startStdioServer();
+    return;
+  }
+
+  if (command === "remote-mcp") {
+    startRemoteStdioBridge({ service: "flow", site: flags.site || null });
     return;
   }
 
