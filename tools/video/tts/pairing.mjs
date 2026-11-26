@@ -40,10 +40,15 @@ async function detail(response) {
  * Colab account from /admin/ai-accounts (skill minimax-h3-colab). With `runpod`, the same for
  * starting RunPod pods through the site (skill minimax-h3-runpod).
  */
-export async function startPairing({ site, clientName, colab = false, runpod = false, fetchImpl = globalThis.fetch }) {
+export async function startPairing({ site, clientName, colab = false, runpod = false, flow = false, fetchImpl = globalThis.fetch }) {
   let response;
   try {
-    const body = { client_name: clientName.slice(0, CLIENT_NAME_MAX), ...(colab ? { colab: true } : {}), ...(runpod ? { runpod: true } : {}) };
+    const body = {
+      client_name: clientName.slice(0, CLIENT_NAME_MAX),
+      ...(colab ? { colab: true } : {}),
+      ...(runpod ? { runpod: true } : {}),
+      ...(flow ? { flow: true } : {}),
+    };
     response = await post(site, "pairings", body, fetchImpl);
   } catch (error) {
     throw new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });

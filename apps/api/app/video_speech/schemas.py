@@ -101,6 +101,8 @@ class VideoToolTokenCreate(BaseModel):
     colab_access: bool = False
     # May this token also ask the site to start and stop RunPod GPU pods (app.video_runpod)?
     runpod_access: bool = False
+    # May this token also call Google Flow & Flow Music MCP through the site (app.video_flow_mcp)?
+    flow_access: bool = False
 
 
 class VideoToolTokenView(BaseModel):
@@ -112,6 +114,7 @@ class VideoToolTokenView(BaseModel):
     revoked_at: datetime | None
     colab_access: bool = False
     runpod_access: bool = False
+    flow_access: bool = False
 
 
 class VideoToolTokenCreated(VideoToolTokenView):
@@ -127,6 +130,8 @@ class PairingStartIn(BaseModel):
     colab: bool = False
     # The tool also wants to start RunPod GPU pods through the site; shown the same way.
     runpod: bool = False
+    # The tool also wants to call Google Flow & Flow Music MCP through the site.
+    flow: bool = False
 
 
 class PairingStarted(BaseModel):
@@ -162,6 +167,7 @@ class PairingView(BaseModel):
     status: Literal["pending", "approved", "denied"]
     colab: bool = False
     runpod: bool = False
+    flow: bool = False
 
 
 # The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md),
