@@ -58,11 +58,14 @@ function parseLastJson(stdout) {
   try {
     return JSON.parse(trimmed);
   } catch {
-    // Some CLI invocations print preamble lines before a final JSON object
+    // Some CLI invocations print preamble lines before a final JSON object or array
     const lines = trimmed.split(/\r?\n/).reverse();
     for (const line of lines) {
       const candidate = line.trim();
-      if (candidate.startsWith("{") && candidate.endsWith("}")) {
+      if (
+        (candidate.startsWith("{") && candidate.endsWith("}")) ||
+        (candidate.startsWith("[") && candidate.endsWith("]"))
+      ) {
         try {
           return JSON.parse(candidate);
         } catch {
@@ -70,9 +73,19 @@ function parseLastJson(stdout) {
         }
       }
     }
+    const lastBrace = Math.max(trimmed.lastIndexOf("\n{"), trimmed.lastIndexOf("\n["));
+    if (lastBrace >= 0) {
+      try {
+        return JSON.parse(trimmed.slice(lastBrace + 1).trim());
+      } catch {
+        // ignore
+      }
+    }
     return null;
   }
 }
+
+const UUID_RE = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
 
 export function defaultRunProcess(binary, args, { env, signal, timeoutMs = 10 * 60 * 1000 } = {}) {
   return new Promise((resolve, reject) => {
@@ -267,20 +280,39 @@ export class GflowCliDriver extends FlowDriver {
   }
 
   async checkAuth({ profile = null, signal } = {}) {
-    const args = this.withProfile(["auth", "status", "--json"], profile);
-    const { exitCode, json } = await this.execJson(args, { signal, allowNonZeroJson: true, timeoutMs: 30_000 });
+    // gflow >= 0.107 `auth status` only accepts `--profile` (no `--json`) and exits 0 when verified.
+    const args = this.withProfile(["auth", "status"], profile);
+    const result = await this.runProcess(this.binary, args, {
+      env: this.buildEnv(),
+      signal,
+      timeoutMs: 60_000,
+    });
+    if (result.exitCode === 2) {
+      throw classifyDriverError({
+        exitCode: result.exitCode,
+        json: parseLastJson(result.stdout),
+        stderr: result.stderr,
+        command: `${this.binary} ${args.join(" ")}`,
+      });
+    }
+    const json = parseLastJson(result.stdout);
+    const combined = `${result.stdout || ""}\n${result.stderr || ""}`;
+    const verifiedEmailMatch = combined.match(/verified as\s+([^\s]+@[^\s]+?)\.?(?:\s|$)/i);
+    const profileDirMatch = combined.match(/profile_([^\s\\/\r\n]+)/i);
     const authenticated =
-      exitCode === 0 &&
-      (json?.authenticated === true ||
-        json?.status === "authenticated" ||
-        json?.status === "ok" ||
-        json?.logged_in === true);
+      result.exitCode === 0 &&
+      (json
+        ? json.authenticated === true ||
+          json.status === "authenticated" ||
+          json.status === "ok" ||
+          json.logged_in === true
+        : true);
     return {
       authenticated,
-      profile: profile || this.profile || json?.profile || "default",
-      account: json?.email || json?.account || null,
-      plan: json?.plan || json?.tier || null,
-      raw: json,
+      profile: profile || this.profile || json?.profile || profileDirMatch?.[1] || "default",
+      account: json?.email || json?.account || json?.google_account || verifiedEmailMatch?.[1] || null,
+      plan: json?.plan || json?.tier || json?.service_tier || json?.user_paygate_tier || null,
+      raw: json ?? { rawStdout: result.stdout.trim() },
     };
   }
 
@@ -297,7 +329,7 @@ export class GflowCliDriver extends FlowDriver {
       null;
     return {
       credits: balance != null ? Number(balance) : null,
-      plan: json?.plan || json?.tier || null,
+      plan: json?.plan || json?.tier || json?.service_tier || json?.user_paygate_tier || json?.sku || null,
       raw: json,
     };
   }
@@ -320,15 +352,28 @@ export class GflowCliDriver extends FlowDriver {
   }
 
   async uploadAsset({ filePath, projectId = null, profile = null, signal }) {
-    const base = ["image", "upload", filePath, "--json"];
-    if (projectId) base.push("--project", String(projectId));
-    const args = this.withProfile(base, profile);
-    const { json } = await this.execJson(args, { signal, timeoutMs: 120_000 });
+    // gflow >= 0.107 `image upload` only accepts PATH and `--profile` (no `--json` or `--project`).
+    const args = this.withProfile(["image", "upload", filePath], profile);
+    const result = await this.runProcess(this.binary, args, {
+      env: this.buildEnv(),
+      signal,
+      timeoutMs: 120_000,
+    });
+    const json = parseLastJson(result.stdout);
+    if (result.exitCode !== 0) {
+      throw classifyDriverError({
+        exitCode: result.exitCode,
+        json,
+        stderr: result.stderr,
+        command: `${this.binary} ${args.join(" ")}`,
+      });
+    }
+    const uuidMatch = String(result.stdout || "").match(UUID_RE);
     return {
-      assetUuid: json?.asset_uuid || json?.media_id || json?.uuid || json?.id || null,
+      assetUuid: json?.asset_uuid || json?.media_id || json?.uuid || json?.id || uuidMatch?.[0] || null,
       filePath,
       projectId,
-      raw: json,
+      raw: json ?? { rawStdout: result.stdout.trim() },
     };
   }
 
@@ -477,9 +522,9 @@ export class GflowCliDriver extends FlowDriver {
       return {
         profile: name,
         isDefault: Boolean(p?.default || p?.is_default),
-        authenticated: p?.authenticated ?? true,
-        account: p?.email || p?.account || cred?.email || null,
-        plan: p?.plan || cred?.plan || cred?.tier || null,
+        authenticated: cred?.authenticated ?? p?.authenticated ?? p?.cookies_present ?? true,
+        account: p?.email || p?.account || p?.google_account || cred?.email || null,
+        plan: p?.plan || cred?.plan || cred?.tier || cred?.service_tier || cred?.user_paygate_tier || null,
         credits: cred?.credits ?? cred?.balance ?? cred?.remaining ?? null,
       };
     });
@@ -543,7 +588,7 @@ export class GflowCliDriver extends FlowDriver {
     }
     if (maxCredits != null) base.push("--max-credits", String(maxCredits));
     if (outFile) base.push("--out-file", String(outFile));
-    base.push("--json");
+    base.push("--yes", "--json");
     return this.withProfile(base, profile);
   }
 
@@ -586,6 +631,7 @@ export class GflowCliDriver extends FlowDriver {
     mediaId,
     scale = "2k",
     projectId = null,
+    outDir = null,
     outFile = null,
     profile = null,
   }) {
@@ -593,24 +639,66 @@ export class GflowCliDriver extends FlowDriver {
     if (cleanScale !== "2k" && cleanScale !== "4k") {
       throw new Error(`Invalid upscale scale "${scale}". Expected "2k" or "4k".`);
     }
+    // gflow >= 0.107 `image upscale` accepts `--out <DIRECTORY>` (no `--out-file` or `--json`).
+    const resolvedOutDir = outDir || (outFile ? path.dirname(String(outFile)) : null);
     const base = ["image", "upscale", String(mediaId), "--scale", cleanScale];
     if (projectId) base.push("--project", String(projectId));
-    if (outFile) base.push("--out-file", String(outFile));
-    base.push("--json");
+    if (resolvedOutDir) base.push("--out", String(resolvedOutDir));
     return this.withProfile(base, profile);
   }
 
   async upscaleImage(params) {
+    const cleanScale = String(params.scale || "2k").toLowerCase();
+    const resolvedOutDir = params.outDir || (params.outFile ? path.dirname(String(params.outFile)) : null);
+    if (resolvedOutDir) {
+      fs.mkdirSync(resolvedOutDir, { recursive: true });
+    }
+    const beforeFiles = new Set(
+      resolvedOutDir && fs.existsSync(resolvedOutDir) ? fs.readdirSync(resolvedOutDir) : [],
+    );
+
     const args = this.buildUpscaleImageArgs(params);
-    const { json } = await this.execJson(args, {
+    const result = await this.runProcess(this.binary, args, {
+      env: this.buildEnv(),
       signal: params.signal,
       timeoutMs: params.timeoutMs ?? 4 * 60 * 1000,
     });
+    const json = parseLastJson(result.stdout);
+    if (result.exitCode !== 0) {
+      throw classifyDriverError({
+        exitCode: result.exitCode,
+        json,
+        stderr: result.stderr,
+        command: `${this.binary} ${args.join(" ")}`,
+      });
+    }
+
+    let producedPath = json?.out_file || json?.path || null;
+    if (!producedPath && resolvedOutDir && fs.existsSync(resolvedOutDir)) {
+      const added = fs
+        .readdirSync(resolvedOutDir)
+        .filter((f) => !beforeFiles.has(f) && /\.(png|jpe?g|webp)$/i.test(f))
+        .map((f) => path.join(resolvedOutDir, f))
+        .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs);
+      if (added.length > 0) {
+        producedPath = added[0];
+      }
+    }
+    if (!producedPath) {
+      const pathMatch = String(result.stdout || "").match(/([A-Za-z]:\\[^\r\n"']+\.(?:png|jpe?g|webp)|\/[^\r\n"']+\.(?:png|jpe?g|webp))/i);
+      if (pathMatch) producedPath = pathMatch[1].trim();
+    }
+
+    if (params.outFile && producedPath && path.resolve(producedPath) !== path.resolve(params.outFile) && fs.existsSync(producedPath)) {
+      fs.renameSync(producedPath, params.outFile);
+      producedPath = params.outFile;
+    }
+
     return {
       mediaId: params.mediaId,
-      scale: String(params.scale || "2k").toLowerCase(),
-      outFile: params.outFile || json?.out_file || json?.path || null,
-      raw: json,
+      scale: cleanScale,
+      outFile: producedPath || params.outFile || null,
+      raw: json ?? { rawStdout: result.stdout.trim() },
     };
   }
 }

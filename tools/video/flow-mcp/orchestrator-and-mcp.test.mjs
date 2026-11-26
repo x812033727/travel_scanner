@@ -290,7 +290,7 @@ test("Windows setup plan escapes paths cleanly and writes JSON/TOML configs safe
   assert.equal(plan.serverScript, "C:\\dev\\travel_scanner\\tools\\video\\flow-mcp\\server.mjs");
   assert.equal(
     plan.clients.antigravity.configPath,
-    "C:\\Users\\Owner\\.gemini\\antigravity\\mcp_config.json",
+    "C:\\Users\\Owner\\.gemini\\config\\mcp_config.json",
   );
   assert.equal(
     plan.clients["claude-desktop"].configPath,
@@ -313,6 +313,16 @@ test("Windows setup plan escapes paths cleanly and writes JSON/TOML configs safe
     const mergedJson = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
     assert.ok(mergedJson.mcpServers.existing);
     assert.ok(mergedJson.mcpServers["mokaair-flow"]);
+
+    // Empty 0-byte existing JSON config file must not throw SyntaxError
+    const emptyJsonPath = path.join(tmp, "empty_mcp_config.json");
+    fs.writeFileSync(emptyJsonPath, "", "utf8");
+    const emptyRes = applyClientConfigWrite(
+      { ...plan.clients.antigravity, configPath: emptyJsonPath },
+      plan.serverName,
+    );
+    assert.equal(emptyRes.written, true);
+    assert.ok(JSON.parse(fs.readFileSync(emptyJsonPath, "utf8")).mcpServers["mokaair-flow"]);
 
     const tomlPath = path.join(tmp, "config.toml");
     fs.writeFileSync(tomlPath, 'model = "gpt-5"\n\n[mcp_servers.mokaair-flow]\ncommand = "old"\n');
