@@ -1,8 +1,12 @@
 # Mokaair Flow & Flow Music MCP Gateway (`ops/flow-gateway`)
 
-Runs both `mokaair-flow` (18 tools) and `mokaair-flow-music` (17 tools) on a
-non-root host service bound strictly to `127.0.0.1:8792`, behind HMAC-SHA256
-signed requests from `apps/api` (`POST /api/v1/video/mcp/{flow|flow-music}`).
+Runs both `mokaair-flow` (18 tools) and `mokaair-flow-music` (17 tools) as a
+non-root host service (`flowbot`), listening on a host Unix domain socket
+(`/run/mokaair-flow-gateway/gateway.sock`, mode `0660`, group `travel-api`)
+behind HMAC-SHA256 signed requests from `apps/api` (`POST /api/v1/video/mcp/{flow|flow-music}`).
+
+Locally (outside Docker), the gateway also supports loopback-only TCP
+(`127.0.0.1:8792`) when `FLOW_MCP_GATEWAY_SOCKET` is unset.
 
 ## Security model
 
@@ -13,26 +17,22 @@ signed requests from `apps/api` (`POST /api/v1/video/mcp/{flow|flow-music}`).
   (never cookies) to `apps/api`.
 - `apps/api` verifies the token, enforces `token.flow_access`, rate-limits,
   audits every `tools/call` in `admin_audit_logs`, signs the body with
-  `FLOW_MCP_GATEWAY_SECRET`, and forwards to `FLOW_MCP_GATEWAY_URL`.
-- The gateway never binds to a public interface (`127.0.0.1` only).
+  `FLOW_MCP_GATEWAY_SECRET`, and forwards over the mounted Unix socket
+  (`/run/mokaair-flow-gateway/gateway.sock`, read-only bind mount opened via
+  the `travel-api` group) to `tools/video/flow-mcp/gateway.mjs`.
+- The gateway never binds to a public network interface.
 
-## Required environment variables
+## Installation on production host
 
-In `apps/api` (`.env`):
-
-```env
-FLOW_MCP_GATEWAY_ENABLED=true
-FLOW_MCP_GATEWAY_URL=http://host.docker.internal:8792
-FLOW_MCP_GATEWAY_SECRET=<at-least-32-random-hex-chars>
+```bash
+bash ops/flow-gateway/install.sh --runtime-env /root/travel_scanner/.env
 ```
 
-In `/etc/mokaair/flow-gateway.env` (mode `0600`, owned by `flowbot`):
-
-```env
-FLOW_MCP_GATEWAY_SECRET=<same-32+-char-secret>
-MOKAAIR_FLOW_HOME=/home/flowbot/.mokaair-flow
-MOKAAIR_FLOW_MUSIC_HOME=/home/flowbot/.mokaair-flow-music
-```
+This creates `/etc/travel-scanner/flow-gateway.env` (`0600 flowbot:flowbot`),
+syncs `tools/video` to `/opt/mokaair-flow-gateway/travel_scanner`, writes
+`FLOW_MCP_GATEWAY_ENABLED`, `FLOW_MCP_GATEWAY_SOCKET`, and the shared
+`FLOW_MCP_GATEWAY_SECRET` into `/root/travel_scanner/.env` (keeping mode `0600`),
+and enables `mokaair-flow-gateway.service`.
 
 ## Pairing from any cloud environment
 

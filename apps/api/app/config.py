@@ -143,10 +143,11 @@ class Settings(BaseSettings):
     # Starting a login runs a CLI on the host; the web proxy allows 30 s for these routes.
     ai_accounts_agent_timeout_seconds: float = Field(default=25.0, gt=0, le=28)
     # Paired cloud MCP proxy for Google Flow & Flow Music (`app.video_flow_mcp`).
-    # The gateway runs on the host loopback (127.0.0.1:8792) or over a reverse SSH tunnel;
-    # never exposed publicly.
+    # In production the gateway listens on a host Unix socket opened via the travel-api
+    # group (/run/mokaair-flow-gateway/gateway.sock); locally it may also bind loopback.
     flow_mcp_gateway_enabled: bool = False
-    flow_mcp_gateway_url: str = "http://host.docker.internal:8792"
+    flow_mcp_gateway_socket: str | None = None
+    flow_mcp_gateway_url: str = "http://127.0.0.1:8792"
     flow_mcp_gateway_secret: str | None = None
     flow_mcp_gateway_timeout_seconds: float = Field(default=65.0, gt=0, le=180)
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
@@ -771,16 +772,20 @@ class Settings(BaseSettings):
 
     @property
     def flow_mcp_gateway_configured(self) -> bool:
+        socket_path = (self.flow_mcp_gateway_socket or "").strip()
         allowed_prefixes = (
             "http://127.0.0.1:",
             "http://localhost:",
             "http://host.docker.internal:",
         )
+        target_ok = socket_path.startswith("/") or self.flow_mcp_gateway_url.startswith(
+            allowed_prefixes
+        )
         return bool(
             self.flow_mcp_gateway_enabled
             and self.flow_mcp_gateway_secret
             and len(self.flow_mcp_gateway_secret) >= 32
-            and self.flow_mcp_gateway_url.startswith(allowed_prefixes)
+            and target_ok
         )
 
     @property

@@ -175,3 +175,44 @@ def test_flow_mcp_signs_forwards_and_audits_tool_calls(monkeypatch: pytest.Monke
     )
     assert bad_method.status_code == 400
     assert bad_method.json()["code"] == "flow_mcp_method_not_allowed"
+
+
+def test_flow_mcp_uses_unix_socket_transport_when_configured(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = FakeSession()
+    settings = Settings(
+        flow_mcp_gateway_enabled=True,
+        flow_mcp_gateway_socket="/run/mokaair-flow-gateway/gateway.sock",
+        flow_mcp_gateway_secret=SECRET,
+    )
+    assert settings.flow_mcp_gateway_configured is True
+    monkeypatch.setattr(flow_mcp_router, "get_settings", lambda: settings)
+
+    captured: dict[str, Any] = {}
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        captured["url"] = str(req.url)
+        return httpx.Response(
+            200,
+            json={"ok": True, "services": ["flow", "flow-music"], "uptimeSec": 3},
+        )
+
+    real_async_client = httpx.AsyncClient
+    real_transport = httpx.AsyncHTTPTransport
+
+    def patched_transport(*args: Any, **kwargs: Any) -> Any:
+        captured["uds"] = kwargs.get("uds")
+        return httpx.MockTransport(handler)
+
+    monkeypatch.setattr(httpx, "AsyncHTTPTransport", patched_transport)
+    monkeypatch.setattr(httpx, "AsyncClient", real_async_client)
+    try:
+        client = _client(_token(flow_access=True), session)
+        health = client.get("/api/v1/video/mcp/health")
+        assert health.status_code == 200
+        assert health.json()["ok"] is True
+        assert captured["uds"] == "/run/mokaair-flow-gateway/gateway.sock"
+        assert captured["url"] == "http://flow-gateway.local/health"
+    finally:
+        monkeypatch.setattr(httpx, "AsyncHTTPTransport", real_transport)
