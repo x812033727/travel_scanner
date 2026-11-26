@@ -119,7 +119,7 @@ export function buildClientSetupPlan({
         ? path.posix.join(appData, "Claude", "claude_desktop_config.json")
         : path.posix.join(homedir, ".config", "Claude", "claude_desktop_config.json");
 
-  const antigravityConfigPath = pathMod.join(userProfile, ".gemini", "antigravity", "mcp_config.json");
+  const antigravityConfigPath = pathMod.join(userProfile, ".gemini", "config", "mcp_config.json");
   const codexConfigPath = pathMod.join(userProfile, ".codex", "config.toml");
 
   const tomlEscape = (value) => String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
@@ -194,7 +194,8 @@ export function applyClientConfigWrite(clientSpec, serverName = MCP_SERVER_NAME)
   }
 
   if (clientSpec.kind === "json") {
-    const existing = fs.existsSync(target) ? JSON.parse(fs.readFileSync(target, "utf8")) : {};
+    const raw = fs.existsSync(target) ? fs.readFileSync(target, "utf8").trim() : "";
+    const existing = raw ? JSON.parse(raw) : {};
     existing.mcpServers = existing.mcpServers && typeof existing.mcpServers === "object" ? existing.mcpServers : {};
     existing.mcpServers[serverName] = clientSpec.snippet.mcpServers[serverName];
     fs.writeFileSync(target, `${JSON.stringify(existing, null, 2)}\n`, "utf8");

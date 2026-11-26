@@ -205,3 +205,89 @@ test("FFmpeg upscale args lock Lanczos 1080p30, bt709, video_full_range_flag=0, 
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test("GflowCliDriver matches gflow 0.107.0 CLI flags and output formats for auth, profiles, upload, and upscale", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "flow-gflow-compat-"));
+  const calls = [];
+  try {
+    const targetOutFile = path.join(dir, "s01-2k.png");
+    const driver = new GflowCliDriver({
+      binary: "gflow",
+      runtimeHome: dir,
+      runProcess: async (_bin, args) => {
+        calls.push(args);
+        if (args[0] === "auth" && args[1] === "status") {
+          assert.equal(args.includes("--json"), false, "gflow auth status does not accept --json");
+          return {
+            exitCode: 0,
+            stdout: "  profile: C:\\Users\\Owner\\gflow-home\\profile_main1\n  cookies_present: True\nFlow session verified as owner@example.com.\n",
+            stderr: "",
+          };
+        }
+        if (args[0] === "auth" && args[1] === "list") {
+          return {
+            exitCode: 0,
+            stdout: JSON.stringify([
+              { name: "main1", google_account: "owner@example.com", is_default: true, cookies_present: true },
+            ]),
+            stderr: "",
+          };
+        }
+        if (args[0] === "credits" && args[1] === "list") {
+          return {
+            exitCode: 0,
+            stdout: JSON.stringify({
+              status: "ok",
+              profiles: [{ profile: "main1", email: "owner@example.com", authenticated: true, credits: 16325 }],
+            }),
+            stderr: "",
+          };
+        }
+        if (args[0] === "image" && args[1] === "upload") {
+          assert.equal(args.includes("--json"), false, "gflow image upload does not accept --json");
+          assert.equal(args.includes("--project"), false, "gflow image upload does not accept --project");
+          return {
+            exitCode: 0,
+            stdout: "Uploaded asset ddb6ef97-262d-49f4-8269-4a28c0fae6a2 (1376x768)\n",
+            stderr: "",
+          };
+        }
+        if (args[0] === "image" && args[1] === "upscale") {
+          assert.equal(args.includes("--out-file"), false, "gflow image upscale does not accept --out-file");
+          assert.equal(args.includes("--json"), false, "gflow image upscale does not accept --json");
+          const outIdx = args.indexOf("--out");
+          assert.ok(outIdx >= 0);
+          const generatedPath = path.join(args[outIdx + 1], "flow-generated-2k.png");
+          fs.writeFileSync(generatedPath, Buffer.from("upscaled-bytes"));
+          return { exitCode: 0, stdout: `Saved upscaled image to ${generatedPath}\n`, stderr: "" };
+        }
+        throw new Error(`Unexpected gflow args: ${args.join(" ")}`);
+      },
+    });
+
+    const auth = await driver.checkAuth();
+    assert.equal(auth.authenticated, true);
+    assert.equal(auth.account, "owner@example.com");
+    assert.equal(auth.profile, "main1");
+
+    const profiles = await driver.listProfiles();
+    assert.equal(profiles.length, 1);
+    assert.equal(profiles[0].profile, "main1");
+    assert.equal(profiles[0].account, "owner@example.com");
+    assert.equal(profiles[0].credits, 16325);
+
+    const uploaded = await driver.uploadAsset({ filePath: "/tmp/hero.png", projectId: "proj-1" });
+    assert.equal(uploaded.assetUuid, "ddb6ef97-262d-49f4-8269-4a28c0fae6a2");
+
+    const upscaled = await driver.upscaleImage({
+      mediaId: "media-1",
+      scale: "2k",
+      projectId: "proj-1",
+      outFile: targetOutFile,
+    });
+    assert.equal(upscaled.outFile, targetOutFile);
+    assert.ok(fs.existsSync(targetOutFile));
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
