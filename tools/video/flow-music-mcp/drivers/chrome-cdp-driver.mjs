@@ -208,6 +208,35 @@ export function buildSessionProbeExpression() {
       }
     }
 
+    // Flow Music live auth probe: billing/subscription + clips/auth-user
+    let apiUserId = null;
+    let apiPlan = null;
+    let apiAuthed = false;
+    if (!user) {
+      try {
+        const subRes = await fetch("/__api/billing/subscription", { credentials: "include" });
+        tried.push({ url: "/__api/billing/subscription", status: subRes.status });
+        if (subRes.ok) {
+          apiAuthed = true;
+          const subJson = await subRes.json().catch(() => null);
+          apiPlan = subJson?.tier || subJson?.plan || subJson?.status || (subJson?.active ? "MEMBER" : null);
+          apiUserId = subJson?.user_id || subJson?.userId || null;
+        }
+      } catch {}
+      try {
+        const clipsRes = await fetch("/__api/clips/auth-user?limit=1&offset=0&filter=generations&include_disliked=false", { credentials: "include" });
+        tried.push({ url: "/__api/clips/auth-user", status: clipsRes.status });
+        if (clipsRes.ok) {
+          apiAuthed = true;
+          const clipsJson = await clipsRes.json().catch(() => null);
+          const first = Array.isArray(clipsJson) ? clipsJson[0] : (clipsJson?.clips?.[0] || clipsJson?.items?.[0] || clipsJson?.data?.[0]);
+          if (first) {
+            apiUserId = apiUserId || first.user_id || first.userId || first.author_id || null;
+          }
+        }
+      } catch {}
+    }
+
     // Fallback: inspect Next.js / page bootstrap data for logged-in user id & handle
     if (!user) {
       try {
@@ -221,7 +250,7 @@ export function buildSessionProbeExpression() {
       } catch {}
     }
 
-    // Check DOM fallback for profile link (/u/<handle> or /user/<id>)
+    // Check DOM fallback for profile link (/u/<handle>, /profile/<handle>, or sidebar <a href="/<handle>">Profile</a>)
     let domHandle = null;
     try {
       const link = document.querySelector('a[href^="/u/"], a[href^="/profile/"], a[href^="/user/"]');
@@ -229,17 +258,35 @@ export function buildSessionProbeExpression() {
         const m = link.getAttribute("href")?.match(/^\\/(?:u|profile|user)\\/([^/?#]+)/);
         if (m) domHandle = m[1];
       }
+      if (!domHandle) {
+        const profileAnchor = Array.from(document.querySelectorAll("a[href]")).find(
+          (a) => (a.textContent || "").trim().toLowerCase() === "profile"
+        );
+        const href = profileAnchor?.getAttribute("href") || "";
+        const m = href.match(/^\\/([A-Za-z0-9._-]+)$/);
+        if (m && !["session", "projects", "turntable", "library", "login", "signup"].includes(m[1].toLowerCase())) {
+          domHandle = m[1];
+        }
+      }
+    } catch {}
+
+    let domPlan = null;
+    try {
+      const memberBtn = Array.from(document.querySelectorAll("button")).find((b) =>
+        /member$/i.test((b.textContent || "").trim())
+      );
+      if (memberBtn) domPlan = "MEMBER";
     } catch {}
 
     const signInBtn = Array.from(document.querySelectorAll("button, a")).find((el) =>
       /^(sign in|log in|登入)$/i.test((el.textContent || "").trim())
     );
 
-    const userId = user?.id || user?.user_id || user?.uid || null;
+    const userId = user?.id || user?.user_id || user?.uid || apiUserId || null;
     const account = user?.email || null;
     const handle = user?.username || user?.handle || user?.display_name || domHandle || null;
-    const plan = user?.plan || user?.tier || user?.subscription_tier || user?.membership || null;
-    const authenticated = Boolean(userId || account || (handle && !signInBtn));
+    const plan = user?.plan || user?.tier || user?.subscription_tier || user?.membership || apiPlan || domPlan || null;
+    const authenticated = Boolean(userId || account || apiAuthed || (handle && !signInBtn));
 
     return {
       authenticated,
@@ -257,6 +304,7 @@ export function buildSessionProbeExpression() {
  * Browser-side script calling Flow Music's verified clips listing endpoint.
  */
 export function buildListClipsExpression(userId, limit = 100) {
+  const safeLimit = Math.max(1, Number(limit) || 100);
   return `(async () => {
     const uid = ${JSON.stringify(String(userId || ""))};
     const endpoints = uid
@@ -264,37 +312,73 @@ export function buildListClipsExpression(userId, limit = 100) {
       : ["/__api/clips/me?public_only=false", "/__api/clips?public_only=false"];
     let lastStatus = null;
     for (const url of endpoints) {
-      const res = await fetch(url, { credentials: "include" });
-      lastStatus = res.status;
-      if (res.status === 401 || res.status === 403 || res.status === 429) {
-        return { ok: false, status: res.status, error: "HTTP " + res.status + " from " + url };
-      }
-      if (res.ok) {
-        const data = await res.json();
-        const rawList = Array.isArray(data)
-          ? data
-          : Array.isArray(data?.clips)
-            ? data.clips
-            : Array.isArray(data?.items)
-              ? data.items
-              : Array.isArray(data?.data)
-                ? data.data
-                : [];
-        return {
-          ok: true,
-          status: res.status,
-          clips: rawList.slice(0, ${Math.max(1, Number(limit) || 100)}).map((c) => ({
-            id: c.id || c.clip_id || c.uuid || null,
-            title: c.title || c.name || "",
-            status: c.status || c.state || "ready",
-            duration: c.duration ?? c.seconds ?? c.duration_seconds ?? null,
-            sound_prompt: c.sound_prompt || c.prompt || c.metadata?.sound_prompt || c.metadata?.prompt || "",
-            created_at: c.created_at || c.createdAt || null,
-            conversation_id: c.conversation_id || c.conversationId || null,
-            is_public: c.is_public ?? null,
-          })),
-        };
-      }
+      try {
+        const res = await fetch(url, { credentials: "include" });
+        lastStatus = res.status;
+        if (res.ok) {
+          const data = await res.json();
+          const rawList = Array.isArray(data)
+            ? data
+            : Array.isArray(data?.clips)
+              ? data.clips
+              : Array.isArray(data?.items)
+                ? data.items
+                : Array.isArray(data?.data)
+                  ? data.data
+                  : [];
+          if (rawList.length > 0) {
+            return {
+              ok: true,
+              status: res.status,
+              clips: rawList.slice(0, ${safeLimit}).map((c) => ({
+                id: c.id || c.clip_id || c.uuid || null,
+                title: c.title || c.name || "",
+                status: c.status || c.state || "ready",
+                duration: c.duration ?? c.seconds ?? c.duration_seconds ?? null,
+                sound_prompt: c.sound_prompt || c.prompt || c.metadata?.sound_prompt || c.metadata?.prompt || "",
+                created_at: c.created_at || c.createdAt || null,
+                conversation_id: c.conversation_id || c.conversationId || null,
+                is_public: c.is_public ?? null,
+              })),
+            };
+          }
+        }
+      } catch {}
+    }
+
+    // DOM extraction fallback for Flow Music SPA (/library/my-songs and /session/*)
+    const anchors = Array.from(document.querySelectorAll('a[href^="/song/"]'));
+    const seen = new Set();
+    const domClips = [];
+    for (const a of anchors) {
+      const m = (a.getAttribute("href") || "").match(/^\\/song\\/([0-9a-f-]{16,})/i);
+      if (!m) continue;
+      const id = m[1];
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const card = a.closest('[class*="song" i], [class*="card" i], li, article, div') || a.parentElement;
+      const cardText = (card?.innerText || a.textContent || "").trim();
+      const durMatch = cardText.match(/\\b(\\d{1,2}):(\\d{2})\\b/);
+      const duration = durMatch ? Number(durMatch[1]) * 60 + Number(durMatch[2]) : null;
+      const generating = /(generating|creating|queued|processing)/i.test(cardText);
+      const title = (a.textContent || "").trim() || cardText.split("\\n")[0]?.trim() || id;
+      domClips.push({
+        id,
+        title,
+        status: generating ? "generating" : (duration ? "ready" : "pending"),
+        duration,
+        sound_prompt: "",
+        created_at: null,
+        conversation_id: location.pathname.startsWith("/session/") ? location.pathname.split("/")[2] : null,
+        is_public: null,
+      });
+      if (domClips.length >= ${safeLimit}) break;
+    }
+    if (domClips.length > 0 || location.pathname.includes("/library/my-songs") || location.pathname.includes("/session")) {
+      return { ok: true, status: 200, source: "dom", clips: domClips };
+    }
+    if (lastStatus === 401 || lastStatus === 403 || lastStatus === 429) {
+      return { ok: false, status: lastStatus, error: "HTTP " + lastStatus + " listing clips" };
     }
     return { ok: false, status: lastStatus, error: "Unable to list Flow Music clips (HTTP " + lastStatus + ")" };
   })()`;
@@ -336,12 +420,96 @@ export function buildDownloadClipExpression(clipId, format = DEFAULT_DOWNLOAD_FO
  * Fails fast with `selector_drift` if the composer input or submit button
  * cannot be located cleanly.
  */
-export function buildSubmitPromptExpression({ prompt, title = null, instrumental = true }) {
+export function buildSubmitPromptExpression({ prompt, lyrics = "", title = null, instrumental = true }) {
   const composedPrompt = title
     ? `Create a track titled "${title}". ${prompt}${instrumental ? " (Instrumental only, no vocals.)" : ""}`
     : `${prompt}${instrumental ? " (Instrumental only, no vocals.)" : ""}`;
 
   return `(async () => {
+    const setFieldValue = (el, val) => {
+      if (!el) return;
+      el.focus();
+      if (el.tagName === "TEXTAREA" || el.tagName === "INPUT") {
+        const proto = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), "value");
+        if (proto?.set) proto.set.call(el, val);
+        else el.value = val;
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+        el.dispatchEvent(new Event("change", { bubbles: true }));
+      } else {
+        el.textContent = val;
+        el.dispatchEvent(new InputEvent("input", { bubbles: true, data: val }));
+      }
+    };
+
+    const isVisible = (el) => {
+      if (!el || el.disabled) return false;
+      const rect = el.getBoundingClientRect();
+      return rect.width > 40 && rect.height > 16;
+    };
+
+    const wantInstrumental = ${JSON.stringify(Boolean(instrumental))};
+    const rawLyrics = ${JSON.stringify(String(lyrics || ""))};
+    const rawSound = ${JSON.stringify(String(prompt || ""))};
+    const rawTitle = ${JSON.stringify(title ? String(title) : "")};
+
+    // Detect Flow Music Compose Panel (aria-label="Sound description" / "Lyrics" inside collapsible right drawer)
+    let soundInput = document.querySelector('textarea[aria-label="Sound description" i], textarea[placeholder*="Describe the sound" i]');
+    let lyricsInput = document.querySelector('textarea[aria-label="Lyrics" i], textarea[placeholder*="Add lyrics" i]');
+    if (soundInput && !isVisible(soundInput)) {
+      const toggleComposeBtn = document.querySelector('button[aria-label="Toggle compose panel" i]');
+      if (toggleComposeBtn) {
+        toggleComposeBtn.click();
+        await new Promise((r) => setTimeout(r, 500));
+      }
+      soundInput = document.querySelector('textarea[aria-label="Sound description" i], textarea[placeholder*="Describe the sound" i]');
+      lyricsInput = document.querySelector('textarea[aria-label="Lyrics" i], textarea[placeholder*="Add lyrics" i]');
+    }
+
+    if (soundInput && isVisible(soundInput) && (lyricsInput || rawLyrics)) {
+      // Align Instrumental switch if present
+      const instSwitch = document.querySelector('button[aria-label="Toggle instrumental mode" i], button[role="switch"]');
+      if (instSwitch) {
+        const isChecked = instSwitch.getAttribute("aria-checked") === "true" || Boolean(instSwitch.checked);
+        if (isChecked !== wantInstrumental) {
+          instSwitch.click();
+          await new Promise((r) => setTimeout(r, 250));
+        }
+      }
+
+      if (!wantInstrumental && rawLyrics) {
+        const activeLyricsInput = document.querySelector('textarea[aria-label="Lyrics" i], textarea[placeholder*="Add lyrics" i]') || lyricsInput;
+        if (activeLyricsInput && isVisible(activeLyricsInput)) {
+          setFieldValue(activeLyricsInput, rawLyrics);
+          await new Promise((r) => setTimeout(r, 200));
+        }
+      }
+
+      setFieldValue(soundInput, rawSound);
+      await new Promise((r) => setTimeout(r, 200));
+
+      if (rawTitle) {
+        const expandDetailsBtn = document.querySelector('button[aria-label="Expand Details section" i]');
+        if (expandDetailsBtn) {
+          expandDetailsBtn.click();
+          await new Promise((r) => setTimeout(r, 300));
+        }
+        const titleInput = Array.from(document.querySelectorAll('input[placeholder*="Add title" i], input[placeholder*="title" i], input[aria-label*="title" i], input[type="text"]')).find(isVisible) || null;
+        if (titleInput) {
+          setFieldValue(titleInput, rawTitle);
+          await new Promise((r) => setTimeout(r, 200));
+        }
+      }
+
+      await new Promise((r) => setTimeout(r, 400));
+      const composeBtn = Array.from(document.querySelectorAll('button'))
+        .filter((btn) => isVisible(btn))
+        .find((btn) => /^generate$/i.test((btn.textContent || "").trim()));
+      if (composeBtn) {
+        composeBtn.click();
+        return { ok: true, method: "compose_panel_generate", promptSent: rawSound, lyricsSent: Boolean(rawLyrics && !wantInstrumental), titleSent: rawTitle || null };
+      }
+    }
+
     const selectors = [
       'textarea[placeholder*="Describe" i]',
       'textarea[placeholder*="music" i]',
@@ -366,18 +534,8 @@ export function buildSubmitPromptExpression({ prompt, title = null, instrumental
       return { ok: false, code: "selector_drift", error: "Flow Music composer input not found on page." };
     }
 
-    input.focus();
     const text = ${JSON.stringify(composedPrompt)};
-    if (input.tagName === "TEXTAREA" || input.tagName === "INPUT") {
-      const proto = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(input), "value");
-      if (proto?.set) proto.set.call(input, text);
-      else input.value = text;
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-    } else {
-      input.textContent = text;
-      input.dispatchEvent(new InputEvent("input", { bubbles: true, data: text }));
-    }
+    setFieldValue(input, text);
 
     await new Promise((r) => setTimeout(r, 250));
 
@@ -534,23 +692,40 @@ export class ChromeCdpMusicDriver extends MusicDriver {
       try {
         await cdp.send("Page.enable");
         await cdp.send("Runtime.enable");
-        if (!String(target.url || "").startsWith(FLOW_MUSIC_ORIGIN)) {
+        if (!String(target.url || "").startsWith(navigateUrl)) {
           await cdp.send("Page.navigate", { url: navigateUrl });
+          await sleep(400, signal);
         }
-        // Wait for document readyState === complete
-        for (let i = 0; i < 40; i += 1) {
-          const ready = await cdp.evaluate("document.readyState");
-          if (ready === "complete") break;
+        // Wait until the tab leaves about:blank and finishes loading
+        for (let i = 0; i < 60; i += 1) {
+          const state = await cdp.evaluate("({ href: location.href, ready: document.readyState })");
+          if (state?.href && String(state.href).startsWith("http") && state.ready === "complete") {
+            break;
+          }
+          if (i === 8 && (!state?.href || String(state.href).startsWith("about:blank"))) {
+            await cdp.send("Page.navigate", { url: navigateUrl });
+          }
           await sleep(250, signal);
         }
-        await sleep(800, signal);
+        await sleep(1500, signal);
         return await fn(cdp, { profile: targetProfile });
       } finally {
         cdp.close();
       }
     } finally {
       if (signal) signal.removeEventListener("abort", onAbort);
+      const exited =
+        proc.exitCode !== null || proc.killed
+          ? Promise.resolve()
+          : new Promise((resolve) => {
+              const timer = setTimeout(resolve, 3000);
+              proc.once("close", () => {
+                clearTimeout(timer);
+                resolve();
+              });
+            });
       killProc();
+      await exited;
     }
   }
 
@@ -584,7 +759,9 @@ export class ChromeCdpMusicDriver extends MusicDriver {
 
   async checkAuth({ profile = null, signal = null } = {}) {
     const targetProfile = sanitizeProfileName(profile || this.profile);
-    return this.withPageSession({ profile: targetProfile, headless: true, signal }, async (cdp) => {
+    return this.withPageSession(
+      { profile: targetProfile, headless: true, navigateUrl: `${FLOW_MUSIC_ORIGIN}/session`, signal },
+      async (cdp) => {
       const probe = await cdp.evaluate(buildSessionProbeExpression(), { timeoutMs: 30_000 });
       if (probe?.authenticated) {
         this.writeProfileMeta(targetProfile, {
@@ -609,7 +786,7 @@ export class ChromeCdpMusicDriver extends MusicDriver {
 
   async listRemoteClips({ profile = null, userId = null, limit = 100, signal = null } = {}) {
     const targetProfile = sanitizeProfileName(profile || this.profile);
-    return this.withPageSession({ profile: targetProfile, headless: true, signal }, async (cdp) => {
+    return this.withPageSession({ profile: targetProfile, headless: true, navigateUrl: `${FLOW_MUSIC_ORIGIN}/library/my-songs`, signal }, async (cdp) => {
       let resolvedUserId = userId || this.readProfileMeta(targetProfile).userId || null;
       if (!resolvedUserId) {
         const probe = await cdp.evaluate(buildSessionProbeExpression(), { timeoutMs: 30_000 });
@@ -625,6 +802,7 @@ export class ChromeCdpMusicDriver extends MusicDriver {
           lastVerifiedAt: new Date().toISOString(),
         });
       }
+      await sleep(1500, signal);
       const res = await cdp.evaluate(buildListClipsExpression(resolvedUserId, limit), { timeoutMs: 45_000 });
       if (!res?.ok) {
         throw classifyMusicError({ statusCode: res?.status, message: res?.error });
@@ -642,6 +820,32 @@ export class ChromeCdpMusicDriver extends MusicDriver {
     const cleanFormat = SUPPORTED_DOWNLOAD_FORMATS.includes(String(format).toLowerCase())
       ? String(format).toLowerCase()
       : DEFAULT_DOWNLOAD_FORMAT;
+
+    // Fast direct download for Flow Music public M4A clips (avoids Chrome launch overhead)
+    if (cleanFormat === "m4a") {
+      try {
+        const pubUrl = `https://storage.googleapis.com/producer-app-public/clips/${encodeURIComponent(String(clipId))}.m4a`;
+        const pubRes = await fetch(pubUrl, { signal });
+        if (pubRes.ok) {
+          const buf = Buffer.from(await pubRes.arrayBuffer());
+          if (buf.length > 1024) {
+            fs.mkdirSync(path.dirname(outFile), { recursive: true });
+            const tmp = `${outFile}.${process.pid}.tmp`;
+            fs.writeFileSync(tmp, buf);
+            fs.renameSync(tmp, outFile);
+            return {
+              clipId,
+              format: "m4a",
+              outFile,
+              byteLength: buf.length,
+              sha256: sha256File(outFile),
+            };
+          }
+        }
+      } catch {
+        // fall through to CDP same-origin download
+      }
+    }
 
     return this.withPageSession({ profile: targetProfile, headless: true, signal }, async (cdp) => {
       const res = await cdp.evaluate(buildDownloadClipExpression(clipId, cleanFormat), {
@@ -666,6 +870,7 @@ export class ChromeCdpMusicDriver extends MusicDriver {
 
   async generateTrack({
     prompt,
+    lyrics = "",
     title = null,
     instrumental = true,
     model = DEFAULT_MUSIC_MODEL,
@@ -675,7 +880,7 @@ export class ChromeCdpMusicDriver extends MusicDriver {
   }) {
     const targetProfile = sanitizeProfileName(profile || this.profile);
     // Keep window visible for generation to prevent Chrome background-tab freezing
-    return this.withPageSession({ profile: targetProfile, headless: false, signal }, async (cdp) => {
+    return this.withPageSession({ profile: targetProfile, headless: false, navigateUrl: `${FLOW_MUSIC_ORIGIN}/session`, signal }, async (cdp) => {
       const probe = await cdp.evaluate(buildSessionProbeExpression(), { timeoutMs: 30_000 });
       if (!probe?.authenticated) {
         throw classifyMusicError({ code: "auth_expired", statusCode: 401 });
@@ -684,7 +889,7 @@ export class ChromeCdpMusicDriver extends MusicDriver {
       const beforeList = await cdp.evaluate(buildListClipsExpression(probe.userId, 50), { timeoutMs: 30_000 });
       const beforeIds = new Set((beforeList?.clips || []).map((c) => c.id).filter(Boolean));
 
-      const submitRes = await cdp.evaluate(buildSubmitPromptExpression({ prompt, title, instrumental }), {
+      const submitRes = await cdp.evaluate(buildSubmitPromptExpression({ prompt, lyrics, title, instrumental }), {
         timeoutMs: 30_000,
       });
       if (!submitRes?.ok) {
@@ -699,10 +904,22 @@ export class ChromeCdpMusicDriver extends MusicDriver {
           throw classifyMusicError({ statusCode: nowList?.status, message: nowList?.error });
         }
         const newClips = (nowList.clips || []).filter((c) => c.id && !beforeIds.has(c.id));
-        const readyClips = newClips.filter((c) => {
+        const readyClips = [];
+        for (const c of newClips) {
           const st = String(c.status || "").toLowerCase();
-          return (Number(c.duration) > 0 || st === "ready" || st === "complete" || st === "completed" || st === "succeeded") && st !== "pending" && st !== "generating";
-        });
+          let isReady = (Number(c.duration) > 0 || st === "ready" || st === "complete" || st === "completed" || st === "succeeded") && st !== "pending" && st !== "generating";
+          if (!isReady && c.id) {
+            try {
+              const headRes = await fetch(`https://storage.googleapis.com/producer-app-public/clips/${encodeURIComponent(String(c.id))}.m4a`, { method: "HEAD", signal });
+              const len = Number(headRes.headers.get("content-length") || 0);
+              if (headRes.ok && len > 50000) {
+                isReady = true;
+                c.status = "ready";
+              }
+            } catch {}
+          }
+          if (isReady) readyClips.push(c);
+        }
         if (readyClips.length > 0) {
           return {
             ok: true,

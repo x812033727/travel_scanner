@@ -321,6 +321,7 @@ export class FlowMusicOrchestrator {
       worker: async (track, { signal }) => {
         const genRes = await this.driver.generateTrack({
           prompt: track.prompt,
+          lyrics: track.lyrics || "",
           title: track.title,
           instrumental: track.instrumental,
           model,
