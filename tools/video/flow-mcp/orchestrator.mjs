@@ -918,6 +918,7 @@ export class FlowOrchestrator {
       }
       record.width = check.width;
       record.height = check.height;
+      record.aspectOk = true;
       record.qaStatus = "approved";
       record.approvedBy = reviewer;
       record.approvedAt = new Date().toISOString();
@@ -1913,6 +1914,8 @@ export class FlowOrchestrator {
     series = null,
     workdir = null,
     downloadMissing = true,
+    skipPostprocess = false,
+    recoverMediaIds = [],
     profile = null,
   }) {
     const paths = this.#paths(slug, workdir);
@@ -1922,17 +1925,22 @@ export class FlowOrchestrator {
 
     const ledger = loadCreditLedger(paths.ledgerFile, { slug: paths.slug, series: preset.id });
     const maybeEntries = ledger.entries.filter((e) => e.charged === "maybe");
+    const explicitRecoveries = Array.isArray(recoverMediaIds)
+      ? recoverMediaIds.filter((r) => r && r.shotId && r.mediaId)
+      : [];
 
     let remoteVideos = [];
-    try {
-      remoteVideos = await this.driver.listRemoteVideos({ limit: 100, profile });
-    } catch (err) {
-      return {
-        ok: false,
-        reason: "remote_list_failed",
-        message: err.message,
-        maybeEntriesCount: maybeEntries.length,
-      };
+    if (maybeEntries.length > 0) {
+      try {
+        remoteVideos = await this.driver.listRemoteVideos({ limit: 100, profile });
+      } catch (err) {
+        return {
+          ok: false,
+          reason: "remote_list_failed",
+          message: err.message,
+          maybeEntriesCount: maybeEntries.length,
+        };
+      }
     }
 
     const remoteById = new Map();
@@ -1977,7 +1985,89 @@ export class FlowOrchestrator {
       atomicWriteJson(paths.ledgerFile, ledger);
     }
 
+    // Explicit free recovery of already-billed clips (e.g. after a download error)
     const manifest = readJsonSafe(paths.clipsManifestFile, { clips: {} });
+    manifest.clips = manifest.clips || {};
+
+    for (const item of explicitRecoveries) {
+      const shotId = String(item.shotId).trim();
+      const mediaId = String(item.mediaId).trim();
+      fs.mkdirSync(paths.clipsRawDir, { recursive: true });
+      const dl = await this.driver.downloadMedia({
+        mediaId,
+        outDir: paths.clipsRawDir,
+        profile,
+      });
+      const fallbackRaw = path.join(paths.clipsRawDir, `${mediaId}.mp4`);
+      const downloadedRaw =
+        dl.outFile && fs.existsSync(dl.outFile)
+          ? dl.outFile
+          : fs.existsSync(fallbackRaw)
+            ? fallbackRaw
+            : null;
+      if (!downloadedRaw) {
+        unresolved.push({ shotId, mediaId, note: "download_file_not_found_after_data_download" });
+        continue;
+      }
+
+      const safeName = sanitizeFilename(shotId);
+      const existing = manifest.clips[shotId];
+      const prevTakes = Array.isArray(existing?.takes) ? existing.takes : existing ? [{ ...existing, take: 1 }] : [];
+      const takeNum = prevTakes.length + 1;
+      const takeUpscaledPath = path.join(paths.clipsTakesDir, `${safeName}-t${takeNum}-1080p30.mp4`);
+      const activeUpscaledPath = path.join(paths.clipsDir, `${safeName}-1080p30.mp4`);
+      const qa4Path = path.join(paths.clipsQaDir, `${safeName}-t${takeNum}-qa4.jpg`);
+
+      let post = null;
+      if (!skipPostprocess) {
+        fs.mkdirSync(paths.clipsTakesDir, { recursive: true });
+        fs.mkdirSync(paths.clipsDir, { recursive: true });
+        post = await this.upscaleFn({
+          inputPath: downloadedRaw,
+          outputPath: takeUpscaledPath,
+          qa4OutputPath: qa4Path,
+          targetWidth: preset.aspect === "9:16" ? 1080 : 1920,
+          targetHeight: preset.aspect === "9:16" ? 1920 : 1080,
+          stripAudio: true,
+        });
+        fs.copyFileSync(takeUpscaledPath, activeUpscaledPath);
+      }
+
+      const takeRecord = {
+        shotId,
+        take: takeNum,
+        mediaId,
+        model: DEFAULT_VIDEO_MODEL,
+        durationSec: DEFAULT_VIDEO_DURATION_SEC,
+        rawPath: downloadedRaw,
+        rawSha256: post?.rawSha256 || sha256File(downloadedRaw),
+        takeUpscaledPath: post ? takeUpscaledPath : null,
+        upscaledSha256: post?.upscaledSha256 || null,
+        qa4Path: post?.qa4Path || null,
+        recoveredFree: true,
+        generatedAt: new Date().toISOString(),
+      };
+
+      manifest.clips[shotId] = {
+        shotId,
+        selectedTake: takeNum,
+        mediaId,
+        rawPath: downloadedRaw,
+        upscaledPath: post ? activeUpscaledPath : null,
+        upscaledSha256: takeRecord.upscaledSha256,
+        qa4Path: takeRecord.qa4Path,
+        takes: [...prevTakes, takeRecord],
+      };
+      saveClipsManifest(paths.clipsManifestFile, manifest);
+
+      recovered.push({
+        shotId,
+        mediaId,
+        downloadedPath: downloadedRaw,
+        upscaledPath: post ? activeUpscaledPath : null,
+      });
+    }
+
     const shots = fs.existsSync(paths.shotListFile)
       ? normalizeShots(JSON.parse(fs.readFileSync(paths.shotListFile, "utf8")))
       : [];

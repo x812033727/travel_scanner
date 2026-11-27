@@ -11,6 +11,7 @@ WorkingDirectory=/opt/mokaair-flow-gateway/travel_scanner
 EnvironmentFile=/etc/travel-scanner/flow-gateway.env
 Environment=HOME=/home/flowbot
 Environment=PATH=/home/flowbot/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=GFLOW_CLI_OUTPUT_DIR=/home/flowbot/.mokaair-flow/tmp
 Environment=FLOW_MCP_GATEWAY_SOCKET=/run/mokaair-flow-gateway/gateway.sock
 # /run is tmpfs: recreate the socket directory with the group the API container joins.
 # `+` runs these with root privileges; the gateway itself runs as non-root flowbot.

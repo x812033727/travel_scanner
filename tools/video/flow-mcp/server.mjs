@@ -339,6 +339,19 @@ export const MCP_TOOLS = Object.freeze([
         slug: { type: "string" },
         series: { type: "string", enum: SERIES_ENUM },
         downloadMissing: { type: "boolean" },
+        skipPostprocess: { type: "boolean" },
+        recoverMediaIds: {
+          type: "array",
+          description: "Optional list of already-billed { shotId, mediaId } clips to download for free via `gflow data download` and normalize to 1080p30.",
+          items: {
+            type: "object",
+            required: ["shotId", "mediaId"],
+            properties: {
+              shotId: { type: "string" },
+              mediaId: { type: "string" },
+            },
+          },
+        },
         profile: { type: "string" },
       },
       additionalProperties: false,

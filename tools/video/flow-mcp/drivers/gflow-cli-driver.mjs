@@ -226,9 +226,15 @@ export class GflowCliDriver extends FlowDriver {
       (this.platform === "win32"
         ? path.win32.join(this.runtimeHome, "gflow-home")
         : path.join(this.runtimeHome, "gflow-home"));
+    const outputDir =
+      this.env.GFLOW_CLI_OUTPUT_DIR ||
+      (this.platform === "win32"
+        ? path.win32.join(this.runtimeHome, "tmp")
+        : path.join(this.runtimeHome, "tmp"));
     return {
       ...this.env,
       GFLOW_CLI_HOME: gflowHome,
+      GFLOW_CLI_OUTPUT_DIR: outputDir,
       GFLOW_CLI_EXIT_CODES: "2",
     };
   }
@@ -243,8 +249,16 @@ export class GflowCliDriver extends FlowDriver {
   }
 
   async execJson(args, { signal, timeoutMs, allowNonZeroJson = false } = {}) {
+    const env = this.buildEnv();
+    if (env.GFLOW_CLI_OUTPUT_DIR && this.runProcess === defaultRunProcess) {
+      try {
+        fs.mkdirSync(env.GFLOW_CLI_OUTPUT_DIR, { recursive: true });
+      } catch {
+        // best-effort: gflow will report if still unwritable
+      }
+    }
     const result = await this.runProcess(this.binary, args, {
-      env: this.buildEnv(),
+      env,
       signal,
       timeoutMs,
     });
