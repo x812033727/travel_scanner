@@ -418,8 +418,21 @@ export class GflowCliDriver extends FlowDriver {
       signal: params.signal,
       timeoutMs: params.timeoutMs ?? 5 * 60 * 1000,
     });
+    const reportedOut = json?.out_file || json?.path || json?.files?.[0] || json?.images?.[0]?.path || null;
+    let resolvedOut = reportedOut || params.outFile || null;
+    if (params.outFile && (!resolvedOut || !fs.existsSync(resolvedOut))) {
+      const parsedPath = path.parse(String(params.outFile));
+      for (const ext of [parsedPath.ext, ".jpg", ".jpeg", ".png", ".webp"]) {
+        if (!ext) continue;
+        const candidate = path.join(parsedPath.dir, `${parsedPath.name}${ext}`);
+        if (fs.existsSync(candidate)) {
+          resolvedOut = candidate;
+          break;
+        }
+      }
+    }
     return {
-      outFile: params.outFile || json?.out_file || json?.path || json?.files?.[0] || null,
+      outFile: resolvedOut,
       mediaId: json?.media_id || json?.id || json?.images?.[0]?.media_id || null,
       projectId: params.projectId || json?.project_id || null,
       model: params.model || DEFAULT_IMAGE_MODEL,

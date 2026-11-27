@@ -740,7 +740,17 @@ export class FlowOrchestrator {
           signal,
         });
 
-        const filePath = gen.outFile || item.outFile;
+        let filePath = gen.outFile || item.outFile;
+        if (filePath && !fs.existsSync(filePath)) {
+          const parsed = path.parse(String(filePath));
+          for (const ext of [".jpg", ".jpeg", ".png", ".webp"]) {
+            const candidate = path.join(parsed.dir, `${parsed.name}${ext}`);
+            if (fs.existsSync(candidate)) {
+              filePath = candidate;
+              break;
+            }
+          }
+        }
         const check = verifyStillDimensions(filePath, {
           expectedWidth: item.expectedWidth,
           expectedHeight: item.expectedHeight,
