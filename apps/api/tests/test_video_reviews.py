@@ -21,7 +21,14 @@ from sqlalchemy.exc import IntegrityError
 from app.auth.service import current_user
 from app.config import Settings
 from app.db import get_session
-from app.models import VIDEO_CATEGORIES, User, VideoProject, VideoReview, VideoToolToken
+from app.models import (
+    VIDEO_CATEGORIES,
+    AdminAuditLog,
+    User,
+    VideoProject,
+    VideoReview,
+    VideoToolToken,
+)
 from app.problems import AppError, app_error_handler
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, reserve_azure_speech_characters
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE, QA_ITEMS, final_qa_passed
@@ -39,6 +46,7 @@ from app.video_reviews.schemas import (
     ProjectSummary,
     ReviewFile,
     ReviewIn,
+    ReviewOut,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech import admin_api as speech_api
@@ -2313,3 +2321,180 @@ async def test_an_approved_upload_confirmation_takes_the_backup_tier_and_nothing
     assert approved.payload == {"hand_pushed": True}, "what the owner approved stays as it was"
     again = await admin_service.submit_review(session, store, "v", resend(*tier), token)
     assert len(again.files) == 4, "sent twice, taken once"
+
+
+@pytest.mark.asyncio
+async def test_tool_decide_and_set_languages_verify_owner_capability_and_pass_token_id(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    now = datetime.now(UTC)
+    review_id = uuid4()
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    suspended = User(
+        id=uuid4(),
+        email="suspended@example.com",
+        password_hash="unused",
+        suspended_at=now,
+    )
+    reader = User(id=uuid4(), email="reader@example.com", password_hash="unused")
+
+    caps_by_user: dict[Any, set[str]] = {
+        owner.id: {"content.read", "content.manage"},
+        reader.id: {"content.read"},
+    }
+
+    async def fake_caps(_session: Any, user: User) -> set[str]:
+        return set(caps_by_user.get(user.id, set()))
+
+    monkeypatch.setattr(admin_api, "effective_admin_capabilities", fake_caps)
+
+    decided_out = ReviewOut(
+        id=review_id,
+        gate="final",
+        subject=None,
+        status="approved",
+        choice=None,
+        note="Owner pre-authorized",
+        content_sha256="a" * 64,
+        summary="ok",
+        payload={},
+        files=[],
+        created_at=now,
+        decided_at=now,
+    )
+    decide_mock = AsyncMock(return_value=decided_out)
+    set_locales_mock = AsyncMock(return_value=_dub_retry_view(str(uuid4())))
+    monkeypatch.setattr(admin_service, "decide", decide_mock)
+    monkeypatch.setattr(admin_service, "set_locales", set_locales_mock)
+
+    owner_token = VideoToolToken(
+        id=uuid4(), name="owner", token_hash="h1", token_prefix="mkv_1", created_by_user_id=owner.id
+    )
+    orphan_token = VideoToolToken(
+        id=uuid4(), name="orphan", token_hash="h2", token_prefix="mkv_2"
+    )
+    suspended_token = VideoToolToken(
+        id=uuid4(),
+        name="susp",
+        token_hash="h3",
+        token_prefix="mkv_3",
+        created_by_user_id=suspended.id,
+    )
+    reader_token = VideoToolToken(
+        id=uuid4(),
+        name="reader",
+        token_hash="h4",
+        token_prefix="mkv_4",
+        created_by_user_id=reader.id,
+    )
+
+    found: dict[Any, User] = {owner.id: owner, suspended.id: suspended, reader.id: reader}
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(admin_api.tool_router, prefix="/api/v1")
+
+    async def session() -> Any:
+        db = AsyncMock()
+        db.get = AsyncMock(side_effect=lambda _model, key: found.get(key))
+        yield db
+
+    app.dependency_overrides[get_session] = session
+    decide_url = f"/api/v1/video/reviews/sothatswhy-g790/reviews/{review_id}/decision"
+    langs_url = "/api/v1/video/reviews/sothatswhy-g790/languages"
+    langs_body = {"locales": {"en": {"metadata": True, "captions": True, "dub": True}}}
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        app.dependency_overrides[speech_api.video_tool] = lambda: owner_token
+        ok_decide = await client.post(
+            decide_url, json={"decision": "approve", "note": "Owner pre-authorized"}
+        )
+        ok_langs = await client.put(langs_url, json=langs_body)
+
+        app.dependency_overrides[speech_api.video_tool] = lambda: orphan_token
+        orphan_res = await client.post(decide_url, json={"decision": "approve"})
+
+        app.dependency_overrides[speech_api.video_tool] = lambda: suspended_token
+        susp_res = await client.put(langs_url, json=langs_body)
+
+        app.dependency_overrides[speech_api.video_tool] = lambda: reader_token
+        reader_res = await client.post(decide_url, json={"decision": "approve"})
+
+    assert ok_decide.status_code == 200, ok_decide.text
+    assert ok_langs.status_code == 200, ok_langs.text
+    assert decide_mock.await_count == 1
+    assert decide_mock.await_args is not None
+    assert decide_mock.await_args.kwargs["tool_token_id"] == owner_token.id
+    assert set_locales_mock.await_count == 1
+    assert set_locales_mock.await_args is not None
+    assert set_locales_mock.await_args.kwargs["tool_token_id"] == owner_token.id
+
+    assert orphan_res.status_code == 403
+    assert orphan_res.json()["code"] == "video_tool_token_owner_missing"
+    assert susp_res.status_code == 403
+    assert susp_res.json()["code"] == "video_tool_token_owner_suspended"
+    assert reader_res.status_code == 403
+    assert reader_res.json()["code"] == "admin_capability_required"
+
+
+@pytest.mark.asyncio
+async def test_decide_and_set_locales_record_tool_token_id_in_audit_log(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    now = datetime.now(UTC)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    token_id = uuid4()
+    project = VideoProject(
+        id=uuid4(),
+        slug="sothatswhy-g790",
+        title="t",
+        stage="final",
+        checklist=[{"key": "imported", "label": "imported", "done": True}],
+        locales={},
+    )
+    review = VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="final",
+        subject=None,
+        status="pending",
+        content_sha256="a" * 64,
+        summary="final cut",
+        payload={"hand_pushed": True},
+        files=[],
+        created_at=now,
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_short_approved", AsyncMock())
+    monkeypatch.setattr(admin_service, "_decide_daily_brief_locales", AsyncMock())
+    monkeypatch.setattr(
+        admin_service, "project_view", AsyncMock(return_value=_dub_retry_view(str(project.id)))
+    )
+
+    added: list[Any] = []
+    session = AsyncMock()
+    session.add = MagicMock(side_effect=added.append)
+    session.scalar = AsyncMock(return_value=review)
+
+    await admin_service.decide(
+        session,
+        project.slug,
+        review.id,
+        owner,
+        DecisionIn(decision="approve", note="auto"),
+        tool_token_id=token_id,
+    )
+    await admin_service.set_locales(
+        session,
+        project.slug,
+        owner,
+        LocalesIn.model_validate(
+            {"locales": {"en": {"metadata": True, "captions": True, "dub": True}}}
+        ),
+        tool_token_id=token_id,
+    )
+
+    audits = [row for row in added if isinstance(row, AdminAuditLog)]
+    assert [row.action for row in audits] == ["video_review_approved", "video_locales_set"]
+    assert audits[0].metadata_json["tool_token_id"] == str(token_id)
+    assert audits[1].metadata_json["tool_token_id"] == str(token_id)
+

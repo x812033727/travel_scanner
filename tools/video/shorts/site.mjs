@@ -140,6 +140,8 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
     report: (slug, body) => request('PUT', `reviews/${slug}`, { json: body }),
     part: (slug, sha, bytes, query) => request('PUT', `reviews/${slug}/files/${sha}`, { bytes, query }),
     submit: (slug, review) => request('POST', `reviews/${slug}/reviews`, { json: review }),
+    decide: (slug, reviewId, decision) => request('POST', `reviews/${slug}/reviews/${reviewId}/decision`, { json: decision }),
+    setLanguages: (slug, body) => request('PUT', `reviews/${slug}/languages`, { json: body }),
     /** Jev's policy reading; an answer lost on the way throws RUN_UNCERTAIN instead of asking Jev again. */
     judgePolicy: (body) => request('POST', 'automation/judge/policy', { json: body, paid: true }),
   };

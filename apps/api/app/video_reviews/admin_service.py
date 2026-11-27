@@ -2048,7 +2048,13 @@ async def _short_approved(
 
 
 async def decide(
-    session: AsyncSession, slug: str, review_id: Any, user: User, decision: DecisionIn
+    session: AsyncSession,
+    slug: str,
+    review_id: Any,
+    user: User,
+    decision: DecisionIn,
+    *,
+    tool_token_id: UUID | None = None,
 ) -> ReviewOut:
     project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
@@ -2087,6 +2093,7 @@ async def decide(
                 "gate": review.gate,
                 "sha256": review.content_sha256,
                 "choice": review.choice,
+                **({"tool_token_id": str(tool_token_id)} if tool_token_id is not None else {}),
             },
         )
     )
@@ -2225,7 +2232,12 @@ async def _cancel_started_request(
 
 
 async def _apply_locales(
-    session: AsyncSession, project: VideoProject, user: User, payload: LocalesIn
+    session: AsyncSession,
+    project: VideoProject,
+    user: User,
+    payload: LocalesIn,
+    *,
+    tool_token_id: UUID | None = None,
 ) -> None:
     """Store the owner's language choice, note when they first decided, and log the change.
 
@@ -2254,7 +2266,8 @@ async def _apply_locales(
     }
     if chosen == dict(project.locales or {}) and project.locales_decided_at is not None:
         return
-    _record_locales(session, project, chosen, datetime.now(UTC), user)
+    marks = {"tool_token_id": str(tool_token_id)} if tool_token_id is not None else None
+    _record_locales(session, project, chosen, datetime.now(UTC), user, marks=marks)
     await session.commit()
 
 
@@ -2704,7 +2717,12 @@ async def request_dub_retry(
 
 
 async def set_locales(
-    session: AsyncSession, slug: str, user: User, payload: LocalesIn
+    session: AsyncSession,
+    slug: str,
+    user: User,
+    payload: LocalesIn,
+    *,
+    tool_token_id: UUID | None = None,
 ) -> ProjectOut:
     """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
@@ -2724,7 +2742,7 @@ async def set_locales(
     """
     project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
-    await _apply_locales(session, project, user, payload)
+    await _apply_locales(session, project, user, payload, tool_token_id=tool_token_id)
     return await project_view(session, slug)
 
 
