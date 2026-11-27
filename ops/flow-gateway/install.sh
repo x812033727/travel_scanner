@@ -45,6 +45,14 @@ cp -a "${SOURCE_ROOT}/tools/video" "${OPT}/tools/video"
 install -m 0644 "${SOURCE_ROOT}/package.json" "${OPT}/package.json"
 chown -R root:root /opt/mokaair-flow-gateway
 chmod -R u=rwX,go=rX /opt/mokaair-flow-gateway
+# Keep episode/music workspaces and Drive rule cache writable by non-root flowbot across upgrades.
+install -d -m 0750 -o flowbot -g flowbot \
+  "${OPT}/work" \
+  "${OPT}/work/video-episodes" \
+  "${OPT}/work/music-library" \
+  "${OPT}/.cache" \
+  "${OPT}/.cache/video-drive"
+chown -R flowbot:flowbot "${OPT}/work" "${OPT}/.cache"
 
 # 3. Shared HMAC secret (never printed to stdout).
 install -d -m 0755 /etc/travel-scanner

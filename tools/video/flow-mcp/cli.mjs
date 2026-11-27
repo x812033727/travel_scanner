@@ -27,7 +27,7 @@ import {
 import { GflowCliDriver, resolveGflowBinary } from "./drivers/gflow-cli-driver.mjs";
 import { resolveEpisodePaths } from "./guards/path-boundary.mjs";
 import { FlowOrchestrator } from "./orchestrator.mjs";
-import { startRemoteStdioBridge } from "./remote-bridge.mjs";
+import { remotePullDir, remotePushDir, startRemoteStdioBridge } from "./remote-bridge.mjs";
 import { startStdioServer } from "./server.mjs";
 
 function parseArgs(argv) {
@@ -459,6 +459,9 @@ Usage:
   npm run flow -- import-all --slug <slug> [--dry-run]    Batch-import ready clips from import-bridge.json into tools/video
   npm run flow -- push --slug <slug> --path "<relDest>" [--drive-series <name>] [--dry-run] [--force]
   npm run flow -- ledger --slug <slug> [--series curio|sothatswhy|drama-16x9|drama-9x16|shorts]
+  npm run flow -- remote-push --slug <slug> --from <dir> [--subdir <subpath>] [--site URL]
+  npm run flow -- remote-pull --slug <slug> --to <dir> [--subdir <subpath>] [--site URL]
+  npm run flow -- remote-mcp [--site URL]                 Start stdio-to-HTTPS MCP bridge (uses paired mkv_ token)
   npm run flow -- mcp                                     Start JSON-RPC 2.0 stdio MCP server`);
 }
 
@@ -477,6 +480,36 @@ async function main() {
 
   if (command === "remote-mcp") {
     startRemoteStdioBridge({ service: "flow", site: flags.site || null });
+    return;
+  }
+
+  if (command === "remote-push") {
+    if (!flags.slug || !flags.from) {
+      console.error("Usage: npm run flow -- remote-push --slug <slug> --from <localDir> [--subdir <subpath>] [--site URL]");
+      process.exit(2);
+    }
+    const result = await remotePushDir({
+      slug: flags.slug,
+      fromDir: flags.from,
+      subdir: flags.subdir || "",
+      site: flags.site || null,
+    });
+    console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+
+  if (command === "remote-pull") {
+    if (!flags.slug || !flags.to) {
+      console.error("Usage: npm run flow -- remote-pull --slug <slug> --to <localDir> [--subdir <subpath>] [--site URL]");
+      process.exit(2);
+    }
+    const result = await remotePullDir({
+      slug: flags.slug,
+      toDir: flags.to,
+      subdir: flags.subdir || "",
+      site: flags.site || null,
+    });
+    console.log(JSON.stringify(result, null, 2));
     return;
   }
 
