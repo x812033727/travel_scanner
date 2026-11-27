@@ -291,3 +291,28 @@ test("GflowCliDriver matches gflow 0.107.0 CLI flags and output formats for auth
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test("GflowCliDriver generateImage resolves sibling .jpg when gflow writes JPEG for a requested .png path", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "flow-gflow-jpg-"));
+  try {
+    const requestedPng = path.join(dir, "s01.png");
+    const actualJpg = path.join(dir, "s01.jpg");
+    const driver = new GflowCliDriver({
+      binary: "gflow",
+      runtimeHome: dir,
+      env: {},
+      runProcess: async (_bin, args) => {
+        if (args[0] === "image" && args[1] === "t2i") {
+          fs.writeFileSync(actualJpg, Buffer.from("fake-jpeg"));
+          return { exitCode: 0, stdout: JSON.stringify({ media_id: "img-1" }), stderr: "" };
+        }
+        throw new Error(`Unexpected args: ${args.join(" ")}`);
+      },
+    });
+    const img = await driver.generateImage({ prompt: "Warm 2D gouache harbor", outFile: requestedPng });
+    assert.equal(img.outFile, actualJpg);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
