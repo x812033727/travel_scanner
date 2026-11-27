@@ -14,6 +14,7 @@ export type Context = { params: Promise<{ path: string[] }> };
 const TOKEN = /^Bearer mkv_[A-Za-z0-9_-]{36,76}$/;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$/;
 const SHA256 = /^[0-9a-f]{64}$/;
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 // A preview goes up in parts of 4 MiB (PART_BYTES in apps/api/app/video_reviews/storage.py),
 // under nginx's 6 MB request cap and the API's 5 MiB.
 export const PART_MAX_BYTES = 4 * 1024 * 1024;
@@ -25,7 +26,7 @@ const RANGE = /^bytes=\d*-\d*$/;
 // The languages a skipped dub may be asked again for (DubLocale in apps/api/app/video_reviews).
 const DUB_LOCALE = /^(?:en|ja|ko|es|pt|id|vi|th)$/;
 
-type Route = { kind: "project" | "review" | "file" | "download" | "dub-retry"; maxBytes: number };
+type Route = { kind: "project" | "review" | "decision" | "languages" | "file" | "download" | "dub-retry"; maxBytes: number };
 
 /** Which pipeline route a path and method are, or null for anything else. */
 export function reviewRoute(path: string[], method: string): Route | null {
@@ -33,6 +34,8 @@ export function reviewRoute(path: string[], method: string): Route | null {
   if (!slug || !SLUG.test(slug)) return null;
   if (rest.length === 0 && (method === "GET" || method === "PUT")) return { kind: "project", maxBytes: JSON_MAX_BYTES };
   if (rest.length === 1 && rest[0] === "reviews" && method === "POST") return { kind: "review", maxBytes: JSON_MAX_BYTES };
+  if (rest.length === 3 && rest[0] === "reviews" && UUID.test(rest[1]) && rest[2] === "decision" && method === "POST") return { kind: "decision", maxBytes: JSON_MAX_BYTES };
+  if (rest.length === 1 && rest[0] === "languages" && method === "PUT") return { kind: "languages", maxBytes: JSON_MAX_BYTES };
   if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1]) && method === "PUT") return { kind: "file", maxBytes: PART_MAX_BYTES };
   if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1]) && method === "GET") return { kind: "download", maxBytes: 0 };
   // Since 2026-11-01 the tool may ask for a skipped dub again on its maker's behalf (tool_retry_dub).

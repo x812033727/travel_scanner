@@ -21,10 +21,15 @@ from pydantic import AwareDatetime
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.auth.service import require_admin_step_up, require_capability
+from app.auth.service import (
+    effective_admin_capabilities,
+    require_admin_step_up,
+    require_capability,
+    user_is_suspended,
+)
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
-from app.models import User
+from app.models import AdminAuditLog, User, VideoToolToken
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
 from app.video_media.admin_api import media_store
@@ -135,12 +140,93 @@ async def read_file(slug: str, sha256: str, tool: VideoTool, session: Session) -
     )
 
 
+async def _tool_owner_with_capability(
+    session: AsyncSession, tool: VideoToolToken, capability: str
+) -> User:
+    """Resolve the active owner who created a video tool token and check ``capability``."""
+    user = await session.get(User, tool.created_by_user_id) if tool.created_by_user_id else None
+    if user is None:
+        raise AppError(
+            403,
+            "video_tool_token_owner_missing",
+            "這個影片工具權杖找不到建立它的帳號，不能代為執行管理員操作；請在後台操作",
+        )
+    if user_is_suspended(user):
+        raise AppError(
+            403,
+            "video_tool_token_owner_suspended",
+            "建立這個影片工具權杖的帳號已被停用，不能代為執行管理員操作",
+        )
+    capabilities = await effective_admin_capabilities(session, user)
+    if capability not in capabilities:
+        raise AppError(
+            403,
+            "admin_capability_required",
+            "建立這個影片工具權杖的帳號沒有這項操作權限",
+        )
+    return user
+
+
 @tool_router.post("/{slug}/reviews", response_model=ReviewOut, status_code=201)
 async def submit(
     slug: str, payload: SubmittedReview, tool: VideoTool, session: Session
 ) -> ReviewOut:
     # SubmittedReview is ReviewIn with room for an upload package's clip_ files (clips.py).
     return await service.submit_review(session, await _store(session), slug, payload, tool)
+
+
+@tool_router.post("/{slug}/reviews/{review_id}/decision", response_model=ReviewOut)
+async def tool_decide(
+    slug: str, review_id: UUID, payload: DecisionIn, tool: VideoTool, session: Session
+) -> ReviewOut:
+    """Record a review decision on behalf of the owner who created this video tool token.
+
+    Follows ``tool_retry_dub``: requires the token's creator to still exist, not be suspended,
+    and hold ``content.manage``; every service refusal still applies and an audit row names the
+    token.
+    """
+    user = await _tool_owner_with_capability(session, tool, "content.manage")
+    result = await service.decide(session, slug, review_id, user, payload)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_tool_review_decision",
+            target=f"video_review:{result.id}",
+            metadata_json={
+                "slug": slug,
+                "gate": result.gate,
+                "status": result.status,
+                "tool_token_id": str(tool.id),
+            },
+        )
+    )
+    await session.commit()
+    return result
+
+
+@tool_router.put("/{slug}/languages", response_model=ProjectOut)
+async def tool_set_languages(
+    slug: str, payload: LocalesIn, tool: VideoTool, session: Session
+) -> ProjectOut:
+    """Set a video's language choices on behalf of the owner who created this video tool token."""
+    user = await _tool_owner_with_capability(session, tool, "content.manage")
+    result = await service.set_locales(session, slug, user, payload)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_tool_locales_set",
+            target=f"video_project:{slug}",
+            metadata_json={
+                "slug": slug,
+                "locales": {
+                    locale: choice.model_dump() for locale, choice in payload.locales.items()
+                },
+                "tool_token_id": str(tool.id),
+            },
+        )
+    )
+    await session.commit()
+    return result
 
 
 @admin_router.get("", response_model=list[ProjectSummary])
