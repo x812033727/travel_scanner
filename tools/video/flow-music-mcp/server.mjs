@@ -85,6 +85,7 @@ export const MCP_TOOLS = Object.freeze([
               title: { type: "string" },
               kind: { type: "string", enum: TRACK_KINDS },
               prompt: { type: "string" },
+              lyrics: { type: "string" },
               takes: { type: "integer", minimum: 1, maximum: 4 },
               allowVocals: { type: "boolean" },
               purpose: { type: "string" },

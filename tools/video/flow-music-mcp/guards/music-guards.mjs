@@ -314,6 +314,7 @@ export function preflightMusicPlan(plan, { series = "curio", allowVocals = false
       kind,
       title: String(raw.title || cue).trim(),
       prompt,
+      lyrics: String(raw.lyrics || "").trim(),
       targetSeconds: raw.targetSeconds ?? (kind === "bed" ? 160 : kind === "cue" ? 8 : 2),
       takesRequested: Math.max(1, Math.min(4, Number(raw.takes || raw.takesRequested || 1))),
       instrumental: !trackAllowVocals,
