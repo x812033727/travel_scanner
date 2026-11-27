@@ -29,7 +29,7 @@ test("GflowCliDriver constructs verified gflow CLI arguments for t2i, i2i, and i
     profile: "pro-main",
     runtimeHome: "/tmp/mokaair-flow-test",
     runProcess: async (bin, args, opts) => {
-      calls.push({ bin, args, env: opts.env });
+      calls.push({ bin, args, env: opts.env, cwd: opts.cwd });
       return {
         exitCode: 0,
         stdout: JSON.stringify({
@@ -67,6 +67,7 @@ test("GflowCliDriver constructs verified gflow CLI arguments for t2i, i2i, and i
     "pro-main",
   ]);
   assert.equal(calls[0].env.GFLOW_CLI_EXIT_CODES, "2");
+  assert.equal(calls[0].cwd, calls[0].env.GFLOW_CLI_OUTPUT_DIR);
 
   await driver.generateImage({
     prompt: "Ada examining a brass compass",
@@ -114,12 +115,15 @@ test("GflowCliDriver constructs verified gflow CLI arguments for t2i, i2i, and i
     "15",
     "--project",
     "proj-char",
+    "--out-dir",
+    "/tmp",
     "--out-file",
     "/tmp/s02-720p.mp4",
     "--json",
     "--profile",
     "pro-main",
   ]);
+  assert.equal(calls[2].cwd, calls[2].env.GFLOW_CLI_OUTPUT_DIR);
 });
 
 test("classifyDriverError enforces Fail-Fast on tier-403, selector drift, and maybe-charged failures", () => {

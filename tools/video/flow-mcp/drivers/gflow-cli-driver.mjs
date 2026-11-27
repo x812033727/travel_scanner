@@ -87,10 +87,11 @@ function parseLastJson(stdout) {
 
 const UUID_RE = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
 
-export function defaultRunProcess(binary, args, { env, signal, timeoutMs = 10 * 60 * 1000 } = {}) {
+export function defaultRunProcess(binary, args, { env, cwd, signal, timeoutMs = 10 * 60 * 1000 } = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(binary, args, {
       env,
+      ...(cwd && fs.existsSync(cwd) ? { cwd } : {}),
       stdio: ["ignore", "pipe", "pipe"],
       windowsHide: true,
     });
@@ -259,6 +260,7 @@ export class GflowCliDriver extends FlowDriver {
     }
     const result = await this.runProcess(this.binary, args, {
       env,
+      cwd: env.GFLOW_CLI_OUTPUT_DIR,
       signal,
       timeoutMs,
     });
@@ -452,6 +454,7 @@ export class GflowCliDriver extends FlowDriver {
     resolution = DEFAULT_VIDEO_RESOLUTION,
     maxCredits = DEFAULT_MAX_CREDITS_PER_CLIP,
     projectId = null,
+    outDir = null,
     outFile,
     profile = null,
   }) {
@@ -477,6 +480,10 @@ export class GflowCliDriver extends FlowDriver {
     }
     if (maxCredits != null) base.push("--max-credits", String(maxCredits));
     if (projectId) base.push("--project", String(projectId));
+    // gflow-cli `video` downloads to `--out-dir` (defaulting to relative `tmp/`
+    // and ignoring `GFLOW_CLI_OUTPUT_DIR`) before relocating to `--out-file`.
+    const resolvedOutDir = outDir || (outFile ? path.dirname(String(outFile)) : null);
+    if (resolvedOutDir) base.push("--out-dir", String(resolvedOutDir));
     if (outFile) base.push("--out-file", String(outFile));
     base.push("--json");
     return this.withProfile(base, profile);
