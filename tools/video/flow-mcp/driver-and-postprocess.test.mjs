@@ -154,6 +154,23 @@ test("classifyDriverError enforces Fail-Fast on tier-403, selector drift, and ma
   assert.equal(lostSubmit.charged, "maybe");
   assert.equal(lostSubmit.nextAction, "reconcile");
   assert.equal(lostSubmit.operationId, "op-99");
+
+  const waf403 = classifyDriverError({
+    exitCode: 9,
+    json: {
+      status: "fail",
+      error: {
+        type: "https://gflow-cli.dev/errors/waf-rejection",
+        title: "WAF rejection (HTTP 403)",
+        detail: "Flow refused the submit: PUBLIC_ERROR_UNUSUAL_ACTIVITY (gRPC 7)",
+        retryable: true,
+        charged: "maybe",
+      },
+    },
+  });
+  assert.equal(waf403.retryable, false);
+  assert.equal(waf403.charged, "no");
+  assert.equal(waf403.nextAction, "cooldown");
 });
 
 test("FFmpeg upscale args lock Lanczos 1080p30, bt709, video_full_range_flag=0, and -an", async () => {

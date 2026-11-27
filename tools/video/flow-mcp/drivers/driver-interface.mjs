@@ -55,16 +55,27 @@ export class FlowDriverError extends Error {
  *   - Any `charged` of `"maybe"` or `"yes"` is NEVER auto-retried (must reconcile).
  *   - Any auth/tier-403/selector-drift/budget error is NEVER auto-retried.
  */
+export function isUnbilledWafRejection(errObj = {}, stderr = "") {
+  if (errObj?.operation_id) return false;
+  const hay = [errObj?.type, errObj?.title, errObj?.detail, stderr]
+    .filter(Boolean)
+    .join(" ");
+  return /waf-rejection|PUBLIC_ERROR_UNUSUAL_ACTIVITY/i.test(hay);
+}
+
 export function classifyDriverError({ exitCode = 1, json = null, stderr = "", command = "" } = {}) {
   const errObj = json?.error && typeof json.error === "object" ? json.error : json || {};
-  const charged = ["no", "maybe", "yes"].includes(errObj.charged)
-    ? errObj.charged
-    : exitCode === 9
-      ? "maybe"
-      : "no";
+  const wafUnbilled = isUnbilledWafRejection(errObj, stderr);
+  const charged = wafUnbilled
+    ? "no"
+    : ["no", "maybe", "yes"].includes(errObj.charged)
+      ? errObj.charged
+      : exitCode === 9
+        ? "maybe"
+        : "no";
 
   let retryable = Boolean(errObj.retryable);
-  if (NON_RETRYABLE_EXIT_CODES.has(exitCode)) {
+  if (wafUnbilled || NON_RETRYABLE_EXIT_CODES.has(exitCode)) {
     retryable = false;
   }
   if (charged === "maybe" || charged === "yes") {
@@ -73,6 +84,7 @@ export function classifyDriverError({ exitCode = 1, json = null, stderr = "", co
 
   let nextAction = errObj.next_action || "none";
   if (exitCode === 3) nextAction = "reauth";
+  else if (wafUnbilled) nextAction = "cooldown";
   else if (charged === "maybe" || charged === "yes") nextAction = "reconcile";
   else if (exitCode === 37 || exitCode === 45) nextAction = "fix_input";
 
