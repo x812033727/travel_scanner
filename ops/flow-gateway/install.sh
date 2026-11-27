@@ -36,7 +36,7 @@ done
 getent group travel-api >/dev/null || groupadd --system --gid 10002 travel-api
 id flowbot >/dev/null 2>&1 || useradd --create-home --shell /bin/bash flowbot
 install -d -m 0750 -o flowbot -g travel-api "${SOCKET_DIR}"
-install -d -m 0750 -o flowbot -g flowbot /home/flowbot/logs /home/flowbot/.mokaair-flow /home/flowbot/.mokaair-flow-music
+install -d -m 0750 -o flowbot -g flowbot /home/flowbot/logs /home/flowbot/.mokaair-flow /home/flowbot/.mokaair-flow/tmp /home/flowbot/.mokaair-flow-music
 
 # 2. Sync gateway code (zero npm dependencies, pure Node 22+ ESM under tools/video/).
 install -d -m 0755 "${OPT}/tools"

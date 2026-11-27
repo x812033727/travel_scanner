@@ -5,6 +5,7 @@ import http from "node:http";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import { GflowCliDriver } from "./drivers/gflow-cli-driver.mjs";
 import { signGatewayRequest, startGatewayServer, verifyGatewaySignature } from "./gateway.mjs";
 import { FlowOrchestrator } from "./orchestrator.mjs";
 import { callRemoteMcpTool, forwardRpcOverHttps, remotePullDir, remotePushDir } from "./remote-bridge.mjs";
@@ -192,7 +193,7 @@ test("remotePushDir & remotePullDir sync chunked episode assets with SHA-256 0-d
     assert.equal(pushed2.uploadedCount, 0);
     assert.equal(pushed2.skippedCount, 3);
 
-    // Approve uploaded still without prior qa-manifest.json
+    // Approve uploaded still without prior qa-manifest.json and verify flow_plan_clips unlocks immediately
     const approved = await callRemoteMcpTool({
       name: "flow_approve_stills",
       arguments: { slug, series: "sothatswhy", approved: ["B38"], reviewer: "antigravity" },
@@ -202,6 +203,16 @@ test("remotePushDir & remotePullDir sync chunked episode assets with SHA-256 0-d
     });
     assert.equal(approved.ok, true);
     assert.deepEqual(approved.updatedApproved, ["B38"]);
+
+    const planned = await callRemoteMcpTool({
+      name: "flow_plan_clips",
+      arguments: { slug, series: "sothatswhy", shotIds: ["B38"] },
+      site: "https://mokaair.com",
+      token,
+      fetchImpl: proxyFetch,
+    });
+    assert.equal(planned.ok, true);
+    assert.ok(planned.confirm_token);
 
     // Pull everything back into clean directory with chunked download + SHA-256 verification
     const pulled1 = await remotePullDir({
@@ -356,5 +367,59 @@ test("Flow MCP Gateway supports Unix domain socket binding and rejects relative 
   } finally {
     await new Promise((resolve) => server.close(resolve));
     fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
+});
+
+test("GflowCliDriver sets writable GFLOW_CLI_OUTPUT_DIR and flowReconcile recovers billed mediaIds for free", async () => {
+  const driver = new GflowCliDriver({ runtimeHome: "/home/flowbot/.mokaair-flow", env: {}, platform: "linux" });
+  const env = driver.buildEnv();
+  assert.equal(env.GFLOW_CLI_OUTPUT_DIR, "/home/flowbot/.mokaair-flow/tmp");
+
+  const fakeRepo = fs.mkdtempSync(path.join(os.tmpdir(), "flow-rec-repo-"));
+  const fakeHome = fs.mkdtempSync(path.join(os.tmpdir(), "flow-rec-home-"));
+  const slug = "sothatswhy-g790-dehumidifier-winter";
+  const epDir = path.join(fakeRepo, "work", "video-episodes", slug);
+  fs.mkdirSync(epDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(epDir, "flow-shot-list.json"),
+    JSON.stringify({ series: "sothatswhy", shots: [{ id: "B38", track: "scenery", mode: "clip", video_prompt: "Test" }] }),
+  );
+
+  const mockDriver = {
+    name: "mock-recover",
+    async downloadMedia({ mediaId, outDir }) {
+      const target = path.join(outDir, `${mediaId}.mp4`);
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(target, Buffer.from("fake-720p-recovered-clip"));
+      return { mediaId, outFile: target };
+    },
+  };
+
+  const orchestrator = new FlowOrchestrator({
+    driver: mockDriver,
+    repoRoot: fakeRepo,
+    runtimeHome: fakeHome,
+    upscaleFn: async ({ inputPath, outputPath }) => {
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+      fs.writeFileSync(outputPath, Buffer.from("fake-1080p30-recovered"));
+      return { inputPath, outputPath, rawSha256: "rawsha", upscaledSha256: "upsha" };
+    },
+  });
+
+  try {
+    const rec = await orchestrator.flowReconcile({
+      slug,
+      series: "sothatswhy",
+      profile: "x812033727",
+      recoverMediaIds: [{ shotId: "B38", mediaId: "64490971-5528-44a8-a061-2c2c676e848a" }],
+    });
+    assert.equal(rec.ok, true);
+    assert.equal(rec.recovered.length, 1);
+    assert.equal(rec.recovered[0].shotId, "B38");
+    assert.deepEqual(rec.remainingMissingClips, []);
+    assert.equal(fs.existsSync(path.join(epDir, "flow-clips", "B38-1080p30.mp4")), true);
+  } finally {
+    fs.rmSync(fakeRepo, { recursive: true, force: true });
+    fs.rmSync(fakeHome, { recursive: true, force: true });
   }
 });
