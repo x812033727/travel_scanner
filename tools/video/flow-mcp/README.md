@@ -37,7 +37,7 @@ npm run flow -- profiles
 
 ---
 
-## 二、18 個 MCP 工具與支援能力
+## 二、22 個 MCP 工具與支援能力
 
 | 階段 | 工具 | 費用 | 說明 |
 | :--- | :--- | :---: | :--- |
@@ -47,10 +47,11 @@ npm run flow -- profiles
 | **漫劇轉檔** | `flow_import_video_json` | 0 點 | 直接讀 `video.json` 轉成 `flow-shot-list.json` ＋ `cast.json`（清 `<Picture N>`、保留 `data.source` 0 點切鏡與無台詞防護句） |
 | **前置把關** | `flow_preflight_shotlist` | 0 點 | 安全詞掃描（解說嚴格／AI 劇武打分級警告）、雙專案隔離、`edit_from` / `continue_from` / `cut` 驗證、多角防串角警告、3 鏡 Pilot 與彈性秒數／模型點數試算 |
 | **0 點數生圖與放大** | `flow_generate_stills` / `flow_upscale_still` | 0 Veo 點 | `Nano Banana 2.1` 生首尾格（`edit_from` 圖編鏈、3 鏡 Pilot、16:9／9:16 像素驗收與互動式 `qa-gallery.html`）；`flow_upscale_still` 支援 2K／Ultra 4K 靜圖放大 |
-| **靜圖簽核** | `flow_approve_stills` | 0 點 | 貼上網頁複製的 JSON 簽核通過／退回，解鎖付費生片 |
+| **靜圖簽核** | `flow_approve_stills` | 0 點 | 貼上網頁複製的 JSON 簽核通過／退回（亦支援自動辨識遠端上傳的首幀），解鎖付費生片 |
 | **預算帳單** | `flow_plan_clips` / `flow_plan_extend` | 0 點 | 查先圖後片、查 `MAX_CLIP_TAKES=2` 上限、支援 `pilot` 與 `resumeMissingOnly`、餘額不足時自動推薦其他有餘額的訂閱帳號 profile、核發單次 `confirm_token` |
 | **付費生片與延長** | `flow_generate_clips` / `flow_extend_clip` | **扣點** | 必帶 `confirm_token`；支援 `i2v`／`r2v`／`continue_from`（尾幀接龍）／`extend`（片段延長）、彈性 3–15s 與單鏡切 Veo 3.1；歷史 Take 全留於 `flow-clips/takes/`；免費 720p 下載 → 本機 FFmpeg `1080p30 / bt709 / tv / -an` ＋ AI 劇另存 `raw-audio/*.wav` ＋ **第 0 格 PSNR ≥ 22 與中途硬切 QC** ＋ `import-bridge.json` |
 | **挑片與對帳** | `flow_select_take` / `flow_reconcile` | 0 點 | 切換正式 Take（廢片全留供雲端備份）；`flow_reconcile` 撈回 `charged: maybe` 已扣點未下載影片避免重複燒點數 |
+| **跨機檔案與雲端同步** | `flow_list_files` / `flow_write_file` / `flow_read_file` / `flow_push_drive` | 0 點 | 專為配對雲端環境（Antigravity／Claude／Codex）設計：單集沙盒內 512 KiB 分塊上傳／下載（SHA-256 0 差異驗證、防路徑穿越與符號連結逃逸），並支援 `npm run flow -- remote-push` / `remote-pull` 與主機直推 Google Drive |
 | **排程與收工** | `flow_wait` / `flow_cancel` / `flow_episode_ledger` | 0 點 | 防 60 秒超時輪詢、安全中止、輸出最終帳本；搭配終端機 `npm run flow -- import-all --slug <slug>` 一鍵批次匯入產線與 `npm run flow -- push --slug <slug> --path "<雲端路徑>"` 驗收後直傳 Google Drive |
 
 ---

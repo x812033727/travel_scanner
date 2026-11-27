@@ -46,6 +46,10 @@ description: 用本機 Google Flow MCP（mokaair-flow，訂閱帳號點數，路
    - 用 `flow_select_take` 選定最佳 Take 並更新 `flow-clips/import-bridge.json`；可用 `npm run flow -- import-all --slug <slug>` 一鍵批次匯進產線。
    - 若出現斷線或 `charged: "maybe"`，**先跑 `flow_reconcile` 從 Flow 撈回已扣點影片**，再以 `flow_plan_clips({ resumeMissingOnly: true })` 補跑缺鏡，嚴禁重複扣點。
    - 收工呼叫 `flow_episode_ledger` 或直接跑 `npm run flow -- push --slug <slug> --path "<雲端路徑>"` 通過防呆檢查後備份至 Google 雲端硬碟。
+7. **純雲端環境透過遠端閘道（`POST /api/video/mcp/flow`）跨機同步（0 點數）**：
+   - 先用 `node tools/video/cli.mjs login --flow` 配對影片工具權杖。
+   - 把本機分鏡表與已審首幀增量推上主機閘道：`npm run flow -- remote-push --slug <slug> --from work/video-episodes/<slug>`（底層呼叫 `flow_list_files` ＋ 512 KiB 分塊 `flow_write_file` 與 SHA-256 0 差異驗證）；遠端生片前呼叫 `flow_approve_stills` 會自動辨識已上傳的 16:9／9:16 首幀。
+   - 生片完成後用 `npm run flow -- remote-pull --slug <slug> --to work/video-episodes/<slug>` 拉回成片（底層走 `flow_read_file` 分塊校驗），或於主機有設定 `vdrive` 時直接呼叫 `flow_push_drive` 備份至 Google 雲端硬碟。
 
 ## 四、帳號安全鐵則
 

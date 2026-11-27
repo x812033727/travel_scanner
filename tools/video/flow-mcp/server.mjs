@@ -170,7 +170,15 @@ export const MCP_TOOLS = Object.freeze([
           items: {
             oneOf: [
               { type: "string" },
-              { type: "object", required: ["shotId"], properties: { shotId: { type: "string" }, note: { type: "string" } } },
+              {
+                type: "object",
+                required: ["shotId"],
+                properties: {
+                  shotId: { type: "string" },
+                  note: { type: "string" },
+                  relPath: { type: "string", description: "Optional relative path inside episode workdir (e.g. stills/B38.jpg)." },
+                },
+              },
             ],
           },
         },
@@ -380,6 +388,76 @@ export const MCP_TOOLS = Object.freeze([
       additionalProperties: false,
     },
   },
+  {
+    name: "flow_list_files",
+    description:
+      "List files inside work/video-episodes/<slug>/ (optionally filtered to a relative subdir, with optional SHA-256 digests) for 0-diff remote episode sync. Spends 0 credits.",
+    annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      required: ["slug"],
+      properties: {
+        slug: { type: "string" },
+        subdir: { type: "string", description: "Optional relative subdirectory (e.g. 'stills' or 'flow-clips')." },
+        includeSha256: { type: "boolean", description: "Compute SHA-256 for each listed file (default: false)." },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_write_file",
+    description:
+      "Upload a file into work/video-episodes/<slug>/<relPath> (single-shot <= 512 KiB via mode='replace', or chunked via mode='begin'/'append'/'commit' with SHA-256 verification and atomic rename). Strictly jailed to safe episode extensions. Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "relPath"],
+      properties: {
+        slug: { type: "string" },
+        relPath: { type: "string", description: "Relative file path inside work/video-episodes/<slug>/ (e.g. 'flow-shot-list.json', 'stills/B38.jpg')." },
+        contentBase64: { type: "string", description: "Base64-encoded chunk (<= 512 KiB decoded)." },
+        mode: { type: "string", enum: ["replace", "begin", "append", "commit"], description: "Single-shot atomic write ('replace') or chunked upload ('begin'/'append'/'commit')." },
+        uploadId: { type: "string", description: "Transfer session id returned by mode='begin' (required for 'append' and 'commit')." },
+        expectedSha256: { type: "string", description: "Optional 64-char hex SHA-256 verified before atomic rename." },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_read_file",
+    description:
+      "Download a chunk (<= 512 KiB decoded) of a file inside work/video-episodes/<slug>/<relPath> as base64 with byte offset pagination and SHA-256 digest. Spends 0 credits.",
+    annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "relPath"],
+      properties: {
+        slug: { type: "string" },
+        relPath: { type: "string", description: "Relative file path inside work/video-episodes/<slug>/ (e.g. 'flow-clips/B38.mp4')." },
+        offset: { type: "integer", minimum: 0, description: "Byte offset to start reading from (default: 0)." },
+        maxBytes: { type: "integer", minimum: 1, maximum: 524288, description: "Maximum raw bytes to read (default and max: 524288)." },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "flow_push_drive",
+    description:
+      "Push work/video-episodes/<slug>/ from the gateway host to Google Drive via vdrive.mjs push-episode (SHA-256 0-diff) after verifying 0 unresolved maybe credits. Spends 0 credits.",
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
+    inputSchema: {
+      type: "object",
+      required: ["slug", "drivePath"],
+      properties: {
+        slug: { type: "string" },
+        series: { type: "string", enum: SERIES_ENUM },
+        drivePath: { type: "string", description: "Relative Drive destination under the series folder (e.g. '物理化學與日常材料/G790/製作檔/sothatswhy-g790-dehumidifier-winter')." },
+        dryRun: { type: "boolean" },
+        force: { type: "boolean", description: "Allow push even if unresolved maybe credits exist (default: false)." },
+      },
+      additionalProperties: false,
+    },
+  },
 ]);
 
 export function createToolDispatcher(orchestrator) {
@@ -402,6 +480,10 @@ export function createToolDispatcher(orchestrator) {
     flow_wait: (args) => orchestrator.flowWait(args),
     flow_cancel: (args) => orchestrator.flowCancel(args),
     flow_episode_ledger: (args) => orchestrator.flowEpisodeLedger(args),
+    flow_list_files: (args) => orchestrator.flowListFiles(args),
+    flow_write_file: (args) => orchestrator.flowWriteFile(args),
+    flow_read_file: (args) => orchestrator.flowReadFile(args),
+    flow_push_drive: (args) => orchestrator.flowPushDrive(args),
   };
 
   return async function dispatch(name, args = {}) {

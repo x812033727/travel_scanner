@@ -6,10 +6,34 @@
  * (never into tracked repo trees like `docs/videos/`).
  */
 
+import fs from "node:fs";
 import path from "node:path";
 import { REPO_ROOT, resolveWorkEpisodesRoot } from "../config.mjs";
 
 const SLUG_RE = /^[a-z0-9][a-z0-9._-]{1,120}$/i;
+
+export const MAX_TRANSFER_CHUNK_BYTES = 512 * 1024; // 512 KiB decoded -> ~683 KiB base64 (< 1 MiB RPC cap)
+export const MAX_EPISODE_FILE_BYTES = 128 * 1024 * 1024; // 128 MiB per episode asset
+
+export const EPISODE_TRANSFER_ALLOWED_EXTS = Object.freeze(
+  new Set([
+    ".json",
+    ".txt",
+    ".md",
+    ".html",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".mp4",
+    ".wav",
+    ".m4a",
+    ".mp3",
+    ".srt",
+    ".vtt",
+    ".csv",
+  ]),
+);
 
 const FORBIDDEN_REPO_PREFIXES = [
   "docs/videos",
@@ -32,6 +56,46 @@ function isInside(child, parent) {
   const c = normalizeForCompare(child);
   const p = normalizeForCompare(parent);
   return c === p || c.startsWith(`${p}/`);
+}
+
+function assertNoSymlinkChain(rootDir, segments) {
+  let cursor = path.resolve(rootDir);
+  if (fs.existsSync(cursor) && fs.lstatSync(cursor).isSymbolicLink()) {
+    throw new Error(`Refusing symlinked episode root "${cursor}".`);
+  }
+  for (const seg of segments) {
+    cursor = path.join(cursor, seg);
+    if (!fs.existsSync(cursor)) break;
+    if (fs.lstatSync(cursor).isSymbolicLink()) {
+      throw new Error(`Refusing symlink path component "${seg}" inside episode directory.`);
+    }
+  }
+}
+
+function sanitizeRelativeSegments(rawPath, { allowEmpty = false } = {}) {
+  const text = String(rawPath ?? "").trim();
+  if (!text) {
+    if (allowEmpty) return [];
+    throw new Error("Relative episode path must be non-empty.");
+  }
+  if (text.includes("\0")) {
+    throw new Error("Relative episode path must not contain null bytes.");
+  }
+  const normalized = text.replace(/\\/g, "/");
+  if (normalized.startsWith("/") || /^[A-Za-z]:/.test(normalized)) {
+    throw new Error(`Episode path "${rawPath}" must be relative (no leading slash or drive letter).`);
+  }
+  const rawSegments = normalized.split("/").filter((s) => s.length > 0);
+  if (rawSegments.length === 0) {
+    if (allowEmpty) return [];
+    throw new Error("Relative episode path must be non-empty.");
+  }
+  for (const seg of rawSegments) {
+    if (seg === "." || seg === ".." || seg.startsWith(".")) {
+      throw new Error(`Forbidden path segment "${seg}" in episode path "${rawPath}".`);
+    }
+  }
+  return rawSegments;
 }
 
 export function validateEpisodeSlug(slug) {
@@ -119,8 +183,51 @@ export function resolveEpisodePaths(
     clipsGalleryFile: path.join(clipsDir, "qa-gallery.html"),
     ledgerFile: path.join(clipsDir, "credit-ledger.json"),
     pendingApprovalsFile: path.join(clipsDir, ".pending-approvals.json"),
+    transfersDir: path.join(root, ".transfers"),
     reviewDir,
     preflightFile: path.join(reviewDir, "flow-preflight.json"),
+  };
+}
+
+/**
+ * Resolves an optional relative subdirectory jailed inside `paths.root`.
+ */
+export function resolveEpisodeSubdir(paths, subdir = "") {
+  const segments = sanitizeRelativeSegments(subdir, { allowEmpty: true });
+  const absDir = segments.length > 0 ? path.resolve(paths.root, ...segments) : path.resolve(paths.root);
+  if (!isInside(absDir, paths.root)) {
+    throw new Error(`Episode subdir "${subdir}" escapes "${paths.root}".`);
+  }
+  assertNoSymlinkChain(paths.root, segments);
+  return {
+    relDir: segments.join("/"),
+    absDir,
+  };
+}
+
+/**
+ * Resolves and validates a relative file path jailed inside `paths.root` for
+ * remote MCP file transfer (blocks traversal, dotfiles, symlinks, and
+ * non-allowlisted extensions).
+ */
+export function resolveEpisodeRelPath(paths, relPath) {
+  const segments = sanitizeRelativeSegments(relPath, { allowEmpty: false });
+  const cleanRel = segments.join("/");
+  const ext = path.posix.extname(cleanRel).toLowerCase();
+  if (!EPISODE_TRANSFER_ALLOWED_EXTS.has(ext)) {
+    throw new Error(
+      `Unsupported episode file extension "${ext || "(none)"}" for "${cleanRel}". Allowed: ${[...EPISODE_TRANSFER_ALLOWED_EXTS].join(", ")}.`,
+    );
+  }
+  const absPath = path.resolve(paths.root, ...segments);
+  if (!isInside(absPath, paths.root) || normalizeForCompare(absPath) === normalizeForCompare(paths.root)) {
+    throw new Error(`Episode file path "${relPath}" escapes "${paths.root}".`);
+  }
+  assertNoSymlinkChain(paths.root, segments);
+  return {
+    relPath: cleanRel,
+    absPath,
+    ext,
   };
 }
 

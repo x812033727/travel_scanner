@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Loopback-only HTTP JSON-RPC 2.0 MCP Gateway hosting both `mokaair-flow`
- * (18 tools) and `mokaair-flow-music` (17 tools) behind HMAC-SHA256 signed
+ * (22 tools) and `mokaair-flow-music` (17 tools) behind HMAC-SHA256 signed
  * requests from `apps/api` (`POST /api/v1/video/mcp/{flow|flow-music}`).
  *
  * Security invariants:

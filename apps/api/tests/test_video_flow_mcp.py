@@ -163,10 +163,33 @@ def test_flow_mcp_signs_forwards_and_audits_tool_calls(monkeypatch: pytest.Monke
     assert len(audits) == 1
     assert audits[0].action == "video_flow_mcp.tool_call"
     assert audits[0].target == "flow-mcp:flow-music"
+    assert flow_mcp_router.MCP_CALLS_PER_HOUR >= 1200
     assert audits[0].metadata_json == {
         "token": "mkv_flow12",
         "service": "flow-music",
         "tool": "music_status",
+    }
+
+    write_body = {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "tools/call",
+        "params": {
+            "name": "flow_write_file",
+            "arguments": {
+                "slug": "sothatswhy-g790-dehumidifier-winter",
+                "relPath": "stills/B38.jpg",
+                "contentBase64": "ZmFrZS1pbWFnZS1ieXRlcw==",
+            },
+        },
+    }
+    write_res = client.post("/api/v1/video/mcp/flow", content=json.dumps(write_body))
+    assert write_res.status_code == 200
+    assert len(session.audits()) == 2
+    assert session.audits()[1].metadata_json == {
+        "token": "mkv_flow12",
+        "service": "flow",
+        "tool": "flow_write_file",
     }
 
     bad_method = client.post(

@@ -16,6 +16,8 @@
  *   9. Local FFmpeg 1080p30/bt709/tv/-an + optional raw-audio WAV + PSNR/hard-cut QC + import bridge
  */
 
+import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -49,7 +51,14 @@ import {
   recordCreditEvent,
   verifyAndConsumeConfirmToken,
 } from "./guards/budget-guard.mjs";
-import { resolveEpisodePaths, resolveSeriesCastPath } from "./guards/path-boundary.mjs";
+import {
+  MAX_EPISODE_FILE_BYTES,
+  MAX_TRANSFER_CHUNK_BYTES,
+  resolveEpisodePaths,
+  resolveEpisodeRelPath,
+  resolveEpisodeSubdir,
+  resolveSeriesCastPath,
+} from "./guards/path-boundary.mjs";
 import { normalizeShots, preflightShotList, scanPromptText } from "./guards/prompt-safety.mjs";
 import { JobQueue } from "./jobs/job-queue.mjs";
 import {
@@ -105,6 +114,7 @@ export class FlowOrchestrator {
     allowExternalWorkdir = false,
     upscaleFn = upscaleClipTo1080p30,
     extractLastFrameFn = extractLastFrame,
+    spawnSyncImpl = spawnSync,
   } = {}) {
     this.repoRoot = repoRoot;
     this.runtimeHome = runtimeHome;
@@ -114,6 +124,7 @@ export class FlowOrchestrator {
     this.queue = queue || new JobQueue({ runtimeHome });
     this.upscaleFn = upscaleFn;
     this.extractLastFrameFn = extractLastFrameFn;
+    this.spawnSyncImpl = spawnSyncImpl;
   }
 
   #paths(slug, workdir) {
@@ -855,10 +866,47 @@ export class FlowOrchestrator {
     for (const entry of approved || []) {
       const shotId = typeof entry === "string" ? entry : entry.shotId;
       const note = typeof entry === "string" ? "" : entry.note || "";
-      const record = qaStore.stills?.[shotId];
+      const explicitRelPath = typeof entry === "object" && entry?.relPath ? String(entry.relPath) : null;
+      let record = qaStore.stills?.[shotId];
       if (!record || !record.filePath || !fs.existsSync(record.filePath)) {
-        blockedApprove.push({ shotId, reason: "still_file_missing" });
-        continue;
+        let discoveredPath = null;
+        if (explicitRelPath) {
+          const resolved = resolveEpisodeRelPath(paths, explicitRelPath);
+          if (fs.existsSync(resolved.absPath)) discoveredPath = resolved.absPath;
+        } else {
+          const safeId = sanitizeFilename(shotId);
+          const candidateDirs = [paths.stillsDir, path.join(paths.clipsDir, "firstframes")];
+          const candidateNames = [
+            `${safeId}.png`,
+            `${safeId}.jpg`,
+            `${safeId}.jpeg`,
+            `${safeId}.webp`,
+            `${safeId}_firstframe.jpg`,
+            `${safeId}_firstframe.png`,
+            `${safeId}_still.jpg`,
+            `${safeId}_still.png`,
+          ];
+          outer: for (const dir of candidateDirs) {
+            for (const fname of candidateNames) {
+              const p = path.join(dir, fname);
+              if (fs.existsSync(p) && !fs.lstatSync(p).isSymbolicLink()) {
+                discoveredPath = p;
+                break outer;
+              }
+            }
+          }
+        }
+        if (!discoveredPath) {
+          blockedApprove.push({ shotId, reason: "still_file_missing" });
+          continue;
+        }
+        record = {
+          ...(record || {}),
+          shotId,
+          filePath: discoveredPath,
+          source: "uploaded_still",
+        };
+        qaStore.stills[shotId] = record;
       }
       const check = verifyStillDimensions(record.filePath, {
         expectedWidth: preset.targetStillWidth,
@@ -868,6 +916,8 @@ export class FlowOrchestrator {
         blockedApprove.push({ shotId, reason: check.reason, message: check.message });
         continue;
       }
+      record.width = check.width;
+      record.height = check.height;
       record.qaStatus = "approved";
       record.approvedBy = reviewer;
       record.approvedAt = new Date().toISOString();
@@ -2043,6 +2093,340 @@ export class FlowOrchestrator {
         dramaName: workspace?.dramaName,
         episodeLabel: workspace?.episodeLabel,
       }),
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tool 19: flow_list_files (0 credits — remote episode file listing)
+  // ---------------------------------------------------------------------------
+  async flowListFiles({ slug, subdir = "", includeSha256 = false, workdir = null }) {
+    const paths = this.#paths(slug, workdir);
+    const { relDir, absDir } = resolveEpisodeSubdir(paths, subdir);
+    if (!fs.existsSync(absDir)) {
+      return {
+        ok: true,
+        slug: paths.slug,
+        subdir: relDir,
+        exists: false,
+        count: 0,
+        totalBytes: 0,
+        files: [],
+      };
+    }
+
+    const files = [];
+    const walk = (dirPath, prefix) => {
+      const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.name.startsWith(".")) continue;
+        const full = path.join(dirPath, entry.name);
+        const lstat = fs.lstatSync(full);
+        if (lstat.isSymbolicLink()) continue;
+        const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+        if (lstat.isDirectory()) {
+          walk(full, rel);
+        } else if (lstat.isFile()) {
+          const item = {
+            relPath: rel,
+            bytes: lstat.size,
+            mtime: lstat.mtime.toISOString(),
+          };
+          if (includeSha256) {
+            item.sha256 = sha256File(full);
+          }
+          files.push(item);
+        }
+      }
+    };
+
+    walk(absDir, relDir);
+    files.sort((a, b) => a.relPath.localeCompare(b.relPath));
+    const totalBytes = files.reduce((sum, f) => sum + f.bytes, 0);
+
+    return {
+      ok: true,
+      slug: paths.slug,
+      subdir: relDir,
+      exists: true,
+      count: files.length,
+      totalBytes,
+      files,
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tool 20: flow_write_file (0 credits — jailed single-shot & chunked upload)
+  // ---------------------------------------------------------------------------
+  async flowWriteFile({
+    slug,
+    relPath,
+    contentBase64 = "",
+    mode = "replace",
+    uploadId = null,
+    expectedSha256 = null,
+    workdir = null,
+  }) {
+    const paths = this.#paths(slug, workdir);
+    const { relPath: cleanRel, absPath } = resolveEpisodeRelPath(paths, relPath);
+    const normalizedMode = String(mode || "replace").trim().toLowerCase();
+    if (!["replace", "begin", "append", "commit"].includes(normalizedMode)) {
+      throw new Error(`Invalid write mode "${mode}". Expected replace, begin, append, or commit.`);
+    }
+
+    if (expectedSha256 != null && expectedSha256 !== "") {
+      if (!/^[0-9a-f]{64}$/i.test(String(expectedSha256).trim())) {
+        throw new Error("expectedSha256 must be a 64-character hex SHA-256 digest.");
+      }
+    }
+    const cleanExpectedSha = expectedSha256 ? String(expectedSha256).trim().toLowerCase() : null;
+
+    const rawBase64 = String(contentBase64 || "").replace(/\s+/g, "");
+    if (rawBase64.length > 0 && !/^[A-Za-z0-9+/]*={0,2}$/.test(rawBase64)) {
+      throw new Error("contentBase64 is not valid base64.");
+    }
+    const chunk = rawBase64.length > 0 ? Buffer.from(rawBase64, "base64") : Buffer.alloc(0);
+    if (chunk.length > MAX_TRANSFER_CHUNK_BYTES) {
+      throw new Error(
+        `Decoded chunk size (${chunk.length} bytes) exceeds ${MAX_TRANSFER_CHUNK_BYTES} byte limit. Split into <= 512 KiB chunks with mode begin/append/commit.`,
+      );
+    }
+
+    if (normalizedMode === "replace") {
+      const actualSha = crypto.createHash("sha256").update(chunk).digest("hex");
+      if (cleanExpectedSha && actualSha !== cleanExpectedSha) {
+        throw new Error(`SHA-256 mismatch for "${cleanRel}": expected ${cleanExpectedSha}, got ${actualSha}.`);
+      }
+      fs.mkdirSync(path.dirname(absPath), { recursive: true });
+      const tmp = path.join(path.dirname(absPath), `.tmp-${process.pid}-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`);
+      fs.writeFileSync(tmp, chunk);
+      fs.renameSync(tmp, absPath);
+      return {
+        ok: true,
+        slug: paths.slug,
+        relPath: cleanRel,
+        mode: "replace",
+        bytes: chunk.length,
+        sha256: actualSha,
+      };
+    }
+
+    const UPLOAD_ID_RE = /^[a-zA-Z0-9_-]{4,64}$/;
+    const cleanUploadId =
+      normalizedMode === "begin"
+        ? uploadId
+          ? String(uploadId).trim()
+          : crypto.randomBytes(12).toString("hex")
+        : String(uploadId || "").trim();
+
+    if (!UPLOAD_ID_RE.test(cleanUploadId)) {
+      throw new Error("uploadId must be 4-64 alphanumeric/underscore/hyphen characters.");
+    }
+
+    const partFile = path.join(paths.transfersDir, `${cleanUploadId}.part`);
+    const metaFile = path.join(paths.transfersDir, `${cleanUploadId}.meta.json`);
+
+    if (normalizedMode === "begin") {
+      fs.mkdirSync(paths.transfersDir, { recursive: true });
+      fs.writeFileSync(partFile, chunk);
+      atomicWriteJson(metaFile, {
+        uploadId: cleanUploadId,
+        relPath: cleanRel,
+        createdAt: new Date().toISOString(),
+      });
+      return {
+        ok: true,
+        slug: paths.slug,
+        relPath: cleanRel,
+        mode: "begin",
+        uploadId: cleanUploadId,
+        bytesWritten: chunk.length,
+        totalBytesSoFar: chunk.length,
+      };
+    }
+
+    if (!fs.existsSync(partFile) || !fs.existsSync(metaFile)) {
+      throw new Error(`Unknown or expired uploadId "${cleanUploadId}". Call mode "begin" first.`);
+    }
+    const meta = readJsonSafe(metaFile, null);
+    if (!meta || meta.relPath !== cleanRel) {
+      throw new Error(`uploadId "${cleanUploadId}" is bound to "${meta?.relPath}", not "${cleanRel}".`);
+    }
+
+    const currentSize = fs.statSync(partFile).size;
+    if (currentSize + chunk.length > MAX_EPISODE_FILE_BYTES) {
+      fs.rmSync(partFile, { force: true });
+      fs.rmSync(metaFile, { force: true });
+      throw new Error(
+        `Uploaded file "${cleanRel}" exceeds maximum allowed size of ${MAX_EPISODE_FILE_BYTES} bytes.`,
+      );
+    }
+
+    if (chunk.length > 0) {
+      fs.appendFileSync(partFile, chunk);
+    }
+    const newSize = currentSize + chunk.length;
+
+    if (normalizedMode === "append") {
+      return {
+        ok: true,
+        slug: paths.slug,
+        relPath: cleanRel,
+        mode: "append",
+        uploadId: cleanUploadId,
+        bytesWritten: chunk.length,
+        totalBytesSoFar: newSize,
+      };
+    }
+
+    // commit
+    const actualSha = sha256File(partFile);
+    if (cleanExpectedSha && actualSha !== cleanExpectedSha) {
+      fs.rmSync(partFile, { force: true });
+      fs.rmSync(metaFile, { force: true });
+      throw new Error(`SHA-256 mismatch on commit for "${cleanRel}": expected ${cleanExpectedSha}, got ${actualSha}.`);
+    }
+    fs.mkdirSync(path.dirname(absPath), { recursive: true });
+    fs.renameSync(partFile, absPath);
+    fs.rmSync(metaFile, { force: true });
+
+    return {
+      ok: true,
+      slug: paths.slug,
+      relPath: cleanRel,
+      mode: "commit",
+      uploadId: cleanUploadId,
+      bytes: newSize,
+      sha256: actualSha,
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tool 21: flow_read_file (0 credits — jailed chunked download)
+  // ---------------------------------------------------------------------------
+  async flowReadFile({
+    slug,
+    relPath,
+    offset = 0,
+    maxBytes = MAX_TRANSFER_CHUNK_BYTES,
+    workdir = null,
+  }) {
+    const paths = this.#paths(slug, workdir);
+    const { relPath: cleanRel, absPath } = resolveEpisodeRelPath(paths, relPath);
+    if (!fs.existsSync(absPath)) {
+      return {
+        ok: false,
+        found: false,
+        slug: paths.slug,
+        relPath: cleanRel,
+        error: `File "${cleanRel}" does not exist in episode "${paths.slug}".`,
+      };
+    }
+
+    const stat = fs.statSync(absPath);
+    if (!stat.isFile()) {
+      throw new Error(`"${cleanRel}" is not a regular file.`);
+    }
+    const totalBytes = stat.size;
+    const startOffset = Math.max(0, Math.floor(Number(offset) || 0));
+    const chunkCap = Math.max(1, Math.min(MAX_TRANSFER_CHUNK_BYTES, Math.floor(Number(maxBytes) || MAX_TRANSFER_CHUNK_BYTES)));
+
+    let buf = Buffer.alloc(0);
+    if (startOffset < totalBytes) {
+      const toRead = Math.min(chunkCap, totalBytes - startOffset);
+      buf = Buffer.alloc(toRead);
+      const fd = fs.openSync(absPath, "r");
+      try {
+        const bytesRead = fs.readSync(fd, buf, 0, toRead, startOffset);
+        if (bytesRead < toRead) buf = buf.subarray(0, bytesRead);
+      } finally {
+        fs.closeSync(fd);
+      }
+    }
+
+    const nextOffset = startOffset + buf.length;
+    const eof = nextOffset >= totalBytes;
+
+    return {
+      ok: true,
+      slug: paths.slug,
+      relPath: cleanRel,
+      offset: startOffset,
+      bytesRead: buf.length,
+      totalBytes,
+      nextOffset,
+      eof,
+      sha256: startOffset === 0 || eof ? sha256File(absPath) : null,
+      contentBase64: buf.toString("base64"),
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tool 22: flow_push_drive (0 credits — host-side Google Drive SSOT push)
+  // ---------------------------------------------------------------------------
+  async flowPushDrive({
+    slug,
+    series = null,
+    drivePath,
+    dryRun = false,
+    force = false,
+    workdir = null,
+  }) {
+    const ledger = await this.flowEpisodeLedger({ slug, series, workdir });
+    if (!force && ledger.credits.maybe > 0) {
+      return {
+        ok: false,
+        reason: "unresolved_maybe_credits",
+        message:
+          "Run flow_reconcile first before pushing to Drive so orphaned billed clips are recovered, or pass force: true.",
+        ledger,
+      };
+    }
+    if (!drivePath || !String(drivePath).trim()) {
+      throw new Error("drivePath is required (e.g. '<分類>/<代碼>/製作檔/<slug>').");
+    }
+
+    const targetSeries = series || ledger.series || "curio";
+    const vdriveScript = path.join(this.repoRoot, "tools", "video", "vdrive.mjs");
+    if (!fs.existsSync(vdriveScript)) {
+      return {
+        ok: false,
+        reason: "vdrive_missing",
+        message: `vdrive.mjs not found at "${vdriveScript}".`,
+        hint: "Pull files over HTTPS MCP via flow_read_file or `npm run flow -- remote-pull --slug <slug> --to <dir>`.",
+      };
+    }
+
+    const args = [
+      vdriveScript,
+      "push-episode",
+      "--series",
+      targetSeries,
+      "--path",
+      String(drivePath).trim(),
+      "--from",
+      ledger.workdir,
+    ];
+    if (dryRun) args.push("--dry-run");
+
+    const res = this.spawnSyncImpl(process.execPath, args, {
+      cwd: this.repoRoot,
+      encoding: "utf8",
+      windowsHide: true,
+    });
+
+    const ok = res.status === 0;
+    return {
+      ok,
+      slug: ledger.slug,
+      series: targetSeries,
+      drivePath: String(drivePath).trim(),
+      dryRun: Boolean(dryRun),
+      exitCode: res.status ?? 1,
+      stdout: (res.stdout || "").trim(),
+      stderr: (res.stderr || res.error?.message || "").trim(),
+      hint: ok
+        ? null
+        : "If the gateway host has no Google Drive backend configured, pull files over HTTPS MCP via `npm run flow -- remote-pull --slug <slug> --to <dir>` and push to Drive from the client.",
     };
   }
 }

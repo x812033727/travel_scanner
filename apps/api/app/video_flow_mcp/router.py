@@ -46,7 +46,7 @@ ALLOWED_RPC_METHODS = frozenset(
         "prompts/list",
     }
 )
-MCP_CALLS_PER_HOUR = 300
+MCP_CALLS_PER_HOUR = 1200
 MAX_RPC_BODY_BYTES = 1024 * 1024
 
 
