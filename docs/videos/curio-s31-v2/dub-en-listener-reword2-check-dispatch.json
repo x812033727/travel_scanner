@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_LISTENER_REWORD2_CHECK_DISPATCHED_AWAIT_NATIVE",
+  "snapshot_at": "2026-10-28T12:49:19.694Z",
+  "recorded_at": "2026-10-28T12:51:02.839Z",
+  "listener2_synthesis_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-en-listener-reword2-result.json",
+    "sha256": "a113bb7c8e304dc27cbf953a32e3514641795cdc6fafe54b8dc841bf2a6fc614"
+  },
+  "closure": {
+    "session": 77980,
+    "native_exit": 0,
+    "completed_at": "2026-10-28T12:44:07.3843673Z",
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep/execute-close-en-listener-reword2-native.json",
+      "sha256": "93a1707306b2c4a1409abd3b0b834c1a03a14b44854460c9c54e811f6d3003e4"
+    },
+    "operation_sha256": "cad02c93178cc18650b1262d940a8ec89888e9106d66c0fa987f6bfcbaf9b267",
+    "complete_sha256": "88d9512eecec2dbc0fc28b498285d64de7d1f14cda94c1da10c9ba617550e53a",
+    "archive_manifest_sha256": "581c71f5f20d133b34ea17af0da0bdcfde058b34910db229f565529eaf81d36e",
+    "copies": 253,
+    "operation_anchors": 11,
+    "moved_files": 18,
+    "relocation_files": 1,
+    "total_archive_files": 283,
+    "ledger_files": 6,
+    "completed_moves": [
+      1,
+      2,
+      3
+    ],
+    "root_readback": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep/root-post-close-readback-en-listener-reword2.json",
+      "sha256": "7b1da0a0bfeeebb800a840f2fccaa1f7c991d7cb7f187e105c6f4bf24c9f6334"
+    },
+    "independent_post_close": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep/actual-post-close-review-en-listener-reword2.json",
+      "sha256": "96a7ef00187058fbf1f9ba588a83d86611d0584dca22dff18e533461b000c9f7"
+    },
+    "three_predecessor_siblings_preserved": {
+      "en_first": {
+        "archive_files": 275,
+        "ledger_files": 6
+      },
+      "en_retake1": {
+        "archive_files": 283,
+        "ledger_files": 6
+      },
+      "en_retake2": {
+        "archive_files": 283,
+        "ledger_files": 6
+      }
+    }
+  },
+  "activation": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep/activation-en-listener-reword2.json",
+      "sha256": "2108906b26bb34b5c7039e1b8709323519b52d4cc0678b434053a5d8c4c63029"
+    },
+    "preinstall_gate_native_exit": 0,
+    "exclusive_binding_install": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep/binding-install-en-listener-reword2.json",
+      "sha256": "3e7784dd653be9c1426d0980c1e2eaa640df1a1c36b52c6556298a06e5603826"
+    },
+    "binding_sha256": "15e1a5e8a31fcb255179763bfdfe1038cc9c4d2b89ac0d275380408413c0bfb1",
+    "new_catalog": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/dub-en-cohort-prep-v2/en-frozen-1f97c23e-913a-47fe-ac5e-ccf89659e844/catalog.json",
+      "sha256": "223d330037d6a77a588825b85221ffb0cdd087601474db6a67011739723ce6f8"
+    },
+    "actual_full_cohort_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-listener-reword2-scope-prep/actual-full-cohort-review-en-listener-reword2-20261028.json",
+      "sha256": "7d3f8ce1aeeeedad1c48b1fcdef899a08b19a8ac321e89285e63fac299a416d1"
+    }
+  },
+  "check_dispatch": {
+    "session": 71837,
+    "caller_pid": 40824,
+    "official_pid": 53496,
+    "intent_at": "2026-10-28T12:49:19.694Z",
+    "intent": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep\\fixed-caller-en-listener-reword2/intent.json",
+      "sha256": "42ea9026aeebe4f8cedb916458dc2e28740e2eb5ec86cdc54b7ba2d283dad675"
+    },
+    "child_start": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword1-complete-handoff-prep\\fixed-caller-en-listener-reword2/child-start.json",
+      "sha256": "2c72e35299307d5daefa63ead36861dd2ab1d0cac40eca24e24c1e460c478432"
+    },
+    "native_exit": null,
+    "mode": "--check-once",
+    "force": false,
+    "automatic_retry": false,
+    "io_extra_wait_cap_ms": 30000,
+    "second_opinion_timeout_ms": 1200000,
+    "second_opinion_source_free": true,
+    "second_opinion_script_basename": "bridge.mjs",
+    "bundled_Node_bin_prepended_to_outer_PATH": true,
+    "outer_environment_restore_finally_configured": true,
+    "second_stage_or_runtime_completion_not_inferred": true,
+    "prior_fixed_slot_never_replayed": true
+  },
+  "quality": {
+    "plain_synthesis_rounds_completed": 2,
+    "plain_cap": 2,
+    "listener_reword_synthesis_rounds_completed": 2,
+    "listener_cap": 2,
+    "shorten_rounds": 0,
+    "new_quality_check_complete": false,
+    "current_new_flags_count": null,
+    "prior6flags_not_a_new_take_verdict": true,
+    "lz513_same_take_automatic_flag_and_scores_preserved": true,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "audio_approved": false,
+    "human_listening_claimed": false,
+    "current_flags_or_cache_not_pinned_while_check_active": true
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Wait for the sole normal source-free check native result, then freeze exact current quality data and obtain independent runtime/saved-answer-consumption audits as applicable. Preserve all closed histories and used slots. No competing producer, slot replay, third plain/listener synthesis, or assumed quality acceptance."
+}

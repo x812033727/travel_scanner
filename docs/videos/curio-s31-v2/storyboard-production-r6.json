@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "revision": "r6",
+  "at": "2026-10-26T23:56:41.642Z",
+  "status": "local-storyboard-check-passed",
+  "source_video_sha256": "d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170",
+  "speech_hash": "8af0af8b6fb7d1e4",
+  "visual_hash": "4ff8941e6473b9f4",
+  "manifest_sha256": "fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2",
+  "checks": {
+    "shots": 129,
+    "judge_passed": 129,
+    "problem_count": 0,
+    "visual_binding_matches": true,
+    "selected_image_hashes_verified": 129
+  },
+  "contact_pages": [
+    {
+      "file": "keyframes/contact-sheet-01.png",
+      "sha256": "d442bbb627432118b8348712933a5d166e85033cc4e5c14dd6f687d1f52867ae"
+    },
+    {
+      "file": "keyframes/contact-sheet-02.png",
+      "sha256": "83094f31dfdd772672752fc54901429c283c62c2b6d4392639a49e2f9d1d7667"
+    },
+    {
+      "file": "keyframes/contact-sheet-03.png",
+      "sha256": "1f2b179317e651e6e08426d9ee20e4f61c07fb7df1442bfba0baa6dd6da1edd8"
+    },
+    {
+      "file": "keyframes/contact-sheet-04.png",
+      "sha256": "7fd7a803c8e47404640ffc2a8af842f81a8c59433aad949e1009af82e7a0a63b"
+    },
+    {
+      "file": "keyframes/contact-sheet-05.png",
+      "sha256": "7f396ce832f2930fb3ac3de2983f987c45502b7da8f889421d904b949bd75548"
+    },
+    {
+      "file": "keyframes/contact-sheet-06.png",
+      "sha256": "6aff36cd975864418c5188faf9fe0ad33c9008ed22fa543f40b81be6838e3ba9"
+    }
+  ],
+  "delegated_visual_review": {
+    "reviewer": "codex-curio-s31-f29b",
+    "observed_all_six_pages": true,
+    "scope": "Content-related cute illustrations and obvious narrative contradictions; accepted judge-passed illustrations under curio-episode. No factual reconstruction requirement added.",
+    "decision": "pass",
+    "owner_personally_watched": false,
+    "delegation": "用你推薦的選擇就好 不用問我"
+  },
+  "accounting": {
+    "currency": "USD",
+    "basis": "Repository accounting estimates: MiniMax image-01 at 1K is 0.0035 per image; judge is 0.01 per call. Supplier invoice charges are not established by this receipt.",
+    "booked_ledger": {
+      "usd": 1.3905,
+      "ready_images": 103,
+      "failed_images": 1,
+      "judge_calls": 103,
+      "reserved_usd": 0,
+      "reservations": 0
+    },
+    "conservative_cap": {
+      "cap_usd": 6,
+      "baseline_booked_usd": 0.5265,
+      "prior_uncertainty_usd": 0.17,
+      "guarded_attempt_count": 133,
+      "guarded_attempt_quotes_usd": 0.8815,
+      "attempts_by_kind_and_status": [
+        {
+          "kind": "image",
+          "status": "http_202",
+          "count": 64,
+          "quoted_usd": 0.224
+        },
+        {
+          "kind": "judge",
+          "status": "http_200",
+          "count": 64,
+          "quoted_usd": 0.64
+        },
+        {
+          "kind": "image",
+          "status": "http_502",
+          "count": 5,
+          "quoted_usd": 0.0175
+        }
+      ],
+      "retained_failed_attempt_quotes_usd": 0.0175,
+      "committed_usd": 1.578,
+      "remaining_usd": 4.422,
+      "formula": "baseline_booked_usd + prior_uncertainty_usd + every guarded attempt quote; successful guarded requests already appear in the booked ledger and are not added again."
+    }
+  },
+  "private_evidence": [
+    {
+      "file": "storyboard-final-r6.json",
+      "sha256": "e983b5ef747d56761a87ad5193832d30d5c31d90fa3508533c72a5731abc0b94"
+    },
+    {
+      "file": "media-budget-guard-state-r6.json",
+      "sha256": "90845f64532b172c4894223d9d8ecdbda7a2aad949047e453c130a853bb107da"
+    },
+    {
+      "file": "media/ledger.json",
+      "sha256": "8c966507c8320201838165245b224d2ea6d73af87ba10df5f49d173369fe1211"
+    }
+  ]
+}

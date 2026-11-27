@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T10:17:06.339Z",
+  "status": "CURRENT_CHINESE_MASTER_QA_PASSED_DUBS_PENDING",
+  "source": {
+    "sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+    "script_sha256": "d9056e2b5b27b1ce4c6b084a89adb76a6c723bb603349c2d72f35f9cb028c5b0",
+    "speech_hash": "fa2912daff4bd218",
+    "visual_hash": "4ff8941e6473b9f4"
+  },
+  "assembly": {
+    "session": 33528,
+    "native_exit": 0,
+    "seconds": 406,
+    "segments_total": 150,
+    "segments_encoded": 16,
+    "frames": 29090,
+    "fps": 30,
+    "frame_seconds": 969.6666666666666,
+    "bytes": 301800813,
+    "final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+    "container_seconds": 969.705,
+    "video_codec": "h264",
+    "size": [
+      1920,
+      1080
+    ],
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "checks_ok": true,
+    "checks_sha256": "c45ff7fb1030cc12dddf458d21265d157aea1c94eab8b1e53213cbd6a2273bc3",
+    "narration_sha256": "2a80e13415cb2c90ae5887f2c97e0604120c9716ccffda68d1d682458ae268be",
+    "body_frames": 28310,
+    "intro_frames": 150,
+    "intro_at_frame": 1574,
+    "outro_frames": 630,
+    "branding_id": "mokaair-brand-package-v4-endscreen",
+    "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "integrated_lufs": -14,
+    "true_peak_dbfs": -1.9,
+    "music_bed_lufs": -33.1,
+    "slide_sample_frames": 63
+  },
+  "official_qa": {
+    "session": 68642,
+    "native_exit": 0,
+    "passed": 11,
+    "total": 11,
+    "report_sha256": "4669fb1b214e808608c4fd9f10a116190c03de691caad0ef985dab7a19f331c2",
+    "items": [
+      {
+        "id": "assemble",
+        "ok": true,
+        "detail": "29090 frames, -14 LUFS, 63 frames matched their slides; every check passed"
+      },
+      {
+        "id": "render",
+        "ok": true,
+        "detail": "21 slide states drawn with no layout, glyph or font problem, thumbnail included"
+      },
+      {
+        "id": "narration",
+        "ok": true,
+        "detail": "timeline.json approved at 2026-10-27T09:52:42.805Z"
+      },
+      {
+        "id": "pace",
+        "ok": true,
+        "detail": "150 slide states, the longest 13.2 s; none over 15 s"
+      },
+      {
+        "id": "captions",
+        "ok": true,
+        "detail": "caption files for zh-TW, en, ja, ko, es, pt, id, vi, th, every translation current",
+        "warnings": [
+          "ja: cue 194 (lz511p2): 9.1 characters a second, above 8",
+          "ja: cue 219 (lz520p3): 10.9 characters a second, above 8",
+          "es: cue 47 (lz220): 19.6 characters a second, above 17",
+          "es: cue 122 (v2a0491): 17.4 characters a second, above 17",
+          "es: cue 134 (v2a0522): 22.0 characters a second, above 17",
+          "es: cue 168 (lz502): 18.0 characters a second, above 17",
+          "es: cue 197 (v2a0722): 19.6 characters a second, above 17",
+          "pt: cue 195 (v2a0722): 22.0 characters a second, above 17",
+          "vi: cue 123 (v2a0491): 17.7 characters a second, above 17",
+          "vi: cue 197 (v2a0722): 20.0 characters a second, above 17"
+        ]
+      },
+      {
+        "id": "metadata",
+        "ok": true,
+        "detail": "title, description and tags within YouTube's limits for zh-TW, en, ja, ko, es, pt, id, vi, th; 6 chapters"
+      },
+      {
+        "id": "facts",
+        "ok": true,
+        "detail": "verify-1.md marks 1 claims NOT FOUND (37); no scene cites them"
+      },
+      {
+        "id": "links",
+        "ok": true,
+        "detail": "16 links open"
+      },
+      {
+        "id": "thumbnail",
+        "ok": true,
+        "detail": "1280x720 JPEG, 147 KB; the headline is about 34 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th"
+      },
+      {
+        "id": "policy",
+        "ok": true,
+        "detail": "Jev：符合立場 0.68、有示範：不適用（解說）、建議 0.01、業配 0.13，通過"
+      },
+      {
+        "id": "disclosure",
+        "ok": true,
+        "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed"
+      }
+    ],
+    "interpretation": "Narration item relies on disclosed delegated acceptance, not zero flags or Jev agreement. Foreign caption speed warnings remain provisional until actual dub timing."
+  },
+  "captions": {
+    "manifest_sha256": "ce9f67d29fde3529fc3a0a55f3b10e9dd188aea77bfa816088ede403bf88dded",
+    "locales": {
+      "zh-TW": {
+        "cues": 212,
+        "problems": [],
+        "timing": "narration"
+      },
+      "en": {
+        "cues": 217,
+        "problems": [],
+        "timing": "narration"
+      },
+      "ja": {
+        "cues": 221,
+        "problems": [
+          "cue 194 (lz511p2): 9.1 characters a second, above 8",
+          "cue 219 (lz520p3): 10.9 characters a second, above 8"
+        ],
+        "timing": "narration"
+      },
+      "ko": {
+        "cues": 221,
+        "problems": [],
+        "timing": "narration"
+      },
+      "es": {
+        "cues": 216,
+        "problems": [
+          "cue 47 (lz220): 19.6 characters a second, above 17",
+          "cue 122 (v2a0491): 17.4 characters a second, above 17",
+          "cue 134 (v2a0522): 22.0 characters a second, above 17",
+          "cue 168 (lz502): 18.0 characters a second, above 17",
+          "cue 197 (v2a0722): 19.6 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "pt": {
+        "cues": 213,
+        "problems": [
+          "cue 195 (v2a0722): 22.0 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "id": {
+        "cues": 213,
+        "problems": [],
+        "timing": "narration"
+      },
+      "vi": {
+        "cues": 215,
+        "problems": [
+          "cue 123 (v2a0491): 17.7 characters a second, above 17",
+          "cue 197 (v2a0722): 20.0 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "th": {
+        "cues": 212,
+        "problems": [],
+        "timing": "narration"
+      }
+    },
+    "skipped": {},
+    "foreign_dub_timing_ready": false
+  },
+  "native_player": {
+    "at": "2026-10-27T10:17:06.327Z",
+    "final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+    "server": "loopback-only temporary byte-range server",
+    "server_pid": 52480,
+    "server_port": 55616,
+    "browser": "ChatGPT in-app browser id2, native HTML5 MP4 playback",
+    "observed_container_seconds": 969.705,
+    "video_width": 1920,
+    "video_height": 1080,
+    "opening_progress": [
+      0.513825,
+      6.124305,
+      14.354755
+    ],
+    "intro_observed_seconds": [
+      53.012272,
+      56.133834
+    ],
+    "middle_decoded_seconds": [
+      546.07558,
+      557.381222
+    ],
+    "late_changed_subtitle_decoded_seconds": 868.676423,
+    "outro_v4_decoded_seconds": 960.108459,
+    "final_state": {
+      "currentTime": 969.705,
+      "duration": 969.705,
+      "ended": true,
+      "error": null,
+      "paused": true,
+      "readyState": 4
+    },
+    "actual_images_viewed": [
+      "opening illustration and burned subtitle",
+      "door intro animation",
+      "Mokaair CC intro logo",
+      "new Wu Zeng subtitle over scholar illustration",
+      "new lychee question subtitle over investigation illustration",
+      "v4 logo with two video slots and a subscription slot"
+    ],
+    "end_screen_clickable_links_installed": false,
+    "end_screen_scope": "V4 rendered placeholders observed; Studio clickable overlays are not installed and no YouTube upload is authorized.",
+    "full_continuous_watch": false,
+    "owner_watched": false,
+    "owner_listened": false,
+    "agent_listened": false,
+    "claim_scope": "Native decode/play/seek/end spot checks only. Audio acceptance is the separately recorded delegated contextual decision with two retained mechanical flags.",
+    "cleanup": {
+      "tab_closed": true,
+      "server_identity_verified": true,
+      "server_stopped": true,
+      "stop_receipt_sha256": "311aae874c51826d4bb37e27abd1cf15707511032a974192cc92c8feab232cb9",
+      "server_exec_session": 7369,
+      "server_exec_exit": -1,
+      "exit_reason": "root intentionally stopped owned server after successful QA; browser byte-range cancellations produced nonfatal ConnectionAbortedError during seeks; native video error remained null"
+    },
+    "receipt_sha256": "196de69e895393819361d78323cb42b795c616249d4c42f7258be8347088496b"
+  },
+  "original_final_sha256": "64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af",
+  "audio_mechanical_flags_retained": 2,
+  "final_local_approval_recorded": false,
+  "dubs_complete": 0,
+  "complete_delivery_package": false,
+  "youtube_uploaded_or_published": false,
+  "next": "Record delegated final approval for this exact Chinese master, then produce/review en,ja,ko,es,pt,id,vi,th sequentially; regenerate captions with actual dub timing and verify package."
+}

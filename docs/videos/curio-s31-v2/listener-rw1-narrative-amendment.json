@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T09:11:48.518Z",
+  "status": "same_listener_round1_narrative_amendment_before_any_synthesis",
+  "initial_panel_failed": "no_recap",
+  "initial_panel_record": "narrative-listener-rw1-initial.json",
+  "earlier_source_sha256": "2646c3a9dbc97b65512a72eff2848319b251a9c3cda653c42dbd5c2991c0fd62",
+  "source_video_after_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "script_after_sha256": "d9056e2b5b27b1ce4c6b084a89adb76a6c723bb603349c2d72f35f9cb028c5b0",
+  "speech_hash_before": "91814d96b978a75e",
+  "speech_hash_after": "fa2912daff4bd218",
+  "narrative_hash_before": "729779f147c12cb2",
+  "narrative_hash_after": "7a931bb0c6952510",
+  "visual_hash_before": "4ff8941e6473b9f4",
+  "visual_hash_after": "4ff8941e6473b9f4",
+  "writer_and_independent_semantic_review_passed": true,
+  "amendments": [
+    {
+      "id": "v2a0491",
+      "before": "學者吳曾改了說法，反而讓我們看到答案是怎麼形成的。",
+      "after": "學者吳曾留下的文字，讓我們看到答案是怎麼形成的。",
+      "round": 1,
+      "revision": 2,
+      "reason": "Remove premature changed-account reveal before lz417",
+      "writer": "s31_translate_pt_id",
+      "independent_reviewer": "s31_translate_ko_es",
+      "review_verdict": "PASS"
+    },
+    {
+      "id": "lz424",
+      "before": "當時用馬接力，七天七夜送到京城，",
+      "after": "七天七夜，送到京城，",
+      "round": 1,
+      "revision": 2,
+      "reason": "Remove repeated relay-method narration while retaining seven-days/seven-nights and capital; historical card text preserved",
+      "writer": "s31_translate_pt_id",
+      "independent_reviewer": "s31_translate_ko_es",
+      "review_verdict": "PASS"
+    }
+  ],
+  "final_changed_line_ids_vs_original_r6": [
+    "lz318",
+    "v2a0471",
+    "v2a0491",
+    "lz424",
+    "v2a0722"
+  ],
+  "other207_lines_unchanged": true,
+  "ancient_card_text_and_sub_unchanged": true,
+  "voice_shots_music_metadata_unchanged": true,
+  "initial_low_blind_verdicts_and_clarifications_preserved": true,
+  "fresh_bare_panel_recheck_pending": true,
+  "audio_synthesized_for_new_source": false,
+  "audio_approved": false,
+  "listener_rewrite_round": 1,
+  "successful_listener_rewrite_synthesis_rounds": 0,
+  "max_listener_rewrite_rounds": 2
+}

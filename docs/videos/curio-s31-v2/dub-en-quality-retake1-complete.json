@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "FIRST_ORIGINAL_TEXT_RETAKE_COMPLETE_PENDING_NEW_AUDIO_QUALITY_CHECK",
+  "completed_at": "2026-10-28T08:28:25.3401679Z",
+  "session": 46336,
+  "pid": 48028,
+  "native_exit": 0,
+  "completion_snapshot": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-retake1-completed-20261028/manifest.json",
+    "sha256": "d40695e9ade30d0fb37c58020d3cdc12102bd4162ea1af4c55b7808973d8a834",
+    "files": 13
+  },
+  "new_cohort": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/dub-en-cohort-prep-v2/en-frozen-bd54053e-3ee7-400c-bcb2-095de10d7f71/catalog.json",
+    "sha256": "520b172d6a0c27846652fb071d57d7a1d3a1837da6a0871007b482deee0dafcd"
+  },
+  "provenance": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/dub-en-cohort-prep-v2/en-frozen-bd54053e-3ee7-400c-bcb2-095de10d7f71/provenance.json",
+    "sha256": "4170436a06faf81eed142e3ebb38fc3107ad2ec7c945c91e90c105833050fe55"
+  },
+  "actual_raw": {
+    "count": 212,
+    "changed_target_count": 29,
+    "changed_target_ids": [
+      "lz213",
+      "lz218",
+      "lz221",
+      "lz310",
+      "lz311p2",
+      "lz319",
+      "lz403",
+      "lz405",
+      "lz411",
+      "lz421p2",
+      "lz425",
+      "lz427",
+      "lz430",
+      "lz432p2",
+      "lz504",
+      "lz506",
+      "lz506p2",
+      "lz513",
+      "lz520",
+      "v2a0081",
+      "v2a0131",
+      "v2a0422",
+      "v2a0471",
+      "v2a0501",
+      "v2a0571",
+      "v2a0611",
+      "v2a0621",
+      "v2a0751",
+      "v2a0791"
+    ],
+    "other183_changed": 0,
+    "prior_eight_takes_preserved": true
+  },
+  "fit": {
+    "windows": 150,
+    "over": 0,
+    "sped": 7,
+    "max_tempo": 1.15,
+    "absorbed": [
+      {
+        "scene": "cheng-date",
+        "absorbed": "next-slack",
+        "overrun_seconds": 0.1
+      }
+    ]
+  },
+  "journal": {
+    "archived_count": 96,
+    "original82_preserved": true,
+    "active": 0
+  },
+  "track": {
+    "sha256": "83d35286ecf762c37f826700c57cd2c16eba67878269cf2830786dd4c081edb1",
+    "bytes": 46584728,
+    "duration_seconds": 969.705,
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "decode_native_exit": 0,
+    "input_lufs": -14.1,
+    "true_peak_db": -1.94,
+    "loudness_range": 5.1
+  },
+  "billing_last_continuation": {
+    "new_requests": 20,
+    "new_billable_characters": 897,
+    "saved_answer_reused": 1,
+    "saved_original_billable_characters": 41,
+    "prior_saved_original_billable_characters": 32,
+    "no_zero_charge_claim": true
+  },
+  "quality": {
+    "plain_rounds_completed": 1,
+    "plain_cap": 2,
+    "shorten_rounds": 0,
+    "listener_rounds": 0,
+    "old_check_is_historical": true,
+    "new_check_complete": false,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "owner_listened": false,
+    "audio_approved": false
+  },
+  "producer_running": false,
+  "asr_handoff_executed": false,
+  "delivery_complete": false,
+  "next_episode_started": false,
+  "next": "Root review exact completed old ASR closure and activation gate; after independently verified closure enable new en-retake1 scope and run a bounded normal quality check. No unchanged-SHA evidence retargeting or synthesis replay.",
+  "full_cohort_review": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-retake1-scope-prep/actual-full-cohort-review-en-retake1-20261028.json",
+    "sha256": "26534624e126149f6add80c1adab93682c2a44c6079f52946acbeb0bcb0cf04a",
+    "verdict": "PASS",
+    "scope": "Actual full raw cohort and physical fit; new audio quality and ASR activation remain separate."
+  },
+  "saved_answer_actual_consumption": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/actual-synthesize-consumption-79e359cdfd57e279.json",
+    "sha256": "1f74aa8eb36d9161db0ad735112c60d7f63d55bab2c08b9fe8073be997b9a79b",
+    "verified": true,
+    "line": "lz403"
+  }
+}
