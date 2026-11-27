@@ -2388,6 +2388,7 @@ async def test_tool_decide_and_set_languages_verify_owner_capability_and_pass_to
         created_by_user_id=reader.id,
     )
 
+    added: list[Any] = []
     found: dict[Any, User] = {owner.id: owner, suspended.id: suspended, reader.id: reader}
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
@@ -2396,6 +2397,7 @@ async def test_tool_decide_and_set_languages_verify_owner_capability_and_pass_to
     async def session() -> Any:
         db = AsyncMock()
         db.get = AsyncMock(side_effect=lambda _model, key: found.get(key))
+        db.add = MagicMock(side_effect=added.append)
         yield db
 
     app.dependency_overrides[get_session] = session
@@ -2422,11 +2424,14 @@ async def test_tool_decide_and_set_languages_verify_owner_capability_and_pass_to
     assert ok_decide.status_code == 200, ok_decide.text
     assert ok_langs.status_code == 200, ok_langs.text
     assert decide_mock.await_count == 1
-    assert decide_mock.await_args is not None
-    assert decide_mock.await_args.kwargs["tool_token_id"] == owner_token.id
     assert set_locales_mock.await_count == 1
-    assert set_locales_mock.await_args is not None
-    assert set_locales_mock.await_args.kwargs["tool_token_id"] == owner_token.id
+    audits = [row for row in added if isinstance(row, AdminAuditLog)]
+    assert [row.action for row in audits] == [
+        "video_tool_review_decision",
+        "video_tool_locales_set",
+    ]
+    assert audits[0].metadata_json["tool_token_id"] == str(owner_token.id)
+    assert audits[1].metadata_json["tool_token_id"] == str(owner_token.id)
 
     assert orphan_res.status_code == 403
     assert orphan_res.json()["code"] == "video_tool_token_owner_missing"
@@ -2434,67 +2439,4 @@ async def test_tool_decide_and_set_languages_verify_owner_capability_and_pass_to
     assert susp_res.json()["code"] == "video_tool_token_owner_suspended"
     assert reader_res.status_code == 403
     assert reader_res.json()["code"] == "admin_capability_required"
-
-
-@pytest.mark.asyncio
-async def test_decide_and_set_locales_record_tool_token_id_in_audit_log(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    now = datetime.now(UTC)
-    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
-    token_id = uuid4()
-    project = VideoProject(
-        id=uuid4(),
-        slug="sothatswhy-g790",
-        title="t",
-        stage="final",
-        checklist=[{"key": "imported", "label": "imported", "done": True}],
-        locales={},
-    )
-    review = VideoReview(
-        id=uuid4(),
-        project_id=project.id,
-        gate="final",
-        subject=None,
-        status="pending",
-        content_sha256="a" * 64,
-        summary="final cut",
-        payload={"hand_pushed": True},
-        files=[],
-        created_at=now,
-    )
-    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
-    monkeypatch.setattr(admin_service, "_short_approved", AsyncMock())
-    monkeypatch.setattr(admin_service, "_decide_daily_brief_locales", AsyncMock())
-    monkeypatch.setattr(
-        admin_service, "project_view", AsyncMock(return_value=_dub_retry_view(str(project.id)))
-    )
-
-    added: list[Any] = []
-    session = AsyncMock()
-    session.add = MagicMock(side_effect=added.append)
-    session.scalar = AsyncMock(return_value=review)
-
-    await admin_service.decide(
-        session,
-        project.slug,
-        review.id,
-        owner,
-        DecisionIn(decision="approve", note="auto"),
-        tool_token_id=token_id,
-    )
-    await admin_service.set_locales(
-        session,
-        project.slug,
-        owner,
-        LocalesIn.model_validate(
-            {"locales": {"en": {"metadata": True, "captions": True, "dub": True}}}
-        ),
-        tool_token_id=token_id,
-    )
-
-    audits = [row for row in added if isinstance(row, AdminAuditLog)]
-    assert [row.action for row in audits] == ["video_review_approved", "video_locales_set"]
-    assert audits[0].metadata_json["tool_token_id"] == str(token_id)
-    assert audits[1].metadata_json["tool_token_id"] == str(token_id)
 

@@ -29,7 +29,7 @@ from app.auth.service import (
 )
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
-from app.models import User, VideoToolToken
+from app.models import AdminAuditLog, User, VideoToolToken
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
 from app.video_media.admin_api import media_store
@@ -182,11 +182,26 @@ async def tool_decide(
     """Record a review decision on behalf of the owner who created this video tool token.
 
     Follows ``tool_retry_dub``: requires the token's creator to still exist, not be suspended,
-    and hold ``content.manage``; every service refusal still applies and the audit row names the
+    and hold ``content.manage``; every service refusal still applies and an audit row names the
     token.
     """
     user = await _tool_owner_with_capability(session, tool, "content.manage")
-    return await service.decide(session, slug, review_id, user, payload, tool_token_id=tool.id)
+    result = await service.decide(session, slug, review_id, user, payload)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_tool_review_decision",
+            target=f"video_review:{result.id}",
+            metadata_json={
+                "slug": slug,
+                "gate": result.gate,
+                "status": result.status,
+                "tool_token_id": str(tool.id),
+            },
+        )
+    )
+    await session.commit()
+    return result
 
 
 @tool_router.put("/{slug}/languages", response_model=ProjectOut)
@@ -195,7 +210,23 @@ async def tool_set_languages(
 ) -> ProjectOut:
     """Set a video's language choices on behalf of the owner who created this video tool token."""
     user = await _tool_owner_with_capability(session, tool, "content.manage")
-    return await service.set_locales(session, slug, user, payload, tool_token_id=tool.id)
+    result = await service.set_locales(session, slug, user, payload)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_tool_locales_set",
+            target=f"video_project:{slug}",
+            metadata_json={
+                "slug": slug,
+                "locales": {
+                    locale: choice.model_dump() for locale, choice in payload.locales.items()
+                },
+                "tool_token_id": str(tool.id),
+            },
+        )
+    )
+    await session.commit()
+    return result
 
 
 @admin_router.get("", response_model=list[ProjectSummary])
