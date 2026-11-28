@@ -1960,9 +1960,21 @@ export class FlowOrchestrator {
     }
 
     const recovered = [];
+    const settledUnbilled = [];
     const unresolved = [];
 
     for (const entry of maybeEntries) {
+      if (!entry.mediaId && /waf-rejection|PUBLIC_ERROR_UNUSUAL_ACTIVITY/i.test(String(entry.note || ""))) {
+        entry.charged = "no";
+        entry.note = `${entry.note} [settled 0cr WAF 403 refusal ${new Date().toISOString()}]`;
+        settledUnbilled.push({
+          shotId: entry.shotId,
+          creditsReleased: entry.credits,
+          reason: "waf_rejection_unbilled",
+        });
+        continue;
+      }
+
       const match = entry.mediaId ? remoteById.get(String(entry.mediaId)) : null;
       if (!match) {
         unresolved.push({ shotId: entry.shotId, mediaId: entry.mediaId, note: entry.note });
@@ -1990,7 +2002,7 @@ export class FlowOrchestrator {
       });
     }
 
-    if (recovered.length > 0) {
+    if (recovered.length > 0 || settledUnbilled.length > 0) {
       recalculateLedgerTotals(ledger);
       atomicWriteJson(paths.ledgerFile, ledger);
     }
@@ -2091,6 +2103,7 @@ export class FlowOrchestrator {
       slug: paths.slug,
       checkedMaybeEntries: maybeEntries.length,
       recovered,
+      settledUnbilled,
       unresolved,
       remainingMissingClips,
       resumeHint:

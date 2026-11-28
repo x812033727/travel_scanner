@@ -489,7 +489,7 @@ test("full AI drama lifecycle: cast + @Name, edit_from chain, continue_from last
     });
     assert.equal(extRun.job.status, "completed");
 
-    // 10. Simulate a `charged: maybe` entry & reconcile from remote Flow catalog
+    // 10. Simulate a `charged: maybe` entry & legacy unbilled WAF 403 maybe entry, then reconcile
     const knownMediaId = driver.remoteVideos[0].media_id;
     recordCreditEvent(paths.ledgerFile, {
       slug,
@@ -500,13 +500,25 @@ test("full AI drama lifecycle: cast + @Name, edit_from chain, continue_from last
       mediaId: knownMediaId,
       note: "Timeout after submit",
     });
+    recordCreditEvent(paths.ledgerFile, {
+      slug,
+      series: "drama-16x9",
+      shotId: "s02",
+      credits: 12,
+      charged: "maybe",
+      mediaId: null,
+      note: "Failure (https://gflow-cli.dev/errors/waf-rejection): WAF rejection (HTTP 403): PUBLIC_ERROR_UNUSUAL_ACTIVITY",
+    });
     const rec = await orchestrator.flowReconcile({ slug });
     assert.equal(rec.ok, true);
     assert.equal(rec.recovered.length, 1);
+    assert.equal(rec.settledUnbilled.length, 1);
+    assert.equal(rec.settledUnbilled[0].creditsReleased, 12);
     assert.ok(fs.existsSync(rec.recovered[0].downloadedPath));
 
     // 11. Ledger reports drama Drive path, 0-credit cut count, multi-takes, and readyForDrivePush
     const ledger = await orchestrator.flowEpisodeLedger({ slug });
+    assert.equal(ledger.credits.maybe, 0);
     assert.equal(ledger.clips.zeroCreditCuts, 1);
     assert.equal(ledger.readyForDrivePush, true);
     assert.match(ledger.drivePushCommand, /--series zhong-tian-qu-qi --path "第033集\/製作檔\/zhong-tian-qu-qi-e033"/);
