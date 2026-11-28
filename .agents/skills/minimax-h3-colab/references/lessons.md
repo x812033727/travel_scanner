@@ -483,3 +483,9 @@ kernel 卡住
   - `~/.config/colab-cli/settings.json` 設 `"enable_update_check": false`（新容器 bootstrap 之後也要設）。
   - 會開機的排程不要只靠 `timeout`：另開一個監看，輸出資料夾的圖都到了就砍掉指令（祖媽的 `$TN_WORK/images-guard.sh`）。
   - 一批跑完還沒關機時，先看進度檔 `completed` 等不等於工作數；等於還在跑，就是卡住了。
+
+## 2026-11-23：refine 的 `colab exec` 會卡住、超過自己的 timeout 也不回來
+
+種田真人版第二輪精修，帳號 C、A100：refine.py 呼叫 `colab exec --timeout 3600` 的那一步卡過四次，一次將近兩小時；執行環境本身還活著。
+正常一鏡約 5 分鐘。做法是跑一個看門狗，`h3_refine.ipynb` 的 exec 超過 20 分鐘就 kill，refine.py 會把沒做完的鏡交給下一次重試，已完成的不重做。
+同一個帳號同時只能開一台 GPU 執行環境（開第二條會回 Service Unavailable）；G4 常常配不到，改用 A100。
