@@ -1,0 +1,294 @@
+{
+  "title": "Cadeado HTTPS engana? Phishing também usa | Era Isso",
+  "description": "Muita gente acha que o cadeado e o HTTPS garantem segurança total, mas só 11% entendiam o ícone e quase todo site de phishing já usa HTTPS! Acompanhe sua senha pelo Wi-Fi do café, criptografia TLS, certificados e registros públicos transparentes, troca de chaves estilo mistura de tintas, sigilo futuro, números de sequência, risco 0-RTT e limites de SNI/ECH.\n\n#OficinaEraIsso #HTTPS #TLS #SegurancaDigital #Phishing #Ciencia",
+  "tags": [
+    "Oficina Era Isso",
+    "HTTPS",
+    "TLS",
+    "Cadeado",
+    "Phishing",
+    "Criptografia",
+    "Seguranca",
+    "Tecnologia"
+  ],
+  "thumbnail": {
+    "headline": "Cadeado **HTTPS engana**?",
+    "sub": "Quem o S protege de verdade?"
+  },
+  "chapters": {
+    "kid-cafe-lock-opening": "O cadeado HTTPS pode te enganar?",
+    "kid-cafe-direct-guess": "Sua senha não voa direto ao site",
+    "kid-sealed-enough-guess": "Quase todo phishing tem cadeado",
+    "kid-how-to-seal-q": "Misturando uma chave à vista de todos",
+    "kid-nothing-visible-guess": "O que ainda aparece mesmo com HTTPS",
+    "kid-spots-extra-letter": "Esse S extra só protege o trajeto"
+  },
+  "source_hashes": {
+    "chapters": {
+      "kid-cafe-lock-opening": "8d91390a90bc",
+      "kid-cafe-direct-guess": "4a26b305067f",
+      "kid-sealed-enough-guess": "2a08b5df2840",
+      "kid-how-to-seal-q": "207ab2a4a6ad",
+      "kid-nothing-visible-guess": "938e2fb71acc",
+      "kid-spots-extra-letter": "c5ef961a90b1"
+    },
+    "title": "ac6af2a66785",
+    "description": "4cb072deb095",
+    "tags": "6f5a33c86ff6",
+    "thumbnail": "97efbb87bb15"
+  },
+  "lines": {
+    "h001": {
+      "source_hash": "289597dedea6",
+      "text": "Chefe! Eu achava que HTTPS e cadeado garantiam senha segura, então por que o Chrome resolveu tirar o cadeado?"
+    },
+    "h002": {
+      "source_hash": "434a6226d042",
+      "text": "Porque um estudo deles mostrou que apenas onze por cento das pessoas realmente entendiam o significado do cadeado."
+    },
+    "h003": {
+      "source_hash": "ddd4a4ca6436",
+      "text": "Pior ainda: quase todos os sites de phishing que roubam senhas também exibem esse cadeado e rodam em HTTPS!"
+    },
+    "h004": {
+      "source_hash": "fedecf045158",
+      "text": "Ganhar esse S no HTTP evita grandes desastres no caminho, mas deixa de fora uma parte crucial que ele não controla."
+    },
+    "h005": {
+      "source_hash": "e77b0d888f03",
+      "text": "Hoje vamos ver o que esse S realmente tranca e por que até o cadeadinho pode te levar ao erro."
+    },
+    "h006": {
+      "source_hash": "0fb5507ba852",
+      "text": "Espera, estou entrando num jogo no Wi-Fi do café; minha senha não voa direto até a empresa do jogo?"
+    },
+    "h007": {
+      "source_hash": "6953be5b5792",
+      "text": "De jeito nenhum! Sua senha passa pelo roteador do café e pela operadora, pulando de estação em estação até o destino."
+    },
+    "h008": {
+      "source_hash": "3e696305fd69",
+      "text": "É como passar bilhetinho na sala de aula até sua amiga: vários colegas desconhecidos pegam o papel no caminho."
+    },
+    "h009": {
+      "source_hash": "b2d540cb0352",
+      "text": "Sem criptografia, qualquer máquina na rota pode espiar sua senha em silêncio ou até trocar palavras lá dentro!"
+    },
+    "h010": {
+      "source_hash": "2f162f0c2864",
+      "text": "Mas a maioria dessas máquinas no caminho deve ser do bem, né? Não vão abrir minha senha em toda parada."
+    },
+    "h011": {
+      "source_hash": "215165e4b129",
+      "text": "O problema é que você não escolhe quem repassa; por isso o padrão assume desde o início que alguém controla a rede."
+    },
+    "h012": {
+      "source_hash": "a54b1cf62ecb",
+      "text": "O S vem de seguro: o TLS lacra o bilhete num envelope que só você e o site de destino conseguem ler."
+    },
+    "h013": {
+      "source_hash": "398cdcfadc79",
+      "text": "Ah! Então se eu lacrar o bilhete num envelope que ninguém na rota abre, minha senha já está totalmente segura?"
+    },
+    "h014": {
+      "source_hash": "b376de64f7c5",
+      "text": "Só lacrar não basta! Ao digitar o endereço, seu aparelho pede direções; e se um golpista der um endereço falso?"
+    },
+    "h015": {
+      "source_hash": "557e5a200c1d",
+      "text": "Não adianta o melhor envelope se você entrega direto a um impostor! Antes de enviar, o site exibe um certificado."
+    },
+    "h016": {
+      "source_hash": "4e50da490631",
+      "text": "É como uma identidade oficial: traz o domínio e a amostra do carimbo público; só o carimbo privado real confere."
+    },
+    "h017": {
+      "source_hash": "d982881c0a44",
+      "text": "E ninguém pode desenhar uma identidade falsa no papel? Como o navegador sabe qual carimbo vale mesmo?"
+    },
+    "h018": {
+      "source_hash": "ac90176db13f",
+      "text": "Carteira caseira o navegador recusa! O site pede a uma autoridade confiável, que exige pôr um código no endereço."
+    },
+    "h019": {
+      "source_hash": "5ac874edf268",
+      "text": "A autoridade checa de vários pontos se você controla o domínio, mas atenção: ela nunca checa se o dono é honesto!"
+    },
+    "h020": {
+      "source_hash": "d4124fe21bf0",
+      "text": "Calma aí! Um colega mandou um link de gemas grátis e a barra também mostra HTTPS com o cadeadinho!"
+    },
+    "h021": {
+      "source_hash": "1a642131f1ee",
+      "text": "Cuidado, esse link de gemas grátis tem cara de phishing! Golpistas registram um nome parecido e tiram certificado válido."
+    },
+    "h022": {
+      "source_hash": "e2fffdddaa1f",
+      "text": "O cadeado só prova conexão cifrada, não confiança; por isso o Chrome trocou em 2023. E há um risco ainda maior!"
+    },
+    "h023": {
+      "source_hash": "54abf89ef0e6",
+      "text": "Maior que phishing? Se a autoridade checa o domínio, golpista nenhum controla o endereço de um banco real!"
+    },
+    "h024": {
+      "source_hash": "05575dc5d56a",
+      "text": "Se uma autoridade confiável falhar e emitir errado, até um banco real pode ser imitado com endereço certo e cadeado!"
+    },
+    "h025": {
+      "source_hash": "75ce706dfcdc",
+      "text": "Por isso Chrome e Safari exigem registrar todo certificado em livros públicos transparentes, pegando erros na hora!"
+    },
+    "h026": {
+      "source_hash": "a8870fe57163",
+      "text": "Se o certificado não bater ou faltar no livro, o navegador barra com alerta vermelho; mas sobra um dilema difícil!"
+    },
+    "h027": {
+      "source_hash": "1f18ef9b93ca",
+      "text": "Qual dilema? A identidade está checada, mas lacrar exige chave; com todo mundo olhando, como combinar sem ninguém copiar?"
+    },
+    "h028": {
+      "source_hash": "b56be02f0b99",
+      "text": "Com uma mágica matemática incrível! Vamos usar mistura de tintas para imaginar como criar uma chave secreta em público."
+    },
+    "h029": {
+      "source_hash": "f22f2941f5df",
+      "text": "Os dois combinam em público a mesma tinta amarela base, e cada um pinga em segredo sua cor: vermelho e azul."
+    },
+    "h030": {
+      "source_hash": "ea343507b956",
+      "text": "Depois trocam as misturas laranja e verde à vista de todos; tinta misturada não desmistura, então ninguém descobre a receita!"
+    },
+    "h031": {
+      "source_hash": "2bc9f1ecd363",
+      "text": "Cada um soma sua cor secreta ao copo recebido e os dois chegam ao mesmo marrom escuro, enquanto os curiosos ficam sem nada!"
+    },
+    "h032": {
+      "source_hash": "4680af11f091",
+      "text": "A tinta é metáfora, na prática é matemática; pronta essa chave temporária, sua senha enfim vai trancada no envelope!"
+    },
+    "h033": {
+      "source_hash": "bfdc097e6c5c",
+      "text": "Espera: se o site guarda o carimbo privado, alguém que gravar tudo hoje e roubar o carimbo depois abre tudo de uma vez?"
+    },
+    "h034": {
+      "source_hash": "62663b6d5a86",
+      "text": "Não abre! O carimbo privado só prova identidade; a chave temporária é destruída logo após, o chamado sigilo futuro."
+    },
+    "h035": {
+      "source_hash": "94b3d600d718",
+      "text": "Se os segredos temporários forem apagados, mesmo roubando o carimbo anos depois, os dados gravados continuam ilegíveis."
+    },
+    "h036": {
+      "source_hash": "eaeddfc3e0f3",
+      "text": "Peraí! Se o certificado está num livro público, o que impede um bandido de copiar o do jogo e misturar tinta comigo?"
+    },
+    "h037": {
+      "source_hash": "dc0162d11704",
+      "text": "Quem copia não tem o carimbo privado real! O site precisa carimbar na hora toda a abertura, incluindo a troca de cores."
+    },
+    "h038": {
+      "source_hash": "dd976ce5b3a0",
+      "text": "Essa conferência inicial é o handshake: no fim ambos conferem o registro inteiro e, se divergir, derrubam a conexão."
+    },
+    "h039": {
+      "source_hash": "555da9e3c043",
+      "text": "Cada mensagem vai lacrada com o tamanho do envelope; mudou uma letra, desconecta na hora."
+    },
+    "h040": {
+      "source_hash": "37e3baf05815",
+      "text": "Se não dá para alterar o texto, e se copiarem o envelope cifrado inteiro para reenviar duas vezes ou trocar a ordem?"
+    },
+    "h041": {
+      "source_hash": "865605e264f4",
+      "text": "Cada lado numera as mensagens do zero e esconde o número dentro do lacre; reenvio ou troca de ordem falha na hora!"
+    },
+    "h042": {
+      "source_hash": "c2d2d8682aa6",
+      "text": "Mas o padrão traz um aviso importante: se você já visitou antes, a primeira mensagem pode sair adiantada para ganhar tempo."
+    },
+    "h043": {
+      "source_hash": "484ee7639f63",
+      "text": "Esse envio antecipado não impede reenvio entre conexões e pode duplicar compras, então o servidor precisa limitar à parte."
+    },
+    "h044": {
+      "source_hash": "e623b718c07a",
+      "text": "Até o encerramento é rígido: é preciso enviar um aviso formal de término para saber se alguém cortou o fio no meio."
+    },
+    "h045": {
+      "source_hash": "7621d03a2bab",
+      "text": "Números e encerramento também blindados! Então com HTTPS ninguém na rota consegue ver mais nada, certo?"
+    },
+    "h046": {
+      "source_hash": "ebdf395b7a34",
+      "text": "Ainda vazam pistas importantes! Lembra do tamanho do envelope por fora? A espessura e o ritmo dos envios continuam visíveis."
+    },
+    "h047": {
+      "source_hash": "cec20861b6c4",
+      "text": "O padrão avisa que analisar tamanho e ritmo pode revelar pistas, ainda mais em sites de vídeo com catálogo fixo."
+    },
+    "h048": {
+      "source_hash": "7d1a88488f0a",
+      "text": "É possível encher o envelope de espaço vazio para despistar, mas o padrão não obriga uma quantidade exata de enchimento."
+    },
+    "h049": {
+      "source_hash": "cddf23078e58",
+      "text": "Uma pista ainda mais clara é o nome do site que você busca: logo no início da conexão, ele costuma ir escrito por fora!"
+    },
+    "h050": {
+      "source_hash": "1cd7eaa278ed",
+      "text": "Até o nome do site que estou acessando fica por fora? Não dá para trancar o destinatário num envelope interno também?"
+    },
+    "h051": {
+      "source_hash": "ffe57f18edbd",
+      "text": "Um novo padrão publicado em março de 2026 tenta fazer exatamente isso: guardar o nome do site num envelope interno cifrado."
+    },
+    "h052": {
+      "source_hash": "7dc03e730c14",
+      "text": "Mas esse mesmo padrão admite que não basta: qual máquina servidor recebe o envelope ainda fica visível no caminho."
+    },
+    "h053": {
+      "source_hash": "4a0ee344e7fa",
+      "text": "Mesmo com muitos sites dividindo a mesma máquina para borrá-la, mais um ponto de vazamento impede invisibilidade total."
+    },
+    "h054": {
+      "source_hash": "c3a30fa61eba",
+      "text": "E lembre-se da pergunta de endereço antes de conectar: se essa consulta não for cifrada, o nome do site vaza do mesmo jeito!"
+    },
+    "h055": {
+      "source_hash": "303c7004d1ce",
+      "text": "Até pedir o endereço vaza o nome! Voltando ao link de gemas com HTTPS, como me protejo dos golpistas?"
+    },
+    "h056": {
+      "source_hash": "8b2dccfd2943",
+      "text": "Guarde esta fronteira: a criptografia só protege o trajeto; assim que chega ao destino, quem recebe lê tudo perfeitamente."
+    },
+    "h057": {
+      "source_hash": "10f2f2019c66",
+      "text": "Se o outro lado já for um golpista, o HTTPS entrega sua senha intacta direto nas mãos dele!"
+    },
+    "h058": {
+      "source_hash": "0315f6f8cf2a",
+      "text": "Opa! Olhando bem a barra de endereços, esse link de gemas grátis enfiou uma letra extra no meio do nome do jogo!"
+    },
+    "h059": {
+      "source_hash": "88a99f867857",
+      "text": "Exato, o lacre não impede nomes parecidos; antes de digitar sua senha, confira sempre o endereço com os próprios olhos."
+    },
+    "h060": {
+      "source_hash": "c716729a1ad1",
+      "text": "Então era isso! Como o cadeado no começo, esse S protege só a estrada, mas conferir o destinatário ainda é com você!"
+    },
+    "h061": {
+      "source_hash": "19b00a02b256",
+      "text": "Perfeito. O mais legal é usar esse lacre todo dia e só agora enxergar com nitidez onde fica o verdadeiro limite dele."
+    },
+    "h062": {
+      "source_hash": "f974c36cd9a5",
+      "text": "Última pergunta: você já recebeu um link falso quase idêntico que quase te enganou? Conte nos comentários para alertar a turma!"
+    },
+    "h063": {
+      "source_hash": "e27557dfdca6",
+      "text": "Curte desvendar a tecnologia do dia a dia de forma simples? Inscreva-se na Oficina Era Isso e até a próxima!"
+    }
+  }
+}
