@@ -1,0 +1,36 @@
+{
+  "source_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+  "reviewer": "/root/c08_r9_review_ko_es",
+  "independent": true,
+  "role_disclosure": "我未參與C08中文或KO/ES翻譯，未讀譯者自校結論。本輪直接對照SHA d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b的R9 video.json、script.md、claims與series，以及相關原件；完整逐句讀KO/ES各127句、6章、title、description全部21條來源及URL、tags與thumbnail三欄。native與worksheet逐項逐字一致，worksheet來源逐項對上canonical，native所有127條字幕及metadata／chapter的source binding均為current，21個URL字串與順序完整保留。核對I/you、回述／公司功能主張／文書歸屬、假設、否定與條件；1961年150mL可再填玻璃瓶、2010年500mL上市軟袋、2011年200mL上市密封瓶、JP5727888B2軸向液閥、JP5053463B2申請人500mL軟膜原型及2018年450mL PET瓶未混同。直接讀JP5727888B2請求項1／2及[0004]–[0010]、JP5053463B2[0056]–[0068]與完整官方FAQ F2/F3/F4/F6/F7/F9/F10，保留每時點五樣、約45度、120小時未見空氣但出液失效、160cm內蓋陷入但未見外漏；沒有把公開／登錄日改作試驗日。正常密封的常溫120日目安及例外，與整座拆蓋後須冷藏的條件分清。K7原件為恩田友貴；ES只用已證姓Onda、全翻譯無CJK，KO保留原漢字；Itsudemo Shinsen系列名稱無誤。本輪僅審metadata與captiontext，未定時，未評duration、dub fit、SRT時序、媒體或已知共圖缺口；無付費、後台、Git、core／input或譯稿修改，未派子agent。記錄並於報告寫入後復核全部50個已讀輸入與原件檔案的SHA，未改其bytes。",
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "db50f65b8699c688665e21943a93acb73978fd6039dc6aad2db0642438ac6fb6",
+      "translation_sha256": "d058c249cd1b67d4157c9196fb1bafea14861f1c232204de532eed31c37cff74",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "9db09ef5c15e0914f8cf3969e1514242601b89226b5d1a60ec9352d16f8dc8aa",
+      "translation_sha256": "b74e48b27943a5b52b4332a837871eed8411e24dcab5bc816f09cf29cf3736e7",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c8r10402",
+          "current": "Onda , del equipo de desarrollo de productos de Kikkoman, explicó después que esta salsa prescinde de la pasteurización por calor y elimina los microorganismos mediante una filtración especial.",
+          "proposed": "Onda, del equipo de desarrollo de productos de Kikkoman, explicó después que esta salsa prescinde de la pasteurización por calor y elimina los microorganismos mediante una filtración especial.",
+          "reason": "可選的西文排版微調：刪去逗號前的多餘空格。姓氏、來源歸屬、非加熱與特殊過濾的語意均正確，未核名的拉丁讀音亦未引入，不構成必要翻譯修正。",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "revision": "c03-teaser-image-plan-v1-story-category",
+  "author": "/root/approved_teaser_visual_plan",
+  "status": "HOLD_CATEGORY_ONLY_SOURCE_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+  "kind": "NOT_A_NATIVE_MANIFEST_OR_VIDEO_SCHEMA_EXTENSION",
+  "not_a_keyframes_manifest": true,
+  "actual_same_asset_verified": false,
+  "no_assets_generated": true,
+  "source_before_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+      "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+      "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+      "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+    },
+    "claims_md_sha256": "8ff55ec06c753b92260d326c85372c6f6d5225b55bfdec193cbfa3f2b56683a0",
+    "brief_sha256": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+    "series_sha256": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b"
+  },
+  "rule": {
+    "path": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "narrative_and_canonical_unchanged": {
+    "narrative_hash": "5cb14d4ecf0bdc3a",
+    "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "approved_narrative_not_rewritten": true,
+    "old_native_review_still_matches": true,
+    "source_review_must_be_reopened_for_current_video_sha": true
+  },
+  "code_files_sha256": {
+    "tools/video/core/screenplay.mjs": "1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389",
+    "tools/video/core/narrative.mjs": "2b474789da003607847a062b0d627a33f50e6026f093d832ed5f26803782d7bc",
+    "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+    "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+    "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+    "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+    "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+    "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "authors-old-notebook-context",
+      "source_scene_id": "c03r-p04s02",
+      "source_line_ids": [
+        "r304021"
+      ],
+      "reuse_scene_id": "c03r-h04",
+      "reuse_line_ids": [
+        "r3h041"
+      ],
+      "actual_narrative_answer_line_ids": [
+        "r304021",
+        "r304031"
+      ],
+      "source_text": [
+        "開頭那些作家，品牌官網把他們連到的是老式筆記本；"
+      ],
+      "reuse_text": [
+        "上市文件往前追，竟連到比現代品牌早得多的作家。"
+      ],
+      "payoff_chapter_context_may_differ_from_numeric_answer_card": false,
+      "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+      "prompt_sha256": "5864f92d036095203cd6417df522316c06ef04afb8d3d88d2c1d1119abe0fe56",
+      "camera": "push in",
+      "composed_prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+      "composed_prompt_sha256": "294fd034c8940154fa4e85f9da4d91673048b486a0bc3bb79f9eba256fd150a0",
+      "no_result_drawn_in_teaser": "Anonymous library reading context depicts neither a named author nor a modern branded notebook used by historical writers.",
+      "native_key_rehearsal": {
+        "pure_local_only": true,
+        "provider": "minimax",
+        "model": "image-01",
+        "image_selection_version": 1,
+        "seed": 1,
+        "references": [],
+        "negative": "",
+        "size_1k": null,
+        "key_1k": "d412156e47533c92",
+        "size_2k": "2K",
+        "key_2k": "ec476f9db34ff556",
+        "both_ends_exactly_equal": true,
+        "prompt_cut_chars": 0,
+        "backend_settings_read_back": false
+      },
+      "official_command_recipe": [
+        {
+          "step": "Payoff first, only after all admission and review gates",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c03-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-moleskine-c03-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c03r-p04s02",
+            "--takes",
+            "1"
+          ]
+        },
+        {
+          "step": "Before running teaser: require the exact live-cache key and on-disk bytes/SHA to match the accepted payoff; stop on miss to prevent a new dispatch",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c03-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-moleskine-c03-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c03r-h04",
+            "--takes",
+            "1"
+          ]
+        }
+      ],
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    },
+    {
+      "asset_plan_id": "financial-remeasurement-context",
+      "source_scene_id": "c03r-n04",
+      "source_line_ids": [
+        "r3n041"
+      ],
+      "reuse_scene_id": "c03r-h05",
+      "reuse_line_ids": [
+        "r3h051"
+      ],
+      "actual_narrative_answer_line_ids": [
+        "r318041",
+        "r318042",
+        "r3n041"
+      ],
+      "source_text": [
+        "用往後五年的財務預測，把未來現金流折回今天，檢查帳上價值能不能支持。"
+      ],
+      "reuse_text": [
+        "多年後，一份財報又得重新計算這個名字的價值。"
+      ],
+      "payoff_chapter_context_may_differ_from_numeric_answer_card": true,
+      "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+      "prompt_sha256": "4fc3b4c522413d60f490c4e269c19b729213fdcb931d945cee82c678711e3ad6",
+      "camera": "pan right",
+      "composed_prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+      "composed_prompt_sha256": "d780f4974c16a74fe8eab85dd18c6ea166d3fdca2571941c77259584e499d2e1",
+      "no_result_drawn_in_teaser": "Blank forecast folder and plain ledger do not reveal the impairment amount. The numeric stats card remains unchanged; the shared still is the actual payoff chapter context.",
+      "native_key_rehearsal": {
+        "pure_local_only": true,
+        "provider": "minimax",
+        "model": "image-01",
+        "image_selection_version": 1,
+        "seed": 1,
+        "references": [],
+        "negative": "",
+        "size_1k": null,
+        "key_1k": "be22fa92ca5132e1",
+        "size_2k": "2K",
+        "key_2k": "d66150a0b42363b4",
+        "both_ends_exactly_equal": true,
+        "prompt_cut_chars": 0,
+        "backend_settings_read_back": false
+      },
+      "official_command_recipe": [
+        {
+          "step": "Payoff first, only after all admission and review gates",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c03-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-moleskine-c03-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c03r-n04",
+            "--takes",
+            "1"
+          ]
+        },
+        {
+          "step": "Before running teaser: require the exact live-cache key and on-disk bytes/SHA to match the accepted payoff; stop on miss to prevent a new dispatch",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c03-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-moleskine-c03-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c03r-h05",
+            "--takes",
+            "1"
+          ]
+        }
+      ],
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "production_handoff": {
+    "normal_cache_route_only": true,
+    "still_alias_field_added": false,
+    "no_manifest_or_approval_fabricated": true,
+    "preconditions": [
+      "Exact current independent source/visual review, current narrative-bound owner approvals, admitted new-remake budget account/history/all-in quote, and formal branding requirements remain mandatory. This plan authorizes no provider call.",
+      "Read actual provider/model/size/version/seed/references/look/composed prompt and correction list before production; the native keys recorded here are declared planned examples, not current backend settings.",
+      "Generate and pass each payoff first through the normal keyframes --shot --takes 1 route with seed 1. Before the teaser command, use the ordinary read-only cache reader and actual bytes/SHA to prove the same key is present and points to the accepted payoff file. If not present or changed, stop; do not allow the teaser command to dispatch a fresh image."
+    ],
+    "same_prompt_is_not_same_asset": true,
+    "on_any_failure": "Stop the pair. Each scene retains its own official judge. Do not reroll a second seed, independently buy a similar picture, bypass a failed judge, or hand-edit a manifest. Any changed request, retake, trim or selection requires both ends to be reconciled under the normal gates.",
+    "required_actual_checks": [
+      "Both final official manifest scene assignments and their actual file bytes/SHA256 are identical.",
+      "If margin trimming creates derived files, compare those actual selected derived files too; equality of an earlier original is insufficient.",
+      "Each scene has its own passing official image judgment and valid receipts.",
+      "Both assembly inputs reference that same accepted selected image; the ledger contains no duplicate teaser image purchase."
+    ],
+    "actual_generated_media": 0,
+    "actual_verified_shared_images": 0
+  },
+  "paid_provider_requests": 0,
+  "backend_calls": 0,
+  "runtime_or_approval_writes": 0,
+  "story_category_delta": {
+    "baseline_visual_source_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+    "source_category": "story",
+    "only_additional_video_leaf_changed": "category",
+    "delta_receipt": "story-category-delta.json",
+    "pairs_native_request_inputs_unchanged": true,
+    "native_lint_status": "HOLD_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+    "native_lint_errors": 9
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "revision": "seiko-r2",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_REAL_ASSETS_AND_SHA",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "no_assets_generated": true,
+  "actual_same_asset_verified": false,
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "044ca1b115d4dcaea136de6edad3e316db6d11c5edc529f2bda3944fe985cda6",
+      "script.md": "c3a0fcea948a315b0b36ade7ecc666222612724ed3548df36337501ab5b36b1c",
+      "narration-only.json": "f242501b1dda12d08e20122db464afbaa86eec744c89b9477bdf6b18d69a0ea4",
+      "claims.json": "ec24561254fbae179a0c6b72c5ad3efec4264383a434fde9bf206f2931805d26"
+    },
+    "claims_md_sha256": "ec6f0cccc76f15613d9d4db5ece8f4b6051a7d5673d56aa12ae46e7f858e177c",
+    "brief_sha256": "a02ec64b74a5f6ba9222614327a3fa09f4e4c823d3a30dbc71a1896869e7b808",
+    "series_sha256": "226fc8e47e4c74d17df5f0a80839a58f38cc27b85d2e37a0a3599c1503b7ec2e"
+  },
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_field_available": false,
+    "data_source_is_clip_only_not_still_alias": true,
+    "camera_is_part_of_composed_prompt": true,
+    "guard_is_read_only": "Use readCache(workdir), existsSync and hash actual bytes; never use cached() as a readonly guard because it can mutate/delete cache."
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "price-card-before-relabel",
+      "source_scene_id": "skr1p14",
+      "reuse_scene_id": "skr1h05",
+      "narration_setup_text": "一張價牌，為什麼會讓上市前的準備突然改動？",
+      "narration_payoff_text": "回到準備中的價牌，企業史說，服部正次當晚到場，看過後要求改回四十五萬。",
+      "prompt_exact_match": true,
+      "camera_exact_match": true,
+      "source_prompt_sha256": "0a49566e1282a84841a7782b0251324ae73487f5002d24a0b53821a47e8770da",
+      "reuse_prompt_sha256": "0a49566e1282a84841a7782b0251324ae73487f5002d24a0b53821a47e8770da",
+      "camera": "pan left",
+      "composed_prompt_sha256": "31d631240ab2816a4d08937a0beb3a704eee5e1d80ec3cf7fd74141b20756bcc",
+      "no_result_drawn_in_teaser": "Anonymous neutral object before final placement/inspection; no readable price, measured furnace value, changed result or historical named likeness.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Close-up at a shop preparation counter, an anonymous worker holding a small unmarked price card beside a plain gold-colored wristwatch, gentle light from the left.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "requested_size": null,
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "e410b5898d5e7e61",
+        "native_stage_key": "45e228dce955e7cb",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "furnace-setting-inspection",
+      "source_scene_id": "skr1f08",
+      "reuse_scene_id": "skr1h06",
+      "narration_setup_text": "而工廠的一座真空爐，又藏著什麼沒被記下的事？",
+      "narration_payoff_text": "回顧認為更大的問題，是設定溫度沒有作為資料記錄下來。",
+      "prompt_exact_match": true,
+      "camera_exact_match": true,
+      "source_prompt_sha256": "d410be6b75ae08173232ea0ba015072514db914affd72d3503fc25f8dcd1cd60",
+      "reuse_prompt_sha256": "d410be6b75ae08173232ea0ba015072514db914affd72d3503fc25f8dcd1cd60",
+      "camera": "pan right",
+      "composed_prompt_sha256": "2988d70d271d151b254bc3df13244467ac7b039ed8eface9e693b180c59f205f",
+      "no_result_drawn_in_teaser": "Anonymous neutral object before final placement/inspection; no readable price, measured furnace value, changed result or historical named likeness.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Medium shot at a factory heating station, an anonymous supervisor examining an unmarked control knob beside a closed vacuum furnace and a closed plain folder, mild overhead light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "requested_size": null,
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "3a4547eaf6196368",
+        "native_stage_key": "8b0772b83b240cfc",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "Current independent source/visual and fresh native reviews, exact owner gates, real new-project US$25 accounting and protected admission, and complete all-in quote are pending.",
+      "Before paid work, read actual provider/model/version/size/negative/refs/seed/fixes/prompt limit and recompute native keys; declared example values are not live backend/cache evidence."
+    ],
+    "official_command_recipe_only": [
+      {
+        "purpose": "PAYOFF FIRST only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/seiko-submission-root",
+          "keyframes",
+          "--slug",
+          "story-adapt-seiko-quartz-astron-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "skr1p14",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READONLY LIVE CACHE GUARD BEFORE SECOND COMMAND",
+        "checks": [
+          "Read official keyframes/manifest.json payoff selected item: judge passed, needs_review false, exact seed/take/fixes/live-key and selected file.",
+          "Hash actual selected file bytes and match selected.sha256.",
+          "Use readCache(workdir), require entries[live-key], matching provider/model/file existence and actual bytes SHA equal entry.sha256.",
+          "Cache miss, file missing, SHA mismatch, changed request, retake or selected crop mismatch: STOP pair. Do not run teaser to buy another image."
+        ]
+      },
+      {
+        "purpose": "TEASER only after real cache guard succeeds",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/seiko-submission-root",
+          "keyframes",
+          "--slug",
+          "story-adapt-seiko-quartz-astron-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "skr1h05",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "PAYOFF FIRST only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/seiko-submission-root",
+          "keyframes",
+          "--slug",
+          "story-adapt-seiko-quartz-astron-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "skr1f08",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READONLY LIVE CACHE GUARD BEFORE SECOND COMMAND",
+        "checks": [
+          "Read official keyframes/manifest.json payoff selected item: judge passed, needs_review false, exact seed/take/fixes/live-key and selected file.",
+          "Hash actual selected file bytes and match selected.sha256.",
+          "Use readCache(workdir), require entries[live-key], matching provider/model/file existence and actual bytes SHA equal entry.sha256.",
+          "Cache miss, file missing, SHA mismatch, changed request, retake or selected crop mismatch: STOP pair. Do not run teaser to buy another image."
+        ]
+      },
+      {
+        "purpose": "TEASER only after real cache guard succeeds",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/seiko-submission-root",
+          "keyframes",
+          "--slug",
+          "story-adapt-seiko-quartz-astron-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "skr1h06",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "actual_verification_required": [
+      "Both scenes independently pass the ordinary judge.",
+      "Read actual official manifest selected file references and selected SHA for both, then hash the actual final bytes.",
+      "After any trim/crop require the same final selected derived file and SHA; original generated SHA alone is insufficient.",
+      "Assembly input must use the same actual selected image in teaser and payoff. Preserve normal cache/job/ledger receipts."
+    ],
+    "on_failure": "Stop; no force/accept-best, lookalike paid reroll, fake alias, custom manifest or hand-edit cache.",
+    "executed": false
+  },
+  "provider_calls": 0,
+  "paid_calls": 0
+}

@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "review_type": "independent_targeted_text_recheck",
+  "reviewed_at_utc": "2026-10-25T14:45:15.590182+00:00",
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/c03-audit/review-en-ja.json",
+    "sha256": "c2d99bf078885a2c355bf24778a237fa3c976aeb621adbee17f279f57477d7e5",
+    "preserved": true
+  },
+  "canonical_video": {
+    "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+    "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "matches_original_review_input": true
+  },
+  "policy_finding_resolution": {
+    "finding": "tags: restore 品牌故事 and 日用品的意外轉身",
+    "locales": [
+      "en",
+      "ja"
+    ],
+    "resolution": "WITHDRAWN",
+    "reason": "The original finding incorrectly treated source tags as a mandatory one-for-one translation list. The owner rule omits channel/series names from translated titles and their tags; localized tags contain product/search terms. Both omitted strings are the actual series label, and generic brand-history search tags remain. Omission is compliant and needs no edit.",
+    "policy": {
+      "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-translate.md",
+      "sha256": "605e3b06224b25e66252bf5fba68ee1885b9654c762a0dd3606060042303019e",
+      "line": 34,
+      "quote": "**No channel name in a translated title or its tags** (owner, 2026-10-13). When the zh-TW title ends on the channel or series name (「｜奇聞檔案局」), leave it out of the translation, and leave its tag out too: YouTube shows the channel under the title anyway, the characters are better spent on words a `<LOCALE>` viewer searches for, and no name for the channel in `<LOCALE>` has been decided, so any rendering would be a coinage.",
+      "related_line_36": "`tags`: the product names plus the terms `<LOCALE>` viewers search for; the whole list at most 500 characters."
+    },
+    "series_evidence": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-stories-everyday-reversals-20261020/series.json",
+      "sha256": "ddccc2539ae33aa57aa20c4699ac1407cdde2a0a3ec38001756e375f2043bde7",
+      "slug": "brand-stories-everyday-reversals",
+      "title": "品牌故事：日用品的意外轉身",
+      "canonical_episode_series_file": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/series.json",
+      "canonical_episode_series_sha256": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+      "canonical_episode_series_slug": "brand-stories-everyday-reversals"
+    },
+    "original_finding_retained_in_history": true
+  },
+  "scope": "Targeted recheck against immutable before snapshots: EN three required non-tag fixes plus two optional chapter compactness edits; JA one required non-tag fix. All other translation/worksheet fields must be unchanged. No new full review or translation edits.",
+  "timing_status": "UNVERIFIED",
+  "media_qa_status": "UNVERIFIED",
+  "owner_approval_asserted": false,
+  "limitations": [
+    "No audio, timeline or SRT exists. Text semantics and worksheet clause order only; no measured readability speed, segmentation, synchronization, dubbing fit, media QA or final approval asserted."
+  ],
+  "locales": {
+    "en": {
+      "status": "TEXT_PASS",
+      "translation_file": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/en.json",
+      "input_sha256": "2039b013395772b9fa26111dfda73a1fc0f8f8bba928ba2af484a192d341c863",
+      "worksheet_file": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/en.todo.json",
+      "worksheet_sha256": "03bd597ffff3756f85c606a5e2a457f6d08b8288c9355ecd6af7bc0d0ceb2355",
+      "original_input": {
+        "translation_snapshot": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/en/translation-before.json",
+        "sha256": "2cdfecd5943d0dd3e891cfdf5610164f5eae36dc91940d6f729fab1e444f8bba",
+        "matches_original_review_input": true,
+        "worksheet_snapshot": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/en/worksheet-before.json",
+        "worksheet_sha256": "61c060905c1991974abd977d38f6eba13c23d5e72b5860d65cefaf76a4b16da1",
+        "matches_original_review_worksheet": true
+      },
+      "changed_fields": [
+        {
+          "path": "/chapters/c03r-h01",
+          "before": "A Blank Notebook's Market Value",
+          "after": "Blank Notebook's Market Value"
+        },
+        {
+          "path": "/chapters/c03r-p05s01",
+          "before": "From Bookstores to the Market",
+          "after": "Bookstores to the Stock Market"
+        },
+        {
+          "path": "/chapters/c03r-p13s01",
+          "before": "A New Owner's Stores & Products",
+          "after": "New Owner, Stores and Products"
+        },
+        {
+          "path": "/lines/r305031/text",
+          "before": "In the publisher's vision, buyers took on the author's role along with the notebook.",
+          "after": "In the company's vision, buyers took on the author's role along with the notebook."
+        },
+        {
+          "path": "/lines/r320041/text",
+          "before": "Subscribe to keep exploring how names on everyday things become businesses, and the practical tests they face.",
+          "after": "To keep exploring how names on everyday things become businesses, and the practical tests they face, subscribe."
+        }
+      ],
+      "worksheet_changed_fields": [
+        {
+          "path": "/chapters/0/text",
+          "before": "A Blank Notebook's Market Value",
+          "after": "Blank Notebook's Market Value"
+        },
+        {
+          "path": "/chapters/2/text",
+          "before": "From Bookstores to the Market",
+          "after": "Bookstores to the Stock Market"
+        },
+        {
+          "path": "/chapters/4/text",
+          "before": "A New Owner's Stores & Products",
+          "after": "New Owner, Stores and Products"
+        },
+        {
+          "path": "/lines/25/text",
+          "before": "In the publisher's vision, buyers took on the author's role along with the notebook.",
+          "after": "In the company's vision, buyers took on the author's role along with the notebook."
+        },
+        {
+          "path": "/lines/142/text",
+          "before": "Subscribe to keep exploring how names on everyday things become businesses, and the practical tests they face.",
+          "after": "To keep exploring how names on everyday things become businesses, and the practical tests they face, subscribe."
+        }
+      ],
+      "exact_expected_changed_paths": true,
+      "all_other_translation_fields_unchanged": true,
+      "worksheet_only_matching_text_fields_changed": true,
+      "all_line_source_hashes_current": true,
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-en.json",
+        "sha256": "9da4f38079e9b5c5ba9a461a7cd45996ed07abc39dd2f46e74cd94fc4c6e7b96",
+        "exit": 0,
+        "binds_current_video_worksheet_translation": true
+      },
+      "accepted_required_fixes": 3,
+      "accepted_optional_compactness_edits": 2,
+      "tag_finding": "WITHDRAWN_BY_OWNER_SERIES_OMISSION_RULE",
+      "new_concerns": [],
+      "timing_status": "UNVERIFIED",
+      "media_qa_status": "UNVERIFIED",
+      "approval_claim": "Text preparation only; no owner or final/media approval asserted."
+    },
+    "ja": {
+      "status": "TEXT_PASS",
+      "translation_file": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/ja.json",
+      "input_sha256": "038fb15c08dea06bcedb70785c416a3da1a186d52b8cd33092cbc5c4351a2fe9",
+      "worksheet_file": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/ja.todo.json",
+      "worksheet_sha256": "b95701381d1a0fb9a28e22e5617c8689f7e1650d0339a1af8c6b3adb4bb17cd7",
+      "original_input": {
+        "translation_snapshot": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/ja/translation-before.json",
+        "sha256": "070f882dd21254518bc6e37dfe478932b4465e9622276df0fe90cc3ef9e6d957",
+        "matches_original_review_input": true,
+        "worksheet_snapshot": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/ja/worksheet-before.json",
+        "worksheet_sha256": "78306d4221e31b25ad9860b7108a391f7cee55c01a4c17a8eb25333afd2b8577",
+        "matches_original_review_worksheet": true
+      },
+      "changed_fields": [
+        {
+          "path": "/lines/r305031/text",
+          "before": "出版社の構想では、買った人はノートとともに、作者の立場も受け取ります。",
+          "after": "会社の構想では、買った人はノートとともに、作者の立場も受け取ります。"
+        }
+      ],
+      "worksheet_changed_fields": [
+        {
+          "path": "/lines/25/text",
+          "before": "出版社の構想では、買った人はノートとともに、作者の立場も受け取ります。",
+          "after": "会社の構想では、買った人はノートとともに、作者の立場も受け取ります。"
+        }
+      ],
+      "exact_expected_changed_paths": true,
+      "all_other_translation_fields_unchanged": true,
+      "worksheet_only_matching_text_fields_changed": true,
+      "all_line_source_hashes_current": true,
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-ja.json",
+        "sha256": "bc00dd35061b7140f3add816c69f0c2e95155b0b5303995417d64121986419f9",
+        "exit": 0,
+        "binds_current_video_worksheet_translation": true
+      },
+      "accepted_required_fixes": 1,
+      "accepted_optional_compactness_edits": 0,
+      "tag_finding": "WITHDRAWN_BY_OWNER_SERIES_OMISSION_RULE",
+      "new_concerns": [],
+      "timing_status": "UNVERIFIED",
+      "media_qa_status": "UNVERIFIED",
+      "approval_claim": "Text preparation only; no owner or final/media approval asserted."
+    }
+  }
+}

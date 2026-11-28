@@ -1,0 +1,338 @@
+{
+  "revision": 11,
+  "author_revision_label": "R11",
+  "next_actual_native_panel_round": 10,
+  "prior_video_sha256": "3cf768c449dc875e8fefbc04001879e0f6eacd3ad746de9a2146b4c844c6044c",
+  "prior_core_four_sha256": {
+    "video.json": "3cf768c449dc875e8fefbc04001879e0f6eacd3ad746de9a2146b4c844c6044c",
+    "brief.md": "0694de8fa1a910344934b8c5084e53d3db219dcfa8453111f015d4c9309e30f6",
+    "series.json": "a50d508be0af86d51636b5fd8437cd0eb0cf9dd4b085a92ff1e914f3266f9de7",
+    "claims.json": "99325f782ccb4fc55901b009c1215805a231b2a5cc8bb44afc7325a21e1a2ee9"
+  },
+  "role_delta": {
+    "scope": "R10 shared scene_first/no_recap: replace the imagined opening with a sourced event and remove recap throughout; keep the passed R10 chronology correction.",
+    "narration_changed": [
+      {
+        "id": "c05r002",
+        "before": "想像桌邊只剩一截灰，窗外仍暗著；你得再拿一根，夜晚才剛開始。",
+        "after": "一八九〇年，上山英一郎推出棒狀蚊香，把除蟲菊粉做成了能點燃的細條。",
+        "spoken_unit_delta": 3
+      },
+      {
+        "id": "c05r020",
+        "before": "線香的做法給了一條路：把粉料變成細條，讓材料有可以持續燃燒的形狀。",
+        "after": "開場那種細條，借用的是佛壇線香的製法。",
+        "spoken_unit_delta": -13
+      },
+      {
+        "id": "c05r021",
+        "before": "到一八九〇年，直條產品上市了。這根細香，能不能完整地送到你手上？",
+        "after": "可這種細香，能不能完整地送到你手上？",
+        "spoken_unit_delta": -11
+      },
+      {
+        "id": "c05r023",
+        "before": "公司回顧，這種直條約二十公分長，當時往往得同時用上數根。",
+        "after": "原廠留存的一款直條商品，約二十公分長；資料還說，使用時會同時用上數根。",
+        "spoken_unit_delta": 6
+      },
+      {
+        "id": "c05r092",
+        "before": "原廠另一份製程解說，把混合與捏和分開：粉料先在混合機裡，混約三十分鐘。",
+        "after": "我沒想到，原廠的製程解說還把混合與捏和分開：粉料先在混合機裡，混約三十分鐘。",
+        "spoken_unit_delta": 3
+      },
+      {
+        "id": "c05le010",
+        "before": "科博館把現在的打型比作餅乾模。料片交到巴形的渦卷刃型下，這回還需要工人一圈圈盤嗎？",
+        "after": "原廠製程裡，料片沿輸送帶進入打型機，像餅乾模那樣，切出相連的雙卷。",
+        "spoken_unit_delta": -9
+      },
+      {
+        "id": "c05rx010",
+        "before": "燃燒時，有效成分會以極細微粒子的形式進入空氣，這也是原廠描述的工作方式。",
+        "after": "原廠說，燃燒期間，有效成分會持續以極細微粒子的形式進入空氣。",
+        "spoken_unit_delta": -6
+      }
+    ],
+    "narration_deleted": [
+      {
+        "id": "c07d06",
+        "text": "種得多，乾燥的位置和天氣卻得跟得上；我覺得這比有沒有種活，更像一道生產難題。",
+        "spoken_units": 34,
+        "reason": "刪除對乾燥位置、天氣與產量的抽象小結，讓陰乾負荷直接走向連雨備案。"
+      },
+      {
+        "id": "c07s06",
+        "text": "我看這些留下的商品，最有感的是，長夜終於有了不同的時間刻度；你要等多久，選擇開始不一樣。",
+        "spoken_units": 39,
+        "reason": "刪除對剛說過六小時、十二小時商品選擇的總結，不再重講長夜有不同刻度。"
+      },
+      {
+        "id": "c05le004",
+        "text": "你若站在這台機器前，送進去的不是一把乾粉。粉一倒就散，怎麼變成能被擠出去的那一塊？",
+        "spoken_units": 37,
+        "reason": "刪除乾粉會散、再問如何成塊的重啟；直接給加水成黏土狀的新工序。"
+      },
+      {
+        "id": "c07m01",
+        "text": "你手上的香體，有負責成形的材料，也有負責殺蟲的成分；我覺得它像一個分工很細的載具。",
+        "spoken_units": 37,
+        "reason": "刪除剛列過的成形材料／有效成分分工小結；第一人稱反應併入有三十分鐘工序事實的r092。"
+      },
+      {
+        "id": "c05le023",
+        "text": "接著，輸送帶把料片交給打型機，刀模打出兩個組合在一起的螺旋。",
+        "spoken_units": 27,
+        "reason": "將輸送帶、打型、相連雙卷合併進le010，只講一次現行打型動作。"
+      },
+      {
+        "id": "c07m02",
+        "text": "裝箱讓材料離開工廠，等你拆封時，最後一道交接，卻還在自己的手指上。",
+        "spoken_units": 29,
+        "reason": "刪除剛裝箱又說材料離廠的過門，直接讓雙卷分開問題接到使用章。"
+      },
+      {
+        "id": "c05le014",
+        "text": "有效成分是只放出那一下，還是會一直釋放？",
+        "spoken_units": 18,
+        "reason": "將持續釋放的時間尺度併入rx010，不在位置揭露後重啟一次釋放問答。"
+      },
+      {
+        "id": "c05le015",
+        "text": "原廠說，有效成分會在燃燒期間持續釋放。",
+        "spoken_units": 17,
+        "reason": "持續釋放事實已完整併入rx010，本句刪除。"
+      }
+    ],
+    "prompts_changed": [
+      {
+        "id": "c05r002",
+        "before": "Close-up of an adult placing an unlit straight incense stick beside a small pile of ash with soft lamp light from the right.",
+        "after": "Medium shot of one anonymous adult presenting a plain bundle of thin straight incense sticks against a simple neutral background, soft diffused light."
+      },
+      {
+        "id": "c05le010",
+        "before": "Close-up of a plain interlocking spiral cutting die above a flat sheet of soft material, neutral factory light.",
+        "after": "Close-up of an unmarked interlocking spiral die cutting a soft sheet carried by a plain conveyor, diffuse factory light."
+      }
+    ],
+    "loops_deleted": [
+      {
+        "setup": "c05le004",
+        "payoff": "c05le005",
+        "what": "加水成黏土狀"
+      },
+      {
+        "setup": "c05le010",
+        "payoff": "c05le023",
+        "what": "刀模打出雙螺旋"
+      },
+      {
+        "setup": "c05le014",
+        "payoff": "c05le015",
+        "what": "燃燒中持續釋放"
+      }
+    ],
+    "all_other_narration_exact": true,
+    "all_other_retained_scene_objects_exact": true,
+    "all_non_scene_video_fields_except_loops_exact": true,
+    "added_narration_lines": [],
+    "deleted_narration_lines": [
+      "c07d06",
+      "c07s06",
+      "c05le004",
+      "c07m01",
+      "c05le023",
+      "c07m02",
+      "c05le014",
+      "c05le015"
+    ],
+    "net_total_unit_delta": -265,
+    "net_effective_body_unit_delta": -268,
+    "new_historical_experiment_or_psychology_claim": false,
+    "padding_added": false
+  },
+  "loops": [
+    {
+      "setup": "c05r001",
+      "payoff": "c05r059",
+      "what": "短時直條的利害，後年螺旋商品給出長夜時間刻度"
+    },
+    {
+      "setup": "c07o04",
+      "payoff": "c07d08",
+      "what": "連雨鮮花的竹簾供熱備案"
+    },
+    {
+      "setup": "c07o04",
+      "payoff": "c05le013",
+      "what": "點火後成分離開的位置"
+    },
+    {
+      "setup": "c07o06",
+      "payoff": "c05r101",
+      "what": "保存成形交付釋放的中心答案"
+    },
+    {
+      "setup": "c05le001",
+      "payoff": "c05le002",
+      "what": "為何用花而非葉莖"
+    },
+    {
+      "setup": "c07d03",
+      "payoff": "c07d08",
+      "what": "天氣不配合的備案"
+    },
+    {
+      "setup": "c07d19",
+      "payoff": "c07d20",
+      "what": "等花心乾才收起，避免書中磨粉後變色問題"
+    },
+    {
+      "setup": "c07d07",
+      "payoff": "c07d08",
+      "what": "連雨用竹簾熱源"
+    },
+    {
+      "setup": "c07d09",
+      "payoff": "c07d10",
+      "what": "切細快乾的書中代價"
+    },
+    {
+      "setup": "c07d14",
+      "payoff": "c07d15",
+      "what": "餘粉密閉保存"
+    },
+    {
+      "setup": "c07d18",
+      "payoff": "c05r020",
+      "what": "粉料獲得燃燒形狀"
+    },
+    {
+      "setup": "c05r021",
+      "payoff": "c05r025",
+      "what": "直條送達前易折"
+    },
+    {
+      "setup": "c05r026",
+      "payoff": "c05r031",
+      "what": "長路徑收進小平面"
+    },
+    {
+      "setup": "c05r032",
+      "payoff": "c05r036",
+      "what": "木模未採量產"
+    },
+    {
+      "setup": "c05r049",
+      "payoff": "c05r051",
+      "what": "押出長條"
+    },
+    {
+      "setup": "c05r051",
+      "payoff": "c05r052",
+      "what": "木片作芯兩條手盤"
+    },
+    {
+      "setup": "c05r054",
+      "payoff": "c05r055",
+      "what": "雙卷運送理由"
+    },
+    {
+      "setup": "c05r058",
+      "payoff": "c05r059",
+      "what": "歷史商品燃燒規格"
+    },
+    {
+      "setup": "c05r067",
+      "payoff": "c05r069",
+      "what": "手卷較晚仍使用"
+    },
+    {
+      "setup": "c05r071",
+      "payoff": "c05r074",
+      "what": "合成成分進展"
+    },
+    {
+      "setup": "c07a01",
+      "payoff": "c07a03",
+      "what": "乾花與抽出製品的材料差異"
+    },
+    {
+      "setup": "c07a04",
+      "payoff": "c07a05",
+      "what": "天然有效成分是混合物"
+    },
+    {
+      "setup": "c07a11",
+      "payoff": "c07a08",
+      "what": "轉成已知物判立體身分"
+    },
+    {
+      "setup": "c07a10",
+      "payoff": "c05rx005",
+      "what": "植物粉料仍負責香體"
+    },
+    {
+      "setup": "c5r5a01",
+      "payoff": "c5r5a02",
+      "what": "少水用重滾筒揉壓"
+    },
+    {
+      "setup": "c5r5a03",
+      "payoff": "c5r5a04",
+      "what": "指痕作柔軟尺度"
+    },
+    {
+      "setup": "c5r5a07",
+      "payoff": "c5r5a08",
+      "what": "成形後等兩天乾燥"
+    },
+    {
+      "setup": "c07m03",
+      "payoff": "c05r080",
+      "what": "按中心拆卷"
+    },
+    {
+      "setup": "c05r081",
+      "payoff": "c05r082",
+      "what": "外緣硬拉易折"
+    },
+    {
+      "setup": "c07u01",
+      "payoff": "c07u03",
+      "what": "保留白墊及金屬奪熱熄火"
+    },
+    {
+      "setup": "c05r084",
+      "payoff": "c05r085",
+      "what": "空隙少氧氣難入而慢燃"
+    },
+    {
+      "setup": "c05rx004",
+      "payoff": "c05r088",
+      "what": "現行一般卷規格"
+    },
+    {
+      "setup": "c05rx009",
+      "payoff": "c05rx010",
+      "what": "微粒進入空氣"
+    },
+    {
+      "setup": "c05le012",
+      "payoff": "c05le013",
+      "what": "前方六至八毫米揮散"
+    },
+    {
+      "setup": "c07u05",
+      "payoff": "c07u07",
+      "what": "隨空氣送達的放置條件"
+    },
+    {
+      "setup": "c07d11",
+      "payoff": "c07d12",
+      "what": "乾花如何成為書中出售的殺蟲粉：下一句搗碎、過篩形成細粉。"
+    }
+  ]
+}

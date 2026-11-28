@@ -1,0 +1,96 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "reviewer": "/root/c06_translate_ko_es",
+  "independent": true,
+  "role_disclosure": "Authored KO/ES, not VI/TH; this review read only VI/TH native worksheets, their protected source baselines and merged VI/TH translation files.",
+  "reviewed_at": "2026-10-25T19:00:33.365506+00:00",
+  "scope": "Full independent text comparison only; not actual audio, SRT, dub time-fit or media QA.",
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "5774a219329533f257ec951cc204645bbca614450a84beadba73662e10b429de",
+      "translation_sha256": "d9bde38ec7df50a92582f255b8371b243a7b02d37fd352088427db7b6e4527ea",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 163,
+      "checked_chapters": 6,
+      "findings": [
+        {
+          "target": "thumbnail.sub",
+          "required": true,
+          "current": "2024: hãng nói >500 triệu hũ",
+          "proposed": "2024: hãng nói hơn 500 triệu hũ",
+          "reason": "必修：原文含 >，原生合併已因此整個略過thumbnail。改用越南語hơn，保留2024、公司說法、逾五億及罐數單位；套修後須重新原生merge確認縮圖三欄入檔。"
+        },
+        {
+          "target": "lines.c6sh031",
+          "required": true,
+          "current": "Nhưng ngay trước mắt bạn, muội than trên tường đang ít dần. Vật liệu lấy ra vẫn mềm tốt, chỉ có điều phải tìm một lý do",
+          "proposed": "Nhưng ngay trước mắt bạn, muội than trên tường đang ít dần. Bạn lấy vật liệu ra, cầm lên vẫn thấy ổn, nhưng phải tìm một lý do",
+          "reason": "mềm tốt不是自然越南語搭配，且把原文「手感還好」額外具體化成柔軟程度；改回手持感受仍好，並保留向下一句找理由的跨句承接。"
+        },
+        {
+          "target": "lines.c6sk011",
+          "required": true,
+          "current": "Đôi bàn tay không muốn lau tường ấy đến từ trường mẫu giáo. Theo lịch sử công ty Kutol, cô giáo Kay Zufall có quan hệ thông gia với Joseph.",
+          "proposed": "Đôi bàn tay không muốn lau tường ấy đến từ trường mẫu giáo. Theo lịch sử công ty Kutol, cô giáo Kay Zufall có quan hệ họ hàng với Joseph qua hôn nhân.",
+          "reason": "quan hệ thông gia với Joseph容易限定成子女結婚後的通家／親家關係；原文只稱姻親，須保留廣義婚姻親屬，不自行指定成親家、嫂嫂或其他精確輩分。"
+        },
+        {
+          "target": "lines.c6sb022",
+          "required": true,
+          "current": "Chỉ nghiêng hẳn về một phía đều sẽ mắc kẹt.",
+          "proposed": "Nếu chỉ đáp ứng một trong hai yêu cầu, bạn vẫn sẽ gặp vướng mắc.",
+          "reason": "Chỉ...một phía đều...的語法不自然；此句承接可塑與保形兩項要求，改成只滿足其中之一仍會遇阻，沒有新增條件。"
+        },
+        {
+          "target": "lines.c6sb10c1",
+          "required": true,
+          "current": "Hãy tưởng tượng bạn đang ép một mặt phẳng mà dưới ngón tay bỗng gặp cục cứng. Bạn có còn đẩy với lực như trước được không?",
+          "proposed": "Hãy tưởng tượng bạn đang ép vật liệu cho phẳng thì dưới ngón tay bỗng gặp một cục cứng. Bạn còn đẩy với lực như trước được không?",
+          "reason": "ép một mặt phẳng像在按壓一個既存平面；原文是把材料壓成平面時碰到硬塊，改清楚動作對象及成形方向。"
+        },
+        {
+          "target": "lines.c6sn091",
+          "required": true,
+          "current": "Nếu đặt nó bên bàn mình, công việc của vật liệu chỉ kết thúc vào lúc bạn buông tay thôi sao?",
+          "proposed": "Nếu đặt nó bên bàn mình, công việc của vật liệu chỉ kéo dài đến lúc bạn buông tay thôi sao?",
+          "reason": "chỉ kết thúc vào lúc可讀成「只有到放手時才結束」；原文問工作是否「只持續到放手那刻」，改用kéo dài đến保留延續到展示使用的問題。"
+        }
+      ],
+      "advisory": [
+        "非必修：chapters.c06r2-t01及工具段的cửa ra是直譯且略生硬；lỗ đùn或miệng đùn更像小型擠出工具的物理出口。當前語意仍可理解，未把詞語偏好列成必要失敗。",
+        "非必修：c6sk13d1的cả một bộ cách chơi及c6sn081的chừa chỗ cho lần sau可再潤成較口語的表達；沒有造成數字、歸因或事件失真。",
+        "副標建議保留完整單位與公司歸因並使用自然越南語；手機實際排版待縮圖階段檢查，不按中文字數機械刪義。"
+      ]
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "68803b6c7375085532c87ef42c9c1a72a87de11d1d0703efdd9938cc0c3b6cd1",
+      "translation_sha256": "179cb7e87744298d8510def10f3cd3a7027563080e96a4eca1b35f5e92cc76e7",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 163,
+      "checked_chapters": 6,
+      "findings": [
+        {
+          "target": "lines.c6sb101",
+          "required": true,
+          "current": "เอกสารอธิบายต่อว่า อนุภาคแป้งสาลีที่เคลือบไว้จะเกิดเจลเมื่อได้รับความร้อนชื้น รวมเป็นวัสดุที่นุ่ม สม่ำเสมอ และไม่จับตัวเป็นก้อนแข็ง",
+          "proposed": "เอกสารอธิบายต่อว่า อนุภาคแป้งสาลีที่เคลือบไว้จะเกิดเจลาติไนเซชันเมื่อได้รับความร้อนชื้น รวมเป็นวัสดุที่นุ่ม สม่ำเสมอ และไม่จับตัวเป็นก้อน",
+          "reason": "原文是澱粉顆粒經濕熱「糊化」（gelatinization），目前เกิดเจล泛稱成膠，易與gelation混淆；保留文件歸因並譯出正確過程，也不把原文「不結塊」額外限定為只有硬塊。"
+        },
+        {
+          "target": "lines.c6sn102",
+          "required": true,
+          "current": "จึงมีโอกาสถูกต้องการอีกครั้ง",
+          "proposed": "จึงจะมีโอกาสเป็นที่ต้องการอีกครั้ง",
+          "reason": "ถูกต้องการ是生硬的逐字被動譯法；泰文以เป็นที่ต้องการ表達再次被需要，保留「先做到前句，才有機會」的條件關係。"
+        }
+      ],
+      "advisory": [
+        "非必修：c6sn021的วางในชีวิตประจำวัน為抽象直譯，可考慮นำมาวางในพื้นที่ใช้ชีวิตได้；目前仍可理解為日常生活中的展示用途。",
+        "非必修：工具段ช่องออก及c6st072的รับรูปนั้นไว้可改成更口語的物理出口／保持形狀說法；當前語意與來源沒有衝突。",
+        "縮圖副標已保留2024、公司所述、逾五億及กระปุก單位；未因泰文長度而刪除數量／來源，仍需未來實際手機排版確認。"
+      ]
+    }
+  ]
+}

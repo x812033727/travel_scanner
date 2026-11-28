@@ -1,0 +1,2437 @@
+{
+  "schema_version": 1,
+  "reviewer": "codex-garmin-r1-independent-source",
+  "review_role": "Independent source and written visual review; not author/researcher/native reader",
+  "reviewed_at_utc": "2026-10-26T04:39:25.123961+00:00",
+  "revision": "garmin-r1",
+  "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "marker_created": false,
+  "marker_path": "../verify-1.md",
+  "marker_sha256": null,
+  "input_sha256": {
+    "video.json": "5cae85461121555d9e4c79b3e92b7bbc51ef6591efca97b2526ad0bb32662aa2",
+    "script.md": "cecb099261a5f93a4be2bc7e49f9c20be30180996eaabe7a36817a846aee45d7",
+    "narration-only.json": "43c8d2da9632c8621de117994d672c9d03740bc77848604cde96b4c2ec6c8c8a",
+    "claims.json": "028c5f28707ea00f4bea6222f1dfa264c52a6611381508dfe1ed06ca31d0b0e5",
+    "author-freeze-r1.json": "e5a4b2e3b14704c41322cb61b0ce7fdae6047710270ecc873ceed0ef3c268275"
+  },
+  "other_bound_files_sha256": {
+    "claims.md": "cd5a28a174ebb010f561433dba1366028cf8181953c2c159b0208f5d414c47c4",
+    "brief.md": "c8d1d0ef29dbbc1c057ad9d1a25e8ece8a4058b1d53d2f17168b36ddf0c149ad",
+    "series.json": "4a202b14a321fffa63f5dc81ede1af529552017cdd0e97be6e47ad02491e104e",
+    "author-primary-anchors-r1.json": "fffd7f74f20c6331c0070d68a17e2d44ed1be60c01629baef19dc3fafbf99ecc",
+    "author-source-additions.json": "cd390565f1af94668dab0e5d77df6a01e130200bc960f41ff9ce1053fe062cd8",
+    "protected-inputs-r1.json": "570ba170fb3a7b35d9a09a8b4ee453ab9d8c997f7387f2188bf879c1f00669f0",
+    "image-reuse-plan.json": "91374cb3528da4c2b51e111810eb3f972b9382a50bb83e10fa753e771d9f23fa",
+    "preflight-inputs.json": "2c0e9784f3c48301c1e1f3d4f4494daa05a6b366a2fe29a033f56686821fa111"
+  },
+  "independence": {
+    "read_author_or_native_review_conclusions": false,
+    "read_blind_reader_results": false,
+    "asked_author_or_spawned_agents": false,
+    "author_freeze_status_fields_not_used_as_verdict": true,
+    "restricted_author_files_hashed_only": [
+      "author-notes.json",
+      "review-state.json",
+      "native-author-lint-r1.json"
+    ],
+    "writes": [
+      "reviews/source-r1-independent.json"
+    ],
+    "core_edits": 0,
+    "git_mutations": 0,
+    "backend_calls": 0,
+    "owner_writes": 0,
+    "paid_calls": 0
+  },
+  "coverage": {
+    "lines_reviewed": 158,
+    "claims_rows_reviewed": 158,
+    "script_projection_rows": 158,
+    "narration_projection_rows": 158,
+    "claims_markdown_projection_rows": 158,
+    "all_id_text_order_equal": true,
+    "scenes": 152,
+    "shot_prompts_reviewed": 151,
+    "outro_scenes": 1,
+    "chapters": 7,
+    "loops_read_and_semantically_reconciled": 18,
+    "unique_anchor_groups_checked": 38,
+    "cited_source_documents": 9,
+    "remaining_unreviewed_rows": [],
+    "scope": "All supplied narration, 151 written image prompts, outro text, numeric/date/model statements and source attributions; anonymous concept illustration only. No actual-media or measured-audio verdict."
+  },
+  "must_fix": [
+    {
+      "id": "S1",
+      "severity": "must_fix",
+      "line_ids": [
+        "gr1s13",
+        "gr1s14",
+        "gr1s15"
+      ],
+      "finding": "30分鐘開機／充電顯示延遲的來源條件未完整帶入口播。原手冊限定長期存放、電池完全放電的裝置；目前只交代完全沒電。稿子保留了「可能」，沒有說一定等30分鐘，但仍把特殊存放條件省掉。",
+      "source": "MAN201",
+      "pdf_page_1based": 12,
+      "printed_page": "xii",
+      "lf_lines": [
+        269,
+        271
+      ],
+      "short_quote": "If the unit has been stored for a long period of time (battery fully",
+      "required_change": "在這段保留「久置到完全沒電」條件；不要改成一般每次電池耗盡的固定等待。同步所有口播投影與claims後重新凍結。"
+    },
+    {
+      "id": "S2",
+      "severity": "must_fix",
+      "line_ids": [
+        "gr1a12",
+        "gr1a15",
+        "gr1a16"
+      ],
+      "finding": "心率胸帶段沒有把限定型號說清楚。gr1a01同時介紹205與305，之後只說「這一款／這款／另一個型號」，段內沒有口播指名哪一款支援胸帶。來源明確寫305 only，205不能一起算入。",
+      "source": "MAN305",
+      "pdf_page_1based": 7,
+      "printed_page": "3",
+      "lf_lines": [
+        155,
+        159
+      ],
+      "short_quote": "The heart rate monitor works with the Forerunner 305 only.",
+      "required_change": "在心率段明講三零五支援、二零五不支援這份手冊的胸帶；至少在引入心率時把「這一款」改為明確305指代。同步所有投影與claims後重新凍結。"
+    }
+  ],
+  "rows": [
+    {
+      "id": "gr1h01",
+      "anchors": [
+        "G07"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h02",
+      "anchors": [
+        "G08"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h03",
+      "anchors": [
+        "G08"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h04",
+      "anchors": [
+        "G05",
+        "G08"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h05",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h07",
+      "anchors": [
+        "G01",
+        "G14",
+        "G16"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h08",
+      "anchors": [
+        "G06",
+        "G09",
+        "G14"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s01",
+      "anchors": [
+        "G01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s02",
+      "anchors": [
+        "G02"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s03",
+      "anchors": [
+        "G04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s04",
+      "anchors": [
+        "G04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s05",
+      "anchors": [
+        "G04",
+        "G09"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s06",
+      "anchors": [
+        "G03"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s07",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s08",
+      "anchors": [
+        "G05",
+        "G04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s09",
+      "anchors": [
+        "G05"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s11",
+      "anchors": [
+        "A09"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s12",
+      "anchors": [
+        "A09"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s13",
+      "anchors": [
+        "A09"
+      ],
+      "source": "HOLD_SCOPE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "issue": "S1"
+    },
+    {
+      "id": "gr1s14",
+      "anchors": [
+        "A09"
+      ],
+      "source": "HOLD_SCOPE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "issue": "S1"
+    },
+    {
+      "id": "gr1s15",
+      "anchors": [
+        "A09"
+      ],
+      "source": "HOLD_SCOPE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "issue": "S1"
+    },
+    {
+      "id": "gr1s16",
+      "anchors": [
+        "G06",
+        "G08"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s17",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s18",
+      "anchors": [
+        "G07"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s19",
+      "anchors": [
+        "G07"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s20",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s21",
+      "anchors": [
+        "G07"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s22",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s23",
+      "anchors": [
+        "G06"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s24",
+      "anchors": [
+        "G06"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s25",
+      "anchors": [
+        "G08"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s26",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s27",
+      "anchors": [
+        "G08",
+        "A01"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s28",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p01",
+      "anchors": [
+        "G09"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p02",
+      "anchors": [
+        "G09"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p03",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p04",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p05",
+      "anchors": [
+        "G10"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p06",
+      "anchors": [
+        "G10"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p07",
+      "anchors": [
+        "G10"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p08",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p09",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p10",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p11",
+      "anchors": [
+        "G11"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p12",
+      "anchors": [
+        "G11"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p13",
+      "anchors": [
+        "G11"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p14",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p15",
+      "anchors": [
+        "G11"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p16",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p17",
+      "anchors": [
+        "G12"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p18",
+      "anchors": [
+        "G12"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p19",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p20",
+      "anchors": [
+        "G12"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p21",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p22",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p23",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p24",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p25",
+      "anchors": [
+        "G13",
+        "A01"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r01",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r02",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r03",
+      "anchors": [
+        "A01"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r04",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r05",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r06",
+      "anchors": [
+        "G13"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r07",
+      "anchors": [
+        "G13"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r08",
+      "anchors": [
+        "G13"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r09",
+      "anchors": [
+        "G13",
+        "G14"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r11",
+      "anchors": [
+        "G14"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r12",
+      "anchors": [
+        "G14"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r13",
+      "anchors": [
+        "G14"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r14",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r15",
+      "anchors": [
+        "A02"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r16",
+      "anchors": [
+        "G15",
+        "A03"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r17",
+      "anchors": [
+        "A03"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r18",
+      "anchors": [
+        "A03"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r19",
+      "anchors": [
+        "G15"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r20",
+      "anchors": [
+        "G15"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r21",
+      "anchors": [
+        "G09",
+        "G13",
+        "A03"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r22",
+      "anchors": [
+        "G06",
+        "G16"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a01",
+      "anchors": [
+        "G16"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a02",
+      "anchors": [
+        "G16"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a03",
+      "anchors": [
+        "G17"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a04",
+      "anchors": [
+        "G17"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a05",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a07",
+      "anchors": [
+        "G16",
+        "G18"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a08",
+      "anchors": [
+        "G18"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a09",
+      "anchors": [
+        "G18"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a10",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a11",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a12",
+      "anchors": [
+        "G19"
+      ],
+      "source": "HOLD_SCOPE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "issue": "S2"
+    },
+    {
+      "id": "gr1a13",
+      "anchors": [
+        "G19"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a14",
+      "anchors": [
+        "G19"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a15",
+      "anchors": [
+        "G19"
+      ],
+      "source": "HOLD_SCOPE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "issue": "S2"
+    },
+    {
+      "id": "gr1a16",
+      "anchors": [
+        "G19"
+      ],
+      "source": "HOLD_SCOPE",
+      "visual": "PASS_WRITTEN_ONLY",
+      "issue": "S2"
+    },
+    {
+      "id": "gr1a17",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a18",
+      "anchors": [
+        "A06"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a19",
+      "anchors": [
+        "A06"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a20",
+      "anchors": [
+        "A06"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a21",
+      "anchors": [
+        "A07"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a22",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a23",
+      "anchors": [
+        "A07"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a24",
+      "anchors": [
+        "A06",
+        "A07"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a25",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a26",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a27",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d01",
+      "anchors": [
+        "A04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d02",
+      "anchors": [
+        "A04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d03",
+      "anchors": [
+        "A04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d04",
+      "anchors": [
+        "A04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d05",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d06",
+      "anchors": [
+        "A04",
+        "G21"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d07",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d10",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d11",
+      "anchors": [
+        "G20"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d12",
+      "anchors": [
+        "G20"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d13",
+      "anchors": [
+        "A08"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d14",
+      "anchors": [
+        "A08"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d15",
+      "anchors": [
+        "A08"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d16",
+      "anchors": [
+        "A08",
+        "A05"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d17",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d18",
+      "anchors": [
+        "A05"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d19",
+      "anchors": [
+        "A05"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d20",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d21",
+      "anchors": [
+        "A05"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d22",
+      "anchors": [
+        "G11",
+        "G20"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d23",
+      "anchors": [
+        "G20",
+        "A05"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d24",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v01",
+      "anchors": [
+        "A10"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v02",
+      "anchors": [
+        "A10"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v03",
+      "anchors": [
+        "A10",
+        "A11"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v04",
+      "anchors": [
+        "A11"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v05",
+      "anchors": [
+        "A11"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v06",
+      "anchors": [
+        "G17",
+        "A11"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v07",
+      "anchors": [
+        "A12"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v08",
+      "anchors": [
+        "A12"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v09",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v10",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v11",
+      "anchors": [
+        "A13"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v12",
+      "anchors": [
+        "A13"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v13",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v14",
+      "anchors": [
+        "A14"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v15",
+      "anchors": [
+        "A13",
+        "A14"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f01",
+      "anchors": [
+        "G03"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f02",
+      "anchors": [
+        "G34",
+        "G35"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f03",
+      "anchors": [
+        "G34"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f04",
+      "anchors": [
+        "G34"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f05",
+      "anchors": [
+        "G34",
+        "G35"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f06",
+      "anchors": [
+        "G33"
+      ],
+      "source": "CONFIRMED",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f07",
+      "anchors": [
+        "G06",
+        "G09",
+        "G13",
+        "G16",
+        "G20"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT"
+    },
+    {
+      "id": "gr1f08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT"
+    },
+    {
+      "id": "gr1f09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED_EDITORIAL_CONTEXT",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT"
+    }
+  ],
+  "source_files": [
+    {
+      "id": "MAN201",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/MAN201.pdf",
+      "raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/MAN201.layout.txt",
+      "text_sha256": "1740c4239e55bd5cc0c968ce25c667d6cf26f49fc8ec8419e33a74df211312a2",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "SPEC305",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SPEC305.pdf",
+      "raw_sha256": "3f1803e13335d5a86066dd0d48b7496cbf50fb8386eadf9c59aa12d018248b64",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SPEC305.layout.txt",
+      "text_sha256": "7e34aa1d38b0c06cd57a57f24c15403e7b5d6e6ce308c0f92c24d991557c56de",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "BLOG20",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/BLOG20.html",
+      "raw_sha256": "3a5310024571c29bc986c2508212f9dd015b993e8a0041de47ef045650b735ed",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/BLOG20.paragraphs.txt",
+      "text_sha256": "a97d6e9e862bc4c4af96487d60ca6a9ed6592d3acb165baab5974cea3d10c56c",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "SEC2003ORIG",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SEC2003ORIG.html",
+      "raw_sha256": "9cea8cae7a05393e094b964b0cfce53b79dae88b4e3d797924baec701072b21a",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SEC2003ORIG.decoded.txt",
+      "text_sha256": "9cea8cae7a05393e094b964b0cfce53b79dae88b4e3d797924baec701072b21a",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "SPEC201",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SPEC201.pdf",
+      "raw_sha256": "267b66125b018dbb9bc632fa7f087996a8afff080182cd5ab71c592b9e2a0992",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SPEC201.layout.txt",
+      "text_sha256": "0966672445b9e983f2f46e0ec7e7556b37ece998b38aea15ea27a55ba7a26b0e",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "SEC2008",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SEC2008.html",
+      "raw_sha256": "1e49398d00832fb4bc92b071b8dfd9a0a7c479d8658065a9e997c08ea7d451de",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SEC2008.paragraphs.txt",
+      "text_sha256": "b02653181bdc4e70e09b1e1ac91b385c2309b12e4b009c0068b5c4881c8163f2",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "MAN305",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/MAN305.pdf",
+      "raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/MAN305.layout.txt",
+      "text_sha256": "23c9812a1f1591bff8a46bb938f96c91739e62ac5421aa0fd872499fe517957f",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "DCR2009_UPDATE",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r1/new-source-cache/DCR2007.html",
+      "raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r1/new-source-cache/DCR2007.paragraphs.txt",
+      "text_sha256": "e922635a5439c3bec13a510fe22e16d2b3d0ad7e5e9a7553bbc84ed83fa3dbc0",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    },
+    {
+      "id": "SEC2013",
+      "raw_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SEC2013.html",
+      "raw_sha256": "6dd81658caa3665949639ece04e8cf0397fcded9ced454204e67f7c491dc1329",
+      "text_path": "/workspace/work/brand-story-20261025/garmin-audit/source-cache/SEC2013.paragraphs.txt",
+      "text_sha256": "ee8f25b0c50cd161bd485ffa642e469dcc475681c12d2fd61952410462628b0d",
+      "checked": "Cited original-language passages independently read; raw HTML re-parsed or PDF freshly extracted; supplied quote, LF locator and PDF page reconciled. Not a cover-to-cover claim."
+    }
+  ],
+  "anchor_locator_checks": [
+    {
+      "id": "G07",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "15-30 minutes initially.",
+          "lf_lines": [
+            315,
+            315
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            26978,
+            27002
+          ],
+          "pdf_page_1based": 14,
+          "printed_page": "2",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G08",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "not to start your workout until",
+          "lf_lines": [
+            306,
+            306
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            26012,
+            26043
+          ],
+          "pdf_page_1based": 14,
+          "printed_page": "2",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G05",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "long as 15 hours when fully charged.",
+          "lf_lines": [
+            251,
+            251
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            22051,
+            22087
+          ],
+          "pdf_page_1based": 12,
+          "printed_page": "xii",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G11",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "Your job is to keep up",
+          "lf_lines": [
+            523,
+            523
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            43942,
+            43964
+          ],
+          "pdf_page_1based": 22,
+          "printed_page": "10",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G16",
+      "refs": [
+        {
+          "source": "SPEC305",
+          "quote": "SiRFstarIII™ high-sensitivity GPS receiver",
+          "lf_lines": [
+            111,
+            111
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            6792,
+            6834
+          ],
+          "pdf_page_1based": 2,
+          "printed_page": "unnumbered; Navigation features",
+          "raw_and_locator_match": true
+        },
+        {
+          "source": "SPEC305",
+          "quote": "Built-in patch; points to the sky when",
+          "lf_lines": [
+            112,
+            112
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            6860,
+            6898
+          ],
+          "pdf_page_1based": 2,
+          "printed_page": "unnumbered; Navigation features",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G17",
+      "refs": [
+        {
+          "source": "BLOG20",
+          "quote": "Its GPS antenna actually wrapped around part of the wrist",
+          "lf_lines": [
+            17,
+            17
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            2753,
+            2810
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G01",
+      "refs": [
+        {
+          "source": "SEC2003ORIG",
+          "quote": "In  November  2003,  Garmin  began  shipping  the  Forerunner(tm)  201",
+          "lf_lines": [
+            237,
+            237
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            12194,
+            12264
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G14",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "a serial\n                               port connection",
+          "lf_lines": [
+            1044,
+            1045
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            82868,
+            82923
+          ],
+          "pdf_page_1based": 44,
+          "printed_page": "32",
+          "raw_and_locator_match": true
+        },
+        {
+          "source": "MAN201",
+          "quote": "4-contact end in ﬁrst",
+          "lf_lines": [
+            252,
+            252
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            22270,
+            22291
+          ],
+          "pdf_page_1based": 12,
+          "printed_page": "xii",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G06",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "unobstructed, clear view of the sky",
+          "lf_lines": [
+            285,
+            285
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            24332,
+            24367
+          ],
+          "pdf_page_1based": 13,
+          "printed_page": "1",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G09",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "Time/Pace(Speed)/Distance",
+          "lf_lines": [
+            355,
+            355
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            30250,
+            30275
+          ],
+          "pdf_page_1based": 16,
+          "printed_page": "4",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G02",
+      "refs": [
+        {
+          "source": "SEC2003ORIG",
+          "quote": "GPS sensor to provide data on speed,  training time, distance,  lap",
+          "lf_lines": [
+            239,
+            239
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            12364,
+            12431
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G04",
+      "refs": [
+        {
+          "source": "SPEC201",
+          "quote": "2.75 ounces (78 g)",
+          "lf_lines": [
+            97,
+            97
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            5149,
+            5167
+          ],
+          "pdf_page_1based": 2,
+          "printed_page": "unnumbered; Physical",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G03",
+      "refs": [
+        {
+          "source": "SEC2003ORIG",
+          "quote": "In  November  2003,  Garmin  began  shipping  the  Forerunner(tm)  201",
+          "lf_lines": [
+            237,
+            237
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            12194,
+            12264
+          ],
+          "raw_and_locator_match": true
+        },
+        {
+          "source": "SEC2008",
+          "quote": "could slow\nour growth and further reduce margins.",
+          "lf_lines": [
+            1460,
+            1461
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            63301,
+            63350
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "at least 2 hours",
+          "lf_lines": [
+            254,
+            254
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            22524,
+            22540
+          ],
+          "pdf_page_1based": 12,
+          "printed_page": "xii",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A01",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "for 3 seconds",
+          "lf_lines": [
+            346,
+            346
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            29277,
+            29290
+          ],
+          "pdf_page_1based": 15,
+          "printed_page": "3",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G10",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "Smoothing averages your pace",
+          "lf_lines": [
+            896,
+            896
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            72548,
+            72576
+          ],
+          "pdf_page_1based": 38,
+          "printed_page": "26",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G12",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "below that setting.",
+          "lf_lines": [
+            493,
+            493
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            41827,
+            41846
+          ],
+          "pdf_page_1based": 21,
+          "printed_page": "9",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G13",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "up to 5000 laps in memory.",
+          "lf_lines": [
+            408,
+            408
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            34885,
+            34911
+          ],
+          "pdf_page_1based": 18,
+          "printed_page": "6",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "add notes to a run",
+          "lf_lines": [
+            1040,
+            1040
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            82426,
+            82444
+          ],
+          "pdf_page_1based": 44,
+          "printed_page": "32",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G15",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "a straight line (as the crow ﬂies)",
+          "lf_lines": [
+            764,
+            764
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            62821,
+            62855
+          ],
+          "pdf_page_1based": 32,
+          "printed_page": "20",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "refs": [
+        {
+          "source": "MAN201",
+          "quote": "It is not possible to load detailed map data",
+          "lf_lines": [
+            681,
+            681
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            56010,
+            56054
+          ],
+          "pdf_page_1based": 29,
+          "printed_page": "17",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G18",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "antenna is facing up.",
+          "lf_lines": [
+            128,
+            128
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            7633,
+            7654
+          ],
+          "pdf_page_1based": 6,
+          "printed_page": "2; text extraction loses numeral glyph",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G19",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "works with the Forerunner 305 only.",
+          "lf_lines": [
+            156,
+            156
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            8843,
+            8878
+          ],
+          "pdf_page_1based": 7,
+          "printed_page": "3; text extraction loses numeral glyph",
+          "raw_and_locator_match": true
+        },
+        {
+          "source": "MAN305",
+          "quote": "Wet both sensors",
+          "lf_lines": [
+            172,
+            172
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            9206,
+            9222
+          ],
+          "pdf_page_1based": 7,
+          "printed_page": "3; text extraction loses numeral glyph",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "sensor has a unique ID.",
+          "lf_lines": [
+            1631,
+            1631
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            79588,
+            79611
+          ],
+          "pdf_page_1based": 63,
+          "printed_page": "59",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "3 meters",
+          "lf_lines": [
+            1642,
+            1642
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            80215,
+            80223
+          ],
+          "pdf_page_1based": 64,
+          "printed_page": "60",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "up to 3.5 hours",
+          "lf_lines": [
+            1298,
+            1298
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            61324,
+            61339
+          ],
+          "pdf_page_1based": 50,
+          "printed_page": "46",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G21",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "10 hours (typical use)",
+          "lf_lines": [
+            1737,
+            1737
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            84427,
+            84449
+          ],
+          "pdf_page_1based": 68,
+          "printed_page": "64",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G20",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "a previously recorded activity.",
+          "lf_lines": [
+            730,
+            730
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            35122,
+            35153
+          ],
+          "pdf_page_1based": 28,
+          "printed_page": "24",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A08",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "stops, turns",
+          "lf_lines": [
+            743,
+            743
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            35789,
+            35801
+          ],
+          "pdf_page_1based": 29,
+          "printed_page": "25",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "refs": [
+        {
+          "source": "MAN305",
+          "quote": "The gray triangle shows your",
+          "lf_lines": [
+            773,
+            773
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            37210,
+            37238
+          ],
+          "pdf_page_1based": 30,
+          "printed_page": "26",
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A10",
+      "refs": [
+        {
+          "source": "DCR2009_UPDATE",
+          "quote": "363 runs",
+          "lf_lines": [
+            74,
+            74
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            2128,
+            2136
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A11",
+      "refs": [
+        {
+          "source": "DCR2009_UPDATE",
+          "quote": "temporarily drop the connection",
+          "lf_lines": [
+            94,
+            94
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            6816,
+            6847
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A12",
+      "refs": [
+        {
+          "source": "DCR2009_UPDATE",
+          "quote": "I don’t use it much",
+          "lf_lines": [
+            95,
+            95
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            7535,
+            7554
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A13",
+      "refs": [
+        {
+          "source": "DCR2009_UPDATE",
+          "quote": "35 minute pace for 1 second",
+          "lf_lines": [
+            151,
+            151
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            18567,
+            18594
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "A14",
+      "refs": [
+        {
+          "source": "DCR2009_UPDATE",
+          "quote": "name runs and group things",
+          "lf_lines": [
+            154,
+            154
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            19155,
+            19181
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G34",
+      "refs": [
+        {
+          "source": "SEC2013",
+          "quote": "Automotive/mobile revenue remains the largest portion of our revenue mix at 49% in 2013, compared to 55% in 2012.",
+          "lf_lines": [
+            1288,
+            1288
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            179888,
+            180001
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G35",
+      "refs": [
+        {
+          "source": "SEC2013",
+          "quote": "Fitness revenues increased 11%",
+          "lf_lines": [
+            1291,
+            1291
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            180820,
+            180850
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    },
+    {
+      "id": "G33",
+      "refs": [
+        {
+          "source": "SEC2013",
+          "quote": "2,631,851",
+          "lf_lines": [
+            629,
+            629
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            143045,
+            143054
+          ],
+          "raw_and_locator_match": true
+        },
+        {
+          "source": "SEC2013",
+          "quote": "Net sales decreased 3% in 2013",
+          "lf_lines": [
+            1288,
+            1288
+          ],
+          "utf8_text_character_range_0based_end_exclusive": [
+            179668,
+            179698
+          ],
+          "raw_and_locator_match": true
+        }
+      ]
+    }
+  ],
+  "material_source_findings": [
+    {
+      "topic": "2003 origin / later mobile risk",
+      "finding": "SEC original FY2003 filing explicitly begins shipping November2003; August2003 spec footer is not a shipping date. FY2008 mobile-handset replacement risk is later documentary context, not a proved first-ever competition date or evidence that the running product was invented after the phone crisis."
+    },
+    {
+      "topic": "versions and measurements",
+      "finding": "MAN201 February2006 RevF and MAN305 RevD copyright2006–2008 are later manuals. 78g and3.26in width(8.2804cm)/.69in depth(1.7526cm) match2003 preliminary spec. 15h is manufacturer upto201 battery claim; 3.5h is305 every-second detailed-record capacity, not battery. No610 battery/test result imported."
+    },
+    {
+      "topic": "longitudinal review",
+      "finding": "DCR article is dated November26,2007 but explicitly major-updated June25,2009. Paragraph74 says363 runs separately from112rides/24swims/otheractivities. Qualitative normal-tree/short-building and taller-building reception remarks belong to the named reviewer and his own305, not a controlled accuracy test, allmodels guarantee or2007同期 result. Exact firmware, serial and individual run dates unknown."
+    },
+    {
+      "topic": "software scope",
+      "finding": "DCR TrainingCenter paragraph151 supports a one-second pace spike, unavailable manual data-point changes and scale adjustment in the historical included software. Paragraph154 supports his use ofSportTracks naming/grouping/export; the script does not assert that spike alone caused a switch, currentcompatibility or unspecified per-mile/km pace units."
+    },
+    {
+      "topic": "2013 business scope",
+      "finding": "FY2013 automotive/mobile49% versus FY2012 55% is annual consolidated mix; four other segments total>half, not running watches alone. Total FY2013 revenue declined3%; no single-watch causation claimed."
+    },
+    {
+      "topic": "excluded engineering anecdotes",
+      "finding": "No cited source or narration adopts inaccessible/reposted engineering-interview anecdotes as verified facts."
+    }
+  ],
+  "written_visual_checks": {
+    "all_prompts_english_ascii": true,
+    "registered_brand_product_person_names_in_prompts": [],
+    "all_people_anonymous_no_real_likeness_requested": true,
+    "logos_or_readable_letters_requested": false,
+    "exact_real_screen_or_data_plot_reconstruction_claimed": false,
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "series_image_model": "image-01",
+    "cast": [],
+    "all_shots_still": true,
+    "illustrated_share_of_body_scenes": 1,
+    "notes": "Generic wordless route/triangle/spike illustrations and blank documents are conceptual. They do not prove measured reception, identify a historical actor or replace an original screenshot. No namedperson nationality/origin asserted in narration or appearance."
+  },
+  "reuse_plan_review": {
+    "status": "PLANNED_INPUT_EQUALITY_ONLY",
+    "pure_local_Stage_imageKey_recomputed": true,
+    "pairs": [
+      {
+        "source": "gr1p12",
+        "teaser": "gr1h05",
+        "prompt_camera_cast_look_model_size_negative_refs_seed_version_equal": true,
+        "native_key": "6a8adb8315a70678",
+        "composed_prompt_sha256": "3298c402b00e905c067ccc828258c921f83571ef8c0dfa70d468e97c606c4de7"
+      },
+      {
+        "source": "gr1a03",
+        "teaser": "gr1h06",
+        "prompt_camera_cast_look_model_size_negative_refs_seed_version_equal": true,
+        "native_key": "6ece2406bc7cd130",
+        "composed_prompt_sha256": "597e908835ecee71d0d71939a919fd64594dde461496e9ff168c1ef1ab0f1847"
+      }
+    ],
+    "code_files_readback": [
+      {
+        "path": "tools/video/media/keyframes.mjs",
+        "sha256": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6"
+      },
+      {
+        "path": "tools/video/media/stages.mjs",
+        "sha256": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df"
+      },
+      {
+        "path": "tools/video/media/cache.mjs",
+        "sha256": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d"
+      },
+      {
+        "path": "tools/video/core/drama.mjs",
+        "sha256": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+      }
+    ],
+    "handoff_conditions_checked": [
+      "Actual backend settings must be read and live keys recalculated after protected admission.",
+      "Payoff first with takes1. Before teaser: readCache plus official selected manifest and final/cropped bytes; cachemiss/missingfile/hashchanged/requestchanged stops before second command. cached() is not a read-only guard.",
+      "Both endpoints need their own ordinary judge. Require identical final selected file and bytesSHA after trim/crop; planned keys alone never prove asset reuse."
+    ],
+    "actual_same_asset_verified": false,
+    "production_commands_executed": false
+  },
+  "preservation": {
+    "hash_checks_performed": 127,
+    "hash_mismatches": [],
+    "original_research_files_unchanged": 3,
+    "related_originals_and_snapshots_unchanged": 9,
+    "original_backend_snapshot_unchanged": true,
+    "original_raw_items_unchanged": 57,
+    "new_download_inventory_separate_items": 3,
+    "new_DCR_raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+    "legacy_worker_media_available": false,
+    "old_approval_or_budget_inherited": false
+  },
+  "runtime_readback": {
+    "source_video_equals_runtime_video": true,
+    "canonical_runtime_script_sha256": "1275a5b2519cb9157ca13360ad566857c63c95dd8f8a4c2375803957498e9c41",
+    "lexicon_current_sequence": 1,
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "lexicon_event_count": 1,
+    "dictionary_files_match_freeze": true,
+    "immutable_dictionary_rebuilt": false,
+    "source_runtime_voice_identical": true,
+    "voice_object_sorted_json_sha256": "6cdd3384e94b7335e7692b0df0195fae3033212656b650b41870799a91d9380f"
+  },
+  "normal_checks": {
+    "lint": {
+      "argv": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/garmin-submission-root",
+        "lint",
+        "--slug",
+        "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": 0,
+      "soft_warnings": 8,
+      "spoken_units": 3335,
+      "estimated_minutes": 15.948888888888888,
+      "soft_warning_groups": [
+        "Repeated main object words adult137/wrist128/device119 of151",
+        "gr1a03/a12/d04/d20 estimated10.2/10.2/11.2/11.9second stills",
+        "Legacy estimate15.9minutes versus target12–14"
+      ]
+    },
+    "facts": {
+      "ok": false,
+      "detail": "Normal factsChecks({report:null,doc}) returns no verify-*.md: script not fact-checked; no marker fabricated while source HOLD."
+    }
+  },
+  "limits_and_next_gates": [
+    "Revised source text changes the frozen candidate and needs new source review/binding; this receipt does not auto-approve a later revision.",
+    "Actual body seconds unknown. Required720–840 seconds includes coldopen/voicedCTA and excludes new5+21second bookends. 3335units at4–5units/s is667–834seconds arithmetic, not audio PASS; do not slow speech, add gaps or repeat to fill duration.",
+    "Fresh native storytelling/lexicon/voice review, owner outline/script approval, exact new US$25 projectaccount, whole-film all-inquote and protected admission remain separate gates; no production spending authorized.",
+    "Eightlanguage intent is not backend metadata/captions/dubs/QA completion. Branding PR1860v4 pack must be file/versionchecked before assembly; no timeline or productionpin accepted here.",
+    "Only written plans and available source artifacts reviewed. No real TTS/image/music/transcription/render generated or accepted."
+  ]
+}

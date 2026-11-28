@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r5",
+  "status": "AUTHOR_MINIMAL_DEDUPLICATION_PENDING_DELTA_SOURCE_AND_NATIVE5",
+  "baseline_revision": "c19-r4",
+  "baseline_core_four_sha256": {
+    "video.json": "e14b1db755ddf4c5f57d4ed02a7e3409b00254f8b0ebfd9a587b70b698dfd6fb",
+    "script.md": "8a14841fd81bcb0a2cf02b0320fee8156cd0637993ff8d2574d0d777550d1bca",
+    "narration-only.json": "d22a4d84c162f1b4ebc11f88aff3f757ca9c7c676faaece2c664e94d58d8fc2e",
+    "claims.json": "ab345f3579f3c984dd75024576fd3a2a9b597638693a5daa8e67c24f65c940d9"
+  },
+  "baseline_source_result": "PASS_R4_ONLY",
+  "baseline_source_receipt_sha256": "bf259ebbac296d2274e4a15e7910dca49fdbe32a988e27032e89dea13ae29214",
+  "baseline_verify_sha256": "b68d02bc75b009001a9ef3c1cd34ef393bd49aaa8af86bd401ac5ed9ed4b46ef",
+  "baseline_native_round": 4,
+  "baseline_native_result": "HOLD",
+  "baseline_native_shared_failure": [
+    "no_recap"
+  ],
+  "native4_evidence_addressed": {
+    "reader_a": "n21 repeats e31 cash-inflow/outflow management",
+    "reader_b": "n04 repeats e02 support inquiry function while adding locations and standby information"
+  },
+  "native4_lone_no_toc_disagreement_preserved": true,
+  "changed_rows": [
+    {
+      "id": "c19r1n04",
+      "before": "至於照看機器、接客人詢問的支援中心，則在東京與大阪，全天待命。",
+      "after": "同份年報記載，支援中心位於東京與大阪，全天待命。",
+      "reason": "Retain only the same annual report’s unique Tokyo/Osaka locations and 24-hour standby information. Remove repeated inquiry/monitoring function; the report date is not a construction or first-activation date.",
+      "source_claim_references_and_quotes_unchanged": true,
+      "source_review_required": true
+    }
+  ],
+  "removed_rows": [
+    {
+      "id": "c19r1n21",
+      "text": "店家存入、顧客提出，兩端的需求都進了管理工作，提款口才不只是出鈔那一刻。",
+      "reason": "Native4 reader A: e31 already explains management of cash inflow and outflow; n21 restates it without a new action, condition or result."
+    }
+  ],
+  "added_rows": [],
+  "unchanged_remaining_narration_rows": 114,
+  "remaining_source_claim_rows_unchanged": 114,
+  "opening_scenes_and_narration_unchanged": true,
+  "remaining_prompts_and_cameras_exactly_r4": true,
+  "new_historical_claims": false,
+  "source_registry_and_quote_registry_exactly_r4": true,
+  "source_quotes_changed": false,
+  "all_conditions_and_data_preserved_at_ids": [
+    "c19r1a12",
+    "c19r1a14",
+    "c19r1n03",
+    "c19r1n18",
+    "c19r1n19",
+    "c19r1n20",
+    "c19r1n23",
+    "c19r1n24",
+    "c19r1t03",
+    "c19r1t04",
+    "c19r1t05",
+    "c19r1t14",
+    "c19r1t15",
+    "c19r1t16",
+    "c19r1o02",
+    "c19r1o05",
+    "c19r1a25",
+    "c19r1a26"
+  ],
+  "n04_unique_locations_and_24h_preserved": true,
+  "loop_change": {
+    "setup": "c19r1n03",
+    "payoff": "c19r1n04",
+    "only_what_metadata_narrowed": true,
+    "what": "年報列支援中心在東京大阪全天待命"
+  },
+  "loop_count": 36,
+  "all_loop_endpoints_exist_and_forward": true,
+  "chapter_viewer_address": [
+    {
+      "chapter": "金融廳裡，先拿到一份文件",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "預備牌照之後，機器才開門",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "螢幕上的免費，沒有結清網路的帳",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "訊息接回銀行，現鈔留在機器裡",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "whole_narration_spoken_units": 3257,
+  "previous_units": 3295,
+  "delta_units": -38,
+  "removed_restatement_not_replaced_by_padding": true,
+  "native_actual_round_count": 4,
+  "next_native_round": 5,
+  "native2_format_correction_not_extra_draw": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_1_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

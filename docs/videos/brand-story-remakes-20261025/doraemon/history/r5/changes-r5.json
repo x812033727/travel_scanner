@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "revision": "doraemon-r5",
+  "role": "AUTHOR_DELTA_NOT_INDEPENDENT_REVIEW",
+  "published_r4_core_four_sha256": {
+    "video.json": "c37e8afb0a389f13c2885db0f76f4b583862d9cca1fa0fdd0153e8fc7a80dbb8",
+    "script.md": "f2fa5c4ed6c316be91d7837c7bd462c062a9e899713ebba4d5ed33a69db2ef23",
+    "narration-only.json": "f0216f6feba9b9eb1fd2a4155ca63e533dad5daeb1a9e28af52e8369e844358e",
+    "claims.json": "689cc00dd4b88979901e2ccca8e5a634a9ec27a98737c297bdb0f795de55bcdd"
+  },
+  "current_core_four_sha256": {
+    "video.json": "8e840c68384dbba8d69a45b2b10f0d931de4a0d4ed25b47a5c7ec5c8ca4bf290",
+    "script.md": "618188d5779de3b9fcbab5dc8f6ea4a3b5ca57884e133b5c828f1761f7d70810",
+    "narration-only.json": "d4303e6053abed638e9820c476f1bbc779910e931e67aad6e2fbd92d4ee1de59",
+    "claims.json": "0161fb0cb12a2e70d99d41c3397977c8dd3830027ca3d61547824c2b57a19a97"
+  },
+  "line_changes": [
+    {
+      "id": "d1h051",
+      "old": "今天就沿著這份跨過三十年的哆啦Ａ夢工作，看看一張紙怎麼交到下一雙手。",
+      "new": "今天就沿著哆啦Ａ夢的創作工作，看看一張紙怎麼交到下一雙手。"
+    }
+  ],
+  "removed_lines": [
+    {
+      "id": "d1c021",
+      "text": "入口不是把一部舊電影整份搬過來，而是把原來世界的一項設定，用在這次月球故事裡。",
+      "chapter": "舊設定接上新朋友"
+    },
+    {
+      "id": "d1c022",
+      "text": "舊作品在新稿上發揮作用，新的情節仍得有人接著寫。",
+      "chapter": "舊設定接上新朋友"
+    }
+  ],
+  "other_surviving_spoken_lines_exact": 132,
+  "line_count_before": 135,
+  "line_count_after": 133,
+  "scene_count_before": 115,
+  "scene_count_after": 113,
+  "removed_scene_ids": [
+    "dr1-c02-p1",
+    "dr1-c02-p2"
+  ],
+  "all113_surviving_scene_non_line_fields_exact": true,
+  "new_line_or_scene_ids": [],
+  "no_recap_fix": "h051 keeps one named-topic promise without repeating the thirty-year scope already said in h011. c011/c012 retain the attributed director proposal and participant writing response; c021/c022 synonymous generalizations are deleted instead of adding a fake callback.",
+  "loop_integrity": {
+    "all23_entries_and_endpoints_exact": true,
+    "all_endpoints_survive": true,
+    "b10_actual_payoff_c011_proposal_preserved": true,
+    "false_callbacks_added": 0
+  },
+  "b082_work_result_and_D14_D15_evidence_exact": true,
+  "r2_movie_release_year_fix_exact": true,
+  "full_three_end_stage_requests_exact": true,
+  "actual_same_asset_verified": false,
+  "not_chased": [
+    "chapter-name advisory"
+  ],
+  "published_r4_source_pass_sha256": "90d0243227c84b7c3b1883d69e282df2bc4dbd18307604268d5f70a0081b51ac",
+  "published_r4_verify_sha256": "8d00db2e7c862169fc1a20f51ca9f714902eafaf4becb1c759613c4150d41a90",
+  "last_true_native_round": 3,
+  "last_true_native_shared_hold": [
+    "no_recap"
+  ],
+  "all_old_review_tickets_unchanged": true,
+  "source_r5_delta": "PENDING_OTHER_REVIEWER",
+  "fresh_native4": "PENDING_ROOT_NOT_PREPARED_BY_AUTHOR",
+  "actual_native_rounds_total": 3,
+  "capacity": {
+    "before_units": 3104,
+    "after_units": 3041,
+    "target_minutes": 13,
+    "required_measured_body_seconds": [
+      720,
+      840
+    ],
+    "pure_arithmetic_seconds_at_4_5": 675.78,
+    "actual_measured_seconds": null,
+    "actual_duration_fail_claimed": false,
+    "risk": "Thin-script capacity is reduced by genuine deduplication. No lowering13, slowing, padding, repetition or sliced pictures."
+  }
+}

@@ -1,0 +1,759 @@
+{
+  "schema_version": 1,
+  "role": "CAPACITY_PRIMARY_RESEARCH_R4_NOT_SCRIPT_NOT_SOURCE_QA",
+  "created_at_utc": "2026-10-26T07:06:36.190895+00:00",
+  "scope": [
+    "docs/videos/brand-story-remakes-20261025/dyson/capacity-primary-research-r4.md",
+    "docs/videos/brand-story-remakes-20261025/dyson/capacity-primary-research-r4.json"
+  ],
+  "baseline": {
+    "video_sha256": "f28f3feb6ea49867acd60157688f9ae675a5d0eddfa711de0cb983f991555969",
+    "expected_video_sha256": "f28f3feb6ea49867acd60157688f9ae675a5d0eddfa711de0cb983f991555969",
+    "author_freeze_r3_sha256": "ff99e793929fd513c40e6e08d19e29bf66a5b5b304469970a22210a57c6bec99",
+    "expected_author_freeze_r3_sha256": "ff99e793929fd513c40e6e08d19e29bf66a5b5b304469970a22210a57c6bec99",
+    "script_sha256": "6f2064388486a9daca449dd60469738fc3dad66c0683aad812dacde34065a45f",
+    "claims_sha256": "7af89ce33b0161facfa661ecabffe4d8b639870319732d672fd233d9736d44c0",
+    "research_original_sha256": "b987edf0354a305796cec8e34f40b8208ddf8074c3e2d992ad0fb9dc356f5d90",
+    "spoken_units": 1953,
+    "body_lines": 87,
+    "natural_rate_units_per_second": [
+      4,
+      5
+    ],
+    "target_seconds": [
+      720,
+      840
+    ],
+    "source_qa_state": "unreviewed R3",
+    "native_state": "native last1 HOLD as supplied; not reevaluated here"
+  },
+  "capacity": {
+    "status": "HOLD",
+    "not_tts_pass_or_fail": true,
+    "method": "Editorial estimate for concise new factual action plus necessary causal explanation; not narration drafted, not unit count of a new script, not timing. All current-R3 repeats excluded.",
+    "core_new_raw_net_units_range": [
+      1100,
+      1460
+    ],
+    "optional_undated_retail_node_range": [
+      90,
+      120
+    ],
+    "all_selected_upper_planning_range": [
+      1190,
+      1580
+    ],
+    "conservative_total_with_existing_1953": [
+      3053,
+      3413
+    ],
+    "required_addition_approximately": [
+      1300,
+      1550
+    ],
+    "finding": "Core conservative lower bound 1100 is below the needed 1300–1550; high-end 1460 is selectable editorial capacity, not guaranteed usable length. These originals do not establish robust 13-minute capacity. Keep HOLD; do not fill gaps by replaying APEX gestures, patent dates, deliberate slow speech or empty screen time.",
+    "potential_losses": [
+      "N06 overlaps the existing loan; its delta can shrink after rewriting.",
+      "N07 cannot be assigned the already-named Bumpers Farm site/date without additional primary chronology.",
+      "N08 and N09 connect to early sales but have no independently established event dates.",
+      "Auto-transcript source review may narrow the accepted Masters details."
+    ],
+    "recommended_scope_if_explicitly_expanding": "Keep one chain but expressly include the upstream factory dust-collection/miniaturization/test-model work and downstream first British retail demonstrations. If the authored result remains short, seek primary material for the subcontract assembly-to-Bumpers-Farm transition (moving tooling, securing own space, establishing first production), not other inventions or litigation."
+  },
+  "ordered_action_nodes": [
+    {
+      "id": "N01",
+      "order": 1,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "工廠的粉末先卡住布濾，再自製大型氣旋",
+      "new_information": "噴塗金屬架時，許多粉末沒有留在框架上；抽走餘粉的布濾反覆堵塞。戴森回憶，問到工業氣旋的報價後負擔不起，便和人用數個週末自行製作，還需在廠房屋頂開孔容納頂端構造。官網另把他去看木材廠氣旋、回來自製的來由寫明。",
+      "work_cause_result": "連續生產遇到粉末收集故障→改用分離粉末的方式→取得後來縮小家用氣旋的實作前因。",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 283,
+          "line_end_1based": 293,
+          "context_sha256": "22087dd6a0a18911995d8e3323cd7232871b9994541f373b82735994d822d52d",
+          "short_quote_original_language": "cloth filter",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.txt",
+          "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+          "pdf_page": null,
+          "line_start_1based": 262,
+          "line_end_1based": 267,
+          "context_sha256": "9468736971eebbeb23408a52ee9dfde56d43705b6e94f8eb74012c4092cd0b7f",
+          "short_quote_original_language": "powdered paint",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3從Cyclon授權先例開始；沒有粉末塗層、布濾故障、報價後自製或屋頂施工。離心分離原理只需一句接回，不另重講R3前粗後細。",
+      "limits": [
+        "同一段工廠事件不可拆成粉末、布、報價、屋頂四次同義懸念。",
+        "兩原件對高度有25/30英尺差異；不採高度、不換算數字，也不造工程日誌。",
+        "這不是替Ballbarrow另開產品起源章，只保留吸塵器原理移用所必需的生產故障。"
+      ],
+      "estimated_net_new_spoken_units": [
+        150,
+        190
+      ]
+    },
+    {
+      "id": "N02",
+      "order": 2,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "把袋倒空仍吸不動，才把小氣旋接到舊機上",
+      "new_information": "本人回憶家用袋提示堵塞，找不到替換袋，便倒空、用膠帶封回再試；仍沒有吸力，拆開才看到內壁細灰。再買新袋後只短暫恢復，他把原因指向氣孔被灰堵住。由工廠經驗想到縮小氣旋，用紙板、膠帶、軟管接在原直立機上取代袋，推著試用。",
+      "work_cause_result": "倒空的反證→檢查氣流出口→在既有吸塵器上換掉分離部件，先驗原理。",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 290,
+          "line_end_1based": 297,
+          "context_sha256": "5866795af871723dba7b4a32dfccc4b4e85fbabffdef1a76adce821e25092f2d",
+          "short_quote_original_language": "gaffer tape",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        },
+        {
+          "source_id": "DYSON_BIO",
+          "raw_sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.txt",
+          "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+          "pdf_page": null,
+          "line_start_1based": 265,
+          "line_end_1based": 267,
+          "context_sha256": "2067e889d7dd032cdc634d6f5286ca13196b78f34ae047320dc30cba35b5bfc1",
+          "short_quote_original_language": "cardboard",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3有日本試作堵入口，沒有這次袋孔診斷和紙板接機。兩個堵塞部位須分開。",
+      "limits": [
+        "不可採本人隨口說的第一台/永不失吸力作客觀全球紀錄。",
+        "紙板試驗驗的是可行性，不等於已是完整安全商品，也不等於日本前無商品。",
+        "不把重新封袋試用講成建議觀眾仿做。"
+      ],
+      "estimated_net_new_spoken_units": [
+        160,
+        200
+      ]
+    },
+    {
+      "id": "N03",
+      "order": 3,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "不用昂貴機床，先把金屬滾成錐體再接合",
+      "new_information": "本人回憶早期在家工作，沒有錢購買車床等設備；以手持小工具工作，從舊物店買來金屬滾輪，把材料滾成氣旋的倒錐形，再焊接接合。他提到工具約二十五英鎊，這只是回憶中的工具購價，不是整體研發成本。",
+      "work_cause_result": "資金限制→用可取得的成形工具造真模型→能繼續做形狀實驗。",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 442,
+          "line_end_1based": 450,
+          "context_sha256": "b9ba859450dd3633399f379e783049de2ba8eec65af5bc9804b6fc1fcb8447a9",
+          "short_quote_original_language": "metal rollers",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "現稿沒有英國早期模型怎麼實做；不可改寫成又一次日本畫圖/改孔。",
+      "limits": [
+        "不必要新增工具價格；材料厚度、焊料、試作件尺寸皆未取得。",
+        "滾形與接合屬同一工作段，不能把每一下手勢當新增事件。"
+      ],
+      "estimated_net_new_spoken_units": [
+        110,
+        150
+      ]
+    },
+    {
+      "id": "N04",
+      "order": 4,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "一次只改一項，分辨形狀改變帶來的結果",
+      "new_information": "本人解釋試作時一次只作一項改變，觀察更好或更差，再由結果決定下一次嘗試。Robin Roy的原研究以訪談與模型資料記錄，他為分離粗粒與細灰而測試不同精確形狀，使用黃銅、鋁與透明塑料模型。這裡新增的是控制改件與製作試件的方法，而非再念原型總數。",
+      "work_cause_result": "複數因素同改難判原因→一次改一項並測試→累積能指引下一次造件的結果。",
+      "anchors": [
+        {
+          "source_id": "DESIGN_MATTERS",
+          "raw_sha256": "9b6869e2652f03ef3843671dc8ec3f37cd48a0eac98bbcaad97bddf204beb7eb",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DESIGN_MATTERS.txt",
+          "text_sha256": "24b5bc31aa54383448d8435034f8b6b6958df63ac56b3e246dd2ab6bf21dde9b",
+          "pdf_page": null,
+          "line_start_1based": 134,
+          "line_end_1based": 140,
+          "context_sha256": "5f36571c657ad112035655b0fb83276e93618170ac226cef211b910ab2f6b0dc",
+          "short_quote_original_language": "one change",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        },
+        {
+          "source_id": "OU_1993",
+          "raw_sha256": "85ead7c89de5eb86eaaa8cbc18b372a4eb15b146515f44f2e441d9efa961a3e7",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/OU_1993.page-4.txt",
+          "text_sha256": "144743bc81440dbd22af48e7789a11e678bed4c598b30399f22991f326490b03",
+          "pdf_page": 4,
+          "line_start_1based": 25,
+          "line_end_1based": 33,
+          "context_sha256": "709c21c72032552fc7906797994665d44692c8ea1350b3ef6fb294919d978606",
+          "short_quote_original_language": "brass",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "孔罩的孔徑/孔形試驗、專利粗細分工已在R3。只留更早形狀模型與控制變項；不重複粗細原理。",
+      "limits": [
+        "Roy是原訪談研究者的綜合表述，非逐字證詞；方法來源在PDF p2。",
+        "沒有每一輪數據、效率或某一角度的勝出結果。",
+        "5,127自述不加總成5,126台全失敗；不同訪談有不同敘事措辭，本節不採數量。"
+      ],
+      "estimated_net_new_spoken_units": [
+        120,
+        160
+      ]
+    },
+    {
+      "id": "N05",
+      "order": 5,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "先選發明與授權，讓別人接下製造",
+      "new_information": "本人回憶與Jeremy Fry起初共同選擇先做發明、工程和工作樣機，期待靠授權讓別人製造；他們兩人此前都有製造經驗。Roy訪談研究另把這個選擇連到吸塵器較高的模具支出。",
+      "work_cause_result": "小氣旋能工作還不夠出貨→先把工作限於發明/工程→接到Cyclon與APEX的實際授權路線。",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 386,
+          "line_end_1based": 390,
+          "context_sha256": "dd76c56ff7d90bedf04836ee88aa05e673d7c97d9589d12787881cd7c63979f7",
+          "short_quote_original_language": "manufacturers",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        },
+        {
+          "source_id": "OU_1993",
+          "raw_sha256": "85ead7c89de5eb86eaaa8cbc18b372a4eb15b146515f44f2e441d9efa961a3e7",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/OU_1993.page-4.txt",
+          "text_sha256": "144743bc81440dbd22af48e7789a11e678bed4c598b30399f22991f326490b03",
+          "pdf_page": 4,
+          "line_start_1based": 17,
+          "line_end_1based": 24,
+          "context_sha256": "4bcbb30db52e048b56fe76adec51495a83db852a182f523c15479c570733af87",
+          "short_quote_original_language": "tooling costs",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3直接開始Cyclon，未說明這次授權路線是本人與夥伴最初選的製造分工。",
+      "limits": [
+        "不借此恢復英國全部拒絕/日本才第一次有人接手。",
+        "Jeremy的股權、買回、訴訟旁枝不採；不用他的其他產品經歷補篇幅。"
+      ],
+      "estimated_net_new_spoken_units": [
+        70,
+        100
+      ]
+    },
+    {
+      "id": "N06",
+      "order": 6,
+      "status": "NEW_RAW_PARTIAL_R3_OVERLAP",
+      "title": "貸款先被拒，再在銀行內部爭取，房屋成為擔保",
+      "new_information": "本人在Senra訪談回憶，銀行以巡訪企業的業務專家接洽客戶；對方的貸款請求被拒後，轉到銀行內部的申訴/覆議角色爭取批准。本人又明說家屋作抵押，太太要簽相關表格。",
+      "work_cause_result": "日本收入不等於量產資本→融資需穿過銀行拒絕與內部再申請→他承擔以房屋擔保的風險。",
+      "anchors": [
+        {
+          "source_id": "SENRA",
+          "raw_sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+          "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+          "pdf_page": null,
+          "line_start_1based": 789,
+          "line_end_1based": 803,
+          "context_sha256": "ffb6af6bceab4de5955627be2b22870dcc26d9dd44ff8bc498fcc9a4da7d6b61",
+          "short_quote_original_language": "ombudsman",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3已講Mike Page親自替模具貸款爭取、Fortune1993/美元一百萬；新增只算『先拒後內部覆議』與房屋擔保，不把整段貸款再算一次。",
+      "limits": [
+        "Senra是1992/英鎊口徑，Fortune是1993/美元；不能拼成同一精確日期或換匯等式。",
+        "Senra此處未具名，不自行把其巡訪專家職稱視作已核Mike Page職稱。",
+        "沒有銀行原檔，內部角色照本人回憶歸屬。"
+      ],
+      "estimated_net_new_spoken_units": [
+        60,
+        90
+      ]
+    },
+    {
+      "id": "N07",
+      "order": 7,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "四個工程人員把零件圖、模具、供應商與組裝場接起來",
+      "new_information": "本人在Masters of Scale回憶，先請三名畢業工程師，連同自己四人畫所有部件圖，再親自找承包商、模具商與可能組裝的人。沒找到承接組裝者；成型供應商剛好有半邊閒置廠房，他提出租來組裝，免於先買整座工廠。模具仍由團隊投資；當時沒有另設生產經理、品管人員，接著才聘組裝線主管與組裝工人。",
+      "work_cause_result": "資金可買模具→還缺誰畫圖/誰製件/哪裡組裝→工程團隊接洽供應商並租現成空間，建立可出貨的人與場地。",
+      "anchors": [
+        {
+          "source_id": "MASTERS_SCALE",
+          "raw_sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/MASTERS_SCALE.txt",
+          "text_sha256": "b9d846bd22eb5e731d7b692a216f93b669b9b9ecebe0464d40d46c85a2913c76",
+          "pdf_page": null,
+          "line_start_1based": 145,
+          "line_end_1based": 150,
+          "context_sha256": "3be12e2c23c9d29c041a31df9d64694493558787a78b44dffb882371b47d3033",
+          "short_quote_original_language": "three graduate engineers",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3只有模具貸款與1993 Bumpers Farm照片。這是照片背後先取得製件與組裝能力的真正新增工作。",
+      "limits": [
+        "官方transcript自動產生未全校正，需後續sourceQA核定，尚未親聽音檔。",
+        "廠名地名日期未在該答案給出；不能把租半廠直接標成Bumpers Farm，更不能偷填Wrexham/Phillips。",
+        "不採模具六/七十萬的近似數字，也不把工程人數當公司總人數。",
+        "沒有品管專員不等於完全不做檢查。"
+      ],
+      "estimated_net_new_spoken_units": [
+        240,
+        310
+      ]
+    },
+    {
+      "id": "N08",
+      "order": 8,
+      "status": "NEW_RAW_NEW_ACTION_WITH_EXISTING_RETAIL_MILESTONE",
+      "title": "向第一家郵購買手實演，而不只要求相信新品牌",
+      "new_information": "本人回憶首家備貨的郵購目錄買手懷疑乾粉地毯清潔法；他去加油站買黑醋栗飲料，回來倒在地毯上、撒乾洗粉，再用機器吸起。其後買手仍問為何要換掉目錄裡的知名品牌；在雙方交涉後答應一試。",
+      "work_cause_result": "生產端能交貨→通路仍怕消費者不認識→在買手眼前做一次實演，才接到試賣。",
+      "anchors": [
+        {
+          "source_id": "MASTERS_SCALE",
+          "raw_sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/MASTERS_SCALE.txt",
+          "text_sha256": "b9d846bd22eb5e731d7b692a216f93b669b9b9ecebe0464d40d46c85a2913c76",
+          "pdf_page": null,
+          "line_start_1based": 87,
+          "line_end_1based": 93,
+          "context_sha256": "1b874f5f2fa5a2c06ec0a4721eaf3e92099dd17301f12982c95605b8a615c90d",
+          "short_quote_original_language": "powder down",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3已講第一家郵購目錄與第二家；只新增實演與買手提出的上架障礙，不能再把『首家目錄』重算。",
+      "limits": [
+        "後來回憶，無目錄名、訂單、確切日期或成交量。",
+        "乾粉是配套地毯清潔用品，不是證明機器可直接吸液；畫面應讓粉已施用後才吸除，不能暗示濕吸能力。",
+        "不能把這場示範當同時代產品測試或清潔效能量測；不照抄對話梗。"
+      ],
+      "estimated_net_new_spoken_units": [
+        100,
+        140
+      ]
+    },
+    {
+      "id": "N09",
+      "order": 9,
+      "status": "NEW_RAW_NEW_TO_R3",
+      "title": "爭取把技術展示說明放到機器旁",
+      "new_information": "本人回憶早期通路以折扣與價格銷售，他想讓買家知道性能、耐用與使用方法；實際阻力是讓零售商同意把差異和技術說明放在機器旁。他把爭取到售點展示資料視為一次突破。",
+      "work_cause_result": "實演說服一名買手仍無法替每位顧客解說→把差異放到櫃旁→零售現場才能向新品牌的潛在買家解釋產品。",
+      "anchors": [
+        {
+          "source_id": "MASTERS_SCALE",
+          "raw_sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/MASTERS_SCALE.txt",
+          "text_sha256": "b9d846bd22eb5e731d7b692a216f93b669b9b9ecebe0464d40d46c85a2913c76",
+          "pdf_page": null,
+          "line_start_1based": 152,
+          "line_end_1based": 157,
+          "context_sha256": "2aeecdb16f70107ccd13038d36f84176073b9db7bec98c172d257c5f422cf682",
+          "short_quote_original_language": "point of sale",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3有透明筒被零售商嫌，不含店內展示資料的取得工作；不能將其改成重說透明筒吸引人。",
+      "limits": [
+        "只採當事者的通路經驗，不概括所有1990年代零售或量化成銷售提升百分比。",
+        "原件沒給首張牌面內容、設計圖、店名與確日，不虛構。"
+      ],
+      "estimated_net_new_spoken_units": [
+        90,
+        120
+      ]
+    },
+    {
+      "id": "N10",
+      "order": 10,
+      "status": "NEW_RAW_OPTIONAL_UNDATED_EARLY_RETAIL_SCOPE",
+      "title": "以訂單條件承諾廣告，跨過通路的品牌疑慮",
+      "new_information": "本人在Design Matters回憶一名電器零售商把機器帶回家，認可效果卻擔心陌生品牌賣不動，要求廣告支持。他沒現成廣告預算，便提議按店家一定訂購量投入電視廣告，雙方以此成交。本人同時說最早的廣告不是自己出鏡，之後才有。",
+      "work_cause_result": "產品有效仍缺品牌信任→把廣告支出與訂單連動→通路願意承接。",
+      "anchors": [
+        {
+          "source_id": "DESIGN_MATTERS",
+          "raw_sha256": "9b6869e2652f03ef3843671dc8ec3f37cd48a0eac98bbcaad97bddf204beb7eb",
+          "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DESIGN_MATTERS.txt",
+          "text_sha256": "24b5bc31aa54383448d8435034f8b6b6958df63ac56b3e246dd2ab6bf21dde9b",
+          "pdf_page": null,
+          "line_start_1based": 174,
+          "line_end_1based": 184,
+          "context_sha256": "a15944bf43edb77c3a92aed60bf4417121e5a76de6f63d823861db069e1c354f",
+          "short_quote_original_language": "television advertising",
+          "speaker_or_attribution": "James Dyson unless explicitly identified as Robin Roy research synthesis"
+        }
+      ],
+      "r3_overlap": "R3沒有廣告與接單的交換安排。它不應取代已有郵購先後，兩段無法自行排成同一家買手。",
+      "limits": [
+        "答案沒有日期、買家名；只在作者明示把範圍延到初期英國通路建立時選用，不硬塞為1993某日首單。",
+        "原件對金額自己加了不確定保留；不採每千台/一萬英鎊的精確比例。",
+        "未取得當時廣告影片或訂單原件。"
+      ],
+      "estimated_net_new_spoken_units": [
+        90,
+        120
+      ],
+      "capacity_in_core": false
+    }
+  ],
+  "reusable_existing_not_new": [
+    {
+      "id": "R01",
+      "claim": "CYCLON先做木製外觀模型、1983年8月已有含透明筒原型。",
+      "source_id": "UKIPO_TRANSPARENT_BIN",
+      "pdf_page": 4,
+      "local_text_path": "/workspace/work/brand-story-20261025/dyson-audit/source-cache/UKIPO_TRANSPARENT_BIN.page-4.txt",
+      "line_start_1based": 14,
+      "line_end_1based": 24,
+      "raw_sha256": "435e26843de587972c7b43033b3eea1f0fc2a429bfd14cab4189d70a49db6834",
+      "classification": "old raw and original D21; removed from R3; reuse only if showing appearance-model to working prototype",
+      "new_research_units": 0,
+      "maximum_net_script_addition_units": 45,
+      "limits": [
+        "木製是visual model，不是木製可運轉吸塵器。",
+        "不能充新工程或新原件。"
+      ]
+    },
+    {
+      "id": "R02",
+      "claim": "1980年代向15家吸塵器製造商展示透明筒機，其中不只一家不喜清/煙色筒。",
+      "source_id": "UKIPO_TRANSPARENT_BIN",
+      "pdf_page": 4,
+      "local_text_path": "/workspace/work/brand-story-20261025/dyson-audit/source-cache/UKIPO_TRANSPARENT_BIN.page-4.txt",
+      "line_start_1based": 26,
+      "line_end_1based": 29,
+      "raw_sha256": "435e26843de587972c7b43033b3eea1f0fc2a429bfd14cab4189d70a49db6834",
+      "classification": "old original D22 context; 15 manufacturers, NOT 15 shops",
+      "new_research_units": 0,
+      "maximum_net_script_addition_units": 35,
+      "limits": [
+        "原件是manufacturers，不是商店、消費者問卷、15次完全拒絕。",
+        "與R3通路不喜透明筒高度重複，真正新增空間很小。"
+      ]
+    },
+    {
+      "id": "R03",
+      "claim": "Fortune原口述中與Conair/Black & Decker談到相當程度，後因內部專利律師或不擴產品線而停。",
+      "source_id": "FORTUNE_ORAL",
+      "old_paragraph": 34,
+      "local_text_path": "/workspace/work/brand-story-20261025/dyson-audit/source-cache/FORTUNE_ORAL.paragraphs.json",
+      "classification": "already-fetched source; unused R3 detail, not new raw",
+      "new_research_units": 0,
+      "maximum_net_script_addition_units": 75,
+      "limits": [
+        "須以本人回憶歸屬，不能當所有公司動機或把先前Cyclon授權抹掉。",
+        "用來接N05至Cyclon/APEX即可，不列品牌名清單。"
+      ],
+      "paragraph_sha256": "c8b57f59f4e0eac93e91291af4115ece669cfe1ea52d6b46f7b635edc4148025"
+    }
+  ],
+  "duplicate_or_excluded": [
+    "Current R3 already uses all Yamamoto/APEX motor voltage, casing, half-year/one-and-a-half-year trial recollections, cracked wheel, melted shell, perforated shroud, hole experiments, repeated fax, drawing duties, Japan visits and head redesign. No new independent APEX engineering detail was obtained in this search; these remain zero added research units.",
+    "No original APEX contract, early motor drawing, hole measurements, trial table, original bank agreement, first purchase order or tooling-move document was obtained.",
+    "WIRED micron recollection and Design Matters smoke/hair discussion are not additional engineering events with a documented procedure/result; excluded from capacity.",
+    "OU paper price £199 and 1981 side-by-side/1986 chronology are not used as chronological padding. The contemporaneous paper is used only for model-making and manufacturing constraints.",
+    "Masters narrator revenue/ranking/speed compressions and every-major-manufacturer / all-failed claims are not adopted.",
+    "NPR/search third-party transcript leads for tooling-change prohibition, supplier 60-day terms and exact chronology were not supported by retrieved original transcript; not admitted."
+  ],
+  "sources": {
+    "DYSON_BIO": {
+      "id": "DYSON_BIO",
+      "requested_url": "https://www.dyson.co.uk/james-dyson",
+      "retrieved_at": "2026-10-26T06:57:18.046103+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://www.dyson.co.uk/james-dyson",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.html",
+      "bytes": 669676,
+      "sha256": "b2a0df69933272525d91633ff600c06dda360d02ec51133ce1994052e4d70fba",
+      "content_type": "text/html;charset=utf-8",
+      "encoding": "UTF-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.txt",
+      "text_sha256": "380cb8db8ee96d3f7f0a5cd95b3f0add2212443b3e1957e1e90cb1256bd54584",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DYSON_BIO.paragraphs.json",
+      "paragraphs_sha256": "aa0620697c849297186ddde00dc6c1cf59aea74365b179a245bdea18eedf3c75",
+      "evidence_level": "official_company_retrospective_biography",
+      "usage_limits": [
+        "Corporate retrospective; the factory cyclone is 25 ft here but 30 ft in the Senra recollection. Omit the height rather than resolve the conflict by choice.",
+        "Its Japan-omitting compression and 5,126-failure marketing wording must not replace the R3 Cyclon/APEX boundaries."
+      ],
+      "accepted_for_nodes": true
+    },
+    "FASTCOMPANY_ORAL": {
+      "id": "FASTCOMPANY_ORAL",
+      "requested_url": "https://www.fastcompany.com/90681619/from-nearly-1-million-in-debt-to-a-household-name-james-dyson-dishes-on-his-biggest-hits-and-misses",
+      "retrieved_at": "2026-10-26T06:58:24.890121+00:00",
+      "auth_used": false,
+      "status": 403,
+      "final_url": "https://www.fastcompany.com/90681619/from-nearly-1-million-in-debt-to-a-household-name-james-dyson-dishes-on-his-biggest-hits-and-misses",
+      "bytes": 775,
+      "sha256": "d4daf4d400a73ff403c468f6c701b50052e4a970e24ed4939c6fd668d2882a5a",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/FASTCOMPANY_ORAL.error-body",
+      "error": "HTTP Error 403: Forbidden",
+      "action": "Stopped endpoint; no authentication or access bypass.",
+      "evidence_level": "http_403_not_used",
+      "usage_limits": [
+        "Endpoint returned HTTP403; response body preserved; not used as evidence."
+      ],
+      "accepted_for_nodes": false
+    },
+    "INC_ORAL": {
+      "id": "INC_ORAL",
+      "requested_url": "https://www.inc.com/magazine/201203/burt-helm/how-i-did-it-james-dyson.html",
+      "retrieved_at": "2026-10-26T06:58:07.040319+00:00",
+      "auth_used": false,
+      "status": 403,
+      "final_url": "https://www.inc.com/magazine/201203/burt-helm/how-i-did-it-james-dyson.html",
+      "bytes": 767,
+      "sha256": "8b936f963d5a245ece4be10d7ef7eec16e95c5ba97fa86827597c55145962972",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/INC_ORAL.error-body",
+      "error": "HTTP Error 403: Forbidden",
+      "action": "Stopped endpoint; no authentication or access bypass.",
+      "evidence_level": "http_403_not_used",
+      "usage_limits": [
+        "Endpoint returned HTTP403; response body preserved; not used as evidence."
+      ],
+      "accepted_for_nodes": false
+    },
+    "OU_1993": {
+      "id": "OU_1993",
+      "requested_url": "https://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf",
+      "retrieved_at": "2026-10-26T06:57:18.067026+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/OU_1993.pdf",
+      "bytes": 218651,
+      "sha256": "85ead7c89de5eb86eaaa8cbc18b372a4eb15b146515f44f2e441d9efa961a3e7",
+      "content_type": "application/pdf",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/OU_1993.txt",
+      "text_sha256": "7ec3771f6415d1332863ebd612a00a2ffb5c7c2fe84f5de47d3490a5267bd8a5",
+      "extraction": "pdftotext -layout; strict utf8 output; no replacement characters",
+      "pages_index": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/OU_1993.pages.json",
+      "pages_index_sha256": "e1fbaf88f502d33ffbf233b32b0cbb22cbab225611c276ef68aae5e3007e82c1",
+      "pdf_pages": 20,
+      "evidence_level": "original_interview_based_research_paper_not_full_interview_transcript",
+      "usage_limits": [
+        "PDF p2 Research Method describes preliminary/in-depth participant interviews, archive material and full transcripts used by Robin Roy. This is primary research with author synthesis, not verbatim access to all interview testimony.",
+        "Cover says revised March 93; footer includes a later file label 29/03/2011. Cite the work as the paper’s March-1993 revision, not a proven March-1993 download or a newly contemporaneous transcript.",
+        "Only p4 test-model/materials and commercialization constraints are selected. Do not reuse speculative country/industry motives or later Fantom/products."
+      ],
+      "accepted_for_nodes": true
+    },
+    "NPR_TRANSCRIPT": {
+      "id": "NPR_TRANSCRIPT",
+      "requested_url": "https://www.npr.org/templates/transcript/transcript.php?storyId=584331881",
+      "retrieved_at": "2026-10-26T06:57:18.056987+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://www.npr.org/transcripts/584331881",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/NPR_TRANSCRIPT.html",
+      "bytes": 145645,
+      "sha256": "9dc62047824f6c8a2a5a92ca3c260d3b7defab678392aea49076d6f1d1ad42e5",
+      "content_type": "text/html;charset=UTF-8",
+      "encoding": "UTF-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/NPR_TRANSCRIPT.txt",
+      "text_sha256": "0cd27e5db455dde43c55d7a943d3b85bd67f67a3834d79e78af7fb3215fab802",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/NPR_TRANSCRIPT.paragraphs.json",
+      "paragraphs_sha256": "2b0c4dfeb4c20c9983c8ee9c99fb76fc6e3254313b4842d92be1eec60dc01092",
+      "evidence_level": "http_200_but_no_transcript",
+      "usage_limits": [
+        "Requested old transcript endpoint redirects to /transcripts/584331881 and returns HTTP200. Raw body has no-transcript class and contains program description/audio link, not the interview transcript. Do not cite podscript/search snippets as if NPR text had been retrieved."
+      ],
+      "accepted_for_nodes": false
+    },
+    "DESIGN_MATTERS": {
+      "id": "DESIGN_MATTERS",
+      "requested_url": "https://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/",
+      "retrieved_at": "2026-10-26T06:58:32.639198+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DESIGN_MATTERS.html",
+      "bytes": 212926,
+      "sha256": "9b6869e2652f03ef3843671dc8ec3f37cd48a0eac98bbcaad97bddf204beb7eb",
+      "content_type": "text/html; charset=UTF-8",
+      "encoding": "UTF-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DESIGN_MATTERS.txt",
+      "text_sha256": "24b5bc31aa54383448d8435034f8b6b6958df63ac56b3e246dd2ab6bf21dde9b",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/DESIGN_MATTERS.paragraphs.json",
+      "paragraphs_sha256": "4d28853b4a05c9fbb080d06f12d1a9abfb8d9f12bcedd38b4525fd1e4cf86704",
+      "evidence_level": "original_show_publisher_participant_transcript_rebroadcast_2026",
+      "usage_limits": [
+        "This fetched official page says Best of and 2026-07-20. Search also identifies a 2025 PRINT version; this task does not infer a new 2026 interview recording date.",
+        "The advertising/order exchange is undated. Dyson qualifies the recalled pounds amount with or whatever it was. Retain the conditional arrangement, omit exact money/order ratios.",
+        "Scissors/coins/hair and smoke passages overlap R3 coarse/fine and shroud explanation; not additional usable capacity."
+      ],
+      "accepted_for_nodes": true
+    },
+    "SENRA": {
+      "id": "SENRA",
+      "requested_url": "https://www.davidsenra.com/episode/james-dyson",
+      "retrieved_at": "2026-10-26T06:57:18.070382+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://www.davidsenra.com/episode/james-dyson",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.html",
+      "bytes": 264941,
+      "sha256": "2dd8ebeb595a1a872fb7153b2844db5dbc7aecc4a5e0eddf46e7d8050f65cf5f",
+      "content_type": "text/html; charset=utf-8",
+      "encoding": "utf-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.txt",
+      "text_sha256": "cf8a0a3d909368dd83508c5398e4923d1649fcaf285ae429b4f586ca6330ade8",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/SENRA.paragraphs.json",
+      "paragraphs_sha256": "76fa25a0c7c7273c58ab7990a32f57f7c5e286165d4dda02c763020e79533321",
+      "evidence_level": "original_interviewer_published_participant_transcript_retrospective_2025",
+      "usage_limits": [
+        "Only James Dyson’s own labeled answers are participant evidence. Host questions, book quotations and the opening summary are distinct; do not inherit the summary’s absolute all-rejected / 5,127-failed wording.",
+        "Retrospective memory; no original test sheets, factory quote, bank file or loan agreement obtained.",
+        "SENRA.txt line numbers are 1-based extraction lines, not web-tool line numbers."
+      ],
+      "accepted_for_nodes": true
+    },
+    "WIRED_TECH_QA": {
+      "id": "WIRED_TECH_QA",
+      "requested_url": "https://www.wired.com/video/watch/tech-support-james-dyson-answers-design-questions-from-twitter",
+      "retrieved_at": "2026-10-26T07:00:16.028817+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://www.wired.com/video/watch/tech-support-james-dyson-answers-design-questions-from-twitter",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/WIRED_TECH_QA.html",
+      "bytes": 1546130,
+      "sha256": "9f373b61487667cccb96cec278760674473d3480e603e333e4d56546e1db43ba",
+      "content_type": "text/html; charset=utf-8",
+      "encoding": "utf-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/WIRED_TECH_QA.txt",
+      "text_sha256": "49a1d82861beafee87f879f3e02d534242f876e3d8fd41d2a25b0200a5376b21",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/WIRED_TECH_QA.paragraphs.json",
+      "paragraphs_sha256": "24e46cc28ded5ba051ddcd8aa2f666f66e3ca2ada88baaa5fb8a9fb92382adc5",
+      "evidence_level": "original_video_publisher_participant_qa_transcript",
+      "usage_limits": [
+        "Transcript obtained on original video publisher. Micron statements are participant claims without test protocol and are not needed for the capacity budget. Selected as corroborating/lead only, zero new units."
+      ],
+      "accepted_for_nodes": false
+    },
+    "NPR_TRANSCRIPTS": {
+      "id": "NPR_TRANSCRIPTS",
+      "requested_url": "https://www.npr.org/transcripts/584331881",
+      "retrieved_at": "2026-10-26T06:58:07.035383+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://www.npr.org/transcripts/584331881",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/NPR_TRANSCRIPTS.html",
+      "bytes": 145645,
+      "sha256": "adbf58f894e5d1596f544b799b8613717f1115d6384f184457e51dfcb1b3a025",
+      "content_type": "text/html;charset=UTF-8",
+      "encoding": "UTF-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/NPR_TRANSCRIPTS.txt",
+      "text_sha256": "0cd27e5db455dde43c55d7a943d3b85bd67f67a3834d79e78af7fb3215fab802",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/NPR_TRANSCRIPTS.paragraphs.json",
+      "paragraphs_sha256": "2b0c4dfeb4c20c9983c8ee9c99fb76fc6e3254313b4842d92be1eec60dc01092",
+      "evidence_level": "http_200_but_no_transcript",
+      "usage_limits": [
+        "Direct canonical transcript path also HTTP200 with same extracted text; still no usable transcript. Raw HTML has dynamic variation, hence distinct SHA."
+      ],
+      "accepted_for_nodes": false
+    },
+    "MASTERS_SCALE": {
+      "id": "MASTERS_SCALE",
+      "requested_url": "https://mastersofscale.com/tinker-your-way-to-scale/",
+      "retrieved_at": "2026-10-26T06:58:24.893052+00:00",
+      "auth_used": false,
+      "status": 200,
+      "final_url": "https://mastersofscale.com/tinker-your-way-to-scale/",
+      "raw_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/MASTERS_SCALE.html",
+      "bytes": 289298,
+      "sha256": "9b60a9f1d821824738bb9577ac28923a14060e935c212f663b1e40e4646c9918",
+      "content_type": "text/html; charset=UTF-8",
+      "encoding": "utf-8",
+      "decode": "strict; no replacement characters",
+      "text_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/MASTERS_SCALE.txt",
+      "text_sha256": "b9d846bd22eb5e731d7b692a216f93b669b9b9ecebe0464d40d46c85a2913c76",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/MASTERS_SCALE.paragraphs.json",
+      "paragraphs_sha256": "e2e5894301d8d534e7a4222bccb37f25e6335c393df599fc52754c0d0287c138",
+      "evidence_level": "original_show_publisher_participant_auto_transcript_2024_uncorrected",
+      "usage_limits": [
+        "Page is dated 2024-06-06 and explicitly says the transcript is automatically generated and not fully corrected (local lines 86 onward). Audio has not been independently listened to in this task.",
+        "Separate DYSON answers from BERMAN narration. Do not use the narrator’s $1.6bn/1997, speed, ranking, years or blanket rejection claims.",
+        "The half-empty factory is unnamed and undated here. Do not identify it as Bumpers Farm, Wrexham, Phillips Plastics or a particular DC01/DA001 variant from other sources.",
+        "N08 dry-powder carpet demonstration is an attributed sales recollection, not a controlled test or a promise every stain can be removed."
+      ],
+      "accepted_for_nodes": true
+    }
+  },
+  "protected_inputs": {
+    "created_at_utc": "2026-10-26T07:06:36.190487+00:00",
+    "before_manifest_path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/protected-before.json",
+    "before_manifest_sha256": "993f08dbab477d76dff62b1251696ebb4dec21dcc472485b74c04a11062b939f",
+    "protected_files_checked": 316,
+    "changed_or_missing": [],
+    "unchanged": true
+  },
+  "operations": {
+    "script_claims_core_history_lexicon_modified": false,
+    "old_research_or_source_index_modified": false,
+    "git_commands_or_commit": 0,
+    "host_backend_paid_provider_calls": 0,
+    "generated_media": 0,
+    "subagents_spawned": 0,
+    "raw_location": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4",
+    "copyright": "Only small original-language excerpts and original factual summaries in repo reports; raw stays outside Git."
+  },
+  "search_reconnaissance": [
+    "James Dyson interview transcript powder coating cyclone factory manufacturing DC01 1993 tooling",
+    "James Dyson How I Built This original NPR transcript",
+    "James Dyson Masters of Scale transcript",
+    "James Dyson Design Matters original transcript",
+    "山本秀夫 ダイソン 開発 / ottimo G-Force / Dyson Apex motor interview"
+  ],
+  "ready_for_author": true,
+  "ready_for_source_pass": false,
+  "ready_for_native_or_tts_pass": false,
+  "raw_index": {
+    "path": "/workspace/work/brand-story-20261025/dyson-audit/capacity-r4/raw-index-r4.json",
+    "sha256": "82f984c6a65b59b2821b4b02990c9400ac13612fc1d597e216643ed7fb9cadac",
+    "receipt_count": 10,
+    "http200_usable_primary_sources": 6,
+    "http200_no_transcript": 2,
+    "http403": 2
+  }
+}

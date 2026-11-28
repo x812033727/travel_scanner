@@ -1,0 +1,2268 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/seiko_r1_source",
+  "review_type": "INDEPENDENT_FULL_SOURCE_AND_WRITTEN_VISUAL_QA",
+  "reviewed_at_utc": "2026-10-26T04:07:06.309408+00:00",
+  "candidate_revision": "seiko-r1",
+  "video_slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+  "independent": true,
+  "reviewer_authored_or_researched_candidate": false,
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "native_facts_receipt_created": false,
+  "native_facts_reason": "Source HOLD: do not create verify-1.md or represent a partial source review as native facts PASS.",
+  "input_isolation": {
+    "narrative_or_blind_review_content_read": false,
+    "author_notes_file_content_read": false,
+    "author_or_researcher_consulted": false,
+    "author_verdict_used_as_evidence": false,
+    "subagents_spawned": 0,
+    "allowed_candidate_inputs": "frozen script/video/narration/claim bindings, brief, build and technical handoff; original cited sources; immutable runtime metadata"
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "a4dbe4850de1a2773aee8b273c8d92beb9f775d6e8bb3ba808a9bf70b4f6e115",
+      "script.md": "591c8de7a42817fdcd2ed934eacee35467df2345fa1c3fd194119d58e4171443",
+      "narration-only.json": "347c428bc7f93e00f8dbae1620e036cd32984c86d22d006bce3b8582043e57c9",
+      "claims.json": "d18d87d822fb0febb22c79b099da3db7a552edd41cac0521471ebfa02d701b2b"
+    },
+    "author_freeze_r1_sha256": "f3dd5236a54f0273ad3afef1a4017217218294e51555f4ace494aacd9d9662ce",
+    "image_reuse_plan_sha256": "05f5574cdd4d57b9027a014a487d3858a11da134551668e55045bba582c0450b",
+    "author_source_additions_sha256": "eb43bf2081abf685d2ca6826873ac15a9b917a6af861e5700350ba257fa164fd",
+    "frozen_research_sha256": {
+      "research-original.md": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+      "research-original.claims.json": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+      "original-preservation.json": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc"
+    },
+    "all_frozen_files_still_match": true
+  },
+  "coverage": {
+    "lines_read": 146,
+    "claim_rows_read": 146,
+    "scenes_read": 144,
+    "shot_prompts_read": 143,
+    "native_outro_scenes": 1,
+    "chapters": 7,
+    "loops_read": 34,
+    "unique_cited_anchors_read": 46,
+    "used_source_documents_read": 7,
+    "source_rows_requiring_change": 3,
+    "written_visual_rows_with_must_fix": 0,
+    "row_verdict_counts": {
+      "PLAN": 67,
+      "ATTRIBUTED": 68,
+      "CONFIRMED": 8,
+      "CHANGED": 3
+    }
+  },
+  "must_fix": [
+    {
+      "id": "SR1-01",
+      "severity": "MUST_FIX",
+      "category": "supplier_model_and_time_scope_conflation",
+      "line_ids": [
+        "skr1c22",
+        "skr1c23",
+        "skr1c24"
+      ],
+      "surrounding_line_ids": [
+        "skr1c19",
+        "skr1c20",
+        "skr1c21",
+        "skr1c26"
+      ],
+      "finding": "c19–20已把主詞定為1971年4月的自研A型晶片；c22的「它」、c23的「新晶片」及c24接續效果，卻轉用S7第8頁對Intersil晶片逐步替換35SQ分頻回路的敘述，未告訴聽眾已換供應商與機種。單句各有來源，現在的連接會把兩次變更聽成同一顆自研晶片。",
+      "evidence": [
+        {
+          "source_id": "S7_SHMJ",
+          "pdf_page": 6,
+          "printed_page": 6,
+          "text_lines": "34–40",
+          "short_quote": "1971 年 4 月",
+          "meaning": "自研A型：分頻功能及步進馬達驅動訊號波輸出，面積小於5平方毫米。"
+        },
+        {
+          "source_id": "S7_SHMJ",
+          "pdf_page": 7,
+          "printed_page": 7,
+          "text_lines": "1–2",
+          "short_quote": "同年 12 月発売の 38 系",
+          "meaning": "上一頁自研晶片後接38系。"
+        },
+        {
+          "source_id": "S7_SHMJ",
+          "pdf_page": 8,
+          "printed_page": 8,
+          "text_lines": "4–6",
+          "short_quote": "インターシル社の CMOS IC",
+          "meaning": "35SQ電子回路途中改用Intersil晶片；這顆分頻專用，其餘仍hybrid，並帶來實裝工序及耗電下降。"
+        }
+      ],
+      "required_change": "在c22–24明示這段回看的是35SQ採用外購Intersil分頻晶片的過渡，或移到外購晶片段落；其後再清楚回到1971自研A型及38系。同步更新逐句錨點、loop c22→c23及受影響投影，保留各原件，不把分頻限定無條件套在剛介紹的自研A型上。",
+      "acceptance": "只聽旁白即可分清外購Intersil/35SQ與1971自研A型/38系；不靠description、claims備註或圖像補救代詞歧義。"
+    }
+  ],
+  "source_assessment": {
+    "used_source_ids": [
+      "S1_EPS35SQ",
+      "S4_BRAND50",
+      "S5_ETHW_JP",
+      "S7_SHMJ",
+      "S8_TOYOTA",
+      "S20_YASUKAWA1977",
+      "S24_KAHAKU_REPORT"
+    ],
+    "raw_source_reextraction": "All 46 short quotes located again from raw HTML with Python standard-library HTMLParser or direct pdftotext -layout of raw PDFs. Preserved source UTF-8 text, raw SHA, text SHA and quote SHA all match.",
+    "full_text_read_scope": [
+      "S1 product specification and product-history paragraphs 133–159",
+      "S4 anniversary opening/specification/history",
+      "S5 IEEE milestone paragraphs 48–58",
+      "S7 all 8 pages",
+      "S8 dated 1966-10-20 release and Tokyo price table",
+      "S20 PDF1/3/4/6, printed998/1000/1001/1003",
+      "S24 PDF39–42, printed39–42"
+    ],
+    "extra_independent_locator": [
+      {
+        "line_id": "skr1h02",
+        "source_id": "S24_KAHAKU_REPORT",
+        "pdf_page": 40,
+        "printed_page": 40,
+        "text_lines": "32–35",
+        "reason": "C33 points near the page opening; the microscope assembly action is explicitly confirmed in the right column, also S7 PDF4 lines37–39."
+      }
+    ],
+    "captured_source_inventory": {
+      "records": 26,
+      "raw_http_success": 18,
+      "failed_response_records": 5,
+      "http200_wrong_resource": 1,
+      "patent_metadata_only": 2,
+      "all_recorded_raw_and_text_sha_checked": true,
+      "content_claims_of_uncited_sources_not_independently_approved": true,
+      "failed_or_wrong_resource_or_metadata_used_as_script_proof": false
+    },
+    "key_limits_confirmed": [
+      "S7是2004公司回顧，S24是2017後出技術史；當事回述/製造規格沒有升格為同期逐件紀錄。",
+      "1969首批是hybrid；未把後期CMOS或1977回路工法放回首批，也未用單支serial串連出貨、返調、爐溫與後期機種。",
+      "20%明確是初期振子良率；10%只指外購IC可挑出用的比例；沒有退貨率。",
+      "爐溫是比應設值低50℃，不是實際爐溫50℃；未發明日期、批號、具名查出者或全面修復結果。",
+      "月差±5秒保留+4℃至+36℃條件。",
+      "1966東京Corolla Standard432千日圓、同表Deluxe495千日圓；和1969錶價分年說，未作同年新聞價或今日購買力換算。",
+      "S7內部1969起始月份矛盾及可疑mW/mA絕對值未採用；未暗選更正原件。",
+      "未口播全球免費公開/放棄所有專利；S24記公開同時仍有付費許可，metadata不能證完整權利範圍。",
+      "S20 48 Superior回路、圖12機台能力每月約10萬回路單元、成品質保各保留後期/特定對象範圍；非1969整錶出貨量或無條件維修保證。"
+    ],
+    "pixel_original_readback": [
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-1.png",
+        "sha256": "24f7a7639f87f568c463aaec19045561df10975eb14e9c6e9561e0a084f2af10"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-3.png",
+        "sha256": "ba193f38a3f16f04d9c36d2a5072cba506e7321490d0c7f1b33b733077cadfbc"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-6.png",
+        "sha256": "518300bbcb5ad6660e862574d14af34921334ae6c91e24352cfa3e496c7c33aa"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-8.png",
+        "sha256": "1f9a5ceb17535cbe37d8197807df71537277fc72c923d31223d6ca9fbe95556d"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-040.png",
+        "sha256": "bcbf35fca08fe11dcb56e67f87251e0841cd9c827b0e71d1200213026769c842"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-041.png",
+        "sha256": "d58c147e48074953b51621f0e197443c02d9fbce7e601658cc53de1c5fa653c3"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20-author-3.png",
+        "sha256": "c4a1e8f035ba2bd48cab9fc052e7064199eb5097e73d2a790009157574d248f9"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20-author-6.png",
+        "sha256": "0c3364373e768c656e4a58d4e184cf3582f93a177569c48f5fc5c6459ce5d8d5"
+      }
+    ],
+    "anchor_checks": [
+      {
+        "id": "C01",
+        "source_id": "S4_BRAND50",
+        "locator": {
+          "text_line": 9
+        },
+        "raw_sha256": "23d3fa04c0a3d0fb24a9e8f909a228947a3832cebba845c07839742a4a569d49",
+        "text_sha256": "1130d40b022b09fbf78743ab89ec46809c332e3588d8a26bb629797896e093fd",
+        "quote_sha256": "f72963ee85daa7992cf561df99fb6df8e1411b2406bd42c8d36dff66d45bbf8c",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C02",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 149
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "af5e4a809b80d2115d0af66993c29ba76140e039173aa391161dbf575a86b1e3",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C06",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 153
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "4e7ead4e142929bd6a6cea927cde778dfa99f345a0494f88c679557dffe33330",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C33",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 40,
+          "printed_page": 40,
+          "text_line": 2
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "845e271f0d892fb675482137c92a81ce57d14a70765183d2b92ea7ddb04e62f2",
+        "quote_sha256": "9e6f1e00444b73d2a0a0610f89ea8e418ae447b935b733d3eda427cf64f4273c",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C04",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 137
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "320be705aaa49234133e282682dc27aec043484a45b5b04824d8e7a4c632432c",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C15",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "text_line": 22
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+        "quote_sha256": "4d0c3d69f5aa1158377ec78fc338f127efcb0f249ba0e06777f7cddb0e23b409",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C12",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 1,
+          "printed_page": 1,
+          "text_line": 37
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "96a91e9ae77cb9d42dbf3c35e29cfbd839b80aa3df942e3bf21f1cc423fee3e9",
+        "quote_sha256": "87116c78f65e5ba2409202fb08fde540446449ffa2cb2cf2bb8e484b581d92cf",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C13",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "text_line": 4
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+        "quote_sha256": "81f2fa40c9d677c208522df68bdd465a6425f19f12863d340a65b8dbb4f217b0",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C20",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 3,
+          "text_line": 5
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "0aa82a9d71d05627fdee9e1a651c0e7ecd3c23c5815384d324cfaefd95d2c598",
+        "quote_sha256": "8b0ae2c148091649ae4cbdf25fa364855f8f94b3b8a3c5e1cc1ff6e2928a74a6",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C22",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 3,
+          "text_line": 9
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "0aa82a9d71d05627fdee9e1a651c0e7ecd3c23c5815384d324cfaefd95d2c598",
+        "quote_sha256": "a6011c7012bd2e64911023db9d9eebb3244f2644e68dc14232afd401553bf374",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C30",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 8,
+          "printed_page": 8,
+          "text_line": 5
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "86fcf260a34eef4c52ea375602654ad3bc24939700978652074a8848a32991a5",
+        "quote_sha256": "71d11686acd1f78f0f8501c0b6d0de0e77d12015c89748faddbbb6f347244f99",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C29",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 8,
+          "printed_page": 8,
+          "text_line": 3
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "86fcf260a34eef4c52ea375602654ad3bc24939700978652074a8848a32991a5",
+        "quote_sha256": "7cb25904ab25ec6d65a5a60c2ff23f51dffc0648143b62067c15d5a3814c50c5",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C05",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 145
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "0d9c2077f94236d89c62d8235ac6697629f106a7448904e00acf8824ad10073f",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C09",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 154
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "89be4d9128d2dc5a0412cc0cebf07539d0e9d2e3bd1a5c79d0366e1d8517b9b1",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C34",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 40,
+          "printed_page": 40,
+          "text_line": 32
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "845e271f0d892fb675482137c92a81ce57d14a70765183d2b92ea7ddb04e62f2",
+        "quote_sha256": "fd9d30ca48b746fd82bf18d7f6a1901ac8c7fcda3f0bb7d1bc1f733ad50d02e5",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C07",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 152
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "4d6f0fbc1c5c18544f9e860704475c59e0b3fc5d0e690b260491f46967eafb8e",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C35",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 40,
+          "printed_page": 40,
+          "text_line": 52
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "845e271f0d892fb675482137c92a81ce57d14a70765183d2b92ea7ddb04e62f2",
+        "quote_sha256": "92a86fb818f8b9f27c3da6f9f0078a2f5a4a2d818c896ca9358f8768a3dee864",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "A06",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 39,
+          "printed_page": 39
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "c72725c339f3733c27e7d147de031f399b797f9bd419505f301fcaa931748b8b",
+        "quote_sha256": "12742b126314500f2ad9a30904d4c5d03d792e4f009b3a6b09e6192eb2d69579",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C44",
+        "source_id": "S5_ETHW_JP",
+        "locator": {
+          "text_line": 58
+        },
+        "raw_sha256": "14b78e5cc40cdab87d88908a51e76f6c244b6eae1ce80693a95a6e3595eb5769",
+        "text_sha256": "c4dc3016d90f59ad7c6f89ffce5beef4b180a90947bb601dd72c7d4d5eaa20b9",
+        "quote_sha256": "c6ff5d960b29e4248e88d0216e70daf9189da7140a7bab1a85270555488fcb6d",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C37",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 41,
+          "printed_page": 41,
+          "text_line": 17
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "023047f1a30117dd88150da8fbac16eb6ba548eb483696613acf4efa1011d570",
+        "quote_sha256": "d51eabfc925d36fcac8137e85a2b6a30bf84441f1ee44d55a795470e3c3a3947",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C36",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 41,
+          "printed_page": 41,
+          "text_line": 11
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "023047f1a30117dd88150da8fbac16eb6ba548eb483696613acf4efa1011d570",
+        "quote_sha256": "719baf072f75ba88b0380aa7e9d48507b4e4ea9882399b397e49879a058b829f",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C38",
+        "source_id": "S24_KAHAKU_REPORT",
+        "locator": {
+          "pdf_page": 41,
+          "printed_page": 41,
+          "text_line": 28
+        },
+        "raw_sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+        "text_sha256": "023047f1a30117dd88150da8fbac16eb6ba548eb483696613acf4efa1011d570",
+        "quote_sha256": "98fd2dc3059ebffaac1d35f61f562df8acfe68e222b535fc3628392945e4656b",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C08",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 152
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "63e8ecd78a10ea61946ae04b9681153273502d6513609acefc5d04806978e494",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C10",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 1,
+          "printed_page": 1,
+          "text_line": 15
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "96a91e9ae77cb9d42dbf3c35e29cfbd839b80aa3df942e3bf21f1cc423fee3e9",
+        "quote_sha256": "c906e6b380c12db2103c5d438d93655d864bb9c57ced8aa5bd7d7f1313f86583",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C11",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 1,
+          "printed_page": 1,
+          "text_line": 25
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "96a91e9ae77cb9d42dbf3c35e29cfbd839b80aa3df942e3bf21f1cc423fee3e9",
+        "quote_sha256": "157e25d80ff17482532d6dc3e238491c5fdbc414eb66c44c1b8ce2fef05ead87",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C41",
+        "source_id": "S8_TOYOTA",
+        "locator": {
+          "text_line": 2
+        },
+        "raw_sha256": "686ca1bf015473af794f8d44ddf6130ed23dccb20e68531634d393afc006e6ad",
+        "text_sha256": "51991f29ee04d901bc7eb4183df0af6d12074ab5c5dc0f896152bcc02b25c6c0",
+        "quote_sha256": "d1d7ac04c5709dea18c8fc69307cc72d0a67e8d236113f010787efb567df82ce",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C42",
+        "source_id": "S8_TOYOTA",
+        "locator": {
+          "text_line": 18
+        },
+        "raw_sha256": "686ca1bf015473af794f8d44ddf6130ed23dccb20e68531634d393afc006e6ad",
+        "text_sha256": "51991f29ee04d901bc7eb4183df0af6d12074ab5c5dc0f896152bcc02b25c6c0",
+        "quote_sha256": "8f7330f09e73d2cfeafb57c1a4ede674bc8c622a55b3b328134b4643c244c607",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C03",
+        "source_id": "S1_EPS35SQ",
+        "locator": {
+          "text_line": 143
+        },
+        "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+        "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+        "quote_sha256": "f437c4a29379d047e29b7e3f106d03de9d0a68fee671c3ebbc89fcebece8b2a8",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C18",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "text_line": 29
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+        "quote_sha256": "67678f4be147a08ae45c6d27656f4de13c31e5a1844452694402d158e691aff7",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C16",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "text_line": 26
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+        "quote_sha256": "7b7560c03f777431afd1e9f89ed20a11ef586739f7241329cd557e492b30b5be",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C17",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "text_line": 26
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+        "quote_sha256": "a450c7d5cba92df8a65517c2c815a469ec96b34c7ffeec3ac5e3866c0dfee449",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C19",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "text_line": 34
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+        "quote_sha256": "ea411e4f6a8cfce991e2b5081697a9a94be152b15dd86d7c90c047413a569df5",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C21",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 3,
+          "text_line": 7
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "0aa82a9d71d05627fdee9e1a651c0e7ecd3c23c5815384d324cfaefd95d2c598",
+        "quote_sha256": "683b1f166785b0f3291d472083b44e7726d4e37680489d8c540e7df97e428fd5",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C27",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 6,
+          "printed_page": 6,
+          "text_line": 39
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+        "quote_sha256": "ac79075de719d1024de7cf014c7b01320977234f1647838372508a798f4870a8",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C25",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 6,
+          "printed_page": 6,
+          "text_line": 30
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+        "quote_sha256": "6aff8836979183c97729bcdd06717c8be878e2647a0f2efca5f2d75aaa2f11a0",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C26",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 6,
+          "printed_page": 6,
+          "text_line": 34
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+        "quote_sha256": "3dc66989fc7c651fab09dcd66bb1af653cf5bf2fad740034631e925bb92fc0b8",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C23",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 5,
+          "printed_page": 5,
+          "text_line": 32
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "911cf7220192396a2049e5b0c0b1b7c2c79a74717f3b1a8631ad17f9eabb63c0",
+        "quote_sha256": "a7c4d113061b3ae5c4d313927a1cd649d3720bb4b5c87d3f27805d9c62be1d68",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C24",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 6,
+          "printed_page": 6,
+          "text_line": 17
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+        "quote_sha256": "fee5752948ad89bdbb8f466f61577b58a11f6d3be3e7ffa03e5b4e1238e14416",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "A07",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 6,
+          "printed_page": 6
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+        "quote_sha256": "222fca7b645ca00259dd2620ae877b69c27376eca89cbc7d32e2933c223deda9",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C28",
+        "source_id": "S7_SHMJ",
+        "locator": {
+          "pdf_page": 7,
+          "printed_page": 7,
+          "text_line": 1
+        },
+        "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+        "text_sha256": "4b0b421952d516c51faef4ddcd29183d3f06a30f692d63025312a689191faed8",
+        "quote_sha256": "af420fcf1b61e5972451d847841a61bf927f49f01608bfffd5868a7a48e71ecf",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "A01",
+        "source_id": "S20_YASUKAWA1977",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 1000
+        },
+        "raw_sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+        "text_sha256": "aaba0e29ed88aea25db42afa02ceccfa5fc05767ae9705d3afcc0e0a87982130",
+        "quote_sha256": "1e712f93f5fc151ab73db5691a39521d6afaca5fdf2f556bbc88e49c5039ae67",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "C50",
+        "source_id": "S20_YASUKAWA1977",
+        "locator": {
+          "pdf_page": 1,
+          "printed_page": 998,
+          "text_line": 1
+        },
+        "raw_sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+        "text_sha256": "923ebff3d3fb354207193da0e7fa3473f049d002029df26dd2c3617e070a6b15",
+        "quote_sha256": "00be7f3b149ec34e37810d3100e44eb971f24905f8489fd52dbfbbfacf8a8dc7",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "A02",
+        "source_id": "S20_YASUKAWA1977",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 1000
+        },
+        "raw_sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+        "text_sha256": "aaba0e29ed88aea25db42afa02ceccfa5fc05767ae9705d3afcc0e0a87982130",
+        "quote_sha256": "656ddc18bf2903e998bb6295ab944a3d842170aa101a1460246161804d380a00",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "A03",
+        "source_id": "S20_YASUKAWA1977",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 1000
+        },
+        "raw_sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+        "text_sha256": "aaba0e29ed88aea25db42afa02ceccfa5fc05767ae9705d3afcc0e0a87982130",
+        "quote_sha256": "5c89d529ffca601f07b3242f69cd0a4a6bea8172844cd2314773a5103ecc8a03",
+        "raw_and_text_bytes_and_quote_checked": true
+      },
+      {
+        "id": "A04",
+        "source_id": "S20_YASUKAWA1977",
+        "locator": {
+          "pdf_page": 3,
+          "printed_page": 1000
+        },
+        "raw_sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+        "text_sha256": "aaba0e29ed88aea25db42afa02ceccfa5fc05767ae9705d3afcc0e0a87982130",
+        "quote_sha256": "9e175dd223eeae69fd848c2a047e8a95a1f18f2dc76ab92d32969023e0f3bf74",
+        "raw_and_text_bytes_and_quote_checked": true,
+        "additional_locator": {
+          "pdf_page": 4,
+          "printed_page": 1001,
+          "position": "opening continuation of figure12 rotary-machine paragraph",
+          "needle": "約10万ユニット/月"
+        }
+      },
+      {
+        "id": "A05",
+        "source_id": "S20_YASUKAWA1977",
+        "locator": {
+          "pdf_page": 6,
+          "printed_page": 1003
+        },
+        "raw_sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+        "text_sha256": "5257a1d941f0e8638996be38e330c079b310d9d5b27c52c85abe4f544bdf9c67",
+        "quote_sha256": "630a19decf37b3686bf514ddd158d0766d716347d9f06e696ab949b77ef795b4",
+        "raw_and_text_bytes_and_quote_checked": true
+      }
+    ]
+  },
+  "written_visual_assessment": {
+    "all_143_prompts_project_from_video": true,
+    "all_prompts_read_in_full": true,
+    "all_generated_shots_english_and_anonymous": true,
+    "brand_person_logo_or_readable_text_requested": false,
+    "real_person_likeness_requested": false,
+    "concept_illustration_not_serial_or_document_reconstruction": true,
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "written_illustration_share": 1.0,
+    "maximum_consecutive_cards": 0,
+    "loops_all_refer_to_real_forward_line_ids": true,
+    "loop_source_hold": [
+      "skr1c22→skr1c23 shares SR1-01"
+    ],
+    "opening_event_teasers": [
+      "skr1h05→skr1p14",
+      "skr1h06→skr1f08"
+    ],
+    "same_image_written_plan_pass": true,
+    "same_image_pure_native_key_rehearsal_pass": true,
+    "same_image_stage_keys": [
+      "45e228dce955e7cb",
+      "8b0772b83b240cfc"
+    ],
+    "same_image_key_scope": "Full current Stage.imageKey: composed prompt including camera/look, provider/model, dimensions, negative, reference SHA list, seed and image-selection version; declared local inputs only.",
+    "production_recipe_checked": [
+      "payoff first, takes1, normal production admission required",
+      "readonly live cache and manifest selected bytes/SHA guard before teaser; cache miss stops the pair",
+      "both scenes independently pass normal judge",
+      "after crop/trim verify the same final selected file and SHA; original request key alone does not prove same asset"
+    ],
+    "actual_same_asset_verified": false,
+    "actual_image_content_reviewed": false,
+    "actual_selected_file_sha_verified": false
+  },
+  "technical_checks": {
+    "native_lint": {
+      "argv": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/seiko-submission-root",
+        "lint",
+        "--slug",
+        "story-adapt-seiko-quartz-astron-remake-20261025",
+        "--json"
+      ],
+      "executed_by_reviewer": true,
+      "exit_code": 0,
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "about 16.2 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 16.20611111111111,
+        "lines": 146,
+        "spoken_units": 3438,
+        "billable_characters": 11688
+      },
+      "actual_audio": false
+    },
+    "reproducible_build": {
+      "method": "Evaluate original build-candidate.mjs using in-memory fs read/write overlay; imports and pure functions are unchanged. No candidate output is written to disk.",
+      "executed_by_reviewer": true,
+      "captured_virtual_writes": 12,
+      "specified_outputs_compared": 10,
+      "all_10_output_bytes_identical": true,
+      "compared_files": [
+        "video.json",
+        "script.md",
+        "narration-only.json",
+        "claims.json",
+        "claims.md",
+        "brief.md",
+        "series.json",
+        "image-reuse-plan.json",
+        "producer.md",
+        "protected-inputs-r1.json"
+      ]
+    },
+    "projection": {
+      "video_script_narration_claims_id_order_text_all_146_equal": true,
+      "runtime_video_equals_source": true,
+      "runtime_generated_script_spoken_projection_all_146_equal": true,
+      "runtime_script_bytes_are_official_generated_format_not_author_markdown": true
+    },
+    "runtime": {
+      "root": "/workspace/work/brand-story-20261025/seiko-submission-root",
+      "manifest_sha256": "4ead1cd694e6486f52472f7edc6c4ab0397f7085747b50deeaa7e06dc7c3569b",
+      "immutable_lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e",
+      "lexicon_current_sequence": 1,
+      "lexicon_origin_event": "initial_snapshot",
+      "lexicon_reinitialized_or_changed_by_reviewer": false,
+      "voice_object_matches_source_and_runtime": true,
+      "declared_foreign_terms_present": true,
+      "pronunciation_correctness_independently_reviewed": false
+    }
+  },
+  "preservation": {
+    "three_research_file_sha_unchanged": true,
+    "three_related_B25_files_and_readonly_snapshot_sha_unchanged": true,
+    "legacy_paid_media_not_available_or_approved_here": true,
+    "author_freeze_not_edited": true
+  },
+  "limits": [
+    "HOLD僅因SR1-01來源銜接；書面圖像計畫PASS不等於真正圖像合格。",
+    "沒有讀取或判斷fresh native narrative/blind結果；不代替原生敘事關卡。",
+    "沒有實聲、實圖或念法獨立檢；正文720–840秒含coldopen與有聲CTA仍須真實聲音量測，新增5秒片頭/21秒片尾不墊入正文。",
+    "未檢定時字幕、八語實音或成片；沒有建立production pin、timeline或owner批准。",
+    "免費runtime初始化及lint不是新題US$25帳戶、protected admission或all-in quote，不授權付費。"
+  ],
+  "row_table_columns": [
+    "line_id",
+    "kind",
+    "source_verdict",
+    "cited_anchor_ids",
+    "written_visual_verdict"
+  ],
+  "row_table": [
+    [
+      "skr1h01",
+      "hypothetical",
+      "PLAN",
+      [
+        "C01",
+        "C02"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h02",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C06",
+        "C33"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h03",
+      "fact",
+      "CONFIRMED",
+      [
+        "C04",
+        "C06"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h04",
+      "reaction_question",
+      "PLAN",
+      [
+        "C06",
+        "C15"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h05",
+      "question",
+      "PLAN",
+      [
+        "C12",
+        "C13"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h06",
+      "question",
+      "PLAN",
+      [
+        "C20",
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h07",
+      "editorial_link",
+      "PLAN",
+      [
+        "C06",
+        "C15",
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1h08",
+      "question",
+      "PLAN",
+      [
+        "C15",
+        "C29",
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e01",
+      "hypothetical",
+      "PLAN",
+      [
+        "C05",
+        "C09",
+        "C34"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e02",
+      "editorial_link",
+      "PLAN",
+      [
+        "C07",
+        "C35"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e03",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C33",
+        "C34"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e03a",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A06"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e03b",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A06",
+        "C33"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e04",
+      "question",
+      "PLAN",
+      [
+        "C35"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e05",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C35"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e06",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C35"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e07",
+      "fact",
+      "CONFIRMED",
+      [
+        "C44"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e08",
+      "hypothetical",
+      "PLAN",
+      [
+        "C34"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e09",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C34"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e10",
+      "reaction_question",
+      "PLAN",
+      [
+        "C34",
+        "C35",
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e11",
+      "fact",
+      "CONFIRMED",
+      [
+        "C35"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e12",
+      "fact",
+      "CONFIRMED",
+      [
+        "C35"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e13",
+      "question",
+      "PLAN",
+      [
+        "C06"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e14",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C06"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e15",
+      "fact",
+      "CONFIRMED",
+      [
+        "C06"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e16",
+      "hypothetical",
+      "PLAN",
+      [
+        "C06"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e17",
+      "editorial_link",
+      "PLAN",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e18",
+      "question",
+      "PLAN",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e19",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C36"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e20",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C36"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e20a",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e20b",
+      "hypothetical",
+      "PLAN",
+      [
+        "C38"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e21",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e21a",
+      "question",
+      "PLAN",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e22",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e23",
+      "reaction",
+      "PLAN",
+      [
+        "C37"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e24",
+      "question",
+      "PLAN",
+      [
+        "C38"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e25",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C08",
+        "C38"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e26",
+      "hypothetical",
+      "PLAN",
+      [
+        "C09",
+        "C38"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e27",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C04",
+        "C09"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e28",
+      "fact",
+      "CONFIRMED",
+      [
+        "C04"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e28a",
+      "question",
+      "PLAN",
+      [
+        "C09"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e28b",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C09"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1e29",
+      "question",
+      "PLAN",
+      [
+        "C10"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p01",
+      "editorial_link",
+      "PLAN",
+      [
+        "C10"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p02",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C10"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p03",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C10"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p04",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C10"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p05",
+      "reaction",
+      "PLAN",
+      [
+        "C11"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p06",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C11"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p07",
+      "hypothetical",
+      "PLAN",
+      [
+        "C12",
+        "C13"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p08",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C12"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p09",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C12"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p10",
+      "question",
+      "PLAN",
+      [
+        "C41",
+        "C42"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p11",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C41"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p12",
+      "fact",
+      "CONFIRMED",
+      [
+        "C42"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p13",
+      "question",
+      "PLAN",
+      [
+        "C12"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p14",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C12"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p15",
+      "reaction_question",
+      "PLAN",
+      [
+        "C13"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p16",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C13"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p17",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C13"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p19",
+      "fact",
+      "CONFIRMED",
+      [
+        "C01",
+        "C03"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p20",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C03"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1p21",
+      "question",
+      "PLAN",
+      [
+        "C03",
+        "C29"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r01",
+      "editorial_link",
+      "PLAN",
+      [
+        "C29"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r02",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C29"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r03",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C29"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r04",
+      "hypothetical",
+      "PLAN",
+      [
+        "C18",
+        "C29"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r05",
+      "reaction",
+      "PLAN",
+      [
+        "C16",
+        "C18"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r06",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C16"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r07",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C16"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r08",
+      "question",
+      "PLAN",
+      [
+        "C17"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r09",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C17"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r10",
+      "hypothetical",
+      "PLAN",
+      [
+        "C18"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r11",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C18"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r12",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C18"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r13",
+      "reaction",
+      "PLAN",
+      [
+        "C18"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r14",
+      "question",
+      "PLAN",
+      [
+        "C18",
+        "C19"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r15",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C18",
+        "C19"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r16",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C18",
+        "C19"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r17",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C19"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r18",
+      "editorial_link",
+      "PLAN",
+      [
+        "C19"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r19",
+      "question",
+      "PLAN",
+      [
+        "C20",
+        "C21",
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1r20",
+      "editorial_link",
+      "PLAN",
+      [
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f01",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C21"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f02",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C21"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f03",
+      "hypothetical",
+      "PLAN",
+      [
+        "C20",
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f04",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f05",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C20"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f07",
+      "reaction_question",
+      "PLAN",
+      [
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f08",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f10",
+      "hypothetical",
+      "PLAN",
+      [
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f11",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C22"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f12",
+      "editorial_link",
+      "PLAN",
+      [
+        "C15",
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1f13",
+      "question",
+      "PLAN",
+      [
+        "C15",
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c01",
+      "editorial_link",
+      "PLAN",
+      [
+        "C15",
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c02",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C15",
+        "C27"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c03",
+      "reaction_question",
+      "PLAN",
+      [
+        "C25",
+        "C26"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c04",
+      "editorial_link",
+      "PLAN",
+      [
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c05",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C23",
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c07",
+      "question",
+      "PLAN",
+      [
+        "C23"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c08",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C23"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c09",
+      "editorial_link",
+      "PLAN",
+      [
+        "C23"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c10",
+      "reaction_question",
+      "PLAN",
+      [
+        "C24",
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c11",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C24",
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c11a",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A07"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c11b",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A07"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c11c",
+      "question",
+      "PLAN",
+      [
+        "C24"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c12",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C24"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c13",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C24"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c14",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C24"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c15",
+      "hypothetical",
+      "PLAN",
+      [
+        "C24"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c16",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c17",
+      "question",
+      "PLAN",
+      [
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c18",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C25"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c19",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C26"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c20",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C26"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c21",
+      "reaction",
+      "PLAN",
+      [
+        "C26",
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c22",
+      "question",
+      "CHANGED",
+      [
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c23",
+      "attributed",
+      "CHANGED",
+      [
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c24",
+      "attributed",
+      "CHANGED",
+      [
+        "C30"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c26",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C28"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c26a",
+      "hypothetical",
+      "PLAN",
+      [
+        "C27"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c26b",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C27"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c26c",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C27"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1c27",
+      "question",
+      "PLAN",
+      [
+        "A01"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d01",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "C50",
+        "A01"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d02",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A01"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d03",
+      "reaction_question",
+      "PLAN",
+      [
+        "A02"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d04",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A02"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d05",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A02"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d06",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A03"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d07",
+      "hypothetical",
+      "PLAN",
+      [
+        "A01",
+        "A03"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d08",
+      "reaction_question",
+      "PLAN",
+      [
+        "A04"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d09",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A04"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d10",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A04"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d11",
+      "editorial_link",
+      "PLAN",
+      [
+        "C06",
+        "A02",
+        "A04"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d12",
+      "question",
+      "PLAN",
+      [
+        "A05"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d13",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A05"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d14",
+      "attributed",
+      "ATTRIBUTED",
+      [
+        "A05"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d15",
+      "hypothetical",
+      "PLAN",
+      [
+        "A05"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d16",
+      "reaction",
+      "PLAN",
+      [
+        "A01",
+        "A04",
+        "A05"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d17",
+      "editorial_link",
+      "PLAN",
+      [
+        "C06",
+        "C30",
+        "A02",
+        "A04"
+      ],
+      "PASS_WRITTEN_PLAN"
+    ],
+    [
+      "skr1d18",
+      "reaction",
+      "PLAN",
+      [
+        "C15",
+        "C22",
+        "C30",
+        "A01"
+      ],
+      "NATIVE_OUTRO"
+    ],
+    [
+      "skr1d19",
+      "cta",
+      "PLAN",
+      [],
+      "NATIVE_OUTRO"
+    ],
+    [
+      "skr1d20",
+      "cta",
+      "PLAN",
+      [],
+      "NATIVE_OUTRO"
+    ]
+  ],
+  "side_effects": {
+    "candidate_edits": 0,
+    "research_or_original_edits": 0,
+    "runtime_or_lexicon_edits": 0,
+    "git_mutations": 0,
+    "backend_writes": 0,
+    "owner_decisions": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "output_files": [
+      "docs/videos/brand-story-remakes-20261025/seiko/reviews/source-r1-independent.json"
+    ]
+  }
+}

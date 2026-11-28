@@ -1,0 +1,1101 @@
+{
+  "schema_version": 1,
+  "episode": "C19 Seven Bank",
+  "revision": "c19-r4",
+  "reviewer": "/root/c19_r2_source",
+  "review_role": "INDEPENDENT_SOURCE_WRITTEN_STORYBOARD_AND_REUSE_PLAN_DELTA_REVIEW",
+  "independent_of_research_and_author": true,
+  "created_at_utc": "2026-10-26T03:25:44.995257+00:00",
+  "status": "PASS",
+  "source_result": "PASS",
+  "written_storyboard_result": "PASS_WRITTEN_ONLY",
+  "image_reuse_written_plan_result": "PASS_WRITTEN_PLAN_ONLY",
+  "source_pass_granted": true,
+  "verify_1_created": true,
+  "review_frozen": true,
+  "scope": "Only source-r4-independent.json and current verify-1.md are written. Exact t10 shortening and four deletions; no core/source/research/owner/Git/backend/paid changes.",
+  "isolation": {
+    "native_or_blind_review_contents_viewed_or_parsed": false,
+    "native_or_blind_votes_used_to_judge_sources": false,
+    "author_review_rationale_not_used_as_source_evidence": true,
+    "protected_sensitive_history_opaque_byte_hash_only": true,
+    "fresh_original_read_scope": [
+      "S3 PDF14–15／印12–13 count/date/partner-institution paragraph"
+    ],
+    "subreviewers_spawned": 0
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "e14b1db755ddf4c5f57d4ed02a7e3409b00254f8b0ebfd9a587b70b698dfd6fb",
+      "script.md": "8a14841fd81bcb0a2cf02b0320fee8156cd0637993ff8d2574d0d777550d1bca",
+      "narration-only.json": "d22a4d84c162f1b4ebc11f88aff3f757ca9c7c676faaece2c664e94d58d8fc2e",
+      "claims.json": "ab345f3579f3c984dd75024576fd3a2a9b597638693a5daa8e67c24f65c940d9"
+    },
+    "author_freeze_sha256": "ca7e59e4cc1b32b1c91dfe5fc9c79db0a5e82880ee05b06d94340d2c36db68eb",
+    "changes_manifest_sha256": "750a9adbc20e61d4db97ff169a9a03dbb640141958e6b3d1439c86e58fb3e62f",
+    "image_reuse_plan_sha256": "05f73bc3afca59722c069431bc1772ba3106185f2cd6bc6386e2bb04c537162f",
+    "baseline_r3_core_four_sha256": {
+      "video.json": "8b94b763dfb25451665e1d1655cc930ddbde5acb9b43673432c38e677e75388a",
+      "script.md": "e1e8b1da35fbaf3c5082a1d4f7e7f9bc79a21560f63e5c91c60b8c008df4c112",
+      "narration-only.json": "83a16755737f6c9951eea25312ae8028ee20e184eae34f1c3f115d8a51788730",
+      "claims.json": "28c92a65ba0638811bf95210e50896c206f59bc25a8159cf54303405233e193c"
+    },
+    "baseline_r3_source_receipt": "history/r3/reviews/source-r3-independent.json",
+    "baseline_r3_source_sha256": "b4c8cd089f5cc6deefda89cf3ea58a545e381011be8cb9da7b2875e51b163c79",
+    "baseline_r3_verify_sha256": "d634f66d2bf3d19260b2cc5bde712d768a0ec2ecc94c06ef4f06646ab2fe1f57",
+    "retained_current_source_r3_unchanged": true,
+    "full_source_chain": "R3 exact source receipt references R2 full source receipt8c8d53caef6d1ba6fbd9580c20216be6f9467e30acf5ea3d4a28d54afca6c331; R3 a12 fresh source confirmation remains unchanged.",
+    "protection_checks": {
+      "manifest": "protected-inputs-r4.json",
+      "manifest_sha256": "572c830cdfe3d606e555a096ec4076ea1be000b663636a41feb1b536efaa739e",
+      "author_frozen_file_count": 15,
+      "author_frozen_files_all_match": true,
+      "legacy_file_count": 66,
+      "legacy_original_and_snapshot_all_match": true,
+      "snapshot_files_all_read_only": true,
+      "legacy_exact_file_set": true,
+      "snapshot_exact_file_set": true,
+      "research_three": [
+        {
+          "path": "research-original.md",
+          "sha256": "2f75f4bb90a470616f461ea17aac864a8f1e58ce46f3d15808be98ac8b01d8d3",
+          "match": true
+        },
+        {
+          "path": "research-original.claims.json",
+          "sha256": "5864de9d0780140a4c3378ce07fe1185ad2ff7befb646892df24f0c699f7b2cc",
+          "match": true
+        },
+        {
+          "path": "original-preservation.json",
+          "sha256": "2624d569571d9430774dcec55a67e24018dbf9d7b57c5d7219a8539cb599b4ad",
+          "match": true
+        }
+      ],
+      "raw_eight": [
+        {
+          "id": "S1",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S1.html",
+          "sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+          "match": true
+        },
+        {
+          "id": "S2",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S2.html",
+          "sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "match": true
+        },
+        {
+          "id": "S3",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S3.pdf",
+          "sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "match": true
+        },
+        {
+          "id": "S4",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S4.pdf",
+          "sha256": "8f5b660104bdc3ee6a2a285d934ba956d1535ef3319152540126b7e7c3db0a4c",
+          "match": true
+        },
+        {
+          "id": "S5",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S5.html",
+          "sha256": "286ff9a7399fe9c1149c26e1c7931cb4137a9bce2f10d6bd7c5cc9785087adfe",
+          "match": true
+        },
+        {
+          "id": "S6",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S6.pdf",
+          "sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "match": true
+        },
+        {
+          "id": "S7",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S7.html",
+          "sha256": "d4e87c7331820f831ea924d1d5deff76717adadebb36430eaf639524d416bf17",
+          "match": true
+        },
+        {
+          "id": "S8",
+          "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S8.pdf",
+          "sha256": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
+          "match": true
+        }
+      ],
+      "history_file_count": 158,
+      "history_all_hashes_match": true,
+      "sensitive_history_mode": "Opaque byte hashing only; no native/blind contents parsed or viewed."
+    }
+  },
+  "coverage": {
+    "line_count": 116,
+    "scene_count": 114,
+    "shot_count": 113,
+    "outro_count": 1,
+    "chapter_count": 6,
+    "loop_count": 36,
+    "fresh_changed_line": "c19r1t10",
+    "deleted_lines": [
+      "c19r1e10",
+      "c19r1o13",
+      "c19r1t02",
+      "c19r1t09"
+    ],
+    "strict_inherited_line_count": 115,
+    "fresh_count_answer_pair_count": 1,
+    "inherited_exact_unchanged_loop_pairs": 35,
+    "anchor_registry_count": 57,
+    "fresh_source_quote_count": 2,
+    "spoken_units_native": 3295,
+    "actual_narration_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false
+  },
+  "strict_inherited_lines": [
+    {
+      "id": "c19r1h01",
+      "text_sha256": "c92a7b3791aa5f34c1077734c20be6927a20bbdef384044a59d96eed984f75ee",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h02",
+      "text_sha256": "b027b2e3d7b9693e13416edfa1f6f90343082d1a6849ae00f486242f0633e5d8",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h03",
+      "text_sha256": "cc59c43e974327664725adb4111b6defdef7932899569b4c1a216c2553913b1a",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h04",
+      "text_sha256": "3946d2961940af5a40612322275e7e10459e86a97d1702a4a170531844479ec9",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h05",
+      "text_sha256": "4f98e00a6c30631862286c4473461fc926f4939fb6aec8b05d46deddca3edb1b",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h06",
+      "text_sha256": "a62745486a0a905d243e3fdcdcdf1a37af6f14bbe8353efa8ad4e35070f10a80",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h07",
+      "text_sha256": "749827e69fcf962f519c43bcc44a6af778b835fad902ddaf50d868bc2f423186",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1h08",
+      "text_sha256": "9b2211909bdaf37ce5249f00b6e3a26037477bcf275265801463720abb7799fb",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o01",
+      "text_sha256": "12cb812448091e894757785e700ed62ca0cf57f7c3bce25195618f5a9b73dec6",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o02",
+      "text_sha256": "a572d6121265eab1d2247947033136afda60a9d081366af91ca5b726e909499b",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o03",
+      "text_sha256": "3eb1a78e1824cd105589fc06cca18c8ce902a90133de18344b6d4b2f8d4a729d",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o04",
+      "text_sha256": "2af59521f1e7007e4f44d7984056b16f314d45e6a531a5f29e8ef959812e21af",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o05",
+      "text_sha256": "609c8ad27daee9a498b0fba0b78f72eb7603b26176f1beb14d0fd84e612d9ba0",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o06",
+      "text_sha256": "dc792c70718ac7ea1aa8536101f3ed70e5961809bd4b46aba8d4229ece752602",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o07",
+      "text_sha256": "dc189df91e31216d42cef133abb1b8008712662b75dd4e0e8bc8832fcd9c9ea0",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o08",
+      "text_sha256": "8757a99c8f6a25f7821ed00c60a8bc1313f664dd6def7bb535b2ba1adb002600",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o09",
+      "text_sha256": "067b01c3e15cca9ce714bc04f3f0b8041cac2f6af2169722dd5989104bf553f2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o10",
+      "text_sha256": "033dda7a106ba707462c6f7724bcaee25bfa91bbcc36b30d78a6d6347ceadc7f",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o11",
+      "text_sha256": "f1028f3b12915ac4c6c8d79711831ca655b14c23841db212d14237e1b8e9bb36",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o12",
+      "text_sha256": "33bebd7822994a53e8a5deb44892f054250c925814c7a01fdcabb91bf63bac43",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o14",
+      "text_sha256": "6f8b7cb42f6c69e7ffa6ca895b7e10a840c297868feb08f45c3688ab121ece8e",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1o15",
+      "text_sha256": "79a374e9e9680ca2fa48f1541a05aed830407767cd4eb580dcfc29713d83d522",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a01",
+      "text_sha256": "252a9643248ea1f384acc874880df735a2127a9acf72fcac31ba5644c1d06d41",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a02",
+      "text_sha256": "871bb35279055d3ea017eb2458dfd5eb04a6dae5fc3b29b28198ac357cc82b86",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a03",
+      "text_sha256": "22accd22fcb834c9de610769a1ae20a8cbf3f502dd7d5bbeb1d4af30a8c1750a",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r2a30",
+      "text_sha256": "a68343e473b3de0cddf41aea7453801a082903ad894b6b0c895f55afe5f2d343",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a04",
+      "text_sha256": "fffcf6d63dd0a1f36e5ccef17e78915e79759b8a2bb181849c377565589dd7b5",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a05",
+      "text_sha256": "f67f03f542c258361a9f89e19a386a77347d316fe7faa0618498602431b301ee",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a06",
+      "text_sha256": "e3671bfb7e24f6b99c74521d9a7f8d4473f62e607ab11c1e44dacd8d73eb8d09",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a07",
+      "text_sha256": "09021a0bc943bec8e33e96e423675aabe29061024a0a209f452054244bf266f2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a25",
+      "text_sha256": "161972d3a48665f47d038d806ab6f9e49cb5faf2fc08135885ca7b88cccbf67b",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a27",
+      "text_sha256": "43413f51b8e2d34ddbbef420704930e0f4274181bc6f340ef0f5bd89ebf32384",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a10",
+      "text_sha256": "625cde7bf0690b2f04329cc2fe90b33ccdb4290eecd5e25804594a759adb4266",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a11",
+      "text_sha256": "99c2098391038d257ad3f97abc8a8832636b41ebebc627a2e402a6cddb401821",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r2a31",
+      "text_sha256": "053176cc2081916ff7d5ba2db7308c82269a2ccebf24ea0c3881d2658ea0acd0",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r2a32",
+      "text_sha256": "3a928afa31d7e0b7621fabf6f41e9855365218086a71c008933b50de35b6e5bd",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a12",
+      "text_sha256": "91300754c9d8a77d48f4bedbb859e9f33916451d37b59bea45daf3c33e420fc2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a14",
+      "text_sha256": "281edea49e010fe497ee8ae922188a6e683e969f26584a73576d7295eee23cdd",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a15",
+      "text_sha256": "6b75f486250cc8d0af9ef2a4901eaa3aa0413b18981b63a379f23bf8865403aa",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a16",
+      "text_sha256": "c1264aad540c7d36ef8fed0877848975919b79c9c463a72d8c72c464887cee36",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a17",
+      "text_sha256": "8afab3dbc575598e9990ccfab69720dc7b2b0efd2f00c297046ef376d363bf24",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a18",
+      "text_sha256": "95f3b1d3530c8433e3e9bbba4d7daaefb94a34eaaf4e31d8e5626b3748d5df7f",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a19",
+      "text_sha256": "ae01c9a7b8137cb9ea4983a85811b8ea23313694aa1cd814c9418af26f6d5a0c",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a20",
+      "text_sha256": "c7705c7aa4039286b5e625129750d8c0fbc72796353f1af599cbeefa4636d39c",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a21",
+      "text_sha256": "fa196cbe0b640cf0c50a1ee041f7f7036c016af54c500354088b2514b4028460",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a22",
+      "text_sha256": "ea422e8fcc429ec44464151fb8497c73d4cbdc461f5afd39cb9d407f71776c31",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r2a33",
+      "text_sha256": "881b1ad289dff2040059ea7f9a86fc80f439084c28a2a98c760d1c92be3b0a2d",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a23",
+      "text_sha256": "fe13593c04d1935bbfb0b27afaf506f99d24775a3285d2660be0f59c10a9f4c6",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a28",
+      "text_sha256": "342d7ad660a07145e3a47357782a8ceb31b61c09c38566aa6343e2b896e6c719",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e01",
+      "text_sha256": "47d4e16bf4ed3aee55b131d05f8188d2157a55e43efe10555fa01c0b64e2e191",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e02",
+      "text_sha256": "8b74dd4d1d68024d04e899f29dd9d1d5cd7d4e9b372d964bc483760f13abcd8b",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e03",
+      "text_sha256": "b72b1d39d361f8ace8f705b46e7509bc0ca687d41434abe38e8c218fd52880cb",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e04",
+      "text_sha256": "ca5cb7617f2cb29c80f26b717de2610201301fedf524be58034870c037a8c608",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e05",
+      "text_sha256": "600fb91712ec62dcf16caca2db931435f89a9f7f22b4256db4d3152cc704b747",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r2e30",
+      "text_sha256": "ec9fb6a25f79b872faaf12809b271ae9c0d0e95f96ef31a609e17c54e5960027",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e06",
+      "text_sha256": "7c28acfe507121dc89894109daeadc0551de6cd6cac1cce6f9c811f436491560",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1a26",
+      "text_sha256": "bc2eee06efad14dae2f6a195c6eacfa8afd65d68190dff642e554154aad764bf",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r2e31",
+      "text_sha256": "f85e68e4ddc3392a9d858459c754e0cddc278befebf30484530823a2ee943163",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e07",
+      "text_sha256": "ead8ccd570b82cd427a8988fa5a57f215f8af7cd89787be0b06283279693f04e",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e08",
+      "text_sha256": "2f6719877ec2b1e503082e11fea76e8d08166bc848da5946be9bd115784c9432",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e09",
+      "text_sha256": "dedb91bcd80262820244bc0d39b656aeb461541ba545182db7baacf1970f3e57",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e11",
+      "text_sha256": "2d28962fef3979a5df4ad28ed280a933dbfb7304922362a0b3b7c2988ce130dc",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e12",
+      "text_sha256": "50f829f5fcdf0168631c2c5bf8945ed2ade3ca14702832eb46d1cafe66f9db50",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e13",
+      "text_sha256": "0a39216dd0e5b2f9ef951aac7aa35009925abe97b36aa1d544a565f3e8cbd87a",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e14",
+      "text_sha256": "c5ea1612bb5e926e5838db5911b29ae8ae71c33afa9ad01311227241f7b877a4",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e15",
+      "text_sha256": "cd8aa0cf0806186328514fae433d4d7fb71358ef61df174f45475488a9d348ab",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e16",
+      "text_sha256": "28a31d85eb4fc1cb0b16fc88d2dbafa644c1b355d22a9bbb4a1eaadd2e73ed2f",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e17",
+      "text_sha256": "8cef4a4208d9acdcb73cdc885520d75cf6b113d7f2749cc48ac019dec4468708",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e18",
+      "text_sha256": "5679b767682c5b9cc29db6204bb89810c31633da5ff2795bd295aea387d890b3",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1e19",
+      "text_sha256": "64b84cadab9c4a2c942dca4deaf0606b159e3ce37878b0e279b84fd6ecbfd3dc",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t01",
+      "text_sha256": "87e9c198d258fdb9f06eaea1cf3b6439d2a7e0305b072e65a96f19eb65930718",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t03",
+      "text_sha256": "a3b127ff85475fc7c6e59c745562eea83158d34873f5853d4b8264bcac405ea5",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t04",
+      "text_sha256": "afe83cfe1496d3d005ad4caaf6b3201d6d711d97f170f0e8b1af84050a9481c2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t05",
+      "text_sha256": "7a2e9eeebd296582902ac4d981471008c30961fbf285148e1bdf6334aadb8449",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t06",
+      "text_sha256": "f9c7ede08c150e526c16f9efe62ae18736dad3f3de69b3010e857ba601f62edb",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t07",
+      "text_sha256": "dee3a49c186f1c35f6d4edb17da97d15a6f4470f9881fd454692e3a1427fccc2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t08",
+      "text_sha256": "73a0a82271f7253ccc7550cdca361512474306df86c82f3f912841ad83f690fb",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t11",
+      "text_sha256": "ad25de4bf7cdadec4136e1409c5124aff5d2cd19cfb639b4af691a9839d1dc50",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t12",
+      "text_sha256": "93f29487e2343afa589e1120418636e90f4d7158f1d3007348f0deba9ebf5475",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t13",
+      "text_sha256": "f5c386a34eb11f1d53426258257d0c65c3056185827f650c95b27f09ed8a30ac",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t14",
+      "text_sha256": "0fd9e7d6c6688d6dc11cd252a8c8ceb6e6bf818129aca0f6a4bbbe08bf26ef25",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t15",
+      "text_sha256": "071a750b1e7ed4787e558da616425fb7b3e388a2848367380249ba0c2584e598",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t16",
+      "text_sha256": "aae9dcc62127b587b9ba271504fecf7649c5db503f667ba51d6c23fba9517d0e",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t17",
+      "text_sha256": "afd2f7f178080d6bfe05df2983900b763da73d627b14e645242f5865026a70e7",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t18",
+      "text_sha256": "4d4ce9536265ed1ea25b9c81e20022ef2104e4cc19726e54cc6bb385cf64e919",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t19",
+      "text_sha256": "aa4b914e2b63dd74d8c16909de5906983ed5653bef5d568abe866983898101a2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1t20",
+      "text_sha256": "4c16bf1447d037e37c0c62bc29251d63056c8e148332cc98a3e60110c7002775",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n01",
+      "text_sha256": "e1b4934eb5241e17729367b50d04387ac26b66b1e7739307a399886396975edd",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n02",
+      "text_sha256": "59cbbe727a87009d2e67d2ac0d35703bafa708578ab8249af8caed8c8e384621",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n03",
+      "text_sha256": "a87cf1ec8d46182765c08393f0bb5797990b04b777ef47d0f6fed8ce305bf5a5",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n04",
+      "text_sha256": "03c8fe4a430861642dc06b30fa0130b4095c3bf387fe6df872eb4bf7d1fe0425",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n05",
+      "text_sha256": "b7b49e45ac07f52f62bf9a86a3286941bd161ffa152f5eba4391c93aefff23c0",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n06",
+      "text_sha256": "6f0c8738169467dad1697b510542b3e55ff10200d07fa59600e2317f46cf925a",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n07",
+      "text_sha256": "5ed055db739e98ae9f2eb79d5ae90cad83e2a66cfb866402f3c327e254431ee5",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n08",
+      "text_sha256": "0ed7382e5fae541ab8e997ffda0ca95c0db96b3f9fdb825978061e4232b45857",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n09",
+      "text_sha256": "7a890adf39eaf3446ff1091062380c34e95112d9e16a8070fcbe6aef4593b253",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n10",
+      "text_sha256": "3d1dcf74b05ff09373d5e2db4d38734c5c3f134d9d396e86e9ac4cd9738223b7",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n11",
+      "text_sha256": "e025396f8acb054857029903b12819393562a663afb9c0a579ff121501ebf23b",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n12",
+      "text_sha256": "c27bf1f7d6c95857a9dcb266e204143806ce306ffe0a11869b87f87f18e831ad",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n13",
+      "text_sha256": "67153482357abf2001e9cf5f50ad1f4948f56c0f6fb7a8138aac90729fdca0a2",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n14",
+      "text_sha256": "61831c5f6e93e3b17c539f8171fb71fe926b1022b3358f03e89e4d0d10357480",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n15",
+      "text_sha256": "d13d0f153e3959d0e9e2ed0064ca059a81a074a670ba810ab57edd76e8a7dbb1",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n16",
+      "text_sha256": "7553f94089f618b94e3cb545d376ce4dfe9b24274cfc350cf57683358beb1cfe",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n17",
+      "text_sha256": "342efacae8b198ad1caf6dc709229877464208823b3a3c5c895c907109fe74ef",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n18",
+      "text_sha256": "1e419cc5b3307b81097b9685fc6c5d9cc85eaf46f59959ee001b0cc28eedeb89",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n19",
+      "text_sha256": "5ea4172480d97d8dbedd1d22a70c28d0567948acce1ecac5b708cbe17385f198",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n20",
+      "text_sha256": "ad55b0ee1f592cc169fd0a542c7e4abe65e2c01ec4eb9ed66fbc018e7f15b1ee",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n21",
+      "text_sha256": "3a64d318f105536598a6334f429b467cc806c9c9dccb7703f7ca8033d7383040",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n22",
+      "text_sha256": "861c7fb624c544fe16349fcbb43adbbe52f73dc2913c47c33b12cff2811e80dd",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n23",
+      "text_sha256": "1c05b03f64bcc6cb1c4b99e830ee8b595715b0a107f86ce25faa43447cba92b8",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n24",
+      "text_sha256": "186f3fa54dafe6cae194a12121229f6217a08943bd3a23e65fd79d36473f6c3a",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n25",
+      "text_sha256": "065564fd4d12cb26137d387f4f6e8f0e28a50232414f34d752e762c8ee140078",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1n27",
+      "text_sha256": "a4f202a181c369f533610de61b6d35e20f89414d979d802eab4d7dacc406bda1",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1ct1",
+      "text_sha256": "3b99511168b39fa7230fb4860d6b7afdb0287ec10b732b61b794d574e651dc6f",
+      "source_claim_fields_exact_R3": true
+    },
+    {
+      "id": "c19r1ct2",
+      "text_sha256": "8332ed84271135f241facd737f32d6eb6c11415eafd5a537b20f88aa855aed8f",
+      "source_claim_fields_exact_R3": true
+    }
+  ],
+  "delta_checks": [
+    {
+      "id": "c19r1o13",
+      "action": "DELETE",
+      "deleted_text": "一邊替自己開戶的人辦事，另一邊，則要讓別家金融機構的客戶也能用機器。",
+      "verdict": "PASS_DELETION",
+      "source_scope_note": "o12已完整保留自家存戶金融服務與供合作金融機構使用的ATM事業；o14仍明示他行卡條件。刪除重述不丟失兩業務範圍或卡條件。",
+      "no_dangling_reference": true
+    },
+    {
+      "id": "c19r1e10",
+      "action": "DELETE",
+      "deleted_text": "這不是多放幾個按鍵，而是機器每天要接住多少現鈔、如何處理的改動。",
+      "verdict": "PASS_DELETION",
+      "source_scope_note": "e08年代/二代導入與e09公司回顧的紙幣容量、處理速度、操作及現金運送效率均未改；刪除口語再解釋沒有刪掉數字、結果或條件。",
+      "no_dangling_reference": true
+    },
+    {
+      "id": "c19r1t02",
+      "action": "DELETE",
+      "deleted_text": "也就是說，你若用合作銀行的卡，向你定價的，是替你保管帳戶的那家機構。",
+      "verdict": "PASS_DELETION",
+      "source_scope_note": "t01仍明示2010年報模型與帳戶銀行決定顧客費用，t03可按策略定價/優惠、t04合作方另付網路費均未動；刪條件改述不變成全卡受理或所有交易必付。",
+      "no_dangling_reference": true
+    },
+    {
+      "id": "c19r1t09",
+      "action": "DELETE",
+      "deleted_text": "這是七銀行描述的效益；維護機器和準備現鈔，借用入口才有機會減輕這些負擔。",
+      "verdict": "PASS_DELETION",
+      "source_scope_note": "t07的報告比較歸屬仍在，t08的可以減少維護/資金負擔仍是模式效益而非每家實績；刪再解釋不移除公司歸屬、can條件或費用界線。",
+      "no_dangling_reference": true
+    },
+    {
+      "id": "c19r1t10",
+      "action": "NARROW_TO_UNANSWERED_INSTITUTION_COUNT_QUESTION",
+      "before": "你在店裡多一個入口，合作銀行則少做一部分維運；這樣的合作，接進了多少機構？",
+      "after": "這樣的合作，當時接進了多少家金融機構？",
+      "verdict": "PLAN",
+      "source_semantic_result": "PASS",
+      "answer_id": "c19r1t11",
+      "answer_text": "當時的模型圖，已列出五百五十五家合作金融機構，並不只是銀行一家類型。",
+      "date_scope": "As of March31,2010 (S3 PDF14／印12), not current count.",
+      "unit_scope": "555 partner financial institutions (S3 PDF15／印13), not555 banks; paragraph lists nonbank institution types.",
+      "note": "親讀S3 PDF14–15／印12–13，當時模型圖的日期、金融機構數及非銀行類型相連。新t10只提問，保留t11回答555金融機構且明講不只銀行類型；沒有新增未證數字或重述維運效益。",
+      "quote_ids": [
+        "R23-Q1",
+        "R23-Q2"
+      ]
+    }
+  ],
+  "mandatory_fixes": [],
+  "fresh_delta_quote_receipts": [
+    {
+      "id": "R23-Q1",
+      "source_id": "S3",
+      "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+      "locator": "PDF14／印12 日期註",
+      "original_quote": "As of March 31, 2010",
+      "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+      "quote_sha256": "3d4bb16431d91246df486d90bc434a92882b89fd4391f45b88ce3fd8ff7fc8d1",
+      "raw_and_quote_sha_match": true,
+      "found_at_original_page": true
+    },
+    {
+      "id": "R23-Q2",
+      "source_id": "S3",
+      "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+      "locator": "PDF15／印13 圖標",
+      "original_quote": "Partner Financial Institutions 555",
+      "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+      "quote_sha256": "46bc45805a92a9f8c9199ccc2a6c3e179c448712ddd010209f501af4e2d33849",
+      "raw_and_quote_sha_match": true,
+      "found_at_original_page": true
+    }
+  ],
+  "projection_checks": {
+    "video_script_id_order_text": true,
+    "video_narration_id_order_text": true,
+    "video_claims_scene_id_order_text": true,
+    "claims_md_id_order_text_and_quote_ids": true,
+    "video_prompts_equal_claim_projection": true,
+    "first8_complete_scenes_exact_R3": true,
+    "all_retained113_prompt_camera_data_exact_R3": true,
+    "source_registry_and57_anchor_registry_exact_R3": true,
+    "outro_typography_exact_R3": true
+  },
+  "prompt_review": {
+    "count": 113,
+    "mode": "Exact written data/prompt/camera inheritance from frozen R3; fresh all113 ASCII-English and series-name lint checks.",
+    "all_retained_data_exact_R3": true,
+    "fresh_ASCII_name_checks_all_pass": true,
+    "t10_narrowed_question_matches_same_anonymous_card_terminal_concept": true,
+    "actual_image_review": false
+  },
+  "loop_review": {
+    "count": 36,
+    "all_loop_definitions_exact_R3": true,
+    "all_references_present": true,
+    "all_setup_before_payoff": true,
+    "no_deleted_ids_as_endpoints": true,
+    "fresh_t10_to_t11_source_semantic_result": "PASS",
+    "fresh_pair_note": "Question requests the then-current partner financial institution count; t11 answers555 institutions and distinguishes nonbanks under2010 model scope.",
+    "other35_pairs_and_endpoint_texts_exact_R3": true
+  },
+  "quote_receipts_inheritance": {
+    "baseline_source_sha256": "b4c8cd089f5cc6deefda89cf3ea58a545e381011be8cb9da7b2875e51b163c79",
+    "anchor_registry_exact": true,
+    "raw_eight_exact": true,
+    "count": 57,
+    "note": "All57 quotes retain the exact R3/R2 source chain. t10 two date/count anchors additionally freshly extracted; no claim of all115 original semantic reread."
+  },
+  "metadata_review": {
+    "category": "story",
+    "youtube_category_id": 27,
+    "result": "PASS_NATIVE_SCHEMA_AND_INHERITED_FACTUAL_SCOPE"
+  },
+  "reuse_plan_review": {
+    "result": "PASS_WRITTEN_PLAN_ONLY",
+    "native_local_rehearsal": {
+      "pairs": [
+        {
+          "asset_plan_id": "branch-tissue-packet",
+          "source_scene_id": "c19r1a18",
+          "reuse_scene_id": "c19r1h05",
+          "prompt_exact": true,
+          "camera_exact": true,
+          "composed_prompt_exact": true,
+          "composed_prompt_sha256": "278737e97de32f36c15505a69bf89df04bfdcbd787fc2305a22374e6141dcfe0",
+          "composed_hash_matches": true,
+          "request_tuple": {
+            "provider": "minimax",
+            "model": "image-01",
+            "prompt": "Medium close-up at a plain bank branch counter, an anonymous employee holding a small unmarked tissue packet beside a blank folded poster, mild overhead light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+            "negative": "",
+            "width": 1920,
+            "height": 1080,
+            "seed": 1,
+            "references": []
+          },
+          "request_tuple_prompt_matches": true,
+          "base_key": "4297efec8b809bb9",
+          "native_stage_keys": [
+            "405c4c491292b652",
+            "405c4c491292b652"
+          ],
+          "keys_match_plan": true,
+          "actual_same_asset_verified": false
+        },
+        {
+          "asset_plan_id": "cash-management-container",
+          "source_scene_id": "c19r1n10",
+          "reuse_scene_id": "c19r1h06",
+          "prompt_exact": true,
+          "camera_exact": true,
+          "composed_prompt_exact": true,
+          "composed_prompt_sha256": "62b1bdb317375d97cbc58887663c291fa5c17db46f961209beafd18730005cea",
+          "composed_hash_matches": true,
+          "request_tuple": {
+            "provider": "minimax",
+            "model": "image-01",
+            "prompt": "Medium shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, muted window light on the object.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+            "negative": "",
+            "width": 1920,
+            "height": 1080,
+            "seed": 1,
+            "references": []
+          },
+          "request_tuple_prompt_matches": true,
+          "base_key": "b8849c7e3426afaf",
+          "native_stage_keys": [
+            "ae36141f34ff04cc",
+            "ae36141f34ff04cc"
+          ],
+          "keys_match_plan": true,
+          "actual_same_asset_verified": false
+        }
+      ],
+      "code_files": {
+        "tools/video/media/keyframes.mjs": {
+          "expected": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+          "actual": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+          "match": true
+        },
+        "tools/video/media/stages.mjs": {
+          "expected": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+          "actual": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+          "match": true
+        },
+        "tools/video/media/cache.mjs": {
+          "expected": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+          "actual": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+          "match": true
+        },
+        "tools/video/media/prompt-budget.mjs": {
+          "expected": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+          "actual": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+          "match": true
+        },
+        "tools/video/core/drama.mjs": {
+          "expected": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+          "actual": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+          "match": true
+        },
+        "tools/video/media/trim.mjs": {
+          "expected": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b",
+          "actual": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b",
+          "match": true
+        }
+      },
+      "plan_core_binding_matches": true,
+      "plan_claims_md_binding_matches": true,
+      "prompt_count": 113,
+      "prompt_violations": [],
+      "lint": {
+        "errors": [],
+        "warnings": [
+          {
+            "path": "scenes",
+            "message": "\"blank\" is in 61 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+          },
+          {
+            "path": "scenes",
+            "message": "\"closed\" is in 50 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+          },
+          {
+            "path": "scenes",
+            "message": "\"terminal\" is in 48 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+          },
+          {
+            "path": "scenes",
+            "message": "about 15.1 minutes; the target is 12-14"
+          },
+          {
+            "path": "scenes",
+            "message": "「二〇〇二年」 is said in 3 lines (c19r1a11, c19r1a22, c19r1e01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+            "kind": "narrative"
+          },
+          {
+            "path": "scenes",
+            "message": "「二〇一〇年」 is said in 5 lines (c19r1e14, c19r1t01, c19r1t14, c19r1n01, c19r1n22): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+            "kind": "narrative"
+          }
+        ],
+        "summary": {
+          "minutes": 15.127222222222223,
+          "lines": 116,
+          "spoken_units": 3295,
+          "billable_characters": 10470,
+          "chapters": [
+            "00:00 金融廳裡，先拿到一份文件",
+            "00:48 預備牌照之後，機器才開門",
+            "02:39 別家銀行的客人走進店裡",
+            "06:17 入口變多，仍有人沒有用",
+            "09:03 螢幕上的免費，沒有結清網路的帳",
+            "11:26 訊息接回銀行，現鈔留在機器裡"
+          ]
+        },
+        "read_only_pure_function": true
+      },
+      "spoken_units": 3295,
+      "lexicon_sha256": "302845192be36f6ec7a3048148c8c280d6b36ccb2e6811c3a950fcfbb8cf80b1",
+      "actual_same_asset_verified": false,
+      "no_provider_call": true
+    },
+    "same_complete_request_keys_verified": true,
+    "actual_same_asset_verified": false,
+    "actual_same_file_sha_verified": false,
+    "live_backend_readback_performed": false,
+    "note": "Pure local full declared provider/model/version, prompt/look/camera, size/seed/references/fixes/limit check. Actual cache files, both judges and final trimmed identical file/SHA remain ordinary production requirements."
+  },
+  "native_local_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"blank\" is in 61 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"closed\" is in 50 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"terminal\" is in 48 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "about 15.1 minutes; the target is 12-14"
+      },
+      {
+        "path": "scenes",
+        "message": "「二〇〇二年」 is said in 3 lines (c19r1a11, c19r1a22, c19r1e01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "「二〇一〇年」 is said in 5 lines (c19r1e14, c19r1t01, c19r1t14, c19r1n01, c19r1n22): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ],
+    "summary": {
+      "minutes": 15.127222222222223,
+      "lines": 116,
+      "spoken_units": 3295,
+      "billable_characters": 10470,
+      "chapters": [
+        "00:00 金融廳裡，先拿到一份文件",
+        "00:48 預備牌照之後，機器才開門",
+        "02:39 別家銀行的客人走進店裡",
+        "06:17 入口變多，仍有人沒有用",
+        "09:03 螢幕上的免費，沒有結清網路的帳",
+        "11:26 訊息接回銀行，現鈔留在機器裡"
+      ]
+    },
+    "read_only_pure_function": true
+  },
+  "soft_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"blank\" is in 61 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels",
+      "blocking": false,
+      "disposition": "Retained soft warning; no invented actual media timing."
+    },
+    {
+      "path": "scenes",
+      "message": "\"closed\" is in 50 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels",
+      "blocking": false,
+      "disposition": "Retained soft warning; no invented actual media timing."
+    },
+    {
+      "path": "scenes",
+      "message": "\"terminal\" is in 48 of 113 pictures (a third is plenty): give each chapter its own place and props so the video travels",
+      "blocking": false,
+      "disposition": "Retained soft warning; no invented actual media timing."
+    },
+    {
+      "path": "scenes",
+      "message": "about 15.1 minutes; the target is 12-14",
+      "blocking": false,
+      "disposition": "Retained soft warning; no invented actual media timing."
+    },
+    {
+      "path": "scenes",
+      "message": "「二〇〇二年」 is said in 3 lines (c19r1a11, c19r1a22, c19r1e01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative",
+      "blocking": false,
+      "disposition": "Retained soft warning; no invented actual media timing."
+    },
+    {
+      "path": "scenes",
+      "message": "「二〇一〇年」 is said in 5 lines (c19r1e14, c19r1t01, c19r1t14, c19r1n01, c19r1n22): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative",
+      "blocking": false,
+      "disposition": "Retained soft warning; no invented actual media timing."
+    }
+  ],
+  "limitations": [
+    "Exact115-line and113-prompt inheritance from the R3 source chain; fresh t10/date/count answer review and four deletion/context checks only, not a claimed full115-line original semantic reread.",
+    "Native/blind reviews and author review judgements did not decide source validity. Protected sensitive history files were hashed only as opaque bytes.",
+    "All earlier corporate-source licence/date, card/service eligibility, 2002 specification versus2010sameUI, fee/revenue and cash-management caveats remain in force.",
+    "No actual audio or generated image/assembly reviewed; actual same-asset=false and actual duration=null.",
+    "Native lint0 errors and6 preserved soft warnings including about15.1minutes.3295spokenUnits/13-minute target are planning only."
+  ],
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "author_files_changed": 0,
+  "next_action": "Root may reconcile exact R4 source/native marker with separately isolated narrative review. No owner, production admission or actual media approval granted."
+}

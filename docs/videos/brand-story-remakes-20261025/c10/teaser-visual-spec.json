@@ -1,0 +1,36 @@
+{
+  "baseline_video_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+  "revision": "c10-r7-teaser-image-plan-v1",
+  "pairs": [
+    {
+      "pair_id": "clay-pre-action-shared-still",
+      "setup_scene_id": "c10r1-h06",
+      "setup_line_id": "c10h06",
+      "payoff_scene_id": "c10r1-o06",
+      "payoff_line_id": "c10o06",
+      "prompt": "Macro shot of anonymous hands poised above a small lump of clay beside an unmarked thin metal vegetable peeler on a plain workbench, soft side light.",
+      "camera": "pull back",
+      "no_result_drawn_in_teaser": "The clay has not been shaped into a handle and the hands have not completed a prototype. The same neutral pre-action context may accompany the later attributed making action without revealing its resulting shape in the opening.",
+      "source_scope": "Uses the existing attributed clay-model accounts only. It does not claim that a clay prototype, a museum object, a trade-show sample and a retail peeler are the same physical artifact."
+    },
+    {
+      "pair_id": "shop-trial-pre-action-shared-still",
+      "setup_scene_id": "c10r1-h07",
+      "setup_line_id": "c10h07",
+      "payoff_scene_id": "c10r5-s04",
+      "payoff_line_id": "c10v5s04",
+      "prompt": "Close-up of an unmarked black-handled vegetable peeler linked by a short plain chain to a bowl of carrots on a shop table, an anonymous hand held just above the handle, soft indoor light.",
+      "camera": "tilt down",
+      "no_result_drawn_in_teaser": "The hand is poised before trying the tool. The picture does not reveal any shopper response, purchase, sales result, measured improvement or the outcome of the demonstration.",
+      "source_scope": "Retains the one attributed Lechters carrot-bowl trial already in the script. It does not make this the clay prototype, an identified store or shopper, a second event, a first sale, or a quantified sales cause."
+    }
+  ],
+  "allowed_changed_files": [
+    "video.json",
+    "script.md",
+    "claims.json",
+    "claims.md",
+    "build-candidate.py",
+    "author-notes.json"
+  ]
+}

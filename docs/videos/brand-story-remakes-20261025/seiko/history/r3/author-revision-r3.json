@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "revision": "seiko-r3",
+  "role": "AUTHOR_MINIMAL_REVISION_RESPONSE_NOT_INDEPENDENT_PASS",
+  "history_r2_receipt": "history/r2/preservation-receipt.json",
+  "history_r2_receipt_sha256": "a70673164e7ad6aefc1555d217590d37463d838fe037a13b6c6e0f18e5de3911",
+  "actual_native_round_count": 2,
+  "prior_source": "PASS_R2_PRESERVED_AS_HISTORY",
+  "prior_native_round2": "HOLD_SHARED_no_recap",
+  "lone_reader_findings": "FULL_ORIGINAL_RAW_AND_REPORT_PRESERVED_NO_CONSENSUS_EDIT",
+  "changed_line_id": "skr1p08",
+  "before": {
+    "id": "skr1p08",
+    "chapter": "送到東京，價牌卻又要換",
+    "text": "回顧說，原先決定的價格是四十五萬日圓，銷售負責人卻先改成三十八萬。",
+    "research_claim_ids": [
+      "C12"
+    ],
+    "kind": "attributed",
+    "visual": "pricepaper"
+  },
+  "after": {
+    "id": "skr1p08",
+    "chapter": "送到東京，價牌卻又要換",
+    "text": "回顧說，銷售負責人一度把售價改成三十八萬日圓。",
+    "research_claim_ids": [
+      "C12"
+    ],
+    "kind": "attributed",
+    "visual": "pricepaper"
+  },
+  "scope": "Remove repeated45万 only. Keep recalled attribution, responsible salesperson temporary change to38万 yen, later Hattori restoration/order unchanged. No physical price-card action invented.",
+  "all_other_narration_and_order_unchanged": true,
+  "all_visual_prompt_and_camera_data_unchanged": true,
+  "all_research_and_source_bindings_unchanged": true,
+  "both_full_native_image_keys_required_identical_to_r2": true,
+  "current_old_verify_removed_only_after_full_sha_snapshot": true,
+  "new_source": "PENDING_OTHER_REVIEWER",
+  "new_native_round3": "PENDING_FRESH_READERS",
+  "source_pass_claimed": false,
+  "native_pass_claimed": false,
+  "owner_approval_created": false,
+  "paid_calls": 0
+}

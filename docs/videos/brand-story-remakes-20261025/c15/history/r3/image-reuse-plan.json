@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "revision": "c15-r3",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_GENERATION_AND_REAL_FILE_SHA_VERIFICATION",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "no_assets_generated": true,
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_field_available": false,
+    "clip_source_field_not_applicable": "core/drama.mjs rejects data.source for a still; data.source is for an earlier clip, not shared still pictures.",
+    "native_supported_route": "keyframes --shot plus the ordinary exact-request media cache; no invented shot field, manifest copy or CLI modification",
+    "cache_identity": "Stage.imageKey uses provider/model/composed prompt/negative/references/seed/size (plus image-selection version); id, shot_id and target do not enter this key. Stage.generate reads cached(workdir,key), which hashes actual existing bytes, before a new provider submission.",
+    "camera_matters": "composeShotPrompt appends camera, therefore each teaser also copies the payoff camera.",
+    "judge_scope": "Each scene still receives its own official judge decision. A cache hit avoids an image repurchase; it is not a shared or forged judge approval."
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "capsule-production-shared-still",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "source_scene_id": "c15r1d03",
+      "source_line_id": "c15r1d03",
+      "reuse_scene_id": "c15r1h04",
+      "reuse_line_id": "c15r1h04",
+      "source_prompt_sha256": "dbc18147a39d77be3f0b62ff56724660d942f5c21534102d7da5203506eee85d",
+      "reuse_prompt_sha256": "dbc18147a39d77be3f0b62ff56724660d942f5c21534102d7da5203506eee85d",
+      "prompt_exact_match": true,
+      "source_camera": "pull out",
+      "reuse_camera": "pull out",
+      "composed_prompt_sha256": "33ba857fc4ce0375a7f441a84acdca2ea1743a2a57d38d3a93030abdadd8b83c",
+      "native_same_input_key_rehearsal": {
+        "pure_local_function_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Medium shot in a plain production room, an anonymous technician standing beside a large unmarked capsule-material container and a small sample jar, mild light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "key": "7b467aedfcbaea63",
+        "dimensions_are_declared_example_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "cooled-page-shared-still",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "source_scene_id": "c15r1e04",
+      "source_line_id": "c15r1e04",
+      "reuse_scene_id": "c15h04b1",
+      "reuse_line_id": "c15h04b1",
+      "source_prompt_sha256": "f390f9e24d86248f39666477acf565b083bb6dd1d9daac13207330a00748de76",
+      "reuse_prompt_sha256": "f390f9e24d86248f39666477acf565b083bb6dd1d9daac13207330a00748de76",
+      "prompt_exact_match": true,
+      "source_camera": "pan right",
+      "reuse_camera": "pan right",
+      "composed_prompt_sha256": "b1dc424d5d2e6e3d1c3e74f1f9be03937a519d34b5ad438d2b62d58e32ab5c4b",
+      "native_same_input_key_rehearsal": {
+        "pure_local_function_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Close-up at a plain workbench, an anonymous adult looking at an enclosed draft sheet beside an unnumbered cooling instrument, diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "key": "c092f72cbbaa0566",
+        "dimensions_are_declared_example_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_file_sha_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "Exact current source and narrative reviews, owner script/outline approvals, real production admission and whole-film quote remain required. Nothing in this plan starts paid work.",
+      "Keep the same immutable project/workdir, model selection version, look, composed prompt, references, image size, seed and empty correction list at the two ends.",
+      "Generate each payoff first through official keyframes --shot with --takes 1 and default seed offset 0. Proceed to its teaser only after that exact first take passed and remains the selected actual image."
+    ],
+    "official_command_recipe_only": [
+      {
+        "purpose": "payoff first, only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c15-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-frixion-c15-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c15r1d03",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "same request at teaser must return the existing verified cache file, not buy a similar image",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c15-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-frixion-c15-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c15r1h04",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "payoff first, only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c15-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-frixion-c15-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c15r1e04",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "same request at teaser must return the existing verified cache file, not buy a similar image",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c15-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-frixion-c15-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c15h04b1",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "on_any_failure_or_changed_request": "Stop the pair. Do not let one end roll to another seed, acquire an independently corrected look-alike, use --force/--accept-best to bypass a failed review, or hand-edit a manifest. If a shared prompt needs a factual/style correction, update both ends together and repeat the normal source/visual binding and admitted generation process within the existing account and take caps.",
+    "actual_verification_required": [
+      "Read the official keyframes manifest after both commands; require equal selected file paths and SHA256 for the pair, then hash the actual referenced bytes.",
+      "If trimming occurred, require both selected entries to reference the identical derived file and actual file SHA; the original generated-file hash alone is insufficient.",
+      "Require both official scene verdicts to pass (or the already authorized ordinary review route), and preserve the real image job/cache/ledger receipts.",
+      "A matching prompt or matching request key alone does not establish completed image reuse. No current result can be called image acceptance or media QA."
+    ],
+    "executed": false
+  }
+}

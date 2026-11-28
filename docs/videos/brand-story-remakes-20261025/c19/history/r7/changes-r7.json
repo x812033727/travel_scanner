@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r7",
+  "status": "AUTHOR_ONE_LINE_DELETION_PENDING_DELTA_SOURCE_AND_NATIVE7",
+  "baseline_revision": "c19-r6",
+  "baseline_core_four_sha256": {
+    "video.json": "4dc9dfe5c01b68e1b414dfbd6bb8047e0c8ba7ae88e57e37e53d589bbbf6af65",
+    "script.md": "7bfc02dbcf9eec5805bc93d1802011705eb49883516746410569a378bdcc4211",
+    "narration-only.json": "c6a56d4f96ee39a12c42f864ebecb8a06932ceb3e9045dbae3d86545fc123478",
+    "claims.json": "78f6bf85029c9cbbf64a5fea5b9e291ca595038ece478e2ef74200c049210819"
+  },
+  "baseline_source_result": "PASS_R6_ONLY",
+  "baseline_source_receipt_sha256": "739bde5f07e7eaf2d4cc5db39d33385d38b7b3f4e92905d4ef6a1f0972417271",
+  "baseline_verify_sha256": "ec7efd6efff73902e582bb8e5b6a5d1d70df0b4e0f3e78055762dce3883ded06",
+  "baseline_native_round": 6,
+  "baseline_native_result": "HOLD",
+  "baseline_native_shared_failure": [
+    "no_recap"
+  ],
+  "native6_evidence_addressed": {
+    "reader_a": "a10 repeats adjacent a27 customer knowledge of usable card services",
+    "reader_b": "a10 repeats adjacent a27 customer knowledge of usable card services"
+  },
+  "changed_rows": [],
+  "removed_rows": [
+    {
+      "id": "c19r1a10",
+      "text": "更麻煩的是，接通了資料，不等於客人知道，自己手裡那張卡能在這裡用。",
+      "reason": "Both native6 readers identify this as an adjacent restatement of a27. a27 remains verbatim, so no new service condition, date or viewer address is lost."
+    }
+  ],
+  "added_rows": [],
+  "unchanged_remaining_narration_rows": 114,
+  "remaining_source_claim_rows_unchanged": 114,
+  "opening_scenes_and_narration_unchanged": true,
+  "all_retained_prompts_and_cameras_exactly_r6": true,
+  "new_historical_claims": false,
+  "source_registry_and_quote_registry_exactly_r6": true,
+  "source_quotes_changed": false,
+  "all_conditions_and_data_preserved_at_ids": [
+    "c19r1a05",
+    "c19r1a12",
+    "c19r1a14",
+    "c19r1a20",
+    "c19r1a21",
+    "c19r1a22",
+    "c19r2a33",
+    "c19r1n03",
+    "c19r1n04",
+    "c19r1n09",
+    "c19r1n18",
+    "c19r1n19",
+    "c19r1n20",
+    "c19r1n23",
+    "c19r1n24",
+    "c19r1t03",
+    "c19r1t04",
+    "c19r1t05",
+    "c19r1t14",
+    "c19r1t15",
+    "c19r1t16",
+    "c19r1o02",
+    "c19r1o05",
+    "c19r1a25",
+    "c19r1a26",
+    "c19r1a27"
+  ],
+  "removed_loop": {
+    "setup": "c19r1a10",
+    "payoff": "c19r1a11",
+    "what": "設點揭示合作銀行以利辨認",
+    "reason": "Remove the loop whose setup line was deleted; no replacement setup or new fact is introduced."
+  },
+  "remaining_loop_metadata_exactly_r6": true,
+  "loop_count": 35,
+  "all_loop_endpoints_exist_and_forward": true,
+  "chapter_viewer_address": [
+    {
+      "chapter": "金融廳裡，先拿到一份文件",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "預備牌照之後，機器才開門",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "螢幕上的免費，沒有結清網路的帳",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "訊息接回銀行，現鈔留在機器裡",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "whole_narration_spoken_units": 3193,
+  "previous_units": 3222,
+  "delta_units": -29,
+  "removed_restatement_not_replaced_by_padding": true,
+  "native_actual_round_count": 6,
+  "next_native_round": 7,
+  "native2_format_correction_not_extra_draw": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_1_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

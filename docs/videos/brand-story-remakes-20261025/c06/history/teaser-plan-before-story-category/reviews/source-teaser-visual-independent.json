@@ -1,0 +1,4096 @@
+{
+  "schema_version": 1,
+  "review_type": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_TEASER_DELTA",
+  "reviewer": "/root/approved_visual_source_delta",
+  "independent": true,
+  "date": "2026-10-26",
+  "revision": "c06-teaser-image-plan-v1",
+  "slug": "story-everyday-play-doh-c06-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "actualasset_verified": false,
+  "actual_same_asset_verified": false,
+  "input_sha256": {
+    "video.json": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+    "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+    "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+    "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926"
+  },
+  "plan_sha256": "567791635dbe5240461ec41f5bc3546e4363a48bf624dd6023235dd7e941ff18",
+  "teaser_input_sha256": "a7ac387e3d8f83c82e12c50a8c69c99b02db90142672b94b0943bac2e19d9829",
+  "claims_md_sha256": "895efa36cd77f914b68c1f739419ddf77f56c6c97cced0dd4768a705ec62af2d",
+  "source_verified_baseline_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "immutable_baseline": {
+    "directory": "history/before-teaser-image-plan",
+    "core_four_sha256": {
+      "video.json": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+      "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+      "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+      "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926"
+    },
+    "source_receipt_path": "history/before-teaser-image-plan/reviews/source-r3-independent.json",
+    "source_receipt_sha256": "4344facd461d0b53fa034d7e5ac0a49e1f96e75f24604bff56e5e93c2b3fe0b0",
+    "verify_sha256": "43a8165bbd1dac9a61d0666f4a095010cee8b838041df494dc47a1d696de3fe3",
+    "snapshot_manifest_sha256": "95ee0ba5806b288be4e4474d0aa62b4cdb5f7e5b88b87fa827d21750b03e57c5",
+    "all_archived_files_sha_verified": true,
+    "archived_file_count": 52,
+    "all_auxiliary_files_sha_verified": true,
+    "auxiliary_file_count": 78
+  },
+  "counts": {
+    "narration_lines": 163,
+    "source_pass": 163,
+    "source_hold": 0,
+    "scenes": 138,
+    "shots": 137,
+    "stats_cards": 0,
+    "outro": 1,
+    "written_visual_scene_pass": 138,
+    "written_visual_scene_hold": 0,
+    "changed_shot_scenes": 4,
+    "changed_leaf_fields": 6,
+    "unchanged_complete_scene_objects": 134
+  },
+  "method": "直接比較全部video物件與immutable archive四輸入；所有句ID/scene/text SHA逐句等於既存完整獨立PASS收據。未變來源逐句接鏈，本輪親讀原件只重審實際picture delta，不重判敘事。",
+  "exact_delta": {
+    "all_object_differences": [
+      {
+        "path": "/scenes/6/data/prompt",
+        "before": "Medium close-up at a kitchen table, one anonymous adult with a frustrated expression while looking at a small handprint beside a firm clay lump, gentle desk lamp light from the right.",
+        "after": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light."
+      },
+      {
+        "path": "/scenes/7/data/prompt",
+        "before": "Wide shot at a home crafting corner, one unidentified craftsperson with a puzzled expression while examining a completed modeled flower beside a plain vase, soft doorway light.",
+        "after": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light."
+      },
+      {
+        "path": "/scenes/29/data/prompt",
+        "before": "Wide shot inside a classroom craft corner, one anonymous adult with a frustrated expression while trying to flatten a firm clay lump, soft doorway light.",
+        "after": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light."
+      },
+      {
+        "path": "/scenes/29/data/camera",
+        "before": "pan left",
+        "after": "push in"
+      },
+      {
+        "path": "/scenes/128/data/prompt",
+        "before": "Close-up at a home crafting corner, one anonymous adult facing the viewer while looking at a completed modeled bouquet beside a plain spray bottle, soft window light from the left.",
+        "after": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light."
+      },
+      {
+        "path": "/scenes/128/data/camera",
+        "before": "push in",
+        "after": "pan left"
+      }
+    ],
+    "all_other_video_fields_identical": true,
+    "all_scene_ids_order_chapters_lines_emotions_loops_metadata_voice_subtitles_look_identical": true,
+    "script_narration_claims_json_brief_series_bytes_identical": true,
+    "all_cards_complete_objects_identical": true,
+    "claims_md_original_prefix_bytes_preserved": true,
+    "claims_md_only_written_visual_appendix_added": true,
+    "producer_memory_only_replay_core_four_and_claims_md_exact": true,
+    "producer_diff_review": "獨立逐行diff只有四scene的共圖prompt/camera override與claims.md書面規劃附錄。memory-only攔截全部Path.write_text，對producer隨後讀取其輸出的read_bytes提供相同記憶體內容；四核心輸入及claims.md逐bytes重現，未執行落地producer。",
+    "original_r3_line_hash_key_normalized": "r3 uses text_sha256; normalized against current text SHA, then source PASS plus scene-level written_visual_results/outro_review PASS joined by scene_id",
+    "n07_and_n07_p2_complete_scene_objects_unchanged": true
+  },
+  "source_table": {
+    "H1-scale": {
+      "url": "https://newsroom.hasbro.com/node/34691",
+      "locator": "2024公告About PLAY-DOH：over500Mcans shipped a year。",
+      "scope": "公司年出貨罐數口徑，不是使用人數、營收或零售成交。",
+      "raw_document_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78"
+    },
+    "H2-birthday": {
+      "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+      "locator": "2018公告：brand inception in1956。",
+      "scope": "公司回顧的品牌生日，不是本次已見首單發票。",
+      "raw_document_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc"
+    },
+    "H3-display": {
+      "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+      "locator": "2026-07-09公告：首個專為成人設計系列、adult crafting/home decor、preserved/displayed與finishing spray幫助維持結構數月。",
+      "scope": "成人線定位與保存數月均保留公司公告歸屬，非本次實測或銷售成功；不聲稱經典材料全改成永久保存。",
+      "raw_document_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392"
+    },
+    "H3-kit": {
+      "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+      "locator": "2026-07-09公告：shaping individual petals to arranging a finished bouquet；tools/molds/vase/spray；每款how-to videos。",
+      "scope": "限該花藝套件的公司介紹；匿名假想手作動作不是親測或歷史重建。",
+      "raw_document_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392"
+    },
+    "K1-cleo": {
+      "url": "https://www.kutol.com/kutols-story/",
+      "locator": "公司史Cleo被派清算卻買下生意、Kroger壁紙清潔用品段。",
+      "scope": "企業多年後的回顧，不是同期合約或交易帳簿。",
+      "raw_document_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209"
+    },
+    "K1-kay": {
+      "url": "https://www.kutol.com/kutols-story/",
+      "locator": "公司史Joseph的sister-in-law Kay Zufall、kindergarten、材料受歡迎與Rainbow分支段。",
+      "scope": "教師姓名與身分來自本公司回顧；M2的a teacher不獨自承擔Kay身分。",
+      "raw_document_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209"
+    },
+    "M1-kroger": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "2016回顧1933 Kroger合同段，含從前未做過壁紙清潔材料。",
+      "scope": "館方明轉引Tim Walsh後出書籍，不是本次已讀1933原始合約。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-noah": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1933段：brother Noah, a product developer、winning formula及malleable clay-like compound。",
+      "scope": "館方回顧的開發分工；不倒推1965專利配方為1933原配方。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-wall": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "壁紙清潔用途與煤灰需求段：wallpaper cleaner、soot residue。",
+      "scope": "柔軟清潔材料與壁紙用途；觀眾壓、捏是明示假想動作，不聲稱已見當年操作影片或性能測試。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-1949": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "Following Cleo death in1949, son Joseph took over。",
+      "scope": "館方回顧；本稿置於1950年代需求改變之前。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-demand": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "early1950s sales plummet、二戰後家庭由coal-based furnaces轉oil/gas、減少soot residue段。",
+      "scope": "館方回顧的需求變化，不升格成帳本驗證或唯一破產原因。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-kay": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1955 Kay schoolteacher提出handicraft/play、Joseph拜訪看作品、reformulate/repurpose並沿用設備空間。",
+      "scope": "公司/館方回顧，非同期教室紀錄；不補洗劑/香料改配方細節。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-brand": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1956 Rainbow Crafts subsidiary、repackaged Play-Doh、向Cincinnati elementary schools行銷段。",
+      "scope": "公司與推廣脈絡，不宣稱1956是已證第一筆出售。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-colors": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "By1957 available in three new colors red/yellow/blue。",
+      "scope": "館方回顧顏色加入，不推1956所有色系或現代全配方。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-television": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1956/1957發展段後：缺大筆廣告預算、Captain Kangaroo主持人安排至少每週使用一次。",
+      "scope": "館方回顧的推廣動作，沒有精確合作日/費率，不宣稱本次驗證全國銷量因果。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-factory": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "In1960 two engineers、multiple ways、Fun Factory minimal force extrude shapes/designs段。",
+      "scope": "1960工具功能的館方回顧；配鏡為匿名一般槓桿/出口示意，無現代兩軌倒配。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M2-hard": {
+      "url": "https://www.toyhalloffame.org/toys/play-doh/",
+      "locator": "Joe learned from a teacher、kids usually found modeling clay too hard to manipulate、送材料試用與學校反應。",
+      "scope": "M2不具名的teacher；Kay姓名由K1/M1補，非正式兒童試驗/療效。",
+      "raw_document_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6"
+    },
+    "M2-colors": {
+      "url": "https://www.toyhalloffame.org/toys/play-doh/",
+      "locator": "1957 softer version in primary colors段。",
+      "scope": "同The Strong機構回顧，不當另一個獨立同期見證。",
+      "raw_document_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6"
+    },
+    "P1-header": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1標頭：NoahW./JosephS.、assignors to Rainbow、Filed May17,1960、Patented Jan26,1965；文首兒童用途。",
+      "scope": "申請與核發分開。後來核發的文本不充當1955實際配方或現代每罐的規格。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-shape": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF4印刷欄7–8 claim9：moldable into any desired shape、consistency to retain its shape；特性段。",
+      "scope": "專利主張/設計要求，不是作者獨立性能試驗。注意原件是claim9，不沿用r1作者表的claim8誤定位。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-goals": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1文首objects：soft/pliable、slow drying、re-worked/re-molded。",
+      "scope": "該文本的設計目標；匿名假想變形不代表歷史或現代產品全數實測。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-clean": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1 objects：cleanliness、notsticky/non-staining；後段特性。",
+      "scope": "設計主張，非當代安全/可食或本次效果保證。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-film": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1印刷欄2：It is believed hydrocarbon distillate thin film around solid particles；coated flour particles濕熱糊化與thin film滑順不黏段。",
+      "scope": "保留作者認為/文件描述的假說層級；概念模型不是顯微實測或1933配方。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-mixing": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF3印刷欄6：preferred method、ordinary bakery dough mixer、熱水與材料混合成homogenous mass、type of mixer not critical。 同PDF3印刷欄6製法結尾：混成可塑團塊後immediately placed in air tight containers。",
+      "scope": "專利描述的一種製法；不列比例/溫度/時間作DIY配方，不稱親見工廠實際照此生產。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-color": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1 objects：different colors incorporated without affecting moldable consistency。",
+      "scope": "加色與可塑性兼顧的設計要求，不證1957工廠實際色方或當代全系列同方。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-store": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF4印刷欄7：normally stored in air tight container、玩後可放回、此方式聲稱工作特性up to3years。",
+      "scope": "1965核發文本對該組成的保存主張，非本次三年試驗/今日產品保存期限；正文保留文本聲稱。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-dry": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF3–4印刷欄6–7：open air幾天乾硬、painted with oil/water/poster paints、once thoroughly dry not reclaimed、乾硬後crayons。",
+      "scope": "該文本的描述及不可重塑取捨；不稱所有現代產品同一乾燥時間或永久保存。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-binding": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1–2：hardener/astringent為可選成分，其功能bind components into cohesive mass；另見claims的binder說明。",
+      "scope": "該文本的可選黏結作用主張，不宣稱每一當代產品必含或本次獨立實驗證實。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    }
+  },
+  "source_catalog": {
+    "schema_version": 1,
+    "sources": [
+      {
+        "id": "K1",
+        "url": "https://www.kutol.com/kutols-story/",
+        "status": 200,
+        "final_url": "https://www.kutol.com/kutols-story/",
+        "bytes": 314017,
+        "raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Kutol's Story",
+          "article:publisher": "https://www.facebook.com/KutolProductsCompany",
+          "article:modified_time": "2024-09-09T19:39:47+00:00"
+        },
+        "title": "Kutol’s Story",
+        "publisher": "Kutol",
+        "kind": "corporate_retrospective",
+        "published_on": null,
+        "modified_on": "2024-09-09",
+        "locator": "開頭沿革；Cleo/Kroger段；Kay Zufall/Rainbow段；Bill/液體皂與後續經營段",
+        "excerpt": "introduced Kutol’s wallpaper cleaner to her kindergarten class",
+        "confidence": "高：公司確如此回顧；中：多年以前事件本身",
+        "limits": "不是1933合約、教室紀錄或逐年帳本。largest-world等公司自評不作本片核心。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "M1",
+        "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+        "status": 200,
+        "final_url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+        "bytes": 415288,
+        "raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "The History of Play-Doh: Good, Clean Fun! - The Strong National Museum of Play",
+          "article:publisher": "https://www.facebook.com/TheStrongMuseum/",
+          "article:published_time": "2016-11-03T04:00:00+00:00",
+          "article:modified_time": "2022-07-13T14:28:37+00:00"
+        },
+        "title": "The History of Play-Doh: Good, Clean Fun!",
+        "publisher": "The Strong National Museum of Play",
+        "kind": "official_institution_retrospective",
+        "published_on": "2016-11-03",
+        "modified_on": "2022-07-13",
+        "locator": "正文1933/early1950s/1955/1956/1957/1960/1964/1965段；文末出版日",
+        "excerpt": "According to Tim Walsh’s book",
+        "confidence": "中：館方回顧，早史部分轉引後出書籍",
+        "limits": "不是同期帳本；1955推出與1956公司/校園推廣分開。不可將其與Toy Hall條目算兩獨立機構。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "M2",
+        "url": "https://www.toyhalloffame.org/toys/play-doh/",
+        "status": 200,
+        "final_url": "https://www.toyhalloffame.org/toys/play-doh/",
+        "bytes": 399945,
+        "raw_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Play-Doh | National Toy Hall of Fame | The Strong",
+          "article:publisher": "https://www.facebook.com/TheStrongMuseum/",
+          "article:modified_time": "2026-10-23T22:54:36+00:00"
+        },
+        "title": "Play-Doh — National Toy Hall of Fame",
+        "publisher": "The Strong",
+        "kind": "official_institution_retrospective",
+        "published_on": "2021-08-20",
+        "modified_on": "2026-10-23",
+        "locator": "Inducted Year；正文教師/1955教育展/百貨/1956/1957段",
+        "excerpt": "kids usually found modeling clay too hard to manipulate",
+        "confidence": "中：官方館方回顧，非當年教師試驗報告",
+        "limits": "與M1同機構；不證孩子比例、轉換率、百貨採購量。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "P1",
+        "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+        "status": 200,
+        "final_url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+        "bytes": 699681,
+        "raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+        "content_type": "application/pdf",
+        "title": "US3167440 — Plastic modeling composition of a soft, pliable working consistency",
+        "publisher": "United States Patent Office（原始核發掃描，Google Patent Images保存）",
+        "kind": "primary_patent_scan",
+        "published_on": "1965-01-26",
+        "filing_on": "1960-05-17",
+        "locator": "PDF1（印刷欄1–2）：標頭、用途、CIP、目標、機制說明；後頁claims",
+        "excerpt": "a modeling composition for children's play",
+        "confidence": "高：原件人名、日期、申請內容；不證市售批次或效果",
+        "limits": "早申請735,985，1958-05-19，文內稱now abandoned。不是1933原配方、1956首賣證據或今天安全/成分保證。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "G1",
+        "url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/87335817/registration-certificate/5467089_87335817_051518_ORC.pdf",
+        "status": 200,
+        "final_url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/87335817/registration-certificate/5467089_87335817_051518_ORC.pdf",
+        "bytes": 50733,
+        "raw_sha256": "62126abb502d40e723087e392491ceb5123d49bf44fd226fd5f6da42e93be1b2",
+        "content_type": "application/pdf;charset=UTF-8",
+        "title": "US trademark registration certificate 5,467,089 / serial 87-335,817",
+        "publisher": "USPTO",
+        "kind": "primary_official_registration",
+        "published_on": "2018-05-15",
+        "filing_on": "2017-02-14",
+        "locator": "PDF1：registration/date/Class28/first use/mark description",
+        "excerpt": "Registered May 15, 2018",
+        "confidence": "高：登記與證書所載；首次使用是申請人歷史聲明",
+        "limits": "氣味商標，不是配方專利。1955-09-12 first-use不是本次獨立核到的首筆發票。未查2026維持/續展狀態，不宣稱今日仍有效。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "G2",
+        "url": "https://tsdrsec.uspto.gov/ts/cd/casedoc/sn87335817/RFA20170217125306/1/webcontent?scale=1",
+        "status": 200,
+        "final_url": "https://tsdrsec.uspto.gov/ts/cd/casedoc/sn87335817/RFA20170217125306/1/webcontent?scale=1",
+        "bytes": 27932,
+        "raw_sha256": "38400b68c170110e5dda782d87ae8a905b8f5a362ce59130bfe905d048cb018c",
+        "content_type": "text/html;charset=UTF-8",
+        "publication_meta": {},
+        "title": "Original trademark application, serial 87335817",
+        "publisher": "USPTO / Hasbro applicant",
+        "kind": "primary_applicant_declaration",
+        "published_on": null,
+        "filing_on": "2017-02-14",
+        "locator": "FIRST USE ANYWHERE/IN COMMERCE；miscellaneous statement；declaration",
+        "excerpt": "At least as early as 09/12/1955",
+        "confidence": "高：申請人作此聲明；非獨立首單查核",
+        "limits": "與1956品牌生日未必矛盾；不可寫成政府獨立證明1955-09-12首次售出。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false,
+        "document_date": "2017-02-14"
+      },
+      {
+        "id": "H1",
+        "url": "https://newsroom.hasbro.com/node/34691",
+        "status": 200,
+        "final_url": "https://newsroom.hasbro.com/node/34691",
+        "bytes": 35397,
+        "raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "HASBRO AND HORIZON GROUP USA SIGN A STRATEGIC PLAY-DOH LICENSING DEAL | Hasbro"
+        },
+        "title": "Hasbro and Horizon Group USA sign a strategic Play-Doh licensing deal",
+        "publisher": "Hasbro",
+        "kind": "contemporary_corporate_announcement",
+        "published_on": "2024-04-02",
+        "dateline_on": "2024-04-03",
+        "locator": "About PLAY-DOH；Horizon agreement段",
+        "excerpt": "over 500M cans of PLAY-DOH shipped a year",
+        "confidence": "高：2024公司公布口徑；非獨立銷量稽核",
+        "limits": "頁首4/2與內文4/3不一致，口播用2024年公告；5億是罐/年出貨，不是用戶或收入。2025供應新材質是當時計畫，不能單憑宣布證明完成。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H2",
+        "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+        "status": 200,
+        "final_url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+        "bytes": 36534,
+        "raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Hasbro Trademarks a Favorite Smell from Childhood: The PLAY-DOH Scent | Hasbro, Inc."
+        },
+        "title": "Hasbro trademarks a favorite smell from childhood: the Play-Doh scent",
+        "publisher": "Hasbro",
+        "kind": "contemporary_corporate_announcement",
+        "published_on": "2018-05-18",
+        "locator": "宣布氣味商標、1956 brand inception、recipe largely unchanged段",
+        "excerpt": "the brand’s inception in 1956",
+        "confidence": "高：當年宣布與品牌自述；註冊日另依G1",
+        "limits": "1956為品牌回顧起點，不是首張訂單；largely unchanged不能倒推1930清潔膏相同、所有新品皆同方。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H3",
+        "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+        "status": 200,
+        "final_url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+        "bytes": 34631,
+        "raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Hasbro Introduces Blooms by Play-Doh, A New Creative Experience Designed for Adults | Hasbro"
+        },
+        "title": "Hasbro introduces Blooms by Play-Doh, a new creative experience designed for adults",
+        "publisher": "Hasbro",
+        "kind": "contemporary_corporate_announcement",
+        "published_on": "2026-07-09",
+        "locator": "首段成人線；kit步驟；finishing spray段；當時上架段",
+        "excerpt": "the first-ever Play-Doh line designed specifically for adults",
+        "confidence": "高：公司當時推出/定位；保存效果未獨立測試",
+        "limits": "成人產品線『首次』是公司措辭；噴霧維持花型數月是廠商聲稱。不可說臨床減壓或所有Play-Doh配方已改為永久定型。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H4",
+        "url": "https://consumercare.hasbro.com/en-ca/product/play-doh-fun-factory-set/2DE0510A-5056-9047-F548-E6B3E3FFF561",
+        "status": 200,
+        "final_url": "https://consumercare.hasbro.com/en-ca/product/play-doh-fun-factory-set/2DE0510A-5056-9047-F548-E6B3E3FFF561",
+        "bytes": 82119,
+        "raw_sha256": "e550e157362877e22a491eaca409eda472dce54951155fef01b21ffde4a619c1",
+        "content_type": "text/html; charset=utf-8",
+        "publication_meta": {
+          "og:title": "Play-Doh Fun Factory Set"
+        },
+        "title": "Play-Doh Fun Factory Set — Item B5554",
+        "publisher": "Hasbro Consumer Care",
+        "kind": "current_official_product_description",
+        "published_on": null,
+        "locator": "商品玩法/2 rails/lever；內容物與標示",
+        "excerpt": "choose a shape ... and press the lever",
+        "confidence": "高：當前型號說明；非1960歷史設計原件",
+        "limits": "只能示範此型號壓柄/形狀軌機制，不拿今天組件數或外形當1960原件。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H5",
+        "url": "https://consumercare.hasbro.com/en-ca/product/play-doh-4-pack-of-classic-colors/9BD4A680-3966-49AF-8A1A-147D584ABE32",
+        "status": 200,
+        "final_url": "https://consumercare.hasbro.com/en-ca/product/play-doh-4-pack-of-classic-colors/9BD4A680-3966-49AF-8A1A-147D584ABE32",
+        "bytes": 82663,
+        "raw_sha256": "eeb3b221395f8e57a078d976e7e99606139bf6ebd602f6ab827e0fcd056261c1",
+        "content_type": "text/html; charset=utf-8",
+        "publication_meta": {
+          "og:title": "Play-Doh 4-Pack of Classic Colors"
+        },
+        "title": "Play-Doh 4-Pack of Classic Colors — Item B5517",
+        "publisher": "Hasbro Consumer Care",
+        "kind": "current_official_product_description",
+        "published_on": null,
+        "locator": "Original quality；Notice to Parents/compound labels",
+        "excerpt": "made primarily with wheat, water, and salt",
+        "confidence": "高：當前型號廠商成分/用途標示",
+        "limits": "primarily不是完整配方；contains wheat/not intended to be eaten，不能由專利non-toxic變成可食或全齡安全建議。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      }
+    ],
+    "original_sha256": "13cb977822387cd2019d8daf490eb85e8d62722ca6edfdc503e7056bc0e82ac4",
+    "status": "RESEARCH_RECORD_NOT_NEW_SCRIPT_APPROVAL"
+  },
+  "fresh_delta_primary_reads": [
+    {
+      "source": "M2",
+      "path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.html",
+      "sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+      "locator": "National Toy Hall of Fame，Play-Doh本文，Inducted Year: 1998之後首段",
+      "read_method": "直接raw HTML剝標籤重讀原件；另實核derived text SHA",
+      "quote": "Joe McVicker learned from a teacher that kids usually found modeling clay too hard to manipulate.",
+      "finding": "小手按硬黏土只是匿名問題情境，未描成真實老師/孩子肖像或已成功試用軟清潔材料。"
+    },
+    {
+      "source": "K1",
+      "path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.html",
+      "sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+      "locator": "Play-Doh 1956段；text paragraph108",
+      "read_method": "直接raw HTML重讀，另核derived text SHA",
+      "quote": "Kay Zufall, introduced Kutol’s wallpaper cleaner to her kindergarten class as a modeling clay.",
+      "finding": "課堂脈絡有公司回顧支持；當前h05/k02-p2仍停在一般黏土太硬的困難，成功試用仍在k04/042正文。公司回顧不當同期照片。"
+    },
+    {
+      "source": "H3",
+      "path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.html",
+      "sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+      "locator": "2026-07-09公告，paragraph67–68/71",
+      "read_method": "直接raw HTML重讀，另核derived text SHA",
+      "quote": "from shaping individual petals to arranging a finished bouquet ... a specially formulated finishing spray, which helps maintain the structure of the flowers over time so arrangements can be enjoyed for months",
+      "finding": "h06/n06的花束和空花瓶是保留形狀前的情境，沒有噴霧瓶/噴動作或保存結果；n07及n07-p2原完整物件與公司歸屬未變，不提前揭噴霧答案。"
+    }
+  ],
+  "written_visual_delta": [
+    {
+      "scene_id": "c06r2-h05",
+      "verdict": "PASS",
+      "basis": "匿名兒童小手按硬黏土，與M2的難操作問題及K1課堂脈絡相容；不畫完成試驗或特定歷史人物。"
+    },
+    {
+      "scene_id": "c06r2-k02-p2",
+      "verdict": "PASS",
+      "basis": "與h05完整prompt/camera相同，確實回到正文『一般塑形黏土太硬，孩子不好操作』，柔軟清潔材料的成功仍留後文。"
+    },
+    {
+      "scene_id": "c06r2-h06",
+      "verdict": "PASS",
+      "basis": "小花束、匿名成人、空花瓶，尚未畫保存步驟，無噴霧與宣稱數月結果。"
+    },
+    {
+      "scene_id": "c06r2-n06",
+      "verdict": "PASS",
+      "basis": "h06共圖落在『花束已排好，如何留下形狀』的回收情境。n07及n07-p2噴霧答案兩景全部object未變，當代成人產品與歷史材料分明。"
+    }
+  ],
+  "native_read_only": {
+    "runtime_source_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "runtime_source_equals_baseline": true,
+    "canonical_new_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "canonical_old_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "runtime_canonical_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "canonical_bytes_same": true,
+    "hashes": {
+      "narrative": {
+        "before": "81af9e35ef603e7f",
+        "after": "81af9e35ef603e7f",
+        "equal": true
+      },
+      "speech": {
+        "before": "3ea6ba231f7d8b58",
+        "after": "3ea6ba231f7d8b58",
+        "equal": true
+      },
+      "look": {
+        "before": "98a370ae40badbaf",
+        "after": "98a370ae40badbaf",
+        "equal": true
+      },
+      "pictures": {
+        "before": "b870aa1d1fcb917b",
+        "after": "ae9ed620bc7ab673",
+        "equal": false
+      },
+      "mix": {
+        "before": "71ecdd098c551254",
+        "after": "71ecdd098c551254",
+        "equal": true
+      }
+    },
+    "lexicon_sha256": "88d56a0e7edfdd645d605193f653640121702d2fc2c819731966c8f545499416",
+    "lexicon_mode": "snapshot",
+    "record_file": "docs/videos/brand-story-remakes-20261025/c06/reviews/narrative-final.json",
+    "record_sha256": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+    "record_matches_before": true,
+    "record_matches_after": true,
+    "approval_file_sha256": "c18ec7ebbff12af8151e10ee4fbb1ba72fd8f59d59223e0a29303715471bc534",
+    "lint_before_errors": [],
+    "lint_after_errors": [],
+    "lint_before_warning_count": 15,
+    "lint_after_warning_count": 15
+  },
+  "native_pairs": [
+    {
+      "pair_id": "small-hands-firm-clay",
+      "ends": [
+        {
+          "scene_id": "c06r2-k02-p2",
+          "data": {
+            "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.",
+            "visual": "still",
+            "camera": "push in"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "ca2d9db260953b4f58278b23def291651e49c94fc2f4b5dae9e75aa0c87bf33d",
+          "keys": {
+            "1K": "132306c2f7b44c85",
+            "2K": "00295b1753b9796e"
+          },
+          "live": {
+            "1K": {
+              "key": "132306c2f7b44c85",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "00295b1753b9796e",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        },
+        {
+          "scene_id": "c06r2-h05",
+          "data": {
+            "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.",
+            "visual": "still",
+            "camera": "push in"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "ca2d9db260953b4f58278b23def291651e49c94fc2f4b5dae9e75aa0c87bf33d",
+          "keys": {
+            "1K": "132306c2f7b44c85",
+            "2K": "00295b1753b9796e"
+          },
+          "live": {
+            "1K": {
+              "key": "132306c2f7b44c85",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "00295b1753b9796e",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        }
+      ],
+      "full_composed_camera_cast_keys_equal": true,
+      "author_key_values_match": true,
+      "actualasset_verified": false
+    },
+    {
+      "pair_id": "modeled-bouquet-before-finishing",
+      "ends": [
+        {
+          "scene_id": "c06r2-n06",
+          "data": {
+            "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.",
+            "visual": "still",
+            "camera": "pan left"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "6e1d50ec239a618cd43cea29d86a797fd2e4a346fcff4810605777fa0f56e8f6",
+          "keys": {
+            "1K": "310552f52e4fb3c6",
+            "2K": "f2c7373fe2c7100e"
+          },
+          "live": {
+            "1K": {
+              "key": "310552f52e4fb3c6",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "f2c7373fe2c7100e",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        },
+        {
+          "scene_id": "c06r2-h06",
+          "data": {
+            "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.",
+            "visual": "still",
+            "camera": "pan left"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "6e1d50ec239a618cd43cea29d86a797fd2e4a346fcff4810605777fa0f56e8f6",
+          "keys": {
+            "1K": "310552f52e4fb3c6",
+            "2K": "f2c7373fe2c7100e"
+          },
+          "live": {
+            "1K": {
+              "key": "310552f52e4fb3c6",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "f2c7373fe2c7100e",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        }
+      ],
+      "full_composed_camera_cast_keys_equal": true,
+      "author_key_values_match": true,
+      "actualasset_verified": false
+    }
+  ],
+  "same_image_plan_review": {
+    "verdict": "PASS_AS_WRITTEN_PLAN_ONLY",
+    "native_methods": [
+      "resolveLook",
+      "shotCast/shotAppearancePrompt",
+      "composeShotPrompt(fixes=[],limit=1500)",
+      "Stage.imageKey"
+    ],
+    "declared_provider": "minimax",
+    "declared_model": "image-01",
+    "image_selection_version": 1,
+    "seed": 1,
+    "references": [],
+    "negative": "",
+    "sizes_checked": [
+      "1K default 1920x1080",
+      "2K 2048x1152"
+    ],
+    "all_pairs_exact_complete_request_equal": true,
+    "live_cache_file": "/workspace/work/brand-story-20261025/media/story-everyday-play-doh-c06-remake-20261025/media/cache.json",
+    "cache_file_exists": false,
+    "current_pair_keys_all_missing": true,
+    "second_command_currently_permitted": false,
+    "missing_cache_action": "STOP_PAIR; no second command dispatch and no substitute/new purchase",
+    "production_requirements": [
+      "正式製片前重讀真實provider/model/size/seed/references/look/corrections；本地planned keys不是當前後台設定證據。",
+      "payoff先正常單take生成並通過官方judge；第二teaser命令前readCache與accepted實檔SHA必須相符；miss/changed立即停，不派送另購。",
+      "兩端各有有效官方judge，任一失敗/retake/seed/prompt/trim/selection差異先停pair，不另買相似圖、不手改manifest。",
+      "最終官方manifest兩端file/SHA全同；trim後selected衍生實檔SHA全同；render及assembly最終引用與實檔SHA相同才可記實際共圖。"
+    ],
+    "actualasset_verified": false,
+    "actual_generated_images": 0,
+    "actual_verified_shared_images": 0
+  },
+  "preservation": {
+    "snapshot_archived": [
+      {
+        "path": "backend-language-choice.json",
+        "expected": "397156a07fbd261103c46bc59c29ef33bb84162b3e4777568c8ddc0e89083e19",
+        "actual": "397156a07fbd261103c46bc59c29ef33bb84162b3e4777568c8ddc0e89083e19",
+        "match": true
+      },
+      {
+        "path": "script-approval-pull-current.txt",
+        "expected": "514813978eddffade047c19c046598d58a1e9f7ab42e852d1b88b1d7e85c7cac",
+        "actual": "514813978eddffade047c19c046598d58a1e9f7ab42e852d1b88b1d7e85c7cac",
+        "match": true
+      },
+      {
+        "path": "backend-status.json",
+        "expected": "25de37768cf48373fb488fdabe4d601d1db5d115d2153f50e66dcb967bc7d735",
+        "actual": "25de37768cf48373fb488fdabe4d601d1db5d115d2153f50e66dcb967bc7d735",
+        "match": true
+      },
+      {
+        "path": "tts-dry-run.txt",
+        "expected": "7b0a9441a9232ef2752d04b9f2796c4c45f1787d3bb3dc36f2b8ad3c76289e23",
+        "actual": "7b0a9441a9232ef2752d04b9f2796c4c45f1787d3bb3dc36f2b8ad3c76289e23",
+        "match": true
+      },
+      {
+        "path": "author-notes.json",
+        "expected": "e1045b5d7a1451e259f434f5bbb32afdf86739f01ba177eb49349600a9c0bbfa",
+        "actual": "e1045b5d7a1451e259f434f5bbb32afdf86739f01ba177eb49349600a9c0bbfa",
+        "match": true
+      },
+      {
+        "path": "narration-only.json",
+        "expected": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+        "actual": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+        "match": true
+      },
+      {
+        "path": "script-push-r3.txt",
+        "expected": "4ea26afdbd34a21c900da4b360ca8aed568c16ebe1a621f45b5b3553287814de",
+        "actual": "4ea26afdbd34a21c900da4b360ca8aed568c16ebe1a621f45b5b3553287814de",
+        "match": true
+      },
+      {
+        "path": "video.json",
+        "expected": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+        "actual": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+        "match": true
+      },
+      {
+        "path": "revision-r3.json",
+        "expected": "6aae3ab00475d1df6aa30c8bae4acd2418337b3b749c479f269f562be4cfc893",
+        "actual": "6aae3ab00475d1df6aa30c8bae4acd2418337b3b749c479f269f562be4cfc893",
+        "match": true
+      },
+      {
+        "path": "source-anchors.json",
+        "expected": "253bf703622299e39256c91cf387c6399a7390535dda680f2b6fbfc1c76188be",
+        "actual": "253bf703622299e39256c91cf387c6399a7390535dda680f2b6fbfc1c76188be",
+        "match": true
+      },
+      {
+        "path": "build-candidate.py",
+        "expected": "13d019db19a105938b0ce452778e61f7c5c9770467abee422799ca4da741d117",
+        "actual": "13d019db19a105938b0ce452778e61f7c5c9770467abee422799ca4da741d117",
+        "match": true
+      },
+      {
+        "path": "protected-admin-settings.json",
+        "expected": "04ab7bff1838cdf48fcd3d866cab8541e5934b09237993c4f0ff401108fabdf1",
+        "actual": "04ab7bff1838cdf48fcd3d866cab8541e5934b09237993c4f0ff401108fabdf1",
+        "match": true
+      },
+      {
+        "path": "anchors-r2.json",
+        "expected": "6b37528bacc8b761c54839038b379c72a3f5ae6798b7b94e2399c102c4905ef8",
+        "actual": "6b37528bacc8b761c54839038b379c72a3f5ae6798b7b94e2399c102c4905ef8",
+        "match": true
+      },
+      {
+        "path": "script.md",
+        "expected": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+        "actual": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+        "match": true
+      },
+      {
+        "path": "research-original.claims.json",
+        "expected": "13cb977822387cd2019d8daf490eb85e8d62722ca6edfdc503e7056bc0e82ac4",
+        "actual": "13cb977822387cd2019d8daf490eb85e8d62722ca6edfdc503e7056bc0e82ac4",
+        "match": true
+      },
+      {
+        "path": "author-local-lint.json",
+        "expected": "a44ea4db1ca193ee611fd89659cac569dff8477327b821b0aabebdf7036d5000",
+        "actual": "a44ea4db1ca193ee611fd89659cac569dff8477327b821b0aabebdf7036d5000",
+        "match": true
+      },
+      {
+        "path": "production-entry.md",
+        "expected": "0bfc1e887b1f256a954e2d56aaa06b98bb6bb0655f9f6e53eea63477e5161abf",
+        "actual": "0bfc1e887b1f256a954e2d56aaa06b98bb6bb0655f9f6e53eea63477e5161abf",
+        "match": true
+      },
+      {
+        "path": "revision-r2.json",
+        "expected": "f0221553993ed98a7ee5ed26622e40d483b9ad6b89f35065e2145d828a7bc1b6",
+        "actual": "f0221553993ed98a7ee5ed26622e40d483b9ad6b89f35065e2145d828a7bc1b6",
+        "match": true
+      },
+      {
+        "path": "series.json",
+        "expected": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+        "actual": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+        "match": true
+      },
+      {
+        "path": "brief.md",
+        "expected": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+        "actual": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+        "match": true
+      },
+      {
+        "path": "keyframes-dry-run.txt",
+        "expected": "aa46270affa3d1c8a3ceba76b69cca2ebd1184fc6586101181df65a751d47bd9",
+        "actual": "aa46270affa3d1c8a3ceba76b69cca2ebd1184fc6586101181df65a751d47bd9",
+        "match": true
+      },
+      {
+        "path": "backend-script.md",
+        "expected": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+        "actual": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+        "match": true
+      },
+      {
+        "path": "claims.json",
+        "expected": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+        "actual": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+        "match": true
+      },
+      {
+        "path": "source-catalog.json",
+        "expected": "47f19df90381c6b9899297b8c00948c1c84849873fe6ba271b50adfd7c43fbae",
+        "actual": "47f19df90381c6b9899297b8c00948c1c84849873fe6ba271b50adfd7c43fbae",
+        "match": true
+      },
+      {
+        "path": "research-original.md",
+        "expected": "e8aebb384d90c07d5e14606f28fc8f576065e2dcd2ac8eeef2cce5f3167547b2",
+        "actual": "e8aebb384d90c07d5e14606f28fc8f576065e2dcd2ac8eeef2cce5f3167547b2",
+        "match": true
+      },
+      {
+        "path": "outline-push-r3.txt",
+        "expected": "e7b9d21e71ff6ec151f03ddd9e2a8285dd652653ec6b1fd9d5fdb8a891ad9b76",
+        "actual": "e7b9d21e71ff6ec151f03ddd9e2a8285dd652653ec6b1fd9d5fdb8a891ad9b76",
+        "match": true
+      },
+      {
+        "path": "README.md",
+        "expected": "b4b9782d498e708278f33bd0a6d71972ac38ffa361703dff3677a2120128791c",
+        "actual": "b4b9782d498e708278f33bd0a6d71972ac38ffa361703dff3677a2120128791c",
+        "match": true
+      },
+      {
+        "path": "verify-1.md",
+        "expected": "43a8165bbd1dac9a61d0666f4a095010cee8b838041df494dc47a1d696de3fe3",
+        "actual": "43a8165bbd1dac9a61d0666f4a095010cee8b838041df494dc47a1d696de3fe3",
+        "match": true
+      },
+      {
+        "path": "preflight-inputs.json",
+        "expected": "641657a39d5bbc5bb7f3fa8c799cb4b13562dc3affc7414b02f6d75353d868a4",
+        "actual": "641657a39d5bbc5bb7f3fa8c799cb4b13562dc3affc7414b02f6d75353d868a4",
+        "match": true
+      },
+      {
+        "path": "backend-script-receipt.json",
+        "expected": "6c71116d9db9419220122a4d6b3971ceb7f1f5544e6fbe3f0785e1039843c72b",
+        "actual": "6c71116d9db9419220122a4d6b3971ceb7f1f5544e6fbe3f0785e1039843c72b",
+        "match": true
+      },
+      {
+        "path": "rows-r2.py",
+        "expected": "e22137300ee486a7416100131900b0e70c5c759a823c4c3050992470c72cc0ef",
+        "actual": "e22137300ee486a7416100131900b0e70c5c759a823c4c3050992470c72cc0ef",
+        "match": true
+      },
+      {
+        "path": "claims.md",
+        "expected": "d93f7e42b2e1849935e4740a691b54e21f8248f0a18d8d345fe1c35d0cc10959",
+        "actual": "d93f7e42b2e1849935e4740a691b54e21f8248f0a18d8d345fe1c35d0cc10959",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final.json",
+        "expected": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+        "actual": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1-binding.json",
+        "expected": "7161090ca9a47e77fda4368257f8c2af653b67923fabd1a261bd1c7923ef7f3d",
+        "actual": "7161090ca9a47e77fda4368257f8c2af653b67923fabd1a261bd1c7923ef7f3d",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r3-b.raw.json",
+        "expected": "0ae1994d0477e410c1bbd62e1b9f51426d33f91134cd7cacc1c765c449b41af9",
+        "actual": "0ae1994d0477e410c1bbd62e1b9f51426d33f91134cd7cacc1c765c449b41af9",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2-binding.json",
+        "expected": "b4e4b40c363e87e12426037fe7a3136de3b01e9c1a439e6de8b7023049d26c38",
+        "actual": "b4e4b40c363e87e12426037fe7a3136de3b01e9c1a439e6de8b7023049d26c38",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1-input.json",
+        "expected": "40a5dfa32371c2c8e73dde3541677fa521ae50e830e3566a77aacd3a9b776a86",
+        "actual": "40a5dfa32371c2c8e73dde3541677fa521ae50e830e3566a77aacd3a9b776a86",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1.json",
+        "expected": "656c4503e5ac97ce502f4e5c40ee7b26c86f6a611550660ad1341fef2b841d47",
+        "actual": "656c4503e5ac97ce502f4e5c40ee7b26c86f6a611550660ad1341fef2b841d47",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r3.json",
+        "expected": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+        "actual": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+        "match": true
+      },
+      {
+        "path": "reviews/source-r3-independent.json",
+        "expected": "4344facd461d0b53fa034d7e5ac0a49e1f96e75f24604bff56e5e93c2b3fe0b0",
+        "actual": "4344facd461d0b53fa034d7e5ac0a49e1f96e75f24604bff56e5e93c2b3fe0b0",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1-b.raw.json",
+        "expected": "0bceec031c0fa21c8cb08647c21a26394f8209ae1a62724bf328aca1990992b0",
+        "actual": "0bceec031c0fa21c8cb08647c21a26394f8209ae1a62724bf328aca1990992b0",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2-b.raw.json",
+        "expected": "3590f40e61a433f149813c8d2461e27b7627ef5b148728d52184a816442c00ee",
+        "actual": "3590f40e61a433f149813c8d2461e27b7627ef5b148728d52184a816442c00ee",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r3-input.json",
+        "expected": "ebe75ffa6df0ecc00c26d86772670fd23d177eee798be5c70d134751ec589f0e",
+        "actual": "ebe75ffa6df0ecc00c26d86772670fd23d177eee798be5c70d134751ec589f0e",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2.json",
+        "expected": "38837c98b9681fd3d050fcbdbd6190998bd9852c2b33de6f59f234ba08294e4c",
+        "actual": "38837c98b9681fd3d050fcbdbd6190998bd9852c2b33de6f59f234ba08294e4c",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1-a.raw.json",
+        "expected": "168c16bf597d8f57fe88604fe66ee4b76aa973bb9e5df8eaef75000ce3cf07cd",
+        "actual": "168c16bf597d8f57fe88604fe66ee4b76aa973bb9e5df8eaef75000ce3cf07cd",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2-input.json",
+        "expected": "80223f50801573c4cf3d0ad590b71e44df174a0d03a2d340de6073237174db9d",
+        "actual": "80223f50801573c4cf3d0ad590b71e44df174a0d03a2d340de6073237174db9d",
+        "match": true
+      },
+      {
+        "path": "reviews/source-r1-independent.json",
+        "expected": "902e0fbbcb2ffd1a298deb3870d9cf1e3e63630b18b9045d9e5a790f62f46dfb",
+        "actual": "902e0fbbcb2ffd1a298deb3870d9cf1e3e63630b18b9045d9e5a790f62f46dfb",
+        "match": true
+      },
+      {
+        "path": "reviews/source-r2-independent.json",
+        "expected": "4a379cbf7648fc343c9092da905bf6ddb237e8e02f09a69f19a574a07193ee50",
+        "actual": "4a379cbf7648fc343c9092da905bf6ddb237e8e02f09a69f19a574a07193ee50",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r3-binding.json",
+        "expected": "ea1d99e48a3b897d18410e0953b5a5aa259f0a379dcebf9139d339ed4cd3f7c9",
+        "actual": "ea1d99e48a3b897d18410e0953b5a5aa259f0a379dcebf9139d339ed4cd3f7c9",
+        "match": true
+      },
+      {
+        "path": "reviews/canonical-lint-r3.json",
+        "expected": "8b260fddcdb886a1663ee93f01e802fc99a913b5b0f06afe73cda6a9b2bc6ac3",
+        "actual": "8b260fddcdb886a1663ee93f01e802fc99a913b5b0f06afe73cda6a9b2bc6ac3",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r3-a.raw.json",
+        "expected": "abd8e1891eda551450ff900668dad1ed98a5f710103d3d7e996b8163c9fa8b57",
+        "actual": "abd8e1891eda551450ff900668dad1ed98a5f710103d3d7e996b8163c9fa8b57",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2-a.raw.json",
+        "expected": "82e959bf6b2c43a72ce477089d936ae23767aaf74435b7b3bc7d92730972ed11",
+        "actual": "82e959bf6b2c43a72ce477089d936ae23767aaf74435b7b3bc7d92730972ed11",
+        "match": true
+      }
+    ],
+    "auxiliary": [
+      {
+        "path": "i18n/vi.json",
+        "expected": "013f09d5f3b38397b27165ac938841287c79fd84d846de9eb977d704dbddeb1c",
+        "actual": "013f09d5f3b38397b27165ac938841287c79fd84d846de9eb977d704dbddeb1c",
+        "match": true
+      },
+      {
+        "path": "i18n/es.json",
+        "expected": "00ea236c6fc9309b9e49b7560bb5666c17615a476caa8a4d073226743ddcba3e",
+        "actual": "00ea236c6fc9309b9e49b7560bb5666c17615a476caa8a4d073226743ddcba3e",
+        "match": true
+      },
+      {
+        "path": "i18n/ko.json",
+        "expected": "86ca03c1895efb92b9afa6a954197f117cff33c3d5f7c5fd73d9a72c23d51620",
+        "actual": "86ca03c1895efb92b9afa6a954197f117cff33c3d5f7c5fd73d9a72c23d51620",
+        "match": true
+      },
+      {
+        "path": "i18n/id.json",
+        "expected": "c9d6932f74eff3be1bbfc64e9e2c042207710ddf6c3a287e8fb30b8b76d63637",
+        "actual": "c9d6932f74eff3be1bbfc64e9e2c042207710ddf6c3a287e8fb30b8b76d63637",
+        "match": true
+      },
+      {
+        "path": "i18n/en.json",
+        "expected": "a38d22041558e06a08f8e682a3bc92d19f5ec1dd644c3e4bc6a4e7f333f82cc0",
+        "actual": "a38d22041558e06a08f8e682a3bc92d19f5ec1dd644c3e4bc6a4e7f333f82cc0",
+        "match": true
+      },
+      {
+        "path": "i18n/th.json",
+        "expected": "feee66a8d11ae45909040020a38b7ef3c3dcb0f85383491ea8cd8e385b4448fd",
+        "actual": "feee66a8d11ae45909040020a38b7ef3c3dcb0f85383491ea8cd8e385b4448fd",
+        "match": true
+      },
+      {
+        "path": "i18n/ja.json",
+        "expected": "f19e6fb8cff6ffb79bd957fcf75af67667e4940438d65a90f20538554dce135d",
+        "actual": "f19e6fb8cff6ffb79bd957fcf75af67667e4940438d65a90f20538554dce135d",
+        "match": true
+      },
+      {
+        "path": "i18n/pt.json",
+        "expected": "45e5b7c04e10c479dc8146a890c7cde098910377588514efbd7a0d2e51ea9f46",
+        "actual": "45e5b7c04e10c479dc8146a890c7cde098910377588514efbd7a0d2e51ea9f46",
+        "match": true
+      },
+      {
+        "path": "i18n/preparation-status.json",
+        "expected": "b2caf1588eebaf8306bcc5a728146524f383b8b9275067471fabec91504b88d9",
+        "actual": "b2caf1588eebaf8306bcc5a728146524f383b8b9275067471fabec91504b88d9",
+        "match": true
+      },
+      {
+        "path": "i18n/README.md",
+        "expected": "1d0ff47807dcf5121977d988bc01c4b81374698c032d6d59dead7ee83f648226",
+        "actual": "1d0ff47807dcf5121977d988bc01c4b81374698c032d6d59dead7ee83f648226",
+        "match": true
+      },
+      {
+        "path": "i18n/runtime-rehearsal.json",
+        "expected": "25884cfee0c436b7cd21a963aec00dba3ea9684622ab28e937e932a0b5239325",
+        "actual": "25884cfee0c436b7cd21a963aec00dba3ea9684622ab28e937e932a0b5239325",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/vi.json",
+        "expected": "e30dcd3bdfb526e098758c917cf264eb2350bc8f2423323ab23abb11bdaac30b",
+        "actual": "e30dcd3bdfb526e098758c917cf264eb2350bc8f2423323ab23abb11bdaac30b",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/es.json",
+        "expected": "938551525675c0e9d45581615ead8c2c53da7df5e3398bc88b3f43711e4dee21",
+        "actual": "938551525675c0e9d45581615ead8c2c53da7df5e3398bc88b3f43711e4dee21",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/ko.json",
+        "expected": "ef63b8f887df0e6915a9c5b58eb6f86cc20e3358f3352e1785faa53e93474a58",
+        "actual": "ef63b8f887df0e6915a9c5b58eb6f86cc20e3358f3352e1785faa53e93474a58",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/id.json",
+        "expected": "4b24311dc76e6caf3a9f1876d0ffef55e9f6bbfe66a49b8f5f5fe98587255661",
+        "actual": "4b24311dc76e6caf3a9f1876d0ffef55e9f6bbfe66a49b8f5f5fe98587255661",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/en.json",
+        "expected": "b92893c629495abdc52c67318a6c30e9f8dd1afedf2d433045b06e042a90a2e1",
+        "actual": "b92893c629495abdc52c67318a6c30e9f8dd1afedf2d433045b06e042a90a2e1",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/th.json",
+        "expected": "7bd8ac2bbec18e689a33ddc829f3690d4633161e78ff0ab5135c1ce404b30050",
+        "actual": "7bd8ac2bbec18e689a33ddc829f3690d4633161e78ff0ab5135c1ce404b30050",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/ja.json",
+        "expected": "74bacc83fe3be1e8befe71159196b929380be023746311590075a6b3f36ba73c",
+        "actual": "74bacc83fe3be1e8befe71159196b929380be023746311590075a6b3f36ba73c",
+        "match": true
+      },
+      {
+        "path": "i18n/worksheets/pt.json",
+        "expected": "59570ad17f88754c7ba05af6f3ee03e6b55ef82c3035581febe4ae6958229d00",
+        "actual": "59570ad17f88754c7ba05af6f3ee03e6b55ef82c3035581febe4ae6958229d00",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-vi-th.json",
+        "expected": "6169e76bbb048aa670178d403fe4bd2066b3fd1721ca726baec0ac65f2aebb8c",
+        "actual": "6169e76bbb048aa670178d403fe4bd2066b3fd1721ca726baec0ac65f2aebb8c",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-vi.json",
+        "expected": "3fe21b713588609ceaba790e7528246db71d21ecda83ca517bf934f3cd54d917",
+        "actual": "3fe21b713588609ceaba790e7528246db71d21ecda83ca517bf934f3cd54d917",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-pt.json",
+        "expected": "6632096c2bc9dd5505b37193506c315628153f248d05b96ddec1e7a6b71a1024",
+        "actual": "6632096c2bc9dd5505b37193506c315628153f248d05b96ddec1e7a6b71a1024",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-pt-id.json",
+        "expected": "67de06ba9f369a518b907a980ecd0df9c4b9226f0a9dd883dda9b3c0a5ae496a",
+        "actual": "67de06ba9f369a518b907a980ecd0df9c4b9226f0a9dd883dda9b3c0a5ae496a",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-ko-es.json",
+        "expected": "2dfcf62af5891d8ac73b10ef9ff21898dd8eb429c761ae7b77945909e8bab7d1",
+        "actual": "2dfcf62af5891d8ac73b10ef9ff21898dd8eb429c761ae7b77945909e8bab7d1",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-ko-es.json",
+        "expected": "370bd66df86062b6c2ae12cc44613497992eb22f7ab4dd08cb064bf029d6b990",
+        "actual": "370bd66df86062b6c2ae12cc44613497992eb22f7ab4dd08cb064bf029d6b990",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-ko.json",
+        "expected": "c30cbfb3e33393f2f11b0c1d555fa8e79557bd3953bb4b61c0050852135fa86f",
+        "actual": "c30cbfb3e33393f2f11b0c1d555fa8e79557bd3953bb4b61c0050852135fa86f",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-th.json",
+        "expected": "4613fb0971243167ad9a15bd2565a5c58ff4aecd6b4efa32c0f34962f396b6db",
+        "actual": "4613fb0971243167ad9a15bd2565a5c58ff4aecd6b4efa32c0f34962f396b6db",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-es.json",
+        "expected": "9070a4982f367dcf718161e879a469a081e85adb66511aea5f626e1ff8204ec0",
+        "actual": "9070a4982f367dcf718161e879a469a081e85adb66511aea5f626e1ff8204ec0",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-pt-id.json",
+        "expected": "2574f22608f24be8a3ce29d65702a6e0683e5efd69fe0a601cd83adcd1125231",
+        "actual": "2574f22608f24be8a3ce29d65702a6e0683e5efd69fe0a601cd83adcd1125231",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-en-ja.json",
+        "expected": "e655139aa490b31c3e6a95cebc527f7050b84cb80d2887fe58ef91d2b991a956",
+        "actual": "e655139aa490b31c3e6a95cebc527f7050b84cb80d2887fe58ef91d2b991a956",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-en.json",
+        "expected": "3635e2de095c498599847a144ce30796f809a62cde3885fc60720bb31f78e2b3",
+        "actual": "3635e2de095c498599847a144ce30796f809a62cde3885fc60720bb31f78e2b3",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-en-ja.json",
+        "expected": "a0726f80629c3a52c5894a3748fb2434ff5ac48521ee947a07500ebb17cfdfe1",
+        "actual": "a0726f80629c3a52c5894a3748fb2434ff5ac48521ee947a07500ebb17cfdfe1",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-id.json",
+        "expected": "3ad49fd0c07e7953787a91ffb1c39aa4bd854907fcc6086ad6c68bf9ed439ebb",
+        "actual": "3ad49fd0c07e7953787a91ffb1c39aa4bd854907fcc6086ad6c68bf9ed439ebb",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-ko-es.json",
+        "expected": "2cbbee877fb92109535ada961ec8823f9577ff1561474dbefd0a60d4a36f6de7",
+        "actual": "2cbbee877fb92109535ada961ec8823f9577ff1561474dbefd0a60d4a36f6de7",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-ja.json",
+        "expected": "3085eedc2ae030864618f375b735668523a7746bf5884ce65af471cb6cd9c967",
+        "actual": "3085eedc2ae030864618f375b735668523a7746bf5884ce65af471cb6cd9c967",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-en-ja.json",
+        "expected": "24578ec68a6b7f772ac1fb5a3cf22e5753b04842b72db01e20a86f324c9e4957",
+        "actual": "24578ec68a6b7f772ac1fb5a3cf22e5753b04842b72db01e20a86f324c9e4957",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-vi-th.json",
+        "expected": "b50f7b9cbedd951595dd314e01e70074c9ebd2f21c3b321c738bb1da406081f9",
+        "actual": "b50f7b9cbedd951595dd314e01e70074c9ebd2f21c3b321c738bb1da406081f9",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-pt-id.json",
+        "expected": "232bae8741427f1bbf1d7473d961e419c226320f7d596c4a49fcead65ce45966",
+        "actual": "232bae8741427f1bbf1d7473d961e419c226320f7d596c4a49fcead65ce45966",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-vi-th.json",
+        "expected": "d7ab862d27da09d713f677028a4e445cc0ef4644eb1b7ceeca09329dfc22278c",
+        "actual": "d7ab862d27da09d713f677028a4e445cc0ef4644eb1b7ceeca09329dfc22278c",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/vi.json",
+        "expected": "d9bde38ec7df50a92582f255b8371b243a7b02d37fd352088427db7b6e4527ea",
+        "actual": "d9bde38ec7df50a92582f255b8371b243a7b02d37fd352088427db7b6e4527ea",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/es.json",
+        "expected": "00ea236c6fc9309b9e49b7560bb5666c17615a476caa8a4d073226743ddcba3e",
+        "actual": "00ea236c6fc9309b9e49b7560bb5666c17615a476caa8a4d073226743ddcba3e",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/ko.json",
+        "expected": "b190f99b2676a517ceaff698e313b0d26a2affd6a338f8f7830d79b75b2eaf47",
+        "actual": "b190f99b2676a517ceaff698e313b0d26a2affd6a338f8f7830d79b75b2eaf47",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/id.json",
+        "expected": "c6f435c0e1018ded71ff821874cc3919bc413b0f8bbc920cd52b8b39f375bb0c",
+        "actual": "c6f435c0e1018ded71ff821874cc3919bc413b0f8bbc920cd52b8b39f375bb0c",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/en.json",
+        "expected": "e4b1371d55d29c52d5bc170ffcf74d58c0df0f8a67015fa1810a9e0eb24c5d42",
+        "actual": "e4b1371d55d29c52d5bc170ffcf74d58c0df0f8a67015fa1810a9e0eb24c5d42",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/th.json",
+        "expected": "179cb7e87744298d8510def10f3cd3a7027563080e96a4eca1b35f5e92cc76e7",
+        "actual": "179cb7e87744298d8510def10f3cd3a7027563080e96a4eca1b35f5e92cc76e7",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/ja.json",
+        "expected": "7b2ea5590ca0e572b87228afd18c3493f6df20db5f72e38458f948cbabeab2ba",
+        "actual": "7b2ea5590ca0e572b87228afd18c3493f6df20db5f72e38458f948cbabeab2ba",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/pt.json",
+        "expected": "bd6f05aec567ffd3726997353c9dc908f1ac85b585f6a8589d5cc982539f8ec0",
+        "actual": "bd6f05aec567ffd3726997353c9dc908f1ac85b585f6a8589d5cc982539f8ec0",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/id/translation-before.json",
+        "expected": "c6f435c0e1018ded71ff821874cc3919bc413b0f8bbc920cd52b8b39f375bb0c",
+        "actual": "c6f435c0e1018ded71ff821874cc3919bc413b0f8bbc920cd52b8b39f375bb0c",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/id/worksheet-before.json",
+        "expected": "72bdaba29864612cf9af642d6ac123e3d738d46433aecc9de617107c0571ced8",
+        "actual": "72bdaba29864612cf9af642d6ac123e3d738d46433aecc9de617107c0571ced8",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/th/translation-before.json",
+        "expected": "179cb7e87744298d8510def10f3cd3a7027563080e96a4eca1b35f5e92cc76e7",
+        "actual": "179cb7e87744298d8510def10f3cd3a7027563080e96a4eca1b35f5e92cc76e7",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/th/worksheet-before.json",
+        "expected": "68803b6c7375085532c87ef42c9c1a72a87de11d1d0703efdd9938cc0c3b6cd1",
+        "actual": "68803b6c7375085532c87ef42c9c1a72a87de11d1d0703efdd9938cc0c3b6cd1",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/en/translation-before.json",
+        "expected": "e4b1371d55d29c52d5bc170ffcf74d58c0df0f8a67015fa1810a9e0eb24c5d42",
+        "actual": "e4b1371d55d29c52d5bc170ffcf74d58c0df0f8a67015fa1810a9e0eb24c5d42",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/en/worksheet-before.json",
+        "expected": "78f93bacd82e2810f9359618b95d8a1a8b00753012cedcbaab616e848c6a930d",
+        "actual": "78f93bacd82e2810f9359618b95d8a1a8b00753012cedcbaab616e848c6a930d",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/vi/translation-before.json",
+        "expected": "d9bde38ec7df50a92582f255b8371b243a7b02d37fd352088427db7b6e4527ea",
+        "actual": "d9bde38ec7df50a92582f255b8371b243a7b02d37fd352088427db7b6e4527ea",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/vi/worksheet-before.json",
+        "expected": "5774a219329533f257ec951cc204645bbca614450a84beadba73662e10b429de",
+        "actual": "5774a219329533f257ec951cc204645bbca614450a84beadba73662e10b429de",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/ko/translation-before.json",
+        "expected": "b190f99b2676a517ceaff698e313b0d26a2affd6a338f8f7830d79b75b2eaf47",
+        "actual": "b190f99b2676a517ceaff698e313b0d26a2affd6a338f8f7830d79b75b2eaf47",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/ko/worksheet-before.json",
+        "expected": "cae440fa8cd969af5d92c063d4186ae591cb1489c7e1971e4d560287c408e7e7",
+        "actual": "cae440fa8cd969af5d92c063d4186ae591cb1489c7e1971e4d560287c408e7e7",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/ja/translation-before.json",
+        "expected": "7b2ea5590ca0e572b87228afd18c3493f6df20db5f72e38458f948cbabeab2ba",
+        "actual": "7b2ea5590ca0e572b87228afd18c3493f6df20db5f72e38458f948cbabeab2ba",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/ja/worksheet-before.json",
+        "expected": "fe3a9ac7306826b7bef51fb052dd40f3972c1874b5967a1d5a2fb39996b18837",
+        "actual": "fe3a9ac7306826b7bef51fb052dd40f3972c1874b5967a1d5a2fb39996b18837",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/pt/translation-before.json",
+        "expected": "bd6f05aec567ffd3726997353c9dc908f1ac85b585f6a8589d5cc982539f8ec0",
+        "actual": "bd6f05aec567ffd3726997353c9dc908f1ac85b585f6a8589d5cc982539f8ec0",
+        "match": true
+      },
+      {
+        "path": "i18n/history/review-fixes/pt/worksheet-before.json",
+        "expected": "efb48f35580bb826acf07407bce01caefd1dd01de074cdb1c415fd66b7d879b4",
+        "actual": "efb48f35580bb826acf07407bce01caefd1dd01de074cdb1c415fd66b7d879b4",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/vi.json",
+        "expected": "98bd89729c54c4b952db843e197690ab16a1be1027244753c936e6919ccf12c5",
+        "actual": "98bd89729c54c4b952db843e197690ab16a1be1027244753c936e6919ccf12c5",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/es.json",
+        "expected": "9070a4982f367dcf718161e879a469a081e85adb66511aea5f626e1ff8204ec0",
+        "actual": "9070a4982f367dcf718161e879a469a081e85adb66511aea5f626e1ff8204ec0",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/ko.json",
+        "expected": "cecb64b03dc7ec3f5fb503bb5c522257c26585c6b6df0dc2987aff19cabe5843",
+        "actual": "cecb64b03dc7ec3f5fb503bb5c522257c26585c6b6df0dc2987aff19cabe5843",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/id.json",
+        "expected": "320e4193c027cd2f8594618234a1e34ca1918591baf86a70a96895df47aee0e3",
+        "actual": "320e4193c027cd2f8594618234a1e34ca1918591baf86a70a96895df47aee0e3",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/en.json",
+        "expected": "cd714e163fef7e09ac7e449f02a20513c86b50cc72039ee40440797734ef1020",
+        "actual": "cd714e163fef7e09ac7e449f02a20513c86b50cc72039ee40440797734ef1020",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/th.json",
+        "expected": "21e205ac524b6465edabedb0dbb22477c28f815266c89c945f17c1ac2c699584",
+        "actual": "21e205ac524b6465edabedb0dbb22477c28f815266c89c945f17c1ac2c699584",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/ja.json",
+        "expected": "eed3620c337c763cab88c6e297043d3f448e38d0fa891cd37d0aa62ae2af28ff",
+        "actual": "eed3620c337c763cab88c6e297043d3f448e38d0fa891cd37d0aa62ae2af28ff",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/native-merges/pt.json",
+        "expected": "bbf18bf5f66c048cf224367d21179a99a1fb513c4b96b4eedb31c8ad97c23ff7",
+        "actual": "bbf18bf5f66c048cf224367d21179a99a1fb513c4b96b4eedb31c8ad97c23ff7",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/pt-id.md",
+        "expected": "dbc1f28fc64fb1ffd5f6599a933403a9ee7fbb3014e811f9c6f3f7d294f52c08",
+        "actual": "dbc1f28fc64fb1ffd5f6599a933403a9ee7fbb3014e811f9c6f3f7d294f52c08",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/vi-th.md",
+        "expected": "53bb9d408e0f3417f152e0e62389070f46415ac142f22db085d6f96cc90b335e",
+        "actual": "53bb9d408e0f3417f152e0e62389070f46415ac142f22db085d6f96cc90b335e",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/ko-es.md",
+        "expected": "b0409f98d3685a3fdb1067751210b88f266038b2e6ca2fc8e84d70d55df02512",
+        "actual": "b0409f98d3685a3fdb1067751210b88f266038b2e6ca2fc8e84d70d55df02512",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/en-ja.md",
+        "expected": "e24cbf7fa1a0bcfb7d025d0c9abd97a2e5551d01edfaaadc184aeb13302e64c8",
+        "actual": "e24cbf7fa1a0bcfb7d025d0c9abd97a2e5551d01edfaaadc184aeb13302e64c8",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/derivation.json",
+        "expected": "7753957f7346c3fbf7e978add73ab5e03035aff60662857f73765247c98ff0c2",
+        "actual": "7753957f7346c3fbf7e978add73ab5e03035aff60662857f73765247c98ff0c2",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/video.json",
+        "expected": "c264415fec46f25e671f6384d6e44888d9c6a4a2471c98e873c3a652e1b0b864",
+        "actual": "c264415fec46f25e671f6384d6e44888d9c6a4a2471c98e873c3a652e1b0b864",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/review.json",
+        "expected": "60f2a78e1adc7677fdc4f93ab5b5f9aec30fbc131b46e62998287aac7f2dedb4",
+        "actual": "60f2a78e1adc7677fdc4f93ab5b5f9aec30fbc131b46e62998287aac7f2dedb4",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/README.md",
+        "expected": "682e3ebc9471846aa00ab05fa622c8d02a077e27660100d2fee232fce8f266c6",
+        "actual": "682e3ebc9471846aa00ab05fa622c8d02a077e27660100d2fee232fce8f266c6",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/lint.json",
+        "expected": "e9b173090946bd37bd8cf07cd56e2b6385f3e0c8482814cae64a7ff555e30b40",
+        "actual": "e9b173090946bd37bd8cf07cd56e2b6385f3e0c8482814cae64a7ff555e30b40",
+        "match": true
+      }
+    ],
+    "original53_all_match": true,
+    "original_checks": [
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/script.md",
+        "expected": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "actual": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/video.json",
+        "expected": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "actual": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/series.json",
+        "expected": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb",
+        "actual": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/script.md",
+        "expected": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "actual": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/video.json",
+        "expected": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "actual": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/series.json",
+        "expected": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+        "actual": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/script.md",
+        "expected": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "actual": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/video.json",
+        "expected": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "actual": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/series.json",
+        "expected": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "actual": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/source-matrix.md",
+        "expected": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c",
+        "actual": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/script.md",
+        "expected": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "actual": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/video.json",
+        "expected": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "actual": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/series.json",
+        "expected": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "actual": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/source-matrix.md",
+        "expected": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe",
+        "actual": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/script.md",
+        "expected": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "actual": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/video.json",
+        "expected": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "actual": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/series.json",
+        "expected": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "actual": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/source-matrix.md",
+        "expected": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09",
+        "actual": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/script.md",
+        "expected": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "actual": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/video.json",
+        "expected": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "actual": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/series.json",
+        "expected": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "actual": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/source-matrix.md",
+        "expected": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e",
+        "actual": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/script.md",
+        "expected": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "actual": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/video.json",
+        "expected": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "actual": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/series.json",
+        "expected": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "actual": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/source-matrix.md",
+        "expected": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b",
+        "actual": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/script.md",
+        "expected": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "actual": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/video.json",
+        "expected": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "actual": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/series.json",
+        "expected": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "actual": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/source-matrix.md",
+        "expected": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6",
+        "actual": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/script.md",
+        "expected": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "actual": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/video.json",
+        "expected": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "actual": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/series.json",
+        "expected": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "actual": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/source-matrix.md",
+        "expected": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32",
+        "actual": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/script.md",
+        "expected": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "actual": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/video.json",
+        "expected": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "actual": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/series.json",
+        "expected": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "actual": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/source-matrix.md",
+        "expected": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a",
+        "actual": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/script.md",
+        "expected": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "actual": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/video.json",
+        "expected": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "actual": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/series.json",
+        "expected": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "actual": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/source-matrix.md",
+        "expected": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2",
+        "actual": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/script.md",
+        "expected": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "actual": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/video.json",
+        "expected": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "actual": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/source-matrix.md",
+        "expected": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+        "actual": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/script.md",
+        "expected": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "actual": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/video.json",
+        "expected": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "actual": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/series.json",
+        "expected": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "actual": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/source-matrix.md",
+        "expected": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756",
+        "actual": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/script.md",
+        "expected": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "actual": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/video.json",
+        "expected": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "actual": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/series.json",
+        "expected": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "actual": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/source-matrix.md",
+        "expected": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb",
+        "actual": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb",
+        "match": true
+      }
+    ],
+    "related_original_hashes_preserved": true
+  },
+  "line_results": [
+    {
+      "line_id": "c6sh001",
+      "scene_id": "c06r2-h00",
+      "line_text_sha256": "26138557fd072c6d3658929873d41f59ad235742a1715a72df772bb1405aa79f",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh021",
+      "scene_id": "c06r2-h02",
+      "line_text_sha256": "148ce38f8113c41a93664aecbd9c638e144b4667ba90da17f3165efd83506c70",
+      "source_anchor_ids": [
+        "H1-scale"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh011",
+      "scene_id": "c06r2-h01",
+      "line_text_sha256": "571bb47873d7e319ccdd8a61960d458fa8af1af44f07efac0e45ef6a4f102bf1",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh031",
+      "scene_id": "c06r2-h03",
+      "line_text_sha256": "9e583146241f652be7391aa69fead89ea67ad3e28bd25728d61d5885bdf89092",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh032",
+      "scene_id": "c06r2-h03-p2",
+      "line_text_sha256": "36f00e230b9987ecb656ef2d8d1dadfef4ea50fa090ac81aff91e8da7d497aa0",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh041",
+      "scene_id": "c06r2-h04",
+      "line_text_sha256": "abd9bf120c82cb8a49ff3d85a9cb35d228c442c1cb9bde06fa7feccc8431789c",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh051",
+      "scene_id": "c06r2-h05",
+      "line_text_sha256": "d2842c5050f94d4ddfb65470338c08bcd51edf3601d75969ab63b93094f56f10",
+      "source_anchor_ids": [
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh061",
+      "scene_id": "c06r2-h06",
+      "line_text_sha256": "09b753432f946642f460fb7fbca775eeb91a924dc976606122f4bf28b979b96e",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh071",
+      "scene_id": "c06r2-h07",
+      "line_text_sha256": "f91cab977341b502e9711adcb913216c60beca1ad81636020bda9dcb4ba3b65b",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sh081",
+      "scene_id": "c06r2-h08",
+      "line_text_sha256": "002b3d73f5735222b01724320b4d29ff57ee095aa051b4feffa70182786f5c10",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-goals",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so011",
+      "scene_id": "c06r2-o01",
+      "line_text_sha256": "e61024b751c98e5ae97b60bde64436a83024cb03e552b2efd5f5872e1125c4b8",
+      "source_anchor_ids": [
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so012",
+      "scene_id": "c06r2-o01",
+      "line_text_sha256": "d07c09a334878b285e5fed476dbee2b3b38d15d50ec1b3a74a32f70c9a30756b",
+      "source_anchor_ids": [
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so021",
+      "scene_id": "c06r2-o02",
+      "line_text_sha256": "d5bf88b6b1e84172da39bf952d717fd696fe039874bdfee8bf9fc1a9a254e7b8",
+      "source_anchor_ids": [
+        "K1-cleo",
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so031",
+      "scene_id": "c06r2-o03",
+      "line_text_sha256": "810d5372c961e8632a2d4134159c80fee5797b09b2f31c369fc78fe30451abce",
+      "source_anchor_ids": [
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so041",
+      "scene_id": "c06r2-o04",
+      "line_text_sha256": "34c3b29fa683c636aa66608a294852f1a00edd09b89e0016c64536114b5f6e54",
+      "source_anchor_ids": [
+        "M1-noah"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so042",
+      "scene_id": "c06r2-o04-p2",
+      "line_text_sha256": "bb16327b763352e929bf95fc3cccab915385472a48de7da7db76eb79c0566a49",
+      "source_anchor_ids": [
+        "M1-noah"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so051",
+      "scene_id": "c06r2-o05",
+      "line_text_sha256": "ea63d92afb92b8aa9ca27d71711e8ee538bd05b30e0e6988c795983dd928a7da",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so052",
+      "scene_id": "c06r2-o05",
+      "line_text_sha256": "e7a528275fdf291f5302a5d487cf0d4e6bb380d42e97eee7998d0e80dbba4ba9",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so061",
+      "scene_id": "c06r2-o06",
+      "line_text_sha256": "62cd61c4f33266fda7a0b612ed43c2fe001f03aeae62ed94494ff8249eca5b8e",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so071",
+      "scene_id": "c06r2-o07",
+      "line_text_sha256": "c49316cd8846454842eb3b2d3365adff308e924b5cc92e632fdb6fcfacaa3b4b",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so072",
+      "scene_id": "c06r2-o07-p2",
+      "line_text_sha256": "d5746bbe8d4ed1691d26c985c066405dceaba4ce8713035ae5a568cd61e65722",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so081",
+      "scene_id": "c06r2-o08",
+      "line_text_sha256": "4e10a099284cbac9533ead8d044f38c576a7ed59b4802e8b2a318802ed2b418b",
+      "source_anchor_ids": [
+        "M1-1949"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so082",
+      "scene_id": "c06r2-o08-p2",
+      "line_text_sha256": "cb0ba244aa437028197dd7f6cad59bd3443117853eb704ddf32f255a18afc94b",
+      "source_anchor_ids": [
+        "M1-1949"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so091",
+      "scene_id": "c06r2-o09",
+      "line_text_sha256": "86c8ac1833d8315326c25cf8003b2a6e4b8794d8b043a40c09e532ef2cfc02e5",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so101",
+      "scene_id": "c06r2-o10",
+      "line_text_sha256": "edfb031b020bcbf2a986e3f22ddd435f1838b524eacb551a994cf034bfb10ba3",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so102",
+      "scene_id": "c06r2-o10-p2",
+      "line_text_sha256": "2d9af28e68086b3f4bc815dc56d7a05b906d3389afaadb7c36c1a2ae96bd82ba",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so111",
+      "scene_id": "c06r2-o11",
+      "line_text_sha256": "bf28e864891cc824640985f2f3b850e3d22614b298ee9f9a409aafb2ec7cf3b5",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so112",
+      "scene_id": "c06r2-o11-p2",
+      "line_text_sha256": "3fd3ae5974d683e31953221133f624579d573ede86fc49e6d75d4ba2d4031714",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so131",
+      "scene_id": "c06r2-o13",
+      "line_text_sha256": "2e5c72499772aa3ca5644ee2fca3c0ef94f66a13443dc88e784898bb294f522d",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6so132",
+      "scene_id": "c06r2-o13",
+      "line_text_sha256": "c289b1e352e82d737065ae058b762d7e15dae28fc3962c99768b80ed7e1f3624",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk011",
+      "scene_id": "c06r2-k01",
+      "line_text_sha256": "0c271d0da845d075a8f460274a8beaf4fe3a6fc29f4ec845d16f636964356b29",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk021",
+      "scene_id": "c06r2-k02",
+      "line_text_sha256": "db67d34a58288cbc83146ab285d1067399169e87dfa502d68ccd9dc3ed739698",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk022",
+      "scene_id": "c06r2-k02-p2",
+      "line_text_sha256": "9ec398b0514062a500214ac348e2261b8cc62474bd2ea50e30e5174ea8f02ec1",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk031",
+      "scene_id": "c06r2-k03",
+      "line_text_sha256": "29bd33b3a33560048956730ad07e03802cd71580f8d81d7ed08dd557314c09a8",
+      "source_anchor_ids": [
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk032",
+      "scene_id": "c06r2-k03",
+      "line_text_sha256": "cef248442d4a41ebb1369d2fbb6e5e925bbe384e1ca927b19bfca7c363979d2f",
+      "source_anchor_ids": [
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk041",
+      "scene_id": "c06r2-k04",
+      "line_text_sha256": "ab64250c711199eed77a5ebcb7961aaa29c8c01c8c3b62ac6d5b5b32210e7924",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk042",
+      "scene_id": "c06r2-k04-p2",
+      "line_text_sha256": "ec0ef1f0c53819c20d8214e093ee2625f67436203a9a05512d45d2745910edcd",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk051",
+      "scene_id": "c06r2-k05",
+      "line_text_sha256": "fdd88ad3ca5fc420eefddd4f7b4456c42c10516c8066751529d1232f4f2fe9b3",
+      "source_anchor_ids": [
+        "M2-hard",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk052",
+      "scene_id": "c06r2-k05-p2",
+      "line_text_sha256": "be04791b0b3cb5e27b73c42f9841c8419e76afd10a035242b24107cc7ceda28e",
+      "source_anchor_ids": [
+        "M2-hard",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk061",
+      "scene_id": "c06r2-k06",
+      "line_text_sha256": "a503d5cd1fc61248b2c84e372e485d79e94e32449642f7910760442501ae1460",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk062",
+      "scene_id": "c06r2-k06-p2",
+      "line_text_sha256": "1fbe238b3c7cadaded2d00f3aadd4171f993da742e40e5834baab783ea0adfdb",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk071",
+      "scene_id": "c06r2-k07",
+      "line_text_sha256": "9fa261960a0d45f0c778e172d4f71e5783fd856e792a525d2b3d2c823f3e1892",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk072",
+      "scene_id": "c06r2-k07-p2",
+      "line_text_sha256": "36d5b37f42e14b2c48b1f3b84673d47cfbd56db6a3ca573bf7493afffefd2f46",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk081",
+      "scene_id": "c06r2-k08",
+      "line_text_sha256": "c3c45bf47f2da56f562115f84fb2c06cabc5087762973caf3cf3cf3799757313",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk082",
+      "scene_id": "c06r2-k08",
+      "line_text_sha256": "db195afece35d772093fb6a80049abbf3b62ad6f869d9a8ab0cab7c9ea61f5ff",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk091",
+      "scene_id": "c06r2-k09",
+      "line_text_sha256": "2d050fefa36722de7aedff7833c462e83db25189e73a1a17fb622c4ae119bd20",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk092",
+      "scene_id": "c06r2-k09",
+      "line_text_sha256": "1612a28686fbec3052a18e8efbc801da7a1b071232f987cb247fe8841c1a3f80",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk101",
+      "scene_id": "c06r2-k10",
+      "line_text_sha256": "e34c113e4e53232345d8927f71416056c83ab326832f18933de12dd3026eae9e",
+      "source_anchor_ids": [
+        "M1-colors",
+        "M2-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk111",
+      "scene_id": "c06r2-k11",
+      "line_text_sha256": "cf6d93821f4afd50741174d327f6f7b794348f4ace5448be0fc8402941dce6ea",
+      "source_anchor_ids": [
+        "M1-colors",
+        "M2-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk121",
+      "scene_id": "c06r2-k12",
+      "line_text_sha256": "4713374040ad56afeb5dcb005a0bf05f68bb04b7da017d6fc5f03918a00e684e",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk122",
+      "scene_id": "c06r2-k12-p2",
+      "line_text_sha256": "417c295bfb937771881da493a2ff6eeeda8aa3843e1ca64e6e2fff57b24e694c",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk131",
+      "scene_id": "c06r2-k13",
+      "line_text_sha256": "573930e1393ab86cb7920da39147a95db2237ec6817ceae89f49e02dad51db28",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk132",
+      "scene_id": "c06r2-k13-p2",
+      "line_text_sha256": "de7024c15069f403daa2a7dcc3d5d772e0692d516435881625b3b8ca686ee79f",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13a1",
+      "scene_id": "c06r2-k13a",
+      "line_text_sha256": "d4232b8fe174449772b02dadcfc0d3d68fb6f94e9b92967c255efbc0ee759ca6",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13a2",
+      "scene_id": "c06r2-k13a",
+      "line_text_sha256": "6136774a7eff1dedbfcb1e7ab9fa774fabd3ca388bba2fb864fd0627638fddde",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13b1",
+      "scene_id": "c06r2-k13b",
+      "line_text_sha256": "9eb195a8c01d30399891636f6e04364cf104230e2156b25e7828e81867a1de54",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13b2",
+      "scene_id": "c06r2-k13b-p2",
+      "line_text_sha256": "5043803e94eca8d64978a8b26d2dfc605118a432494886f6e935a87d5520af1e",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13c1",
+      "scene_id": "c06r2-k13c",
+      "line_text_sha256": "52a61a1788d5157761c1d7581b70cd79309f5ae288ab03def097bb4fd1a42f84",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13c2",
+      "scene_id": "c06r2-k13c-p2",
+      "line_text_sha256": "0863ffab6bac257df6821d340d2b2989a9aba58595c04ea1684d7978dbccf5c5",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13d1",
+      "scene_id": "c06r2-k13d",
+      "line_text_sha256": "146745a625a430e2ee48a2dfd9b9a9232fe9c38c2fdf710e9f4d5b50d8e4d683",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk13d2",
+      "scene_id": "c06r2-k13d-p2",
+      "line_text_sha256": "70315794fdf915170c4d200e587285bbbd15c6a92d0378b21c4a89d831217819",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sk141",
+      "scene_id": "c06r2-k14",
+      "line_text_sha256": "4a0fc2f630abc75ddc4baf42a42396b0f72a355e92a6d147056bea0778ea3479",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st011",
+      "scene_id": "c06r2-t01",
+      "line_text_sha256": "4152018067f0994aea4c27da42fde2f77cc30025c8af50350742d835d69cfaad",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st012",
+      "scene_id": "c06r2-t01-p2",
+      "line_text_sha256": "c2e70ea1db7b2f11025030ae12bc01a1a6b8e15172d7590399d5ff9baac794f4",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st021",
+      "scene_id": "c06r2-t02",
+      "line_text_sha256": "39bed0c8756c7fd206e5e74cc8b69f9c7d18176d765c3c536c4b6de5e96885f3",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st022",
+      "scene_id": "c06r2-t02-p2",
+      "line_text_sha256": "098cb7787353c71301f8bcf9bfcecc0a49aa9fc4c7f893deb4eb8323f6ac5bcd",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st031",
+      "scene_id": "c06r2-t03",
+      "line_text_sha256": "6262ac10c756f47b983428a0d25031ba7f0fb1a14703f9987da215fa40b6c13e",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st032",
+      "scene_id": "c06r2-t03",
+      "line_text_sha256": "97049eb3a86c2cc1c41f6be5d7d5673c0b439c6e9241d6f55bf9d21581c5d74d",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st041",
+      "scene_id": "c06r2-t04",
+      "line_text_sha256": "7cf66e803a2d79baf910b2bc1bc62e636a3e6835b3f7e43c0583c82679a96fd4",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st042",
+      "scene_id": "c06r2-t04",
+      "line_text_sha256": "9220bd95cab7c02f5ced701d91e13fc558ffbb559607b30251cf5ea46fe158d6",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st051",
+      "scene_id": "c06r2-t05",
+      "line_text_sha256": "c08b99f36286f9e56d42664a142ce5f61ee857ad627e7e39845880defcd43b0b",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st052",
+      "scene_id": "c06r2-t05-p2",
+      "line_text_sha256": "739df9fb9e11f9a02c79f16ebcd06d6d3ea819d28d9391a4cd12a846036341b6",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st05a1",
+      "scene_id": "c06r2-t05a",
+      "line_text_sha256": "97705da3c2ba15fe18e9d92bb446c00db88218869f93c61fa202e3f5b6528ab8",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st05a2",
+      "scene_id": "c06r2-t05a",
+      "line_text_sha256": "252fd98e96ee49e4d020c5bb32e03729b503283c5edde926e26684bf9b3d0219",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st05b1",
+      "scene_id": "c06r2-t05b",
+      "line_text_sha256": "ab8ee2b5160e5bd51311014851495fedd2de71ffb3cef49f2d21b9dba19fa335",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st05b2",
+      "scene_id": "c06r2-t05b-p2",
+      "line_text_sha256": "6661e138fd48f1d66f8b824c999801fdf94159c2bd6763d141764597a96d98e2",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st061",
+      "scene_id": "c06r2-t06",
+      "line_text_sha256": "6ef4fe73452731c613cbd1cdaa11d2df3c30ae58246e56d24e7c156f4bcce893",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st062",
+      "scene_id": "c06r2-t06-p2",
+      "line_text_sha256": "45c84208341a19515406813abd182700af44350e7f32243f7a3ab08c7eaa0027",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st071",
+      "scene_id": "c06r2-t07",
+      "line_text_sha256": "56e5de943489491391414e9c0e8c469ecfec61813185699c2d89898f9f345154",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st072",
+      "scene_id": "c06r2-t07",
+      "line_text_sha256": "8b00277a71520d0b61e19486f72977e16253b61b8b4ae0b38e2868f9a1a07133",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st081",
+      "scene_id": "c06r2-t08",
+      "line_text_sha256": "840838c0840908b0dc896212b9b2ede3e4f54cb4def070d6c67f8e24a999ca14",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st091",
+      "scene_id": "c06r2-t09",
+      "line_text_sha256": "0c01acec7b82e24c2be0ced96329e27d775297cb2b9ad46db9cc7df03fd8fd27",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st101",
+      "scene_id": "c06r2-t10",
+      "line_text_sha256": "eb76f44cfbb3c2d5de151c1cd56e2f6c00697e0c62754dfb41b978e8e3c6286c",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st102",
+      "scene_id": "c06r2-t10-p2",
+      "line_text_sha256": "f2af35a1710875cbca146d4531b635e5e523906dcd4b14d3d8d10dfb13756ecc",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st111",
+      "scene_id": "c06r2-t11",
+      "line_text_sha256": "44e4583a40444fdc4a6cdacfcbff981399b5fa2f7945fcc95288f57eca884afd",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6st112",
+      "scene_id": "c06r2-t11",
+      "line_text_sha256": "691f1653e48ea11ac28a56874d07949e06828e3bae3265a572042f99b0160bf6",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb011",
+      "scene_id": "c06r2-b01",
+      "line_text_sha256": "0cfe5e6bbd75dbcc5ad07ff7571516eae983ea2c21c33c237c63f9cfe055ef12",
+      "source_anchor_ids": [
+        "P1-header",
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb012",
+      "scene_id": "c06r2-b01-p2",
+      "line_text_sha256": "f400fd08bb5d3259482f8beb4adadf7a6db631e3a39546830126d02cc31f9341",
+      "source_anchor_ids": [
+        "P1-header",
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb021",
+      "scene_id": "c06r2-b02",
+      "line_text_sha256": "71ff501182ebd2507e93ac5c7655271ab41bf500c2676153afbbc550b3628bbc",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb022",
+      "scene_id": "c06r2-b02-p2",
+      "line_text_sha256": "9bcaea0379f1de8b2463460ea4f9d97bd956003dafa960d0c313e5abda2f2e30",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb031",
+      "scene_id": "c06r2-b03",
+      "line_text_sha256": "7e8d3d592d863d806146d0d37373a705f3fb568a210d5f708df4e8c2b76dbcd4",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb032",
+      "scene_id": "c06r2-b03",
+      "line_text_sha256": "b21b2cde68dd635fe2c298ede251bc458ef7e7d2c9176be488aca662f31a75b3",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb041",
+      "scene_id": "c06r2-b04",
+      "line_text_sha256": "3558020e4c92c66acd63fe83a91440c4b9440e3f7f6cf2cadecf2ebe28b82277",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb042",
+      "scene_id": "c06r2-b04",
+      "line_text_sha256": "a463e534508b3e7e07d2f4325a7139151289a96e5a6630449f4204cc38a14083",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb051",
+      "scene_id": "c06r2-b05",
+      "line_text_sha256": "49f1f78ec0125a2e0557f21650a0116833ec5c2d43038f3e038b360cdccd8022",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb052",
+      "scene_id": "c06r2-b05-p2",
+      "line_text_sha256": "e9f4e7a293c42e41570fec957f48f1c3a763fbee85acc2bc22a87af0feb8cb59",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb061",
+      "scene_id": "c06r2-b06",
+      "line_text_sha256": "6fec7ecc4a207659e3e06911c44a95bb7cf26f0b32c2b62c9d76fe079eb7a8d5",
+      "source_anchor_ids": [
+        "P1-clean"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb071",
+      "scene_id": "c06r2-b07",
+      "line_text_sha256": "a3c2c3fa26d314e687e365b030eb9d5fa1fdb2e8ef759c68ee1c75611ea95ba1",
+      "source_anchor_ids": [
+        "P1-clean"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb072",
+      "scene_id": "c06r2-b07",
+      "line_text_sha256": "b968acbf807703aa3d4c980f87664cb602e30e64e8d9b936e6925204be25d006",
+      "source_anchor_ids": [
+        "P1-clean"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb081",
+      "scene_id": "c06r2-b08",
+      "line_text_sha256": "e5381b6f8f992a66e71c41db4ec4faec835f6f57ceeaa8973718aa3a4873cc42",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb091",
+      "scene_id": "c06r2-b09",
+      "line_text_sha256": "c319c5002d0392c19b11035d5a865dc75c2518dce941bf5ce4aeeefd4a779101",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb092",
+      "scene_id": "c06r2-b09",
+      "line_text_sha256": "07ab5075aa5573e148ae0c0eaac00d699d146c5db6bf1587679bcb396b0f6d5a",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb101",
+      "scene_id": "c06r2-b10",
+      "line_text_sha256": "04395b9a75534c74e2355310f6c7ab8504c7067cbfa0762fad1b0581874dd9f0",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb102",
+      "scene_id": "c06r2-b10-p2",
+      "line_text_sha256": "96b8201b6c385fd8941328eb81dada205e9d86551af79e1cb5848e37aa57e0c5",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb111",
+      "scene_id": "c06r2-b11",
+      "line_text_sha256": "5c2491a016ec8aae58cf63486f8ba20e8c686030e104bcc4f3bfaf7a0b6073bc",
+      "source_anchor_ids": [
+        "P1-binding"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb112",
+      "scene_id": "c06r2-b11",
+      "line_text_sha256": "72438063ab369fd756f2a30234c17e5990b8839303d419d549b53c02f29a6e08",
+      "source_anchor_ids": [
+        "P1-binding"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10a1",
+      "scene_id": "c06r2-b10a",
+      "line_text_sha256": "5be10027a6054a8701386e8b1189c9704a0d5160dfe4e13ab6e3b9b905552671",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10a2",
+      "scene_id": "c06r2-b10a",
+      "line_text_sha256": "7b33dd14fbb3245c0c6b6ee62fbeeeef0004b87ef8b42538e0eaa17f31486a48",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10b1",
+      "scene_id": "c06r2-b10b",
+      "line_text_sha256": "2cf576ca894cfb9c392fd677c2914d05289848a920f75bdce10723689e466376",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10b2",
+      "scene_id": "c06r2-b10b-p2",
+      "line_text_sha256": "9f03d9f899eac98c2651fdaa0590010b9ac229538439e484951c5184a75b3587",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10c1",
+      "scene_id": "c06r2-b10c",
+      "line_text_sha256": "79beef0a4c9c8e93df1150196027192cf8d699a924e89563100797532ae1994d",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10c2",
+      "scene_id": "c06r2-b10c-p2",
+      "line_text_sha256": "fc66f19e1578e343339b6214e0c82e12e08251327e5b808a4f4bd34480a5a456",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10d1",
+      "scene_id": "c06r2-b10d",
+      "line_text_sha256": "7acef2da65f84d6587c08681cd0fdd22f62be1c5bf36ca36a267ce2496414073",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10d2",
+      "scene_id": "c06r2-b10d-p2",
+      "line_text_sha256": "5d4788cd09a0ecf1e8fb51b4a56a8276055a81ff3f1acc6658dd7f9c04dfce54",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10e1",
+      "scene_id": "c06r2-b10e",
+      "line_text_sha256": "ec1ee74ea308bef4bcbf25777b79aef0b9fda33ea3b84636ffc1ce1e631d3e0b",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb10e2",
+      "scene_id": "c06r2-b10e-p2",
+      "line_text_sha256": "2f67f52d04198d8a470cbbd3ac234dcfa3c785a55bb3ffe1b9c98a0ed0a1e887",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb121",
+      "scene_id": "c06r2-b12",
+      "line_text_sha256": "3052e5bc042e1db88641a6a1ccc0c54eaa67e0b68c7f84b43cdb2b07622a0a2a",
+      "source_anchor_ids": [
+        "P1-color"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb122",
+      "scene_id": "c06r2-b12",
+      "line_text_sha256": "9d9e17c5e2ccf4afa7b80a743c4bb9b80c69b7363b584064231c4299417ccef3",
+      "source_anchor_ids": [
+        "P1-color"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb131",
+      "scene_id": "c06r2-b13",
+      "line_text_sha256": "a6f6cbe5b6a9ad0bb4ccb86c43c453944117358e119c53c3cb9bc49e80e4ece1",
+      "source_anchor_ids": [
+        "P1-color"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb141",
+      "scene_id": "c06r2-b14",
+      "line_text_sha256": "65c5b85bf027ab3564c530774bf3ab8bc78d24605f259205aa9695d74cfb7527",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb142",
+      "scene_id": "c06r2-b14-p2",
+      "line_text_sha256": "f5d2cdb2d566427e88c2c6e1097131d8067230c033a3bfb15c78729c0c329498",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb151",
+      "scene_id": "c06r2-b15",
+      "line_text_sha256": "76fc5313ac228f30d4edb7690524cafb7a646a11e2169cda5b82ea1b2129f465",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb152",
+      "scene_id": "c06r2-b15-p2",
+      "line_text_sha256": "7784f6afcf9487d86650cd857a2ae066516d882e2ffa7c4e1f11b6b6adb2d288",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb15a1",
+      "scene_id": "c06r2-b15a",
+      "line_text_sha256": "53574cc036385f6090235910262af5766c37db4d155c03baf158c9db7deca220",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb15a2",
+      "scene_id": "c06r2-b15a-p2",
+      "line_text_sha256": "2cfe4002bf2bbb977f3ff8be4e059baf7b9a94db7d98cad4ec292e7dc316212f",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb15a3",
+      "scene_id": "c06r2-b15a-p3",
+      "line_text_sha256": "5b6176b1d1e9da9f06c1bede45cc1afe40fab1cbcdf27872c8dc58d965d28c6e",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb161",
+      "scene_id": "c06r2-b16",
+      "line_text_sha256": "c54703987e68624e93591ef8281c833454e97eac7f1b745a42292a92bdecae8c",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb162",
+      "scene_id": "c06r2-b16",
+      "line_text_sha256": "00949cbd109428440bc5fb294b4d6ca5c22dcf711af4d919cee70061d0eaf6e0",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb171",
+      "scene_id": "c06r2-b17",
+      "line_text_sha256": "3bea4d354d9c47bc35ff4e71757fc773a36b8f5dd0d99605921e9a91ef55ed00",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb172",
+      "scene_id": "c06r2-b17-p2",
+      "line_text_sha256": "03424e1a0a0a454e44ce88bf2dd759c88f7f59c79f9f51582a649551d0e5b994",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb17b1",
+      "scene_id": "c06r2-b17b",
+      "line_text_sha256": "0788e5379ab3ff1f07451b0a64b93891d2a2a6442cf5fe0a0b9029f8fae8ef0c",
+      "source_anchor_ids": [
+        "P1-color",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb17b2",
+      "scene_id": "c06r2-b17b-p2",
+      "line_text_sha256": "f01c561d5f64f008d11f8589d8669c3cb2e3495f8ed18f73930f9bcb8afe1afe",
+      "source_anchor_ids": [
+        "P1-color",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb181",
+      "scene_id": "c06r2-b18",
+      "line_text_sha256": "99fef003827e57f0ee494a17aaeeb5bb31589e363ddaa9b88a29fa1d3c8852f5",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb182",
+      "scene_id": "c06r2-b18",
+      "line_text_sha256": "231da65b9c43b0d636eb0025e0bc58cfd09511d19faf416cc6c712c5650f2078",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sb201",
+      "scene_id": "c06r2-b20",
+      "line_text_sha256": "ec6b2f574cd70d370c1e43ee32d2e406a1b70e382d56f983b4714f3c7a4c2cd5",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn011",
+      "scene_id": "c06r2-n01",
+      "line_text_sha256": "ccc2b8245befc47067f38e1c4f4b60121fbe7fac16257a80e40d69cbbf7ac9ab",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn012",
+      "scene_id": "c06r2-n01-p2",
+      "line_text_sha256": "8407a92dcbee22e971fa5e59c9eba7c954b9e81847d148ea7d99d30b5034a50e",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn021",
+      "scene_id": "c06r2-n02",
+      "line_text_sha256": "3cd5d4a31208e006430a7090ea9de55027ac1759de9f221e292f53831ae1a4f9",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn022",
+      "scene_id": "c06r2-n02-p2",
+      "line_text_sha256": "b8c75a4c072c2ab9154f94944236a942a67d7b593316493852b07aa732c72f6f",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn031",
+      "scene_id": "c06r2-n03",
+      "line_text_sha256": "46a42836e28f35a8e83c03f5c60fecb6b5da3d7f61c7ce07da4ab0c0d3e45068",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn032",
+      "scene_id": "c06r2-n03",
+      "line_text_sha256": "35b2fe52cd43eaba1a93ad810ceef868dfa8c163b66ac5d7e8c4e98b92f4d402",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn041",
+      "scene_id": "c06r2-n04",
+      "line_text_sha256": "54d27cbd05901a25053a6092707281a9b3b31f585e8dec98dcf4008df38440ef",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn042",
+      "scene_id": "c06r2-n04-p2",
+      "line_text_sha256": "3cc37e48444c2eb28d30b35f6eb09532afc476c69a82fd2de659d04318761185",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn04a1",
+      "scene_id": "c06r2-n04a",
+      "line_text_sha256": "4293894583511f232f142296d746d5599aef241f977f2c2e5ba8329ce76cc222",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn04a2",
+      "scene_id": "c06r2-n04a-p2",
+      "line_text_sha256": "d2b3e7c2d51b421f2332c83944284f001f7727bac5d9a0044897c5c85f6f7ac7",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn04b1",
+      "scene_id": "c06r2-n04b",
+      "line_text_sha256": "8bd21a02e6413711f749389e6bceb6677ca878d3b21ff1623359e16a785f7f37",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn04b2",
+      "scene_id": "c06r2-n04b",
+      "line_text_sha256": "07970fdc480adfe7f33fbdd08904a3c40b75b61a5eb69a395eafd13c65e562f2",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn04c1",
+      "scene_id": "c06r2-n04c",
+      "line_text_sha256": "5df66d3a5a7c5fc8d6914be8d0ae2f1d52c6eea77c19f80fda57c5ccdc047a92",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn04c2",
+      "scene_id": "c06r2-n04c-p2",
+      "line_text_sha256": "0b62f2bcd8b772f273b1c974293663507f3e6480b5055c8ad8c81ad380fa9c3a",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn051",
+      "scene_id": "c06r2-n05",
+      "line_text_sha256": "6c45212e2589c38a4731553ab3d97026b5152b7b0dfbc428081aceaeabf3ff20",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn052",
+      "scene_id": "c06r2-n05-p2",
+      "line_text_sha256": "a169a61d5184ff0f8ecdbb0a70f10b057a00916e2cb615bc2c94b0776aa33f39",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn061",
+      "scene_id": "c06r2-n06",
+      "line_text_sha256": "306520f88716784c8e6c513b04533eca935076ff7f83588a6dd062db4522e7c3",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn062",
+      "scene_id": "c06r2-n06",
+      "line_text_sha256": "e505fb02b67af21ab26e5898d7cb105b8a51d4e3c60a0d5a6880168f2329629d",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn071",
+      "scene_id": "c06r2-n07",
+      "line_text_sha256": "aa499270dc82f73f22184bf3200545d13a84ff60dfd8f2fe8ba49144a67d62a6",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn072",
+      "scene_id": "c06r2-n07-p2",
+      "line_text_sha256": "6d116c39546abeda6e648d8b78d407a3ba6d2423c8c34062759bf7cabec80501",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn081",
+      "scene_id": "c06r2-n08",
+      "line_text_sha256": "6a328f291ccfb364b7421889c1a6ec8664e41bcc5d1cce3af667d58133b35d45",
+      "source_anchor_ids": [
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn082",
+      "scene_id": "c06r2-n08-p2",
+      "line_text_sha256": "f45df6a1a4c863d8a4b7368e61d36bd7e7998b97a2b0f4ba1b5aa75b5c1817b6",
+      "source_anchor_ids": [
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn091",
+      "scene_id": "c06r2-n09",
+      "line_text_sha256": "542922bf6aa8cd9d6010c7b1f981fbec99bdc30371a679e3741ff74684f1d86e",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn092",
+      "scene_id": "c06r2-n09-p2",
+      "line_text_sha256": "8713dfc93398071f3f47626b6cedb25d34a013e8d0b04b993f2c50f7608e2fb6",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn101",
+      "scene_id": "c06r2-n10",
+      "line_text_sha256": "d15a30f5f21cb8f4690865fdcca028d01fcecb5afd9b2878cc8ee141372576bd",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6sn102",
+      "scene_id": "c06r2-n10-p2",
+      "line_text_sha256": "9c05d647a4fcc7993e63451cc332deaebc7bf88c1e529772d0cb8b70bacf7846",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6snct1",
+      "scene_id": "c06r2-outro",
+      "line_text_sha256": "a1be14cc45bed808a5f34070af06c9b25b148070d11cfebf7f0f2f0550ed5a32",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c6snct2",
+      "scene_id": "c06r2-outro",
+      "line_text_sha256": "b953528109311979c61318d4f8e6cf7852f4e4ba9dcd927f5116f85a7f7a7fc4",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    }
+  ],
+  "findings": [],
+  "scope_limits": {
+    "new_blind_reader_answers_read": false,
+    "existing_native_record_used_only_for_narrativeReviewMatches_hash_binding": true,
+    "new_narrative_verdict_issued": false,
+    "author_plan_treated_as_independent_evidence": false,
+    "actual_images_reviewed": false,
+    "actual_reuse_proved": false,
+    "actual_tts_or_duration_verified": false,
+    "measured_12_14_minute_claimed": false,
+    "paid_calls": 0,
+    "backend_calls": 0,
+    "runtime_approval_or_media_writes": 0,
+    "git_actions": 0,
+    "owner_approval_created": false
+  },
+  "original_source_cache_binding": {
+    "source_verified_baseline_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "original_sources": [
+      {
+        "id": "H1",
+        "url": "https://newsroom.hasbro.com/node/34691",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H1.html",
+        "actual_raw_bytes": 35397,
+        "actual_raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H1.paragraphs.txt",
+        "actual_text_sha256": "13458933b4268d94ed73d32f5372a9ab2fd16012937d57ea040349ee13fa276e",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:50.521603+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "H2",
+        "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H2.html",
+        "actual_raw_bytes": 36534,
+        "actual_raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H2.paragraphs.txt",
+        "actual_text_sha256": "34162b528215843c25220900ca97bbb8abaacf369a55ed71553922e3e7d5038e",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:50.491058+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "H3",
+        "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.html",
+        "actual_raw_bytes": 34631,
+        "actual_raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.paragraphs.txt",
+        "actual_text_sha256": "5a15b960eae5c4a0a44ce1fc92c041d87f79eecd0acf48d2f2f779babfe0ce9a",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:49.846752+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "K1",
+        "url": "https://www.kutol.com/kutols-story/",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.html",
+        "actual_raw_bytes": 314017,
+        "actual_raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.paragraphs.txt",
+        "actual_text_sha256": "611ee7b20284dd0a626442328e437e3332d8f4a792a3b7d18299577b6db684e3",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:49.580220+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "M1",
+        "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M1.html",
+        "actual_raw_bytes": 415288,
+        "actual_raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M1.paragraphs.txt",
+        "actual_text_sha256": "6b780e6af3945049f4b9065b58c4b889a9c22e37d250a38558ce5095399e527a",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:49.621447+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "M2",
+        "url": "https://www.toyhalloffame.org/toys/play-doh/",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.html",
+        "actual_raw_bytes": 399913,
+        "actual_raw_sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.paragraphs.txt",
+        "actual_text_sha256": "eea5bd7b304073f99eb9dac8669b88eb5579391022c8ce5f8fdbda3b858d6fdc",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:50.487239+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "P1",
+        "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/P1.pdf",
+        "actual_raw_bytes": 699681,
+        "actual_raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/P1.txt",
+        "actual_text_sha256": "d0aea6d6ff899ba81abc24d5376cc71c91ddfd071c603e74905b9ed08b17b0f4",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:48.952143+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      }
+    ],
+    "all_seven_raw_and_text_sha_verified": true,
+    "source_cache_checks": [
+      {
+        "id": "H1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H1.html",
+        "raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+        "raw_match": true,
+        "text_sha256": "13458933b4268d94ed73d32f5372a9ab2fd16012937d57ea040349ee13fa276e",
+        "text_match": true
+      },
+      {
+        "id": "H2",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H2.html",
+        "raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+        "raw_match": true,
+        "text_sha256": "34162b528215843c25220900ca97bbb8abaacf369a55ed71553922e3e7d5038e",
+        "text_match": true
+      },
+      {
+        "id": "H3",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.html",
+        "raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+        "raw_match": true,
+        "text_sha256": "5a15b960eae5c4a0a44ce1fc92c041d87f79eecd0acf48d2f2f779babfe0ce9a",
+        "text_match": true
+      },
+      {
+        "id": "K1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.html",
+        "raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+        "raw_match": true,
+        "text_sha256": "611ee7b20284dd0a626442328e437e3332d8f4a792a3b7d18299577b6db684e3",
+        "text_match": true
+      },
+      {
+        "id": "M1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M1.html",
+        "raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+        "raw_match": true,
+        "text_sha256": "6b780e6af3945049f4b9065b58c4b889a9c22e37d250a38558ce5095399e527a",
+        "text_match": true
+      },
+      {
+        "id": "M2",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.html",
+        "raw_sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+        "raw_match": true,
+        "text_sha256": "eea5bd7b304073f99eb9dac8669b88eb5579391022c8ce5f8fdbda3b858d6fdc",
+        "text_match": true
+      },
+      {
+        "id": "P1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/P1.pdf",
+        "raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+        "raw_match": true,
+        "text_sha256": "d0aea6d6ff899ba81abc24d5376cc71c91ddfd071c603e74905b9ed08b17b0f4",
+        "text_match": true
+      }
+    ],
+    "actual_M2_raw_cache_sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+    "earlier_author_M2_bytes_not_used": true
+  }
+}

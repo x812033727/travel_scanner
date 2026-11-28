@@ -1,0 +1,167 @@
+# Seiko R4 獨立來源查核
+
+審查者：/root/seiko_r1_source。來源與書面配鏡 PASS；e14/e15兩句刪去已述連接/位置後，原源零件數及回路功能仍完整。其他143句、142個prompt/camera、34loops與兩個完整共圖計畫皆與R3相同；全145句投影核對完成。這不是敘事盲評、念法、實聲、實圖或成片批准。
+
+R3獨立來源收據 SHA256：c0dd1ad4c76c3afc370742954b2b6a64834f338107dbbfd20071e2e6c8369774。
+R3查核標記 SHA256：a60090d511dc74d22802eaccdccac98aadcc038f378d7aa4ca63c7fff7fc9b89。
+完整R2來源PASS與R1原HOLD證據鏈見R3收據，各輪歷史原件不改寫。
+R4 author-freeze SHA256：7fdc3571eccb0cfbb3652831a92b0d77a19e80dded788beb9e8b3bee436f86b5。
+video.json SHA256：7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9。
+script.md SHA256：5e1da3a3adfb0121e8e11cb4c4f573340b5e60da9e1681c1eb7fb224673c912a。
+narration-only.json SHA256：f7f5e94c5b98f0892d007ed171478f7b55fcc9ed997c3b2eed85d3f942c3e4c2。
+claims.json SHA256：11a2682835efc9ccf28f4a8a09541df81c45f2dc11520a2a6b702b0c9238a32b。
+
+S1 Epson產品史第153行記35SQ發振/分頻/驅動電路以76電晶體、29電容等元件構成hybrid。新句保「產品史記下」「包含」「等零件」，不是全部BOM，也不套所有年份/型號或後期CMOS。
+公司回顧歸屬、不同年份/機種/供應商、百分比及溫度條件沿前輪保留；生成圖不當史料照片或一支序號錶實錄。
+當前正文3418 spokenUnits；文字估時不是實聲720–840秒驗收，新增5秒片頭與21秒片尾另計。
+
+| # | 主張 | 場景 | 來源 | 判定 | 說明 |
+| --- | --- | --- | --- | --- | --- |
+| skr1h01 | 一九六九年，若你花四十五萬日圓買錶，仍可能需要送回調整。 | skr1h01 | https://www.seikowatches.com/jp-ja/products/astron/special/story_qa50th_1；https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C01、C02、C29；假設觀眾購買與可能返調，不稱每支或當年每次購買皆返調 |
+| skr1h02 | 這是精工企業史記下的早期難題；六〇年代末，技能者還在顯微鏡下手焊電路。 | skr1h02 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf；https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C29、C06、C33；顯微鏡手焊另核S24 PDF40第32–35行及S7 PDF4第37–39行 |
+| skr1h03 | 陶瓷板上的電路，還得跟電池與齒輪，一起裝進小小的機芯。 | skr1h03 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | CONFIRMED | 錨點 C04、C06 |
+| skr1h04 | 我先盯著那支烙鐵：做出一支以後，下一支能同樣做出來嗎？ | skr1h04 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C06、C15 |
+| skr1h05 | 一張價牌，為什麼會讓上市前的準備突然改動？ | skr1h05 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C12、C13 |
+| skr1h06 | 而工廠的一座真空爐，又藏著什麼沒被記下的事？ | skr1h06 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C20、C22 |
+| skr1h07 | 跟著精工的Astron，從一塊手焊基板，追一支新錶如何走向持續製造。 | skr1h07 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C06、C15、C30 |
+| skr1h08 | 把準確塞進手腕以後，還差哪些事，才能交給下一個人？ | skr1h08 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C15、C29、C30 |
+| skr1e01 | 要交出去的，是你走路、抬手，還會換電池的腕錶。 | skr1e01 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C05、C09、C34 |
+| skr1e02 | 先看最裡面的振子；它在這裡，負責給電路穩定的節拍。 | skr1e02 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C07、C35 |
+| skr1e03 | 二〇一七年的技術史回顧記下，團隊選了音叉形的水晶。 | skr1e03 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C33、C34 |
+| skr1e03a | 當時市面上找不到適合腕錶的現成振子，團隊得自己試著加工。 | skr1e03a | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 A06 |
+| skr1e03b | 技術史寫，他們試過研磨劑與振動，最後用磨石作出音叉形狀。 | skr1e03b | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 A06、C33 |
+| skr1e04 | 可是，把一塊水晶縮小，會不會連別的地方也得跟著改？ | skr1e04 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C35 |
+| skr1e05 | 回顧說，尺寸與振動頻率相連；做得更小，頻率會更高。 | skr1e05 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C35 |
+| skr1e06 | 振動變快，分頻回路的級數也會增加，耗電就跟著成為難題。 | skr1e06 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C35 |
+| skr1e07 | 當時這一款採用的，是每秒八千一百九十二次振動。 | skr1e07 | https://ethw.org/Milestones:Electronic_Quartz_Wristwatch,_1969 | CONFIRMED | 錨點 C44 |
+| skr1e08 | 你手上的錶會晃動，那小振子總不能在裡面任意撞。 | skr1e08 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C34 |
+| skr1e09 | 技術史的圖裡，它被細彈簧吊著，浮在真空封住的小膠囊中。 | skr1e09 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C34 |
+| skr1e10 | 我看著那幾根細線，反而想問：節拍穩了，指針就能自己走嗎？ | skr1e10 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C34、C35、C37 |
+| skr1e11 | 還得把快節拍往下分，最後交出一秒一次的驅動訊號。 | skr1e11 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | CONFIRMED | 錨點 C35 |
+| skr1e12 | 這個設計用十三級分頻，每一級都把前面的頻率減半。 | skr1e12 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | CONFIRMED | 錨點 C35 |
+| skr1e13 | 可是，這些回路當時靠什麼裝進去？ | skr1e13 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | PLAN | 錨點 C06 |
+| skr1e14 | 精工的產品史記下，電路包含七十六個電晶體、二十九個電容等零件。 | skr1e14 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | ATTRIBUTED | 錨點 C06；Epson 35SQ產品史第153行，76電晶體、29電容等零件是此回路部分例數，非全部元件總數或所有型號BOM；製造者歸屬保留。 |
+| skr1e15 | 發振、分頻與驅動電路，組成了混合電路。 | skr1e15 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | CONFIRMED | 錨點 C06；同段發振/分頻/驅動電路構成hybrid，限定前文35SQ，不倒填後期CMOS。 |
+| skr1e16 | 你可以想像，手上那個細小接點，焊好後還要接著做下一個。 | skr1e16 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | PLAN | 錨點 C06 |
+| skr1e17 | 但電路送出訊號，跟真的推動指針，中間還隔著一個馬達。 | skr1e17 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C37 |
+| skr1e18 | 馬達若一直耗電，腕上的小電池要怎麼撐住？ | skr1e18 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C37 |
+| skr1e19 | 技術史回述，團隊曾把三片兩極磁鐵，按六十度間隔展開。 | skr1e19 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C36 |
+| skr1e20 | 他們送進驅動脈衝，看見磁鐵轉動；再試著縮短通電的時間。 | skr1e20 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C36 |
+| skr1e20a | 線圈也得跟著縮：大約兩萬圈，繞的是直徑零點零二毫米的細線。 | skr1e20a | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C37 |
+| skr1e20b | 你把這些纏好的線放回機芯，還得留下讓其他零件安放的位置。 | skr1e20b | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C38 |
+| skr1e21 | 後來的六極馬達，一秒只短暫通電一次，轉子每步走六十度。 | skr1e21 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C37 |
+| skr1e21a | 通電讓它轉，那不通電的時候，轉子會不會自己滑走？ | skr1e21a | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C37 |
+| skr1e22 | 電流停下，轉子與定子間的吸引力，也幫忙把位置留住。 | skr1e22 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C37 |
+| skr1e23 | 我會在意，這回要付出的不是轉得多快，而是每一步用了多少電。 | skr1e23 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C37 |
+| skr1e24 | 可馬達有了，整個放進小錶裡，還有地方嗎？ | skr1e24 | https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C38 |
+| skr1e25 | 工程者把能分開的功能件拆開，讓線圈、定子與轉子，分散在機芯空隙。 | skr1e25 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | ATTRIBUTED | 錨點 C08、C38 |
+| skr1e26 | 你若只看錶面，看到的是秒針一格一格前進；裡面的零件卻沒有排成一團。 | skr1e26 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf | PLAN | 錨點 C09、C38 |
+| skr1e27 | 省下空間以後，機芯能收進圓形的外框；精工資料列外徑三十毫米。 | skr1e27 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | ATTRIBUTED | 錨點 C04、C09 |
+| skr1e28 | 但那是機芯的尺寸，電池所在的位置，還會比其他地方厚。 | skr1e28 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | CONFIRMED | 錨點 C04 |
+| skr1e28a | 真要換電池時，你又得從哪裡打開？ | skr1e28a | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | PLAN | 錨點 C09 |
+| skr1e28b | 精工產品史特別提到，採用電池蓋形式，讓更換比較容易。 | skr1e28b | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | ATTRIBUTED | 錨點 C09 |
+| skr1e29 | 所以，工作台上的這套東西，哪一天才能真的送出去？ | skr1e29 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C10 |
+| skr1p01 | 送出之前，還得讓每一支能完成最後調整。 | skr1p01 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C10 |
+| skr1p02 | 企業史把下一個場景，記在一九六九年十二月二十四日。 | skr1p02 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C10 |
+| skr1p03 | 技術主管安川英昭趕往東京時，十支水晶腕錶已經送出。 | skr1p03 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C10 |
+| skr1p04 | 另十支，安排隔天早上以前送到；留在工廠的工作還沒有結束。 | skr1p04 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C10 |
+| skr1p05 | 我原本以為這像一場早就排好的聖誕上市，回顧卻說，並不是。 | skr1p05 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C11 |
+| skr1p06 | 是做到這時候，才終於有望湊齊數量。 | skr1p06 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C11 |
+| skr1p07 | 如果你在準備明天的發表，錶到了，價牌是不是就能照印好的放？ | skr1p07 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C12、C13 |
+| skr1p08 | 回顧說，銷售負責人一度把售價改成三十八萬日圓。 | skr1p08 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C12；S7 PDF1第35–39行接PDF2第1–4行，銷售責任者曾改38萬，當晚又改回45萬；公司回顧歸屬及暫時性保留，非原價牌實物。 |
+| skr1p09 | 他覺得，能買一台大眾車的價錢，實在太高。 | skr1p09 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C12 |
+| skr1p10 | 這個尺度有多大？你得先看是哪一年、哪個等級的車。 | skr1p10 | https://global.toyota/jp/detail/14002042/ | PLAN | 錨點 C41、C42 |
+| skr1p11 | 豐田在一九六六年公布，東京的卡羅拉標準型，售價四十三萬二千日圓。 | skr1p11 | https://global.toyota/jp/detail/14002042/ | ATTRIBUTED | 錨點 C41 |
+| skr1p12 | 同張表上的豪華型，則是四十九萬五千日圓。 | skr1p12 | https://global.toyota/jp/detail/14002042/ | CONFIRMED | 錨點 C42 |
+| skr1p13 | 同一支錶，銷售端改過價格，最後又是誰來拍板？ | skr1p13 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C12 |
+| skr1p14 | 回到準備中的價牌，企業史說，服部正次當晚到場，看過後要求改回四十五萬。 | skr1p14 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C12 |
+| skr1p15 | 我比較在意的是，這一下改動，接著會落到誰的手上？ | skr1p15 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C13 |
+| skr1p16 | 工作人員得換價牌、重排印刷物，忙到深夜仍然來不及。 | skr1p16 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C13 |
+| skr1p17 | 原訂隔天上午十點的記者會，於是改到下午兩點。 | skr1p17 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C13 |
+| skr1p19 | 翌日，Astron正式開賣；高精度，是它要交給買家的東西。 | skr1p19 | https://www.seikowatches.com/jp-ja/products/astron/special/story_qa50th_1；https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | CONFIRMED | 錨點 C01、C03 |
+| skr1p20 | 精工列的月差是正負五秒，條件是在攝氏四度到三十六度的常溫範圍。 | skr1p20 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html | ATTRIBUTED | 錨點 C03 |
+| skr1p21 | 你把錶從櫃台帶走以後，這個準確，會一直留在腕上嗎？ | skr1p21 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C03、C29 |
+| skr1r01 | 離開櫃台，產品卻沒有從工廠的工作清單上消失。 | skr1r01 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C29 |
+| skr1r02 | 那份企業史記下，初期水晶振子老化，曾造成精度不穩。 | skr1r02 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C29 |
+| skr1r03 | 開頭你擔心的返調，企業史說，許多已經售出的錶，確實又回來調整。 | skr1r03 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C29 |
+| skr1r04 | 如果換你，最想知道的恐怕是：出門前調好了，為什麼還會變？ | skr1r04 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C18、C29 |
+| skr1r05 | 我反而想把目光移回做振子的那張桌；問題不只在最後那一下調整。 | skr1r05 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C16、C18 |
+| skr1r06 | 回顧說，切削和研磨水晶片以後，表面會留下細小裂紋。 | skr1r06 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C16 |
+| skr1r07 | 他們得處理那些裂紋，才有機會提高能用的比例。 | skr1r07 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C16 |
+| skr1r08 | 可是，看起來光滑的表面，就能讓人放心了嗎？ | skr1r08 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C17 |
+| skr1r09 | 就算蝕去表面一層，剩下多少裂紋，也不是用眼睛看就能知道。 | skr1r09 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C17 |
+| skr1r10 | 想像你把振子的尖端調到所需頻率，工作到這裡還不能停。 | skr1r10 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C18 |
+| skr1r11 | 真正通電，讓它持續振動之後，裂紋狀態會變，頻率也可能跟著移動。 | skr1r11 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C18 |
+| skr1r12 | 有的很快穩下來，有的卻一直沒有穩定。 | skr1r12 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C18 |
+| skr1r13 | 我讀到這裡才懂，調準的那一刻，還不能代替後面一段時間。 | skr1r13 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C18 |
+| skr1r14 | 那工廠怎麼在出貨前，先把這段變動逼出來？ | skr1r14 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C18、C19 |
+| skr1r15 | 企業史記的動作，是連續通電數日，讓振子先經過老化穩定的過程。 | skr1r15 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C18、C19 |
+| skr1r16 | 每一支會變多少、變多久，都得靠經驗一點點累積。 | skr1r16 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C18、C19 |
+| skr1r17 | 這段初期，振子的良率，回顧說只有兩成。 | skr1r17 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C19 |
+| skr1r18 | 你別把它聽成八成錶被退回；這個數字，算的是振子生產能用的比例。 | skr1r18 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C19 |
+| skr1r19 | 如果做好的振子仍不穩，光在成品旁邊等，還能找出什麼？ | skr1r19 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C20、C21、C22 |
+| skr1r20 | 這一次，得跟著管理者，走到實際加工的地方。 | skr1r20 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C22 |
+| skr1f01 | 加工裡有一道烘烤：把水晶片放進真空爐，用溫度去除內含的氣體。 | skr1f01 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C21 |
+| skr1f02 | 氣體若沒有處理好，振動頻率就可能變，時間誤差也跟著出現。 | skr1f02 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C21 |
+| skr1f03 | 你看著爐子在運作，會先相信它已照規定加熱，還是再查設定？ | skr1f03 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C20、C22 |
+| skr1f04 | 開頭那座真空爐，企業史說，是管理者到現場檢查作業，才找到問題。 | skr1f04 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C22 |
+| skr1f05 | 設定的加熱溫度，竟然比應有的低了五十度。 | skr1f05 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C20 |
+| skr1f07 | 我聽到這裡，會想再找當時留下的數據：有人記下每次怎麼設嗎？ | skr1f07 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C22 |
+| skr1f08 | 回顧認為更大的問題，是設定溫度沒有作為資料記錄下來。 | skr1f08 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C22 |
+| skr1f10 | 如果換你接下一班，沒有這筆記錄，要從哪裡確認上一班做了什麼？ | skr1f10 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C22 |
+| skr1f11 | 這個事件讓現場檢查、留下記錄、寫明作業步驟，成了工廠要記住的教訓。 | skr1f11 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C22 |
+| skr1f12 | 不過，振子能更穩定供應，還沒有把手焊回路變得好做。 | skr1f12 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C15、C30 |
+| skr1f13 | 你若想讓下一批做得更快，還能一直靠同樣數量的微小接點嗎？ | skr1f13 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C15、C30 |
+| skr1c01 | 精工委託美國的Intersil開發低耗電晶片，要替換靠人手焊接的回路。 | skr1c01 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 A08、C15、C30 |
+| skr1c02 | 企業史說，混合回路的生產性太低，成本與耗電，都還需要往下壓。 | skr1c02 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C15、C27 |
+| skr1c03 | 我比較好奇的是：既然能畫出電路，為什麼不直接換成一塊晶片？ | skr1c03 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C25、C26 |
+| skr1c04 | 要畫得出來，還要真的能製造；當時這兩件事，沒有一起到位。 | skr1c04 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C25 |
+| skr1c05 | 另一邊，精工也開始自己建立半導體的製造能力。 | skr1c05 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 A08、C25 |
+| skr1c07 | 而Intersil後來送到的晶片，是不是每一顆都能照規格使用？ | skr1c07 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C23 |
+| skr1c08 | 品質與性能有差異，回顧說，當時能挑出來用的，只有約一成。 | skr1c08 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C23 |
+| skr1c09 | 你得先有可用的零件，才能談把它一批批裝進錶；不是箱子到了就解決。 | skr1c09 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C23 |
+| skr1c22 | 你看最初上市那款Astron，後來換上外購Intersil晶片，整套電路都換了嗎？ | skr1c22 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 A09、C30；外購Intersil／35SQ，S7 PDF8第4–6行；R1 SR1-01已解除 |
+| skr1c23 | 沒有；企業史說，這顆CMOS專做分頻，其他電路仍採混合構成。 | skr1c23 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 A09、C30；外購Intersil／35SQ，S7 PDF8第4–6行；R1 SR1-01已解除 |
+| skr1c24 | 這款錶改變最複雜的分頻部分後，實裝工序減少，耗電也跟著降低。 | skr1c24 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 A09、C30；外購Intersil／35SQ，S7 PDF8第4–6行；R1 SR1-01已解除 |
+| skr1c10 | 我想看的是自研這條路：原本做精密機械的人，怎麼開始做半導體？ | skr1c10 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C24、C25 |
+| skr1c11 | 企業史記下，一批年輕技術人員，從電子學和半導體基礎開始學。 | skr1c11 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C24、C25 |
+| skr1c11a | 他們請電子學者集中講課，也把人送進研究單位受訓。 | skr1c11a | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 A07 |
+| skr1c11b | 要理解的內容，從絕緣膜的特性，一項項往上建。 | skr1c11b | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 A07 |
+| skr1c11c | 只聽原理還不夠，拿什麼讓研究者看見，他們正在遇到的難題？ | skr1c11c | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C24 |
+| skr1c12 | 回顧中的山村，還把一件試作品，拿給研究半導體的垂井看。 | skr1c12 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C24 |
+| skr1c13 | 他形容，那東西像個焊接出來的怪物，根本還放不進腕錶。 | skr1c13 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C24 |
+| skr1c14 | 但他要說明的是，團隊想從這種狀態，走向下一個層次。 | skr1c14 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C24 |
+| skr1c15 | 你可以想像，小錶和眼前的大電路放在一起，差的不是換一個外殼。 | skr1c15 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C24 |
+| skr1c16 | 後面還有製造環境：他們把實驗室改成潔淨室，再引入半導體製造設備。 | skr1c16 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C25 |
+| skr1c17 | 可是，設備進門，熟練的方法也會跟著送到嗎？ | skr1c17 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C25 |
+| skr1c18 | 回顧說，缺乏製造經驗，讓他們仍得反覆實驗，事情並不順利。 | skr1c18 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C25 |
+| skr1c19 | 直到一九七一年四月，企業史記下，自研A型晶片終於能按預期工作。 | skr1c19 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C26、A10；自研A型，S7 PDF6第34–40行接PDF7第1–2行 |
+| skr1c20 | 小於五平方毫米的面積，裝進了分頻與馬達驅動訊號輸出的功能。 | skr1c20 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C26 |
+| skr1c26 | 而自研A型晶片，企業史說，用進了一九七一年十二月上市的三八系列。 | skr1c26 | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C26、A10、C28；自研A型，S7 PDF6第34–40行接PDF7第1–2行 |
+| skr1c26a | 省下的電，你會拿來多用一段時間，還是換更小的電池？ | skr1c26a | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | PLAN | 錨點 C27 |
+| skr1c26b | 企業史把兩條路放在一起：維持同樣電池，就能增加使用時間。 | skr1c26b | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C27 |
+| skr1c26c | 如果維持原來的續航要求，就能用更小的電池，讓錶做得更薄。 | skr1c26c | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf | ATTRIBUTED | 錨點 C27 |
+| skr1c27 | 可是，換你買下一代，遇到故障時，又還有誰能接手？ | skr1c27 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A01 |
+| skr1d01 | 一九七七年，安川英昭在技術論文裡，把要求寫到零售端。 | skr1d01 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 C50、A01 |
+| skr1d02 | 就算出了故障，零售商也應該能靠簡單治具，做必要的修理。 | skr1d02 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A01 |
+| skr1d03 | 我想先看他留下的接法：東西越小，動手的位置是不是也變少？ | skr1d03 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A02 |
+| skr1d04 | 文中舉了一款後來的高階石英錶，回路組裝先考慮了售後維護。 | skr1d04 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A02 |
+| skr1d05 | 這種回路不靠焊錫接合，改用精密沖壓、彎折與微型熔接等技術。 | skr1d05 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A02 |
+| skr1d06 | 他特別寫到，電容與電阻這些部件，可以各自更換。 | skr1d06 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A03 |
+| skr1d07 | 如果換你碰上這個設計裡的小元件故障，就有機會只處理那個部件。 | skr1d07 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A01、A03 |
+| skr1d08 | 我接著想知道，這種接法到了工廠，要怎麼一批批組起來？ | skr1d08 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A04 |
+| skr1d09 | 同篇論文放了照片：回路組交給旋轉式的全自動組裝機處理。 | skr1d09 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A04 |
+| skr1d10 | 文章列出的機台能力，是每月約十萬個回路單元。 | skr1d10 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A04 |
+| skr1d11 | 你還記得開頭那支烙鐵嗎？幾年之間，製造工具連著接法，都改了樣子。 | skr1d11 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 C06、A02、A04 |
+| skr1d12 | 不過，能組好一個回路，跟整支錶能出貨，中間還要檢查什麼？ | skr1d12 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A05 |
+| skr1d13 | 安川寫的品質保證，先以每一個電子元件的可靠性為前提。 | skr1d13 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A05 |
+| skr1d14 | 組成產品以後，還要看時間精度、運轉與顯示表現。 | skr1d14 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | ATTRIBUTED | 錨點 A05 |
+| skr1d15 | 溫度特性也在其中；你換個環境用錶，電子機構仍要面對變化。 | skr1d15 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A05 |
+| skr1d16 | 我讀著這一頁，才會把問題從準不準，接著問到能否穩定做、方便修。 | skr1d16 | https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 A01、A04、A05 |
+| skr1d17 | 這些後來的回路與工法，各有自己的機種，沒有同時出現在第一批錶裡。 | skr1d17 | https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html；https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf；https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 C06、C30、A02、A04 |
+| skr1d18 | 我的答案是：準確要交到下一個人手上，還得把穩定、製造與維修一起做好。 | skr1outro | https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf；https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf | PLAN | 錨點 C15、C22、C30、A01 |
+| skr1d19 | 留言告訴我，你選一件新工具時，最想少操心的，是準確、維修，還是價格？ | skr1outro | — | PLAN | 對觀眾邀請，無新增外部事實 |
+| skr1d20 | 想繼續看日用品如何從做得出來走到交給人用，歡迎訂閱品牌故事。 | skr1outro | — | PLAN | 對觀眾邀請，無新增外部事實 |
+
+145列完整覆蓋；PLAN 66、ATTRIBUTED 71、CONFIRMED 8；未找到或未解來源必修 0。
+兩組完整Stage.imageKey、payoff先製作、cache miss即停、兩端各judge、裁切後同終檔SHA計畫沿R3保留；實圖及actual_same_asset_verified仍未驗/false。

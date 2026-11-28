@@ -1,0 +1,54 @@
+{
+  "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+  "reviewer": "/root/c06_translate_ko_es",
+  "independent": true,
+  "role_disclosure": "wrote EN/JA not PT/ID",
+  "reviewed_at": "2026-10-25T20:32:56.346329+00:00",
+  "scope": "Full independent text comparison of 103 lines, 6 chapters and all metadata in each locale; not actual audio, dub time-fit, SRT or media QA.",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "3d98c3791d0c5c95bdd7468578ba9b4889db8050a5d3837dd3a51fd29d31a8ef",
+      "translation_sha256": "5c233309ae923413a2bf718df358a92c1ab9617187538c9cda973f1f88823e9a",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 103,
+      "checked_chapters": 6,
+      "findings": [
+        {
+          "target": "lines.c09r5079",
+          "required": true,
+          "current": "Ele convenceu outro parceiro a tentar, e escalaram da manhã ao pôr do sol; evitaram os pitons fixos, mas ainda usaram os parabolts já instalados.",
+          "proposed": "Ele convenceu outro parceiro a tentar, e escalaram da manhã ao pôr do sol; evitaram os pitons fixos, mas ainda usaram os pontos de ancoragem com parafusos que já estavam instalados.",
+          "reason": "原文僅稱既有螺栓／bolts，parabolt在巴西通常特指膨脹式錨栓；來源沒有確認1973年這些螺栓的機構類型。改回廣義既有螺栓錨點，並保留避開固定pitons卻仍使用既有bolts的區別；不是要求更換巴西語域。"
+        }
+      ],
+      "advisory": [
+        "其餘巴西葡語用法可接受：entaladores、estribo、enfiada均保留攀登語境，未把nut誤當食物；不因BR／PT詞彙差異要求修改。",
+        "非必修：c09r5051的a peça可明確寫成o piton，以減少與前半entalador的銜接歧義；現在以被省去的錘擊過程仍可理解。",
+        "1973事件／1974發表／1977另一採訪發表已在說明分清；同年秋天的相對年可選擇明寫1973，但未發現實際年份誤譯。"
+      ]
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "14dafe3c55c7d321d437617ed6a052a924facdff6ff46a6a95fa256c43cb5ed1",
+      "translation_sha256": "caa88a8714952926ba6a6e9a23507c4593a1de72a609bdde8ba919f764cf5d68",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 103,
+      "checked_chapters": 6,
+      "findings": [
+        {
+          "target": "lines.c09r5051",
+          "required": true,
+          "current": "Chock tersangkut di celah karena bentuknya dan biasanya bisa dilepas kembali; yang dikurangi adalah proses memukulnya masuk dengan palu, lalu memukulnya lagi untuk melepasnya.",
+          "proposed": "Chock tersangkut di celah karena bentuknya dan biasanya bisa dilepas kembali; yang dikurangi adalah proses memukul piton masuk dengan palu, lalu memukulnya lagi untuk melepasnya.",
+          "reason": "memukulnya的最近先行詞是Chock，會把被省掉的敲入／敲拔過程指向楔塊本身。此處比較的是原先岩釘的錘擊動作，須明示piton，避免將岩釘和可拆楔塊的施作對象混在一起；通常可取回的限制不變。"
+        }
+      ],
+      "advisory": [
+        "pemanjatan bersih與artifisial分開，且保留繩索、其他裝備和既有螺栓，沒有譯成free solo或無繩攀登；mur logam也沒有食物含義。",
+        "非必修：memasuki rute、membuat satu kelompok piton等搭配可再口語化，但目前可理解，沒有造成事實退化，不列必要修正。",
+        "1973事件／1974發表／1977另一採訪發表已在說明分清；同年秋天的相對年可選擇明寫1973，但未發現實際年份誤譯。"
+      ]
+    }
+  ]
+}

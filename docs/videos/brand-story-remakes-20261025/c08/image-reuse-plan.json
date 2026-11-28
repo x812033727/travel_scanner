@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "revision": "c08-r9-teaser-image-plan-v1",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_ACTUAL_MEDIA",
+  "author": "/root/c09_c10_c08_visual_plan",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "generated_images": 0,
+  "actual_same_asset_verified": false,
+  "source_video_sha256": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+      "script.md": "9eca0d479674f3ba233445e3ee0097e4c81a8966e4d5781662d3ff0c031664b0",
+      "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+      "claims.json": "4e1f9be6101febcba15cf44c629ef003b16445b06fa717b6d5fea86e69894cb2"
+    },
+    "claims_md_sha256": "a17373fb3c03f91418308e990d27305d3abcb09afddec20050daa127d35ea328",
+    "series_sha256": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8",
+    "brief_sha256": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1"
+  },
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_available": false,
+    "clip_data_source_is_not_still_alias": true,
+    "same_prompt_is_not_same_final_asset": true,
+    "camera_is_part_of_composed_prompt": true,
+    "per_scene_judge_and_retake_can_change_final_selection": true
+  },
+  "pairs": [
+    {
+      "pair_id": "two-layer-container-exterior-shared-still",
+      "setup_scene_id": "c08r1-01-05",
+      "setup_line_id": "c8r10105",
+      "payoff_scene_id": "c08r1-05-03",
+      "payoff_line_id": "c8r10503",
+      "prompt": "Close-up of anonymous hands holding a plain flexible condiment bottle upright above a small empty dish on a kitchen counter, soft side light.",
+      "camera": "push in",
+      "no_result_drawn_in_teaser": "Only the neutral closed exterior is shown. No cross-section, airflow arrows, shrinking pouch, valve action or oxygen-exclusion result appears in the opening. The body narration supplies the attributed 2011 double-container mechanism.",
+      "source_scope": "K6 2011 announcement remains the source for the two-layer squeeze container and air entering between outer bottle and inner pouch. This anonymous external concept is not a marketed-product cutaway, the separate 500mL soft-film patent prototype, the 1961 glass dispenser or a claim that all later PET variants are one physical bottle.",
+      "source_line_text": "公告說，出去多少醬油，便有相當量的空氣進入外瓶和內袋之間。",
+      "setup_line_text": "但後來，連進入瓶裡的空氣，都成了難題。",
+      "shared_prompt": "Close-up of anonymous hands holding a plain flexible condiment bottle upright above a small empty dish on a kitchen counter, soft side light.",
+      "prompt_sha256": "f0c7ea8e0ab9f6b2d5c31e7f365a018552afa707ad50e148180b91887d8deea3",
+      "cast": "",
+      "prompts_and_cameras_exactly_equal": true,
+      "native_composed_prompt": "Close-up of anonymous hands holding a plain flexible condiment bottle upright above a small empty dish on a kitchen counter, soft side light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+      "native_composed_prompt_sha256": "fb182f5ccbba1b5bc219ec4b6cffcd6b8b8debda8ec9004fedd1852b7d41a880",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "provider": "minimax",
+        "model": "image-01",
+        "look_sha256": "dcc81bf4d80ac76646d231d084615282af4dc2731b663c541e202c5aae2c0b77",
+        "image_selection_version": 1,
+        "nominal_image_size": "1K",
+        "width": 1920,
+        "height": 1080,
+        "seed": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "references": [],
+        "negative": "",
+        "requested_size": null,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "native_stage_image_key": "d26bcab925fcfcd1",
+        "base_key": "e22dc8f9c4219a74",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "planned_generate_once_at": "c08r1-05-03",
+      "planned_reuse_at": "c08r1-01-05",
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    },
+    {
+      "pair_id": "whole-closed-cap-pre-action-shared-still",
+      "setup_scene_id": "c08r1-01-06",
+      "setup_line_id": "c8r10106",
+      "payoff_scene_id": "c08r1-06-21",
+      "payoff_line_id": "c8r10621",
+      "prompt": "Close-up of anonymous fingers poised around the broad closed cap of a plain nearly empty condiment bottle on a kitchen counter, diffuse side light.",
+      "camera": "pan left",
+      "no_result_drawn_in_teaser": "The whole cap is still closed and the fingers are poised before turning it. There is no directional arrow, removed cap, recovered residue or storage result in the opening. The later narration supplies the clockwise removal and the following lines retain refrigeration after breaking the seal.",
+      "source_scope": "Uses the current complete F6 FAQ scope only. It does not turn the current cap-removal option into routine resealing, the 1961 refill bottle, the separate prototype trial or an assertion about an exact commercial cap thread or all product sizes.",
+      "source_line_text": "剩很少時，可以從上方看，往右轉下整座蓋子，取出餘量。",
+      "setup_line_text": "最後一點倒不出來時，整座瓶蓋還藏著一個選擇。",
+      "shared_prompt": "Close-up of anonymous fingers poised around the broad closed cap of a plain nearly empty condiment bottle on a kitchen counter, diffuse side light.",
+      "prompt_sha256": "c81c7f91f4ca6b62c8ebc68b71513bfb21d8f17577b61d2f69a4e05219b7e891",
+      "cast": "",
+      "prompts_and_cameras_exactly_equal": true,
+      "native_composed_prompt": "Close-up of anonymous fingers poised around the broad closed cap of a plain nearly empty condiment bottle on a kitchen counter, diffuse side light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+      "native_composed_prompt_sha256": "7a7d963da7c6a7be2bf4540007f9e5a2a1f4cda17b13e64e62b62087f5d301c9",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "provider": "minimax",
+        "model": "image-01",
+        "look_sha256": "dcc81bf4d80ac76646d231d084615282af4dc2731b663c541e202c5aae2c0b77",
+        "image_selection_version": 1,
+        "nominal_image_size": "1K",
+        "width": 1920,
+        "height": 1080,
+        "seed": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "references": [],
+        "negative": "",
+        "requested_size": null,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "native_stage_image_key": "8bdeb22963c21274",
+        "base_key": "54850f57d21c611b",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "planned_generate_once_at": "c08r1-06-21",
+      "planned_reuse_at": "c08r1-01-06",
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "production_preconditions": [
+    "Normal reviewed budget account and activation, current script approval, actual measured speech and other ordinary gates must be satisfied first.",
+    "Read current live provider/model/dimensions/reference hashes/image-selection version; declared local key examples are not live provider readiness or a quote.",
+    "Generate and accept the payoff scene once via the ordinary keyframes --shot PAYOFF --takes 1 route.",
+    "Before executing any teaser command, compute the exact current request key and inspect the ordinary live cache record plus the real stored file SHA. Cache must already contain the accepted payoff bytes. A cache miss, missing/unreadable file, hash mismatch, request difference or selection change stops the pair before a second dispatch; never use a request as a cache probe.",
+    "Only after that read-only live cache proof, use ordinary keyframes --shot SETUP --takes 1 with the exact same request inputs. Both scene contexts still require their own real judge acceptance.",
+    "Do not independently retake a teaser or change its seed. If either context fails, stop and reconcile/review the pair together under the ordinary guarded workflow.",
+    "After any subtitle-band trim or other derivative, compare actual final manifest assignments and bytes: teaser and payoff must use the same accepted file SHA. If not, stop before render.",
+    "Decode actual final assembly and verify both positions use that same accepted still, with no duplicate teaser purchase on the ledger."
+  ],
+  "planned_cli_pairs": [
+    {
+      "payoff": "keyframes --shot c08r1-05-03 --takes 1",
+      "read_only_live_cache_check_required_before_teaser": true,
+      "teaser": "keyframes --shot c08r1-01-05 --takes 1"
+    },
+    {
+      "payoff": "keyframes --shot c08r1-06-21 --takes 1",
+      "read_only_live_cache_check_required_before_teaser": true,
+      "teaser": "keyframes --shot c08r1-01-06 --takes 1"
+    }
+  ],
+  "pending_actual_checks": {
+    "all_media_files_exist": false,
+    "live_cache_file_hash_verified": false,
+    "both_scene_judges_passed": false,
+    "final_manifest_same_sha_verified": false,
+    "assembled_same_image_verified": false,
+    "no_duplicate_purchase_verified": false
+  },
+  "paid_requests": 0,
+  "backend_calls": 0,
+  "git_actions": 0
+}

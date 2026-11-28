@@ -1,0 +1,392 @@
+{
+  "schema_version": 1,
+  "revision": "c08-r9-teaser-image-plan-v1",
+  "author": "/root/c09_c10_c08_visual_plan",
+  "status": "VISUAL_ONLY_AUTHOR_FREEZE_PENDING_INDEPENDENT_SOURCE_AND_RUNTIME_ADOPTION",
+  "baseline_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+  "current_core_four_sha256": {
+    "video.json": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+    "script.md": "9eca0d479674f3ba233445e3ee0097e4c81a8966e4d5781662d3ff0c031664b0",
+    "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+    "claims.json": "4e1f9be6101febcba15cf44c629ef003b16445b06fa717b6d5fea86e69894cb2"
+  },
+  "image_reuse_plan_sha256": "36cdea235ef25e38406419566de9563b25fcd60df037300aa8b3b0a557358691",
+  "baseline_snapshot_manifest_sha256": "1b16f5bf26dc07478437e53572e7227042018e84ceda01ccc541dae5957a8858",
+  "changed_scene_ids": [
+    "c08r1-01-05",
+    "c08r1-05-03",
+    "c08r1-01-06",
+    "c08r1-06-21"
+  ],
+  "only_scene_prompt_camera_changed": true,
+  "all_narration_scene_ids_scene_order_chapters_emotions_and_loops_unchanged": true,
+  "all_claim_narration_source_evidence_material_refs_limits_and_order_unchanged": true,
+  "retained_whole_claim_objects": 123,
+  "author_script_and_claims_md_original_prefix_bytes_unchanged": true,
+  "deterministic_builder_sha256": "889153d3b0e0f63b7fb61011f3281f8a7fc00440a22c14a0ab18b40df2fdb517",
+  "visual_spec_sha256": "b72c22dfb0c749e6279e4068673f8df25ddc54a90314b37662a270204312df94",
+  "official_canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+  "official_canonical_script_bytes_identical": true,
+  "narrative_hash_identical": true,
+  "native_narrative_receipts_retain_exact_binding": [
+    {
+      "path": "history/before-teaser-image-plan/reviews/narrative-r9.json",
+      "sha256": "ac5270f0913788524f60201104bcb7cad070efa95e67758c67f8649c43d8a9fb",
+      "passed": true,
+      "exact_native_hash_binding_unchanged": true
+    }
+  ],
+  "hashes": {
+    "narrativeHash": {
+      "before": "c58505459ec6936a",
+      "after": "c58505459ec6936a",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "31ce2523087b9bc8",
+      "after": "31ce2523087b9bc8",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "c0c2d825694e32e6",
+      "after": "a7ab63a52e59d075",
+      "equal": false
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "before": "4b23ded6e41b1e87",
+      "after": "4b23ded6e41b1e87",
+      "equal": true
+    }
+  },
+  "narration_only_bytes_unchanged": true,
+  "all_localized_files_unchanged": 62,
+  "protected_files_sha256": {
+    "README.md": "59b955d5b0e06c73a1ee03e1832a50cc62fc64b25f4abb926b54695ef51fd145",
+    "backend-language-choice.json": "7aa274348f69d524c6951f2ee37fa06e8897cfa3dbc6040394c483adcc856d29",
+    "backend-script-receipt.json": "67166ece0eb0339269a7199d6c5c0f1f42c49ec289153e8af3a34a4892f4e7be",
+    "backend-script.md": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+    "backend-status.json": "02c4cca5b6e16cd04e3104f6c4e5770f86a9b366ee2d41f7ef7a01b06d22482f",
+    "brief.md": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+    "i18n/README.md": "9da5db54ea1100f6a20d99df72ac717c22923ade745521753084f5d0b413a554",
+    "i18n/en.json": "4406b85e963297e1b2650bdc8b4bb00804f29c433cfaa81583e1e93bae2bc2ac",
+    "i18n/es.json": "b74e48b27943a5b52b4332a837871eed8411e24dcab5bc816f09cf29cf3736e7",
+    "i18n/history/r9-initial/first-merge-six.log": "64f2af2ddbc7ba02e744282edb42d11802738a84b6a7cc3064b9a3ef186acc90",
+    "i18n/history/r9-initial/latin-description-fix/author-receipt.json": "36a3a76207ff80a98f52842bae9b43846ccda5a3bd3c3faf9b2b092538c689f3",
+    "i18n/history/r9-initial/latin-description-fix/before/en.todo.json": "f5b5347a8071c61dc9a087b28bfbb5f7d8f8c4f74ce6ccbb2dd4352d3b4deeea",
+    "i18n/history/r9-initial/latin-description-fix/before/es.todo.json": "cdb535e1cfd7e078f3916d07d3e1fc22ab814b300db38822b79c3a6c805fe4b3",
+    "i18n/history/r9-initial/latin-description-fix/before/id.todo.json": "764368343f13b769ed90e015911d033ef3f1140b0e2c300f60ea6097edfa2e63",
+    "i18n/history/r9-initial/latin-description-fix/before/pt.todo.json": "ff9f951b0dda35fd831a09f32ad1a68ac299bdff1f89d52a54286ea2c711ddfb",
+    "i18n/history/r9-initial/merge-eight-after-latin-description-fix.log": "4bd4b0eb58572a33cc8f6ee01e1250a3f86ea3c5a0603355027a8cfb13f91122",
+    "i18n/history/r9-initial/merge-six-after-name-fix.log": "de006a46654d5041a7ba9964891f5d27311c8781379d4a65982179b8f78e2dc4",
+    "i18n/history/r9-initial/root-name-script-fix/before/en.todo.json": "06dac3aca9700f829914fba94810b0ce84bf2d3572b837a625bfa50961206dfd",
+    "i18n/history/r9-initial/root-name-script-fix/before/es.todo.json": "3185e4513d6443bfb35f24fa3cbf370b074f09952d1375b37951a094da3552ca",
+    "i18n/history/r9-initial/root-name-script-fix/before/id.todo.json": "1c0b505632302c6705556ad84a876bed6fbb6ab4d8186a803893abf2d77d3192",
+    "i18n/history/r9-initial/root-name-script-fix/before/pt.todo.json": "71d80581fff5e0e45f211587503a55c28169b8844d903dfec254756dd8e6c719",
+    "i18n/history/r9-initial/root-name-script-fix/receipt.json": "bcdfe894c5189b0a20a322ed1cc7c70a023b6125c1864bbe361899856404d8bc",
+    "i18n/history/r9-initial/th-description-length-fix/before.native.json": "d3dab4ea5c74c4228ab78954cbdbd22feb3707ca4d0078dc9bdcfafd3dcafaa4",
+    "i18n/history/r9-initial/th-description-length-fix/before.sha256": "b8c5e1747db4be47b8259591065b24c88c7fbf10b7af21ea3e312322f0a10a12",
+    "i18n/history/r9-initial/th-description-length-fix/before.todo.json": "315a32dacc5273dc77df3915a17ba55ae8645a7ae01e3c5b7249e8d93111e972",
+    "i18n/history/r9-initial/th-description-length-fix/native-lint-after.json": "536e39c414e00824ae7507a15e7b5974bf547708f024c72c9c12dedc352cc06e",
+    "i18n/history/r9-initial/th-description-length-fix/receipt.json": "ba3e4afcc854a6bfe0d902b00cbce009c6f88a7f3e8cb85e15ae5b8c143855fd",
+    "i18n/history/r9-initial/th-description-length-fix/review-vi-th-before.json": "f1930883a45efb2140d0c65bf1c18a4dd39a1e62753af380f057c7372e7a7de0",
+    "i18n/history/r9-initial/translation-source-sheets/en.json": "19072135edb3c936aaf7d18e2682f684e91f094b4398843f32c2e9824fa5a1c9",
+    "i18n/history/r9-initial/translation-source-sheets/es.json": "cbd38810380c415939ae032535a2c8c167c5a8c8c4232e1e6d1954a68cff1c3b",
+    "i18n/history/r9-initial/translation-source-sheets/id.json": "b6d844ad3f0c9e870ad188c8b81f0c3a07b5da77e3288fa0f9ed08f4340a378a",
+    "i18n/history/r9-initial/translation-source-sheets/ja.json": "e10f4b6471300484c0d5d62fc83d53e4fb23a9c11dc1c1719ffa35699e26c161",
+    "i18n/history/r9-initial/translation-source-sheets/ko.json": "412ea4ca2ba23c7cbebfb7b97a87d82c3e620df662d542bd9f690daa10810442",
+    "i18n/history/r9-initial/translation-source-sheets/pt.json": "bbf8258586171b9668efe64eb4cd56eaca6c67ed43fa372f73d92ccc64259a1b",
+    "i18n/history/r9-initial/translation-source-sheets/th.json": "9f3e128d4348808a3b5d35b9a382b0657eceb01f7083ef31ff9eb8daa15a81a8",
+    "i18n/history/r9-initial/translation-source-sheets/vi.json": "9d190ebf968d359d4de5bf179a5a56528c9e78f48d0a0f0e6cbc0abb3926ec67",
+    "i18n/id.json": "062569f92771f3ce851b0a7d061cef85c7993c625f985f29d4f6febfa5974c47",
+    "i18n/ja.json": "34f52e5435dff1883d77fdf3b2253f11ce26ca0a217d2f13322304055c51092f",
+    "i18n/ko.json": "d058c249cd1b67d4157c9196fb1bafea14861f1c232204de532eed31c37cff74",
+    "i18n/preparation-status.json": "29759dc131839e9c90461afd341079a03354ff676a774878097042f0d49ecc6b",
+    "i18n/pt.json": "a53d934b50cd4000618d751b4b73076b984bb4af1c161c8225df2f4ea0d0aa90",
+    "i18n/reviews/r9/author-en-ja.json": "958aca54bbc9c27fd3f5810f58f84a028bb8654ef7ac4e770e9381005e9b4d9e",
+    "i18n/reviews/r9/author-ko-es.json": "e7f86efbba6b16efc54983ab1617cc1f093c15671074f1e3b4f2a9484665ab65",
+    "i18n/reviews/r9/author-pt-id.json": "6fedb37ee2c8c6889b7e908132e11b2062a9d7777880f9058d5bc66b8c0f65d0",
+    "i18n/reviews/r9/author-vi-th.json": "881c1c6708f3d6d26f04e31501098ca25cda38f3fc68769934d242ba0696b2f1",
+    "i18n/reviews/r9/native-merge-en.json": "a849acf7cda95b98905a6bbe1b3d67810aa6ed3c51ff3230d7ea06a8861a744b",
+    "i18n/reviews/r9/native-merge-es.json": "ce41fef57ae696aa638acfcd50112e0453956f777bf161242491a2246cd8183b",
+    "i18n/reviews/r9/native-merge-id.json": "c3fcdaf0a18d6006639e6799c663284f751d48402eb5eda8e4114964e8f85da3",
+    "i18n/reviews/r9/native-merge-ja.json": "96fe24f0db7bad8b03b11000153948b25668b9547adc35827b226dca6bc81bd3",
+    "i18n/reviews/r9/native-merge-ko.json": "252e6b4e0989013591691ed3766408d92de288442cd3aa7b6fa348c184e81111",
+    "i18n/reviews/r9/native-merge-pt.json": "f0f975ee28f2d135d7327947956f3b629e7e19529a618b148a68ac6eb3988867",
+    "i18n/reviews/r9/native-merge-th.json": "9f0178f881133d5d2c3a9d41b2188413b7f861f2c885552e121d134ee3fc7714",
+    "i18n/reviews/r9/native-merge-vi.json": "5d44ec4e56511c7a151bf53a9478cbbb248461fbd6e98c0a24e37622e80bdb1a",
+    "i18n/reviews/r9/review-en-ja.json": "ea24febc7099d05d29dcb74a2be0c948b2ab5f037cadbd9da4c0bb0e76644291",
+    "i18n/reviews/r9/review-ko-es.json": "fa6bd78b639f7664855bd648b7db1618a9090394216ecdaca4c41aa30367ff4b",
+    "i18n/reviews/r9/review-pt-id.json": "1a11ac14143384fba2bd65874335cf1c6f7993ca60770e28bc1352f253f98cfb",
+    "i18n/reviews/r9/review-vi-th.json": "881086549fa52dcebaf3b33f33938cbc9cfd84f4b8436484a25aa3cbcc6e3cf9",
+    "i18n/runtime-rehearsal.json": "d96bf2e37d976486922628250e00179497d9b417efeca5efb0649290bd67cf00",
+    "i18n/th.json": "40d37d78e6dcce3bdcb552d42808ad29ac7fdec18915104e7b6e2f2bfd54a60f",
+    "i18n/vi.json": "87a3c10ecc58b3d6ecbe1104ae15f5dae8deb9938b84d62b0733cd5728aa43db",
+    "i18n/worksheets/en.json": "ec04c4b390349956c5a437861fac10846f908bb4f4a25c01cd2e01d23c92f83d",
+    "i18n/worksheets/es.json": "9db09ef5c15e0914f8cf3969e1514242601b89226b5d1a60ec9352d16f8dc8aa",
+    "i18n/worksheets/id.json": "c45aba51d7dc3fa9aa0065c3609df425ebed46d166b5c9f4e335ecd286078300",
+    "i18n/worksheets/ja.json": "9dd45d3d715991fdb14c52d6f25985fee5f309b41f5159ace75430e699d2435b",
+    "i18n/worksheets/ko.json": "db50f65b8699c688665e21943a93acb73978fd6039dc6aad2db0642438ac6fb6",
+    "i18n/worksheets/pt.json": "ab38b82ad63ee1f4985f6495f1fb6be4117a106054af3ef8e62087f8db63f8ba",
+    "i18n/worksheets/th.json": "631e5fdbe51c25822b0c81364b70c5fdb59e2cf31c51a896c820182a4cb9d614",
+    "i18n/worksheets/vi.json": "d8b0d0eb8258ff12af0f84916305f48f2ae86ac4ecba75682f9d2e8aa30cf27c",
+    "keyframes-dry-run.txt": "c9572d0f5d53f0085c0c094dd0fd5acb09498ed98db0920ce0731767beb462a9",
+    "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+    "native-initialized-lint.json": "16821db0bb5c6cf82b2ff1782f5f756a313fe6261f0a25342bcebd2e00dc354b",
+    "outline-push-r9.txt": "99000a76d8fb39dd64c44b76c8fe5eb672f52f7e109915efa3e5c67cdbb32892",
+    "preflight-inputs.json": "6de0c3edf46c6fa4545b695af86cf4e27ff1bcbcb8d0753eb1a1de87dbd6b843",
+    "production-entry.md": "719b944d74720dc74264e93b5dd03219ecde438c18255d260942028f77761a2b",
+    "progress.md": "5573e1cbc3ac553b791c0210d5afa60c620ff5f9df98d0c563b638e7bc6079ff",
+    "protected-admin-settings.json": "66501865e0bef4ce5cbef43fea17872c2a24e7a4a88c2701e0711239ab4e97ca",
+    "r6-materials.json": "2faa26b478c368cf843bf56d7eecdb0f5d48008384b3fe53967065eb5d6f9376",
+    "r7-edits.json": "66e5f315b93cd7b99a676bf8111d1b8af6b8d51d37e78d3a11d6d83805e4d399",
+    "r8-edits.json": "08235e65c7ffcefc45fa0553f497233956fb9888dc23f57254c002d9f489bd4a",
+    "r9-edits.json": "3fdee2885a3808fe6db0512cc710523dc421349a7153e8d17f5132d0ece3fa63",
+    "research-expansion/claims.json": "e51b59d2b54e53fce834853963c89f762b2ca0653ae53f2fc6cd1dd32fa299ff",
+    "research-expansion/research.md": "5b90d34f0c6733c0f9cacda16f1dd5be77092309208723db90cd2e331efe6610",
+    "research-expansion/source-receipts.json": "867f5a58592a5350beacf0adebe92b980993eeb096e84afa0e16c8f23a701bc5",
+    "research-original-patents.json": "2ed544c6ed699724c8b6cc26099433a8f6df38f8acc884e82861eca61e18951c",
+    "research-original-patents.md": "fa8aca895af38633b1d007cec176319ca1257c236abbce322b6d85b13912753e",
+    "research-original.claims.json": "098d17da9a77136bfe3e3d2dafe5aa19d11c087c7203686ecd7f4e87906e7795",
+    "research-original.md": "632c82616fa87591482902731c7079288625160b5dd693a5c21893e9b5531ae3",
+    "research-preservation.json": "86beb0a5259ee374092a1e3295187f8a6bbf7d43d271abb19e04edad9b50cd73",
+    "reviews/canonical-lint-r9.json": "f8331a014eb557c53f9dc7c9a57bc91780bd5f30474381d2d617c773fdc37a18",
+    "reviews/narrative-r1-a.raw.json": "49a80d6b233485be2f3767de461e3b3d75bd597aee082bfdefcf5fcef511fd25",
+    "reviews/narrative-r1-b.raw.json": "1ad2a2fc2d770b0156e79cfccf4c3c0db1c575237e9fc3a7c1a35ba8479c3bfc",
+    "reviews/narrative-r1-binding.json": "b206e6b5584a42cbbbeb2f08ecf91e0fec0f2085fa21ff6f59e617f77443eb2a",
+    "reviews/narrative-r1-input.json": "2b6014f85cbed7e4698365ac78f455b54b8476ea70d16d5d70dcd27f44ed8a18",
+    "reviews/narrative-r1.json": "e2089d4b73e7d5bd6346183d7ad5f448a8ea6db176170c6034cd474a40acf4aa",
+    "reviews/narrative-r2-a.raw.json": "619fee3e2b1b143a54d0d1ab931d3242f4c22f11c093f4bea1017734c31ed0fd",
+    "reviews/narrative-r2-b.raw.json": "8f9cd597b26486672f9bcecb5184dacc13b7b9ebf4d2fe7785d2cc2640369fd4",
+    "reviews/narrative-r2-binding.json": "1fb3cb11144d9f56f1c8f589c6900be685e13d14f01f8b82492062e74e13f79a",
+    "reviews/narrative-r2-input.json": "adb0423319f08fc75340d10cc4cbc33509a771540e302143d1df7ab5da40c066",
+    "reviews/narrative-r2.json": "6b3895a8ae4e384844183ed0820bc1afef0318a91ef544ca404e049e28af709b",
+    "reviews/narrative-r3-a.raw.json": "a580687801472fd5e57078fb672ecfad593b4e91a889a6c9ac2d340db772f44a",
+    "reviews/narrative-r3-b.raw.json": "4684b43114a973e2c502f84b182b3d7712123d80a5048e62b847882719a1cb8b",
+    "reviews/narrative-r3-binding.json": "0cd28658046f9a7c6b74b324a111cecd4185cc27749a4db4e7b03251aa55c890",
+    "reviews/narrative-r3-input.json": "c66e7a5393a4aea3ab94ea425e112fd0835566a365037ec26fb6056536881c31",
+    "reviews/narrative-r3.json": "4958d3fbfdc6fe1dc96d26530af80c471d3cccaba7d6d3d8d2a9d48b9f794ac3",
+    "reviews/narrative-r4-a.raw.json": "8a516b4f6a2cdfb7d3daaf8c5a54a63c1cf28aadc92e8250e6e676416eec655f",
+    "reviews/narrative-r4-b.raw.json": "c854e43b18fccc9cd9b4882a6bca884aaf0ad92a561a98bd54d919a6f409713e",
+    "reviews/narrative-r4-binding.json": "fe44ce81a7d43c2ec14282f8dbffde1105fb51efc5324e18299b3929271210e9",
+    "reviews/narrative-r4-input.json": "978956721cb5d3abed0bd796a21903032e824e3b3186ee1bb189ba9f64a71f2f",
+    "reviews/narrative-r4.json": "66f1899e00b171503a2f85a0c359217ae133257f98fdd4d7428a2b39bafebb7e",
+    "reviews/narrative-r5-a.raw.json": "ba73438605bb8b7c23084858a0393dcdc7d4998ef610ddea373d0cfe4ee89712",
+    "reviews/narrative-r5-b.raw.json": "bbe225d06697598c9d4f9ea5ae178a3349eac0a8e0f0e6b57a873026b94f3947",
+    "reviews/narrative-r5-binding.json": "f74a93a5c10d86354609e756eb05174367c2a7a60e0b1eff10708200aacd6f11",
+    "reviews/narrative-r5-input.json": "33a95894f0bf88390525dbfa68b70c17ed6c325d72f8eb28e7272f5bd61e0716",
+    "reviews/narrative-r5.json": "1a8d6df1ea22c3d69d13975d918ce4b30a2f59e9123c8aaf50c7c05d140d1b17",
+    "reviews/narrative-r6-a.raw.json": "2a6102dbf29120fe3616006ed027b99c527135eaac95d2f6d8034eae4b3d5af3",
+    "reviews/narrative-r6-b.raw.json": "e40e9742330332f8c554d76396fbde209eb220d513cab1d6477fb212cf1fe876",
+    "reviews/narrative-r6-binding.json": "6972c0848e001c9b1dfb70d2c4092723fcda084f5decdeb9a727889e409a86db",
+    "reviews/narrative-r6-input.json": "cee129a5c8014f6ee73157d2afe6ed853907cf01d3a2450291310f8c978797b6",
+    "reviews/narrative-r6.json": "3ee27b8f1801f26716263cd4c2c88c8a6789eefd8b920d02d139d256112c8e0b",
+    "reviews/narrative-r7-a.raw.json": "d57f84649b1edd47061cb0ded5c3b911acb1ffd5eb34745351796bdd4ee69924",
+    "reviews/narrative-r7-b.raw.json": "f94e53d161717f90b4aeda149a31980bb0cb76cfebc908b38c900cb0a70b479b",
+    "reviews/narrative-r7-binding.json": "b25356b69676ad5d04123a025913633c4f9b3ea2dc016a155866d69fc47398fe",
+    "reviews/narrative-r7-input.json": "004d6aed5461a355e800a12f65d6fa18f277743412063bd06ec2c26a96c25ace",
+    "reviews/narrative-r7.json": "a52a5c3f3a2a58f16fcac66d49e3762fb7f894425935c5c29f0957f3fd10bcd7",
+    "reviews/narrative-r8-a.raw.json": "0815f3e4a7acd0b68fe090656b02893161129d6f28948f03db495ce991cd98a8",
+    "reviews/narrative-r8-b.raw.json": "584591028ca7c25bdb8cecbb24ed640c51d078eba60e2eb0f67793dfcd6dba2f",
+    "reviews/narrative-r8-binding.json": "ae192d17586cef07aa9355bc5c930ca5303b080ebf75ebf5f6236dd552028500",
+    "reviews/narrative-r8-input.json": "7c554fd6d91d28030b0013119e913186247df484d5891bb7518e2e5138c870f6",
+    "reviews/narrative-r8.json": "d52d3c4b4f2d521496c865eaa0f9c83a14cddfb9f2b5f4e3616993699c037dc2",
+    "reviews/narrative-r9-a.raw.json": "1812fa390ddcbc68e0e1d9796d91fb7e3edd54c53281904d5f6d8252eefe44cd",
+    "reviews/narrative-r9-b.raw.json": "8cd17634485fc6db1460fd83eef254d1baee680d1f578c8cccf00b73c32a2714",
+    "reviews/narrative-r9-binding.json": "c8c2a9a729d036ad436ecc9b6fef1d51b89afc9f5baaff9d3af8c71c920c553f",
+    "reviews/narrative-r9-input.json": "11c299683233182a1e2b5e822d8e58d6b99f674d9a29850667dd41c4d2cb474d",
+    "reviews/narrative-r9.json": "ac5270f0913788524f60201104bcb7cad070efa95e67758c67f8649c43d8a9fb",
+    "reviews/source-r1-independent.json": "eb7b8b1b1841da7cda3fa0ef6d0d595a91103691b89d99b1ccbca0149a09545b",
+    "reviews/source-r2-independent.json": "d7b5f4eec2af35e3972a450b7ad6228fa2f1c70e3311e00778239eb4a2db0e89",
+    "reviews/source-r3-independent.json": "d26d0bfbcf257222ff489f0f6138f7233ea5b6142fce527172ae4b447f346020",
+    "reviews/source-r4-independent.json": "ef3a89dfa7dec6042f17703c412de1076af93b5e856d8e6bc2e1052976abd4ec",
+    "reviews/source-r5-independent.json": "cb714012156f4ca1691c80b63a563e5639392ecde9f8d947711c393847906f0c",
+    "reviews/source-r6-independent.json": "9ed19a4ff8bbe57615db49568cc6cb16afdfd22e6640eeb85c51d43022a0c5ad",
+    "reviews/source-r7-independent.json": "5985b52cfd34aea516a6a4a49d35d463a2580eebc40aee8e1cf20ef05f9c374d",
+    "reviews/source-r8-independent.json": "5639f949f9b6bc580672f54ab586409f48076602adf7ff17b443880b48f9bd37",
+    "reviews/source-r9-independent.json": "e67034811ba22f341e1c350c2e46ce92bc4967b264a06923c9f5dae7724ab0a2",
+    "runtime-lint-r5.json": "eb1c2d803af3c5671cb71de80787e0408bf20008a5c1df58d1dbae1f611c3da2",
+    "script-push-r9.txt": "76eb65acdbecb4d410557d579e8ad8f7b8c51343f303f7de4aeca0d6a68b3dd8",
+    "series.json": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8",
+    "tts-dry-run.txt": "cf6802cd577343de8c88d1ad70c023d5b6f9c21381b2451c3aa0ab1e57689405",
+    "variants/clean-master/README.md": "9e2488228de84abce90efde27dea88b0fd10a83f481d54e997b40bbb65f0a10b",
+    "variants/clean-master/derivation.json": "b8c30fde25ee0e24fab8c7f2ee7f98449d2297f39649fdd5729123dfd5df66f5",
+    "variants/clean-master/lint.json": "f62691d2d09fc3a14e9d30d003ed74ecda9be2429d7eea760668cc337f004e67",
+    "variants/clean-master/review.json": "bf09d2c3a1a00acbfe093d247c9f5c139765243cba39fd6aa88d8bd69dee353c",
+    "variants/clean-master/video.json": "d023e1ba573e1ef3cd3e5dbe174fb60ece74cb1f0aa84c9f2e8258c5f4dff753"
+  },
+  "protected_file_count": 152,
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"kitchen\" is in 60 of 124 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"bottle\" is in 51 of 124 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"adult\" is in 50 of 124 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[43] (c08r1-04-02)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "about 14.2 minutes; the target is 12-14"
+      },
+      {
+        "path": "youtube/en",
+        "message": "en.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/ja",
+        "message": "ja.title: 37 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/ko",
+        "message": "ko.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/es",
+        "message": "es.title: 42 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/pt",
+        "message": "pt.title: 48.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/id",
+        "message": "id.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/vi",
+        "message": "vi.title: 40 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "summary": {
+      "minutes": 14.155,
+      "lines": 127,
+      "spoken_units": 3005,
+      "billable_characters": 10171,
+      "chapters": [
+        "00:00 倒完後，手還不能收回去",
+        "00:49 大瓶先讓出了餐桌",
+        "02:24 嘴尖收住了，瓶口還得打開",
+        "04:20 保鮮袋碰到了放手的問題",
+        "06:34 空氣改走了外面那一層",
+        "11:32 最後一點，換了保存方式"
+      ]
+    }
+  },
+  "lint_scope": "Pure in-memory new document with the existing actual immutable runtime dictionary/context; no runtime file was changed.",
+  "runtime_doc_stays_on_baseline": true,
+  "current_source_verify_removed_and_archived": true,
+  "independent_source_review": "PENDING",
+  "independent_visual_review": "PENDING",
+  "owner_approval_created": false,
+  "actual_audio_seconds": null,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "backend_calls": 0,
+  "runtime_mutations": 0,
+  "media_mutations": 0,
+  "git_actions": 0,
+  "eight_locale_current_bytes_sha256": {
+    "en": {
+      "before_sha256": "4406b85e963297e1b2650bdc8b4bb00804f29c433cfaa81583e1e93bae2bc2ac",
+      "after_sha256": "4406b85e963297e1b2650bdc8b4bb00804f29c433cfaa81583e1e93bae2bc2ac",
+      "runtime_native_sha256": "4406b85e963297e1b2650bdc8b4bb00804f29c433cfaa81583e1e93bae2bc2ac",
+      "bytes_identical": true
+    },
+    "ja": {
+      "before_sha256": "34f52e5435dff1883d77fdf3b2253f11ce26ca0a217d2f13322304055c51092f",
+      "after_sha256": "34f52e5435dff1883d77fdf3b2253f11ce26ca0a217d2f13322304055c51092f",
+      "runtime_native_sha256": "34f52e5435dff1883d77fdf3b2253f11ce26ca0a217d2f13322304055c51092f",
+      "bytes_identical": true
+    },
+    "ko": {
+      "before_sha256": "d058c249cd1b67d4157c9196fb1bafea14861f1c232204de532eed31c37cff74",
+      "after_sha256": "d058c249cd1b67d4157c9196fb1bafea14861f1c232204de532eed31c37cff74",
+      "runtime_native_sha256": "d058c249cd1b67d4157c9196fb1bafea14861f1c232204de532eed31c37cff74",
+      "bytes_identical": true
+    },
+    "es": {
+      "before_sha256": "b74e48b27943a5b52b4332a837871eed8411e24dcab5bc816f09cf29cf3736e7",
+      "after_sha256": "b74e48b27943a5b52b4332a837871eed8411e24dcab5bc816f09cf29cf3736e7",
+      "runtime_native_sha256": "b74e48b27943a5b52b4332a837871eed8411e24dcab5bc816f09cf29cf3736e7",
+      "bytes_identical": true
+    },
+    "pt": {
+      "before_sha256": "a53d934b50cd4000618d751b4b73076b984bb4af1c161c8225df2f4ea0d0aa90",
+      "after_sha256": "a53d934b50cd4000618d751b4b73076b984bb4af1c161c8225df2f4ea0d0aa90",
+      "runtime_native_sha256": "a53d934b50cd4000618d751b4b73076b984bb4af1c161c8225df2f4ea0d0aa90",
+      "bytes_identical": true
+    },
+    "id": {
+      "before_sha256": "062569f92771f3ce851b0a7d061cef85c7993c625f985f29d4f6febfa5974c47",
+      "after_sha256": "062569f92771f3ce851b0a7d061cef85c7993c625f985f29d4f6febfa5974c47",
+      "runtime_native_sha256": "062569f92771f3ce851b0a7d061cef85c7993c625f985f29d4f6febfa5974c47",
+      "bytes_identical": true
+    },
+    "vi": {
+      "before_sha256": "87a3c10ecc58b3d6ecbe1104ae15f5dae8deb9938b84d62b0733cd5728aa43db",
+      "after_sha256": "87a3c10ecc58b3d6ecbe1104ae15f5dae8deb9938b84d62b0733cd5728aa43db",
+      "runtime_native_sha256": "87a3c10ecc58b3d6ecbe1104ae15f5dae8deb9938b84d62b0733cd5728aa43db",
+      "bytes_identical": true
+    },
+    "th": {
+      "before_sha256": "40d37d78e6dcce3bdcb552d42808ad29ac7fdec18915104e7b6e2f2bfd54a60f",
+      "after_sha256": "40d37d78e6dcce3bdcb552d42808ad29ac7fdec18915104e7b6e2f2bfd54a60f",
+      "runtime_native_sha256": "40d37d78e6dcce3bdcb552d42808ad29ac7fdec18915104e7b6e2f2bfd54a60f",
+      "bytes_identical": true
+    }
+  },
+  "protected_research_and_readme_sha256": {
+    "research-original.claims.json": {
+      "expected_sha256": "098d17da9a77136bfe3e3d2dafe5aa19d11c087c7203686ecd7f4e87906e7795",
+      "actual_sha256": "098d17da9a77136bfe3e3d2dafe5aa19d11c087c7203686ecd7f4e87906e7795",
+      "bytes_identical": true
+    },
+    "research-original-patents.json": {
+      "expected_sha256": "2ed544c6ed699724c8b6cc26099433a8f6df38f8acc884e82861eca61e18951c",
+      "actual_sha256": "2ed544c6ed699724c8b6cc26099433a8f6df38f8acc884e82861eca61e18951c",
+      "bytes_identical": true
+    },
+    "research-preservation.json": {
+      "expected_sha256": "86beb0a5259ee374092a1e3295187f8a6bbf7d43d271abb19e04edad9b50cd73",
+      "actual_sha256": "86beb0a5259ee374092a1e3295187f8a6bbf7d43d271abb19e04edad9b50cd73",
+      "bytes_identical": true
+    },
+    "research-original-patents.md": {
+      "expected_sha256": "fa8aca895af38633b1d007cec176319ca1257c236abbce322b6d85b13912753e",
+      "actual_sha256": "fa8aca895af38633b1d007cec176319ca1257c236abbce322b6d85b13912753e",
+      "bytes_identical": true
+    },
+    "research-original.md": {
+      "expected_sha256": "632c82616fa87591482902731c7079288625160b5dd693a5c21893e9b5531ae3",
+      "actual_sha256": "632c82616fa87591482902731c7079288625160b5dd693a5c21893e9b5531ae3",
+      "bytes_identical": true
+    },
+    "README.md": {
+      "expected_sha256": "59b955d5b0e06c73a1ee03e1832a50cc62fc64b25f4abb926b54695ef51fd145",
+      "actual_sha256": "59b955d5b0e06c73a1ee03e1832a50cc62fc64b25f4abb926b54695ef51fd145",
+      "bytes_identical": true
+    }
+  },
+  "language_source_file_sha_rebind_status": "Pending root-controlled source rebind. All original semantic review receipts, preparation-status and localized/native bytes remain untouched.",
+  "localized_stale_or_missing_warnings": 0
+}

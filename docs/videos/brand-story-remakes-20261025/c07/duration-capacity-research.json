@@ -1,0 +1,1104 @@
+{
+  "schema_version": 1,
+  "episode": "C07",
+  "state": "RESEARCH_COMPLETE_CAPACITY_INSUFFICIENT_FOR_REQUESTED_SAME_LINE_INCREMENT",
+  "prepared_at": "2026-10-26T03:11:46.809982+00:00",
+  "research_only": true,
+  "source_video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+  "current_revision": "R10",
+  "baseline": {
+    "native_eachLine_count": 84,
+    "whole_spoken_units": 2123,
+    "includes": [
+      "coldopen",
+      "voiced CTA"
+    ],
+    "excludes": [
+      "added 5-second intro",
+      "added 21-second outro"
+    ],
+    "natural_rate_planning_units_per_second": [
+      4,
+      5
+    ],
+    "estimated_spoken_seconds_at_5": 424.6,
+    "estimated_spoken_seconds_at_4": 530.75,
+    "actual_tts_seconds": null,
+    "actual_duration_status": "NOT_MEASURED_NOT_ACTUAL_FAIL",
+    "target_body_seconds": [
+      720,
+      840
+    ],
+    "requested_new_units": [
+      1000,
+      1400
+    ]
+  },
+  "core_source_binding": {
+    "video.json": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+    "script.md": "faa6b105e3128b9fb4110f40a76866ed74b2efa421e739807de5df98d40df37c",
+    "claims.json": "7a5c1c32e53207bd39c75427e2a6cd650c3b872cd3d273a6b335c7eaf538cb06",
+    "claims.md": "ee3891023d5f711d3bd4809f015c7670ce1b98f432aa1dc947890519ac0a5d11",
+    "research-original.md": "d419cafb1e1582dea16030ddfa52fce39d192733af1e9cd1e7acc1e3ece7b6c0",
+    "research-original.claims.json": "dadcea4ca21ff9e12a0edb8128a6bf2da7f5bf38700c70e6ca1efb6f9518fb1e",
+    "brief.md": "3780d91ae8a150d40592b0d4c06f3aaf42b9728691a72169c362ec00b023b790",
+    "verify-1.md": "e2e90c9ba770235c84e8d6e529bd64e4ca2b654f9dd2d6837203f770c9b30528",
+    "series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
+    "image-reuse-plan.json": "153b12c8314fd60b2b2c7cce4cc10eb9ffbd5cd2a3d1cc8e5c9aaf01de72a1e2"
+  },
+  "source_inventory": [
+    {
+      "id": "AUTH_CHOOSE",
+      "url": "https://drmartensrepairs.com/pages/how-do-i-choose-the-right-repair",
+      "final_url": "https://drmartensrepairs.com/pages/how-do-i-choose-the-right-repair",
+      "status": 200,
+      "retrieved_at": "2026-10-26T03:00:18.013692+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.html",
+      "bytes": 199136,
+      "sha256": "1e5e5214f2ed899fad231180e3269482a632bb03d29850d807258b4fda72aeaa",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.txt",
+      "text_sha256": "5b570ff4929143e2f330cde4d29c3bba9e801abaa9f896b754a2033315032433",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.paragraphs.json",
+      "paragraphs_sha256": "f22646a91983c825d545374615bfb01f2ee9178b38b5bafc33c0ac3173aab71b",
+      "media_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.media.json",
+      "evidence_level": "authorised_service_partner_current_account",
+      "publication_date": "undated",
+      "actual_repair_date": "not established",
+      "scope": "Current UK authorised service statement; not proof of any reviewed customer pair treatment or demonstrated location."
+    },
+    {
+      "id": "AUTH_NONWELTED",
+      "url": "https://drmartensrepairs.com/collections/non-welted-footwear-repairs",
+      "status": 200,
+      "final_url": "https://drmartensrepairs.com/collections/non-welted-footwear-repairs",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.html",
+      "bytes": 211948,
+      "sha256": "552eafa6f0a8addf8ad0e5a68aff00f5a989ca6541958a1f63223d6ed0cb46fc",
+      "retrieved_at": "2026-10-26T03:05:03.482994+00:00",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.txt",
+      "text_sha256": "436e4464caf075d647852d6e994e7b552546f3bd6dc8fc34924d11fd0391cb82",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.paragraphs.json",
+      "paragraphs_sha256": "44de29395d9292d7db442dfaff9bd0d0ceaa424e2304462490ff96af5995655b",
+      "evidence_level": "authorised_service_partner_current_account",
+      "publication_date": "undated",
+      "actual_repair_date": "not established",
+      "scope": "Current UK authorised service statement; not proof of any reviewed customer pair treatment or demonstrated location."
+    },
+    {
+      "id": "AUTH_TERMS_SERVICE",
+      "url": "https://drmartensrepairs.com/pages/terms-and-conditions-of-service",
+      "final_url": "https://drmartensrepairs.com/pages/terms-and-conditions-of-service",
+      "status": 200,
+      "retrieved_at": "2026-10-26T03:00:18.364111+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.html",
+      "bytes": 186266,
+      "sha256": "a086e6b51268659ba7d2bacc3f205da94851166c8e8010c1f796a30e8ee9b586",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.txt",
+      "text_sha256": "ecc1913306a91dcb60246f6759efe69f9a3d245b56a7e11e4bd1aecb60d93846",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.paragraphs.json",
+      "paragraphs_sha256": "07d3299f48973f6bdbb7e31d36423b427e0ddc3f003109b0680f487842273ab1",
+      "media_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.media.json",
+      "evidence_level": "authorised_service_partner_current_account",
+      "publication_date": "undated",
+      "actual_repair_date": "not established",
+      "scope": "Current UK authorised service statement; not proof of any reviewed customer pair treatment or demonstrated location."
+    },
+    {
+      "id": "AUTH_CUSTOM",
+      "url": "https://drmartensrepairs.com/pages/customise-your-pair",
+      "final_url": "https://drmartensrepairs.com/pages/customise-your-pair",
+      "status": 200,
+      "retrieved_at": "2026-10-26T03:00:18.767081+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.html",
+      "bytes": 207030,
+      "sha256": "fa598b8bbccd4e5b28e422a5197ad26b8a72763551578b79de1857526164e572",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.txt",
+      "text_sha256": "e0fd393a63248914a7d653a2e9cd0fc4c26e9bd8060845b8abe157a8d2d53dc7",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.paragraphs.json",
+      "paragraphs_sha256": "848cbee55cd667bb95ac13446ac5f701508248d04d9041f48e1e744ee10e112b",
+      "media_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.media.json",
+      "evidence_level": "authorised_service_partner_current_account",
+      "publication_date": "undated",
+      "actual_repair_date": "not established",
+      "scope": "Current UK authorised service statement; not proof of any reviewed customer pair treatment or demonstrated location."
+    },
+    {
+      "id": "AUTH_ABOUT",
+      "url": "https://drmartensrepairs.com/pages/about-us",
+      "status": 200,
+      "final_url": "https://drmartensrepairs.com/pages/about-us",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.html",
+      "bytes": 192354,
+      "sha256": "9af31e32a09e84dea25667db13438e82f791a7681b3104d0cd47e6ac503da7c3",
+      "retrieved_at": "2026-10-26T03:05:04.090944+00:00",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.txt",
+      "text_sha256": "e4f438bfc135b42aab728dc456db197e6e3c7a510e1813976a7abfc4f2ad524a",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.paragraphs.json",
+      "paragraphs_sha256": "45865ce0c3fba0b0497eec9a641464bed281859b8eed7e5716704701c88152cf",
+      "evidence_level": "authorised_service_partner_current_account",
+      "publication_date": "undated",
+      "actual_repair_date": "not established",
+      "scope": "Current UK authorised service statement; not proof of any reviewed customer pair treatment or demonstrated location."
+    },
+    {
+      "id": "SOLEHEELED_ORSON",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-shoe-restoration",
+      "final_url": "https://soleheeled.com.au/case-studies/dr-martens-shoe-restoration",
+      "status": 200,
+      "retrieved_at": "2026-10-26T03:00:19.201216+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.html",
+      "bytes": 161129,
+      "sha256": "07e16b6945ac5685329572ff2b8accc3a6b65b94a5a72194d8117a35dd57c6f4",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.txt",
+      "text_sha256": "a1237d487859e1d1df87d359ae6d265783cfdd68d449a180f1823b0ded8abc64",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.paragraphs.json",
+      "paragraphs_sha256": "d7bab29f0966467ffd18e68766a0a22f065aaa95a5239291a7b433c59a1169c1",
+      "media_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.media.json",
+      "evidence_level": "repairer_first_person_commercial_case_report",
+      "publication_date": "2021-05-28T14:43:45+1000",
+      "actual_repair_date": "not established",
+      "date_modified_metadata": "2025-01-02T15:13:09+1100",
+      "scope": "Separate Australian client pair; repairer report and supplied before/after photos, not independent test, UK authorised procedure or either Trustpilot pair."
+    },
+    {
+      "id": "SOLEHEELED_MONO",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "final_url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "status": 200,
+      "retrieved_at": "2026-10-26T03:00:19.783822+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.html",
+      "bytes": 167238,
+      "sha256": "264111474da85f738b7a4f63360ac979ecee0b4e5b49e750e606d7e44a93a063",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.txt",
+      "text_sha256": "9ab3c54011f2f2b380a141ae2b0ecae513fbfd068c313a95333a334284a6ef10",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.paragraphs.json",
+      "paragraphs_sha256": "bc716a32bcfe6ce18d009722e4b63c06c7b144c60064f64d12c54ed2a37df5f4",
+      "media_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.media.json",
+      "evidence_level": "repairer_first_person_commercial_case_report",
+      "publication_date": "2024-03-17T12:42:00+1100",
+      "actual_repair_date": "not established",
+      "date_modified_metadata": "2026-10-05T17:39:49+1100",
+      "scope": "Separate Australian client pair; repairer report and supplied before/after photos, not independent test, UK authorised procedure or either Trustpilot pair."
+    },
+    {
+      "id": "FAQ_VIDEO",
+      "title": "DM FAQ_v2 — official repair-selection page embedded public Vimeo",
+      "url": "https://vimeo.com/857464179",
+      "parent_page": "https://drmartensrepairs.com/pages/how-do-i-choose-the-right-repair",
+      "evidence_level": "authorised_partner_embedded_original_explanatory_video",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_ORIGINAL.mp4",
+      "bytes": 17655219,
+      "sha256": "f7d9b5fc19a74d6925938042ac61eb0bf8ade58679f7aca798f87c066c1c3883",
+      "retrieval_note": "Packet-copy remux of the exact public Vimeo player HLS rendition, not a newly generated episode asset or untouched publisher master file. Public page embedUrl and player privacy anybody/public recorded externally. No authentication or access controls bypassed.",
+      "duration_seconds": 39.936,
+      "page_uploadDate_metadata": "2023-08-24T10:26:50+00:00",
+      "actual_filming_date_and_place": "not established",
+      "visual_observation_scope": "Personally read 0–39 seconds at one-second contact-sheet intervals, plus two-second overview. Claims rely on visible instructional labels and shoe comparison only, not untranscribed audio. No text track exposed.",
+      "sequence_files": [
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-sequence-01.jpg",
+          "sha256": "ad9c66efb1b0a67853dd2e52554b474623e348c535bf4ef9a9cd5ecb4c221ca4"
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-sequence-02.jpg",
+          "sha256": "5f5d8eeebb94b1f0c31b473b5b27d2094f2481c622cf7c3ad1a48c1ed1ca8ece"
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-contact.jpg",
+          "sha256": "c2fba5cd92264fb40923f5c93feb5ad53b106c83ab1037c867bb08b4d3f185bc"
+        }
+      ],
+      "supporting_public_page_bindings": [
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_VIMEO.html",
+          "sha256": "6cd73e884da1564f372d329690b873705a4dd194fcbb768af488d9b78d22ffd6"
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_EMBED.html",
+          "sha256": "fdd9c72362e2e4ddfc0b364d6a91160cab520c7f1b6b7079ff3f7ca8eb2e9c95"
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_PLAYER.public-config.json",
+          "sha256": "ee57b77e5c4670a1065eed1c9c424056ed65a86a6fa911bd4e0d9d891e58a546"
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_HLS.m3u8",
+          "sha256": "e580616ecf0127397e05b5ec665ebebde2a2ef70e761b404b424adfad7d9f99a"
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-probe.json",
+          "sha256": "f41a2a1908ff602c709b46f38ee044775b2fc485fc405902fec1e3a778081aeb"
+        }
+      ],
+      "scope": "Explains sampled welted vs non-welted examples; not a universal remote diagnosis or proof all yellow lines are structural or decorative."
+    },
+    {
+      "id": "R2_REPAIR_VIDEO",
+      "url": "https://drmartensrepairs.com/pages/how-it-works",
+      "evidence_level": "authorised_partner_original_demonstration_video",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/r2-source-cache/R2_REPAIR_VIDEO.mp4",
+      "bytes": 31960486,
+      "sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
+      "status": "existing source reopened; not new story capacity",
+      "scope": "Separate demonstration, not either public reviewer's pair. No material chemistry, calibration or total labour time inferred from frames."
+    },
+    {
+      "id": "T3_plc_product",
+      "url": "https://www.drmartensplc.com/sustainability/product/",
+      "evidence_level": "corporate_current_technical_account",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/raw-technical/T3_plc_product.html",
+      "bytes": 82566,
+      "sha256": "42cf77198a9d4f84e767d84591fbc15e4e97c3adff134ec44237c271c61bea07",
+      "status": "existing source reopened; not new story capacity",
+      "scope": "Contemporary company account. Temperature describes current welding operation; not the temperature experienced by a worn boot and not proof of 1945/1960 process. Durability, shock absorption, waste and environmental claims are company claims, not independent tests. Most footwear/Original products scopes must be preserved."
+    },
+    {
+      "id": "R2_UPPER",
+      "url": "https://drmartensrepairs.com/collections/welted-footwear-repairs/products/upper-repair",
+      "evidence_level": "authorised_service_partner_current_account",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/r2-source-cache/R2_UPPER.html",
+      "bytes": 306164,
+      "sha256": "2fe41aeeec2a78ca493e6a02bac3e9d45cbe2e215e741571a72dd20e9943e65d",
+      "status": "existing source reopened; not new story capacity",
+      "scope": "Current partner offering/advice, not proof of this reviewed customer's treatment or a universal outcome."
+    },
+    {
+      "id": "R2_CUSTOMER_6870",
+      "url": "https://uk.trustpilot.com/reviews/6870ffa65d1e329686a3886f",
+      "evidence_level": "attributed_public_first_person_account",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/r2-source-cache/R2_CUSTOMER_REVIEWS.html",
+      "bytes": 604761,
+      "sha256": "c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694",
+      "status": "existing source reopened; not new story capacity",
+      "scope": "Self-report and subjective view only; platform not-verified. Not independent proof of quality, time, comfort or typical price. No name, gender, model, colour, operator, update channel or identity with the demo inferred."
+    },
+    {
+      "id": "R2_CUSTOMER_677e",
+      "url": "https://uk.trustpilot.com/reviews/677eccb811974350caefee64",
+      "evidence_level": "attributed_public_first_person_account",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/r2-source-cache/R2_CUSTOMER_REVIEWS.html",
+      "bytes": 604761,
+      "sha256": "c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694",
+      "status": "existing source reopened; not new story capacity",
+      "scope": "Self-report and subjective view only; platform not-verified. Not independent proof of quality, time, comfort or typical price. No name, gender, model, colour, operator, update channel or identity with the demo inferred."
+    },
+    {
+      "id": "AR26",
+      "url": "https://www.drmartensplc.com/application/files/5417/8038/8372/DOCs-AR26-web2.pdf",
+      "evidence_level": "issuer_annual_report",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/raw/AR26.pdf",
+      "bytes": 21630186,
+      "sha256": "d4d494022fa39959df66353d0bbf0a03508a0fc9f365fef09f713f70ab74d373",
+      "status": "existing source reopened; not new story capacity",
+      "scope": "封面52週截至2026-03-29；HTTP Last-Modified 2026-06-02不是自動出版日。p63修復、p67材料試驗。"
+    }
+  ],
+  "new_claim_candidates": [
+    {
+      "id": "D01",
+      "priority": "recommended_same_repair_question",
+      "new_claim": "不能只看黃色鞋邊線就判為同一種構造：FAQ對照的non-welted靴也顯示黃色線，卻標為沒有該接合線。",
+      "anchors": [
+        {
+          "source_id": "FAQ_VIDEO",
+          "short_quote": "NON-WELTED; NO LINE",
+          "short_quote_sha256": "0aab44b19e0bb11a989888d01f64df88636195fa4e3e969695b770dca93abe6e",
+          "visible_time_seconds": [
+            22,
+            28
+          ]
+        }
+      ],
+      "attach_after": [
+        "c7r20204",
+        "c7r20205"
+      ],
+      "new_action": "把觀眾的判斷位置從黃色縫線移到鞋內側接合處，對照同片兩個範例。",
+      "not_infer": [
+        "不稱所有黃色線是假線。",
+        "不由單片判七月評論者鞋款或可修性。"
+      ],
+      "incremental_spoken_units_planning": [
+        70,
+        110
+      ]
+    },
+    {
+      "id": "D02",
+      "priority": "recommended_same_repair_question",
+      "new_claim": "FAQ先標示看instep，再找join；沿條例的外底被單獨標出，與上方環繞鞋身的部分分開。",
+      "anchors": [
+        {
+          "source_id": "FAQ_VIDEO",
+          "short_quote": "LOOK AT THE INSTEP; LOOK FOR THE JOIN",
+          "short_quote_sha256": "2b2676421c88c58f9f5d13787bbb193247b068736a21e2cb0ca794b1165d7843",
+          "visible_time_seconds": [
+            4,
+            18
+          ]
+        }
+      ],
+      "attach_after": [
+        "c7r20205"
+      ],
+      "new_action": "依圖移視內側鞋邊，再沿可見接合往外底辨識。",
+      "not_infer": [
+        "現有20205–20209已講縫隙與沿條，不能把相同解說算全新容量。",
+        "不把instep示意擴成拆鞋測試或每款結構圖。"
+      ],
+      "incremental_spoken_units_planning": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "D03",
+      "priority": "optional_same_service_decision",
+      "new_claim": "目前non-welted目錄仍列鞋面修理、拉鍊與清理保養，不能把不屬於沿條換底選項說成這雙鞋任何部位都不能修。",
+      "anchors": [
+        {
+          "source_id": "AUTH_NONWELTED",
+          "paragraphs": [
+            39,
+            41,
+            43
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.paragraphs.json",
+          "paragraphs_sha256": "44de29395d9292d7db442dfaff9bd0d0ceaa424e2304462490ff96af5995655b",
+          "paragraph_sha256": {
+            "39": "1486f9f8512370946f0a1e40d72bf228f71f2c86891dc0d4146ca7b84dd39372",
+            "41": "e82bd3108f058e0cd2a6d1f7ef64308ddc479bbfcbba7c7aa3e352ba0a6a68c2",
+            "43": "e932d8c603ab62a16972e03678b138c7083bbb14eee61d74d2b88883fe2f69e2"
+          },
+          "short_quote": "Upper Repair; Zip Repair",
+          "short_quote_sha256": "edbab8c00858a98ffa7000a6e14a38f5f3a152307fc0d405a2ca29fc2768b1e1"
+        }
+      ],
+      "attach_after": [
+        "c7r20209"
+      ],
+      "new_action": "先區分要處理的是鞋底、鞋面還是拉鍊，再選服務範圍。",
+      "not_infer": [
+        "目錄未列換底不等於全球無人可換。",
+        "不宣稱所有non-welted款可修或可用相同熱接程序。"
+      ],
+      "incremental_spoken_units_planning": [
+        45,
+        70
+      ]
+    },
+    {
+      "id": "D04",
+      "priority": "optional_same_service_decision",
+      "new_claim": "辨識不確定時，FAQ影片最後請觀眾填同頁聯絡表由團隊協助。",
+      "anchors": [
+        {
+          "source_id": "FAQ_VIDEO",
+          "short_quote": "STILL UNSURE?",
+          "short_quote_sha256": "2439f666bc0fd894b86eb811e97621975b678ee7dcae41e480e5e22405444fe4",
+          "visible_time_seconds": [
+            32,
+            39
+          ]
+        }
+      ],
+      "attach_after": [
+        "c7r20209"
+      ],
+      "new_action": "不確定的鞋先走諮詢，不把看一圈線當可修保證。",
+      "not_infer": [
+        "不編客服判定或評論者真的填表。",
+        "不加實際回覆速度或任何保證。"
+      ],
+      "incremental_spoken_units_planning": [
+        25,
+        40
+      ]
+    },
+    {
+      "id": "D05",
+      "priority": "optional_current_terms_not_workshop_action",
+      "new_claim": "超出標準服務的特殊需求可能加費；現行條款要求在進一步施工前先告知，取得同意和付款。",
+      "anchors": [
+        {
+          "source_id": "AUTH_TERMS_SERVICE",
+          "paragraphs": [
+            51
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.paragraphs.json",
+          "paragraphs_sha256": "07d3299f48973f6bdbb7e31d36423b427e0ddc3f003109b0680f487842273ab1",
+          "paragraph_sha256": {
+            "51": "d7b15fc19ad84ce02547c17271dc52218a5eaea63076950f721e8193f66c8878"
+          },
+          "short_quote": "before further work is undertaken",
+          "short_quote_sha256": "1309b9b2b6575e7dd7427bc4e6265a347325f4980e4c00dc3ab742d9d64e5313"
+        }
+      ],
+      "attach_after": [
+        "c7r20210",
+        "c7r20219"
+      ],
+      "new_action": "把固定換底價與另外需求分開，再進入寄修決定。",
+      "not_infer": [
+        "不稱七月評論者被加價、曾停工或補錢。",
+        "不把目前價格／條款回填2025單案。"
+      ],
+      "incremental_spoken_units_planning": [
+        60,
+        90
+      ]
+    },
+    {
+      "id": "D06",
+      "priority": "optional_current_terms_brief_end_limit",
+      "new_claim": "目前服務條款對修理工序造成的瑕疵列完工起12個月保固，排除正常磨耗、誤用及不當保養。",
+      "anchors": [
+        {
+          "source_id": "AUTH_TERMS_SERVICE",
+          "paragraphs": [
+            61
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.paragraphs.json",
+          "paragraphs_sha256": "07d3299f48973f6bdbb7e31d36423b427e0ddc3f003109b0680f487842273ab1",
+          "paragraph_sha256": {
+            "61": "a6a8e563783196cb1c81cc8b29b28cabb5fc85fd06759b91071bb042977a02cf"
+          },
+          "short_quote": "12 months from the date of completion",
+          "short_quote_sha256": "26c3156365d6440af06b9c7f3151e5805f07f7bfb8132eed1bddd3a429a1e8ec"
+        }
+      ],
+      "attach_after": [
+        "c7r20614"
+      ],
+      "new_action": "回程後區別修理瑕疵處理範圍與繼續穿用的磨耗。",
+      "not_infer": [
+        "不是整雙靴終身保固。",
+        "不稱評論者後來出現瑕疵或已申請保固。",
+        "不作法律權利完整解說。"
+      ],
+      "incremental_spoken_units_planning": [
+        60,
+        90
+      ]
+    },
+    {
+      "id": "D07",
+      "priority": "alternate_case_only_Orson",
+      "new_claim": "澳洲Woolooware客戶的Orson便鞋：修方自述先固定後跟鬆脫內裡，再依舊後跟區形狀裁薄麂皮，黏入作內襯。",
+      "anchors": [
+        {
+          "source_id": "SOLEHEELED_ORSON",
+          "paragraphs": [
+            22,
+            26
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.paragraphs.json",
+          "paragraphs_sha256": "d7bab29f0966467ffd18e68766a0a22f065aaa95a5239291a7b433c59a1169c1",
+          "paragraph_sha256": {
+            "22": "9b13f5a075abdfd1ecdb1a1d426d1c02efdd6cc5e32db6e3c0e0ee0f8397d629",
+            "26": "bb1f114b13208e022b0103909e0423f441b599410bd9a44beb92bdf1f578270c"
+          },
+          "short_quote": "thin suede leather",
+          "short_quote_sha256": "c3bbc501bfea3ed3e6667988c1ae9e6c20d7430b95efee2fd3b19d69ed7abdae"
+        }
+      ],
+      "attach_after": [
+        "c7r20218"
+      ],
+      "new_action": "由後跟破洞的新問題，轉入明確另案的固定舊內裡→裁型→黏入；不是沿條熱接那雙鞋。",
+      "not_infer": [
+        "不是UK授權修方示範步驟。",
+        "不改稱原英國評論者也補了麂皮。",
+        "照片證修方展示前後外觀，不獨立證黏膠型號、縫針、壓合時間或長期舒適結果。"
+      ],
+      "incremental_spoken_units_planning": [
+        120,
+        170
+      ]
+    },
+    {
+      "id": "D08",
+      "priority": "alternate_case_only_Orson",
+      "new_claim": "同一Orson案的鞋面處理：修方自述先清潔、保養，再調相近原色的壓克力皮革漆，以噴筆多層上色，最後覆高光面層。",
+      "anchors": [
+        {
+          "source_id": "SOLEHEELED_ORSON",
+          "paragraphs": [
+            24
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.paragraphs.json",
+          "paragraphs_sha256": "d7bab29f0966467ffd18e68766a0a22f065aaa95a5239291a7b433c59a1169c1",
+          "paragraph_sha256": {
+            "24": "d1610d868b304a02691299cd46c217f7ae180acd1c6d9a938fe69be5b6eb99ac"
+          },
+          "short_quote": "applying multiple coats; high-gloss finisher",
+          "short_quote_sha256": "ed11cafa6768abed9da030e6ff17fbea603ab1b36dad9ab898741ba637423c4f"
+        }
+      ],
+      "attach_after": [
+        "c7r20507"
+      ],
+      "new_action": "褪色不是把布擦過就等同補色；另案的清潔→調色→多層噴塗→面層各新增材料狀態。",
+      "not_infer": [
+        "不說修復漆皮原工廠塗層、恢復原化學結構或所有皮革都可此法。",
+        "不由前後照斷言無色差或抗刮耐久。",
+        "不把Orson的高光處理嫁接原示範黑靴。"
+      ],
+      "incremental_spoken_units_planning": [
+        140,
+        200
+      ]
+    },
+    {
+      "id": "D09",
+      "priority": "alternative_to_Orson_not_add_both",
+      "new_claim": "澳洲Donnybrook客戶1460 Mono案：修方報告只切除到中底下方的舊外底，留原中底，將新Vibram齒紋底黏合其下；與全換沿條熱接路線不同。",
+      "anchors": [
+        {
+          "source_id": "SOLEHEELED_MONO",
+          "paragraphs": [
+            22,
+            24,
+            25
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.paragraphs.json",
+          "paragraphs_sha256": "bc716a32bcfe6ce18d009722e4b63c06c7b144c60064f64d12c54ed2a37df5f4",
+          "paragraph_sha256": {
+            "22": "3b53eb3039113b13f4b22e72b8ef48857d24336f6c636ea77322ede86085fe99",
+            "24": "6af70452981f1d3adc9c512b667f841cb1d3f0ace5e58451e8dd14078545c937",
+            "25": "5107bf895b6c9e80e5218b03016e9d587fcd0cf38e67902281ef41c9d2859be1"
+          },
+          "short_quote": "just below the midsole",
+          "short_quote_sha256": "dc5ca9709a9b7cae4fe02b9360796b185b22b205afff3becc18275270a2b51d2"
+        }
+      ],
+      "attach_after": [
+        "c7r20416"
+      ],
+      "new_action": "以另一服務的真作法回答「接底不使用黏著劑能否泛化」；明指這是另一雙與另一修方。",
+      "not_infer": [
+        "不說UK授權示範用了Vibram或黏膠。",
+        "不把此案塑膠／中空描述升為全部品牌全型號材料鑑定。",
+        "不替方法做優劣／壽命／安全比較。"
+      ],
+      "incremental_spoken_units_planning": [
+        120,
+        170
+      ]
+    },
+    {
+      "id": "D10",
+      "priority": "alternative_to_Orson_not_add_both",
+      "new_claim": "同一1460 Mono案鞋面有撕裂；修方報告先在鞋內黏皮補片，再把外側鬆脫皮面黏回，最後以含黑色顏料鞋油整理。",
+      "anchors": [
+        {
+          "source_id": "SOLEHEELED_MONO",
+          "paragraphs": [
+            35,
+            42
+          ],
+          "paragraphs_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.paragraphs.json",
+          "paragraphs_sha256": "bc716a32bcfe6ce18d009722e4b63c06c7b144c60064f64d12c54ed2a37df5f4",
+          "paragraph_sha256": {
+            "35": "e52b63ec87beb5964a92a40ab1156e6f9d45beeb19be9086627e25c7a425f6a7",
+            "42": "c0166a4a81ab185245636e6e6adc733460c52529d03b1278169f2b17cb63d870"
+          },
+          "short_quote": "interior of the boots; pigmented black polish",
+          "short_quote_sha256": "8853f6a4199adebf3bd927d389cfa1113856d7e6f4e0ebe1a7cac97e8197cd50"
+        }
+      ],
+      "attach_after": [
+        "c7r20504"
+      ],
+      "new_action": "鞋面若不只是擦傷，另案先由內補強再整理外側，讓保留鞋面有材料限制。",
+      "not_infer": [
+        "不把撕裂乾燥原因當針對全部靴的診斷。",
+        "不宣稱補片恢復全新強度／防水／原廠保固。",
+        "不編後來行走實測或客戶感受。"
+      ],
+      "incremental_spoken_units_planning": [
+        145,
+        200
+      ]
+    }
+  ],
+  "capacity_assessment": {
+    "recommended_same_line_D01_D04": [
+      160,
+      260
+    ],
+    "optional_terms_D05_D06": [
+      120,
+      180
+    ],
+    "same_line_plus_terms": [
+      280,
+      440
+    ],
+    "Orson_alternate_case_D07_D08": [
+      260,
+      370
+    ],
+    "Mono_alternate_instead_of_Orson_D09_D10": [
+      265,
+      370
+    ],
+    "max_with_one_explicit_alternate_case": [
+      540,
+      810
+    ],
+    "resulting_total_planning_units_with_one_alternate": [
+      2663,
+      2933
+    ],
+    "shortfall_to_3500_after_that": [
+      567,
+      837
+    ],
+    "limits": [
+      "Ranges are editorial planning estimates for new meaning, not drafted or measured native units. Overlaps with existing 20204–20209/20505–20507 must be deducted rather than counted twice.",
+      "Do not add both Australian cases plus UK demo plus two reviews merely to reach a duration target.",
+      "The original demo already supplies nearly all current remove/sew/heat-join/trim/wipe/lace/pack actions. Hand movement subdivision, two foot-shaped pieces on bench, or repeating each seam state earns no defensible new-information quota.",
+      "No proof of heel-lining cutting/sanding/gluing in the original 38.144-second demo; only separate written Orson case supports cutting/gluing thin suede.",
+      "No exact needle setting, seam allowance, thread gauge, trim depth, pressure, cure/cool time, adhesive formula or measured durability found for the UK demonstration.",
+      "A FAQ example can improve the causal service-choice question but cannot supply a thousand units of physical repair activity."
+    ],
+    "recommendation": "Do not commission an R11 expansion of 1000–1400 units as though evidence already supports it. Adopt the narrow diagnostic distinction if useful, then either obtain a longer documented same-pair primary repair record or make an explicit scope/target decision. Actual paid TTS remains gated and is not a substitute for source capacity."
+  },
+  "old_demo_reopen": {
+    "raw_path": "/workspace/work/brand-story-20261025/c07-audit/r2-source-cache/R2_REPAIR_VIDEO.mp4",
+    "sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
+    "duration_seconds": 38.144,
+    "personally_viewed_source_only_contact_sheets": [
+      {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/independent-r2/video-contact-01.jpg",
+        "sha256": "92a5cef8a71ec567c889965285b3c52924c0eb48918cac8830570abdd6281308"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/independent-r2/video-contact-02.jpg",
+        "sha256": "60e87e4755eb118d7d9aa08824cca4c51e609629029a5953820218624332931a"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/independent-r2/video-contact-03.jpg",
+        "sha256": "73e8b42c7c62f2aa569a5aa62e633787a02cdeaf2c5e1087b2b004431f146fb7"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/independent-r2/video-contact-04.jpg",
+        "sha256": "7a15f574a90228253d5eb6d0bd394e4201d07d0d2a0e06fc7c445b71a83b5bac"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/independent-r2/video-contact-05.jpg",
+        "sha256": "5e9bac358df95856f09294a9369dfa4fe27a3771a3d4207737e72d9b57cd27b2"
+      }
+    ],
+    "observed_scope": "0.0–38.0s at existing 0.2-second contact-sheet samples; all five sheets personally viewed. No unheard dialogue or inferred tool identity added.",
+    "new_usable_actions_beyond_R10": []
+  },
+  "separate_case_photo_observations": {
+    "Orson": "Before photo shows scuffed toe colour and torn inner heel area; after photo shows recoloured glossy upper and changed inner heel appearance. Does not show cutting/gluing workflow; those steps remain attributed repairer text.",
+    "Mono": "Before/after sole-view photos show a changed tread/outsole; the selected side photos show upper/sole appearance. They do not prove hidden midsole chemistry, attachment strength or long-term field outcome.",
+    "assets": [
+      {
+        "source": "SOLEHEELED_ORSON",
+        "url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1621150835323-7UZ3QR6NO1B52Y1HUS9C/dr-martens-shoe-restoration-before.jpg",
+        "status": 200,
+        "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON-dr-martens-shoe-restoration-before.jpg",
+        "bytes": 54624,
+        "sha256": "786f9b1a0130121d3bba998415e40b300c60932c7bca98af94203486850e9c9b",
+        "retrieved_at": "2026-10-26T03:06:07.453088+00:00",
+        "alt": "Before"
+      },
+      {
+        "source": "SOLEHEELED_ORSON",
+        "url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1621150853052-G1BUGLWUPUWQY2DPLEP1/dr-martens-shoe-restoration-after.jpg",
+        "status": 200,
+        "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON-dr-martens-shoe-restoration-after.jpg",
+        "bytes": 47880,
+        "sha256": "bf1f89ba10dda08201ca43866b5eed973b6440c1bf46d2983da92f34f6608dc8",
+        "retrieved_at": "2026-10-26T03:06:07.811122+00:00",
+        "alt": "After"
+      },
+      {
+        "source": "SOLEHEELED_MONO",
+        "url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1661495196222-3YA6670J1AJ90EPE3U46/dr-martens-boot-resole-tear-repair-before-1.jpg",
+        "status": 200,
+        "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-before-1.jpg",
+        "bytes": 35313,
+        "sha256": "6e453ce2e6445fd67294922a44d18b5993c11f139b387837383656243894a54f",
+        "retrieved_at": "2026-10-26T03:06:08.222152+00:00",
+        "alt": "Before"
+      },
+      {
+        "source": "SOLEHEELED_MONO",
+        "url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1661495203323-XWKALX1XK22JMZY9QA0L/dr-martens-boot-resole-tear-repair-after-1.jpg",
+        "status": 200,
+        "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-after-1.jpg",
+        "bytes": 37521,
+        "sha256": "a187d1d390e7fcff4c0ac5d36bbda84fd4248dbfa824853cee75482a38aa22e7",
+        "retrieved_at": "2026-10-26T03:06:08.318686+00:00",
+        "alt": "After"
+      },
+      {
+        "source": "SOLEHEELED_MONO",
+        "url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1661495243826-5RPJHXXOE3XBJ6QWAHOV/dr-martens-boot-resole-tear-repair-before-2.jpg",
+        "status": 200,
+        "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-before-2.jpg",
+        "bytes": 35740,
+        "sha256": "a026d44d9f144dff8529657497568f2c15e1f2e86750163b5a70c15818fe1e6d",
+        "retrieved_at": "2026-10-26T03:06:08.398274+00:00",
+        "alt": "Before"
+      },
+      {
+        "source": "SOLEHEELED_MONO",
+        "url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1661495247737-345JG00BVDKGDWVWHZDS/dr-martens-boot-resole-tear-repair-after-2.jpg",
+        "status": 200,
+        "raw_path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-after-2.jpg",
+        "bytes": 36268,
+        "sha256": "b16f4a51fcdc60b6357ada5da8dad3a90fc7e57140fedb9ae1f03a368ff89fdd",
+        "retrieved_at": "2026-10-26T03:06:08.494451+00:00",
+        "alt": "After"
+      }
+    ]
+  },
+  "london_scope_audit": {
+    "current_narration_video_prompt_claims_json_mentions": false,
+    "checked_files": [
+      "video.json",
+      "script.md",
+      "claims.json"
+    ],
+    "current_context_mentions": [
+      {
+        "file": "brief.md",
+        "line": 15,
+        "quote": "兩則not-verified評論、倫敦店和授權示範是不同來源事件，不冒稱同人或同一雙實鞋。"
+      },
+      {
+        "file": "claims.md",
+        "line": 115,
+        "quote": "兩則not-verified評論、倫敦店與授權示範是不同人／鞋／事件"
+      },
+      {
+        "file": "verify-1.md",
+        "line": 19,
+        "quote": "七月／一月／授權示範／London例子各自分開"
+      }
+    ],
+    "separate_store_evidence": {
+      "id": "AR26",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/raw/AR26.pdf",
+      "raw_sha256": "d4d494022fa39959df66353d0bbf0a03508a0fc9f365fef09f713f70ab74d373",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/raw/AR26.txt",
+      "text_sha256": "32ccf23911c6192c329ac508807253be0631b6052e20a5c968e0a94e95ad81b4",
+      "pdf_page": 6,
+      "printed_page": "04",
+      "short_quote": "39 Brewer Street, Soho, London",
+      "short_quote_sha256": "359030c24b41aef623262e6fbac8a946c704f8332fa6ba1ca75e070b33d6dcd6",
+      "supports": "公司年報所述另一次Brewer Street店與Customisation & Repair Bar。",
+      "does_not_support": "38.144秒示範拍攝地，或任何Trustpilot評論者的修理地點。"
+    },
+    "service_address": "新舊授權頁footer列Leeds，只能證頁面服務地址，不能用作拍攝地。",
+    "must_fix_if_proposed": "若R11把原示範稱倫敦店拍攝或Leeds工坊實拍，刪除未證地點；可稱授權維修示範。",
+    "current_must_fix_proposal": "未見current旁白/prompt/claims.json錯稱London；不改既有PASS。可在下次作者更新mutable brief/claims-context時把未使用London店殘留界線簡化，但不屬當前敘事事實錯誤。"
+  },
+  "access_limitations": [
+    {
+      "url": "https://player.vimeo.com/video/857464179/config",
+      "status": 403,
+      "action": "Stopped that endpoint; exact publicly exposed embedUrl on the fetched Vimeo page returned 200 and declared public embed/anybody privacy. No cookies, passwords, credentials or alternate identities used."
+    },
+    {
+      "url": "https://www.drmartens.com/uk/en_gb/repair-service-customer-notice",
+      "status": 403,
+      "action": "No claim from inaccessible current notice adopted; no bypass."
+    }
+  ],
+  "not_adopted_search_leads": [
+    "Generic Reddit repair advice or retrospective customer opinions were not engineering evidence.",
+    "Key Cobbler/Insider/Julie Derrick search leads not obtained as a personally viewed long primary repair video in this run, so no process claims adopted from snippets or secondary paraphrases.",
+    "US/Canada support statements and UK authorised repair scope are regional; no universal availability claim added."
+  ],
+  "protected_files_check": {
+    "initial_file_count": 566,
+    "source_core_research_i18n_history_unchanged": true,
+    "concurrent_other_agent_handoff_changes": [
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/production-entry.md",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/submission-progress.md",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/preflight-inputs.json"
+    ],
+    "researcher_writes_only": [
+      "c07/duration-capacity-research.md",
+      "c07/duration-capacity-research.json",
+      "external c07-audit/duration-source-cache/**"
+    ]
+  },
+  "external_source_asset_inventory": [
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.html",
+      "bytes": 192354,
+      "sha256": "9af31e32a09e84dea25667db13438e82f791a7681b3104d0cd47e6ac503da7c3"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.paragraphs.json",
+      "bytes": 12496,
+      "sha256": "45865ce0c3fba0b0497eec9a641464bed281859b8eed7e5716704701c88152cf"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.receipt.json",
+      "bytes": 813,
+      "sha256": "da36dd798fbb55d6885518e3dca12d3f44c3da50fe5fa2a4272edd1810943787"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_ABOUT.txt",
+      "bytes": 2943,
+      "sha256": "e4f438bfc135b42aab728dc456db197e6e3c7a510e1813976a7abfc4f2ad524a"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.html",
+      "bytes": 199136,
+      "sha256": "1e5e5214f2ed899fad231180e3269482a632bb03d29850d807258b4fda72aeaa"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.media.json",
+      "bytes": 7536,
+      "sha256": "2181d2187509dab6454f1561d53b38fd7375062daea668ad152a9f9bad2f5de5"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.paragraphs.json",
+      "bytes": 12495,
+      "sha256": "f22646a91983c825d545374615bfb01f2ee9178b38b5bafc33c0ac3173aab71b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.receipt.json",
+      "bytes": 976,
+      "sha256": "7db5d2ef4a53564d0a3bbee86cd9cdfa600ebe598c87bbef72f40d925e908238"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CHOOSE.txt",
+      "bytes": 1998,
+      "sha256": "5b570ff4929143e2f330cde4d29c3bba9e801abaa9f896b754a2033315032433"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.html",
+      "bytes": 207030,
+      "sha256": "fa598b8bbccd4e5b28e422a5197ad26b8a72763551578b79de1857526164e572"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.media.json",
+      "bytes": 10073,
+      "sha256": "b46ffb99cbf8c62f822e1004ec4f1017455b085792d8e5b11f5efb10e56b4a43"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.paragraphs.json",
+      "bytes": 13477,
+      "sha256": "848cbee55cd667bb95ac13446ac5f701508248d04d9041f48e1e744ee10e112b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.receipt.json",
+      "bytes": 950,
+      "sha256": "6358091ebb6efaeb053816f36c26433ed9c2af200b1453614be1318bb1fb154f"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_CUSTOM.txt",
+      "bytes": 2154,
+      "sha256": "e0fd393a63248914a7d653a2e9cd0fc4c26e9bd8060845b8abe157a8d2d53dc7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.html",
+      "bytes": 211948,
+      "sha256": "552eafa6f0a8addf8ad0e5a68aff00f5a989ca6541958a1f63223d6ed0cb46fc"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.paragraphs.json",
+      "bytes": 11309,
+      "sha256": "44de29395d9292d7db442dfaff9bd0d0ceaa424e2304462490ff96af5995655b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.receipt.json",
+      "bytes": 879,
+      "sha256": "9501e10596c6ff0ce3deb1a6bfc74e3e5ed45d0aeae4657d2c534ae6d8f6f8bc"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_NONWELTED.txt",
+      "bytes": 1638,
+      "sha256": "436e4464caf075d647852d6e994e7b552546f3bd6dc8fc34924d11fd0391cb82"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.html",
+      "bytes": 186266,
+      "sha256": "a086e6b51268659ba7d2bacc3f205da94851166c8e8010c1f796a30e8ee9b586"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.media.json",
+      "bytes": 5857,
+      "sha256": "7406e8a812422792c0d6ddd5e87aae623db112727507e432593c0776e3c8aba8"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.paragraphs.json",
+      "bytes": 17610,
+      "sha256": "07d3299f48973f6bdbb7e31d36423b427e0ddc3f003109b0680f487842273ab1"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.receipt.json",
+      "bytes": 1009,
+      "sha256": "c3b6833713df26d803c7133e50ec617973fd5706826486a9cff3325b82bd54b8"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/AUTH_TERMS_SERVICE.txt",
+      "bytes": 5457,
+      "sha256": "ecc1913306a91dcb60246f6759efe69f9a3d245b56a7e11e4bd1aecb60d93846"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-contact.jpg",
+      "bytes": 196618,
+      "sha256": "c2fba5cd92264fb40923f5c93feb5ad53b106c83ab1037c867bb08b4d3f185bc"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-probe.json",
+      "bytes": 4572,
+      "sha256": "f41a2a1908ff602c709b46f38ee044775b2fc485fc405902fec1e3a778081aeb"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-sequence-01.jpg",
+      "bytes": 203814,
+      "sha256": "ad9c66efb1b0a67853dd2e52554b474623e348c535bf4ef9a9cd5ecb4c221ca4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ-sequence-02.jpg",
+      "bytes": 225904,
+      "sha256": "5f5d8eeebb94b1f0c31b473b5b27d2094f2481c622cf7c3ad1a48c1ed1ca8ece"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_EMBED.html",
+      "bytes": 21763,
+      "sha256": "fdd9c72362e2e4ddfc0b364d6a91160cab520c7f1b6b7079ff3f7ca8eb2e9c95"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_EMBED.receipt.json",
+      "bytes": 484,
+      "sha256": "e302fba461da1bfab56287e33523db8330662aa81111186021627c12c1ebd017"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_HLS.m3u8",
+      "bytes": 1499,
+      "sha256": "e580616ecf0127397e05b5ec665ebebde2a2ef70e761b404b424adfad7d9f99a"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_HLS.receipt.json",
+      "bytes": 844,
+      "sha256": "42c056fc5152ec9937ac78915ff669261e18ca2d21188f0bf9c7d1cf797b17d8"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_ORIGINAL.mp4",
+      "bytes": 17655219,
+      "sha256": "f7d9b5fc19a74d6925938042ac61eb0bf8ade58679f7aca798f87c066c1c3883"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_PLAYER.public-config.json",
+      "bytes": 16994,
+      "sha256": "ee57b77e5c4670a1065eed1c9c424056ed65a86a6fa911bd4e0d9d891e58a546"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_VIMEO.html",
+      "bytes": 146200,
+      "sha256": "6cd73e884da1564f372d329690b873705a4dd194fcbb768af488d9b78d22ffd6"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/FAQ_VIMEO.receipt.json",
+      "bytes": 381,
+      "sha256": "1caddbb077cc9392a1544636c4a27a58739e6dc65643bbf686f67bd325d37358"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-after-1.jpg",
+      "bytes": 37521,
+      "sha256": "a187d1d390e7fcff4c0ac5d36bbda84fd4248dbfa824853cee75482a38aa22e7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-after-2.jpg",
+      "bytes": 36268,
+      "sha256": "b16f4a51fcdc60b6357ada5da8dad3a90fc7e57140fedb9ae1f03a368ff89fdd"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-before-1.jpg",
+      "bytes": 35313,
+      "sha256": "6e453ce2e6445fd67294922a44d18b5993c11f139b387837383656243894a54f"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO-dr-martens-boot-resole-tear-repair-before-2.jpg",
+      "bytes": 35740,
+      "sha256": "a026d44d9f144dff8529657497568f2c15e1f2e86750163b5a70c15818fe1e6d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.html",
+      "bytes": 167238,
+      "sha256": "264111474da85f738b7a4f63360ac979ecee0b4e5b49e750e606d7e44a93a063"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.media.json",
+      "bytes": 11957,
+      "sha256": "f34c96129df24302ef20b21215fe4cd5f59eb9aa4b14954466f71c8795bcbb9c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.paragraphs.json",
+      "bytes": 23036,
+      "sha256": "bc716a32bcfe6ce18d009722e4b63c06c7b144c60064f64d12c54ed2a37df5f4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.receipt.json",
+      "bytes": 1016,
+      "sha256": "435d6aef6eca2f3586bde4fe2dd39f4352f2819f37493bb0b4b8a714e2a20950"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_MONO.txt",
+      "bytes": 6837,
+      "sha256": "9ab3c54011f2f2b380a141ae2b0ecae513fbfd068c313a95333a334284a6ef10"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON-dr-martens-shoe-restoration-after.jpg",
+      "bytes": 47880,
+      "sha256": "bf1f89ba10dda08201ca43866b5eed973b6440c1bf46d2983da92f34f6608dc8"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON-dr-martens-shoe-restoration-before.jpg",
+      "bytes": 54624,
+      "sha256": "786f9b1a0130121d3bba998415e40b300c60932c7bca98af94203486850e9c9b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.html",
+      "bytes": 161129,
+      "sha256": "07e16b6945ac5685329572ff2b8accc3a6b65b94a5a72194d8117a35dd57c6f4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.media.json",
+      "bytes": 9212,
+      "sha256": "48f7a3ce083902203a80e1c300ff3d9246afa53e11c8a883140a6559f4ea23fb"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.paragraphs.json",
+      "bytes": 22629,
+      "sha256": "d7bab29f0966467ffd18e68766a0a22f065aaa95a5239291a7b433c59a1169c1"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.receipt.json",
+      "bytes": 999,
+      "sha256": "14056388af9634577a7414c4e47f4fca81c365ba9127babc641d4ed8825b1775"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/SOLEHEELED_ORSON.txt",
+      "bytes": 6906,
+      "sha256": "a1237d487859e1d1df87d359ae6d265783cfdd68d449a180f1823b0ded8abc64"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/duration-source-cache/case-photos.receipt.json",
+      "bytes": 3316,
+      "sha256": "ac3a8de4d1c9b78201f2a7aaac5971002e9a88dfffff679604e0d590995a96b6"
+    }
+  ],
+  "paid_provider_requests": 0,
+  "backend_mutations": 0,
+  "episode_media_generated": 0,
+  "source_pass_issued": false,
+  "owner_approval_issued": false,
+  "new_video_written": false,
+  "git_operations": false
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "Native full-context lint after normal immutable initialization; exact independent source, written/planned image reuse and original merged narrative verified. Submission-format brief is separate from unchanged source-bound original. Not audio, duration, accepted images or media QA.",
+  "source_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+  "canonical_script_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+  "source_report_sha256": "58ff9d0b1ce33e7374546aa1ae5cec788f40c8f0e413004f2897ba353cc8b258",
+  "verify_sha256": "b1df3ff67ceef4a5b47d7c478c68b20a59b8dde2b7e7033ef30845639217e831",
+  "narrative_record_sha256": "05ece28e9eae372e445d5c22edd895dd4d6a16737b727702f800a844905bdeb4",
+  "source_and_written_visual": "PASS",
+  "native_narrative_pass": true,
+  "narrative_review_matches": true,
+  "source_brief_sha256": "5bdcc8704598d81c0f40a916ce4dd40bf818815f929955c6faf82e1f8972a533",
+  "submission_brief_path": "submission/brief.md",
+  "submission_brief_sha256": "b91785f365f20bbff70cd79b35af86457e8f9a0a91dba40efaf6ba90eb52ccb7",
+  "reuse_plan_path": "image-reuse-plan.json",
+  "reuse_plan_sha256": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+  "actual_same_asset_verified": false,
+  "result": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"coffee\" is in 28 of 77 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[41] (c11r1w17)",
+        "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "about 10.4 minutes; the target is 12-14"
+      }
+    ],
+    "summary": {
+      "minutes": 10.447222222222223,
+      "lines": 80,
+      "spoken_units": 2276,
+      "billable_characters": 7212,
+      "chapters": [
+        "00:00 銷售人員走進食品店",
+        "00:44 瓶子交回去，奶咖得另找出口",
+        "02:31 混得進去，還得留在一起",
+        "04:01 罐壁加入了這杯咖啡",
+        "05:50 把罐子放進旅客看得到的地方",
+        "08:34 工廠外排起車，手裡的罐還等著開"
+      ]
+    }
+  },
+  "paid_calls": 0,
+  "approvals_created": 0
+}

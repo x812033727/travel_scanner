@@ -1,0 +1,42 @@
+{
+  "source_video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+  "review_file_sha256": "9f58c577c741e87927b091f17a48b7b1c504904bf3ed19c47995b0c0d2a7afce",
+  "locales": [
+    {
+      "locale": "pt",
+      "previous_worksheet_sha256": "82e128932301f688c1dd642d4063f324e3500a64eca08e5c241193bb9e049526",
+      "previous_translation_sha256": "0c4df25254bfaa7ecae3dc812615372ac436c7ad927d3f348298fff8f56a8536",
+      "new_worksheet_sha256": "99e621d3cc171835c78282a2f7c451c95fdc9081e7294eeeaa9b5e7557a904ac",
+      "changes": [
+        {
+          "target": "lines.c19r1e16",
+          "before": "O cartão podia estar conectado, mas seu dono parava diante da máquina sem sequer pensar em tirá-lo.",
+          "after": "O cartão podia estar conectado, mas seu dono podia parar diante da máquina sem sequer pensar em tirá-lo.",
+          "reason": "源文持卡人『可能』停步而不打算拿卡；現譯只在卡接通放podia，後句parava成了確定的過往行為。須讓人的行為也保持可能情境，不能升成已觀察個案。"
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "previous_worksheet_sha256": "ce186e7a07a448377dfb2643c7f6843ca2bf14beb1a7efafe1445e811a6605a3",
+      "previous_translation_sha256": "3fb852d30fddbe732f6d95d8041838dcbd11e9b3bbe0503ca507fbcd407b6d46",
+      "new_worksheet_sha256": "8f5b313598b2837d06b289cc8f6ad7c3df54d7f5f7f1c7f0f65b4e4f7f1397a5",
+      "changes": [
+        {
+          "target": "lines.c19r1a26",
+          "before": "Mesin bukan hanya melayani perorangan. Pada tahun fiskal 2003, setoran hasil penjualan mulai diperluas ke perusahaan umum.",
+          "after": "Mesin bukan hanya melayani perorangan. Pada tahun fiskal 2003, setoran hasil penjualan mulai diperluas ke perusahaan secara umum.",
+          "reason": "源文『一般企業』是企業普遍範圍，非公營企業法人類別。印尼語perusahaan umum是具有固定含義的公營企業類型(Perum)，應改perusahaan secara umum以恢復一般企業範圍，而非將2003服務限定給該類公營企業。"
+        },
+        {
+          "target": "lines.c19r1e16",
+          "before": "Kartu bisa sudah terhubung, tetapi pemiliknya berhenti di depan mesin tanpa berniat mengeluarkannya.",
+          "after": "Kartu bisa sudah terhubung, tetapi pemiliknya mungkin berhenti di depan mesin tanpa berniat mengeluarkannya.",
+          "reason": "源文『可能』限定持卡人停步/不拿卡；現譯只說卡可以已接通，後句直接斷言持卡人停步。須補mungkin保留人的行為也是可能情境，而非已確認事件或普遍實況。"
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

@@ -1,0 +1,841 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r6",
+  "reviewer": "codex-independent-rolling-r1-source",
+  "role": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELTA_REVIEW",
+  "reviewed_at_utc": "2026-10-26T08:22:44.925356+00:00",
+  "status": "SOURCE_AND_WRITTEN_VISUAL_PASS",
+  "passed": true,
+  "source_text_verdict": "PASS_R5_INHERITANCE_PLUS_THREE_DELTAS",
+  "written_visual_verdict": "PASS_ONE_PROMPT_DELTA_AND_OPENING_RULE_INTERPRETATION",
+  "source_pass_claimed": true,
+  "production_readiness": "HOLD_MATERIAL_CAPACITY_AND_REMAINING_GATES",
+  "summary": "96列精確繼承R5，3列獨立重查；人／袋中拿圖／分享承諾有原文支持，Dutch為人。依實際首場景與兩後段預告分類，圖紙異圖非必修，但列共用可選建議；不冒稱實sameasset。",
+  "input_binding": {
+    "core_four_sha256": {
+      "video.json": "87c7224baa02c1d3401de05d00d47e0a615c4ad3854d63a661f6c7294b01c339",
+      "script.md": "6dc2b2530256ae81d16555be45859f6587fa0f7f561847f4e426feb97d3be55c",
+      "narration-only.json": "7daf7898c21bbe0ac7e238b5693129e50985d668d7c3a87f4ed55b31fb93b3fb",
+      "claims.json": "c97bebcafd59877b624e3bcf8cd8a620a324263e6951466d717898cc94a1c77f"
+    },
+    "author_freeze_r6_sha256": "3fc5510a157e00061f8a5f345271bc317ace0fb0eb1cadeb8c763fe7506f68fe",
+    "changes_r6_sha256": "ef31a04a03c68e99614ad88bea1e729ad5b08f57b2c3ade6cbe1fc579e431725",
+    "all_frozen_file_sha256": {
+      "video.json": "87c7224baa02c1d3401de05d00d47e0a615c4ad3854d63a661f6c7294b01c339",
+      "script.md": "6dc2b2530256ae81d16555be45859f6587fa0f7f561847f4e426feb97d3be55c",
+      "narration-only.json": "7daf7898c21bbe0ac7e238b5693129e50985d668d7c3a87f4ed55b31fb93b3fb",
+      "claims.json": "c97bebcafd59877b624e3bcf8cd8a620a324263e6951466d717898cc94a1c77f",
+      "claims.md": "f79a7e4430eae405a041c0dd03f90996d2325cf2ac639d6c55665520c58096b3",
+      "brief.md": "e52474f69f3655975135a35076d80f848aff0a6ccd7f5cb32dafaa5ec1347348",
+      "series.json": "e50088353603af16185eb74ee5273e0331ee35791404acd52b280cdc2f740b11",
+      "author-rows.json": "6e5802fb083e8f8c9b93e9be1c2669842f5e858c8d42886bdafa2a70e08bb585",
+      "native-id-map.json": "4002511585f5206a3ad2589e844228cba2c75d9155ff82197491aa19ca450cf8",
+      "author-source-additions.json": "8cac2258719c81a7c58673e6aed936bec4bb28eaf0480094fc71cbfa5abbeb9c",
+      "build-candidate.mjs": "e4baeb74c793bfaaad32ffcd723923e6add653333a51d8d2f7c7d41e364ebed4",
+      "producer.md": "da71a5097286575a05f6840739138d2913dc266102a562302995805c249dcd38",
+      "image-reuse-plan.json": "12665cdf3a2885f0fed0b53efb1c7e517f4181a32cad71b7ea9c25202f55f4c3",
+      "opening-graph-mapping-r6.json": "fc4a9debd398fb318f2f711f47f3f110374f79d7df2333b7976d67a1671dcd0e",
+      "protected-inputs-r6.json": "de639ab4aa5105e5c1e9cb8c483d2ca5c564bf00625c66d888b32e5401b7adf0",
+      "native-author-lint-r6.json": "891c4f6aa5cd908cbe00710de8818fa9ca29be10dcf1be80598faf3e35e659de",
+      "preflight-inputs.json": "5231098662c17af256b582cc40ffd3a2ad6c29d8741a2c78ee60b50f0d7848de",
+      "author-notes.json": "37ef0ff9715add21ec5d6694fc9964c09ecbac21efb9f27c202ff37a0ccab38b",
+      "review-state.json": "e1f8577b98037f2c4d288b823f2355a3a24cb93ac9c1341c2077d4ec0eb7413f",
+      "changes-r6.json": "ef31a04a03c68e99614ad88bea1e729ad5b08f57b2c3ade6cbe1fc579e431725",
+      "reviews/narrative-r1-a.raw.json": "23bcd8aa70d071446e8714d6fe6d8abc340a435ea86f74dcd1cc6b1b27867fb1",
+      "reviews/narrative-r1-b.raw.json": "e37fc77ad9a2e34ec4a8babfb869c57ac541ac9c26aa4bc984a4ad490b9344ae",
+      "reviews/narrative-r1-binding.json": "d7f6b21f4d22a0ed49ebfc865a139bcf412302525935ef4d4e779a2bf549a14b",
+      "reviews/narrative-r1-input.json": "a33d891766054df106741af631a4c2cf088221569d0313e09782fb6b07a6a9a6",
+      "reviews/narrative-r1.json": "73143312a4bc964719cb45594a718337bb17768ff3673c6bdf3002a40ddcc4ec",
+      "reviews/narrative-r2-a.raw.json": "abbf5af13614f5168c784e4324e040e0d7562814a3e1e50911ab69fa59e6c5e0",
+      "reviews/narrative-r2-b.raw.json": "7341fdcdfbaa896879c247a837afd6f06a43e31b195cacf6de6fb8b1d441f805",
+      "reviews/narrative-r2-binding.json": "163c9174e27a689090f21e08738e26d6a41d159072bd5d0a3a55bf5d11b2e6e7",
+      "reviews/narrative-r2-input.json": "2d5f14a0e2999a1dcb14a4e4ebb5b744df70add24c33a32ddefa41a6dc929845",
+      "reviews/narrative-r2.json": "ca2dc92a96d0c6189ff65ca7f6bcdf1c681aed79cae5967583acbdb7d8501a6a",
+      "reviews/narrative-r3-a.raw.json": "7840ff148c1ab30e9b4cf9b48b2346e88b5da1f060e4c1f704c40938e05de05c",
+      "reviews/narrative-r3-b.raw.json": "bc19d4358c5403670b6aa5b896aedd62be567159aaf57a4c489148e155321dbf",
+      "reviews/narrative-r3-binding.json": "58ac20bb5b02f7d7e1444c7cb59e2e8792b3c0018937384bf75ee4e0d1988daa",
+      "reviews/narrative-r3-input.json": "5ffe854b2c8f179ec62e905679507313a1d74d3ced255859bac2c5e416dabe9d",
+      "reviews/narrative-r3.json": "04f443ef27754ea1d7d61af202c688d56e2be9579eb9b677b00c6b2b91ccfc87",
+      "reviews/narrative-r4-a.raw.json": "692e9b0eb69b8a1a2f805272ac09fb4e0771c8901f20da88d16ff750df26b880",
+      "reviews/narrative-r4-b.raw.json": "909e932fb89a3a06069639b5705e61fa8699af486e54821aa9eb52871e8bf7f5",
+      "reviews/narrative-r4-binding.json": "f85d448d47eaaa79de81cd5dd9340962e9c84ef4df90bf365b847cc6a771c3f6",
+      "reviews/narrative-r4-input.json": "370ee47db55ffe754a7d4d560df8006187f99562e4aeb5650b5d9220b38ff89c",
+      "reviews/narrative-r4.json": "4e4e2f288d847aca2c976bdd81ceefb7183f746249fcba4aa73fd5c9ae181274",
+      "reviews/source-r1-independent.json": "b470b181b0384d9e6c5b839bcbe196532f1e67552a258b1bc801a2ac95600faa",
+      "reviews/source-r2-independent.json": "52ca57657a29f8d63408e7c9b3c158e4d1652972fc436465e182ef2c3a89b535",
+      "reviews/source-r3-independent.json": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c",
+      "reviews/source-r4-independent.json": "f57dd15b6b9fe463793eed8f60e1200da655c53bf5d68c81368d94d32d7dd958",
+      "reviews/source-r5-independent.json": "05e95408ed06d553ccfe55e76bbb7a7b6e9e843ede045d9ef7e2c79fef72e79a"
+    },
+    "history_r5_manifest_sha256": "0f70ce24229dececfe813ec1b3a56fec3b133d525edbe5ca348e5285869557a8",
+    "image_reuse_plan_sha256": "12665cdf3a2885f0fed0b53efb1c7e517f4181a32cad71b7ea9c25202f55f4c3",
+    "opening_graph_mapping_sha256": "fc4a9debd398fb318f2f711f47f3f110374f79d7df2333b7976d67a1671dcd0e",
+    "primary_action_readback_sha256": "c3df26df2ca5a9e8c32efc472eb2e5b3be5a66536e1eab91d4f9cdc27d3a38de"
+  },
+  "inheritance": {
+    "parent_review_path": "history/r5/reviews/source-r5-independent.json",
+    "parent_review_sha256": "05e95408ed06d553ccfe55e76bbb7a7b6e9e843ede045d9ef7e2c79fef72e79a",
+    "parent_verify_path": "history/r5/verify-1.md",
+    "parent_verify_sha256": "92519fddd647b79d3102e49d173abae653af2d090244cb07f2cc78881acd8202",
+    "prior_SOURCE_PASS_and_native4_HOLD_preserved": true,
+    "exact_inherited_rows": 96,
+    "newly_rechecked_rows": [
+      "rs0002",
+      "rs0003",
+      "rs0051"
+    ],
+    "full_primary_reread_claimed": false,
+    "unchanged_shot_data": 95,
+    "changed_shot_prompt": 1,
+    "outro_copy_rows_inherited": 3
+  },
+  "primary_independent_reading": {
+    "source": "RNPA2016 original PDF46–47, printed46–47; Bill Emmer2016 first-person recollection",
+    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+    "read_mode": "Fresh pdftotext raw for46/47 and pinned page readings; parent context/byline and action paragraphs independently read.",
+    "actor_quote": "Moon Mullins and Dutch Wellman had been producing and selling their ubiquitous “Jet Eze” suitcase on wheels",
+    "place_quote": "South Satellite in SEA",
+    "opening_action_quote": "As we stopped to talk to Moon, he reached into his bag and pulled out a drawing",
+    "response_quote": "Moon promised to share the concept with Dutch, his partner",
+    "actor_resolution": "Emmer is the recollecting witness. Bob/Robert Plath takes a drawing from his bag. Moon Mullins is an existing Jet Eze maker, and Dutch Wellman is Moon’s partner, a person.",
+    "promise_scope": "share the concept only; not agreement to manufacture, a contract, guaranteed production, an order, a Dutch company or an actual gift.",
+    "attribution_and_time": "Both changed historical sentences retain attributed-recollection context; no invented calendar date, new encounter, quoted dialogue or motive.",
+    "no_original_drawing_or_real_likeness_reconstruction": true,
+    "author_readback_used_only_for_locator_then_raw_verified": true
+  },
+  "text_and_visual_deltas": [
+    {
+      "id": "rs0002",
+      "before": "一份機師回憶和一份專利，留下了一只輪箱的改變。",
+      "after": "艾默記得，在西雅圖機場，普拉斯從包裡拿出圖紙，給舊輪箱的製作者看。",
+      "verdict": "PASS",
+      "notes": "R6獨立重開Emmer原PDF46–47：SEA地點、Bob從自己包取圖及Moon為舊Jet Eze製作者均有文；歸屬保留，不加日期／原圖外形。新匿名單人取紙prompt符合所述動作。"
+    },
+    {
+      "id": "rs0003",
+      "before": "艾默記得，普拉斯在西雅圖機場拿出圖紙，給舊輪箱的製作者看。",
+      "after": "還記得開場那張圖嗎？製作者穆林斯答應，把構想給夥伴達奇看。",
+      "verdict": "PASS",
+      "notes": "R6重查回呼與合併原rs0030：Moon Mullins／夥伴Dutch Wellman有原文；答應僅share concept，非荷蘭公司或承諾製作。圖紙是開場首場景，非後段預告；不同request不列共圖必修，實圖尚未驗。"
+    },
+    {
+      "id": "rs0051",
+      "before": "不過只留下兩個輪子，它站著等你的時候，靠哪裡支撐？",
+      "after": "不過它站著等你的時候，靠哪裡支撐？",
+      "verdict": "PASS",
+      "notes": "R6收窄疑問，不加構造；下一句原rs0052兩支腳的專利依據完整保留。該鏡data逐值繼承R5。"
+    }
+  ],
+  "opening_graph_rule_decision": {
+    "verdict": "NO_MUST_FIX_FOR_DISTINCT_OPENING_SCENE_AND_CALLBACK_REQUESTS",
+    "rule_source": ".agents/skills/youtube-video/references/script-writing.md",
+    "rule_lines": [
+      165,
+      169,
+      183,
+      184
+    ],
+    "rule_quotes": [
+      "場景那幾句畫這個場景裡的人、地點與那個說不通的東西…每一個預告句用回收它的那一章的畫面（同一張圖）",
+      "場景：年份或地點、一個人在做一件事",
+      "預告最多兩個後面的時刻",
+      "開場講過的事實，正文不再重講一次：要再提就用回呼句"
+    ],
+    "independent_reasoning": "rs0001 establishes the viewer stakes; rs0002 then supplies the first concrete scene, with Seattle, Plath and taking a drawing from a bag. rs0005 and rs0006 separately preview later handle/strap events. rs0003 explicitly recalls the opening drawing and advances to the maker’s limited promise. The hard same-image clause applies to the two later-event teasers. It does not require every later callback to the first scene to reuse the identical frame. Classification is based on the actual text order/function, not the author non-third-pair label or absence of a loop.",
+    "drawing_contexts_both_source_supported": true,
+    "drawing_request_keys_independently_recomputed": [
+      {
+        "scene": "rs0002",
+        "native_stage_key": "e24eb415c76b215a",
+        "composed_prompt_sha256": "19196a6f95b2d813d61553341bb3c81afb4a5cc3b79c4be2eb4e3e21f4e9ecd6"
+      },
+      {
+        "scene": "rs0003",
+        "native_stage_key": "1865c5091d494153",
+        "composed_prompt_sha256": "f98b4697cfbf65a819faec7fba389ca5facba87bef01a5a201bde59ae92e5f05"
+      }
+    ],
+    "request_keys_equal": false,
+    "author_mapping_tuples_and_hashes_match_recomputed": true,
+    "planned_same_asset": false,
+    "actual_same_asset_verified": false,
+    "actual_cache_or_final_asset_acceptance": false,
+    "native_narrative_vote_supplied": false
+  },
+  "must_fix": [],
+  "advisories": [
+    {
+      "id": "A01",
+      "severity": "NON_BLOCKING",
+      "scope": "visual callback recognition and production economy",
+      "suggestion": "If one anonymous paper/terminal frame can serve both taking-out and maker-response contexts and each contextual judge passes, consider reusing it for rs0002/rs0003. This may strengthen recognition and avoid one additional generated illustration.",
+      "why_not_must_fix": "The script-writing hard same-image clause governs later-event previews; rs0002 is the first scene. Current two prompts are source-consistent and explicitly distinct requests.",
+      "limits": "No guarantee of savings before the whole-episode quote, no asset exists to approve, no fake native alias/cache or identical-SHA claim. Any adoption requires a new exact plan and normal generation/cache/final-file checks."
+    }
+  ],
+  "structural_diff": {
+    "removed_scene_and_row_ids": [
+      "rs0030"
+    ],
+    "added_scenes": [],
+    "retained_scene_field_changes": {
+      "rs0002": [
+        "data.prompt",
+        "lines[0].text"
+      ],
+      "rs0003": [
+        "lines[0].text"
+      ],
+      "rs0051": [
+        "lines[0].text"
+      ]
+    },
+    "all_other_retained_full_scene_data_prompts_cameras_exact_R5": true,
+    "all_cameras_exact_R5": true,
+    "only_changed_loop": {
+      "before": {
+        "setup": "rs0026",
+        "payoff": "rs0030",
+        "what": "先交既有製作者與夥伴討論"
+      },
+      "after": {
+        "setup": "rs0026",
+        "payoff": "rs0003",
+        "what": "製作者答應把構想給夥伴看"
+      }
+    },
+    "all_other24_loops_exact_R5": true,
+    "all25_endpoints_exist_and_ordered": true,
+    "claim_changes": "rs0002 becomes attributed and both rs0002/rs0003 use existing R11/R13 evidence/limits, exactly equal original evidence objects; rs0051 text narrows; all review labels PENDING_R5_DELTA_QA→PENDING_R6_DELTA_QA; candidate revision changes; no new raw evidence.",
+    "nonnarrated_research_exact_R5": true,
+    "rs0021_retying_and_rs0071_action_preserved": true,
+    "IDs_not_renumbered": true
+  },
+  "coverage": {
+    "narration_rows": 99,
+    "chapters": 7,
+    "scenes": 97,
+    "shots": 96,
+    "cards": 0,
+    "outro": 1,
+    "planned_non_outro_illustration_ratio": 1.0,
+    "row_reviews": [
+      {
+        "id": "rs0001",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0002",
+        "source_review": "R6_DELTA_PASS",
+        "visual_review": "R6_PROMPT_DELTA_PASS"
+      },
+      {
+        "id": "rs0005",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0006",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0007",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0008",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0009",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0010",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0011",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0012",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0013",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0014",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0015",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0016",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0017",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0018",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0019",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0020",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0021",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0022",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0023",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0024",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0025",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0026",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0003",
+        "source_review": "R6_DELTA_PASS",
+        "visual_review": "R6_CALLBACK_RULE_RECHECK_PASS"
+      },
+      {
+        "id": "rs0029",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0031",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0032",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0033",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0034",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0035",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0036",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0037",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0038",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0040",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0041",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0042",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0043",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0044",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0045",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0046",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0047",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0048",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0049",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0051",
+        "source_review": "R6_DELTA_PASS",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0052",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0053",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0054",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0055",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0056",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0057",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0058",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0059",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0060",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0061",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0062",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0063",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0064",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0065",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0066",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0067",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0068",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0069",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0070",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0071",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0073",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0074",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0075",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0076",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0077",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0078",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0079",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0080",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0081",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0082",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0084",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0085",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0086",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0087",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0088",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0089",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0090",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0096",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0097",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0098",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0099",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0100",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0101",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0102",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0103",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0104",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0105",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0106",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0107",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0108",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0109",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0110",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0111",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0112",
+        "source_review": "R5_INHERITED_EXACT",
+        "visual_review": "R5_FULL_DATA_INHERITED_EXACT"
+      }
+    ]
+  },
+  "projections": {
+    "video_to_narration_order_chapters_exact": true,
+    "claims99_ID_text_exact": true,
+    "script99_ID_text_exact": true,
+    "runtime_current_video_bytes_exact": true,
+    "runtime_script_ordinary_screenplay_exact": true
+  },
+  "two_event_teaser_pairs": {
+    "pairs_unchanged_R5": true,
+    "pure_full_Stage_imageKey_recomputed": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "complete_tuple_equal": true,
+        "native_stage_key": "e8d589542750b9e4"
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "complete_tuple_equal": true,
+        "native_stage_key": "ab8eb6c1780fa08b"
+      }
+    ],
+    "six_code_hashes_verified": true,
+    "tuple_scope": "provider/model,resolved look/camera/cast/composed prompt,negative,seed,refs,size/dimensions,imageVersion,fixes,prompt budget; planned values only.",
+    "normal_production_requirements_preserved": "payoff first takes1; ordinary manifest/readCache actual SHA guard; miss/mismatch/changed request/retake STOP; both context judges; same selected file/SHA after trim/crop and actual assembly use.",
+    "actual_same_asset_verified": false,
+    "actual_final_selected_file_SHA_verified": false
+  },
+  "normal_checks": {
+    "ordinary_lint_command": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r6/runtime-root",
+      "lint",
+      "--slug",
+      "story-rolling-suitcase-v2-remake-20261025",
+      "--json"
+    ],
+    "ordinary_lint_exit_code": 0,
+    "errors": 0,
+    "warnings": [
+      "luggage46/96",
+      "suitcase37/96",
+      "about11.0minutes;target12–14"
+    ],
+    "hook_cadence_warnings": 0,
+    "near_identical_adjacent_warnings": 0,
+    "warning_judgment": "Central-object warnings retained; duration estimate warning is planning capacity risk, not actual TTS FAIL.",
+    "pure_renderer_problems": [],
+    "rendered_media_QA_performed": false,
+    "NORMALfacts_exact_generated_marker": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r6/runtime-root",
+    "old_runtime_and_lexicon_not_written": true,
+    "runtime_marker_not_added": true
+  },
+  "protected_readback": {
+    "protected_unique_paths": 1251,
+    "all1251_SHA_and_bytes_match": true,
+    "archived_R5_files": 67,
+    "all67_archive_SHA_and_bytes_match": true,
+    "original_R5_runtime10_inventory_unchanged": true,
+    "historical1124_and_prior_archives_preserved": true,
+    "research_files": 3,
+    "original_related_files": 192,
+    "raw_source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "original_R1_through_R6_lexicon_bytes_match": true,
+    "lexicon_sequence": 1,
+    "lexicon_events_each": 1,
+    "frozen_candidate_files_checked": 45
+  },
+  "capacity": {
+    "status": "HOLD_MATERIAL_CAPACITY",
+    "whole_raw_spoken_units": 2346,
+    "series_target_minutes": 13,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_TTS_tested": false,
+    "actual_body_seconds": null,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "natural_rate_and_native11_estimates_not_actual_PASS_or_FAIL": true,
+    "body_scope": "whole unwrapped spoken narration including coldopen/voicedCTA; excluding separate5sintro/21soutro",
+    "duration_standard_lowered": false
+  },
+  "independence_and_limits": {
+    "historical_actual_native_round_count": 4,
+    "current_R6_native_reader_calls": 0,
+    "native5_input_prepared_or_read_by_reviewer": false,
+    "native_votes_read_or_rejudged": false,
+    "pronunciation_actual_audio_image_duration_or_owner_approval_performed": false,
+    "SOURCE_PASS_authorizes_media_or_US25_account": false,
+    "external_fetches": 0
+  },
+  "verify_marker": {
+    "path": "verify-1.md",
+    "row_count": 99,
+    "sha256": "bb4ed8ad1751671b97ab67a2e4bd364931f44aba5e93672f8ae8f480e8be60f7",
+    "deleted0030_and_appendix_excluded": true,
+    "scope": "96inherited rows+3deltas and independent first-scene/pair-rule interpretation; SOURCE/written visual only"
+  },
+  "mutations": {
+    "written_files": [
+      "reviews/source-r6-independent.json",
+      "verify-1.md"
+    ],
+    "core_files_changed": false,
+    "runtime_files_changed": false,
+    "git_operations": 0,
+    "backend_operations": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "subagents_spawned": 0,
+    "owner_approvals_created": 0
+  }
+}

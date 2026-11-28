@@ -1,0 +1,1253 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "revision": "r5",
+  "slug": "story-everyday-kincho-c05-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "6215cc9c9a3f8ea6dbe0f1a9a49eecd4563340165933a88454fba272ec064f08",
+    "narration-only.json": "70aade2768837a4c467f681eda9c15041944bd018cae263850757f3b5f8bb46c",
+    "script.md": "b1e2811108ec95398f983e6f49964ac3c137b70e4dedd66f739f5efc9f6f5ce3",
+    "claims.md": "0ca8c98fb7fe3ea32c392d463780258f75623a568dcd90c78e5eab567e3cca67"
+  },
+  "baseline": {
+    "path": "history/r4",
+    "video_sha256": "895267b62f16aa74e776175c56905c2f83c946917f1be46049ba1f293f4e5121",
+    "narration_sha256": "581c870c9e86095e3e18d5a29d2326113596dbd9977912aebaae3065ca0d3696",
+    "source_receipt": "history/r4/source-r4-delta.json",
+    "source_receipt_sha256": "f7610c9e1a75aad78254e2f30060da91e0503116334118b4ade83808128e8498",
+    "verdict": "PASS",
+    "chain": "r4104行PASS→r3精確內容PASS→r2逐原件114行來源PASS；歷史E01HOLD仍保留於r2收據。"
+  },
+  "counts": {
+    "narration_lines": 101,
+    "scenes": 99,
+    "source_pass": 101,
+    "source_hold": 0,
+    "written_visual_scene_pass": 99,
+    "written_visual_scene_hold": 0,
+    "new_or_changed_retained_lines": 0
+  },
+  "exact_delta": {
+    "deleted_line_ids": [
+      "c05r039",
+      "c05r040",
+      "c05r041"
+    ],
+    "deleted_scene_ids": [
+      "c05r039",
+      "c05r040",
+      "c05r041"
+    ],
+    "all_other_top_level_fields_exactly_equal": true,
+    "all_retained_scene_objects_exactly_equal": true,
+    "narration_projection_exact_filter": true
+  },
+  "deletion_context_review": {
+    "verdict": "PASS",
+    "evidence": [
+      "金鳥明治年表1895列",
+      "國立科學博物館木模登錄910191180001",
+      "r2已直接原件覆核F03/F04"
+    ],
+    "note": "刪039–041歸屬比較/授勳卷宗旁支及其限制成對。027仍明說依金鳥後來記述、028仍說公司後年歸屬；029僅證館藏試作物。未將妻子歸屬升格成同時期獨立見證，也未添誰被忽略或世界首創結論。038證據限制接042生產問題，不產生新史實。"
+  },
+  "findings": [],
+  "scope_limits": {
+    "blind_report_files_read": false,
+    "narrative_verdict": null,
+    "audio_or_images_reviewed": false,
+    "measured_duration": false,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "owner_approval": false,
+    "note": "本輪最後精確來源/書面配鏡稿PASS；不等於實際TTS/成圖/費用/成片/站主關卡通過。"
+  },
+  "line_results": [
+    {
+      "line_id": "c05r001",
+      "scene_id": "c05r001",
+      "line_text_sha256": "a754847348c4eb6a914e8e6fb90675ec72c1c621aeb13a843d108e430526af38",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r002",
+      "scene_id": "c05r002",
+      "line_text_sha256": "9dde97c55c3ab06e78665a85ba877a69e53626c98a30cbd27d35ba62133cb172",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r003",
+      "scene_id": "c05r003",
+      "line_text_sha256": "9ae7fd9c3c7890d63d2d80e759f0ec187e67b8971bf29349f009692494c77c8a",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r004",
+      "scene_id": "c05r004",
+      "line_text_sha256": "6d991f150404e4636695074c40aa083b809fe077bcc6c81fa398413f0db05abd",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r005",
+      "scene_id": "c05r005",
+      "line_text_sha256": "8212f81a6290b54f9d6628c3735a3e8a6d0c2d49c3eca03bb9526c29bca33cc4",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r006",
+      "scene_id": "c05r006",
+      "line_text_sha256": "3b6397b7a836370f1af79ab231db1530670ec7d6e4b42eb2afe9d52a9aa2ba1c",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r007",
+      "scene_id": "c05r007",
+      "line_text_sha256": "ed5de127c2f520a410189f09511edeae1671e84be4f426187f39d080b765318a",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r008",
+      "scene_id": "c05r008",
+      "line_text_sha256": "1f8cf36d6ab9c4ac776867018d861bcf977ea2b6ada0eac6841871e929e15860",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r009",
+      "scene_id": "c05r009",
+      "line_text_sha256": "0c38663e9bf707e014c8ddf86aee73a77e428bcd085512284e851e63614b3b2d",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r010",
+      "scene_id": "c05r010",
+      "line_text_sha256": "7681b2da2cff5b9aca43b67d6177449a9c77475089aad1139b2ed7445082450e",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r011",
+      "scene_id": "c05r011",
+      "line_text_sha256": "2b79427165650aa3ecc44ee103cc02daabd92edfa22f784dd0c7110c28fb8367",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r012",
+      "scene_id": "c05r012",
+      "line_text_sha256": "26986adf850436f695b85888756131edee68c275a4e14f482ce59b0b221fdc32",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r013",
+      "scene_id": "c05r013",
+      "line_text_sha256": "72186aa5b726e2b6a1a8285c383418f86b83d7c08c17154bce47856a32edae20",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r014",
+      "scene_id": "c05r014",
+      "line_text_sha256": "df0c168b4e50ecc12ab0721024bd77daff0a95ee466f57e7a8d295f59d999f39",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r015",
+      "scene_id": "c05r015",
+      "line_text_sha256": "9f86a2cca94de6384749408614f552bca756af994e66f4eb3a55daa1f3e39793",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r016",
+      "scene_id": "c05r016",
+      "line_text_sha256": "872d217bb3fcee0bd9dd1c3aeea606d3aca6f8b68f8ab2cc92ddaf4cddfc4d3b",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r017",
+      "scene_id": "c05r017",
+      "line_text_sha256": "536768c8b9891425ebf48e803ad76217417fd8cbc2cd8adfadb4c60a7761eb52",
+      "source_evidence": [
+        "K_S",
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r018",
+      "scene_id": "c05r018",
+      "line_text_sha256": "595e1c1c2baa5af93cf464e2deac1386f6f9e25e6886b5291344b0e94694e644",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r019",
+      "scene_id": "c05r019",
+      "line_text_sha256": "79f7ffcd49d3c2931b3a115bcc23859d628239f017516fc3f17c9eb484bfc925",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r020",
+      "scene_id": "c05r020",
+      "line_text_sha256": "515f61c1773d79be45d2eed4780fd50ab9125bc0528ded59d019ddb8866073ab",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r021",
+      "scene_id": "c05r021",
+      "line_text_sha256": "a40736eca7a90fae2a4983770a4bcc7d35b71a61c34604f2ac773bb6e95a556e",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r022",
+      "scene_id": "c05r022",
+      "line_text_sha256": "7cf0151e99c7749df494e26f3dd043ed635c1de675fef455b56ff45a8197a4a5",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r023",
+      "scene_id": "c05r023",
+      "line_text_sha256": "f21d401c386bdb168c598e8ed6b20a2c0747e846a57586babd77cd15fa1f25a6",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r024",
+      "scene_id": "c05r024",
+      "line_text_sha256": "c4a8e789da2a6866dc80b36caf0ca102973ef70765b32eb0b4e91458aba90c06",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r025",
+      "scene_id": "c05r025",
+      "line_text_sha256": "4ef18156f53ece49c8df437b2a0a57b64675673012bdf208e68b43d8d6cbf341",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r026",
+      "scene_id": "c05r026",
+      "line_text_sha256": "d0830437614615783600905441395c20f1e212c8ee2a1147c7a91bab0c699647",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r027",
+      "scene_id": "c05r027",
+      "line_text_sha256": "d3bf6c4e960f616dd44cd801753a635517074af46b715db77265f6ca0f97e7c4",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r028",
+      "scene_id": "c05r028",
+      "line_text_sha256": "0583ab14f63d17695bb19ec34598aa6baaa47c3020623cab04c7e1ce95053c7c",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r029",
+      "scene_id": "c05r029",
+      "line_text_sha256": "92c4449b1defb636164d9cb7855d906a934d7bc7497a4037c184f21242ff868a",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA",
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r030",
+      "scene_id": "c05r030",
+      "line_text_sha256": "b56be268aedb2a2aa972abb1b2b4bfe207769ac7f866f3bd47d8c990e7805202",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r031",
+      "scene_id": "c05r031",
+      "line_text_sha256": "34df41d9c15774c8f7ffc8aacd3f2397cdd9c50babf1e2020251b6a6b3648440",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r032",
+      "scene_id": "c05r032",
+      "line_text_sha256": "e8fa9bb92e5ab75f071d1f54952851e8bf6aa19b1df5b17c0f4b5eda3cbc4f67",
+      "source_evidence": [
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r033",
+      "scene_id": "c05r033",
+      "line_text_sha256": "10e84aff103ac7616ad58f2871fcfe4405b608ed4829e35cd88394d1351b0bf4",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r034",
+      "scene_id": "c05r034",
+      "line_text_sha256": "b4aece567756e79088965ec3b8cc77c4f6b9dd81632e2c38b96d327187742e39",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r035",
+      "scene_id": "c05r035",
+      "line_text_sha256": "3677f8e210702380095f1d9692c45f91a035a12be77ff920357379697978d4d5",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r036",
+      "scene_id": "c05r036",
+      "line_text_sha256": "de1430ef8f942af6fd12b75b639c662f0b1d1688ff6752def3c541694ff1df37",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r037",
+      "scene_id": "c05r037",
+      "line_text_sha256": "0af2a49d2a38959fe2ad32a7d7517c375708f17cd5e887e25eeac05c2431ef33",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r038",
+      "scene_id": "c05r038",
+      "line_text_sha256": "e88d5d5bfaff5dce28a536435dc7ebf48b0150849b6b821012299a6a9bb6aceb",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r042",
+      "scene_id": "c05r042",
+      "line_text_sha256": "4e25ffabd42f054fc4d769966e37478838e3daa585b562fc31aa457861a91486",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r043",
+      "scene_id": "c05r043",
+      "line_text_sha256": "f50d072bffd0c9520e88b7e88a3c555f1f538c0cbce1296711562dcd3f9f11a9",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r044",
+      "scene_id": "c05r044",
+      "line_text_sha256": "b8a91ff4d77615650ad5cd3cb7e1376973caa483acba8b3f9d222df19b310641",
+      "source_evidence": [
+        "K_M",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r045",
+      "scene_id": "c05r045",
+      "line_text_sha256": "0274363ed162e2745a4e5c91e97e4876fd703b90e3a1112e6f2725de501094ae",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r046",
+      "scene_id": "c05r046",
+      "line_text_sha256": "290baeb5da80ef32f679ab0854864cf68d6825b4e8a08f97b6b69c91a7fdd8b2",
+      "source_evidence": [
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r047",
+      "scene_id": "c05r047",
+      "line_text_sha256": "feb039c95e3d1a8c9b8ea5082123f66927dcee28f59bf8dd6f5d9ed10ade77c9",
+      "source_evidence": [
+        "K_M",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r048",
+      "scene_id": "c05r048",
+      "line_text_sha256": "c8080f45b115b44ddf481129515f7336a564388e0dc22537e468edc1f5797625",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_M"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r049",
+      "scene_id": "c05r049",
+      "line_text_sha256": "3bee416b1c3da51e0284fdfaf4ae6bc39e8c38960ec8036941d668d0e1157d5f",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r050",
+      "scene_id": "c05r050",
+      "line_text_sha256": "4231927fac52ce3e51db8bdceef772aeff6da41e98c612366988b2520d2a0260",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r051",
+      "scene_id": "c05r051",
+      "line_text_sha256": "54e9cbbe4c6c1cc9961c03c38d02a3db7b6110de4970e264afe6bd87a46a8af9",
+      "source_evidence": [
+        "K_T",
+        "NM"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r052",
+      "scene_id": "c05r052",
+      "line_text_sha256": "f56b4b165d5bc91850690b0f25254941064382a8d15d3cfd10856669b4a101c0",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r053",
+      "scene_id": "c05r053",
+      "line_text_sha256": "ab6f2d0d76687097a42aeb9af06a68f6a429b3931ce340dda2f7eca78921a129",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r054",
+      "scene_id": "c05r054",
+      "line_text_sha256": "d13eb0cdb587fb85e0ee2df0b0c5ab5e0dbf5dfbf03f5a34fa1a2eb187fbc4fe",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r055",
+      "scene_id": "c05r055",
+      "line_text_sha256": "a71dab7d3801a70286040f514c41320cd9b5317c57a40f99c06af424f622a71e",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r056",
+      "scene_id": "c05r056",
+      "line_text_sha256": "d3fb5323b581bbb2e5cf9b3cf46065dbf18637e7b192aa5154af7b3fa37e6cf3",
+      "source_evidence": [
+        "K_T",
+        "K_M",
+        "NM",
+        "NA"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r057",
+      "scene_id": "c05r057",
+      "line_text_sha256": "18b0314109562caf732a78e81c0ebc958c6c74484383c137c96be8e494900bf6",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r058",
+      "scene_id": "c05r058",
+      "line_text_sha256": "d0640565f4fc0e678d24058c8f04bf38a7b1d533d645bac43403fe9edb4f392c",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r059",
+      "scene_id": "c05r059",
+      "line_text_sha256": "b2a96fcbd782aff13d7d8a9d4bc738419f560a632efdc0dafe156dc5135f2963",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r060",
+      "scene_id": "c05r060",
+      "line_text_sha256": "f0bef5d7161295667a89a21c659e92768b76b5f1dab3394d7d0ca07e0d48aeb5",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r061",
+      "scene_id": "c05r061",
+      "line_text_sha256": "569d9aadf76b3e1d6417d0a53911f352da21fb04d2efb9293a5e1d5517548fcc",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r062",
+      "scene_id": "c05r062",
+      "line_text_sha256": "63b6d2f4fabffe74e7cb21dd3f2a832b045f369a2fccd7782771a684e8c639ee",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r063",
+      "scene_id": "c05r063",
+      "line_text_sha256": "5663dd6650073e2d801e414dd5cfe8af2a69cd5dc710b7fac6f8218d354cfbc1",
+      "source_evidence": [
+        "K_T",
+        "K_F",
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r064",
+      "scene_id": "c05r064",
+      "line_text_sha256": "9524a7237311a2db118013685e780779b5114818a0f7b73ae5e6ecb8a6f6612a",
+      "source_evidence": [
+        "K_S"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r067",
+      "scene_id": "c05r067",
+      "line_text_sha256": "2ce47014ee1238662eccf2212c8acb8adcf83ccf54951421acfb3546e48d4685",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r068",
+      "scene_id": "c05r068",
+      "line_text_sha256": "94e2f24257188f0eea5d97ce7aba0737ff009fc4e7df75809849e9c839a10000",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r069",
+      "scene_id": "c05r069",
+      "line_text_sha256": "2d203808f621f17cea4226a3b7e03a54d43edfeab9309ec4dd70d56f5601b800",
+      "source_evidence": [
+        "K_T"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r070",
+      "scene_id": "c05r070",
+      "line_text_sha256": "15665e4331206d2edcb920763c6cc892465e754dbae5581356c035fc2e4bc912",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r071",
+      "scene_id": "c05r071",
+      "line_text_sha256": "4717badff1dcba74ae757fab463d384616f78aec2311d3e38ecf097354793ffe",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r072",
+      "scene_id": "c05r072",
+      "line_text_sha256": "4d74888ab690e7506bdbdf0d64722390a0002bc2aba67985d34b20baf0d505e4",
+      "source_evidence": [
+        "K_T",
+        "K_40"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r073",
+      "scene_id": "c05r073",
+      "line_text_sha256": "d8fe93c37b509ddb51e0994f3571bfa748dd6cee0b1d969c89819f89b1c380d7",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r074",
+      "scene_id": "c05r074",
+      "line_text_sha256": "9185d08999ee89867a1ca56a76595c71aeff3d79de4d02622992798331a0f96e",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r075",
+      "scene_id": "c05r075",
+      "line_text_sha256": "6aed604376efc45e9a6a68e8b9c9e9fd3baa21968e2d6a13afe5ad64d0c3d5cd",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r076",
+      "scene_id": "c05r076",
+      "line_text_sha256": "456c94d2db29b84dbba2cf4551b02b4e79c242c9766a6ccd2189f1cdaa72ec89",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r077",
+      "scene_id": "c05r077",
+      "line_text_sha256": "68474d17f83b03b9b3042075b548b8b4f2581166ff4dd9333ece038f3b725211",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r078",
+      "scene_id": "c05r078",
+      "line_text_sha256": "7b29677c9eeebd216007b155a59ebe6ca9d1089dfe1989ebb74bee5fa529284b",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r079",
+      "scene_id": "c05r079",
+      "line_text_sha256": "322c2aa838f3d3f7d7bb17353d1350a5aa8de8f548ca3d993c193eb63a6ce635",
+      "source_evidence": [
+        "K_57",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r080",
+      "scene_id": "c05r080",
+      "line_text_sha256": "d58c2dbcded9f808fcd47bfce0480d752fe9f243dc34530d69d3d012d22c94dc",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r081",
+      "scene_id": "c05r081",
+      "line_text_sha256": "df4343dff0649d37b2a7aee682c958e7f98262fd04290468ac9d049978c95b71",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r082",
+      "scene_id": "c05r082",
+      "line_text_sha256": "246f525ed108c4118da79f76fde01b11e690844d6c74a97c8d49efd2f7002073",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r083",
+      "scene_id": "c05r083",
+      "line_text_sha256": "46758860f5bb649b3903a7caa9d291642479763ae3414d8787c034d8d45d8dcf",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r084",
+      "scene_id": "c05r084",
+      "line_text_sha256": "c7701e651b1deed5b19d420936b0b24517f7dbad47345fbefcff2c5d13888ca7",
+      "source_evidence": [
+        "K_Q",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r085",
+      "scene_id": "c05r085",
+      "line_text_sha256": "f61ce9c140562e897ec65800f47c161be6d827d368a27eba499b0819ab8a0c3b",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx001",
+      "scene_id": "c05rx001",
+      "line_text_sha256": "4ca75225633b9e177af94052b8acda78bb670f24c0d473245f49f828bb14e443",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx002",
+      "scene_id": "c05rx002",
+      "line_text_sha256": "a49f2595742fbd77c0773cc2d95928b7a394d6f2e781a3d1bb96b97675fedc9a",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx003",
+      "scene_id": "c05rx003",
+      "line_text_sha256": "a24a3cdc7d8f9fb36604f9c3d5fa9f4a34b61fb6521dc59ac9025b3f73c7614f",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx004",
+      "scene_id": "c05rx004",
+      "line_text_sha256": "fc6b834e0876789efc7bfd1de4e50a23bf36c53b92496959ccc4951f0f39c13e",
+      "source_evidence": [
+        "K_F",
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r087",
+      "scene_id": "c05r087",
+      "line_text_sha256": "de414f685fb80d15ef9053492f1df04a7195ffa22100e857e4f35b748d69727e",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r088",
+      "scene_id": "c05r088",
+      "line_text_sha256": "12722eeb5c25324bb96d468e9dc8c59844b1f7b965e8565bcd324789873ced1a",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r089",
+      "scene_id": "c05r089",
+      "line_text_sha256": "3341121cb3bc98f8f09ede42db6f2df40018e4a4144661f3f0a5d10314ee6d56",
+      "source_evidence": [
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r090",
+      "scene_id": "c05r090",
+      "line_text_sha256": "3a5fa259f1481980c98e453eeb55ace40b57a3911a331a0d12690b544d1e5a78",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r091",
+      "scene_id": "c05r091",
+      "line_text_sha256": "ed326acc877395ac124c83a2aa4834ae6faf41e9279e30067beeeb4f45372b95",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx005",
+      "scene_id": "c05rx005",
+      "line_text_sha256": "b34299ab6d21c30f1d9c4d093693ca6f50e4a7e9cafb43cb32616024e68748fb",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx006",
+      "scene_id": "c05rx006",
+      "line_text_sha256": "1dde5f016b64c00af50af7b511214c4998240cec0013a4132a72b11442f0b243",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx007",
+      "scene_id": "c05rx007",
+      "line_text_sha256": "7e9d59a7d49c4fd3d7b093392961b7fc1e544f836808a1ebf2cfdc6a4f1ebdcc",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx008",
+      "scene_id": "c05rx008",
+      "line_text_sha256": "387f78d2e6a03b57764b2097ba9213113b7337a895b26b53b28bfe1f939d76c4",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r092",
+      "scene_id": "c05r092",
+      "line_text_sha256": "f0e5a2b9ee396f667720b77944fc75b2b33bc359030cf2738d2cdc1f32d1da49",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx009",
+      "scene_id": "c05rx009",
+      "line_text_sha256": "ccd5702021a7cf0b202ce2134b73c05e0b14a9af30ecf1b562e80b2baeca3df4",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx010",
+      "scene_id": "c05rx010",
+      "line_text_sha256": "031790cbb136387073ff2e4d6d4aa76d896d652df29775a340cc3e601cd7376e",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05rx011",
+      "scene_id": "c05rx011",
+      "line_text_sha256": "57ead6a2e04b84394a65047c270f834887e01ce9fc94876f339713ff9a6ad6a9",
+      "source_evidence": [
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r093",
+      "scene_id": "c05r093",
+      "line_text_sha256": "81493d3abe21cbc0c42faec59031496a04d6a3062f0c06aa3b485bccc373400e",
+      "source_evidence": [
+        "K_T",
+        "K_F"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r101",
+      "scene_id": "c05r-outro",
+      "line_text_sha256": "03792f6c13cb9f40fb7ef0c3498ffb9fbc26d221ff70d833a6eef3a01a1e2dcd",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_F",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r102",
+      "scene_id": "c05r-outro",
+      "line_text_sha256": "c60526d446fce2ae596b139a0b481cce285db0752350d2fa7895d4a1a0a0c6e8",
+      "source_evidence": [
+        "K_T",
+        "NM",
+        "K_Q"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    },
+    {
+      "line_id": "c05r103",
+      "scene_id": "c05r-outro",
+      "line_text_sha256": "b2ebbc3a6a140a53a332e3229f5eff0cf700f6e23085cb4ad3b4621c5fd29e97",
+      "source_evidence": [
+        "EDITORIAL",
+        "PROJECT"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r4精確同scene物件；來源PASS鏈及本次刪除語境核對。"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_AND_FRESH_READERS",
+  "candidate_revision": "c15-r1",
+  "author": "/root/c15_r1_author",
+  "counts": {
+    "lines": 96,
+    "scenes": 94,
+    "shots": 93,
+    "cards": 1,
+    "chapters": 6,
+    "loops": 27
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 2875,
+    "coldopen": 179,
+    "voiced_CTA": 95,
+    "actual_narration_seconds": null,
+    "actual_duration_verified": false,
+    "official_duration_scope": "whole actual unwrapped narration timeline including coldopen and voiced CTA, excluding separately added channel bookends",
+    "rough_planning_target": 3500,
+    "delta_to_rough_target": -625,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      575,
+      718.75
+    ],
+    "planning_arithmetic_not_actual_audio": true
+  },
+  "maximum_estimated_shot_seconds": 10.866666666666667,
+  "source_research_sha256": {
+    "research-original.md": "275f3c5cf2b105abc26c606bc5a9cd609c4735409939f236a47372fbdbc5b6b7",
+    "research-original.claims.json": "84da190bb348d86ac83ef86ad2430d80a035af4386e04bcc4d014a58a9d5b52f",
+    "original-preservation.json": "031d38bcb119734c6f32e00ce4e5308805236c16b339df29198e27d3657ec316"
+  },
+  "source_raw_receipts_checked": 18,
+  "protected_original25_and_snapshots_unchanged": true,
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true
+  },
+  "independent_source_review": "PENDING_OTHER_REVIEWER",
+  "independent_narrative_review": "PENDING_FRESH_READERS",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "actual_media_generated": false,
+  "runtime_root": "/workspace/work/brand-story-20261025/c15-submission-root",
+  "author_notes": [
+    "Material history supports the one-ink-stroke use chain; not one physical stroke traveling through past laboratories.",
+    "2001/2002 original mismatch retained in research and narrowed to early 2000s in narration.",
+    "1975 precise patent identity, unverified photocopying claim, product catalogue and sales totals excluded.",
+    "Every visual is an anonymous original concept; no readable text, logo or named likeness in prompts."
+  ],
+  "recipe_only": {
+    "image_model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "stillmotion": true,
+    "burn_in_zh_tw": true,
+    "cc_zh_tw": true,
+    "intro_seconds": 5,
+    "intro_after_coldopen": true,
+    "outro_seconds": 21,
+    "outro_version": "formal-v4-not-yet-identified",
+    "minimum_illustration_share": 0.7,
+    "maximum_consecutive_cards": 3
+  },
+  "frozen_at_utc": "2026-10-25T23:51:54.117994+00:00",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes[77].lines[0] (c15r1e01)",
+        "message": "41 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes[92].lines[0] (c15r1e14)",
+        "message": "41 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes",
+        "message": "\"desk\" is in 49 of 93 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"sheet\" is in 34 of 93 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[72] (c15r1d10)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[77] (c15r1e01)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[87] (c15r1e11)",
+        "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[89] (c15r1e13)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[92] (c15r1e14)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      }
+    ],
+    "summary": {
+      "minutes": 13.109444444444446,
+      "lines": 96,
+      "spoken_units": 2875,
+      "billable_characters": 8999,
+      "chapters": [
+        "00:00 顧客把筆翻過來",
+        "00:49 同一個位置重新落筆",
+        "03:22 冷水改了杯子，墨水得記住改變",
+        "05:39 膠囊縮小，筆跡卻還有顏色",
+        "08:24 小燒杯得接上五百公斤",
+        "10:23 低溫把重寫的字也帶回來"
+      ]
+    }
+  },
+  "native_lint_errors": 0,
+  "immutable_dictionary_sha256": "7bc3a64f9e3e635378a18e932f2cc264dbff0bd1278cd1dc9a9716af943788ef",
+  "file_sha256": {
+    "video.json": "8cdf57a326f17bebbedf7f8357bc5c8afa7eec5894b56b14e1ee0fb3e85390b1",
+    "script.md": "4872f5a8f2e4fa3ccdd464dfacbc25ed67f5e3fa60caf8f0eea7c56afb5e45ca",
+    "narration-only.json": "fac04e1dd87fef06bc799bd07d5189c179938760c78ab145c90cc35692989c78",
+    "claims.json": "00f2aa4b97b982defa36ac41820d703b97e0c09566f7fe1017fb705a5c3dfb1e",
+    "claims.md": "ce8bf1994a61016635c9cc9c072d161af78d0ef948cacec3b215061ba7bdecd0",
+    "brief.md": "aa52f362f789b135fc9dae5c00d930cf5617f6b53d349a442789f29d4c2e0221",
+    "series.json": "eef7120425998f4704bd8d48855297d7d61764df2967a7f439af65340658859c",
+    "build-candidate.mjs": "bad5935ba3503216f489ea556d07feeeec67298275427d803769078caf6e8a4f"
+  },
+  "core_four_sha256": {
+    "video.json": "8cdf57a326f17bebbedf7f8357bc5c8afa7eec5894b56b14e1ee0fb3e85390b1",
+    "script.md": "4872f5a8f2e4fa3ccdd464dfacbc25ed67f5e3fa60caf8f0eea7c56afb5e45ca",
+    "narration-only.json": "fac04e1dd87fef06bc799bd07d5189c179938760c78ab145c90cc35692989c78",
+    "claims.json": "00f2aa4b97b982defa36ac41820d703b97e0c09566f7fe1017fb705a5c3dfb1e"
+  },
+  "length_planning_status": "HOLD_FOR_CAPACITY_REVIEW_ACTUAL_AUDIO_UNKNOWN",
+  "length_planning_note": "全稿2875 native units，較約3500規劃少625；實際音訊未知，不以文字算式宣判720–840秒失敗或通過。作者沒有加銷量、型號、玩具目錄、專利配方課或更多警語來填長。",
+  "unadopted_material_choices": [
+    {
+      "research_claim_ids": [
+        "F28",
+        "F29",
+        "F30"
+      ],
+      "choice": "未加銷量或產品演進，以免離開同一筆草稿主線。"
+    },
+    {
+      "research_claim_ids": [
+        "F38"
+      ],
+      "choice": "特殊添加劑使書寫距離較短是額外取捨，但此稿未加另一性能支線。"
+    },
+    {
+      "research_claim_ids": [
+        "F39",
+        "F40",
+        "F41"
+      ],
+      "choice": "提案專利的曲線/樣品測法未證零售對應，未拿作FriXion現售實測或授課。"
+    }
+  ],
+  "author_validation_history": [
+    {
+      "stage": "intra-author first native diagnostic before freeze",
+      "result": "2 errors: Latin FAQ absent from actual immutable dictionary; replaced the two spoken occurrences with 原廠／現行說明, no dictionary mutation. Initial cadence warnings were resolved by genuine supported questions/payoffs; initial schema failure on four 9-character IDs corrected to unique 8-character IDs.",
+      "is_independent_review": false
+    },
+    {
+      "stage": "current initialized native lint",
+      "receipt": "native-author-lint-r1.json",
+      "errors": 0,
+      "cadence_warnings": 0,
+      "other_soft_warnings": 9,
+      "is_source_or_narrative_pass": false
+    }
+  ]
+}

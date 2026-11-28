@@ -1,0 +1,92 @@
+{
+  "source_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+  "reviewer": "/root/c14_eight_text",
+  "independent": true,
+  "role_disclosure": "Independent C11 reviewer; I did not author its translations. This is a targeted recheck of the sole required Vietnamese text leaf c11r1ct1 after the original full eight-language review, not a fresh full read. Thai and all unchanged Vietnamese text/metadata inherit the original full review. No translations or original reports were changed.",
+  "review_type": "targeted_recheck",
+  "checked_at": "2026-10-26T02:55:36.279104+00:00",
+  "inherited_full_review": "review-vi-th.json",
+  "inherited_full_review_sha256": "be831b203679547858ba9d59a9eb6e8ce04a8301389f1e1437d01e1922b1a870",
+  "protected_source_research_sha256": {
+    "/workspace/work/brand-story-20261025/c11-submission-root/docs/videos/story-everyday-ucc-c11-remake-20261025/video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/claims.md": "6772fd0dac05faaeebd1090534e0275291a115c0001ec7cf389da981bc496657",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/script.md": "1cc1d014cf1bf3c7aa6c1f44751e7c457bb5e327729d3e8a573867787a1c65d1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/series.json": "2ba6558904ffa91f15cfad6bef81841e58eef64dbaf46052b37cc0dd39c1c848"
+  },
+  "input_sha256": {
+    "/workspace/work/brand-story-20261025/c11-audit/text-r6/review-vi-th.json": "be831b203679547858ba9d59a9eb6e8ce04a8301389f1e1437d01e1922b1a870",
+    "/workspace/work/brand-story-20261025/c11-audit/text-r6/translation-review-history/vi/worksheet-before.json": "d802b7f33994d400025f0338930506b1f5918905b30df1b04e8a075e711f3450",
+    "/workspace/work/brand-story-20261025/c11-audit/text-r6/translation-review-history/vi/translation-before.json": "7738c0a52f48ef67457cf4c19c0b0427d62040fe0c596ccabe32f64e3db8db42",
+    "/workspace/work/brand-story-20261025/media/story-everyday-ucc-c11-remake-20261025/i18n/vi.todo.json": "f5124542ed906b0d8121640949e2bcd535dbb167cb4cb2441e2578daecd4f3ef",
+    "/workspace/work/brand-story-20261025/c11-submission-root/docs/videos/story-everyday-ucc-c11-remake-20261025/i18n/vi.json": "945592038dab83121d5024c377c4eaaf2e4d0b3c046bbfd174bd8f6f35162d13",
+    "/workspace/work/brand-story-20261025/media/story-everyday-ucc-c11-remake-20261025/i18n/th.todo.json": "a2a1f1fe7fad3c854a8dc6e35caae28b1c1f5efab15556d58ec9f4ec71fab989",
+    "/workspace/work/brand-story-20261025/c11-submission-root/docs/videos/story-everyday-ucc-c11-remake-20261025/i18n/th.json": "c3cd5edbc9bf88c065cdaf54ed63a95a35efeecfaf244a9448a6912ff855ee22",
+    "/workspace/work/brand-story-20261025/c11-submission-root/docs/videos/story-everyday-ucc-c11-remake-20261025/video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b"
+  },
+  "proof": {
+    "archived_worksheet_matches_original_review": true,
+    "archived_native_matches_original_review": true,
+    "worksheet_changed_leaves": [
+      [
+        "lines",
+        77,
+        "text"
+      ]
+    ],
+    "native_changed_leaves": [
+      [
+        "lines",
+        "c11r1ct1",
+        "text"
+      ]
+    ],
+    "protected_fields_unchanged": true,
+    "all_other_text_exactly_unchanged": true,
+    "thai_worksheet_native_unchanged": true,
+    "exact_original_proposed_applied": true,
+    "resolved_meaning": "Vietnamese now says work needed so you can actually drink the beverage, retaining manufacturing/distribution/can-top delivery work without the former drink-to-a-place wording."
+  },
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "f5124542ed906b0d8121640949e2bcd535dbb167cb4cb2441e2578daecd4f3ef",
+      "translation_sha256": "945592038dab83121d5024c377c4eaaf2e4d0b3c046bbfd174bd8f6f35162d13",
+      "status": "TEXT_PASS",
+      "checked_lines": 1,
+      "checked_chapters": 0,
+      "checked_targets": [
+        "lines.c11r1ct1"
+      ],
+      "inherited_full_review_checked_lines": 80,
+      "inherited_full_review_checked_chapters": 6,
+      "inherited_full_metadata": true,
+      "required_fixes_resolved": 1,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "a2a1f1fe7fad3c854a8dc6e35caae28b1c1f5efab15556d58ec9f4ec71fab989",
+      "translation_sha256": "c3cd5edbc9bf88c065cdaf54ed63a95a35efeecfaf244a9448a6912ff855ee22",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "checked_targets": [],
+      "inherited_full_review_checked_lines": 80,
+      "inherited_full_review_checked_chapters": 6,
+      "inherited_full_metadata": true,
+      "required_fixes_resolved": 0,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "chapters.c11r1h01",
+          "current": "พนักงานขายเดินเข้าร้านอาหารแห้ง",
+          "proposed": "พนักงานขายเดินเข้าร้านขายของชำ",
+          "reason": "可選用較通用、自然的雜貨／食品零售店稱呼；目前章名用อาหารแห้ง偏向乾貨，但不影響主線條件與數字，本項只列用語建議，不要求改寫。",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "actual_timing_or_media_review": false
+}

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "revision": "c04-teaser-image-plan-v1-story-category",
+  "author": "/root/approved_teaser_visual_plan",
+  "status": "HOLD_CATEGORY_ONLY_SOURCE_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+  "kind": "NOT_A_NATIVE_MANIFEST_OR_VIDEO_SCHEMA_EXTENSION",
+  "not_a_keyframes_manifest": true,
+  "actual_same_asset_verified": false,
+  "no_assets_generated": true,
+  "source_before_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "4a259f650f43fac5553d0ccff60a57a98c583b564cd1f47045acab3cff795b92",
+      "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+      "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+      "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+    },
+    "claims_md_sha256": "e34e067ce56b2ca41485b57d42c44af75ece300befc2ab5899e4a6449c249d96",
+    "brief_sha256": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+    "series_sha256": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f"
+  },
+  "rule": {
+    "path": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "narrative_and_canonical_unchanged": {
+    "narrative_hash": "99b7fa6451a86058",
+    "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "approved_narrative_not_rewritten": true,
+    "old_native_review_still_matches": true,
+    "source_review_must_be_reopened_for_current_video_sha": true
+  },
+  "code_files_sha256": {
+    "tools/video/core/screenplay.mjs": "1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389",
+    "tools/video/core/narrative.mjs": "2b474789da003607847a062b0d627a33f50e6026f093d832ed5f26803782d7bc",
+    "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+    "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+    "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+    "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+    "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+    "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "two-film-seam",
+      "source_scene_id": "c04r-e07",
+      "source_line_ids": [
+        "c04re071"
+      ],
+      "reuse_scene_id": "c04r-h05",
+      "reuse_line_ids": [
+        "c04rh051"
+      ],
+      "actual_narrative_answer_line_ids": [
+        "c04re071"
+      ],
+      "source_text": [
+        "它改把兩張薄膜的接觸面加熱，趁表面能融合時施壓，直接熔成接縫。"
+      ],
+      "reuse_text": [
+        "可兩張膜之間那條細細的接縫，會讓這個設計碰到一道意外的難題。"
+      ],
+      "payoff_chapter_context_may_differ_from_numeric_answer_card": false,
+      "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+      "prompt_sha256": "7ffdc9bb6aa5ecf818b3267b989f52cb5a6cc472cde21e2e3a82fea065fe77b1",
+      "camera": "tilt up",
+      "composed_prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+      "composed_prompt_sha256": "f976f4c1b86586c811ec57c02494272fa7c81a197e24a00d78ba49c623d646d1",
+      "no_result_drawn_in_teaser": "Two overlapping films and a raised-cell sample show the joint being handled, without drawing heat, a melted seam, machinery settings or the later solution.",
+      "native_key_rehearsal": {
+        "pure_local_only": true,
+        "provider": "minimax",
+        "model": "image-01",
+        "image_selection_version": 1,
+        "seed": 1,
+        "references": [],
+        "negative": "",
+        "size_1k": null,
+        "key_1k": "a1ef14ae5ad920ab",
+        "size_2k": "2K",
+        "key_2k": "dde95d8ba1ab71e6",
+        "both_ends_exactly_equal": true,
+        "prompt_cut_chars": 0,
+        "backend_settings_read_back": false
+      },
+      "official_command_recipe": [
+        {
+          "step": "Payoff first, only after all admission and review gates",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-bubble-wrap-c04-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c04r-e07",
+            "--takes",
+            "1"
+          ]
+        },
+        {
+          "step": "Before running teaser: require the exact live-cache key and on-disk bytes/SHA to match the accepted payoff; stop on miss to prevent a new dispatch",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-bubble-wrap-c04-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c04r-h05",
+            "--takes",
+            "1"
+          ]
+        }
+      ],
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "production_handoff": {
+    "normal_cache_route_only": true,
+    "still_alias_field_added": false,
+    "no_manifest_or_approval_fabricated": true,
+    "preconditions": [
+      "Exact current independent source/visual review, current narrative-bound owner approvals, admitted new-remake budget account/history/all-in quote, and formal branding requirements remain mandatory. This plan authorizes no provider call.",
+      "Read actual provider/model/size/version/seed/references/look/composed prompt and correction list before production; the native keys recorded here are declared planned examples, not current backend settings.",
+      "Generate and pass each payoff first through the normal keyframes --shot --takes 1 route with seed 1. Before the teaser command, use the ordinary read-only cache reader and actual bytes/SHA to prove the same key is present and points to the accepted payoff file. If not present or changed, stop; do not allow the teaser command to dispatch a fresh image."
+    ],
+    "same_prompt_is_not_same_asset": true,
+    "on_any_failure": "Stop the pair. Each scene retains its own official judge. Do not reroll a second seed, independently buy a similar picture, bypass a failed judge, or hand-edit a manifest. Any changed request, retake, trim or selection requires both ends to be reconciled under the normal gates.",
+    "required_actual_checks": [
+      "Both final official manifest scene assignments and their actual file bytes/SHA256 are identical.",
+      "If margin trimming creates derived files, compare those actual selected derived files too; equality of an earlier original is insufficient.",
+      "Each scene has its own passing official image judgment and valid receipts.",
+      "Both assembly inputs reference that same accepted selected image; the ledger contains no duplicate teaser image purchase."
+    ],
+    "actual_generated_media": 0,
+    "actual_verified_shared_images": 0
+  },
+  "paid_provider_requests": 0,
+  "backend_calls": 0,
+  "runtime_or_approval_writes": 0,
+  "story_category_delta": {
+    "baseline_visual_source_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+    "source_category": "story",
+    "only_additional_video_leaf_changed": "category",
+    "delta_receipt": "story-category-delta.json",
+    "pairs_native_request_inputs_unchanged": true,
+    "native_lint_status": "HOLD_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+    "native_lint_errors": 8
+  }
+}

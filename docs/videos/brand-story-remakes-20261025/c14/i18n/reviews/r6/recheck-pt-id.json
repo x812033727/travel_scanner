@@ -1,0 +1,89 @@
+{
+  "source_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+  "reviewer": "c10_eight_text independently reviewing C14",
+  "independent": true,
+  "role_disclosure": "Independent original C14 reviewer; did not author or apply C14 translations. This is a targeted one-leaf recheck per corrected locale, inheriting the frozen full review rather than claiming another full reread.",
+  "initial_review": {
+    "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/review-pt-id.json",
+    "sha256": "1b8fb7420633d5ec4ff48ae417f4eb517583bbe697adc07d423cec28036194be",
+    "unchanged": true
+  },
+  "applied_fixes": {
+    "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/applied-fixes-pt-id.json",
+    "sha256": "74aeff64b52c7722e08930367d73dd7ebbb153ebe325f6932f50532cdff77cb8"
+  },
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "6cebb500f223a8413bf14a597db7368a6f6d9829d772b648f8b6265deb00a60a",
+      "translation_sha256": "e8e143c34a87a9dbb4d14f4ed93f10a60c20250006ecd5341e0eba5e400216c8",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "inherited_full_review_lines": 77,
+      "inherited_full_review_chapters": 7,
+      "checked_fix_targets": [],
+      "recheck_scope": "Byte/SHA inheritance only; no fresh semantic reread claimed.",
+      "all_text_and_metadata_unchanged": true,
+      "findings": []
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "09133b784d5645a864c56e998ea54fa8fe2eba0dd6d40b193a47e8ce69dff07e",
+      "translation_sha256": "2ee1670e5bb032903644a3e9a12895e152005815c37281bdd49ad576e3010374",
+      "status": "TEXT_PASS",
+      "checked_lines": 1,
+      "checked_chapters": 0,
+      "inherited_full_review_lines": 77,
+      "inherited_full_review_chapters": 7,
+      "checked_fix_targets": [
+        "lines.c14r1b03"
+      ],
+      "recheck_scope": "Fresh semantic reread of one corrected leaf plus exact complete-object difference verification; other 76 lines, seven chapters and all metadata inherit the original full review.",
+      "before_after": [
+        {
+          "target": "lines.c14r1b03",
+          "before": "Kamu kembali menggenggam botol, tetapi tidak perlu kembali ke mulut botol yang terbuka. Itulah yang membuat saya berhenti memperhatikan.",
+          "after": "Kamu kembali menggenggam botol, tetapi tidak perlu kembali ke mulut botol yang terbuka. Itulah yang membuat saya berhenti sejenak untuk memperhatikan.",
+          "matches_initial_required_proposal": true,
+          "matches_native": true,
+          "result": "RESOLVED",
+          "reason": "改後明確表示停下來觀察，已消除停止觀看／停止注意的反向義；前句水瓶與開放瓶口對比保持。"
+        }
+      ],
+      "unchanged_proof": {
+        "worksheet_before": {
+          "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/translation-review-history/id/worksheet-before.json",
+          "sha256": "80cd5acd607fb3d0c20aa71447a8150b2923a1afea7df0899d1dae88e4418046",
+          "matches_initial_review_sha256": true
+        },
+        "translation_before": {
+          "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/translation-review-history/id/translation-before.json",
+          "sha256": "62252e50c7234f7eee28c3f2c4f09f5f890510d9828e07caac1a8507d2e2370b",
+          "matches_initial_review_sha256": true
+        },
+        "recursive_worksheet_changed_paths": [
+          ".lines[31].text"
+        ],
+        "recursive_translation_changed_paths": [
+          ".lines.c14r1b03.text"
+        ],
+        "canonicalization": "UTF-8 JSON ensure_ascii=false sort_keys=true compact separators; only target text masked",
+        "worksheet_without_target_before_sha256": "f58ada72abe5f2c2515569b95a3a5b59e89551b82375f3cdd9e29c1a96729af3",
+        "worksheet_without_target_after_sha256": "f58ada72abe5f2c2515569b95a3a5b59e89551b82375f3cdd9e29c1a96729af3",
+        "translation_without_target_before_sha256": "b35369223bdba46b00b87c23336eaf327f5c603707c86b270e444518167555e6",
+        "translation_without_target_after_sha256": "b35369223bdba46b00b87c23336eaf327f5c603707c86b270e444518167555e6",
+        "other_76_lines_unchanged": true,
+        "seven_chapters_and_all_metadata_unchanged": true,
+        "ids_scenes_sources_todo_boundaries_glossary_source_hashes_unchanged": true,
+        "native_all_text_matches_worksheet": true,
+        "initial_review_status_preserved": "FIXES_REQUIRED"
+      },
+      "findings": []
+    }
+  ],
+  "protected_source_research_and_other_locales_match_original_snapshot": true,
+  "all_read_input_files_unchanged_during_recheck": true,
+  "actual_timing_srt_dub_video_qa": false,
+  "paid_calls": 0
+}

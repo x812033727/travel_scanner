@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_READER_REVIEW",
+  "revision": "rolling-suitcase-r1",
+  "checked_at_utc": "2026-10-26T05:03:43.637Z",
+  "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/rolling-suitcase-submission-root",
+    "lint",
+    "--slug",
+    "story-rolling-suitcase-v2-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r1/normal-lint-final.json",
+  "ordinary_cli_output_sha256": "ffc1dce0a32052762cf207eb55d01790374679ab4f1a3bba7d5237f72762860f",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"luggage\" is in 54 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"suitcase\" is in 42 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    }
+  ],
+  "hook_cadence_45s_warnings": [],
+  "near_identical_adjacent_shot_warnings": [],
+  "soft_warnings_author_explanation": "Two object-word frequency warnings are retained: luggage54/109 and suitcase42/109. The same object is the causal spine; scenes change between terminal encounter, separate cart, archive, workbench, wheel corner, rod/guide, strap, bag and workshop. Adjacent-similarity detector reports0. This is author explanation only; independent visual/narrative judgment remains pending.",
+  "chapter_viewer_and_narrator_counts": [
+    {
+      "chapter": "開場｜兩個包與一張圖",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "一｜輪架已經能走",
+      "you": 3,
+      "I": 3
+    },
+    {
+      "chapter": "二｜圖紙等了兩週",
+      "you": 2,
+      "I": 3
+    },
+    {
+      "chapter": "三｜把輪子放進箱角",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "四｜拉把靠摩擦留住",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "五｜讓第二個包一起站",
+      "you": 3,
+      "I": 3
+    },
+    {
+      "chapter": "六｜別人也要一只",
+      "you": 3,
+      "I": 3
+    }
+  ],
+  "whole_raw_spoken_units": 2687,
+  "capacity": {
+    "whole_raw_spoken_units": 2687,
+    "coldopen": 166,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 813,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      537.4,
+      671.75
+    ],
+    "planning_at_4_5": 597.1111111111111,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "native_estimate_seconds": 757.9666666666667,
+  "native_estimate_is_not_actual_audio": true,
+  "native_estimate_caution": "Default250CPM plus per-line/per-scene pauses is only a native draft estimator. Its12.63minutes does not establish natural4–5units/s spoken body720–840seconds. No actual TTS; capacity HOLD remains.",
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "projections": {
+    "source_video_to_narration_only_exact": true,
+    "claims_text_to_narration_exact": true,
+    "author_script_each_ID_and_text_exact": true,
+    "runtime_video_exact_source_bytes": true,
+    "runtime_script_exact_native_screenplay": true,
+    "runtime_script_sha256": "392fff54dbe32ab1ff82055fe893bba099e9e50eb39108679835efaa5150a8b5"
+  },
+  "normal_lexicon": {
+    "mode": "ordinary initializeStoryLexicon; only one immutable initial event",
+    "sequence": 1,
+    "lexicon_sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+    "current_file_sha256": "29516c8a1aba3ae0a4d226747bd172be4db3c832feeca27f9c3aeb190edcece1",
+    "files": [
+      {
+        "path": "/workspace/work/brand-story-20261025/rolling-suitcase-submission-root/docs/videos/story-rolling-suitcase-v2-remake-20261025/story-lexicon/current.json",
+        "sha256": "29516c8a1aba3ae0a4d226747bd172be4db3c832feeca27f9c3aeb190edcece1",
+        "bytes": 287
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/rolling-suitcase-submission-root/docs/videos/story-rolling-suitcase-v2-remake-20261025/story-lexicon/events/93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32.json",
+        "sha256": "93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32",
+        "bytes": 298
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/rolling-suitcase-submission-root/docs/videos/story-rolling-suitcase-v2-remake-20261025/story-lexicon/versions/5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a.json",
+        "sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+        "bytes": 6778
+      }
+    ],
+    "subsequent_prepare_calls_read_existing_snapshot": true,
+    "reinitialized_or_rebuilt": false,
+    "other_episode_dictionary_copied": false,
+    "pronunciation_review_created": false
+  },
+  "actual_native_round_count": 0,
+  "native_input_prepared": false,
+  "native_reader_calls": 0,
+  "source_review": "PENDING_OTHER_REVIEWER",
+  "written_visual_review": "PENDING_OTHER_REVIEWER",
+  "fresh_native": "NOT_PREPARED_NOT_READ",
+  "pronunciation": "PENDING_OTHER_REVIEWER",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approvals_created": 0,
+  "provider_calls": 0,
+  "paid_calls": 0
+}

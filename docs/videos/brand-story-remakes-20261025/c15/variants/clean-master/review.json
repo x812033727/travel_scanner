@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T02:32:41.998Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the C15 current approved narration and verified teaser plan source or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-everyday-frixion-c15-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/video.json": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/variants/clean-master/video.json": "9100b55f8ab9412aefa473f29ec7183fe3ab590c048b0047017ca48c415b3f5c",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/variants/clean-master/derivation.json": "72008376aacfb8fc7c9a03d8ca43ac90a785f6cafcdce38b70000b603c68719f",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c15/variants/clean-master/lint.json": "69d17bbd8fd3c1f3f89cff1fbd722c887affd3f9bc881c451856ee402fe952f1",
+    "/workspace/work/brand-story-20261025/c15-submission-root/docs/videos/story-everyday-frixion-c15-remake-20261025/script.md": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+    "/workspace/work/brand-story-20261025/c15-submission-root/docs/videos/story-everyday-frixion-c15-remake-20261025/story-lexicon/current.json": "5f67bd62e6379a21722fea5908adb501f4fc63546904a529bb2c9f3e91c8d777"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "lexicon_sha256": "651b9adc4d0008af2644f0e7e35a5aeba3b075c0d7b233d3871696787bc14392",
+    "head_event_sha256": "b3c2aa1542a53c6078a8b86049ca9e9484b7a479293b1055009a187e1ace6102",
+    "sequence": 1,
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "f62749184519146e",
+      "variant": "f62749184519146e",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "2f2bfc923254d432",
+      "variant": "2f2bfc923254d432",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "aefa2c0121384bd7",
+      "variant": "aefa2c0121384bd7",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 8,
+    "saved_lint_exactly_matches": true
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}

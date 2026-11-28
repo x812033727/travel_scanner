@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "garmin-r2",
+  "status": "HOLD_PENDING_SOURCE_WRITTEN_VISUAL_FRESH_NATIVE",
+  "counts": {
+    "lines": 158,
+    "scenes": 152,
+    "shots": 151,
+    "cards": 0,
+    "outro": 1,
+    "chapters": 7,
+    "loops": 18
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 3348,
+    "coldopen": 184,
+    "voiced_CTA": 52,
+    "target": 3500,
+    "actual_body_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false,
+    "planning_at_4_to_5_units_per_second": [
+      669.6,
+      837
+    ],
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "extra_bookends_seconds": 26,
+    "body_includes_coldopen_and_voiced_CTA": true
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_episode_dictionary_copied": false
+  },
+  "research_sha256": {
+    "research-original.md": "4ef55d45d582152d9e21077f093bacfbd1e38b3d753e62fe19224c6220837206",
+    "research-original.claims.json": "9dd303580d2de5c75082e1450e1ba7f0165fe2084263fad22091edbbeaa8ee35",
+    "original-preservation.json": "d7848567a1182efecf63c387216b60c4a1ed49d041813039d19e19ad240ea5f7"
+  },
+  "author_new_anchors": 14,
+  "engineering_repost_used": false,
+  "source_pass_claimed": false,
+  "native_pass_claimed": false,
+  "actual_native_round_count": 0,
+  "owner_approvals_created": false,
+  "generated_story_media": 0,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "image_reuse_plan_sha256": "8766d4ea384201925ba9e8c2068cfc857a1f239fc54c4069a6bd7d803811f43e",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"adult\" is in 137 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"wrist\" is in 128 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"device\" is in 119 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[84] (gr1a03)",
+        "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[93] (gr1a12)",
+        "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[111] (gr1d04)",
+        "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[126] (gr1d20)",
+        "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "about 16.0 minutes; the target is 12-14"
+      },
+      {
+        "path": "scenes",
+        "message": "「三零五」 is said in 4 lines (gr1a01, gr1a12, gr1a15, gr1v02): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ],
+    "receipt": "native-author-lint-r2.json",
+    "receipt_sha256": "afb8e00d6dddfd98b2db6c1f18143728b5b1cff25cec535d4a317ef49dcc27eb",
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "canonical_runtime_script_sha256": "bb5fdca4347f4dff95a580a1a8830ef18dce62062dd19fd1214e510a4ce7bc4f"
+  },
+  "frozen_at_utc": "2026-10-26T04:49:39.632793+00:00",
+  "native_state": "NOT_PREPARED_NOT_READ",
+  "previous_source_HOLD_sha256": "ccd537166653fb53c908288bd17b24c4226f14b0dfd3da37387fb5c781613b99",
+  "source_delta": "PENDING_OTHER_REVIEWER",
+  "source_delta_manifest": "changes-r2.json",
+  "reproducible_build_receipt": "/workspace/work/brand-story-20261025/garmin-audit/author-r2/reproducible-build-r2.json",
+  "author_caveats": [
+    "Only five source-condition/model-pronoun text leaves changed; other153 narration rows and all non-text video leaves remain exact.",
+    "Whole3348units and native estimate16.0min are planning only; actual body unknown. No13minPASS or slow/pad/repeat.",
+    "All9soft warnings retained, including repeated305 needed for explicit source-model scope. No new editorial rewrite to remove that warning.",
+    "R1 sourceHOLD is preserved; native has never been prepared/read, actualround0. R2 first native would be1.",
+    "No new raw source, paid model/provider/backend/owner/Git mutation."
+  ]
+}

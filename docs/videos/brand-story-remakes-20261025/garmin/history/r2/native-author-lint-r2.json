@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "garmin-r2",
+  "checked_at_utc": "2026-10-26T04:49:39.632793+00:00",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/garmin-submission-root",
+    "lint",
+    "--slug",
+    "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r2/native-lint-r2.raw.json",
+  "ordinary_cli_output_sha256": "5c959e320fd88b2ed0a10306e73ae019ee0ccb9ed5a37735511e3018f91d7176",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 137 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"wrist\" is in 128 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"device\" is in 119 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[84] (gr1a03)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[93] (gr1a12)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[111] (gr1d04)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[126] (gr1d20)",
+      "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "about 16.0 minutes; the target is 12-14"
+    },
+    {
+      "path": "scenes",
+      "message": "「三零五」 is said in 4 lines (gr1a01, gr1a12, gr1a15, gr1v02): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ],
+  "native_summary": {
+    "minutes": 16.000555555555554,
+    "lines": 158,
+    "spoken_units": 3348,
+    "billable_characters": 11842,
+    "chapters": [
+      "00:00 手腕上的錶，還在等天空",
+      "00:52 先充好電，再等訊號條消失",
+      "03:49 坐標變成配速，還得讓人看懂",
+      "06:17 重設之前，先把這一跑留下來",
+      "08:25 天線沿著手腕，朝天空轉過去",
+      "11:06 記得更細，能留下的時間反而變短",
+      "13:25 二零零九年，記錄到了軟體裡"
+    ]
+  },
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "手腕上的錶，還在等天空",
+      "you": 6,
+      "I": 1
+    },
+    {
+      "chapter": "先充好電，再等訊號條消失",
+      "you": 7,
+      "I": 1
+    },
+    {
+      "chapter": "坐標變成配速，還得讓人看懂",
+      "you": 12,
+      "I": 1
+    },
+    {
+      "chapter": "重設之前，先把這一跑留下來",
+      "you": 6,
+      "I": 1
+    },
+    {
+      "chapter": "天線沿著手腕，朝天空轉過去",
+      "you": 9,
+      "I": 1
+    },
+    {
+      "chapter": "記得更細，能留下的時間反而變短",
+      "you": 7,
+      "I": 1
+    },
+    {
+      "chapter": "二零零九年，記錄到了軟體裡",
+      "you": 6,
+      "I": 4
+    }
+  ],
+  "source_script_narration_claims_projection_consistent": true,
+  "narration_count": 158,
+  "unchanged_narration_count": 153,
+  "source_condition_or_model_pronoun_changes": [
+    {
+      "id": "gr1s13",
+      "before": "可是電池完全沒電時，插上電源，螢幕就一定立刻有反應嗎？",
+      "after": "可是機器久置到電池完全沒電時，插上電源，螢幕就一定立刻有反應嗎？"
+    },
+    {
+      "id": "gr1s14",
+      "before": "手冊留了最多三十分鐘，才開機或顯示充電的可能。",
+      "after": "手冊說，這種情況可能得充電最多三十分鐘，才開機或顯示充電。"
+    },
+    {
+      "id": "gr1a12",
+      "before": "這一款加入的心率資料，來自另一件貼在身上的東西。",
+      "after": "三零五加入的心率資料，來自另一件貼在身上的東西。"
+    },
+    {
+      "id": "gr1a15",
+      "before": "這份手冊特別說，心率監測器只和這款配合。",
+      "after": "這份手冊特別說，心率監測器只和三零五配合。"
+    },
+    {
+      "id": "gr1a16",
+      "before": "同一代另一個沒有心率配備的型號，不能把這項功能一起算進去。",
+      "after": "同一代的二零五不支援這份手冊的胸帶，不能把這項功能一起算進去。"
+    }
+  ],
+  "all_prompts_camera_scene_order_loops_opening_unchanged": true,
+  "existing_used_anchor_groups_checked": 38,
+  "source_anchor_count_note": "R1 independent source receipt coverage and actual references both38; requested35 is not the actual R1 count. No reference removed to change the count.",
+  "immutable_lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+  "dictionary_sequence": 1,
+  "existing_dictionary_republished": false,
+  "canonical_runtime_script_sha256": "bb5fdca4347f4dff95a580a1a8830ef18dce62062dd19fd1214e510a4ce7bc4f",
+  "actual_body_seconds": null,
+  "actual_final_seconds": null,
+  "actual_duration_verified": false,
+  "native_estimate_is_not_actual_audio": true,
+  "required_actual_body_seconds": [
+    720,
+    840
+  ],
+  "extra_intro_outro_seconds": 26,
+  "whole_narration_spoken_units": 3348,
+  "body_includes_coldopen_and_voiced_CTA": true,
+  "planning_at4_to5_units_per_second": [
+    669.6,
+    837.0
+  ],
+  "source_pass_claimed": false,
+  "fresh_native_pass_claimed": false,
+  "actual_native_round_count": 0,
+  "native_state": "NOT_PREPARED_NOT_READ",
+  "owner_approvals_created": 0,
+  "generated_story_media": 0,
+  "backend_calls": 0,
+  "paid_calls": 0
+}

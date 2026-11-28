@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-25T13:51:28.456Z",
+  "mode": "fresh_remake_no_old_media_prerequisite",
+  "video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "preflight_receipt": "preflight-inputs.json",
+  "paid_calls": 0,
+  "generated_media_files": 0,
+  "tts": {
+    "provider": "gemini",
+    "voice": "Sulafat",
+    "default_model": "gemini-3.8-flash-tts",
+    "initial_requests": 120,
+    "billable_characters": 4194,
+    "audio_measured": false,
+    "per_request_server_reservation_ceiling_usd": 0.151552
+  },
+  "images": {
+    "provider": "minimax",
+    "model": "image-01",
+    "scenes": 100,
+    "takes_per_scene_including_first": 3,
+    "maximum_generations": 300,
+    "catalog_usd_per_image": 0.0035,
+    "catalog_judge_estimate_usd": 0.01,
+    "three_take_image_and_judge_estimate_usd": 4.05,
+    "actual_images": 0,
+    "quote_scope": "Image-stage catalogue estimate only; no assertion of whole-film or provider-specific billed total."
+  },
+  "music": {
+    "provider": "gemini",
+    "model": "lyria-3.5",
+    "planned_tracks": 1,
+    "catalog_usd_per_track": 0.08,
+    "native_quote": "waiting_for_actual_tts_timeline"
+  },
+  "transcription": {
+    "model": "gemini-3.8-flash",
+    "per_request_server_reservation_ceiling_usd": 1.032192,
+    "actual_requests": "determined_after_actual_timeline",
+    "conservative_example_lines": 143
+  },
+  "conservative_partial_envelope": {
+    "tts_initial_request_caps_usd": 18.18624,
+    "example_one_asr_per_narration_line_caps_usd": 147.603456,
+    "with_image_catalog_estimate_and_one_music_track_usd": 169.919696,
+    "not_expected_cost": true,
+    "not_full_quote": true,
+    "excludes": "Jev speech/policy, retakes, paid text, unknown or uncertain supplier charges; ASR count awaits the actual timeline.",
+    "interpretation": "Published/model-wide per-operation charge ceilings are deliberately conservative. This subtotal cannot be represented as a guaranteed USD25 whole-film quote; actual usage may be far lower."
+  },
+  "existing_whole_film_stop_usd": 25,
+  "cap_increased": false,
+  "all_in_quote_ready": false,
+  "production_admission": "HOLD: exact remake slug is not activated; protected account, provider billing identity, prices and operations must be read back.",
+  "supplier_prices_checked_in_through": "2026-12-31",
+  "source_code_sha256": {
+    "apps/api/app/video_speech/admin_api.py": "287cb1ff1018dbecfb2744236e548dc1e3820df19809ebd740113538becb88f9",
+    "apps/api/app/video_budget/prices.py": "d7934b3c029f9a70f625ba4cf4d94b333df5c51ab329773ae3fe93646704f8fc"
+  },
+  "notes": [
+    "User authorized restarting C03 from scratch. This does not change the implemented paid-admission route or the existing ceiling.",
+    "The generic site USD200 display and remaining character allowance are not whole-film spend authorization.",
+    "The original C03 historical USD25 closure remains distinct from this new remake and is not deleted or reallocated."
+  ],
+  "selected_additional_dubs": 8,
+  "additional_dub_pricing_status": "Not quoted or generated; actual clean approved master, line windows, provider/voice prices, retakes and per-language ASR/Jev must be included in the existing whole-film ledger before dispatch.",
+  "dual_export_plan": "Burned zh-TW plus clean international master reuse identical paid source assets; subtitle rendering is local and does not authorize duplicate provider calls."
+}

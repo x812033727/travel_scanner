@@ -1,0 +1,45 @@
+{
+  "source_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+  "reviewer": "/root/c08_r9_review_pt_id",
+  "independent": true,
+  "role_disclosure": "我未參與C08中文稿或PT／ID翻譯，未讀作者自校結論。本輪直接完整對照凍結R9 video/script/claims/series與兩語各127句、6章、title、完整description（各21條來源URL及其順序）、tags、thumbnail三欄；native與worksheet逐項文字相同，worksheet source／scene及所有native source binding均對應現行中文。覆核I／you、來源歸屬、回憶／構想／假設、否定與條件；1961年150mL玻璃瓶、2010年500mL上市軟袋、2011年特定200mL密封瓶、2015年登錄的JP5727888B2軸向液閥、另一份JP5053463B2的500mL軟膜原型及2018年450mL PET瓶保持分開，未將公開／登錄日期當試驗日。直接讀K6公告、K7原PDF、E1與MoMA原文、K2a原PDF相關段落、JP5727888B2原PDF相關構造段落、JP5053463B2原PDF試驗段落及完整相關FAQ body；每時間條件五樣、約45度、120小時未見空氣但不能自然出液、160cm內閥陷入及進氣／出液失敗但無外漏、密封正常120天常溫與拆整蓋後冷藏的區別均保留。兩語均只用已證姓Onda，Itsudemo Shinsen系列名已保留；譯文無CJK殘留。讀前後實際SHA256覆核9份core／native／worksheet及37份來源raw／text，共46檔全部不變，21份raw均符合來源catalog SHA。僅作文字覆核；本輪metadata與caption text未定時，不判duration、SRT時序、dub fit或media QA，既知共圖gap不列翻譯失敗。未修改input/core/native/worksheet，未做Git、後台或paid操作，未派子agent。",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "ab38b82ad63ee1f4985f6495f1fb6be4117a106054af3ef8e62087f8db63f8ba",
+      "translation_sha256": "a53d934b50cd4000618d751b4b73076b984bb4af1c161c8225df2f4ea0d0aa90",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c8r10402",
+          "current": "Onda , da equipe de desenvolvimento de produtos da Kikkoman, explicou depois que esse shoyu dispensa a etapa de aquecimento e usa uma filtragem especial para remover microrganismos.",
+          "proposed": "Onda, da equipe de desenvolvimento de produtos da Kikkoman, explicou depois que esse shoyu dispensa a etapa de aquecimento e usa uma filtragem especial para remover microrganismos.",
+          "reason": "可選標點清理：刪除姓氏Onda與逗號間多餘的一個空格；現譯的姓名範圍、產品開發人員歸屬、回述及製程語意均正確，不構成必要修正。",
+          "required": false
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "c45aba51d7dc3fa9aa0065c3609df425ebed46d166b5c9f4e335ecd286078300",
+      "translation_sha256": "062569f92771f3ce851b0a7d061cef85c7993c625f985f29d4f6febfa5974c47",
+      "status": "TEXT_PASS",
+      "checked_lines": 127,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c8r10402",
+          "current": "Onda , staf pengembangan produk Kikkoman, kemudian menjelaskan bahwa kecap asin ini melewatkan tahap pemanasan dan memakai penyaringan khusus untuk menghilangkan mikroorganisme.",
+          "proposed": "Onda, staf pengembangan produk Kikkoman, kemudian menjelaskan bahwa kecap asin ini melewatkan tahap pemanasan dan memakai penyaringan khusus untuk menghilangkan mikroorganisme.",
+          "reason": "可選標點清理：刪除姓氏Onda與逗號間多餘的一個空格；現譯的姓名範圍、產品開發人員歸屬、回述及製程語意均正確，不構成必要修正。",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,2844 @@
+{
+  "schema_version": 1,
+  "reviewed_revision": "R6",
+  "reviewer": "/root/c11_r1_source",
+  "reviewed_at_utc": "2026-10-25T23:18:13.193609+00:00",
+  "status": "PASS",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "cross_artifact_verdict": "PASS",
+  "independent_from_candidate_author": true,
+  "independent_from_research_author": true,
+  "source_video_sha256": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
+  "core_four_sha256": {
+    "video.json": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
+    "script.md": "ceb94ccb7093aced9a55f30b365de4ae591d3ef309c93446b15492d5dc66b026",
+    "narration-only.json": "16a6bc35c347d4f300f1861b934799fd52438527565befcd64c906aa53b4aa40",
+    "claims.json": "df84a6221e8b8e4decd68f34dbc19ba2370cd8199291dd7fda0e6b13333cccb5"
+  },
+  "input_sha256": {
+    "video.json": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
+    "script.md": "ceb94ccb7093aced9a55f30b365de4ae591d3ef309c93446b15492d5dc66b026",
+    "narration-only.json": "16a6bc35c347d4f300f1861b934799fd52438527565befcd64c906aa53b4aa40",
+    "claims.json": "df84a6221e8b8e4decd68f34dbc19ba2370cd8199291dd7fda0e6b13333cccb5",
+    "claims.md": "b8b1629f738aaf2cfd839f9c0d1b5efec93d726ddd152cd278a283a68d2de09a"
+  },
+  "frozen_original_research_sha256": {
+    "research-original.md": "103534b03aa83d10d2d9c2b4c61ac8d0a45bad27384fff79418b44ea5eab4dc7",
+    "research-original.claims.json": "972924aa2bef4e3283130c8f4abaaf4446814a0c850699c774538e7113978c5e",
+    "original-preservation.json": "c0f04d1fb512db863b5bcf4a85cfb5843b4760a5998815c3b00c0cbbca1e3ee3"
+  },
+  "research_expansion_sha256": {
+    "research.md": "126ea290e5132f6a0a807847f84f1ed02af6f1ca25ca41cd475dcd8e93889683",
+    "claims.json": "4ab34028b8c2df8e5d74c4fcc575aa9165fd8cb644eb14bba386595ad0f2727a",
+    "source-receipts.json": "dca58a2487e055e750fc8d8ef7319f0ecc61841828d5d091d019e91001691d13"
+  },
+  "scope": "R6單句來源／書面配鏡差分；嚴綁完整R5來源proof/input/raw。只重核o11新問句、新prompt、teacher新摘錄與實際非相鄰payoff語境，117筆完整主張與115完整場景相同者承接R5結論；未讀blind/narrative/native投票。",
+  "R5_baseline_binding": {
+    "directory": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c10/history/r5",
+    "input_sha256": {
+      "video.json": "4e8a3bf982a2e01ab394d9bdbdd29f0c8cb50560e0878df7bf2ae2e64561a593",
+      "script.md": "15efb67f8c07c9b63bbd8347077cc20f9f6feb816ec8e0a254ba2e476bba70c3",
+      "narration-only.json": "84912abeeefe98eb489a784c925e61757ae3070acc5609a10b36acb704400eae",
+      "claims.json": "75b6008c68d1672d890edf39febe571bb689ffd971a09ab34942b3fbb0e57eb6",
+      "claims.md": "4ec4bdd115b63989a7f98257cc0803d3ba669b60d5e3c3530df5f4d8a4fe3386"
+    },
+    "source_review_sha256": "2343a13b9474432035f79eefc03500bba233fae1015b302f45aab7ff8529c99e",
+    "verify_sha256": "005d8cb4b69efa91e0fc21cf2526b6be7d9dbe5aa74e62479e8fd682682bba81",
+    "all_five_input_bytes_match": true,
+    "proof_was_independent_of_candidate_and_research": true,
+    "actual_native_or_blind_files_read": false,
+    "historical_pass_not_changed": true
+  },
+  "exact_delta": {
+    "line_count_before": 118,
+    "line_count_after": 118,
+    "changed_spoken_line_ids": [
+      "c10o11"
+    ],
+    "unchanged_spoken_lines": 117,
+    "all_line_scene_ids_and_order_unchanged": true,
+    "opening_nine_scenes_exact": true,
+    "changed_scene_id": "c10r1-o11",
+    "changed_scene_fields": [
+      "data.prompt",
+      "lines[0].text"
+    ],
+    "camera_visual_emotion_and_other_scene_fields_unchanged": true,
+    "complete_scene_objects_unchanged": 115,
+    "shot_count": 115,
+    "changed_complete_claim_ids": [
+      "c10o11"
+    ],
+    "changed_claim_fields": [
+      "text",
+      "material_refs",
+      "evidence",
+      "limits",
+      "written_visual"
+    ],
+    "remaining_117_complete_claim_objects_exact": true,
+    "payoff_claim_c10v5o01_exact": true,
+    "only_video_top_change": "loops",
+    "only_claims_top_changes": [
+      "revision",
+      "scope",
+      "input_sha256",
+      "r5_input_sha256"
+    ],
+    "all_metadata_style_voice_sources_assets_unchanged": true,
+    "all_39_R5_added_line_objects_exact": true
+  },
+  "question_assessment": {
+    "old_R5_question": "我會想把它交給第二個人：同一個捏好的形狀，換隻手還合嗎？",
+    "old_R5_question_was_explicit_hypothesis_not_universal_conclusion": true,
+    "new_question": "我想知道，原型先交到哪些人的手裡試？",
+    "classification": "PLAN",
+    "status": "PASS",
+    "finding": "R6把問題收窄為原型實際交哪些群體試用；不重判R5假設為錯誤，不宣稱第一個實驗、精確受試順序或同一模型適合每隻手。"
+  },
+  "fresh_teacher_original_review": {
+    "source_id": "X05_TEACHER_PACKET",
+    "url": "https://www.cooperhewitt.org/wp-content/uploads/2014/08/Teacher-Resource-Packet.pdf",
+    "raw_path": "/workspace/work/brand-story-20261025/c10-audit/length-research/X05_TEACHER_PACKET.pdf",
+    "raw_sha256": "4daa0ef1b5b12721a1a402284e5be57786390b0474c851823ebc341c86472916",
+    "raw_bytes": 951118,
+    "pdf_page": 11,
+    "printed_page": 9,
+    "pdftotext_directly_rerun": true,
+    "reextracted_page_text_sha256": "3d8d8789ee02605c8acae3cced7f9dc97f3bceb9b66e2cf1a01f09e743145b0c",
+    "derived_cache_path": "/workspace/work/brand-story-20261025/c10-audit/length-research/X05.page-11.txt",
+    "derived_cache_sha256": "3d8d8789ee02605c8acae3cced7f9dc97f3bceb9b66e2cf1a01f09e743145b0c",
+    "new_anchor": {
+      "source": "X05_TEACHER_PACKET",
+      "url": "https://www.cooperhewitt.org/wp-content/uploads/2014/08/Teacher-Resource-Packet.pdf",
+      "source_bytes_sha256": "4daa0ef1b5b12721a1a402284e5be57786390b0474c851823ebc341c86472916",
+      "locator": "PDF p.11 / printed p.9, prototype user testing",
+      "readable_cache_path": "/workspace/work/brand-story-20261025/c10-audit/length-research/X05.page-11.txt",
+      "readable_cache_sha256": "3d8d8789ee02605c8acae3cced7f9dc97f3bceb9b66e2cf1a01f09e743145b0c",
+      "short_excerpt": "including chefs, cooks, general kitchen utensil users, New York arthritis groups"
+    },
+    "new_excerpt_present_in_actual_pdf_reextraction": true,
+    "finding": "原頁在測試原型段說不同版本交公眾試，列廚師、烹調者、一般廚具使用者及紐約關節炎群體。只支持群體與原型互動，不提供統一模型、樣本數、臨床流程、量化成果或最早先後。",
+    "nearby_wrong_chemical_identification_excluded": "同段把Santoprene誤當neoprene的說法仍不採用。"
+  },
+  "actual_frozen_sequence": {
+    "setup_line_id": "c10o11",
+    "setup_index_1based": 19,
+    "payoff_line_id": "c10v5o01",
+    "payoff_index_1based": 31,
+    "intervening_spoken_line_count": 11,
+    "adjacent": false,
+    "payoff_is_immediately_after": "c10o20",
+    "intervening_ids": [
+      "c10o12a",
+      "c10o12b",
+      "c10o13",
+      "c10o14",
+      "c10o15",
+      "c10o16",
+      "c10o17",
+      "c10v5o02",
+      "c10v5o03",
+      "c10o19",
+      "c10o20"
+    ],
+    "finding": "o14在第23句是向人了解困難的舊敘述；真列舉原型交哪些群體試的是o20後第31句v5o01。沒有把兩端當相鄰或把訪問直接等同試原型。"
+  },
+  "loop_delta": {
+    "old": {
+      "setup": "c10o11",
+      "payoff": "c10o14",
+      "what": "一雙手以外還要了解哪些人"
+    },
+    "new": {
+      "setup": "c10o11",
+      "payoff": "c10v5o01",
+      "what": "原型先交到哪些使用者手裡試用"
+    },
+    "all_other_26_loop_objects_exact": true,
+    "all_27_loops_and_54_endpoints_current_forward": true,
+    "not_a_narrative_quality_vote": true
+  },
+  "new_written_visual_review": {
+    "prompt": "Medium shot of several unmarked handle prototypes on a shared workbench, with anonymous hands approaching them for a trial.",
+    "status": "PASS",
+    "finding": "多個無標記原型及匿名手接近準備試用，是概念情境；不畫同一塊黏土套所有手，也不要求具名患者、病例、回信、量力裝置、測定值或重建既有臨床現場。Several不是已驗的精確模型或受試人數。",
+    "all_other_114_shot_data_and_outro_scene_exact": true,
+    "generated_media_acceptance": "UNKNOWN_NOT_REVIEWED"
+  },
+  "raw_evidence_rebinding": {
+    "all_15_R5_original_source_sets_bytes_and_sha_match": true,
+    "all_20_R5_expansion_receipts_bytes_and_sha_match": true,
+    "all_18_R3_old_readable_caches_sha_match": true,
+    "all_7_R3_original_reference_images_sha_match": true,
+    "all_32_expansion_derived_artifacts_sha_match": true,
+    "all_5_R5_visually_read_reference_images_sha_match": true,
+    "current_evidence_instances": 184,
+    "current_unique_evidence_bindings": 73,
+    "new_evidence_bindings_vs_R5": [
+      {
+        "source": "X05_TEACHER_PACKET",
+        "url": "https://www.cooperhewitt.org/wp-content/uploads/2014/08/Teacher-Resource-Packet.pdf",
+        "source_bytes_sha256": "4daa0ef1b5b12721a1a402284e5be57786390b0474c851823ebc341c86472916",
+        "locator": "PDF p.11 / printed p.9, prototype user testing",
+        "readable_cache_path": "/workspace/work/brand-story-20261025/c10-audit/length-research/X05.page-11.txt",
+        "readable_cache_sha256": "3d8d8789ee02605c8acae3cced7f9dc97f3bceb9b66e2cf1a01f09e743145b0c",
+        "short_excerpt": "including chefs, cooks, general kitchen utensil users, New York arthritis groups"
+      }
+    ],
+    "all_current_evidence_raw_readable_sha_and_normalized_excerpt_match": true,
+    "old_72_evidence_nodes_remain_auditable_in_bound_R5_proof": true
+  },
+  "cross_artifact_checks": {
+    "video_narration_118_id_scene_chapter_text_order_exact": true,
+    "script_118_id_text_order_exact": true,
+    "claims_json_118_id_scene_text_exact": true,
+    "claims_md_118_id_kind_material_exact": true,
+    "all_115_prompt_strings_match_current_claims": true,
+    "all_scene_line_narration_bindings_valid": true,
+    "ordered_narration_projection_sha256": "7e1f153d24c603053cfff6b06a8331bf7bc1657f5c7875be28539850410201b5",
+    "thumbnail_current_and_unchanged": true,
+    "chapters": 6,
+    "outro_lines": 3
+  },
+  "line_results": [
+    {
+      "line_id": "c10h01",
+      "scene_id": "c10r1-h01",
+      "text_sha256": "bd034449adf6e3eb1cd3524366e634ef7aed5696397c10a0151eb12308b0182e",
+      "claim_object_sha256": "cca019528402c821c60b33d48d481f646ff8a21f7225e747b49e5677acf03457",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "275b68a2355e2ec389bd605e053642cd7ac7214fe157aa399e03e017ffad587d",
+      "material_refs": [
+        "N01"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h02",
+      "scene_id": "c10r1-h02",
+      "text_sha256": "5c2dfd0b726c442f412671139862c8ff1738122a82b91fbdb3302661ac9a32aa",
+      "claim_object_sha256": "860f5e0e13258b8546280d996d7b220db2acb98b5bbc47defcd30e82cb590ef5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "e8956e9e0bf1c716d47faa3b2463346e5a113a4db3a26ba693edaf872aab2df2",
+      "material_refs": [
+        "A09",
+        "N01"
+      ],
+      "evidence_binding_sha256": [
+        "fd1d279f7f0e818683945461ba0926d6b955777fe0ca7fa45eaa6023b520ed8b",
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h03",
+      "scene_id": "c10r1-h03",
+      "text_sha256": "fafb6c505f0cdcd058e09cc356178503bf51483398197ca031d6d38b76e47984",
+      "claim_object_sha256": "e1bc13c1c72574f9b7ec7be628a28316b4edc9a8079cde06ae24bb9b3d9950f4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "208691ebf335e5652cc8701ff940a69071ecebbed0e3d9089ce961b7f89ba127",
+      "material_refs": [
+        "N02"
+      ],
+      "evidence_binding_sha256": [
+        "e1eb7691b4ae389d97b3db15a85e77353db4507c8ea8bd77182f5725fc917aad"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h04",
+      "scene_id": "c10r1-h04",
+      "text_sha256": "2d195afbf3c05749a06a2c95ab774543997990a58a11e3c5ecbb4c147039fe0f",
+      "claim_object_sha256": "6bac989b327dd5c85c720a4ab8bcdad20d8dbf8ebb6496327011510bcc43c2c2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "2160ae69f51b18996d98e79e85bd9b83d69dd0747edc2f306e8da819f35c6e5c",
+      "material_refs": [
+        "N01"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h05",
+      "scene_id": "c10r1-h05",
+      "text_sha256": "d57c86b053107626259f61b1f16be1e645da0f7b0b55d6530a06a5ce091a6fde",
+      "claim_object_sha256": "36aa11cd5ca379fa36bc1d49ed178f350545d198645e47000657034c43b1f503",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "3e95e0787cea90efdae2a17ff191834d2c2c8b3ab3c2bf433d509ea4066213d5",
+      "material_refs": [
+        "N01"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h06",
+      "scene_id": "c10r1-h06",
+      "text_sha256": "bf1b56fe76b4ccc54579ae9d80659ca90a55dea51ceac821422339795f01d01a",
+      "claim_object_sha256": "3ecf27d46da7080e256ec5415cae2218cf9ecd04c36f26d76e3841d4d9ae8897",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "958450aff5269f8cd2bc7796d8961330dcc2d853a1c35a51d6f8a9bd814978e4",
+      "material_refs": [
+        "N06"
+      ],
+      "evidence_binding_sha256": [
+        "a81c57816eb738370f9ab2923c0db34a97d3db4d586a497bd4031ae118320db4",
+        "0cd71d2ffda3a79578896b2bff5c02a46246e825ff3d6bca878732e42b33db68"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h07",
+      "scene_id": "c10r1-h07",
+      "text_sha256": "8d00732dff53dfafbc77b08e0d11ec717bc521898e1680fd3adef2918128f118",
+      "claim_object_sha256": "94c9b61566040be3a02a96dbb9f81fb53ed6131844ddef7d7d3c11914f882aed",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b2e3f75845109f47ea1e5bb9f079d297b4b809bc469c16a698525b5c0e179979",
+      "material_refs": [
+        "N26"
+      ],
+      "evidence_binding_sha256": [
+        "85426ecd98a987fdad98ee5eb29f6f1796b108d1d988091d2e29302fdfc3d872"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h08",
+      "scene_id": "c10r1-h08",
+      "text_sha256": "3e33926416c4934d59a1094877f7354d08b24b4de9ca97e725562fe57f65ed08",
+      "claim_object_sha256": "67692e57f76c23ec5c2969cdf2d486c260c3d91277beff780edc97e34146a85c",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d7ba7acbb2df1a68c37d30bd7360004d08ab429ff684fd5409ca65e5d8ed9e62",
+      "material_refs": [
+        "N01",
+        "N26"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29",
+        "85426ecd98a987fdad98ee5eb29f6f1796b108d1d988091d2e29302fdfc3d872"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10h09",
+      "scene_id": "c10r1-h09",
+      "text_sha256": "bb6cc1d62a2fb687cbda212bbc955348cfd090afbe5216281d213017b15bfd2c",
+      "claim_object_sha256": "b66b26ef5b2f44ce2add6a1660fd527a27c678a370131f20f6eb73075e2fddde",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d03274cffd27e2fd7c250afdaefce6740a622b8be7bb74e50fcefba6cfbc9207",
+      "material_refs": [
+        "N01",
+        "N05",
+        "N26"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29",
+        "840f689fdca3f51349f5c0403bde018871bc420996876aeb778f891d353d7f51",
+        "85426ecd98a987fdad98ee5eb29f6f1796b108d1d988091d2e29302fdfc3d872"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o01",
+      "scene_id": "c10r1-o01",
+      "text_sha256": "ddd4cdebad215ede71f3bac6aa7d858408ebfc25e88da4b2b90bf38922f8257a",
+      "claim_object_sha256": "a92794c9fd42c2598ea5ef39c95351016e18161f3aac2d7720fafb379b1f2223",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "f4b31ee90cd6fa9f8716f88ea75d08ddab8dc4b5b622ab39b953ce2d5d0f742c",
+      "material_refs": [
+        "N01"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o02",
+      "scene_id": "c10r1-o02",
+      "text_sha256": "e6d459520c0ce32e7137e5aec3a6d0b14b4ea49530b5358d076550c6e180a729",
+      "claim_object_sha256": "2cd7627636f660884daebcfc46e001769fd1170874a17537760a1eb8e14738d5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "ca2fb9683234763953aad9c8e7bee4f7397cd45d9723c7d018a676eb092d167a",
+      "material_refs": [
+        "N01"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o03",
+      "scene_id": "c10r1-o03",
+      "text_sha256": "7de37e68bc462df833740c27ff3078c887802fbc141190b9ea2581c0b3aa3b66",
+      "claim_object_sha256": "3341a8bb0c73ba22a46a73098508fc3a095692e0c30f3567b051f95720e8d494",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b898ea7fdd86798ca931625855ae61273c0355aa609349165a3d79666294a3e6",
+      "material_refs": [
+        "N02"
+      ],
+      "evidence_binding_sha256": [
+        "e1eb7691b4ae389d97b3db15a85e77353db4507c8ea8bd77182f5725fc917aad"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o04",
+      "scene_id": "c10r1-o04",
+      "text_sha256": "edd8d9f51ac695cb356a2330f98e7b9d8511a94c5d82e9cc2940042980d5e4c0",
+      "claim_object_sha256": "bcc8266b068c0ddca52b6863589deac53190124c6a2246e0285c76418788d89b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "cdaa91bce24ba0cb63221f47265d1bc8c648a1d6cbbb535f03e056966ed5d5b1",
+      "material_refs": [
+        "N02"
+      ],
+      "evidence_binding_sha256": [
+        "e1eb7691b4ae389d97b3db15a85e77353db4507c8ea8bd77182f5725fc917aad"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o05",
+      "scene_id": "c10r1-o05",
+      "text_sha256": "95a1d961a385f250594256ff3a503a52a719953bd5816ea61392ada25ee1cac8",
+      "claim_object_sha256": "7ea58b12f1110d25fdeb967a688ed64178628e99f208af24abb49cb4f423c0f4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "9c534e0204da520a54682b987700ed0b0c95e4b288e15e0825a703ae280b27bc",
+      "material_refs": [
+        "N06"
+      ],
+      "evidence_binding_sha256": [
+        "a81c57816eb738370f9ab2923c0db34a97d3db4d586a497bd4031ae118320db4",
+        "0cd71d2ffda3a79578896b2bff5c02a46246e825ff3d6bca878732e42b33db68"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o06",
+      "scene_id": "c10r1-o06",
+      "text_sha256": "5a3a69720732b2059a18936e40c52fc498c46a8838ab39736da737d2294b3169",
+      "claim_object_sha256": "5bf4b630902128f576be9075e2b22a75e342008c5462b05cdcc03d23c1b2420f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c8f3e56ee7ba1cf274297a8fc17d1b86fa1b636c5b5074534b88ec14c0fefa43",
+      "material_refs": [
+        "N06"
+      ],
+      "evidence_binding_sha256": [
+        "a81c57816eb738370f9ab2923c0db34a97d3db4d586a497bd4031ae118320db4",
+        "0cd71d2ffda3a79578896b2bff5c02a46246e825ff3d6bca878732e42b33db68"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o07",
+      "scene_id": "c10r1-o07",
+      "text_sha256": "de75b019f1fb94a9a6c0f90b93baaebf671dd7850bac92d610c92309ffded5f8",
+      "claim_object_sha256": "71a4c541ed3f26485a25baa245b197412d1d5873ceee2841f4a9297a34dde910",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "eaf7304cb90a222154c8716711d1d32b1267dba5ef8720aae7729cbf9334a899",
+      "material_refs": [
+        "N06"
+      ],
+      "evidence_binding_sha256": [
+        "a81c57816eb738370f9ab2923c0db34a97d3db4d586a497bd4031ae118320db4",
+        "0cd71d2ffda3a79578896b2bff5c02a46246e825ff3d6bca878732e42b33db68"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o08",
+      "scene_id": "c10r1-o08",
+      "text_sha256": "c85457010721c37ff91a217a2a56e78d6b1ae6126e3128b2a0a03c26de927d01",
+      "claim_object_sha256": "78679f7915b63f2ef6d0c83b35e08aa8e84379d75b7c9f8eb4ec120be7200010",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "91edc5410ed4f2c7f1348482bbfd335a8f6e1aef83f66e310b4dc86f01f1b93f",
+      "material_refs": [
+        "N06"
+      ],
+      "evidence_binding_sha256": [
+        "a81c57816eb738370f9ab2923c0db34a97d3db4d586a497bd4031ae118320db4",
+        "0cd71d2ffda3a79578896b2bff5c02a46246e825ff3d6bca878732e42b33db68"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o09",
+      "scene_id": "c10r1-o09",
+      "text_sha256": "e5047d0d0b6817aa0fc022767981e30a3b0afe763e22f2f029e4a4438fe03222",
+      "claim_object_sha256": "f6d5dca8ec4607d93fb1daa63c2fedaf00ee37d807317cb45dfdcaff92537657",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "4a5f360ce9588b09a3e162bdb13c297dddedf072c2f252e25d661e397c6c1471",
+      "material_refs": [
+        "N06"
+      ],
+      "evidence_binding_sha256": [
+        "a81c57816eb738370f9ab2923c0db34a97d3db4d586a497bd4031ae118320db4",
+        "0cd71d2ffda3a79578896b2bff5c02a46246e825ff3d6bca878732e42b33db68"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o11",
+      "scene_id": "c10r1-o11",
+      "text_sha256": "3d6c338f3cf2f4cd17c8b65bf4ae885b7b41133a5f565d66ac486a8121f2c9f7",
+      "claim_object_sha256": "762644a8cfa173fa57672485dad063b5e2b13b46ef2c8c2aec9cfd4e2d24d277",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R6_FRESH_TEACHER_ORIGINAL_CONTEXT_AND_PROMPT_REVIEW",
+      "R5_full_claim_object_exact": false,
+      "R5_line_result_sha256": null,
+      "material_refs": [
+        "C10X15"
+      ],
+      "evidence_binding_sha256": [
+        "527a476f75bbdc7fb7f91d6cefd5db1f3359927cff520ee2d92b7054b90bceca"
+      ],
+      "note": "只問原型交哪些群體試，來源有廚師／一般使用者／紐約關節炎群體；不保證同一黏土合所有手、最早測試順序、樣本數或臨床結果。"
+    },
+    {
+      "line_id": "c10o12a",
+      "scene_id": "c10r1-o12a",
+      "text_sha256": "2dbb1c406bf53ce706318508f4f2097482dd88f34c48833d8eae5496b121cd1f",
+      "claim_object_sha256": "93ae725f0191492022815ce448c278a20bfc2dfbf5d302c90f3a3863762181ab",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "98a6aca9c269e54e46c9e898fc51c1dd09c3301d7778eeb6ef39346fa5ad1a05",
+      "material_refs": [
+        "A01"
+      ],
+      "evidence_binding_sha256": [
+        "d7c161755c5c12ec2edf25903e05060cbcf507c984c9fad502fd911cc527015a"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o12b",
+      "scene_id": "c10r1-o12b",
+      "text_sha256": "9e31f5bcc1c7486e945c8395ca947a7ccb091a41fc379811736da4fc3b0c7c3f",
+      "claim_object_sha256": "a6d222c33e416a0fa3b2ed220edc2ed798f52ec6a64b64416c33b9314184af38",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "a72f54ad92d23676dd46a547eab8d9239ee0b3c506e3d507a447cb251d00b45e",
+      "material_refs": [
+        "A01"
+      ],
+      "evidence_binding_sha256": [
+        "d7c161755c5c12ec2edf25903e05060cbcf507c984c9fad502fd911cc527015a"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o13",
+      "scene_id": "c10r1-o13",
+      "text_sha256": "d71f0749e8cb087aa4cf910791d8e41cd85d40645ce8a684f0dde04efaf873d7",
+      "claim_object_sha256": "1b51285fee14225de3dd75fae261bfa1e42ae33734e51158ebd937e1b2b015a3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "7f0f1d2738759e653e3d65b62eae636ba5794c8419226fa0b082aabe1244abdd",
+      "material_refs": [
+        "N04",
+        "N05",
+        "N24"
+      ],
+      "evidence_binding_sha256": [
+        "7297a085ddb0cef42ac7faf5bd49f9a400d00bce3e96c10a59b6f8fb0e74c667",
+        "429ba0464d08144ffe834b5f28c2d48777087dfd80ab6f7dd70cb939430246de",
+        "840f689fdca3f51349f5c0403bde018871bc420996876aeb778f891d353d7f51",
+        "ef72413dcb5fabaf7cccc12ba169af5140d9c988b52a913f47c30f1670a06225"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o14",
+      "scene_id": "c10r1-o14",
+      "text_sha256": "1243088b20f788e07f62fac4e2c8211a2b75b8ff35d810e8b55cc76445d3ea25",
+      "claim_object_sha256": "848399fb8d1ae784c177609e72537a0e050781727443ccd509160e92e1dfb456",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "8cca9e809390e695a2c19acb2315deaf242317acd71f817f31771313440f2af6",
+      "material_refs": [
+        "N05"
+      ],
+      "evidence_binding_sha256": [
+        "840f689fdca3f51349f5c0403bde018871bc420996876aeb778f891d353d7f51"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o15",
+      "scene_id": "c10r1-o15",
+      "text_sha256": "bdd8b27c3f78dc9b06bf614aed536ba9cbf9da7f4fd7362043589a9345af9d63",
+      "claim_object_sha256": "f57390132f479328c998035873867ee71b5fbfba91a562360e5e269fe4837555",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "e85d5e2970b70dd20a913876ce60abee1d64db7be97390f5e1dff53cbaa0ec1e",
+      "material_refs": [
+        "N24"
+      ],
+      "evidence_binding_sha256": [
+        "ef72413dcb5fabaf7cccc12ba169af5140d9c988b52a913f47c30f1670a06225"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o16",
+      "scene_id": "c10r1-o16",
+      "text_sha256": "cca0d24af22ddee045f48a8dad44b91aa7aea6a3b98907a9a639e3238b0732ff",
+      "claim_object_sha256": "5ba15545f00101a46b63d726ed465520ac67aa57f675776d1aef3414c099548e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "a88262c06ef64c75b9562e51b86b59e2bb5f50d0f60a0389e4f5eb474831e8d4",
+      "material_refs": [
+        "N05"
+      ],
+      "evidence_binding_sha256": [
+        "840f689fdca3f51349f5c0403bde018871bc420996876aeb778f891d353d7f51"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o17",
+      "scene_id": "c10r1-o17",
+      "text_sha256": "5ac2683ea34b048b42998dbb9162dbb346f1eb1b3bbb25386f46deb0171e12b7",
+      "claim_object_sha256": "33d36f3788f70205c323eb59624759e63517f8e67abb9749081ff465485043f3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "51b76d4e81d3256fe0497a50c7332231371e4d16f533bb50a36a4314f2bad8fa",
+      "material_refs": [
+        "N05",
+        "N09"
+      ],
+      "evidence_binding_sha256": [
+        "840f689fdca3f51349f5c0403bde018871bc420996876aeb778f891d353d7f51",
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5o02",
+      "scene_id": "c10r5-o02",
+      "text_sha256": "327517e7acf06f55cb4b301f51b286b1f7fe85a24779c032e1c828f7f149c64b",
+      "claim_object_sha256": "cd107c97b3224a7db4953ad08ce1f0b5da29579ac70231c4a57f4cd641fe452a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "126163b52161f93dde6c170d7d6d8d33880f08746976a96f6753a65933163032",
+      "material_refs": [
+        "A10"
+      ],
+      "evidence_binding_sha256": [
+        "cacfc296636dbded409428ddfd30c58acaf990605176ed58be6fbfac7fe0c69a"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5o03",
+      "scene_id": "c10r5-o03",
+      "text_sha256": "91d861266dbe4fbcb46459deba873681533eb488e6ba2c71cff4628f97ebe8f3",
+      "claim_object_sha256": "31ed4f1a92cf92744f359d0bb037936817963ecd9e07796a895bc5812b4d02f6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "e3575c0fd7f2f28e8057541836ef2a5e2008047633103615213fb5c9839bb771",
+      "material_refs": [
+        "A10"
+      ],
+      "evidence_binding_sha256": [
+        "9bdbbbdad388ac3970b8eb4a281126fd7fc13d6b5140c166f23032f9a95accce"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o19",
+      "scene_id": "c10r1-o19",
+      "text_sha256": "29888c627c3c9bb007eb9e86fc9aa229e2863ad445f2ca88fe3f9deb2e93c93d",
+      "claim_object_sha256": "bbf016333db0bc00044a5e85a0c301acc0d6c07127fb42c4f8ebea68bb8dcf22",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "1579fe9e37ed3c8b4f44b9101263ffc8e3b1b01ddc36f9991b6b60aa861db59f",
+      "material_refs": [
+        "N07"
+      ],
+      "evidence_binding_sha256": [
+        "daf7d0ce85097784a6dcfbb2ce73c28079d672bf4f123fe5d1971a88948caf96"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o20",
+      "scene_id": "c10r1-o20",
+      "text_sha256": "0637674577be851e7706085039b0f69360f180c6bc6cd828dc1be9bb62a7341c",
+      "claim_object_sha256": "5fa32b3a5eb31df5048798930e18c918466f9f09290af369bfe9d345dcd3a320",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "2c13ed04db508a1611fcb563914073a430a66494f8cea4262acbdd8ca4673b59",
+      "material_refs": [
+        "N07"
+      ],
+      "evidence_binding_sha256": [
+        "daf7d0ce85097784a6dcfbb2ce73c28079d672bf4f123fe5d1971a88948caf96"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5o01",
+      "scene_id": "c10r5-o01",
+      "text_sha256": "8014bf6a5771fef1acc183405c72d431fe59044cf7ec487f76ecd5c2d95fea1c",
+      "claim_object_sha256": "46ba43fdf04131f6a1955187fbd3f8731131eb0fc18ba2f8af291552acb8ee4b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "dd131a44fb9e69bc4a57b440142b9d54695373bb2c93c84780418c5ed1e3d00b",
+      "material_refs": [
+        "C10X15"
+      ],
+      "evidence_binding_sha256": [
+        "6821dc5b15d368ea9ababf39efb35ae5ed4ad16c1a9786d15367064b9f6e1df4"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10o22",
+      "scene_id": "c10r1-o22",
+      "text_sha256": "09c6521ffd771b4bafc931f86adcea2872cde2a8cb256cc7e9a8de26e11c34b3",
+      "claim_object_sha256": "fc20448b29f0827dd347b715a961bd560beabfb8dd4f373725783be3d1ce1961",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "a4d06a5df0351bebe78e3841a9f0ef8ba1dcab5e72dddc88d328638a13cc8450",
+      "material_refs": [
+        "N08",
+        "N09"
+      ],
+      "evidence_binding_sha256": [
+        "f6513e94b15b70e0c8e17ded31375c25499e3d21b915cd12c42337f7bf6e1964",
+        "5ee59b44ba0a7e2e93abbe51e4c95c0883758d0a47599c5b305ec7805fcaa6ca",
+        "1ceb62ce84fab5606e6b945b86694c77ec0a5bd0e82cfcdac504fda1927a8ffe",
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r01",
+      "scene_id": "c10r1-r01",
+      "text_sha256": "688ecb50b93999cb6fd41c113ca81a3fe749e62c5ec914cebf31feed69fdd095",
+      "claim_object_sha256": "b5ec51a1156c8a50177f5a351ae8f8cc0108bedc28a00879f1fcff515fa899a7",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "e838bb16dcab6e833e1ca732d391a39f55072b315e1d9c54a59d23db158f1470",
+      "material_refs": [
+        "N08"
+      ],
+      "evidence_binding_sha256": [
+        "f6513e94b15b70e0c8e17ded31375c25499e3d21b915cd12c42337f7bf6e1964",
+        "5ee59b44ba0a7e2e93abbe51e4c95c0883758d0a47599c5b305ec7805fcaa6ca",
+        "1ceb62ce84fab5606e6b945b86694c77ec0a5bd0e82cfcdac504fda1927a8ffe"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r02",
+      "scene_id": "c10r1-r02",
+      "text_sha256": "4fca1e6568583d154dda4d13f1f1045e0f865bb8bd02b284d639d3ebc12eae41",
+      "claim_object_sha256": "29eea7b371c6b0a5eff2bd4486b12dffddcd250c89728365f6c62dfce038ffd4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "6da30fce227c17190f9aa288630bffcb555b48264a4b4cf2a12792f8edd9cf24",
+      "material_refs": [
+        "N08"
+      ],
+      "evidence_binding_sha256": [
+        "f6513e94b15b70e0c8e17ded31375c25499e3d21b915cd12c42337f7bf6e1964",
+        "5ee59b44ba0a7e2e93abbe51e4c95c0883758d0a47599c5b305ec7805fcaa6ca",
+        "1ceb62ce84fab5606e6b945b86694c77ec0a5bd0e82cfcdac504fda1927a8ffe"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r03",
+      "scene_id": "c10r1-r03",
+      "text_sha256": "5dc3382e0b8ffe4baaa1ab2be3b325cc859e5cf4b6cda4a407febf5999bf7d39",
+      "claim_object_sha256": "c66f353b32bea926ac86677dbc079bd13bf903cbbfa604a5ff7b034b8c5f5cda",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c32e7cffd6e10844e29b7e792fd7509cc5793fc6fef7f6b816fcf00f1fde16ca",
+      "material_refs": [
+        "N08"
+      ],
+      "evidence_binding_sha256": [
+        "f6513e94b15b70e0c8e17ded31375c25499e3d21b915cd12c42337f7bf6e1964",
+        "5ee59b44ba0a7e2e93abbe51e4c95c0883758d0a47599c5b305ec7805fcaa6ca",
+        "1ceb62ce84fab5606e6b945b86694c77ec0a5bd0e82cfcdac504fda1927a8ffe"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r05",
+      "scene_id": "c10r1-r05",
+      "text_sha256": "df7486db9c92a4a63976c3772ef5af4ecca9b220cf723623e6da8969bd762e0c",
+      "claim_object_sha256": "daea5613abb5881f37b64fbe0395afcebd3393f85cb9b850a8d170003a90a7d8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "dc0b5378e7bef433676a33f64215fa09fc532e1006b3aab1a8f1108ee2bf3c26",
+      "material_refs": [
+        "N09"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r08",
+      "scene_id": "c10r1-r08",
+      "text_sha256": "e60a102eca8a5fe00bbade8700a8cb89b91ab1f008d78867706d922bd094e1f8",
+      "claim_object_sha256": "bab672573aa9a0b2e245057cc6432a8510bb76863333dd6ea535991c84dbde78",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "f57b475b38c8302b44f42db9d4678ddb7a07f6490872cff7ff5f4abde575db99",
+      "material_refs": [
+        "N09",
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377",
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r09",
+      "scene_id": "c10r1-r09",
+      "text_sha256": "daff82ef0da5ff64063b06510151e915b79f6be484c02e41cb8142c18f27031e",
+      "claim_object_sha256": "9a887a65206a8f0fa5b4e5d04a0eb24497163deafcf246b91412a27dd1681006",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "5ba542d7f35454262784dfcffd46a6c3d09e65517a71e90041667c64684d1528",
+      "material_refs": [
+        "N09"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r10",
+      "scene_id": "c10r1-r10",
+      "text_sha256": "054b8bd6fc5694c6527c935721917e4a8a05b0361778a149cd3fd6af917a2df5",
+      "claim_object_sha256": "9ee8cd3a752ef38941fcf6da7321a68e3cce8b736769929413dcac4d474ad906",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "f86ef25d7920c80ffb8f80ac0a81f30215f0d32b06531e991256fe0a1f4cb19c",
+      "material_refs": [
+        "N09",
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377",
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r11",
+      "scene_id": "c10r1-r11",
+      "text_sha256": "7032bd0be46f9c721e6ceea1ebfa2c1363934b4846456dd231d01303abb20801",
+      "claim_object_sha256": "d4d20659041e101576969bbb718e799dcd38c4593bbb602195cf930e04acf603",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "528418bd697a120443e8aa6223455d392a0424d6583e8774e1ffa8854596a4a3",
+      "material_refs": [
+        "N09"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r13",
+      "scene_id": "c10r1-r13",
+      "text_sha256": "b2899d08e2ca1f4a8210ef78a7f5f8fbb827fd814e9c3afc7560c3b538b2eea3",
+      "claim_object_sha256": "99b010b753417437c755e98c5eed4e2f9e8ef4779eda5255707277e5daa83fdc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "a4948abbbad92c93df5f7c246bb9257df2f26df7e02a0fd7f207d0a08cc70c34",
+      "material_refs": [
+        "N09"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r14",
+      "scene_id": "c10r1-r14",
+      "text_sha256": "fb52159862c2d2a5945df40324a0e30c7b0d8bcdb541c854c9ab5c4fbc07f47d",
+      "claim_object_sha256": "91a659391bb2c15c92ecd933ce688f751054be95b0955f26b73ed57e53ad4d55",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d12d236b6e2f35b5816d6576bb10d80a3b614bb458342d112b0e25c939927589",
+      "material_refs": [
+        "N09",
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "adfeffbcef0c90b95f23c6f58513f2bb39a2c6b504f646488d2f3c3a5fdcfda5",
+        "4c6b9d919ab4c19f6c80a91034ee34faf3e67ceb44d8e1f3a20ff5c1ccd5f377",
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r16",
+      "scene_id": "c10r1-r16",
+      "text_sha256": "47db0c7fc5cd74c0d6321657d3487d119ce6f93a56c8370a3350975de7e343ea",
+      "claim_object_sha256": "288431b37d8a3a65af15be6d9e73dfe5843e4950d5edc1726f829ac49daa04c9",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "44ec2714d24ddb80cafda171019441c12a63e3e7660f86eaffad02dd8825ed05",
+      "material_refs": [
+        "N10",
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "7cfc133a661ac3121a064d5b524e6138f333c1bcdb19e6f644ae80e5688171f5",
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5b01",
+      "scene_id": "c10r5-b01",
+      "text_sha256": "93602807153a75f8887e2f1b9327e901c2ca8b0c6ac88f57b506a41d5823b716",
+      "claim_object_sha256": "7a1bd892916f72446e4a61575fe5c488134deb34b75bd046fd12bcd8e21fb9b8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b6f7b37cb33071c98e4a31c2c97e74d1d94ac540fc661624e509a9d9d32a2f46",
+      "material_refs": [
+        "C10X01"
+      ],
+      "evidence_binding_sha256": [
+        "00cdf7b8a65711ad3962e6ff13dc54b720bbddd342b1a836d8a9f2d3b6303862"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5b02",
+      "scene_id": "c10r5-b02",
+      "text_sha256": "75d8d0e9164e84f0706693270cfec08450b6fd47d3e0bd05ab0ac0280c6efdb8",
+      "claim_object_sha256": "1eed5081790482f0cf1de734c9497eada5ff891d7983670294e703fad28fd5a2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c1873b0e6259db11ca764d065ebae61f83e8bde9fe6caf6e21d811b53c52cd81",
+      "material_refs": [
+        "A11"
+      ],
+      "evidence_binding_sha256": [
+        "2ca8286bb5c50cdc6a1f1f9408eb3bdc8c400410f3678cb0038836989ad6b9a6"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5b03",
+      "scene_id": "c10r5-b03",
+      "text_sha256": "2a1afe1363802f73f2de8be14c847dce1586050c171f1758b567b96ee2e24ccb",
+      "claim_object_sha256": "3e3d2e91df1a68c4e76af1d88af85cdcae98eecb191229cfd26ccda67814cbff",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "f5a2160d18c7d2772e6cadbeebe82b2d51e78180c85a655320fff7784d47d5f8",
+      "material_refs": [
+        "C10X02"
+      ],
+      "evidence_binding_sha256": [
+        "b5eae6b63f02f9e96734aba8bbe85a3a07eea1e4b6bd0b58065372d1c85abcfb",
+        "eea599a3ad7d2040f63a1bfb73f25b8c2ed6053cccbc2c9ec86a445ce308f5f7"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5b05",
+      "scene_id": "c10r5-b05",
+      "text_sha256": "62a72bdb2054e2bfe471d962fbf97dacbedb2ba5f4eca42058ffced3147197d3",
+      "claim_object_sha256": "a4b1bba3b8ec7ca82c437069fa0a0f8fca10c2d35649f0dc283bdb9b5983a6e3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "64c14e405381f90e99701abfb15013d5bc8d0491de6c99e8baf35ccd51c8ac69",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r18",
+      "scene_id": "c10r1-r18",
+      "text_sha256": "3b593aabdc70152add3c0108e009de260a064407bc8f820ddf791b185bdefb4a",
+      "claim_object_sha256": "18e5e8e6adc1e8506eec04395d0a925a3d12c1b55379eb31fb0346db0bddb2b6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "0eadd4a36bda48d6d64b2109ee3fe09a392ef74bf08d29491ed6bd2ab029ce55",
+      "material_refs": [
+        "N10"
+      ],
+      "evidence_binding_sha256": [
+        "7cfc133a661ac3121a064d5b524e6138f333c1bcdb19e6f644ae80e5688171f5"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r19",
+      "scene_id": "c10r1-r19",
+      "text_sha256": "039d9e5d63ca13ed8b6ae132e75a0a22306f116ee375e9d5ba17608e2e6159d1",
+      "claim_object_sha256": "61269f356363865f2fe67b8dffb343922048d6c4075b0c9d4b0c97559b330efe",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "2496dfa8b507acde69819fe95ad405b24d8c43d6d14207a2d342f137379a3419",
+      "material_refs": [
+        "N10"
+      ],
+      "evidence_binding_sha256": [
+        "7cfc133a661ac3121a064d5b524e6138f333c1bcdb19e6f644ae80e5688171f5"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10r21",
+      "scene_id": "c10r1-r21",
+      "text_sha256": "575402015083680093fff9a76bcf8f96804f4894bc7cdb18c54b973ef46814f0",
+      "claim_object_sha256": "a5316c637b1899366b7fb2f9c9507a795f66f0d0a15ebe7f1b5a51a07afd9768",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d9c491989773801a17af88b8f2f03b058d5af93f639ec6d0e8eda0b16278ad8b",
+      "material_refs": [
+        "N10",
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "7cfc133a661ac3121a064d5b524e6138f333c1bcdb19e6f644ae80e5688171f5",
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m01",
+      "scene_id": "c10r1-m01",
+      "text_sha256": "24ddc3ab99c5a58eef6f7b4df3b5136f76d6413b24c7de0b582ed5b40df963b1",
+      "claim_object_sha256": "f203f6ce99a757b3b0a42a4cfa2b12cc3e119f87ab04f9e20057562c60af2035",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "f6d9aed1d0b46cff37d0e87c8afafe27288e53dc9d22ca15b34ee1037ca15eec",
+      "material_refs": [
+        "N11",
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "b7102c12b7c919e37e6deb3137d4d9598d20cb454aad213af92b5e625feb80c8",
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m01a",
+      "scene_id": "c10r1-m01a",
+      "text_sha256": "f7368c2b69c02d69882a951d1f3ca5db156ce5c94ef207c0525cf3a40f7f3094",
+      "claim_object_sha256": "1e3d1c0baaf4e3972b38d5855a4bee5544bbcd553a625dcf4aefefb5fb5101bb",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "29c53ac11b66c777fb83d353afc17fdb6087ee4770516ee26181113a828d44bc",
+      "material_refs": [
+        "A08"
+      ],
+      "evidence_binding_sha256": [
+        "87df43cf8d7366eb4de96dfdd50fe3be6f961dc542610f5a4dfc9163d89016d2",
+        "029e9b20315ec0c7abc0441a658eec9a5f431dd0bc8181c860a96d32519e8456"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m02",
+      "scene_id": "c10r1-m02",
+      "text_sha256": "5d4e499590e85de8ca32b71afda2cd1d12efdbdf88540d457912f5f522b5d2bc",
+      "claim_object_sha256": "88d0dc0000a7c08a715e756de53172f61b0723d62d55deb33f889e3e7c8a3168",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c21d1823ccee8a9284839f7bb86a381fdd3e07361b46df712090aa0ae1601330",
+      "material_refs": [
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m03",
+      "scene_id": "c10r1-m03",
+      "text_sha256": "de7d4df3c44839817cf9445b8eb81ce95331278941fb469fedb9bd1973ed97e4",
+      "claim_object_sha256": "5c0be1f93be92cb49a39735b5f0968ecc69dde56ed8471660baa59c8cac146e2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "368a3ebec297cd69abc14019f4edecc09d805a3086f616ab8766851b508bb699",
+      "material_refs": [
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m05",
+      "scene_id": "c10r1-m05",
+      "text_sha256": "3d5b95c6396f63189ed81fba180508438d8b515dc71fd76c2264c3c2a5e02999",
+      "claim_object_sha256": "a91b160cd1f07cbcb5bd685579a2ccc8ae66e1c5adb60cf026a604fe88a71544",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "9e8ab4e1bef8345464aa9d672f4035eea4160e76d047b5e2c736bce63fbe5795",
+      "material_refs": [
+        "N12"
+      ],
+      "evidence_binding_sha256": [
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m06",
+      "scene_id": "c10r1-m06",
+      "text_sha256": "9c5a40b2975fbe9973d7df1597406b89c10f0e391ddea188a9dba39fc81472b0",
+      "claim_object_sha256": "949f8bddec44a9a691c7ae3c3337210e89bef0fbe0a524170c39f0a3d7d72679",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d72eb36f0cd82adac73d4861165a045cc64432eaed29a09eef55b01b13259499",
+      "material_refs": [
+        "N12",
+        "N17",
+        "N18"
+      ],
+      "evidence_binding_sha256": [
+        "97daad9947dc372fb40269e2e2314d266fe9511c3561bb935dbee1e7ee9cd467",
+        "a0b3192d1eaf8feec0fab13f4a758140f5186c2a3c7c9508368fd80869c8db91",
+        "8639366aa7ffc4aa60fae94e57b08b2a88f73080079730e77f95255da078b829",
+        "acea5b4578f62bb28e8e579d62e1639ae7687093503ef7ebe656baf139d689f7",
+        "f4adb9ecbaddb79d4782c9ee82eac477faf3ed8f0181d8957c2bcbfa256abcbf"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m08",
+      "scene_id": "c10r1-m08",
+      "text_sha256": "5b6d018b02737c599b5338c1eec7b983fbb96167c1924bc2165481319101dcc0",
+      "claim_object_sha256": "d621c3b0947d09b985686fc4311eaf9c36e83568754d0227e1659b87f1abdffe",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "ce68368d2f97481282a5a3e6ef2bdac9a5b011830db17a57e8fc62fdbc8c16cd",
+      "material_refs": [
+        "N17"
+      ],
+      "evidence_binding_sha256": [
+        "8639366aa7ffc4aa60fae94e57b08b2a88f73080079730e77f95255da078b829",
+        "acea5b4578f62bb28e8e579d62e1639ae7687093503ef7ebe656baf139d689f7"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m09",
+      "scene_id": "c10r1-m09",
+      "text_sha256": "2f6dd1f0516f5221161e00ce371d2376140289c8c5d031667e017187811c8d6a",
+      "claim_object_sha256": "1d33525a830048220834c6b457354e15b4a14e689abdf6830f919a6485f80635",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "80aa4640d7eb1c4302e81ae25988543fa7c63587266c4b4b328d609a600b1079",
+      "material_refs": [
+        "N17",
+        "N18"
+      ],
+      "evidence_binding_sha256": [
+        "8639366aa7ffc4aa60fae94e57b08b2a88f73080079730e77f95255da078b829",
+        "acea5b4578f62bb28e8e579d62e1639ae7687093503ef7ebe656baf139d689f7",
+        "f4adb9ecbaddb79d4782c9ee82eac477faf3ed8f0181d8957c2bcbfa256abcbf"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m10a",
+      "scene_id": "c10r1-m10a",
+      "text_sha256": "f7b46c270b8aa642e5be4aac49a0ee372e71788e149b8748407ac9423fdab1b1",
+      "claim_object_sha256": "318894e49de53d288806b221dbaf7c573a5fb04883a5874652509110c0630640",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "393e04d707cd88a91f7cc1862fa0095e4093980746a7845db3dfca11c976bf0a",
+      "material_refs": [
+        "A02"
+      ],
+      "evidence_binding_sha256": [
+        "76b049a907eafab59301d93ed0637840b76a0751c1e00d7e44285678bced8f13"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m11",
+      "scene_id": "c10r1-m11",
+      "text_sha256": "fbcd8f0ccb8f2888d03d93e75a958fdb8fedafe33fc8be751b7ed2a42cbb62d5",
+      "claim_object_sha256": "29c8070aa4c90ced8a4446cd3bfe661efef8c316eeeaec0d800cb1b7e2dd1174",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d49b5e6dc9997b1efb6d2bcd12bf9ad1b417a939883f0f3f3443e5df38505523",
+      "material_refs": [
+        "A03",
+        "N17",
+        "N18"
+      ],
+      "evidence_binding_sha256": [
+        "fc5e4dda3310764f40b6e2e342865a9c4aec26d7a993cb9786f5b1927303622b",
+        "8639366aa7ffc4aa60fae94e57b08b2a88f73080079730e77f95255da078b829",
+        "acea5b4578f62bb28e8e579d62e1639ae7687093503ef7ebe656baf139d689f7",
+        "f4adb9ecbaddb79d4782c9ee82eac477faf3ed8f0181d8957c2bcbfa256abcbf"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m13",
+      "scene_id": "c10r1-m13",
+      "text_sha256": "3367c857d19e2777281fe9b5d758afa87c924bf68197b950c05c4a92f61fa575",
+      "claim_object_sha256": "1d6c3bab404b9de64bcd9dc8b1d40511a2a61fdbb13cbc68d3acc9cd9dabc586",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "4055472ae5b59095a67655bfdce506630279de4afdf7cae1da379c292c4381d2",
+      "material_refs": [
+        "N20"
+      ],
+      "evidence_binding_sha256": [
+        "88bcbd073f8c3fd86e765157a152f2bab6fa8473ec7be15e69c9af760d40cd36"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m14",
+      "scene_id": "c10r1-m14",
+      "text_sha256": "ba8dec7127cde45a97df2911a13b58e628b419512f56dc4a141e7b0ccbcec8d0",
+      "claim_object_sha256": "3680b65c292c574df37b8ee0e9c14df27f64e42ba9a21cfd75ba2ff6fc84245c",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "9a420054d1993739c29658e2eba5b488b23a806413f5098b6460e2ec6718f0e9",
+      "material_refs": [
+        "N20"
+      ],
+      "evidence_binding_sha256": [
+        "88bcbd073f8c3fd86e765157a152f2bab6fa8473ec7be15e69c9af760d40cd36"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m15",
+      "scene_id": "c10r1-m15",
+      "text_sha256": "8bcf638528264c6c13f9068a28b1129dfacea68887461d9dd3cbc0d0da45b486",
+      "claim_object_sha256": "fca3c1de4242ca047d3c8212366295b9bb64d523b15299172e1fe5b304d459de",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "7b02b668d5362d1d30d29ec712eb1a1343de7359b70144180ecd06b2dfc31d94",
+      "material_refs": [
+        "N20"
+      ],
+      "evidence_binding_sha256": [
+        "88bcbd073f8c3fd86e765157a152f2bab6fa8473ec7be15e69c9af760d40cd36"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m17",
+      "scene_id": "c10r1-m17",
+      "text_sha256": "4ba07efaf37f643cd427ccecbc317ab7f1d20694959998743f162235148df6fa",
+      "claim_object_sha256": "5a4c451053e25dc078ba218f918998a76d1a190f777037bcd1b1e56ad249f3d6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d5c83941b5e774dba41b551fa890f955899fd1805f9752137f425d9469eef57e",
+      "material_refs": [
+        "N20"
+      ],
+      "evidence_binding_sha256": [
+        "88bcbd073f8c3fd86e765157a152f2bab6fa8473ec7be15e69c9af760d40cd36"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m18",
+      "scene_id": "c10r1-m18",
+      "text_sha256": "34d177c91dc06537148e8c52abf3ac7eb0319ff1739fa1cb1b625689cab5e559",
+      "claim_object_sha256": "7c880ad1fe9c1836fe63494ee0ef07cd17dfe1d9ff6a4fffcaf124c2a806a326",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "f553e9fb4243334d7e6b2a3bfce14440ae1643869823517d5de6466745763c73",
+      "material_refs": [
+        "N20"
+      ],
+      "evidence_binding_sha256": [
+        "88bcbd073f8c3fd86e765157a152f2bab6fa8473ec7be15e69c9af760d40cd36"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10m19",
+      "scene_id": "c10r1-m19",
+      "text_sha256": "89c932bf9356181c3ed822c9c9f8b1c558aa9f2b998988b2417543e8457a8e8f",
+      "claim_object_sha256": "3d66eaebef1f3dd390d1b2d4f4d4b08b9609599967b6f2656d3cc18be5f772ff",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "600f9c8a4adf34b69422846e494dcec8970e57a678ed0911870d581f1210c38a",
+      "material_refs": [
+        "N13",
+        "N17"
+      ],
+      "evidence_binding_sha256": [
+        "756eda237ffc7d3b0b380d6088c2ce90501be21ac248d206ede1ba191965d1e1",
+        "8639366aa7ffc4aa60fae94e57b08b2a88f73080079730e77f95255da078b829",
+        "acea5b4578f62bb28e8e579d62e1639ae7687093503ef7ebe656baf139d689f7"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a01",
+      "scene_id": "c10r1-a01",
+      "text_sha256": "f53df3aec0050cc6b73426f7751c3116248346a54ea5d7a323974dd6f050c0f0",
+      "claim_object_sha256": "45340a664f4cd7d6a2a5ec815d9879b3afc220979c2431c317968dc03675b659",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "aaec06eac1b53adebfe38d87c9499972068a494b2748a801b31221594117bdfe",
+      "material_refs": [
+        "N13"
+      ],
+      "evidence_binding_sha256": [
+        "756eda237ffc7d3b0b380d6088c2ce90501be21ac248d206ede1ba191965d1e1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a02",
+      "scene_id": "c10r1-a02",
+      "text_sha256": "5157d665ed4ea528eb03f906639177ba624fd9ed8aae72ad3e0188ba69bb0edb",
+      "claim_object_sha256": "80cb32ab07b5623ca9870a3cb33e3c0e1c5f158dc6309a2edb8b0145b4e61d85",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "192712b0c25f9d05ecc070c63b223ef29f38f01063e869768c657426e9337e6b",
+      "material_refs": [
+        "N13"
+      ],
+      "evidence_binding_sha256": [
+        "756eda237ffc7d3b0b380d6088c2ce90501be21ac248d206ede1ba191965d1e1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a03",
+      "scene_id": "c10r1-a03",
+      "text_sha256": "ef17ce187ab778f25f9485b3da45ce146f3c15cac018258b96552981550230ca",
+      "claim_object_sha256": "c55932505a1a58d8812f501a15defff9f63b9d47e2f03de3317bef365bb060b8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b1c3d0e5559e52f13debda438f2b7fd45b2cf37c7dd8d4a00764a0a267679d75",
+      "material_refs": [
+        "N13"
+      ],
+      "evidence_binding_sha256": [
+        "756eda237ffc7d3b0b380d6088c2ce90501be21ac248d206ede1ba191965d1e1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a05",
+      "scene_id": "c10r1-a05",
+      "text_sha256": "6a681a0468c04ce953f6ce8b9bfb60e4cbd36ea9e45589d7dde08d822d600ec9",
+      "claim_object_sha256": "25ba50722a8ea929fa4c5be17c4e8e2f18402f39e46402e7cd104053fb5f11bd",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "03a45a03a1413f59cf2e17a83beaedcd5ab4e0b24838dd0b9df54a5936f9afd6",
+      "material_refs": [
+        "N13"
+      ],
+      "evidence_binding_sha256": [
+        "756eda237ffc7d3b0b380d6088c2ce90501be21ac248d206ede1ba191965d1e1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a07",
+      "scene_id": "c10r1-a07",
+      "text_sha256": "d15633041dbd29692d0fbaa8753573154a45afdd6925b17bed0825c075bed8c0",
+      "claim_object_sha256": "c6f9c0dd314d028646f627159cee207fad978d508fd20e1b43a9e1da8f7e9b14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "e334ff6d6d6a416a3afc3122c2e3d3f35db6a393f244ce01d7929111658884bc",
+      "material_refs": [
+        "N14"
+      ],
+      "evidence_binding_sha256": [
+        "07b156f2ac9f92e5ce173af01879081849e9c2a5fe32dcf258d5a9889c789bb1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a08",
+      "scene_id": "c10r1-a08",
+      "text_sha256": "e5f4c2496f4ff2251531c542f92c8e88053d9003e9cc9a1fe352785fbd43dc31",
+      "claim_object_sha256": "688510d080cbe36c9bab96e7c7db854d8c52fc42e3b73d9b99e9653f2af032ee",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d1a8574426e3132d23d38101b5928e9f93f9a52cb754efd3f1d9f29bab105856",
+      "material_refs": [
+        "N14"
+      ],
+      "evidence_binding_sha256": [
+        "07b156f2ac9f92e5ce173af01879081849e9c2a5fe32dcf258d5a9889c789bb1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a10",
+      "scene_id": "c10r1-a10",
+      "text_sha256": "452bb8bb7a990c49ac7b4ad08185d0af185f16fef514ccd1c58a9c4a6ef9d8df",
+      "claim_object_sha256": "112f76038f16a432d348589d3770c8bd51d28d77da5d8d3e3f6ae279ab03192b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "76dab4f0ec32e0537ad4c3acd7cfb3e3a3fdae7df23de36f308b4395978cda7b",
+      "material_refs": [
+        "N14"
+      ],
+      "evidence_binding_sha256": [
+        "07b156f2ac9f92e5ce173af01879081849e9c2a5fe32dcf258d5a9889c789bb1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a11",
+      "scene_id": "c10r1-a11",
+      "text_sha256": "ea764ad74a4c2209bcf819b4032788db2ca0d9accdb6e0280db421b1edfd77ea",
+      "claim_object_sha256": "53e8b76bf9e97d4d8ecbdb6aa235fc3b1995d96dd7301dd3cacab70fc3afeac1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "360557118a75ca3f450b6f1b153c6603419b0fe3da5c3029b465acb9b5c3b8a9",
+      "material_refs": [
+        "N14"
+      ],
+      "evidence_binding_sha256": [
+        "07b156f2ac9f92e5ce173af01879081849e9c2a5fe32dcf258d5a9889c789bb1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a12",
+      "scene_id": "c10r1-a12",
+      "text_sha256": "2c7f2d9ee52bed3a6d09280beed7a6ccc31473601b7b31bdfa9eef3d4c2b2dfd",
+      "claim_object_sha256": "0406e71eeca7fe7c882c94620e8ff6aeea8789d99b8efb68301ebe425d8100e6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "8c0eeb18f4a3d2dd5469176c4a42f02ebb726d82a044d647d9e1dc81694fa083",
+      "material_refs": [
+        "N14"
+      ],
+      "evidence_binding_sha256": [
+        "07b156f2ac9f92e5ce173af01879081849e9c2a5fe32dcf258d5a9889c789bb1"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a15",
+      "scene_id": "c10r1-a15",
+      "text_sha256": "3f76e210a576c458daef99a48167819eb23abf4b8063bd9e4c3c5a7cf3dcbfb3",
+      "claim_object_sha256": "6439540943604bd1b2653dbf86de2585c794559852df537e0911202dd416fd24",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "e81254ad37ed878d3ae7b8805983e5e1373bf08e27be85fc7c4b4e98c8b84515",
+      "material_refs": [
+        "N15"
+      ],
+      "evidence_binding_sha256": [
+        "1c78538f6f1c62dbc2f207573e83b2ca46103a82b9bdbc2ee8283aa369f6f039",
+        "1f3de405666dc408065aaa341e0a1324027789e7ec9698173e46fad5d455c85d"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a16",
+      "scene_id": "c10r1-a16",
+      "text_sha256": "7dde269a77aa1a5e7de8cc404213d07697a340f25845c317468e2ee4c7fa6c45",
+      "claim_object_sha256": "213b782bcbd95564acec38eb8bd0038673614301870107274034373b07f1f15f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "7d13418782e1b89e956e4d9e10b3f7560e1a22929a4fcd85b7406778ec0a37c7",
+      "material_refs": [
+        "N15"
+      ],
+      "evidence_binding_sha256": [
+        "1c78538f6f1c62dbc2f207573e83b2ca46103a82b9bdbc2ee8283aa369f6f039",
+        "1f3de405666dc408065aaa341e0a1324027789e7ec9698173e46fad5d455c85d"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a18",
+      "scene_id": "c10r1-a18",
+      "text_sha256": "80454a4d9a96038024e6c12e2b9fff2c2d352fc19a903c98aed4bc8fd3aee168",
+      "claim_object_sha256": "c3e8c734d65791d3c26d93ff605d5b5a2007bf9918793056e4e9e33e279c8a8a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c2e6063cdecc90a0b7678bfafceae2926d5a336267d710965de6c60568660699",
+      "material_refs": [
+        "N15"
+      ],
+      "evidence_binding_sha256": [
+        "1c78538f6f1c62dbc2f207573e83b2ca46103a82b9bdbc2ee8283aa369f6f039",
+        "1f3de405666dc408065aaa341e0a1324027789e7ec9698173e46fad5d455c85d"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a18x",
+      "scene_id": "c10r1-a18x",
+      "text_sha256": "132124bc7be672913e1bb22254c16d1136c04210ea2d8204e577bf8d1296a154",
+      "claim_object_sha256": "c0dd02ed583f35b1064ab27156f0375412cb103888cd979371896c4228fb6f0f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "658016788274e36b225169bd0b9f617816cd6f618e649a627e87bbdaf1218902",
+      "material_refs": [
+        "N15"
+      ],
+      "evidence_binding_sha256": [
+        "1c78538f6f1c62dbc2f207573e83b2ca46103a82b9bdbc2ee8283aa369f6f039",
+        "1f3de405666dc408065aaa341e0a1324027789e7ec9698173e46fad5d455c85d"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a18a",
+      "scene_id": "c10r1-a18a",
+      "text_sha256": "f3ca6a32f88b4b4bc2e7c100b5f3f6763b51441ab2eb7fac730873cd95ae8b54",
+      "claim_object_sha256": "d2755a26c1e19af1ae7a0b49556bf63cbe8795973c24f7351e4c7adc48b2e544",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "67fd301bab0b8132dd9ebc66c2e0032da2024e0f5131b31be77764281e201e80",
+      "material_refs": [
+        "N15"
+      ],
+      "evidence_binding_sha256": [
+        "1c78538f6f1c62dbc2f207573e83b2ca46103a82b9bdbc2ee8283aa369f6f039",
+        "1f3de405666dc408065aaa341e0a1324027789e7ec9698173e46fad5d455c85d"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10a18b",
+      "scene_id": "c10r1-a18b",
+      "text_sha256": "c878d62f93b1022c801da70246c54fe1881b9778e1edf6f288ce4f49055b2634",
+      "claim_object_sha256": "cf638f46a9423d50e14cc1486aa5519fdda45df4a8c2ccd10d800d1739f7df9d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "502c0147e5e915ae4687ab2d9c93084bcf1828cecafef8bbeeec59e15579ca5b",
+      "material_refs": [
+        "N15"
+      ],
+      "evidence_binding_sha256": [
+        "1c78538f6f1c62dbc2f207573e83b2ca46103a82b9bdbc2ee8283aa369f6f039",
+        "1f3de405666dc408065aaa341e0a1324027789e7ec9698173e46fad5d455c85d"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5p01",
+      "scene_id": "c10r5-p01",
+      "text_sha256": "1aaaa2fe9b1826234d30fe0f5838675c45fb519e9bd13f48102b6cd84aa85451",
+      "claim_object_sha256": "6e69b205d1d2fdb1db62448dd5c245932a7892bf2a282895154e34e95a120d4b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c03c47924507a790d58cda84aecbe76157d04002ea065b7700197d92ce3f1a6e",
+      "material_refs": [
+        "C10X03"
+      ],
+      "evidence_binding_sha256": [
+        "de5d41b6f2929aac5afc1a9a9edd04781210594c08fc856a69183edc4bacd4df"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5p02",
+      "scene_id": "c10r5-p02",
+      "text_sha256": "b86384c9ba7c285ddcc9e7820af9889b454de051987b29162150ecc1bc7432e3",
+      "claim_object_sha256": "b3541f74d7ba39e03c44888c52ceb1ac4b5dd70886b5a206e6ad2a32d038a547",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "1e0f7ab95ed65a8f22a9d882f93bb75dcd0a3aecb113d0b2aeb4d4ef04830abe",
+      "material_refs": [
+        "C10X03"
+      ],
+      "evidence_binding_sha256": [
+        "1d95573f63a0cc4b4b3e903fdfeb9d5e416c9f2a2fa71bb49096f829fe4931b4",
+        "63300133e6467534a62e8f1ac8c07aff88945e575b7a863b72719d42c0d887e0"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5p03",
+      "scene_id": "c10r5-p03",
+      "text_sha256": "74b1e41933b9e5d191eae2d0571a69070178f90cac5928a51d448173897592ae",
+      "claim_object_sha256": "2cb68a698f1dbb243f0c03033b1ee41336bd468ce3651c28211028851be7d4e7",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "2f31fb38128950391574ed2959b40bd3dbf3771299f8fb4749910756c05b4042",
+      "material_refs": [
+        "C10X03"
+      ],
+      "evidence_binding_sha256": [
+        "facc4627b6904714dc623978cfdd4edfaab96d77cbb763f7232dd803271a6146"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f01",
+      "scene_id": "c10r5-f01",
+      "text_sha256": "fc2dab28984a904379ee5ce022a72a8826595890c99231d15f5b1cfe81a2296e",
+      "claim_object_sha256": "5728c881c3acd794a54ca4c0e10511a99b3cfa57a00654172659a3509f962b76",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "bb5e453b14d58a02b89ce5e6c90a23ff1440154d9d621822574dc73471830434",
+      "material_refs": [
+        "C10X04"
+      ],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f02",
+      "scene_id": "c10r5-f02",
+      "text_sha256": "f825295d443cb942a747559dbb1ed30cd01b4411b57e443d0c7a4b483162f6b7",
+      "claim_object_sha256": "50a7c426c1fca7a95ec642a81c636aa51af990766f417bdb902e4889df70829a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "cd065dbba7cfbfc8914941fdc41343afc0390e83463e5f655c87d8446ddd9185",
+      "material_refs": [
+        "C10X04"
+      ],
+      "evidence_binding_sha256": [
+        "ff984f918ceaa2c2c54730a32a2aef91668c1222bf6f5a2cd5492c568f55dbd9",
+        "0b10b5f8e76a107a011e31b2fe77ac0539e3e1adc2ae3a1f8fdb16889247703b"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f03",
+      "scene_id": "c10r5-f03",
+      "text_sha256": "65d10e89b6ca1bc725fc2faecb1a10ed999e6014b9d1db7d68ba88d62bd9a302",
+      "claim_object_sha256": "3211219d6f6e41249116806a3b6d5bcc27c5928befa1429ed08850af1a58ba26",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c7a62ae8caa3da5d3f0430b61155b7b0a8f8a62c016e1e816ceb6c3aabad1204",
+      "material_refs": [
+        "C10X04"
+      ],
+      "evidence_binding_sha256": [
+        "51b13b09eab838f153d2f21ddcd5c5d0ea9ee95191e32a8aaebc5d5731c82bb3"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f04",
+      "scene_id": "c10r5-f04",
+      "text_sha256": "71d34d463e86bd95f6957d2f70ccafbae43155b8a37b44aa77a0fafbaeac5b94",
+      "claim_object_sha256": "851a8090bfa5dbde39b3e8ec0255545f548c12f30203f9190cc9b1a26a93d038",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b8e493f8ccb01657fc22173898914851614c21069c488529403f74a4a0d55e62",
+      "material_refs": [
+        "C10X05"
+      ],
+      "evidence_binding_sha256": [
+        "c958820a591f757a960ba561d86249cba57c76408a27417efee3cd4435d79022"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f05",
+      "scene_id": "c10r5-f05",
+      "text_sha256": "24361674762009c554fa6e1670c338d3c464e8d44e35b7de370363f1ee38290d",
+      "claim_object_sha256": "6607883bf6c9e0e4e9ff8848207df43281fefaad0cae16bb696de0be2c08f581",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "a0b96ac8d02bff50830d906964587ac496958ead5d002810318d7ce4b5c51c00",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f06",
+      "scene_id": "c10r5-f06",
+      "text_sha256": "55e452ca82b1ca14f90f94387fdbf47fa52dfdcaeed3b1fa3818802b602483a2",
+      "claim_object_sha256": "51c7d0de2742b7358791026f1f83eeee1aabb5590a5af370430fe2fbfc91d9cb",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "a7cdd5f52cce51382f809cb865b16c5e185a1ff257a6f87ca34f053bf132b1b8",
+      "material_refs": [
+        "C10X06"
+      ],
+      "evidence_binding_sha256": [
+        "49facaa490d6e1916206d1baf18dc2ac97d126d91d542e8e005fd95534fd3251"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f07",
+      "scene_id": "c10r5-f07",
+      "text_sha256": "b967f7ed0d8d5273a2d57306df80a894951249b6bac57364f00d6436858e6d44",
+      "claim_object_sha256": "074bfdc6fcdc04b75797da0160fb648f80ca9d8e5b9da1da24737e3e918e8495",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "72055ad6c5a42d827bf72c3e65c261333a2014d1a4aefc6a09776bc85213e08d",
+      "material_refs": [
+        "C10X06"
+      ],
+      "evidence_binding_sha256": [
+        "b2d0c059d36aaf7223f59436fdb3ba34ec28e2337ab7462510ef195689c68b2e"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f08",
+      "scene_id": "c10r5-f08",
+      "text_sha256": "b0d8a9b7a66103229b9fa142b3249b58dc35cc66a24d280afb7fd8f437139190",
+      "claim_object_sha256": "6092c2bbf9d38dd2493903fd0ab0ebf951b990cdcfcd32adb2a440f853dc9a46",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "492f0ed66ba29826e687a66b8ef6006b73b90132e407fb7b77106cda0551dfa3",
+      "material_refs": [
+        "C10X07"
+      ],
+      "evidence_binding_sha256": [
+        "cbb7b7c788ecb7cc978b06af7544f1f2baa39be79ba9e64082983b55569e6098"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5f09",
+      "scene_id": "c10r5-f09",
+      "text_sha256": "5bdc737e88e44da6be7e3f0523fd811033d078044eb827c12c2292a95850f614",
+      "claim_object_sha256": "3e3f347e59151f9127cde7577738299a990482434afab8ad2edcedc65ef89c26",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "3a9362a46a0002c441fa21801abb0fe36579163feea3c5e806948389670b54bc",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s01",
+      "scene_id": "c10r5-s01",
+      "text_sha256": "26380d94528b847b6e502a023b622d746408f7686ca6c129fefec77d15afa13c",
+      "claim_object_sha256": "97176fb5c117d64e5d08233ab20ac351db37ae075381d66ec4d43bf39b6fac8e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "88e7a644b6e265567dd5880b020da318c7518e8748f577f76739b142b1a2e9b3",
+      "material_refs": [
+        "C10X07"
+      ],
+      "evidence_binding_sha256": [
+        "ee5eaf3471bd7f7a6e33e80f605449785ffd1d01618f3bea648b11d0b76fea85"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s02",
+      "scene_id": "c10r5-s02",
+      "text_sha256": "fb1114aeb38c64cc47a8a1d1ba631f5fe4344b25b70554d11345c2b17a04a161",
+      "claim_object_sha256": "0a4f98a6ffb1d7c704c285434576dab3786a9a84ffd8e82eaa49f3b980b72636",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "642b58425d6d625594c200a15a71d321e8de5a1b70acf5a8196cdad9add8047e",
+      "material_refs": [
+        "C10X07"
+      ],
+      "evidence_binding_sha256": [
+        "1ef0759732ba6421005bcbfca902fe8f6a77bf87262d88ce88278b9688ab50c8"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s03",
+      "scene_id": "c10r5-s03",
+      "text_sha256": "53533629bf4a4161b28c044c8b9b463c20421d4843c17bf5f89bde14c85c1079",
+      "claim_object_sha256": "f26eaebde69ee470781492deca95ff766e0afa1ae5d7b2596bbc76c519436e9f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "6d16c0679973d283045300a984fbd89d4b62a13e7c613fc63dc1f59b8334a6d9",
+      "material_refs": [
+        "C10X08"
+      ],
+      "evidence_binding_sha256": [
+        "4dd486e33f03ef5e295b88827e89b5d7dbea5c594a4cfed14cc10c5aa04664ad"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s04",
+      "scene_id": "c10r5-s04",
+      "text_sha256": "668a0824e1e74696c776be5c6a4d1f058d18a549b1e749088e09f9e5dbac9606",
+      "claim_object_sha256": "7080adf768268ac13b45154a92ababc961dfa986ec3712d0b30de7dd67ac7f50",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "fbe20d4acd26a2397d11bfefa08f2e68ff7fdad7efe336a19dbf4ad7eb0cb958",
+      "material_refs": [
+        "C10X08"
+      ],
+      "evidence_binding_sha256": [
+        "b25b73e3c23fcd7f657627bbe8e45294b3c9d7e782bca620a1fed3cf9009f979"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10l06",
+      "scene_id": "c10r1-l06",
+      "text_sha256": "01ac1a214d1dc65f1fc4e32acf484655f3fd552c49327956793ef2172248bb6d",
+      "claim_object_sha256": "11cf91a740884efd8a5d48af2789d2790c338314166eafae79043c1ce2a0be23",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "620ce166ded51fe5752fa2d18429ded630873dd906ac696b418b8ebaa69a6970",
+      "material_refs": [
+        "N26"
+      ],
+      "evidence_binding_sha256": [
+        "85426ecd98a987fdad98ee5eb29f6f1796b108d1d988091d2e29302fdfc3d872"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10l07",
+      "scene_id": "c10r1-l07",
+      "text_sha256": "c7c97980360156ce78891bdc8084aa689423b2e2b343596ed2a73033aa3449e7",
+      "claim_object_sha256": "973d446981273ed94f8ee3689c09ba0894fdef90a04c121095e18474e7aa987f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "7a8c7048c6bfc40395269d6ad4a9025e28a6f6306e97fb8f8dc5f43457839d05",
+      "material_refs": [
+        "N26"
+      ],
+      "evidence_binding_sha256": [
+        "85426ecd98a987fdad98ee5eb29f6f1796b108d1d988091d2e29302fdfc3d872"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s05",
+      "scene_id": "c10r5-s05",
+      "text_sha256": "982fc927bc6dbea56b3c3f1f3757d31024a1a085cc1f5189d9fee566c99e2efe",
+      "claim_object_sha256": "7371d3ef5835bc76f27732e4ab220ec343781267605fbb05fde2712d183f93ea",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b0d6ff12a436d6792eb12f825d7cab59a26a948e914e796facb0ada862dcf116",
+      "material_refs": [
+        "C10X08"
+      ],
+      "evidence_binding_sha256": [
+        "cfc7139e0b850e829234815f882ec2e1fcb38788424508ea7d133359b8e5f761"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s06",
+      "scene_id": "c10r5-s06",
+      "text_sha256": "564efbb103d9e53cc55f593d082dcd915c14ca6f7512dbf8f1ad69b12e293f1e",
+      "claim_object_sha256": "b76d17336b19aa7b3b5ce1132dd47ccb57150e8871fb6cb35583efb0f374cf56",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "0ce46bc1b162ff995cb7a98e036d2a1df8eb9d9b8c95af25454bd7b3a3f0e199",
+      "material_refs": [
+        "C10X09"
+      ],
+      "evidence_binding_sha256": [
+        "dbae8ff10aa1f0a661588d16914a6d071791515f883f2639a2774a89d8b33d95"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5s07",
+      "scene_id": "c10r5-s07",
+      "text_sha256": "9d54d9093c69fb00d95c4a4eb3d6e5e41537a3d2dee109b31a23818acda15358",
+      "claim_object_sha256": "e8a23132f5a5fa9757b52f58d2078f3b313acce390a1221f6fbaac2880c5f63d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "8dc8d449a2f5ec4640fd285d4d0bb93c197c88b0701b82829c3253650b9917b2",
+      "material_refs": [
+        "C10X09"
+      ],
+      "evidence_binding_sha256": [
+        "a0c930f861bd669ec12fd1c2034bf93e31b6144701808c91911cf1064413b368"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u01",
+      "scene_id": "c10r5-u01",
+      "text_sha256": "52517e1730481376cc9917329f4ac3dd2cf0b200b3c1bd342454bcc0853c3132",
+      "claim_object_sha256": "ca9ac28ebd959f4e4703e139ddb7095f8a4dcc196925099bffb10291f4cbaf6f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "267a028b85291317822c0eacbb3895797a4f0be77aca35a1330c8c358453f159",
+      "material_refs": [
+        "C10X10"
+      ],
+      "evidence_binding_sha256": [
+        "9a42e413cd15f22030040613f1a31fb3bb84f507151c7f238b4891bae0c7490b",
+        "e5b0085b9c7f7878f7ad184b25811d40d9d2387455bb1cd5a40bcd44dd1565a0",
+        "07907cfb7582ed66a708a474304dd96ca049d0b3a99dea093fe23b43edc1350a"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u02",
+      "scene_id": "c10r5-u02",
+      "text_sha256": "8a5f044ae844f028182ead41cf18d1f0c0dc333108a46432575a04b59cbd2e1c",
+      "claim_object_sha256": "3fa04d0206a76b150ecbdfd46bc037b1bc6fddf7dbfe26935b201393e3ac5f84",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "3dbcceeea34d0b58b04e4ec03080a7c842522c88fb2e564dc46051300ea8841c",
+      "material_refs": [
+        "C10X10"
+      ],
+      "evidence_binding_sha256": [
+        "9de4d87a67f5c8b0169de76e9803b03a6e311d3f7b39078edf21352ac4284cfb"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u03",
+      "scene_id": "c10r5-u03",
+      "text_sha256": "2cfd97931a926a0667b7dc9ff307c539b44603cd742b860b3550af1ca115d8e5",
+      "claim_object_sha256": "a29024756d43879f7c21053ff649f7fbd1299504234ec58362a34c8b644c45c0",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "b00d3265d3b4f354055ec108bca628c19ddb7a5044010e3cb245e2940909166f",
+      "material_refs": [
+        "C10X11"
+      ],
+      "evidence_binding_sha256": [
+        "c764c2c10c6c27ab45216b57c791fb9837846b2a351cb76a78664900ab08f4aa"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u04",
+      "scene_id": "c10r5-u04",
+      "text_sha256": "8b8ea3f1de06b8de1b8c68b28e4f59a9dba3709966695fcc18559c7512c21ba6",
+      "claim_object_sha256": "97425e08dc99b24431975519cd1ae5084b5be3e04c1d98bef293173a0ed8db1d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "7faaffdd9d01c7e893c08f3003e3e198c3aa838ac8ffab9b4c549b7764d01d61",
+      "material_refs": [
+        "C10X11",
+        "C10X12"
+      ],
+      "evidence_binding_sha256": [
+        "3de28272745617393c838a1ac094898f1b0dc4472b095767d2a0971c26342665",
+        "44b4c2dda8818f8a63d759c350a5bac5fb6621cfe216d810b78f438dc62fca53"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u06",
+      "scene_id": "c10r5-u06",
+      "text_sha256": "8a84faa3c0b501af0f6ae43bbd7a88357763c1024115a53a720337e194506ae1",
+      "claim_object_sha256": "b8f240533b57a49f2014369f2a80c64a00b5a07dad6f1f4aacf84753d7ea453b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "4fa9682ff0903e1ac83119421787dccceb619ad584a4a21d476b51ca9a40e132",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u07",
+      "scene_id": "c10r5-u07",
+      "text_sha256": "6f30b7f928291fa8779c04ed59174a26e3c2852613fdd0d595b9d97e35b68e2e",
+      "claim_object_sha256": "49ed49105b30c1a3024e0bc6cf66468b9bfcf183bfbc247cc6d124ad9b2bc45e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "20c8996d707e8c308d6eb5f9498b2f406a146ae02bc519a3e6109f1826b3018a",
+      "material_refs": [
+        "C10X12"
+      ],
+      "evidence_binding_sha256": [
+        "bf3114882ae250759ae377276dcdc3139deab25af357fbc31476f8de74fd5357"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u08",
+      "scene_id": "c10r5-u08",
+      "text_sha256": "cd5c2f3cf52883e5105bb4ce9fc560aac824b804c97eb3f1cec9721fad3b79e5",
+      "claim_object_sha256": "f2f23981537cd7579e1b48e190f0251037220e8e97909093d6ea958c2730b903",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "9ead42325201fff40b21eb2ec8a4ce8a48f87d48d4bee79cdff921f4e7edc7e2",
+      "material_refs": [
+        "C10X12"
+      ],
+      "evidence_binding_sha256": [
+        "f48ff090376a2822700a392d72ffa5c4edc5322946819029cb1bdad7f6eedd71"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u09",
+      "scene_id": "c10r5-u09",
+      "text_sha256": "401caa2770e5fc78f2f767042b41862325fd7e11827487ce75caf5ae5b9478bd",
+      "claim_object_sha256": "aa93c9e6aaac5daa58d2e2741781fcedaf00e8b98c681546b6d02247497869a5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "2da77e05114d6a240c9102d41af88058b2de1493a2e6d7a48361e12f447cc10b",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u10",
+      "scene_id": "c10r5-u10",
+      "text_sha256": "7a610a8d49a6ed952c30067a077517ee1f71d86465589dda85ae3cfe1694cd89",
+      "claim_object_sha256": "3996e3d9d048a150efffbc1fb0e7bbf1a44f300faacbd6cf5ac6ee3cdf98bd5e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "073043a7f52637593ee00b710ce3c64804d6cd3df0416c5c97887c574932b510",
+      "material_refs": [
+        "C10X13"
+      ],
+      "evidence_binding_sha256": [
+        "dd7915ed7a6ad6cd6b90fbe5a141c765baff298c19a9c0dbd5d7803543b86735"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u11",
+      "scene_id": "c10r5-u11",
+      "text_sha256": "6886865a68c5d2b37e83ca51ea4b0e52cf7d6423c57b3e57daf5414b353af3c6",
+      "claim_object_sha256": "9fe0c72ca896c6309f043a0917c2dd1ec41822b9bdb19915f26de2476662a528",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "09dddc8ebf02407b595ecaf5d4eebb63126174c76995ebc0a20bac18ea24d6a6",
+      "material_refs": [
+        "C10X13"
+      ],
+      "evidence_binding_sha256": [
+        "8cdcf4e8a52e8a24629b19f2e7a07df0260b5e01d60bac7a9b8e050d0c924905"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u12",
+      "scene_id": "c10r5-u12",
+      "text_sha256": "fac953dfaad6e3535cdb3f5083066ae57251d7b989afc2b38b8c808d3d2fd7f1",
+      "claim_object_sha256": "da1f9b2063408cb0ab991c96edd839931ac31dc839eadee5328d615905bbc277",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "5c9bba60e51ff43da3aa621edbd549b94202a69937682a095492f6050c19d937",
+      "material_refs": [
+        "C10X14"
+      ],
+      "evidence_binding_sha256": [
+        "8dc929377eab845a02095391543177a6a97d85b8f62d7fec2e6f8821d767b289"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u13",
+      "scene_id": "c10r5-u13",
+      "text_sha256": "a160aee23f133fb3bbc1dff91483d6c63128f245be714f7d4d105fe12e7cfd59",
+      "claim_object_sha256": "6aa081bf6f6b717631f51cafc900042fa77c8267dff0a7c1e69ca780e19067e8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "c690dee097f0e3e4fd413207beccf2e734a36fdb792ef083c21138aab093e3dd",
+      "material_refs": [
+        "C10X14"
+      ],
+      "evidence_binding_sha256": [
+        "dc7ffb3691b326a9b108485f0db57c8a0834bf389b843e9909a1a44a0cad5869"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10v5u14",
+      "scene_id": "c10r5-u14",
+      "text_sha256": "83be1351cc612324d25e8343fc935b673f04d3fc663fbe6c777bfdd1b6228559",
+      "claim_object_sha256": "54d2679447a6532ffc75139f8ccbdfc2ac53c2ac2aa72f93a43f0d93136f9d8d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "ATTRIBUTED",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "afdd6864cc63d74f14b06ae3e8aaaad39a4b07dba78c79ede108cbf643cf5e31",
+      "material_refs": [
+        "C10X14"
+      ],
+      "evidence_binding_sha256": [
+        "69a9dada78dc6be61e1a0b1698cb9597ecae726aff75e53e1e53ea1ba12853ee"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10l19",
+      "scene_id": "c10r1-outro",
+      "text_sha256": "f8d1dafe7ae844c949bc760263114d604cb7b1b9f8374f69a1003f55b026cdd1",
+      "claim_object_sha256": "3f1b0386d8072de56053f37a5f80b87f33bf9906775ce042b10d4456dac21c38",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "d01469828f14435437f763363e6dcc290d71cb759a0b5df00d0f92a0a1dca571",
+      "material_refs": [
+        "N01",
+        "N05",
+        "N26"
+      ],
+      "evidence_binding_sha256": [
+        "66409820ff199c1c703f7ac347ee1ac9b46856551dafe2b1c6434f91cdca2f29",
+        "840f689fdca3f51349f5c0403bde018871bc420996876aeb778f891d353d7f51",
+        "85426ecd98a987fdad98ee5eb29f6f1796b108d1d988091d2e29302fdfc3d872"
+      ],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10l20",
+      "scene_id": "c10r1-outro",
+      "text_sha256": "ebe36df7dc1d047a59f1f1064f8f79d8c112799fed17692019e37e9a42af2a83",
+      "claim_object_sha256": "006956a05ce64cd8d21345286805f521e159db3a859e2cd77d6802325c9d05aa",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "393ca0f2fb20e421eb54f04a4078fcd94e4622b474ac3afa2324853aad6f0755",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    },
+    {
+      "line_id": "c10l21",
+      "scene_id": "c10r1-outro",
+      "text_sha256": "90ca63ce15092e05a1209d12349bc2f737b19b9817a0edd81f6edf0c8015de63",
+      "claim_object_sha256": "412e8d8f1da22122849e5914d45ea0a8f12b3d3b86ed1ddbcc9b9356043f6ea2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "native_fact_status": "PLAN",
+      "review_mode": "R5_EXACT_FULL_CLAIM_EVIDENCE_PROMPT_REBOUND",
+      "R5_full_claim_object_exact": true,
+      "R5_line_result_sha256": "3c2e7e8cbffd3b3d311d08940963f9a121160803ed8ba3cc2c4a92b9b9ca85f0",
+      "material_refs": [],
+      "evidence_binding_sha256": [],
+      "note": "R5完整物件與原件SHA再驗綁；R6新上下文已核。"
+    }
+  ],
+  "loop_reviews": [
+    {
+      "setup": "c10h06",
+      "payoff": "c10o06",
+      "what": "黏土怎麼接到舊金屬柄",
+      "setup_index_1based": 6,
+      "payoff_index_1based": 15,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10h09",
+      "payoff": "c10l19",
+      "what": "換一雙手，握柄究竟改什麼",
+      "setup_index_1based": 9,
+      "payoff_index_1based": 116,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10o11",
+      "payoff": "c10v5o01",
+      "what": "原型先交到哪些使用者手裡試用",
+      "setup_index_1based": 19,
+      "payoff_index_1based": 31,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10o22",
+      "payoff": "c10r05",
+      "what": "柄的大小如何卡住收回的手指",
+      "setup_index_1based": 32,
+      "payoff_index_1based": 36,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10r08",
+      "payoff": "c10r11",
+      "what": "輪廓如何接到手裡的方向",
+      "setup_index_1based": 37,
+      "payoff_index_1based": 40,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10r16",
+      "payoff": "c10m03",
+      "what": "表面如何接到指腹",
+      "setup_index_1based": 43,
+      "payoff_index_1based": 54,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10r21",
+      "payoff": "c10m03",
+      "what": "兩根手指可以壓在哪",
+      "setup_index_1based": 50,
+      "payoff_index_1based": 54,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10m06",
+      "payoff": "c10m08",
+      "what": "可彎小片要由什麼材料做出",
+      "setup_index_1based": 56,
+      "payoff_index_1based": 57,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10m13",
+      "payoff": "c10m14",
+      "what": "濕手還得面對什麼材料條件",
+      "setup_index_1based": 61,
+      "payoff_index_1based": 62,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10m19",
+      "payoff": "c10a02",
+      "what": "軟的外柄如何接上工作端",
+      "setup_index_1based": 66,
+      "payoff_index_1based": 68,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10a07",
+      "payoff": "c10a08",
+      "what": "往回拉時握柄如何留在工具上",
+      "setup_index_1based": 71,
+      "payoff_index_1based": 72,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10a10",
+      "payoff": "c10a12",
+      "what": "不靠黏結時形狀如何抵抗抽出",
+      "setup_index_1based": 73,
+      "payoff_index_1based": 75,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10a15",
+      "payoff": "c10a18a",
+      "what": "尾端開口如何接到不同的動作",
+      "setup_index_1based": 76,
+      "payoff_index_1based": 80,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5o02",
+      "payoff": "c10v5o03",
+      "what": "按手部動作分組時削皮器歸到哪一類",
+      "setup_index_1based": 27,
+      "payoff_index_1based": 28,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10h07",
+      "payoff": "c10v5s04",
+      "what": "陌生黑柄如何交到店內顧客手裡",
+      "setup_index_1based": 7,
+      "payoff_index_1based": 97,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5b01",
+      "payoff": "c10v5b03",
+      "what": "泡狀結構的早期方案是否被採用",
+      "setup_index_1based": 44,
+      "payoff_index_1based": 46,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5b05",
+      "payoff": "c10r19",
+      "what": "表面如何讓人看出能捏的地方",
+      "setup_index_1based": 47,
+      "payoff_index_1based": 49,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5p01",
+      "payoff": "c10v5p03",
+      "what": "館藏原型的刀片靠什麼留在支架",
+      "setup_index_1based": 82,
+      "payoff_index_1based": 84,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5f01",
+      "payoff": "c10v5f04",
+      "what": "未選廠時如何找到願意製作的人",
+      "setup_index_1based": 85,
+      "payoff_index_1based": 88,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5f05",
+      "payoff": "c10v5f07",
+      "what": "展會開門前樣品是否抵達",
+      "setup_index_1based": 89,
+      "payoff_index_1based": 91,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5f09",
+      "payoff": "c10v5s04",
+      "what": "店家購進後如何讓顧客伸手試",
+      "setup_index_1based": 93,
+      "payoff_index_1based": 97,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5s02",
+      "payoff": "c10v5s05",
+      "what": "慢銷之後店家做了什麼、當事人記得什麼結果",
+      "setup_index_1based": 95,
+      "payoff_index_1based": 100,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5s06",
+      "payoff": "c10v5s07",
+      "what": "包裝露出握柄讓買前多出什麼動作",
+      "setup_index_1based": 101,
+      "payoff_index_1based": 102,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5u01",
+      "payoff": "c10v5u02",
+      "what": "具名作者自己使用後留下什麼感受",
+      "setup_index_1based": 103,
+      "payoff_index_1based": 104,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5u06",
+      "payoff": "c10v5u07",
+      "what": "另一雙手是否真的拿食材試削",
+      "setup_index_1based": 107,
+      "payoff_index_1based": 108,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5u09",
+      "payoff": "c10v5u11",
+      "what": "試用後能不能把工具掛回去",
+      "setup_index_1based": 110,
+      "payoff_index_1based": 112,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    },
+    {
+      "setup": "c10v5u12",
+      "payoff": "c10v5u14",
+      "what": "拿出舊工具並排後發生什麼動作",
+      "setup_index_1based": 113,
+      "payoff_index_1based": 115,
+      "current": true,
+      "forward": true,
+      "limited_source_relationship_checked": true
+    }
+  ],
+  "protected_checks": {
+    "original_three_research_sha_match": true,
+    "expansion_three_research_sha_match": true,
+    "old28_actual_sha_match": true,
+    "old_vote_files_hashed_only_not_read": true,
+    "history_R5_unchanged": true,
+    "dictionary_modified_by_reviewer": false,
+    "task_modified_by_reviewer": false
+  },
+  "preserved_source_limits": [
+    "No new letters or clinical cases acquired.",
+    "2001 bubble article does not define prototype order or fill recipe.",
+    "Museum blade prototype is not first retail BOM.",
+    "PBS manufacturing/Lechters account is later named recollection and one original carrot-story context.",
+    "Alben Summer1997 is publication date, not purchase/trial date; no relatives age/diagnosis/clinical effect.",
+    "C3 ski-pole double-shot is not OXO; force-gauge could,1.2mm ambiguous dimension and unlistened MP3 remain unused.",
+    "MoMA17.8cm is one whole object, not handle/all-product specification."
+  ],
+  "length_scope": {
+    "whole_official_body_spoken_units": 2658,
+    "includes_coldopen_and_spoken_CTA": true,
+    "excludes_only_separate_channel_bookends": true,
+    "native_estimated_frames": 22706,
+    "fps": 30,
+    "native_estimated_seconds": 756.8666666666667,
+    "actual_audio_duration_seconds": null,
+    "actual_duration_verdict": "UNKNOWN",
+    "assessment": "規劃字量／原生估時均不是實聲；不授13分鐘duration PASS/FAIL或媒體核准。"
+  },
+  "findings": [],
+  "blockers": [],
+  "required_fixes": [],
+  "actual_audio_measured": false,
+  "generated_media_reviewed": false,
+  "owner_approval": false,
+  "dictionary_pronunciation_approval": false,
+  "read_blind_narrative_or_native_votes": false,
+  "core_modified": false,
+  "protected_research_history_or_task_modified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "git_commands": 0,
+  "subagents_spawned": 0,
+  "outputs_written": [
+    "reviews/source-r6-independent.json",
+    "verify-1.md"
+  ],
+  "not_granted": [
+    "native/narrative/blind投票",
+    "owner/預算/canonical/provider",
+    "讀音/字典/TTS/實聲",
+    "生成媒體/舊素材/音訊字幕/clean配音QA",
+    "打包/發布"
+  ]
+}

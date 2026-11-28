@@ -1,0 +1,222 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "reviewer": "/root/c03_review_ko_es; independent reviewer who did not translate VI or TH",
+  "scope": "text_only",
+  "recheck_scope": "Only the original 3 VI and 2 TH required fixes, with full structural differences checked against immutable pre-fix history. No repeated full-text review.",
+  "reviewed_on_utc": "2026-10-25T15:55:11.998289+00:00",
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/c04-audit/review-vi-th.json",
+    "sha256": "8726826fc6364c74c7f21e1a804758e1452498b35a17ce47d34651cd2025fe5a"
+  },
+  "applied_fixes_record": {
+    "path": "/workspace/work/brand-story-20261025/c04-audit/applied-fixes-vi-th.json",
+    "sha256": "516fc2700bf30bd99f92a34b048aff9e6c3a837adf8958a79b973a6570c1e156"
+  },
+  "locales": [
+    {
+      "locale": "vi",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "7d785c5678c58ae79af1a030de4a93806aa8620f334d9da5b21bf5575062a8b6",
+      "translation_sha256": "3f9052ad55334fa769e873ba98b74628e9da74fe40993cbc9eeae20e59e23a91",
+      "current_inputs": {
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-bubble-wrap-c04-remake-20261025/i18n/vi.todo.json",
+          "sha256": "7d785c5678c58ae79af1a030de4a93806aa8620f334d9da5b21bf5575062a8b6"
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-bubble-wrap-c04-remake-20261025/i18n/vi.json",
+          "sha256": "3f9052ad55334fa769e873ba98b74628e9da74fe40993cbc9eeae20e59e23a91"
+        }
+      },
+      "history_inputs": {
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/vi/worksheet-before.json",
+          "sha256": "be096ab3f7723f4a91d5bbde8b99a119fb8635564af81ad91a17d2404eca7660"
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/vi/translation-before.json",
+          "sha256": "a1dbc111b38d8d29a3b6965916c5c83d3be5deadcff86eb3f3e369ac51d9e472"
+        }
+      },
+      "targets_checked": 3,
+      "checks": {
+        "old_translation_sha_matches_review_and_applied": true,
+        "old_worksheet_sha_matches_review_and_applied": true,
+        "only_requested_translation_text_changed": true,
+        "only_requested_worksheet_text_changed": true,
+        "all_non_target_text_and_non_text_fields_unchanged": true,
+        "all_fixes_exactly_applied": true,
+        "applied_record_has_no_extra_targets": true,
+        "native_merge_exit_zero": true,
+        "native_current_translation_sha_matches": true,
+        "native_current_worksheet_sha_matches": true,
+        "source_unchanged": true,
+        "original_review_file_unchanged": true
+      },
+      "targeted_semantic_recheck": [
+        {
+          "target": "lines.c04ri141",
+          "current": "Phải mất công mới tạo được khoang khí bằng trục lăn chân không; không khí bên trong đã được giữ kín, sao khi nguội khoang vẫn xẹp?",
+          "translation_matches_required_replacement": true,
+          "worksheet_matches_required_replacement": true,
+          "applied_record_matches_review": true,
+          "semantic_verdict": "TEXT_PASS",
+          "reason": "The corrected sentence naturally assigns effort to forming the cell, retains the vacuum roller, sealed internal air and cooling question, and introduces no new claim."
+        },
+        {
+          "target": "lines.c04rtb2",
+          "current": "nhưng bản vẽ thật ra luôn sắp xếp lúc nào màng mềm, lúc nào hình dạng của màng được cố định.",
+          "translation_matches_required_replacement": true,
+          "worksheet_matches_required_replacement": true,
+          "applied_record_matches_review": true,
+          "semantic_verdict": "TEXT_PASS",
+          "reason": "The corrected passive phrase completes the grammar and preserves when the film is soft versus when its shape is fixed."
+        },
+        {
+          "target": "lines.c04rn021",
+          "current": "Trong hình, màng nằm kẹp trong lớp bọc ngoài, với các mép xung quanh được ghép kín; ngoài từng khoang khí, cả tấm còn có thêm một tuyến phòng vệ để giữ khí.",
+          "translation_matches_required_replacement": true,
+          "worksheet_matches_required_replacement": true,
+          "applied_record_matches_review": true,
+          "semantic_verdict": "TEXT_PASS",
+          "reason": "The corrected edge and defense phrases are natural, preserving the outer sandwich layer, sealed perimeter and extra whole-sheet air-retention defense."
+        }
+      ],
+      "worksheet_differences": [
+        {
+          "path": "/lines/39/text",
+          "before": "Khoang khí khó nhọc mới được trục chân không tạo ra, không khí đã giữ kín rồi, sao nguội đi vẫn xẹp?",
+          "after": "Phải mất công mới tạo được khoang khí bằng trục lăn chân không; không khí bên trong đã được giữ kín, sao khi nguội khoang vẫn xẹp?"
+        },
+        {
+          "path": "/lines/79/text",
+          "before": "nhưng bản vẽ thật ra luôn sắp xếp lúc nào màng mềm, lúc nào cố định hình.",
+          "after": "nhưng bản vẽ thật ra luôn sắp xếp lúc nào màng mềm, lúc nào hình dạng của màng được cố định."
+        },
+        {
+          "path": "/lines/91/text",
+          "before": "Trong hình, màng nằm kẹp trong lớp bọc ngoài, với các mép quanh được ghép kín; ngoài từng khoang, cả tấm có thêm một tuyến giữ khí.",
+          "after": "Trong hình, màng nằm kẹp trong lớp bọc ngoài, với các mép xung quanh được ghép kín; ngoài từng khoang khí, cả tấm còn có thêm một tuyến phòng vệ để giữ khí."
+        }
+      ],
+      "translation_differences": [
+        {
+          "path": "/lines/c04ri141/text",
+          "before": "Khoang khí khó nhọc mới được trục chân không tạo ra, không khí đã giữ kín rồi, sao nguội đi vẫn xẹp?",
+          "after": "Phải mất công mới tạo được khoang khí bằng trục lăn chân không; không khí bên trong đã được giữ kín, sao khi nguội khoang vẫn xẹp?"
+        },
+        {
+          "path": "/lines/c04rn021/text",
+          "before": "Trong hình, màng nằm kẹp trong lớp bọc ngoài, với các mép quanh được ghép kín; ngoài từng khoang, cả tấm có thêm một tuyến giữ khí.",
+          "after": "Trong hình, màng nằm kẹp trong lớp bọc ngoài, với các mép xung quanh được ghép kín; ngoài từng khoang khí, cả tấm còn có thêm một tuyến phòng vệ để giữ khí."
+        },
+        {
+          "path": "/lines/c04rtb2/text",
+          "before": "nhưng bản vẽ thật ra luôn sắp xếp lúc nào màng mềm, lúc nào cố định hình.",
+          "after": "nhưng bản vẽ thật ra luôn sắp xếp lúc nào màng mềm, lúc nào hình dạng của màng được cố định."
+        }
+      ],
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c04-audit/native-merge-vi.json",
+        "sha256": "647d0cabe140f45a4865786cb78faee1a07ba1077948ce8c57f0578ec6a09825"
+      },
+      "remaining_required": []
+    },
+    {
+      "locale": "th",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "614a55a8da5c63bdce8a3ebd714f8080f5733031dd501e97773d2dfcfadbf52f",
+      "translation_sha256": "46d144e2fd146f734a2a9170a43073f8c4445e099c918cd863e6cd63642e4c12",
+      "current_inputs": {
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-bubble-wrap-c04-remake-20261025/i18n/th.todo.json",
+          "sha256": "614a55a8da5c63bdce8a3ebd714f8080f5733031dd501e97773d2dfcfadbf52f"
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-bubble-wrap-c04-remake-20261025/i18n/th.json",
+          "sha256": "46d144e2fd146f734a2a9170a43073f8c4445e099c918cd863e6cd63642e4c12"
+        }
+      },
+      "history_inputs": {
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/th/worksheet-before.json",
+          "sha256": "e378a273565d5cbea85879c7b7dd21e603aff8cefc55303d25090e262ba32ae2"
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/th/translation-before.json",
+          "sha256": "b6bc0e7710e4010bd4bd798fccdb9ed7a7a11b0a81ee85a95001194d59fdc1ca"
+        }
+      },
+      "targets_checked": 2,
+      "checks": {
+        "old_translation_sha_matches_review_and_applied": true,
+        "old_worksheet_sha_matches_review_and_applied": true,
+        "only_requested_translation_text_changed": true,
+        "only_requested_worksheet_text_changed": true,
+        "all_non_target_text_and_non_text_fields_unchanged": true,
+        "all_fixes_exactly_applied": true,
+        "applied_record_has_no_extra_targets": true,
+        "native_merge_exit_zero": true,
+        "native_current_translation_sha_matches": true,
+        "native_current_worksheet_sha_matches": true,
+        "source_unchanged": true,
+        "original_review_file_unchanged": true
+      },
+      "targeted_semantic_recheck": [
+        {
+          "target": "lines.c04rob1",
+          "current": "ฉันว่าน่าสนใจที่อากาศกลายเป็นเครื่องมือขึ้นรูปก่อน แต่ถึงจะทำลวดลายได้ จะมีคนอยากเอาไปติดผนังจริงหรือ?",
+          "translation_matches_required_replacement": true,
+          "worksheet_matches_required_replacement": true,
+          "applied_record_matches_review": true,
+          "semantic_verdict": "TEXT_PASS",
+          "reason": "The corrected Thai phrase means making a decorative pattern rather than destroying, preserving the first-person reaction and rhetorical condition."
+        },
+        {
+          "target": "lines.c04re151",
+          "current": "นี่คือคำกล่าวอ้างทางเทคนิคในสิทธิบัตรที่ออกแล้ว ไม่ได้แปลว่าทุกฟองมีรูปแบบนี้ ตัวฟิล์มเองก็ช่วยรองรับแรงกระแทกด้วย",
+          "translation_matches_required_replacement": true,
+          "worksheet_matches_required_replacement": true,
+          "applied_record_matches_review": true,
+          "semantic_verdict": "TEXT_PASS",
+          "reason": "The film now helps cushion impact; the patent-claim framing and non-universal qualification remain unchanged."
+        }
+      ],
+      "worksheet_differences": [
+        {
+          "path": "/lines/17/text",
+          "before": "ฉันว่าน่าสนใจที่อากาศกลายเป็นเครื่องมือขึ้นรูปก่อน แต่ทำลายได้แล้ว จะมีคนอยากเอาไปติดผนังจริงหรือ?",
+          "after": "ฉันว่าน่าสนใจที่อากาศกลายเป็นเครื่องมือขึ้นรูปก่อน แต่ถึงจะทำลวดลายได้ จะมีคนอยากเอาไปติดผนังจริงหรือ?"
+        },
+        {
+          "path": "/lines/57/text",
+          "before": "นี่คือคำกล่าวอ้างทางเทคนิคในสิทธิบัตรที่ออกแล้ว ไม่ได้แปลว่าทุกฟองมีรูปแบบนี้ ตัวฟิล์มเองก็ร่วมกันกระแทกด้วย",
+          "after": "นี่คือคำกล่าวอ้างทางเทคนิคในสิทธิบัตรที่ออกแล้ว ไม่ได้แปลว่าทุกฟองมีรูปแบบนี้ ตัวฟิล์มเองก็ช่วยรองรับแรงกระแทกด้วย"
+        }
+      ],
+      "translation_differences": [
+        {
+          "path": "/lines/c04re151/text",
+          "before": "นี่คือคำกล่าวอ้างทางเทคนิคในสิทธิบัตรที่ออกแล้ว ไม่ได้แปลว่าทุกฟองมีรูปแบบนี้ ตัวฟิล์มเองก็ร่วมกันกระแทกด้วย",
+          "after": "นี่คือคำกล่าวอ้างทางเทคนิคในสิทธิบัตรที่ออกแล้ว ไม่ได้แปลว่าทุกฟองมีรูปแบบนี้ ตัวฟิล์มเองก็ช่วยรองรับแรงกระแทกด้วย"
+        },
+        {
+          "path": "/lines/c04rob1/text",
+          "before": "ฉันว่าน่าสนใจที่อากาศกลายเป็นเครื่องมือขึ้นรูปก่อน แต่ทำลายได้แล้ว จะมีคนอยากเอาไปติดผนังจริงหรือ?",
+          "after": "ฉันว่าน่าสนใจที่อากาศกลายเป็นเครื่องมือขึ้นรูปก่อน แต่ถึงจะทำลวดลายได้ จะมีคนอยากเอาไปติดผนังจริงหรือ?"
+        }
+      ],
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c04-audit/native-merge-th.json",
+        "sha256": "c0c43288e3eff9dc84a92aa5e3b830877ba5abc1e4bcf81e23e16eee161ae5a2"
+      },
+      "remaining_required": []
+    }
+  ],
+  "actual_timing_verified": false,
+  "media_approval": false,
+  "owner_approval": false,
+  "original_review_preserved": true,
+  "translations_or_worksheets_edited_by_reviewer": false,
+  "paid_calls": 0
+}

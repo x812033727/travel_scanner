@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r3",
+  "role": "AUTHOR_ORDINARY_NATIVE_LINT_NOT_FRESH_NATIVE_READER",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/dyson-audit/author-r3/runtime",
+    "lint",
+    "--slug",
+    "story-dyson-japan-first-20261021-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r3/native-lint-r3-ordinary-cli.json",
+  "ordinary_cli_output_sha256": "1a16c46324b01478abe61613dfaa86d7eaa9e1b8f8fda12741c34a0c0634204f",
+  "errors": [],
+  "warnings": [
+    {
+      "path": "scenes",
+      "message": "about 9.3 minutes; the target is 12-14"
+    }
+  ],
+  "hook_cadence_warnings": [],
+  "visual_variety_warnings": [],
+  "whole_spoken_units": 1953,
+  "coldopen_units": 195,
+  "voiced_CTA_units": 48,
+  "source_projection_exact": true,
+  "runtime_script_exact_native_screenplay": true,
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "一台樣品，換了一筆生意",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "進口商接下重新製作",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "馬達換了，外殼也得動",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "在入口加進孔罩",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "傳真之外，人也到工廠",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "走上日本市場，仍是小眾",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "模具的錢，還要有人爭取",
+      "you": 4,
+      "I": 4
+    }
+  ],
+  "free_planner_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r3/free-planner-r3.json",
+  "free_planner_sha256": "1b4591f9eb4a3925671fd6e562e3627faf323bef2f7250e59e41e3f6c5079950",
+  "capacity_status": "PLANNING_CAPACITY_HOLD",
+  "normal_4_to_5_seconds": [
+    390.6,
+    488.25
+  ],
+  "actual_audio_seconds": null,
+  "actual_TTS_fail_claimed": false,
+  "actual_native_round_count": 1,
+  "prior_native1": "ACTUAL_MERGED_HOLD",
+  "fresh_native2": "NOT_PREPARED_NOT_READ",
+  "native_input_prepared": false,
+  "native_reader_calls_this_revision": 0,
+  "immutable_same_project_dictionary_files": [
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-audit/author-r3/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/current.json",
+      "sha256": "7793b04bf4ffe93d4a3f2ae19ddb947a7ddb254a53034f63ef53faf917d88ed6"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-audit/author-r3/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/events/9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339.json",
+      "sha256": "9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-audit/author-r3/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/versions/502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d.json",
+      "sha256": "502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d"
+    }
+  ],
+  "original_lexicon_untouched": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "provider_calls": 0,
+  "paid_calls": 0
+}

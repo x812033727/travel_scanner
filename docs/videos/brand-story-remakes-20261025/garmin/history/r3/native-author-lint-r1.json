@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "garmin-r1",
+  "checked_at_utc": "2026-10-26T04:26:06.762877+00:00",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/garmin-submission-root",
+    "lint",
+    "--slug",
+    "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r1/native-lint-r1.raw.json",
+  "ordinary_cli_output_sha256": "51d95229892f1838d9c884a820dd6230f0a421c1902b21b6e7ef3bd08c6c03b6",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 137 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"wrist\" is in 128 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"device\" is in 119 of 151 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[84] (gr1a03)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[93] (gr1a12)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[111] (gr1d04)",
+      "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[126] (gr1d20)",
+      "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes",
+      "message": "about 15.9 minutes; the target is 12-14"
+    }
+  ],
+  "native_summary": {
+    "minutes": 15.948888888888888,
+    "lines": 158,
+    "spoken_units": 3335,
+    "billable_characters": 11815,
+    "chapters": [
+      "00:00 手腕上的錶，還在等天空",
+      "00:52 先充好電，再等訊號條消失",
+      "03:47 坐標變成配速，還得讓人看懂",
+      "06:15 重設之前，先把這一跑留下來",
+      "08:22 天線沿著手腕，朝天空轉過去",
+      "11:03 記得更細，能留下的時間反而變短",
+      "13:22 二零零九年，記錄到了軟體裡"
+    ]
+  },
+  "hook_cadence_45s_warnings": [],
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "手腕上的錶，還在等天空",
+      "you": 6,
+      "I": 1
+    },
+    {
+      "chapter": "先充好電，再等訊號條消失",
+      "you": 7,
+      "I": 1
+    },
+    {
+      "chapter": "坐標變成配速，還得讓人看懂",
+      "you": 12,
+      "I": 1
+    },
+    {
+      "chapter": "重設之前，先把這一跑留下來",
+      "you": 6,
+      "I": 1
+    },
+    {
+      "chapter": "天線沿著手腕，朝天空轉過去",
+      "you": 9,
+      "I": 1
+    },
+    {
+      "chapter": "記得更細，能留下的時間反而變短",
+      "you": 7,
+      "I": 1
+    },
+    {
+      "chapter": "二零零九年，記錄到了軟體裡",
+      "you": 6,
+      "I": 4
+    }
+  ],
+  "source_script_narration_claims_projection_consistent": true,
+  "scene_count": 152,
+  "shot_count": 151,
+  "whole_narration_spoken_units": 3335,
+  "coldopen_units": 184,
+  "voiced_CTA_units": 52,
+  "actual_body_seconds": null,
+  "actual_duration_verified": false,
+  "native_estimate_is_not_actual_audio": true,
+  "required_actual_body_seconds": [
+    720,
+    840
+  ],
+  "extra_intro_outro_seconds": 26,
+  "body_includes_coldopen_and_voiced_CTA": true,
+  "planning_at4_to5_units_per_second": [
+    667,
+    833.75
+  ],
+  "immutable_lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+  "dictionary_sequence": 1,
+  "existing_dictionary_republished": false,
+  "pronunciation_independent_review_pending": true,
+  "runtime_manifest_sha256": "25d81a47214b6d6c7d0d402c9904e814759a447546eeb87465a62033d9682fcd",
+  "helper_manifest_base_commit_note": "The shared helper retains a historical fixed source_base_commit. Current project truth is exact per-fileSHA; protected research Git snapshots are8c338dfc. No claim that the helper constant is currentHEAD.",
+  "canonical_runtime_script_sha256": "1275a5b2519cb9157ca13360ad566857c63c95dd8f8a4c2375803957498e9c41",
+  "source_pass_claimed": false,
+  "fresh_native_pass_claimed": false,
+  "actual_native_round_count": 0,
+  "owner_approvals_created": 0,
+  "generated_story_media": 0,
+  "backend_calls": 0,
+  "paid_calls": 0
+}

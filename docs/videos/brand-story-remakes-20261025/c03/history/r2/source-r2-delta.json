@@ -1,0 +1,1912 @@
+{
+  "schema_version": 1,
+  "review_type": "INDEPENDENT_EXACT_SOURCE_AND_WRITTEN_VISUAL_DELTA",
+  "reviewer": "/root/find_rules",
+  "additional_independent_checker": "/root/find_rules/c09_delta",
+  "independent": true,
+  "date": "2026-10-25",
+  "revision": "c03-r2",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "00578bbd133f588978f0b13327310a355b2f834b85691394059b4253b36e0737",
+    "narration-only.json": "5489c8b52a4e518dc379bed62d575e158301b1070b2c03030a5f3fc2d95f045e",
+    "claims.json": "9c250a39c3c11db210deff0b29890e367e54d25a0930e5b7f1e60ba9afd9f486",
+    "script.md": "c8ca0773ea4aaded805a038651f66ffe8fc6f8f168f918064916060f2cdbc39c"
+  },
+  "baseline": {
+    "path": "history/r1",
+    "source_receipt": "history/r1/source-and-visual-independent.json",
+    "source_receipt_sha256": "74b85f25368a1126fa09218cdafc4470a6a77bb30fff7abdb43756fbde76707a",
+    "four_input_sha256": {
+      "video.json": "cd5173bac7c55b1ca92f53d69c15df3fc9f21faee50849e338a7274688699b03",
+      "narration-only.json": "cd77f738fd203b1bc94d775f407658137f41b8a665935c4cb92ef57e296778d1",
+      "script.md": "00c83e28330d6c9857d2d7209a86a5a30e61b51366d94ddd13a99058a0258fad",
+      "claims.json": "5e6ff29f01b5bcd0cf7e2252a045f653e9982c3d11a7e8a6f4d4442ad1c906fa"
+    },
+    "all4_baseline_inputs_match": true,
+    "verdict": "HOLD:141 PASS/3 HOLD；111景書面配鏡PASS。此歷史HOLD收據原封保留，r2另解除指定3項。"
+  },
+  "supporting_input_sha256": {
+    "source-catalog.json": "4a19aa192202855302a49556d818d3f760b12361c2fd03683690fc24abfee41b",
+    "source-anchors.json": "a4b43af155271c18e4a6a8eba4d4c3ec5be715e3226553ba5de2846ab418bd7e",
+    "source-snapshot-manifest.json": "6ef1846b57bd70e9085081c96b34cd5666914384431f36276245152b36988da8"
+  },
+  "counts": {
+    "narration_lines": 144,
+    "source_pass": 144,
+    "source_hold": 0,
+    "scenes": 111,
+    "shots": 101,
+    "stats_cards": 9,
+    "outro": 1,
+    "written_visual_scene_pass": 111,
+    "written_visual_scene_hold": 0,
+    "changed_narration_lines": 5,
+    "claims_only_mapping_changed_lines": 1,
+    "unchanged_complete_scene_objects": 106,
+    "text_only_changed_scene_objects": 5
+  },
+  "exact_delta": {
+    "changed_text_line_ids": [
+      "r3h062",
+      "r304031",
+      "r308041",
+      "r318041",
+      "r320011"
+    ],
+    "claims_only_mapping_added": {
+      "line": "r3n051",
+      "anchor": "S1c",
+      "full_anchor_exactly_equals_existing_catalog_definition": true
+    },
+    "no_added_or_removed_lines_scenes_or_ids": true,
+    "all_scene_data_prompts_camera_visual_cards_equal": true,
+    "all_other_complete_scene_objects_equal": true,
+    "all_non_scenes_video_fields_including_loops_sources_thumbnail_youtube_equal": true,
+    "narration_only_five_text_updates": true,
+    "claims_only_five_text_updates_plus_one_mapping_append": true,
+    "script_only_five_text_updates": true,
+    "source_catalog_anchors_snapshot_manifest_unchanged": true
+  },
+  "resolved_findings": [
+    {
+      "finding_id": "C03-R1-SOURCE-126",
+      "line_id": "r318041",
+      "verdict": "PASS",
+      "basis": "改成2025年度財報，不再宣稱2025刊布；原件實際2026-03-10發布，年度與發布年已區分。下一句2025品牌減損€107.4m與原金融卡完全不動，解除HOLD。"
+    },
+    {
+      "finding_id": "C03-R1-SOURCE-130",
+      "line_id": "r3n051",
+      "verdict": "PASS",
+      "basis": "旁白/data未改，claims精確追加既有S1c完整anchor；招股書PDF139–140文化定位/意涵可延伸新品支持前半句，S12/S13a保留財務預期，解除漏來源HOLD。"
+    },
+    {
+      "finding_id": "C03-R1-SOURCE-140",
+      "line_id": "r320011",
+      "verdict": "PASS",
+      "basis": "新句明說從招股書看/公司做法，限定發行人定位策略；待創作的書直接對應libro ancora da scrivere，接原r320012展示/通路策略，不再宣稱獨立證明消費者付費動機，解除HOLD。outro資料完全不動。"
+    }
+  ],
+  "delta_line_reviews": [
+    {
+      "line_id": "r3h062",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source": "S7",
+      "note": "剛剛那個公司市值真回指r3h011開場近五億歐元；沒有新數字、募資/營收口徑或新事件，書店匿名物件圖相容。"
+    },
+    {
+      "line_id": "r304031",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source": "S3",
+      "note": "移除重述1997，保歷史藝術家不是現代商標商品使用者的原區分；前文首次申請及品牌型制界線未改，匿名新舊本子比較圖相容。"
+    },
+    {
+      "line_id": "r308041",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source": "S3、S5",
+      "note": "只刪控制權重述；隔年承接前文2006交易並由原r309011的2007-01-01公司名回答。沒有新年份/因果，原匿名檔案櫃圖相容。"
+    },
+    {
+      "line_id": "r318041",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source": "S12→S11",
+      "resolved_finding": "C03-R1-SOURCE-126",
+      "note": "改成2025年度財報，不再宣稱2025刊布；原件實際2026-03-10發布，年度與發布年已區分。下一句2025品牌減損€107.4m與原金融卡完全不動，解除HOLD。"
+    },
+    {
+      "line_id": "r3n051",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source": "S12、S13a、S1c",
+      "resolved_finding": "C03-R1-SOURCE-130",
+      "note": "旁白/data未改，claims精確追加既有S1c完整anchor；招股書PDF139–140文化定位/意涵可延伸新品支持前半句，S12/S13a保留財務預期，解除漏來源HOLD。"
+    },
+    {
+      "line_id": "r320011",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source": "S1c、S1d、S1f",
+      "resolved_finding": "C03-R1-SOURCE-140",
+      "note": "新句明說從招股書看/公司做法，限定發行人定位策略；待創作的書直接對應libro ancora da scrivere，接原r320012展示/通路策略，不再宣稱獨立證明消費者付費動機，解除HOLD。outro資料完全不動。"
+    }
+  ],
+  "findings": [],
+  "method": "不讀作者delta或敘事答案；直接以history/r1四輸入及真實HOLD收據作完整物件/文字比對。三項HOLD對照既有獨立原件證據解除，其餘改句讀具體前後回呼並核原prompt/card相容；第二獨立來源checker判定相同。未變段由r1已PASS子集接鏈，不冒作重跑全部原件。",
+  "scope_limits": {
+    "blind_or_narrative_reader_files_read": false,
+    "author_narrative_or_editorial_verdict_used_as_proof": false,
+    "actual_media_images_audio_reviewed": false,
+    "actual_media_reuse_verified": false,
+    "runtime_measured": false,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "owner_approval": false,
+    "note": "只核精確r2來源與書面配鏡；不取代新盲讀、實際TTS/成圖/實長/費用/成片關卡。freshproduction指令不以舊媒體取回為前提，亦不將prompt eligibility當實際沿用。r1非阻擋clarity notes仍留原收據。"
+  },
+  "line_results": [
+    {
+      "row": 1,
+      "line_id": "r3h011",
+      "scene_id": "c03r-h01",
+      "line_text_sha256": "034724ee7d6bffa1ab519ad50d4f7d1aa12368b39f712c408388385ca343e5e0",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 2,
+      "line_id": "r3h021",
+      "scene_id": "c03r-h02",
+      "line_text_sha256": "771242ac2f56c7994e8ae0a23f994f80601ad10620ef6320c85887b6931d1f91",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 3,
+      "line_id": "r3h031",
+      "scene_id": "c03r-h03",
+      "line_text_sha256": "61850809572cde33809c350664bb2609c211b6dbb0117f844d9cf32b2ef76588",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 4,
+      "line_id": "r3h041",
+      "scene_id": "c03r-h04",
+      "line_text_sha256": "821711c39df62dc5cb9e76e43adf46ec67afe1350ab84dbaae187c35e8ff9445",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 5,
+      "line_id": "r3h051",
+      "scene_id": "c03r-h05",
+      "line_text_sha256": "b3b465c875a9567ab8c18dba2a9c7b314cb36a1abb9636f3180c5f5f05740c4a",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 6,
+      "line_id": "r3h061",
+      "scene_id": "c03r-h06",
+      "line_text_sha256": "d1842584c23b8e9a442442a0fb4a1225fba2c7c5c84b4c5a5f35d4c12067866a",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 7,
+      "line_id": "r3h062",
+      "scene_id": "c03r-h06",
+      "line_text_sha256": "3980fb35cf128dcf1a426410b0a644e769eb5092dfc56f06878de517212136a2",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "剛剛那個公司市值真回指r3h011開場近五億歐元；沒有新數字、募資/營收口徑或新事件，書店匿名物件圖相容。"
+    },
+    {
+      "row": 8,
+      "line_id": "r3h071",
+      "scene_id": "c03r-h07",
+      "line_text_sha256": "0db00f5c28346d62c7d7a9720057f12195a78bc297fd088b0c1621bba6aae180",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 9,
+      "line_id": "r302011",
+      "scene_id": "c03r-p02s01",
+      "line_text_sha256": "04f38bab419ba2a25e898f157c48604dd55b953b5ca3e55fd0ae4f8ae1fc75b0",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 10,
+      "line_id": "r302021",
+      "scene_id": "c03r-p02s02",
+      "line_text_sha256": "438d28e9b068e42583faed112e82011548476d73c139dd44ecabf7230a47357d",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 11,
+      "line_id": "r302022",
+      "scene_id": "c03r-p02s02",
+      "line_text_sha256": "cb2949546ef0b85a473675fd6b28d735cedc25f6672de82ebc181277a7e1df0f",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 12,
+      "line_id": "r302031",
+      "scene_id": "c03r-p02s03",
+      "line_text_sha256": "8bc1d00e11493a9acbcc47744fef4a091e9f337fd29712e474da452516da6bf2",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 13,
+      "line_id": "r302041",
+      "scene_id": "c03r-p02s04",
+      "line_text_sha256": "8915451cd1b1363b75a98015a09422011947279fe163beffe57838408fe694fe",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 14,
+      "line_id": "r303011",
+      "scene_id": "c03r-p03s01",
+      "line_text_sha256": "cf5fef2bcebf55ab916b1925b6cde1d128de6b7fd47e031420c51fc9b97cc02d",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 15,
+      "line_id": "r303021",
+      "scene_id": "c03r-p03s02",
+      "line_text_sha256": "662bfd375391607e25a5ce9eb5fc89d418a0417a69cfc2af1eb41d558b7d47c9",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 16,
+      "line_id": "r303022",
+      "scene_id": "c03r-p03s02",
+      "line_text_sha256": "472b5347123732957e087fbeb4945febaa10cbb404fac067ef8ab1e50269d0fe",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 17,
+      "line_id": "r3o011",
+      "scene_id": "c03r-o01",
+      "line_text_sha256": "00da1b971dd2da6e9034dfae809ae70bba5c8c5d607015ae4b0d5b9bb260570d",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 18,
+      "line_id": "r3o012",
+      "scene_id": "c03r-o01",
+      "line_text_sha256": "08074a267b21975f674f78cf7582281a385861232accdc74d44bc117b49baa61",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 19,
+      "line_id": "r3o021",
+      "scene_id": "c03r-o02",
+      "line_text_sha256": "1513460a4b4fd014c246935a1cd10175654c576b3538dee3e5fe21ba7bbb5772",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 20,
+      "line_id": "r3o022",
+      "scene_id": "c03r-o02",
+      "line_text_sha256": "c6b37f481f33f5d0ebd6e56bae25e58b4feb04bede9d480fbd67cb26766b0304",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 21,
+      "line_id": "r303041",
+      "scene_id": "c03r-p03s04",
+      "line_text_sha256": "0025178bbb8e930b8eea6d6c66a4ccc9a40b139423f14ccda3acdfec599b3a84",
+      "source_anchor_ids": [
+        "S1a",
+        "S1b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 22,
+      "line_id": "r304011",
+      "scene_id": "c03r-p04s01",
+      "line_text_sha256": "5855bf5aa0fc65434805e23a6195dd1377efba7f3662e60897ec109768e7468c",
+      "source_anchor_ids": [
+        "S1b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 23,
+      "line_id": "r3o031",
+      "scene_id": "c03r-o03",
+      "line_text_sha256": "ead4008ae9ff00e6384f8b54a9264f81f9ee48a951dfe96a96d1764c112c440f",
+      "source_anchor_ids": [
+        "S1a",
+        "S1b",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 24,
+      "line_id": "r304021",
+      "scene_id": "c03r-p04s02",
+      "line_text_sha256": "dd055337f1a091d71f99e4fc70703fba96d8591074538c46ddf21c8f3f5c5313",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 25,
+      "line_id": "r304031",
+      "scene_id": "c03r-p04s03",
+      "line_text_sha256": "1bb934e4370ea95b4c7a8d0ae5389004cfca440790f512dbaa9739990a4ccbac",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "移除重述1997，保歷史藝術家不是現代商標商品使用者的原區分；前文首次申請及品牌型制界線未改，匿名新舊本子比較圖相容。"
+    },
+    {
+      "row": 26,
+      "line_id": "r3o041",
+      "scene_id": "c03r-o04",
+      "line_text_sha256": "ce4566f72288441a7a122a3275b9c473d5d2201add09427b5021ff25e48c6b47",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 27,
+      "line_id": "r3o042",
+      "scene_id": "c03r-o04",
+      "line_text_sha256": "cae16955928f8c7a67eea5d07dbbd1c4b4f69e7cfa0c8a374e30f7b557866412",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 28,
+      "line_id": "r304041",
+      "scene_id": "c03r-p04s04",
+      "line_text_sha256": "4997880ba6b28dcfe7b773ecb29c5d43b6b81ff1972d2e31409620a0f74fa2bd",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 29,
+      "line_id": "r305011",
+      "scene_id": "c03r-p05s01",
+      "line_text_sha256": "988676d75cb58a2df35d11925427759104db9cbdd96662b4d1f143f04f202d2c",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 30,
+      "line_id": "r305021",
+      "scene_id": "c03r-p05s02",
+      "line_text_sha256": "e2923c5a8c3893628bd308562ef5a0e4329faf040afb1b0cf351769cd912af8e",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 31,
+      "line_id": "r305031",
+      "scene_id": "c03r-p05s03",
+      "line_text_sha256": "02a16b8e4ce384065201fca64ffe0b8506df086c658bb855a303863384d0b1cf",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 32,
+      "line_id": "r3i011",
+      "scene_id": "c03r-i01",
+      "line_text_sha256": "79ac39cd66d6841623e22accff4e90f4412cfba3f4380e4abf8714f43d1915a3",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 33,
+      "line_id": "r3i021",
+      "scene_id": "c03r-i02",
+      "line_text_sha256": "95a7ca8e933ce4284c3e18387e1a05280a946905f7d2e6294550962b78cf509c",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 34,
+      "line_id": "r3i022",
+      "scene_id": "c03r-i02",
+      "line_text_sha256": "eef8582a71ea196092207e0a77698709846e5ef99e8f63255efde4e3c69a961d",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 35,
+      "line_id": "r305051",
+      "scene_id": "c03r-p05s05",
+      "line_text_sha256": "08ed8df7590ea2f1e6e94fd7c454de697101e6b420844efc4d52cfbe9c6ffe2b",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 36,
+      "line_id": "r306011",
+      "scene_id": "c03r-p06s01",
+      "line_text_sha256": "fda6cfa251040a01da37fdc831bd8bbbd10b660990f3e02f2546bdd8100fc082",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 37,
+      "line_id": "r306021",
+      "scene_id": "c03r-p06s02",
+      "line_text_sha256": "d3f24ab7dc6a72a5b3f3787e070354105c95b69160cfc2a9363ef1425c3d11d2",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 38,
+      "line_id": "r3i031",
+      "scene_id": "c03r-i03",
+      "line_text_sha256": "2205e364f7954a222f523951e30a947f381ba3bf7f460415f1c53583c5fb71fa",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 39,
+      "line_id": "r3i032",
+      "scene_id": "c03r-i03",
+      "line_text_sha256": "10f1afac4976e4ad90b7176be0b774921ab09f76a1af6c33f9dc8d1b2120b3e3",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 40,
+      "line_id": "r306041",
+      "scene_id": "c03r-p06s04",
+      "line_text_sha256": "a5a620b03aa6f9596b6d13f3687ab0b04b4524764a9b59f7d90553bf7f6da1bc",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 41,
+      "line_id": "r306051",
+      "scene_id": "c03r-p06s05",
+      "line_text_sha256": "324d4c822ac4a59fde185d38f1b6026ac43a48128e95b5f632f57b4329125111",
+      "source_anchor_ids": [
+        "S1c",
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 42,
+      "line_id": "r307011",
+      "scene_id": "c03r-p07s01",
+      "line_text_sha256": "504256ff666c7c1876765b29addddc5e96b1acb346523a6c2d343bc29ea03765",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 43,
+      "line_id": "r307021",
+      "scene_id": "c03r-p07s02",
+      "line_text_sha256": "35a2902f300596c831139763f293948e8d5008f816ede9157161f9e64d3d4978",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 44,
+      "line_id": "r307031",
+      "scene_id": "c03r-p07s03",
+      "line_text_sha256": "ce41183e7c486a245f9e7c9aa72a20c2ecfc079a4a8118dd8ba9c8035a28ff80",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 45,
+      "line_id": "r307061",
+      "scene_id": "c03r-p07s06",
+      "line_text_sha256": "f130bd76849b99506260bf76a28a75057c7e8ad2226ec14b9817b9a884df7609",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 46,
+      "line_id": "r308011",
+      "scene_id": "c03r-p08s01",
+      "line_text_sha256": "dff0cd5fafada9611d51129ebc6a1bdaaaf032c2bbd39a1432c8d5e70aafa1ab",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 47,
+      "line_id": "r308021",
+      "scene_id": "c03r-p08s02",
+      "line_text_sha256": "0c7f794fb116e5bfc17d9e01a3b66094707ecd708ffe9de148355c8330849187",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 48,
+      "line_id": "r3i041",
+      "scene_id": "c03r-i04",
+      "line_text_sha256": "b06976185840975eaa9a93093d494a8ca4ba02b1762cee93ac28953a30272a93",
+      "source_anchor_ids": [
+        "S1d"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 49,
+      "line_id": "r3i051",
+      "scene_id": "c03r-i05",
+      "line_text_sha256": "5b57482d682c12087580a0c2c44d05fa96cdcc97b08c378d7f0669e25af44869",
+      "source_anchor_ids": [
+        "S1d"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 50,
+      "line_id": "r308041",
+      "scene_id": "c03r-p08s04",
+      "line_text_sha256": "584c7b6289eb86a530e875b3f7db5bcf7174e49c22c8c6cd800df6f5122b6ecd",
+      "source_anchor_ids": [
+        "S3",
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "只刪控制權重述；隔年承接前文2006交易並由原r309011的2007-01-01公司名回答。沒有新年份/因果，原匿名檔案櫃圖相容。"
+    },
+    {
+      "row": 51,
+      "line_id": "r309011",
+      "scene_id": "c03r-p09s01",
+      "line_text_sha256": "ad59074290f50853e81dbc51d032edce70560a886af2a7267c22bd3e0366ce19",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 52,
+      "line_id": "r309021",
+      "scene_id": "c03r-p09s02",
+      "line_text_sha256": "ba9acd9f9c33ff0a7c05d5a8ef9b933a3071c23164af47a2dc2124619d868b24",
+      "source_anchor_ids": [
+        "S1c",
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 53,
+      "line_id": "r3i061",
+      "scene_id": "c03r-i06",
+      "line_text_sha256": "2ee570f971bd18282fbcbfb0942a4fb32c697a7da841b2727f66bcaf97443ea6",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 54,
+      "line_id": "r310011",
+      "scene_id": "c03r-p10s01",
+      "line_text_sha256": "6ea06880f10c519c36cef132a7e31716fda9beaaccb6d99c6e597719b56c28f4",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 55,
+      "line_id": "r310021",
+      "scene_id": "c03r-p10s02",
+      "line_text_sha256": "ce239105e99e8fff4cd2d1ff0cd25f57295cc25bdd1b790ff77489ba877ee4b4",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 56,
+      "line_id": "r310051",
+      "scene_id": "c03r-p10s05",
+      "line_text_sha256": "4528937624a44c8547d61c3b49842626f9723e9b4d9ff820155a4e3dc2e7c428",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 57,
+      "line_id": "r311011",
+      "scene_id": "c03r-p11s01",
+      "line_text_sha256": "4ead17e124a1cd6477aaf5ed4fa62596d853cf8faaf70073b06da1cc71704714",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 58,
+      "line_id": "r311012",
+      "scene_id": "c03r-p11s01",
+      "line_text_sha256": "e05550a9b6d25a6048c98c87116020fc282f77ee04e1a8c7018ccca6284e634e",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 59,
+      "line_id": "r311021",
+      "scene_id": "c03r-p11s02",
+      "line_text_sha256": "df8b74ff8501ed6b14264c5c8d43cfd88cf22134f41a9c4ee93dd8c99ecebea8",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 60,
+      "line_id": "r311041",
+      "scene_id": "c03r-p11s04",
+      "line_text_sha256": "679ee4923788aeb8133b60f28398e0a227457f64a07cff8ddd810fa77646169b",
+      "source_anchor_ids": [
+        "S1e",
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 61,
+      "line_id": "r3e011",
+      "scene_id": "c03r-e01",
+      "line_text_sha256": "a1d897bf2f2bd28480d87c450ee646b5bf67352ff34dd111cfe0e9cb111ef6b8",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 62,
+      "line_id": "r3e012",
+      "scene_id": "c03r-e01",
+      "line_text_sha256": "6955d5e900eb071e7fcd51fcc9ee8912405f9eb459604142b14d26cf550700ca",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 63,
+      "line_id": "r3e021",
+      "scene_id": "c03r-e02",
+      "line_text_sha256": "74936f33548cb27b210010d1f1f2dbe632aec2dda45e2e0a104c274f4fa0f9a6",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 64,
+      "line_id": "r3e022",
+      "scene_id": "c03r-e02-b",
+      "line_text_sha256": "87de9c9ab774c67088bfd9f81cc84c12843151cafefb233ebb25e72ef47357e9",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 65,
+      "line_id": "r3e031",
+      "scene_id": "c03r-e03",
+      "line_text_sha256": "de67654981ca321962abd6886575e3d3b7794108e089c860e81059729c4e766a",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 66,
+      "line_id": "r3e032",
+      "scene_id": "c03r-e03",
+      "line_text_sha256": "71b2e94212cf47a046e755b84a3e1d3493bc03b543ea57973ed9ca2d26661b15",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 67,
+      "line_id": "r3e041",
+      "scene_id": "c03r-e04",
+      "line_text_sha256": "7c141ce14b17dfc3d34cd57790a31bcef7ac01cee7667cd94fb33512090f3cc2",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 68,
+      "line_id": "r3e051",
+      "scene_id": "c03r-e05",
+      "line_text_sha256": "0ae4082e7b893e4ec2a669325ad5009cf7b700d9f4aea30476ed70b90b1bc495",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 69,
+      "line_id": "r3e061",
+      "scene_id": "c03r-e06",
+      "line_text_sha256": "9293924ff624a1375520803f363386e5a9492e98dc95342a1b4c36341ef8cf68",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 70,
+      "line_id": "r3e062",
+      "scene_id": "c03r-e06",
+      "line_text_sha256": "d6fc1f8dcd7b6f87a3dc491bd7360b9a6ed3a2a3d03dda383a9db5691e22affd",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 71,
+      "line_id": "r3e071",
+      "scene_id": "c03r-e07",
+      "line_text_sha256": "10c14efec574a6b20128679e2075611313dce74746dfeef6578870031bcb245f",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 72,
+      "line_id": "r3e081",
+      "scene_id": "c03r-e08",
+      "line_text_sha256": "a2357dc9da6141de824a6fd9489b7de35df35f305a686ad084e2619ea85e87d7",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 73,
+      "line_id": "r3e082",
+      "scene_id": "c03r-e08",
+      "line_text_sha256": "29af9319c3a4d5a7d0d08126f02cfe132d9d529c8b6d2a84619a202ab257940f",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 74,
+      "line_id": "r3e091",
+      "scene_id": "c03r-e09",
+      "line_text_sha256": "9d7c7b827ed064458dc24242c5eeea22307012bb876fbf510cf60c486ffa3ef8",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 75,
+      "line_id": "r3e092",
+      "scene_id": "c03r-e09",
+      "line_text_sha256": "35ce2f4c057ddcbf561054b9a8fd2ed5f807fa8de686fe95672c489cce2685b9",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 76,
+      "line_id": "r3e101",
+      "scene_id": "c03r-e10",
+      "line_text_sha256": "dcd1638050422b1d0db62daaeb3f182e2aa50a962413f9da023bf0a56a93a811",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 77,
+      "line_id": "r3e102",
+      "scene_id": "c03r-e10",
+      "line_text_sha256": "b9f27a094fb54331580c8461da77a0130b65bae2cdb321307279b5572cc52a1f",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 78,
+      "line_id": "r3e111",
+      "scene_id": "c03r-e11",
+      "line_text_sha256": "0e5da6d043249e49fa00a883b5c20b9adbd6046cd6a6f6d20fc3ab99b3041edf",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 79,
+      "line_id": "r3e112",
+      "scene_id": "c03r-e11-b",
+      "line_text_sha256": "17703adfbd9672b599a88f96cc15a2c3daaea9e6a6d151d104f0ec9ca7b575b1",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 80,
+      "line_id": "r3e121",
+      "scene_id": "c03r-e12",
+      "line_text_sha256": "cd901018080894f82e4967d102c48eba54b9d69423f5cb3a05d88dbc5623a835",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 81,
+      "line_id": "r3e122",
+      "scene_id": "c03r-e12",
+      "line_text_sha256": "307cf6eeea8556f25f9df97073df01b7d3bd88524f803c98108f4f2de96db27e",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 82,
+      "line_id": "r312011",
+      "scene_id": "c03r-p12s01",
+      "line_text_sha256": "a8ae145066ee43285fdc2d0d32c897549a211c075d746b49cebbb285c1abd75c",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 83,
+      "line_id": "r3e131",
+      "scene_id": "c03r-e13",
+      "line_text_sha256": "58d4016d0d262b786cc3580341cb7db7fcd45f2b9f01fa327f81197ac070e11e",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 84,
+      "line_id": "r3e132",
+      "scene_id": "c03r-e13",
+      "line_text_sha256": "fc8f6769751ea239db9a624730595df77d6f7846cf03c33f81c3cbaceae7f29f",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 85,
+      "line_id": "r312021",
+      "scene_id": "c03r-p12s02",
+      "line_text_sha256": "5f07e10b4064aa5aebc63c74d3ae94a0a49d6ead8b747606d825032f6bad4b91",
+      "source_anchor_ids": [
+        "S6b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 86,
+      "line_id": "r312031",
+      "scene_id": "c03r-p12s03",
+      "line_text_sha256": "b08f1c78c5776cbe7e7d61691633a56bfb99d36cebf81810ccd4f038171f4f60",
+      "source_anchor_ids": [
+        "S1f",
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 87,
+      "line_id": "r3e141",
+      "scene_id": "c03r-e14",
+      "line_text_sha256": "9d9a0d40d2ff970002912ff58852063225bf95b5e87b07674765a6098519be03",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 88,
+      "line_id": "r312051",
+      "scene_id": "c03r-p12s05",
+      "line_text_sha256": "357a9b3ba4acda736467929cf4c0686ad01936acdf6e7a00669de8bf98507026",
+      "source_anchor_ids": [
+        "S8a",
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 89,
+      "line_id": "r313011",
+      "scene_id": "c03r-p13s01",
+      "line_text_sha256": "ffc01df87b3dd9b2fa42c552e88762390de5ec146736e0342b80e8ffb06348bc",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 90,
+      "line_id": "r313012",
+      "scene_id": "c03r-p13s01",
+      "line_text_sha256": "802c47153003cb07d09278cfd6438cd9423023e941f1e1537646e57cb78e0d39",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 91,
+      "line_id": "r313021",
+      "scene_id": "c03r-p13s02",
+      "line_text_sha256": "2e7bb6542747f1438d3ed3abddbb761c90939e0c25d47a6f3906f979b2ec0a0b",
+      "source_anchor_ids": [
+        "S8a",
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 92,
+      "line_id": "r313031",
+      "scene_id": "c03r-p13s03",
+      "line_text_sha256": "631e45144c7e07cdb98a5d153f34dd599ecc2315bdb3511395fb682d8d67afa4",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 93,
+      "line_id": "r3t011",
+      "scene_id": "c03r-t01",
+      "line_text_sha256": "2e7c9618a62acfb21bd785613419138e3c52f4c071140f638c8efefbce1e9b29",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 94,
+      "line_id": "r3t012",
+      "scene_id": "c03r-t01",
+      "line_text_sha256": "d3679f3ae42132531a55cdb5d2f243bc3d0278902caf5dd8df05802f6cc8d594",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 95,
+      "line_id": "r3t021",
+      "scene_id": "c03r-t02",
+      "line_text_sha256": "b551fc7733312df5792def8f67e3d72ee81345bbda2a807f1ef73e42d2848bb1",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 96,
+      "line_id": "r3t031",
+      "scene_id": "c03r-t03",
+      "line_text_sha256": "82c802660eac0d57d968c5d4179d65592b0c1d87e6d85145b0711fe20696b8c2",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 97,
+      "line_id": "r3t032",
+      "scene_id": "c03r-t03",
+      "line_text_sha256": "093cfb9daf2d7a4014706228604c91d9599b776f22731a750feeb0f54b9b1653",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 98,
+      "line_id": "r313051",
+      "scene_id": "c03r-p13s05",
+      "line_text_sha256": "a2ebfdf8d22eed2789e4babbe7c43318679fd966030c107b0aa726606fee3f5c",
+      "source_anchor_ids": [
+        "S8a",
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 99,
+      "line_id": "r314011",
+      "scene_id": "c03r-p14s01",
+      "line_text_sha256": "847f9017e3f8c42ba22c6ceebd9cc436bfd878134c98614ced85ad8ab287ea33",
+      "source_anchor_ids": [
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 100,
+      "line_id": "r314021",
+      "scene_id": "c03r-p14s02",
+      "line_text_sha256": "3e7ea97b881b4a9df8a832aa1a441c53f6995ce3b610a38b09ebb8938432ef4d",
+      "source_anchor_ids": [
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 101,
+      "line_id": "r314041",
+      "scene_id": "c03r-p14s04",
+      "line_text_sha256": "2f911d4d32d8c795876ac4e50e4d2bb7bbbab16b4da4ed70f728b0cf06bddfad",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 102,
+      "line_id": "r315011",
+      "scene_id": "c03r-p15s01",
+      "line_text_sha256": "e8137ca6f3eb8a42ac5fce2db3f1d043b68715336c7dd522fe62d928d3bfc34a",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 103,
+      "line_id": "r315021",
+      "scene_id": "c03r-p15s02",
+      "line_text_sha256": "4be4b1ab4ad22b2c20cd30b694d144e74873888d6f322d413c9c7d06e559588c",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 104,
+      "line_id": "r3t041",
+      "scene_id": "c03r-t04",
+      "line_text_sha256": "70c1dac4cf1613665a3fb255d8048459050dc683a78db03d589e171309b38d7a",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 105,
+      "line_id": "r3t042",
+      "scene_id": "c03r-t04",
+      "line_text_sha256": "14ac3d54f839225e86eaedd966fb1a355a93e3974453a63ad7aa62a562603213",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 106,
+      "line_id": "r315051",
+      "scene_id": "c03r-p15s05",
+      "line_text_sha256": "a78a5592f3d50baf88f1c1e6a403a56b48e590dcd395299ce94ff6738fac632a",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 107,
+      "line_id": "r3t051",
+      "scene_id": "c03r-t05",
+      "line_text_sha256": "dadb84e2e502879c998a438cc7744a6a10362f4f21d8d4c9d1c99f359d767daf",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 108,
+      "line_id": "r3t052",
+      "scene_id": "c03r-t05",
+      "line_text_sha256": "1adf94aed66d05c05ff337ac3d3d4e7a4f2c1224a58105d03a26a34c76a60cb7",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 109,
+      "line_id": "r316011",
+      "scene_id": "c03r-p16s01",
+      "line_text_sha256": "ebdc865c44397f300bb82cc02eb53a038b67d909c4388b75e6fa329909ba1a79",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 110,
+      "line_id": "r3t061",
+      "scene_id": "c03r-t06",
+      "line_text_sha256": "e963c31b79cba45067f225a2b91b0020e286d5c9ab13a7eaaeb6a2b2c48d23e8",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 111,
+      "line_id": "r3t062",
+      "scene_id": "c03r-t06-b",
+      "line_text_sha256": "282d30a6b4b013624ce497edcc2cf09c065373b7516df0567fb76032a476ee9b",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 112,
+      "line_id": "r316041",
+      "scene_id": "c03r-p16s04",
+      "line_text_sha256": "c47ff0ef7df1a81866521cbb4af5f9e12228b684a6c687fe9777f2a5708d8549",
+      "source_anchor_ids": [
+        "S10b",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 113,
+      "line_id": "r316042",
+      "scene_id": "c03r-p16s04",
+      "line_text_sha256": "57a812cdf5901f79c7c3ffe276780e958f3a52f82699ca4dc57be2c1fde3e400",
+      "source_anchor_ids": [
+        "S10b",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 114,
+      "line_id": "r317011",
+      "scene_id": "c03r-p17s01",
+      "line_text_sha256": "83c46be97d190c8c1921e7522bf8ca8d1c2e45abad8ef4a175c98e25b46ee3a1",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 115,
+      "line_id": "r317012",
+      "scene_id": "c03r-p17s01",
+      "line_text_sha256": "ed0d06b334c3025e4850e655f8c638dd2c93e1491534b0e9c657855ded0f8a5a",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 116,
+      "line_id": "r317021",
+      "scene_id": "c03r-p17s02",
+      "line_text_sha256": "a76c9796ff2ee0e5968216cade7a2ac178a0ffa5444bdebd714dfd65e8669b32",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 117,
+      "line_id": "r3n011",
+      "scene_id": "c03r-n01",
+      "line_text_sha256": "c7d8a27f7f7956ed63f0920b338290203749cd2cd8ff5884f31a6133d0557d2a",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 118,
+      "line_id": "r3n012",
+      "scene_id": "c03r-n01",
+      "line_text_sha256": "2421738cd9a12fe09953b874333a3786a1f1196fec0066a77f6d891f18f39e60",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 119,
+      "line_id": "r318021",
+      "scene_id": "c03r-p18s02",
+      "line_text_sha256": "b9ff511026a1faba7bb120cf2fd9328b46e327e27571891c247607382c037c11",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 120,
+      "line_id": "r318022",
+      "scene_id": "c03r-p18s02",
+      "line_text_sha256": "24fc52feccd14af14c0ac259f02699aef80cc633b4663a8ce161c4ebbdd02d79",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 121,
+      "line_id": "r318031",
+      "scene_id": "c03r-p18s03",
+      "line_text_sha256": "395a11415e217c425cca1b57216fadd5dda065f26a27efc505ae8eef2184ca20",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 122,
+      "line_id": "r318032",
+      "scene_id": "c03r-p18s03",
+      "line_text_sha256": "f29e4daf085604c77ec0f02b5d4735148ee65e7cce696e0b9c504df8f1542619",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 123,
+      "line_id": "r3n021",
+      "scene_id": "c03r-n02",
+      "line_text_sha256": "31670a1c51f57bb28cb4a0307dff9f87b64f67b20d49e17b949a844df951248d",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 124,
+      "line_id": "r3n022",
+      "scene_id": "c03r-n02-b",
+      "line_text_sha256": "b1e049d80935537f337db7e5ce95992d96a96bb57b6d4df6e76a90b417718eb2",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 125,
+      "line_id": "r3n031",
+      "scene_id": "c03r-n03",
+      "line_text_sha256": "08e889301295f997473c03941f8525ffb9cd23f4e40d7797fadfa6e86089101b",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 126,
+      "line_id": "r318041",
+      "scene_id": "c03r-p18s04",
+      "line_text_sha256": "9a92202811674993666241dc918f66d5f498a5c5f8b5ad1cc5a45773c54404ca",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "改成2025年度財報，不再宣稱2025刊布；原件實際2026-03-10發布，年度與發布年已區分。下一句2025品牌減損€107.4m與原金融卡完全不動，解除HOLD。"
+    },
+    {
+      "row": 127,
+      "line_id": "r318042",
+      "scene_id": "c03r-p18s04",
+      "line_text_sha256": "834e71f4d3bd1603cc1af7f8aa93db960e5ef8229c29ff8295800a38437fecd2",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 128,
+      "line_id": "r3n041",
+      "scene_id": "c03r-n04",
+      "line_text_sha256": "63cb1c42eaf6096fb5752a5a1e6b3b476056b9757efccef9f7a8335010cd46c3",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 129,
+      "line_id": "r318051",
+      "scene_id": "c03r-p18s05",
+      "line_text_sha256": "9542f3241fb9fb83cb0ef1890339cb4c183fa4964016c5855cee3740c616a572",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 130,
+      "line_id": "r3n051",
+      "scene_id": "c03r-n05",
+      "line_text_sha256": "2c14fdd2fb16561d2adf50231e1b5a837f059eeab39dd74d6c36620804a4eb9c",
+      "source_anchor_ids": [
+        "S12",
+        "S13a",
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "旁白/data未改，claims精確追加既有S1c完整anchor；招股書PDF139–140文化定位/意涵可延伸新品支持前半句，S12/S13a保留財務預期，解除漏來源HOLD。"
+    },
+    {
+      "row": 131,
+      "line_id": "r3n052",
+      "scene_id": "c03r-n05-b",
+      "line_text_sha256": "ddd7e3dc381e5a8e0de951b51bf8098d033b05a4b0fe3abe7c11764473277704",
+      "source_anchor_ids": [
+        "S12",
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 132,
+      "line_id": "r319011",
+      "scene_id": "c03r-p19s01",
+      "line_text_sha256": "9fbf922071e8132a6a4eb7e5414195f5b30bf5e50d218788f9192a52be65f27f",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 133,
+      "line_id": "r319021",
+      "scene_id": "c03r-p19s02",
+      "line_text_sha256": "e64d102d30e46b13358e23a923e73d87c472ef62693aae1910aac1bad1e78afb",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 134,
+      "line_id": "r3n061",
+      "scene_id": "c03r-n06",
+      "line_text_sha256": "f05267fe357a0ef335397908250d5b9ab2f77fc0a75049f3a5b06e0c85396970",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 135,
+      "line_id": "r319041",
+      "scene_id": "c03r-p19s04",
+      "line_text_sha256": "6ed799424e316106de1e92a59006f8685e0dd45629cc84b568637db4b2baa09c",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 136,
+      "line_id": "r319031",
+      "scene_id": "c03r-p19s03",
+      "line_text_sha256": "8b050a18ebd4c82b1530b96565b141200d15a35dbc2785398cc854c73e42aaa4",
+      "source_anchor_ids": [
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 137,
+      "line_id": "r3n071",
+      "scene_id": "c03r-n07",
+      "line_text_sha256": "67a790e844ef45e1349b1663f3547e703d4aeff28d14810f98bca3d8e2ac48cb",
+      "source_anchor_ids": [
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 138,
+      "line_id": "r3n072",
+      "scene_id": "c03r-n07",
+      "line_text_sha256": "077f898a596d3b15023210a68a0971bcca6dc39e8bf043ec556b2284522e960b",
+      "source_anchor_ids": [
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 139,
+      "line_id": "r319051",
+      "scene_id": "c03r-p19s05",
+      "line_text_sha256": "8a8a1ae5d4f282d493452e071acba42e7fdf02007db85e6b7a53689d1f2c7d65",
+      "source_anchor_ids": [
+        "S11",
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 140,
+      "line_id": "r320011",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "6cc08242ffee7db1d44ab9f060b69bd1158e64207aa496f49cc2a6a3f6708cad",
+      "source_anchor_ids": [
+        "S1c",
+        "S1d",
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "新句明說從招股書看/公司做法，限定發行人定位策略；待創作的書直接對應libro ancora da scrivere，接原r320012展示/通路策略，不再宣稱獨立證明消費者付費動機，解除HOLD。outro資料完全不動。"
+    },
+    {
+      "row": 141,
+      "line_id": "r320012",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "9c9bb8815f27ce0d962a236f773bfdcb939dc83cf21c960fd31fdf16eb36d0f2",
+      "source_anchor_ids": [
+        "S1c",
+        "S1d",
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 142,
+      "line_id": "r320031",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "ebd9734cbc76043b6b2840c29e4c7564138bc09ddb16056253d1127062762d53",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 143,
+      "line_id": "r320032",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "5d05af678eb675e4ed17e7af9bdc6da99dfed99213816af4d49fef922d50030a",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    },
+    {
+      "row": 144,
+      "line_id": "r320041",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "1811b44570130b229b2e5f0cc298074a650b31c7a15a5f89b4e5ed7214f012b8",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "r1已PASS且完整scene/文字/來源映射不變；由綁定r1收據接鏈。"
+    }
+  ]
+}

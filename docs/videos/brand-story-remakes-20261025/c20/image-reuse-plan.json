@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "revision": "c20-r8",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_GENERATION_AND_REAL_FILE_SHA_VERIFICATION",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "no_assets_generated": true,
+  "actual_same_asset_verified": false,
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+      "script.md": "8918964646c918bfe2168688fa59cdce0fe361ea3af065e9cb5cf7525671e61c",
+      "narration-only.json": "9f96b11a6695c62db4e327ea7e4e9388673a05212dd684feef0bc8e936e70967",
+      "claims.json": "b65cc601f2b6e097769eb7581ea4796f5e5acab1402d622a9a05ef08c93bb46e"
+    },
+    "claims_md_sha256": "360a3f3385b3d2f69d8673ec59dd7989a7cc71a8b9c02f3d58231e6f23289b9e",
+    "brief_sha256": "542722aae591497439e71e6cdf5fffcd8acf72d18f3ed1c80bd71388f7a902e4",
+    "series_sha256": "856977cf624de9831ebcba95699a12873b2505574dfa62a996f045c09f46f447"
+  },
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_field_available": false,
+    "clip_source_field_not_applicable": "Still data.source is unsupported; no alias or custom video schema field was invented.",
+    "native_supported_route": "Official keyframes --shot with the ordinary exact-request cache, independently judged at both endpoints.",
+    "cache_identity": "The pure local Stage.imageKey was called with declared model/version/size and full request inputs. Scene ID and output target do not enter the native key.",
+    "camera_matters": "Camera is part of composed prompt and must be identical.",
+    "guard_is_read_only": "Use readCache plus existsSync and SHA of actual bytes. Never use cached() as a read-only guard: it can delete an invalid entry and write cache.json."
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "loop-inspection-before-result",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "source_scene_id": "c20r3e01",
+      "source_line_id": "c20r3e01",
+      "reuse_scene_id": "c20r3h05",
+      "reuse_line_id": "c20r3h05",
+      "narration_setup_text": "等回件到了，小環旁邊，會不會多出新的焊痕？",
+      "narration_payoff_text": "開頭那個小環旁邊，喬瑟夫回件後看，沒有看到新的焊痕或疤。",
+      "source_prompt_sha256": "533b285b252bad703653a68b4c04f574131ad69feb5facba9a9b15c4755d7a3b",
+      "reuse_prompt_sha256": "533b285b252bad703653a68b4c04f574131ad69feb5facba9a9b15c4755d7a3b",
+      "prompt_exact_match": true,
+      "source_camera": "pan left",
+      "reuse_camera": "pan left",
+      "composed_prompt_sha256": "f6aa701ac9dd7c2edd06474c99b4ea9b00457e616c5a7995e106ecd10d61989c",
+      "no_result_drawn_in_teaser": "Anonymous owner holds a closed plain brass case with side loop for inspection before a result; no new weld, repaired pin, completed repair, replacement part, readable engraving or finish outcome is drawn.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Wide shot of An anonymous adult holding a closed plain warm brass metal case with a small side loop above a wooden table, inspecting it before any work, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "aspect": "16:9",
+        "requested_size": null,
+        "nominal_image_size": "1K",
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "14da6fdbee2275d6",
+        "native_stage_key": "10628c6d991ddf8d",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "pink-return-parcel-before-opening",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "source_scene_id": "c20r3n01",
+      "source_line_id": "c20r3n01",
+      "reuse_scene_id": "c20r3h06",
+      "reuse_line_id": "c20r3h06",
+      "narration_setup_text": "兩年後，日本另一只粉紅小盒寄出，原來的內膽，還會回來嗎？",
+      "narration_payoff_text": "開頭那個粉紅小盒的回件拆開後，他寫下的結果是，新舊兩組內膽都在裡面。",
+      "source_prompt_sha256": "d552889fedb669b7303ac68362ce72c9dfeadc148579c0964173ac953a7f3c33",
+      "reuse_prompt_sha256": "d552889fedb669b7303ac68362ce72c9dfeadc148579c0964173ac953a7f3c33",
+      "prompt_exact_match": true,
+      "source_camera": "push in",
+      "reuse_camera": "push in",
+      "composed_prompt_sha256": "9d60b29c7012dd1ee180808278130ba215a099e2abdd860d2a6962cf6f5d12d3",
+      "no_result_drawn_in_teaser": "Closed opaque mailer before opening; no pink case, contents, replacement unit, returned original, flame or successful repair is shown.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Medium shot of An anonymous adult resting one hand beside a closed opaque plain gray padded mailer on a wooden table, anticipatory expression, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "aspect": "16:9",
+        "requested_size": null,
+        "nominal_image_size": "1K",
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "382dc0d240a028e3",
+        "native_stage_key": "8499e810e4c09fb5",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "Current exact independent source/visual and fresh-reader reviews, owner approvals, actual production admission and all-in quote are still pending. This plan executes nothing.",
+      "Read actual provider/model/version/prompt limit/size/negative/references/seed/fixes before admission and recompute each native key from that readback; planned example values are not a live cache receipt.",
+      "Same immutable project/workdir, exact request, default seed offset 0 and takes1 at both endpoints."
+    ],
+    "official_command_recipe_only": [
+      {
+        "purpose": "PAYOFF FIRST only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/runtime",
+          "keyframes",
+          "--slug",
+          "story-everyday-zippo-c20-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/media",
+          "--shot",
+          "c20r3e01",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READ-ONLY LIVE CACHE GUARD BEFORE TEASER",
+        "required_checks": [
+          "Read actual keyframes/manifest.json source shot c20r3e01; require ordinary passed judge, needs_review false, one take, seed1, no fixes and live-recomputed exact Stage.imageKey.",
+          "Hash selected bytes against selected.sha256; separately readCache(workdir) and require the live-key entry, actual file, provider/model and entry SHA all match.",
+          "Any missing or changed entry/file/key/SHA/selection: STOP without teaser command, cache clearing, another purchase, forced selection or handwritten manifest."
+        ]
+      },
+      {
+        "purpose": "TEASER only after real cache guard succeeds, then ordinary independent endpoint judge",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/runtime",
+          "keyframes",
+          "--slug",
+          "story-everyday-zippo-c20-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/media",
+          "--shot",
+          "c20r3h05",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "PAYOFF FIRST only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/runtime",
+          "keyframes",
+          "--slug",
+          "story-everyday-zippo-c20-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/media",
+          "--shot",
+          "c20r3n01",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READ-ONLY LIVE CACHE GUARD BEFORE TEASER",
+        "required_checks": [
+          "Read actual keyframes/manifest.json source shot c20r3n01; require ordinary passed judge, needs_review false, one take, seed1, no fixes and live-recomputed exact Stage.imageKey.",
+          "Hash selected bytes against selected.sha256; separately readCache(workdir) and require the live-key entry, actual file, provider/model and entry SHA all match.",
+          "Any missing or changed entry/file/key/SHA/selection: STOP without teaser command, cache clearing, another purchase, forced selection or handwritten manifest."
+        ]
+      },
+      {
+        "purpose": "TEASER only after real cache guard succeeds, then ordinary independent endpoint judge",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/runtime",
+          "keyframes",
+          "--slug",
+          "story-everyday-zippo-c20-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/c20-audit/author-r8/media",
+          "--shot",
+          "c20r3h06",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "on_any_failure_or_changed_request": "Stop the pair. No separate reroll, force, accept-best bypass, independent look-alike purchase or hand-written manifest. Correct both endpoints together, repeat normal bound source/visual review and admission.",
+    "actual_verification_required": [
+      "Both endpoints must pass their own ordinary official judge verdict.",
+      "After the official commands, read manifest shots for the pair, require identical selected file reference and SHA, then hash the actual bytes.",
+      "If trimming occurs, require identical final trimmed selected file and SHA at both endpoints; matching original-generated hashes alone is insufficient.",
+      "Hash original cache bytes and final selected bytes separately; do not assume original and trimmed SHA are equal.",
+      "Read final assembly inputs and require the same selected file at teaser and payoff. Preserve normal job/cache/ledger receipts."
+    ],
+    "executed": false
+  },
+  "provider_calls": 0,
+  "paid_calls": 0
+}

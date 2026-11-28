@@ -1,0 +1,2099 @@
+{
+  "schema_version": 1,
+  "episode": "C14 CamelBak",
+  "candidate_revision": "c14-r3",
+  "reviewer": "/root/c05_r12_review_pt_id",
+  "independent": true,
+  "role_disclosure": "本集R1全量及R2delta的獨立source／written visual reviewer，未撰寫本集中文、研究或本次刪句。本輪只核一項刪句delta、原件與周邊語境，並完整驗證現存150bindings及全物件／跨投影proof；以固定SHA嚴格繼承未變內容，不以作者selfQA或native／blind結論作依據。未讀native／blind投票內容（保護檔僅雜湊）。",
+  "created_at_utc": "2026-10-25T23:23:16.173060+00:00",
+  "status": "PASS",
+  "source_gate": "PASS",
+  "written_visual_gate": "PASS_WRITTEN_PROMPTS_ONLY",
+  "baseline": {
+    "revision": "c14-r2",
+    "four_sha256": {
+      "video.json": "1579d80818eb563709335efc3599711795e491e1b13419ab762d1b34ed6338e7",
+      "script.md": "b2b74ba0924eafa45b73b6c28bf3ca69a12bc440b58470a81b4c146f0720bfb6",
+      "narration-only.json": "eb492690878ad9a97d0f4420d4d40252aa8dabcef6dd9d242070bd81974a027d",
+      "claims.json": "e36e33ce4fcd215195c30d7d449ea65713b7f3213842e51874fee0f35c533c40"
+    },
+    "source_report_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/source-r2-independent.json",
+    "source_report_sha256": "2ced2cafbca793e8b11f26616b4ef1586d141b048c7c05b1a50c0025f8261bdf",
+    "verify_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/verify-1.md",
+    "verify_sha256": "d350affa27e2ecf2659c0f74db46c6645ea0a931e4cc49f966ebdd43aef9d756",
+    "r2_report_and_verify_archive_hashes_match": true,
+    "r1_full_review_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/source-r1-independent.json",
+    "r1_full_review_sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94",
+    "scope_inherited": "R1親讀15原件與91句／88prompt的全量查核，經R2兩項必要措辭修正及完整proof形成PASS；本輪只刪v12，不新引來源或事實。"
+  },
+  "current_four_sha256": {
+    "video.json": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
+    "script.md": "9a663e2e2e1228bf574443af70677248f7e03c4e67f1df65be21648e43a95e79",
+    "narration-only.json": "d6763b8e8e50a1a8088b17e298e3b265d552c1a91c33e325ef7b4104671aecdc",
+    "claims.json": "4e0d00d525fb0ccf01e1ee7b585fccf4244600ade482bbed09a9e5063489c0f1"
+  },
+  "revision_receipt": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/revision3.json",
+    "sha256": "42e109c4e7c44ca938ffc5691afe05241680e5031f3a5ba4e0e5a28b918cbbce",
+    "used_only_as_declared_delta": true
+  },
+  "checked_delta_targets": [
+    "lines.c14r1v12",
+    "scenes.c14r1v12",
+    "claims.rows.c14r1v12"
+  ],
+  "deleted": {
+    "line": {
+      "id": "c14r1v12",
+      "text": "你嘴邊的小零件，已經不只是讓水通過；它還得有一個能被取下、重新接好的位置。",
+      "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
+    },
+    "scene": {
+      "id": "c14r1v12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous adult looking at a separated plain mouthpiece and its tube connector on a bench, diffuse light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "c14r1v12",
+          "text": "你嘴邊的小零件，已經不只是讓水通過；它還得有一個能被取下、重新接好的位置。",
+          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
+        }
+      ]
+    },
+    "claim_row": {
+      "id": "c14r1v12",
+      "chapter": "衣夾守住的出口，換成回閉的狹縫",
+      "claim": "你嘴邊的小零件，已經不只是讓水通過；它還得有一個能被取下、重新接好的位置。",
+      "claim_kind": "VIEWER_PHYSICAL_INTERPRETATION",
+      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
+      "anchor_ids": [
+        "A_MOUTH_P7"
+      ],
+      "source_ids": [
+        "PAT_MOUTH_PDF"
+      ],
+      "evidence": [
+        {
+          "anchor_id": "A_MOUTH_P7",
+          "source_id": "PAT_MOUTH_PDF",
+          "url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
+          "http_status": 200,
+          "retrieved_at_utc": "2026-10-25T21:45:31.236824+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+          "raw_bytes": 1071928,
+          "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
+          "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+          "locator": "PDF page 7",
+          "short_quote": "the mouthpiece can be slipped on and off the hose for",
+          "quote_sha256": "cba8fe03daf18908c7c041802875935b1ead92f29e57b85898b367c276c8350c",
+          "context_sha256": "9c71a27dcee531a041a0d9a88d6049f3d6b63f839d214144102f4eb63763abc4",
+          "scope": "口器與管的可拆清潔接點；狹縫兩唇在靜止時相貼。",
+          "not_supported": "僅US6070767圖1–10所述設計，非每款量產SKU；不是初代衣夾同零件。"
+        }
+      ],
+      "limits": [
+        "僅US6070767圖1–10所述設計，非每款量產SKU；不是初代衣夾同零件。"
+      ],
+      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
+      "visual_prompt": "Medium shot of an anonymous adult looking at a separated plain mouthpiece and its tube connector on a bench, diffuse light.",
+      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
+    },
+    "source_anchor_ids": [
+      "A_MOUTH_P7"
+    ]
+  },
+  "context_and_source_assessment": {
+    "status": "PASS",
+    "current_context": [
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v10",
+        "text": "口器的脖子接著管端，頭部留給嘴含住；那個整天碰到嘴的地方，怎麼清理？"
+      },
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v11",
+        "text": "專利說，口器能從管子上滑下來，再裝回去，方便清潔與維護。"
+      },
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v13",
+        "text": "文件裡還記了一組出水測試；咬開這條縫，水究竟能怎樣通過？"
+      },
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v14",
+        "text": "用的是圖一到圖十那種口器，放進嘴裡、咬到出水狀態，再像吸管那樣吸水。"
+      },
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v15",
+        "text": "專利申請人自報的流量，是每秒約三十五到四十五毫升；數字裡，也包含人在吸的動作。"
+      },
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v16",
+        "text": "我讀這段時，最在意的是水路終於有了可觀察的結果：嘴一邊開口，一邊把水吸過來。"
+      },
+      {
+        "chapter": "衣夾守住的出口，換成回閉的狹縫",
+        "id": "c14r1v17",
+        "text": "這是那個設計記載的測試，還不是每一款袋子、每一個嘴，都會流出同樣的量。"
+      }
+    ],
+    "source_id": "PAT_MOUTH_PDF",
+    "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+    "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+    "locator": "US6070767 PDF page7, printed column3, neck/tube connection paragraph",
+    "source_excerpt": "the mouthpiece can be slipped on and off the hose for cleaning or maintenance",
+    "assessment": "刪除句只是重述可拆／重接的解讀。v10仍提出清理問題，v11已直接回答可滑下再裝回且供清潔維護；v13以「文件裡還記了一組出水測試」獨立引入新段，沒有失去必要主詞或來源指代。A_MOUTH_P7仍支撐v03/v10/v11等現存句；v10→v11及v13→v15端點均保留。"
+  },
+  "unchanged_proof": {
+    "comparison_method": "Remove only scene/line/claim-row c14r1v12 from fixed R2 inputs; compare remaining complete parsed JSON objects. For script remove exact ID/text block and normalize only R2/R3 header revision. Claims candidate_revision is the sole other parsed change.",
+    "filtered_R2_vs_R3_canonical_sha256": {
+      "video.json": {
+        "filtered_r2": "7809290441ecd85203d8a1c022c743d9cad948e974910cdf24efcde48bde5b37",
+        "r3": "7809290441ecd85203d8a1c022c743d9cad948e974910cdf24efcde48bde5b37"
+      },
+      "narration-only.json": {
+        "filtered_r2": "821a9132374b0441f990cfb14840d136e3cb8c8660d0b4b152e73a549841030d",
+        "r3": "821a9132374b0441f990cfb14840d136e3cb8c8660d0b4b152e73a549841030d"
+      },
+      "claims.json": {
+        "filtered_r2_with_revision_normalized": "a3331790c5000297d2dba57eaf8dea6bcdd44e9ecad46cc47e84f6f796f6d339",
+        "r3": "a3331790c5000297d2dba57eaf8dea6bcdd44e9ecad46cc47e84f6f796f6d339"
+      },
+      "script.md": {
+        "filtered_r2_with_revision_normalized": "9a663e2e2e1228bf574443af70677248f7e03c4e67f1df65be21648e43a95e79",
+        "r3": "9a663e2e2e1228bf574443af70677248f7e03c4e67f1df65be21648e43a95e79"
+      }
+    },
+    "remaining_90_complete_line_objects_equal": true,
+    "remaining_88_complete_scene_objects_equal": true,
+    "remaining_87_prompts_and_camera_objects_equal": true,
+    "remaining_90_complete_claim_rows_equal": true,
+    "all_non_scene_video_fields_equal": true,
+    "all_27_loops_and_endpoints_equal": true,
+    "no_deleted_loop_endpoint": true,
+    "all_remaining_loop_endpoints_valid_and_forward": true,
+    "all_four_current_spoken_projections_equal": true,
+    "all_32_anchors_equal": true,
+    "all_12_source_records_equal": true,
+    "bindings_before": 151,
+    "bindings_after": 150,
+    "only_deleted_binding": {
+      "anchor_id": "A_MOUTH_P7",
+      "source_id": "PAT_MOUTH_PDF",
+      "url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.236824+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+      "raw_bytes": 1071928,
+      "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
+      "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+      "locator": "PDF page 7",
+      "short_quote": "the mouthpiece can be slipped on and off the hose for",
+      "quote_sha256": "cba8fe03daf18908c7c041802875935b1ead92f29e57b85898b367c276c8350c",
+      "context_sha256": "9c71a27dcee531a041a0d9a88d6049f3d6b63f839d214144102f4eb63763abc4",
+      "scope": "口器與管的可拆清潔接點；狹縫兩唇在靜止時相貼。",
+      "not_supported": "僅US6070767圖1–10所述設計，非每款量產SKU；不是初代衣夾同零件。"
+    },
+    "all_150_current_bindings_checked": true,
+    "r2_required_flow_attribution_and_modality_corrections_preserved_exactly": true,
+    "new_sources": 0,
+    "new_factual_claims": 0,
+    "protected_files_rehashed": 121,
+    "all_protected_bytes_sha_match": true,
+    "protected_files": [
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/research-original.md",
+        "bytes": 32047,
+        "sha256": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/research-original.claims.json",
+        "bytes": 112922,
+        "sha256": "2303aa7b73dd2a9dbba94f6b09793b77bb183620125f971a553d08aa31d52609"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/original-preservation.json",
+        "bytes": 21398,
+        "sha256": "2e0f4c93c05f455d732880b2591f771b1bcaccf21d0c741228798e70a588e009"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/source2revision.json",
+        "bytes": 26358,
+        "sha256": "adce03e98cc0ef84360cf24e320e3363b6384c18f1ca842c62ceea01e1f32b0a"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/brief.md",
+        "bytes": 1908,
+        "sha256": "c07da12a06e2141b6b3f6ae72b64073cb517bb29b70f21f06133899e50826620"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/brief.md",
+        "bytes": 1908,
+        "sha256": "c07da12a06e2141b6b3f6ae72b64073cb517bb29b70f21f06133899e50826620"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/build-canonical.mjs",
+        "bytes": 13007,
+        "sha256": "476ed78fe748b8901ebe62f4dcbd178abf32da10ec46dd52a68a39484230c68b"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/build-canonical.mjs",
+        "bytes": 13007,
+        "sha256": "476ed78fe748b8901ebe62f4dcbd178abf32da10ec46dd52a68a39484230c68b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/claims.md",
+        "bytes": 8435,
+        "sha256": "5f2b9aeab0e2af489a2ee5d254368db41f8ec0670caa567021f809592658c254"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/claims.md",
+        "bytes": 8435,
+        "sha256": "5f2b9aeab0e2af489a2ee5d254368db41f8ec0670caa567021f809592658c254"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/preflight.mjs",
+        "bytes": 4251,
+        "sha256": "6be34597f988282d81c47385124d0583eabc0a5a5392cfa45c06f1e53a33b4e2"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/preflight.mjs",
+        "bytes": 4251,
+        "sha256": "6be34597f988282d81c47385124d0583eabc0a5a5392cfa45c06f1e53a33b4e2"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/production-quote.md",
+        "bytes": 4305,
+        "sha256": "dd939a9d5e836c33e749390da22e74303c8a32439fdb87ec7c4283b155bd7a5d"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/production-quote.md",
+        "bytes": 4305,
+        "sha256": "dd939a9d5e836c33e749390da22e74303c8a32439fdb87ec7c4283b155bd7a5d"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-script-receipt.md",
+        "bytes": 3206,
+        "sha256": "5a70a2bc1c007cd24a603887bc8c518c4a268028611c853a313d081b419b06b5"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-author-script-receipt.md",
+        "bytes": 3206,
+        "sha256": "5a70a2bc1c007cd24a603887bc8c518c4a268028611c853a313d081b419b06b5"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v7-script-receipt.md",
+        "bytes": 4505,
+        "sha256": "3c434caaf4ca00f38f47617b3600c224c18d75b3c4220d42a7c8048fc749e55c"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-author-v7-script-receipt.md",
+        "bytes": 4505,
+        "sha256": "3c434caaf4ca00f38f47617b3600c224c18d75b3c4220d42a7c8048fc749e55c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v8-n10-delta-receipt.md",
+        "bytes": 3845,
+        "sha256": "e2248e39866f598cf070da4ec3d10b66892f0ba3795894d5d213be6da2756092"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-author-v8-n10-delta-receipt.md",
+        "bytes": 3845,
+        "sha256": "e2248e39866f598cf070da4ec3d10b66892f0ba3795894d5d213be6da2756092"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-independent-delta-review.md",
+        "bytes": 5010,
+        "sha256": "c07906ae41e7ad3ebd760b535da16cb8e773a7a58878b7b8063ae59472e89da9"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-independent-delta-review.md",
+        "bytes": 5010,
+        "sha256": "c07906ae41e7ad3ebd760b535da16cb8e773a7a58878b7b8063ae59472e89da9"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-independent-source-review.md",
+        "bytes": 6899,
+        "sha256": "4f7a4144bfeacb5cbec495174a2f6b0c260e4e3e2912a1927103769813d0853d"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-independent-source-review.md",
+        "bytes": 6899,
+        "sha256": "4f7a4144bfeacb5cbec495174a2f6b0c260e4e3e2912a1927103769813d0853d"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v1-coordinator.md",
+        "bytes": 2591,
+        "sha256": "8ff2da330d98c8b3d5c6aee56590e92f4b554a799920392147c5277cbd620812"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v1-coordinator.md",
+        "bytes": 2591,
+        "sha256": "8ff2da330d98c8b3d5c6aee56590e92f4b554a799920392147c5277cbd620812"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v2-coordinator.md",
+        "bytes": 2796,
+        "sha256": "a1cb1bd69045c906f5214a3265318c27eeb8479cd7e3437c202e01ac55918b84"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v2-coordinator.md",
+        "bytes": 2796,
+        "sha256": "a1cb1bd69045c906f5214a3265318c27eeb8479cd7e3437c202e01ac55918b84"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v6-coordinator.md",
+        "bytes": 2513,
+        "sha256": "a1001d75c566f6d9aa60d7b037d631538736d9d2791006f542439cafb249ff1b"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v6-coordinator.md",
+        "bytes": 2513,
+        "sha256": "a1001d75c566f6d9aa60d7b037d631538736d9d2791006f542439cafb249ff1b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v8-coordinator.md",
+        "bytes": 3160,
+        "sha256": "2a91b3ab7cd89183387597ba12a06c384f37d7b608ade5f3ec5bc1e4200636c2"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v8-coordinator.md",
+        "bytes": 3160,
+        "sha256": "2a91b3ab7cd89183387597ba12a06c384f37d7b608ade5f3ec5bc1e4200636c2"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/canonical-video-preflight-20261024.md",
+        "bytes": 5069,
+        "sha256": "f8d98c4e7dd5f36dec3bb51f58d573a52f2b69f1c4362a4f75b9dab8206a368b"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/canonical-video-preflight-20261024.md",
+        "bytes": 5069,
+        "sha256": "f8d98c4e7dd5f36dec3bb51f58d573a52f2b69f1c4362a4f75b9dab8206a368b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-script-visual-review.md",
+        "bytes": 4607,
+        "sha256": "517676d59f2017205c8ff82ea802796bacbba1b1355e98ec2f049f56e456c697"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-script-visual-review.md",
+        "bytes": 4607,
+        "sha256": "517676d59f2017205c8ff82ea802796bacbba1b1355e98ec2f049f56e456c697"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v2-source-visual-delta-review.md",
+        "bytes": 9025,
+        "sha256": "affd1a82e5ccd3dbe050d02e9f6d2095fb7715fe58634f8601311698e0f927fa"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v2-source-visual-delta-review.md",
+        "bytes": 9025,
+        "sha256": "affd1a82e5ccd3dbe050d02e9f6d2095fb7715fe58634f8601311698e0f927fa"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v3-i01-visual-recheck.md",
+        "bytes": 3940,
+        "sha256": "30aebb323870d73ac1c9b7619317f23d0875da05cbc5a9e668f423d832238072"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v3-i01-visual-recheck.md",
+        "bytes": 3940,
+        "sha256": "30aebb323870d73ac1c9b7619317f23d0875da05cbc5a9e668f423d832238072"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v4-source-visual-review.md",
+        "bytes": 9217,
+        "sha256": "2f2adc35a011abad48e6e113ad2b2a39c2f2a798f8a7751e5107b05f5ae99951"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v4-source-visual-review.md",
+        "bytes": 9217,
+        "sha256": "2f2adc35a011abad48e6e113ad2b2a39c2f2a798f8a7751e5107b05f5ae99951"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v5-source-visual-review.md",
+        "bytes": 8908,
+        "sha256": "8abade5c7363af2e5e5ed5ac2aea8ea013c55cbe46f8ee2838da97afce59a3d4"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v5-source-visual-review.md",
+        "bytes": 8908,
+        "sha256": "8abade5c7363af2e5e5ed5ac2aea8ea013c55cbe46f8ee2838da97afce59a3d4"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v6-o02-delta-review.md",
+        "bytes": 4321,
+        "sha256": "7eee06ff020bee2e6395b01942ed18bafd122840f2483b53e58d7c5d648f7302"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v6-o02-delta-review.md",
+        "bytes": 4321,
+        "sha256": "7eee06ff020bee2e6395b01942ed18bafd122840f2483b53e58d7c5d648f7302"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v7-source-visual-review.md",
+        "bytes": 7545,
+        "sha256": "8f5f57a094b6582974b14c97d451057303ff6516df7f5f374f423164ca2c688c"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v7-source-visual-review.md",
+        "bytes": 7545,
+        "sha256": "8f5f57a094b6582974b14c97d451057303ff6516df7f5f374f423164ca2c688c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v8-n10-delta-review.md",
+        "bytes": 4362,
+        "sha256": "016d2d9eadc91a5b71fd9e9271faa0a965aed988b337f58545f11c1efe832265"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v8-n10-delta-review.md",
+        "bytes": 4362,
+        "sha256": "016d2d9eadc91a5b71fd9e9271faa0a965aed988b337f58545f11c1efe832265"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/owner-script-approval.md",
+        "bytes": 1474,
+        "sha256": "8d93d9977e859c5493e63122108fd8eb63f3641828c3e4ee98fa7f456c9eaba7"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/owner-script-approval.md",
+        "bytes": 1474,
+        "sha256": "8d93d9977e859c5493e63122108fd8eb63f3641828c3e4ee98fa7f456c9eaba7"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/owner-treatment-adoption.md",
+        "bytes": 1121,
+        "sha256": "f2bebd8de93add185b5d8e439ac54495d61961b3efacd1e1b4eccd83489f1233"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/owner-treatment-adoption.md",
+        "bytes": 1121,
+        "sha256": "f2bebd8de93add185b5d8e439ac54495d61961b3efacd1e1b4eccd83489f1233"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/script-source-notes.md",
+        "bytes": 12858,
+        "sha256": "ef3aa1c79ab5eb19f0c52e9b024468ad6af7a3edc26af17894d8c97d81be538c"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/script-source-notes.md",
+        "bytes": 12858,
+        "sha256": "ef3aa1c79ab5eb19f0c52e9b024468ad6af7a3edc26af17894d8c97d81be538c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/script.md",
+        "bytes": 11336,
+        "sha256": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/script.md",
+        "bytes": 11336,
+        "sha256": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/series.json",
+        "bytes": 570,
+        "sha256": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/series.json",
+        "bytes": 570,
+        "sha256": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/source-matrix.md",
+        "bytes": 8090,
+        "sha256": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/source-matrix.md",
+        "bytes": 8090,
+        "sha256": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/treatment.md",
+        "bytes": 9489,
+        "sha256": "078dc1d77c46eb49bb6f27f60535f22775781e5963783bda7c1f7625b1a8700e"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/treatment.md",
+        "bytes": 9489,
+        "sha256": "078dc1d77c46eb49bb6f27f60535f22775781e5963783bda7c1f7625b1a8700e"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/verify-1.md",
+        "bytes": 3599,
+        "sha256": "1fc3e61c4c46f3e43bfc7fef2f3ef3bfdc65803607436afac45a22697e6dc2a2"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/verify-1.md",
+        "bytes": 3599,
+        "sha256": "1fc3e61c4c46f3e43bfc7fef2f3ef3bfdc65803607436afac45a22697e6dc2a2"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/video.json",
+        "bytes": 47850,
+        "sha256": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/video.json",
+        "bytes": 47850,
+        "sha256": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/visual-plan.json",
+        "bytes": 18516,
+        "sha256": "b211410713f271459af267cc2f8db4e8938a7edb9938b6048a552a1076d4c063"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/visual-plan.json",
+        "bytes": 18516,
+        "sha256": "b211410713f271459af267cc2f8db4e8938a7edb9938b6048a552a1076d4c063"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/visual-plan.md",
+        "bytes": 5161,
+        "sha256": "75e6ad2973078b72a28e17c5b2b9b58aca5a1a247319ce5ab298d85e6f45dc2c"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/visual-plan.md",
+        "bytes": 5161,
+        "sha256": "75e6ad2973078b72a28e17c5b2b9b58aca5a1a247319ce5ab298d85e6f45dc2c"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/story-everyday-camelbak-c14.json",
+        "bytes": 50762,
+        "sha256": "d083b74fdea968983f5cf8481105caeb5dbe8ed653e83f6037bf82b95bd47071"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/work-input.json",
+        "bytes": 50762,
+        "sha256": "d083b74fdea968983f5cf8481105caeb5dbe8ed653e83f6037bf82b95bd47071"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot-manifest.json",
+        "bytes": 19567,
+        "sha256": "ad8072984ce6060434baf3ec9745ead5620dcc4748a85ee0ecacb94aad59589a"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/author-materials.json",
+        "bytes": 30412,
+        "sha256": "5aa3f9d3f75f9b3217c601f9aacb078052c9df3490d9cdd16116368ed49f7c4f"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/prepare-runtime.mjs",
+        "bytes": 468,
+        "sha256": "7723eaf7fd19b763ca47cf99ac3ae289cbe4b80d2e2dcdf5bfc163a6d36844a1"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/author-notes.json",
+        "bytes": 28853,
+        "sha256": "03e624d83d4dac35491d88e5390e111a82793519598cf0b7675b4fd7299a113c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/narration-only.json",
+        "bytes": 18289,
+        "sha256": "8452fa46ae7b47a23be75b2ec77139a3130125571ab38c865c9f2b9c98306d6b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/review-state.json",
+        "bytes": 135,
+        "sha256": "f17d6d47183458891ed30a9712629b65383d71b58f7a277d06168abcd677cd34"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/video.json",
+        "bytes": 61759,
+        "sha256": "9884700d8e252d20669902c93563ab4caef87cc8e132c220ea1c8bb0533b0e7a"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/build-candidate.mjs",
+        "bytes": 27506,
+        "sha256": "023fb367e1c31b0ef8050d12283c4c9be7c2eb671a1b0fc8c507273fb28035e1"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/script.md",
+        "bytes": 11031,
+        "sha256": "b23f9fbefa3323ca9f72dcef1b05b3458e16745fb31c15fe19a470bfec114038"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/research-original.claims.json",
+        "bytes": 112922,
+        "sha256": "2303aa7b73dd2a9dbba94f6b09793b77bb183620125f971a553d08aa31d52609"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/original-preservation.json",
+        "bytes": 21398,
+        "sha256": "2e0f4c93c05f455d732880b2591f771b1bcaccf21d0c741228798e70a588e009"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/series.json",
+        "bytes": 664,
+        "sha256": "42ca7f33ed3db60da731fe967f117a6d8ccaee14b23c06df1da243112edb2036"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/brief.md",
+        "bytes": 3725,
+        "sha256": "34f4e189bd47abb821a54c46020481671571f8fec8389ad9ee3f96be5657b690"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/claims.json",
+        "bytes": 319353,
+        "sha256": "6272854f0fa5ca0fcfe887731307e2d34a848d14b891e0833cf51ca0652eee70"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/research-original.md",
+        "bytes": 32047,
+        "sha256": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/claims.md",
+        "bytes": 53568,
+        "sha256": "1eb3df5d6f95986065638c72caed8ee786be797ad40fdb9749beb75a3e0387e1"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/author-materials.json",
+        "bytes": 30433,
+        "sha256": "39ee8c2463931d1f2053f09334c03a35cb7d0fcb185e91800a70a8bd3e514b0c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/prepare-runtime.mjs",
+        "bytes": 468,
+        "sha256": "7723eaf7fd19b763ca47cf99ac3ae289cbe4b80d2e2dcdf5bfc163a6d36844a1"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/author-notes.json",
+        "bytes": 29437,
+        "sha256": "ec7f4e5d798b4d101ae1f22047e688ede7d160d2dc1c2114991ee97ce30c60d3"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/narration-only.json",
+        "bytes": 18310,
+        "sha256": "eb492690878ad9a97d0f4420d4d40252aa8dabcef6dd9d242070bd81974a027d"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/source2revision.json",
+        "bytes": 26358,
+        "sha256": "adce03e98cc0ef84360cf24e320e3363b6384c18f1ca842c62ceea01e1f32b0a"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/video.json",
+        "bytes": 61780,
+        "sha256": "1579d80818eb563709335efc3599711795e491e1b13419ab762d1b34ed6338e7"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/build-candidate.mjs",
+        "bytes": 28219,
+        "sha256": "bd10eaade17457defe9f5838ca53bdff663f7bcf0d67104db5afb3fb14dc0e2e"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/script.md",
+        "bytes": 11052,
+        "sha256": "b2b74ba0924eafa45b73b6c28bf3ca69a12bc440b58470a81b4c146f0720bfb6"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/research-original.claims.json",
+        "bytes": 112922,
+        "sha256": "2303aa7b73dd2a9dbba94f6b09793b77bb183620125f971a553d08aa31d52609"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/original-preservation.json",
+        "bytes": 21398,
+        "sha256": "2e0f4c93c05f455d732880b2591f771b1bcaccf21d0c741228798e70a588e009"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/series.json",
+        "bytes": 664,
+        "sha256": "b392aaaa1ad7af1f02cb2dcfff3b4c6d28a68ffcc8bb3f69d9d810809278d776"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/brief.md",
+        "bytes": 3725,
+        "sha256": "8f5955dec184ba5c4704cf231f146e5e96ce6b334684f1cecfa14a6322d588cc"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/claims.json",
+        "bytes": 319374,
+        "sha256": "e36e33ce4fcd215195c30d7d449ea65713b7f3213842e51874fee0f35c533c40"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/research-original.md",
+        "bytes": 32047,
+        "sha256": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/verify-1.md",
+        "bytes": 15527,
+        "sha256": "d350affa27e2ecf2659c0f74db46c6645ea0a931e4cc49f966ebdd43aef9d756"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/claims.md",
+        "bytes": 53589,
+        "sha256": "d9247f0c31d7c93634d0143cb82d79b84bfcfe39e6def3f27f3f0b887a6492d8"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/reviews/source-r1-independent.json",
+        "bytes": 96034,
+        "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/narrative-r1-binding.json",
+        "bytes": 476,
+        "sha256": "7b78fd0eb6ea773e9fa3953f2560eea50918360d4d9384e6436bfe083b7f4dc2"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/narrative-r1-input.json",
+        "bytes": 15378,
+        "sha256": "2702b654f0e021fac86a8748baa9a5a3780f8bfd35d015960b5345c6c090e595"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/narrative-r1.json",
+        "bytes": 13140,
+        "sha256": "3f68b2c65ebdb5ac04559ca1e9fa5d1faf0ddf9bc7da39f00588548f1898c94b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/narrative-r1-b.raw.json",
+        "bytes": 2551,
+        "sha256": "c01d95ed57766610a30c6d8b2fc094d263862fddce271e5f656ae847c125689c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/narrative-r1-a.raw.json",
+        "bytes": 2543,
+        "sha256": "a97bdd171c44f8d3c223fc7dd1f47bb9bccc87702a9f4cf2f44d9e700a4c3cd1"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/source-r1-independent.json",
+        "bytes": 96034,
+        "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r2/reviews/source-r2-independent.json",
+        "bytes": 38866,
+        "sha256": "2ced2cafbca793e8b11f26616b4ef1586d141b048c7c05b1a50c0025f8261bdf"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/narrative-r1-binding.json",
+        "bytes": 476,
+        "sha256": "7b78fd0eb6ea773e9fa3953f2560eea50918360d4d9384e6436bfe083b7f4dc2"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/narrative-r1-input.json",
+        "bytes": 15378,
+        "sha256": "2702b654f0e021fac86a8748baa9a5a3780f8bfd35d015960b5345c6c090e595"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/narrative-r1.json",
+        "bytes": 13140,
+        "sha256": "3f68b2c65ebdb5ac04559ca1e9fa5d1faf0ddf9bc7da39f00588548f1898c94b"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/narrative-r1-b.raw.json",
+        "bytes": 2551,
+        "sha256": "c01d95ed57766610a30c6d8b2fc094d263862fddce271e5f656ae847c125689c"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/narrative-r1-a.raw.json",
+        "bytes": 2543,
+        "sha256": "a97bdd171c44f8d3c223fc7dd1f47bb9bccc87702a9f4cf2f44d9e700a4c3cd1"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/source-r1-independent.json",
+        "bytes": 96034,
+        "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/source-r2-independent.json",
+        "bytes": 38866,
+        "sha256": "2ced2cafbca793e8b11f26616b4ef1586d141b048c7c05b1a50c0025f8261bdf"
+      }
+    ],
+    "research_three_sha256": {
+      "research-original.md": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65",
+      "research-original.claims.json": "2303aa7b73dd2a9dbba94f6b09793b77bb183620125f971a553d08aa31d52609",
+      "original-preservation.json": "2e0f4c93c05f455d732880b2591f771b1bcaccf21d0c741228798e70a588e009"
+    },
+    "old35_originals_and_35_snapshots_sha_and_readonly_modes_unchanged": true,
+    "raw_source_checks": [
+      {
+        "source_id": "C_HISTORY",
+        "raw_sha256": "406dca423e0616a268fcf79ecf8b8f0290900eab75a7cac143317bfebdd2e4e7",
+        "text_sha256": "86e2e2b220a2786e084731a9495c8d8cd3a4fb55dad6bca192b18fe3f4d63601",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "NZ_HISTORY",
+        "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
+        "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "HH_HISTORY",
+        "raw_sha256": "f8982ed017424aaefe2dec22652507c17bee1fa8de60331ad3f40e2ffade963a",
+        "text_sha256": "28b280aca30588ff6d80199a9deb3ff6fa1b8b1245eb389ec4959ca07489de19",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "COURT_MIRROR",
+        "raw_sha256": "bd009971fe97acbb35db4b0aa4e58d79efad48e5ed19241ca5fbe3825f4c4ac2",
+        "text_sha256": "285dec724174bdd7d4a65856ad020a9c90eae601c1b201d93257ca05ef30a0d1",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "PAT_FAUCE_PDF",
+        "raw_sha256": "02bb4b0f814ea155b1bfc35b34541cec8cf0debe73c8f66b0b11a1d1182771a2",
+        "text_sha256": "f8556395f612be21dc496c6a2cee3d7f3ed16aaa6b8b419d23c9966a7b6a7246",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "PAT_MOUTH_PDF",
+        "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+        "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "PAT_BOTTLE_PDF",
+        "raw_sha256": "cb50c7c43873eae08ed50b467db550dcdb3edd3d7b4d95ad144e9b5d0a2b716a",
+        "text_sha256": "81f0cdc60cb8819359d759efd2f1a31f8c18f0d26c413e4454bb6999a11baff2",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "TRADE2006",
+        "raw_sha256": "8ce965756660c47a2b9b1ae4e9a228eabbbfd8a136af2fe04a3346089e0bab68",
+        "text_sha256": "8da2a93c4fbf7ce4602ca2dd3075e62112014e277fe54a8044cbbca02a9d9cd4",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "CODI2014",
+        "raw_sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+        "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "SW_PDF",
+        "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+        "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "SONOMA2015",
+        "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
+        "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "CARE",
+        "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
+        "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "CLEAN",
+        "raw_sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
+        "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "SWISS_CRUX",
+        "raw_sha256": "68f30fbda1816b0070b602a4107e1450924d1b291213fc6457df0ebb8c1efa2f",
+        "text_sha256": "7135274a89c443c84b317a5a6c15bd30549199ddccac2687695f2e8353b13722",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      },
+      {
+        "source_id": "WEMMER2023",
+        "raw_sha256": "bde8236f8a4004b4150491049f5ba5a69bc57089e292114b3bec2418c46c9c10",
+        "text_sha256": "b8b1d8e4d518379a26661132503506bda7b340be865714744583da1267b0af61",
+        "unchanged_from_personally_read_R1_original": true,
+        "fresh_raw_extraction_matches_cache": true
+      }
+    ],
+    "current_anchor_checks": [
+      {
+        "anchor_id": "A28",
+        "source_id": "SWISS_CRUX",
+        "quote_sha256": "636ebe0876ea03c58ee44d042638c982f429aa4f1a206f0884b92a83554837c9",
+        "context_sha256": "6332cf2a5a1b035f1ae825a41dcc447a5e5bffef3804dba984e0e1b4a65b1ea4",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_CRUX_3L",
+        "source_id": "SWISS_CRUX",
+        "quote_sha256": "ba917ee4f5d995c89329fa1cf1b501e60f3b42486e654cfaebbd27499345cde9",
+        "context_sha256": "ba917ee4f5d995c89329fa1cf1b501e60f3b42486e654cfaebbd27499345cde9",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "quote_sha256": "ec76919020a9f02f533c7a7d1b74dd1bace7c7beb21d426560cb49373754e9ef",
+        "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A05",
+        "source_id": "HH_HISTORY",
+        "quote_sha256": "e880723c0a183d9d8cd04d00d31ccc23d0b1fddbd0e69149aabafb58cc0b5d5b",
+        "context_sha256": "f4bafdf5b038af7ae2ea99953145d7673ef10a1746c475d554056fa2ccb14743",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A06",
+        "source_id": "HH_HISTORY",
+        "quote_sha256": "b4dd88e9f69f1595a91e1d8dc23d15b4833c47f543560475e74bdc7b396e54f7",
+        "context_sha256": "f4bafdf5b038af7ae2ea99953145d7673ef10a1746c475d554056fa2ccb14743",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A07",
+        "source_id": "COURT_MIRROR",
+        "quote_sha256": "903ef485476821af4cc53540514684bf7e993311b6f2b3d776ebb1a281d958d4",
+        "context_sha256": "07de926c730becf797fc27a1023e6bd149f61a83941858621d0d3c59586949c3",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "quote_sha256": "626b26619c0c72bfe08785e5728f2b9c30f77e9d5b1f4f58de4337fdbf716fd2",
+        "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
+        "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "quote_sha256": "948d6fc3628e109dcd813c20dd03fd4cab34a29fc9ed52553e03ad0621e83c30",
+        "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "quote_sha256": "e5a58ca4190dd0c2d0034949307346347ff101eb3342c8441e90a07d6f11cb37",
+        "context_sha256": "b5d06b15bcd15bfa491cbc7b19f8204a23c03832ef694439874e1bdc7974d7a9",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "quote_sha256": "474bb8c620f3917a2df9a6ddc30d3e705c2e73b88c4fc1b479e6f002ed1517bf",
+        "context_sha256": "53b241b27e4c77a2d3973c56401d0c4648da6da2010ffd41a80fbf465cfa4b77",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "quote_sha256": "50140394d4826e1615d9e2e268f8647846933e9da03d2c83e13c6f925eabd6d1",
+        "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "quote_sha256": "bd5f831c5b7d8074331a58a1832bbed3873cb6ad17810f436fac033f302ab5db",
+        "context_sha256": "c1a5301d3d8e5475be615dab27daf3d4e3084e44c846b53292dd7a29ba630fef",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "quote_sha256": "dc75706319f50bbfa25e91879e515b0844cef5833c31d78da6ec76562963b938",
+        "context_sha256": "891f9a5b093fb3ee8aebbdde0be0dac71415805953d2f21dd76708a3abc425db",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_MOUTH_P7",
+        "source_id": "PAT_MOUTH_PDF",
+        "quote_sha256": "cba8fe03daf18908c7c041802875935b1ead92f29e57b85898b367c276c8350c",
+        "context_sha256": "9c71a27dcee531a041a0d9a88d6049f3d6b63f839d214144102f4eb63763abc4",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "quote_sha256": "2ab2192d474f22bfe2137c9027200c7d097ad1d7ca83ccf049905c60429eaa96",
+        "context_sha256": "71842d1adef4e27679e2588b0b55aad4f354cb8246fafcd5eca21e9547812f18",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "quote_sha256": "e09ecc9e41225304ba01e393b44cce41d6c5cdebf9c50a80352ea0a911d01229",
+        "context_sha256": "71842d1adef4e27679e2588b0b55aad4f354cb8246fafcd5eca21e9547812f18",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A13",
+        "source_id": "PAT_BOTTLE_PDF",
+        "quote_sha256": "30b0535696a7de7875ddf388b64045a87e6400b057e998d98db779f86fe12968",
+        "context_sha256": "e0b0e9443f63fa371fa7d894946d73aba9cd2c83d0d0f872c385b108922cc268",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A12",
+        "source_id": "PAT_BOTTLE_PDF",
+        "quote_sha256": "c962b1907850e74013a6e3d7dc907b43f6c343a43f300f986f67f22156ae2bf4",
+        "context_sha256": "ab02e277e25f307f68ecdfb157628af2aa2b2def95f6fba89023147c8e52dc02",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "quote_sha256": "2f794a2dbf35989ca7d087e50f9e073480901ecf8149461a983f9658d120e76b",
+        "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A17",
+        "source_id": "CODI2014",
+        "quote_sha256": "a669eb5dda387be77118ebabbe6c0652512d6f09c62ba9240f82be85fe6bc667",
+        "context_sha256": "2e878f4bb9e3902929232763cd75d426cd81385d443eb765b92edcb06e690642",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A30",
+        "source_id": "CODI2014",
+        "quote_sha256": "6286e74a9879b6fbdc1601ee24f6ad6d9cbc5369d80511f500175025b7dab685",
+        "context_sha256": "f658eee224dc0ed7c2e189c806a1ef5f7b63ea8e845f6fa3c52d7350257bd2c7",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_SW_CONTEXT",
+        "source_id": "SW_PDF",
+        "quote_sha256": "614bc24ae9b2d8751b362c09a3db1e4e66c44e59c54f29e1fc594b88d56e991a",
+        "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_CARE_CONTEXT",
+        "source_id": "CARE",
+        "quote_sha256": "13ee3cac8e869feabbd16d4dee5e2e6bc016089c127d7daa4c612fd5f5924579",
+        "context_sha256": "9d3a127b4a97f07f19194b965faab01538c25de1438740718e8f6ebdfdda14ff",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_CARE_GRIT",
+        "source_id": "CARE",
+        "quote_sha256": "a79c5d3f29d6fd8d242c51c8b57b9e314e3d515636ef62366039578139480f01",
+        "context_sha256": "17c343eefc62d665f41e4508852898a2f1ae8d8d672ef070b7bbb77e4de0dfe2",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A23",
+        "source_id": "CARE",
+        "quote_sha256": "85bbcde14a435234146875dac22a9c9e1190ff12c898cba044a0162b0b8e486d",
+        "context_sha256": "89d8375a854c0e48211b77f143f304d6b057d87a220be693bb3e95bab68a2c71",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A24",
+        "source_id": "CARE",
+        "quote_sha256": "45e474367d4249e97132530966f285b768ab55d0e80202ab6330a416baea6b84",
+        "context_sha256": "89947ba908613ac61de83924c5c00afbbd9f333e67772f5fafca6bbb3839c377",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A25",
+        "source_id": "CLEAN",
+        "quote_sha256": "7338b5e1a1cfa444b0e83369c664f77b5dc481f41be016dcd06be9685566e784",
+        "context_sha256": "388e4c507f3d5a13917e39ed01ff3f4a84cc0d417531bb1bedfb63e71ea03519",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_CLEAN_CONTEXT",
+        "source_id": "CLEAN",
+        "quote_sha256": "b968ac4350814404e78fba97d35b804df680de4e852dbdb757e3a83191751f8f",
+        "context_sha256": "ff25cdaaf233e39b821d1f3c3e6c714904dc17111f3d623188588dcd01e00424",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_CLEAN_RINSE",
+        "source_id": "CLEAN",
+        "quote_sha256": "503578578d66adc89da5f5467ace837cb5a4a25b9bf24357db8c4fa9b0193617",
+        "context_sha256": "fdf1c0bf47a2c5fdf12e97cab89cf2d651374455ecaddbab640a3bd64f93c807",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A26",
+        "source_id": "CLEAN",
+        "quote_sha256": "bc1e2f2842c99744745b69fe36184755e4f36f19bd51d9b828851b4eaf9e03f0",
+        "context_sha256": "369a41a16b6df8b363878cb031d530ac45a15a45dd62e6ac9a0e39aee8a5a068",
+        "current_raw_quote_context_verified": true
+      },
+      {
+        "anchor_id": "A_CLEAN_TUBE",
+        "source_id": "CLEAN",
+        "quote_sha256": "9fb535eb21d612a7b64db9135ca2a69633b2fb0ff92ac5aaeef5c342e1e32941",
+        "context_sha256": "a3690f1c13fe2a841f78de13b51914f422ad83c4d8a665327ecf3f646b9b11b7",
+        "current_raw_quote_context_verified": true
+      }
+    ],
+    "current_binding_checks": [
+      {
+        "line_id": "c14r1h01",
+        "anchor_id": "A28",
+        "source_id": "SWISS_CRUX",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h01",
+        "anchor_id": "A_CRUX_3L",
+        "source_id": "SWISS_CRUX",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h02",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h02",
+        "anchor_id": "A05",
+        "source_id": "HH_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h02",
+        "anchor_id": "A06",
+        "source_id": "HH_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h02",
+        "anchor_id": "A07",
+        "source_id": "COURT_MIRROR",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h03",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h03",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h04",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h04",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h05",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h05",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h05",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h05",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h05",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h06",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h06",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h06",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1h06",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o01",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o02",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o03",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o04",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o04",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o05",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o06",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o06",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o07",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1o07",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v01",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v02",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v03",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v03",
+        "anchor_id": "A_MOUTH_P7",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v04",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v04",
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v05",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v05",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v06",
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v06",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v07",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v07",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v07",
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v08",
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v09",
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v10",
+        "anchor_id": "A_MOUTH_P7",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v11",
+        "anchor_id": "A_MOUTH_P7",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v13",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v14",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v15",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v16",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v17",
+        "anchor_id": "A_MOUTH_P8",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1v18",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b01",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b02",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b03",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b04",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b04",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b05",
+        "anchor_id": "A13",
+        "source_id": "PAT_BOTTLE_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b05",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b06",
+        "anchor_id": "A12",
+        "source_id": "PAT_BOTTLE_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b06",
+        "anchor_id": "A13",
+        "source_id": "PAT_BOTTLE_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b07",
+        "anchor_id": "A13",
+        "source_id": "PAT_BOTTLE_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b08",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b09",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b10",
+        "anchor_id": "A14",
+        "source_id": "TRADE2006",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b11",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1b11",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t01",
+        "anchor_id": "A17",
+        "source_id": "CODI2014",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t02",
+        "anchor_id": "A17",
+        "source_id": "CODI2014",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t02",
+        "anchor_id": "A30",
+        "source_id": "CODI2014",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t03",
+        "anchor_id": "A17",
+        "source_id": "CODI2014",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t03",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t03",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t04",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t04",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t05",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t06",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t07",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t08",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t08",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t09",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t09",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t10",
+        "anchor_id": "A20",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t10",
+        "anchor_id": "A21",
+        "source_id": "SONOMA2015",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t11",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1t11",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m01",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m02",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m02",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m03",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m03",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m03",
+        "anchor_id": "A11",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m04",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m04",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m05",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m06",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m06",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m07",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m07",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m07",
+        "anchor_id": "A_SW_CONTEXT",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m08",
+        "anchor_id": "A18",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m08",
+        "anchor_id": "A19",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m08",
+        "anchor_id": "A_SW_CONTEXT",
+        "source_id": "SW_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m09",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1m09",
+        "anchor_id": "A28",
+        "source_id": "SWISS_CRUX",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r01",
+        "anchor_id": "A28",
+        "source_id": "SWISS_CRUX",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r02",
+        "anchor_id": "A28",
+        "source_id": "SWISS_CRUX",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r03",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r03",
+        "anchor_id": "A28",
+        "source_id": "SWISS_CRUX",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r04",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r05",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r06",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r06",
+        "anchor_id": "A_CARE_CONTEXT",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r06",
+        "anchor_id": "A_CARE_GRIT",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r07",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r07",
+        "anchor_id": "A_CARE_CONTEXT",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r08",
+        "anchor_id": "A23",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r09",
+        "anchor_id": "A23",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r10",
+        "anchor_id": "A23",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r11",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r11",
+        "anchor_id": "A23",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r12",
+        "anchor_id": "A24",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1r12",
+        "anchor_id": "A25",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d01",
+        "anchor_id": "A25",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d02",
+        "anchor_id": "A25",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d02",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d03",
+        "anchor_id": "A24",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d03",
+        "anchor_id": "A25",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d03",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d04",
+        "anchor_id": "A25",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d04",
+        "anchor_id": "A_CLEAN_CONTEXT",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d04",
+        "anchor_id": "A_CLEAN_RINSE",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d05",
+        "anchor_id": "A26",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d06",
+        "anchor_id": "A26",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d07",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d07",
+        "anchor_id": "A26",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d08",
+        "anchor_id": "A_CLEAN_TUBE",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d09",
+        "anchor_id": "A_CLEAN_TUBE",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d10",
+        "anchor_id": "A_CLEAN_CONTEXT",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d11",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d12",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d13",
+        "anchor_id": "A24",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d13",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d14",
+        "anchor_id": "A24",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1d14",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1ct1",
+        "anchor_id": "A02",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1ct1",
+        "anchor_id": "A03",
+        "source_id": "NZ_HISTORY",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1ct1",
+        "anchor_id": "A10",
+        "source_id": "PAT_MOUTH_PDF",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1ct1",
+        "anchor_id": "A22",
+        "source_id": "CARE",
+        "status": "EXACT_VERIFIED"
+      },
+      {
+        "line_id": "c14r1ct1",
+        "anchor_id": "A27",
+        "source_id": "CLEAN",
+        "status": "EXACT_VERIFIED"
+      }
+    ]
+  },
+  "checked_counts": {
+    "current_lines": 90,
+    "current_complete_scenes": 88,
+    "current_illustration_prompts": 87,
+    "chapters": 7,
+    "loops": 27,
+    "current_anchors": 32,
+    "current_evidence_bindings": 150
+  },
+  "findings": [],
+  "advisory": [],
+  "runtime_and_downstream_scope": {
+    "full_body_spoken_units": 2663,
+    "includes_coldopen_and_voiced_CTA": true,
+    "actual_audio_measured": false,
+    "duration_pass_or_fail_issued": false,
+    "runtime_status": "UNMEASURED",
+    "native_or_blind_votes_read": false,
+    "generated_image_qa_performed": false,
+    "owner_or_media_approval_issued": false
+  },
+  "verify_1": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/verify-1.md",
+    "four_current_sha256_bound": true,
+    "scope": "source and written visual only"
+  },
+  "actions": {
+    "core_research_old_snapshots_history_reviews_dictionary_task_modified": false,
+    "provider_calls": 0,
+    "backend_mutations": 0,
+    "git_commands": 0,
+    "subagents_spawned": 0,
+    "deliverables": [
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/source-r3-independent.json",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/verify-1.md"
+    ]
+  }
+}

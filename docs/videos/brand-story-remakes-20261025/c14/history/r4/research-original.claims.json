@@ -1,0 +1,2317 @@
+{
+  "schema_version": 1,
+  "episode": "C14 CamelBak original-source research20261025",
+  "status": "RESEARCH_ONLY_HOLD_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_13MIN_SUFFICIENCY",
+  "researcher": "/root/c05_r10_author",
+  "created_at_utc": "2026-10-25T21:55:51.048770+00:00",
+  "new_narration_written": false,
+  "preservation_manifest": {
+    "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot-manifest.json",
+    "sha256": "ad8072984ce6060434baf3ec9745ead5620dcc4748a85ee0ecacb94aad59589a",
+    "files": 35
+  },
+  "rules_applied": [
+    "repoAGENTS.md",
+    "brand-storySKILL2026-10-25",
+    "youtube-video/story.md",
+    "script-writingopening/onejourney/hooks/viewer-address"
+  ],
+  "proposed_single_journey": {
+    "subject": "一袋水與出口，從背到身上到喝完後再次使用。",
+    "question": "手少做了取瓶動作以後，水路每個口怎麼開、怎麼關、怎麼再用？",
+    "sequence": [
+      "原型部件與歸屬",
+      "自封口器的開／關",
+      "手握瓶的水路",
+      "真矽膠件與反覆測試",
+      "補水／密封／洗乾再用"
+    ],
+    "same_batch_claimed": false,
+    "unrecorded_historical_causality_claimed": false,
+    "chronology_rule": "原型年待解、成立1989另列；2005送件→2006二月展場→十月公開；2015/2016與現行資料標代，不倒寫原因。"
+  },
+  "source_catalog": [
+    {
+      "id": "C_HISTORY",
+      "url": "https://www.camelbak.com/company-history.html",
+      "final_url": "https://www.camelbak.com/company-history.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.049896+00:00",
+      "bytes": 159075,
+      "sha256": "406dca423e0616a268fcf79ecf8b8f0290900eab75a7cac143317bfebdd2e4e7",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/C_HISTORY.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/C_HISTORY.txt",
+      "text_sha256": "86e2e2b220a2786e084731a9495c8d8cd3a4fb55dad6bca192b18fe3f4d63601",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "CamelBak company history",
+      "source_type": "official_current_brand_self_description",
+      "publication_date_scope": "未標日期的現行頁",
+      "support_scope": "成立1989；不給原型賽事年。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "NZ_HISTORY",
+      "url": "https://camelbak.co.nz/pages/about-us",
+      "final_url": "https://camelbak.co.nz/pages/about-us",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.050554+00:00",
+      "bytes": 391775,
+      "sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
+      "content_type": "text/html; charset=utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
+      "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "CamelBak NZ About Us",
+      "source_type": "regional_brand_retrospective",
+      "publication_date_scope": "未標日期的品牌回顧",
+      "support_scope": "IV袋／襪／車衣／管／衣夾及Wemmer巡店，非同期目擊。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "HH_HISTORY",
+      "url": "https://www.hh100.org/history",
+      "final_url": "https://hh100.org/history/",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.886655+00:00",
+      "bytes": 139498,
+      "sha256": "f8982ed017424aaefe2dec22652507c17bee1fa8de60331ad3f40e2ffade963a",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.txt",
+      "text_sha256": "28b280aca30588ff6d80199a9deb3ff6fa1b8b1245eb389ec4959ca07489de19",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "Hotter’N Hell Hundred History",
+      "source_type": "event_organizer_current_retrospective",
+      "publication_date_scope": "現行頁，含2026活動文字",
+      "support_scope": "同一段自相矛盾地並列1988與1989。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "COURT_MIRROR",
+      "url": "https://www.asbca-case-review.com/pdf/53896_3.pdf",
+      "final_url": "https://www.asbca-case-review.com/pdf/53896_3.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.236076+00:00",
+      "bytes": 59657,
+      "sha256": "bd009971fe97acbb35db4b0aa4e58d79efad48e5ed19241ca5fbe3825f4c4ac2",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.txt",
+      "text_sha256": "285dec724174bdd7d4a65856ad020a9c90eae601c1b201d93257ca05ef30a0d1",
+      "extraction": "pdftotext -layout; page breaks retained",
+      "title": "ASBCA No.53896 Wesleyan decision",
+      "source_type": "government_original_decision_facsimile_via_nonofficial_mirror",
+      "publication_date_scope": "2009-01-14",
+      "support_scope": "PDFp8 finding17：1988Texas騎乘與1989FasTrak；官方raw403，只取得鏡像原裁決，不是官方站下載成功。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "PAT_FAUCE_PDF",
+      "url": "https://patentimages.storage.googleapis.com/b2/29/f0/7fff25c4487cb2/US5085349.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/b2/29/f0/7fff25c4487cb2/US5085349.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.237673+00:00",
+      "bytes": 931768,
+      "sha256": "02bb4b0f814ea155b1bfc35b34541cec8cf0debe73c8f66b0b11a1d1182771a2",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE_PDF.txt",
+      "text_sha256": "f8556395f612be21dc496c6a2cee3d7f3ed16aaa6b8b419d23c9966a7b6a7246",
+      "extraction": "pdftotext -layout; page breaks retained",
+      "title": "US5085349 Resilient valve and dispensing system for bicyclists",
+      "source_type": "original_US_patent_facsimile_via_Google_Patents",
+      "publication_date_scope": "1990-02-08送件／1992-02-04授權",
+      "support_scope": "具名Roger R.Fawcett，不是Michael Eidson專利。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "PAT_MOUTH_PDF",
+      "url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.236824+00:00",
+      "bytes": 1071928,
+      "sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
+      "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+      "extraction": "pdftotext -layout; page breaks retained",
+      "title": "US6070767 Personal hydration system with an improved mouthpiece",
+      "source_type": "original_US_patent_facsimile_via_Google_Patents",
+      "publication_date_scope": "1998-07-17送件／2000-06-06授權",
+      "support_scope": "常閉狹縫與彈性口器的特定方案，不是每款實物零件表。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "PAT_BOTTLE_PDF",
+      "url": "https://patentimages.storage.googleapis.com/b7/fc/e4/b884396c62943e/US20060226110A1.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/b7/fc/e4/b884396c62943e/US20060226110A1.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.237324+00:00",
+      "bytes": 2193418,
+      "sha256": "cb50c7c43873eae08ed50b467db550dcdb3edd3d7b4d95ad144e9b5d0a2b716a",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.txt",
+      "text_sha256": "81f0cdc60cb8819359d759efd2f1a31f8c18f0d26c413e4454bb6999a11baff2",
+      "extraction": "pdftotext -layout; page breaks retained",
+      "title": "US20060226110A1 Drink bottles with bite-actuated mouthpieces",
+      "source_type": "original_US_patent_application_facsimile_via_Google_Patents",
+      "publication_date_scope": "2005-12-20本案送件／2006-10-12公開；臨時案另列",
+      "support_scope": "可選水瓶構造與引用6070767，不等量產採用每項構造。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "TRADE2006",
+      "url": "https://gearjunkie.com/uncategorized/outdoor-retailer-trade-show-winter-market-2006-gear-highlights",
+      "final_url": "https://gearjunkie.com/uncategorized/outdoor-retailer-trade-show-winter-market-2006-gear-highlights",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.519526+00:00",
+      "bytes": 463338,
+      "sha256": "8ce965756660c47a2b9b1ae4e9a228eabbbfd8a136af2fe04a3346089e0bab68",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.txt",
+      "text_sha256": "8da2a93c4fbf7ce4602ca2dd3075e62112014e277fe54a8044cbbca02a9d9cd4",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "GearJunkie Outdoor Retailer2006 highlights",
+      "source_type": "original_reporter_trade_show_observation",
+      "publication_date_scope": "2006-02-02，rawstructuredmetadata",
+      "support_scope": "展場透明0.75L瓶、翻起咬口與短吸管；防漏是公司主張、May為預告。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "CODI2014",
+      "url": "https://www.sec.gov/Archives/edgar/data/1345122/000134512615000005/codi-12312014x10k.htm",
+      "final_url": "https://www.sec.gov/Archives/edgar/data/1345122/000134512615000005/codi-12312014x10k.htm",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.490831+00:00",
+      "bytes": 4185716,
+      "sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.txt",
+      "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "Compass Diversified2014Form10-K",
+      "source_type": "issuer_parent_annual_filing",
+      "publication_date_scope": "2014會計年度／2015申報",
+      "support_scope": "成立、ThermoBak、2006瓶類與2014材料組合；不證原型年或唯一動機。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "SW_PDF",
+      "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
+      "final_url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
+      "bytes": 350662,
+      "sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
+      "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
+      "extraction": "pdftotext -layout; page breaks retained",
+      "title": "CamelBak product development with SOLIDWORKS",
+      "source_type": "named_engineer_interview_in_supplier_case_study",
+      "publication_date_scope": "PDF©2016／文件碼MKCAMCSENG1016，未確立發布日",
+      "support_scope": "具名Aaron McCready的矽膠咬口模具與樣件；供應商宣傳個案，不是獨立基準。HTML為同作品。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "SONOMA2015",
+      "url": "https://www.sonomamag.com/hands-free-hydration/",
+      "final_url": "https://www.sonomamag.com/hands-free-hydration/",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
+      "bytes": 97870,
+      "sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
+      "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "Hands-Free Hydration, Sonoma Magazine",
+      "source_type": "original_reporter_site_visit_and_named_employee_interviews",
+      "publication_date_scope": "2015-05-06，rawstructuredmetadata",
+      "support_scope": "記者看壓扭袋體／夾壓咬閥；源頭故事明示是公司版本。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "CARE",
+      "url": "https://www.camelbak.com/care-and-cleaning.html",
+      "final_url": "https://www.camelbak.com/care-and-cleaning.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.052662+00:00",
+      "bytes": 131072,
+      "sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
+      "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "CamelBak Care & Cleaning",
+      "source_type": "official_current_support_guidance",
+      "publication_date_scope": "未標日期的現行支援頁",
+      "support_scope": "砂粒／O-ring漏水與季前查漏；不回填初代故障。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "CLEAN",
+      "url": "https://www.camelbak.com/how-to-clean-dry-store-hydration-reservoir.html",
+      "final_url": "https://www.camelbak.com/how-to-clean-dry-store-hydration-reservoir.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.265811+00:00",
+      "bytes": 125454,
+      "sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
+      "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "How to Clean,Dry and Store a Hydration Reservoir",
+      "source_type": "official_current_support_guidance",
+      "publication_date_scope": "未標日期的現行支援頁",
+      "support_scope": "水路清洗與殘水／內壁乾燥；無微生物零風險證明。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "SWISS_CRUX",
+      "url": "https://www.camelbak.com/product/crux%C2%AE-3l-reservoir/CB-1228.html",
+      "final_url": "https://www.camelbak.com/product/crux%C2%AE-3l-reservoir/CB-1228.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.849602+00:00",
+      "bytes": 147697,
+      "sha256": "68f30fbda1816b0070b602a4107e1450924d1b291213fc6457df0ebb8c1efa2f",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SWISS_CRUX.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SWISS_CRUX.txt",
+      "text_sha256": "7135274a89c443c84b317a5a6c15bd30549199ddccac2687695f2e8353b13722",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "Crux3L Reservoir current product page",
+      "source_type": "official_current_product_specification",
+      "publication_date_scope": "未標日期的現行產品頁",
+      "support_scope": "補水把手、單手開關、自封口器；20%moreperSip無完整比較法，不能當測得。",
+      "source_pass_issued": false
+    },
+    {
+      "id": "WEMMER2023",
+      "url": "https://www.backpacker.com/gear/these-20-pieces-of-gear-changed-backpacking-forever/?scope=anon",
+      "final_url": "https://www.backpacker.com/gear/these-20-pieces-of-gear-changed-backpacking-forever/?scope=anon",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:46:08.268380+00:00",
+      "bytes": 307354,
+      "sha256": "bde8236f8a4004b4150491049f5ba5a69bc57089e292114b3bec2418c46c9c10",
+      "content_type": "text/html; charset=utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/WEMMER2023.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/WEMMER2023.txt",
+      "text_sha256": "b8b1d8e4d518379a26661132503506bda7b340be865714744583da1267b0af61",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph",
+      "title": "20Pieces of Gear Changed Backpacking Forever, ThermoBak section",
+      "source_type": "later_original_article_with_named_Wemmer_quote",
+      "publication_date_scope": "2022-11-21，rawstructuredmetadata；檔名2023只是取回ID",
+      "support_scope": "Wemmer個人回憶不是全場騎士或整體市場。",
+      "source_pass_issued": false
+    }
+  ],
+  "anchors": [
+    {
+      "id": "A01",
+      "source_id": "C_HISTORY",
+      "claim": "現行官方頁自述成立1989。",
+      "limits": "不等原型、首售或登記精確日。",
+      "locator": "HTML normalized text paragraph 53",
+      "paragraph": 53,
+      "pdf_page": null,
+      "short_quote": "Founded in 1989",
+      "quote_sha256": "ade6c3940111d3279a0bc262928baaf052d2d0a2773dfde0e86773f5feee6342",
+      "context_sha256": "ade6c3940111d3279a0bc262928baaf052d2d0a2773dfde0e86773f5feee6342",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/C_HISTORY.html",
+      "raw_sha256": "406dca423e0616a268fcf79ecf8b8f0290900eab75a7cac143317bfebdd2e4e7",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/C_HISTORY.txt",
+      "text_sha256": "86e2e2b220a2786e084731a9495c8d8cd3a4fb55dad6bca192b18fe3f4d63601",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A02",
+      "source_id": "NZ_HISTORY",
+      "claim": "NZ品牌回顧IV水袋、襪、車衣背後安放與管越肩。",
+      "limits": "後期品牌回顧；賽事年有分歧，不教醫材仿作。",
+      "locator": "HTML normalized text paragraph 156",
+      "paragraph": 156,
+      "pdf_page": null,
+      "short_quote": "filled an IV bag with water",
+      "quote_sha256": "ec76919020a9f02f533c7a7d1b74dd1bace7c7beb21d426560cb49373754e9ef",
+      "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
+      "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
+      "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A03",
+      "source_id": "NZ_HISTORY",
+      "claim": "同段用衣夾夾管端，作手動出口控制。",
+      "limits": "不等自封咬閥，也非當年零漏水測試。",
+      "locator": "HTML normalized text paragraph 156",
+      "paragraph": 156,
+      "pdf_page": null,
+      "short_quote": "its end clamped by a clothespin",
+      "quote_sha256": "626b26619c0c72bfe08785e5728f2b9c30f77e9d5b1f4f58de4337fdbf716fd2",
+      "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
+      "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
+      "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A04",
+      "source_id": "NZ_HISTORY",
+      "claim": "品牌回顧Wemmer1993機車巡店及傳真訂單。",
+      "limits": "無同期原訂單，不證倍增銷量；新主線可移出。",
+      "locator": "HTML normalized text paragraph 159",
+      "paragraph": 159,
+      "pdf_page": null,
+      "short_quote": "Each order Jeff faxed back",
+      "quote_sha256": "dac5f11520aa6316c151560d1b5414b26f8671cf4fae76bc420793eb0db1f91d",
+      "context_sha256": "811e30d590f319f66f65730c3f98b0af6e2854c79e5c283f14b76d0825ea74f6",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
+      "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
+      "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A05",
+      "source_id": "HH_HISTORY",
+      "claim": "主辦同段首句寫1988。",
+      "limits": "與下一句1989矛盾，不擇一當確證。",
+      "locator": "HTML normalized text paragraph 52",
+      "paragraph": 52,
+      "pdf_page": null,
+      "short_quote": "originated from the 1988 HHH!",
+      "quote_sha256": "e880723c0a183d9d8cd04d00d31ccc23d0b1fddbd0e69149aabafb58cc0b5d5b",
+      "context_sha256": "f4bafdf5b038af7ae2ea99953145d7673ef10a1746c475d554056fa2ccb14743",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.html",
+      "raw_sha256": "f8982ed017424aaefe2dec22652507c17bee1fa8de60331ad3f40e2ffade963a",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.txt",
+      "text_sha256": "28b280aca30588ff6d80199a9deb3ff6fa1b8b1245eb389ec4959ca07489de19",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A06",
+      "source_id": "HH_HISTORY",
+      "claim": "同一主辦段落正文又寫1989。",
+      "limits": "同源矛盾不是雙證人；需同期材料。",
+      "locator": "HTML normalized text paragraph 52",
+      "paragraph": 52,
+      "pdf_page": null,
+      "short_quote": "at the 1989 Hotter’N Hell Hundred",
+      "quote_sha256": "b4dd88e9f69f1595a91e1d8dc23d15b4833c47f543560475e74bdc7b396e54f7",
+      "context_sha256": "f4bafdf5b038af7ae2ea99953145d7673ef10a1746c475d554056fa2ccb14743",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.html",
+      "raw_sha256": "f8982ed017424aaefe2dec22652507c17bee1fa8de60331ad3f40e2ffade963a",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.txt",
+      "text_sha256": "28b280aca30588ff6d80199a9deb3ff6fa1b8b1245eb389ec4959ca07489de19",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A07",
+      "source_id": "COURT_MIRROR",
+      "claim": "2009裁決finding17記1989組織FasTrak、構想源於Texas夏季1988比賽。",
+      "limits": "引庭訊非同期目擊；拼Michael Edson且此段未名Hotter’N Hell，不與品牌故事拼日期。",
+      "locator": "PDF page 8",
+      "paragraph": null,
+      "pdf_page": 8,
+      "short_quote": "In 1989, FasTrak Systems, Inc. (FasTrak) was organized",
+      "quote_sha256": "903ef485476821af4cc53540514684bf7e993311b6f2b3d776ebb1a281d958d4",
+      "context_sha256": "07de926c730becf797fc27a1023e6bd149f61a83941858621d0d3c59586949c3",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.pdf",
+      "raw_sha256": "bd009971fe97acbb35db4b0aa4e58d79efad48e5ed19241ca5fbe3825f4c4ac2",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.txt",
+      "text_sha256": "285dec724174bdd7d4a65856ad020a9c90eae601c1b201d93257ca05ef30a0d1",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A08",
+      "source_id": "COURT_MIRROR",
+      "claim": "同裁決記原型管端夾閉；Fawcett購構想後開發，1992取得專利。",
+      "limits": "原型與後來咬閥不同，非優先權／全產品判決。",
+      "locator": "PDF page 8",
+      "paragraph": null,
+      "pdf_page": 8,
+      "short_quote": "a clamped-off tube running over his shoulder",
+      "quote_sha256": "7bed63f164c49fc898bed5a03cea3ba5e010fa373e4081019bf8d622a1f16c47",
+      "context_sha256": "07de926c730becf797fc27a1023e6bd149f61a83941858621d0d3c59586949c3",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.pdf",
+      "raw_sha256": "bd009971fe97acbb35db4b0aa4e58d79efad48e5ed19241ca5fbe3825f4c4ac2",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.txt",
+      "text_sha256": "285dec724174bdd7d4a65856ad020a9c90eae601c1b201d93257ca05ef30a0d1",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A09",
+      "source_id": "PAT_FAUCE_PDF",
+      "claim": "原件首頁具名Roger R.Fawcett；1990送件、1992授權。",
+      "limits": "不誤認Eidson本人專利或反證原型賽事年。",
+      "locator": "PDF page 1",
+      "paragraph": null,
+      "pdf_page": 1,
+      "short_quote": "Roger R. Fawcett",
+      "quote_sha256": "b0a20eb931fa6a53cb241b7634ae1a5ffda520afec224cd555c8303ddd9d2fee",
+      "context_sha256": "9d3c44279313de0e0c51e40cf0b5720ac121b0fda8bdbddaadf5b75c3f42e100",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE_PDF.pdf",
+      "raw_sha256": "02bb4b0f814ea155b1bfc35b34541cec8cf0debe73c8f66b0b11a1d1182771a2",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE_PDF.txt",
+      "text_sha256": "f8556395f612be21dc496c6a2cee3d7f3ed16aaa6b8b419d23c9966a7b6a7246",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A10",
+      "source_id": "PAT_MOUTH_PDF",
+      "claim": "1998送件／2000授權口器，彈性狹縫常閉、壓形變可出水。",
+      "limits": "特定設計，不是所有SKU或首款採用／流量實測。",
+      "locator": "PDF page 1",
+      "paragraph": null,
+      "pdf_page": 1,
+      "short_quote": "normally closed slit",
+      "quote_sha256": "e5a58ca4190dd0c2d0034949307346347ff101eb3342c8441e90a07d6f11cb37",
+      "context_sha256": "b5d06b15bcd15bfa491cbc7b19f8204a23c03832ef694439874e1bdc7974d7a9",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+      "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
+      "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A11",
+      "source_id": "PAT_MOUTH_PDF",
+      "claim": "材料須能回閉；原件舉55durometer矽膠例。",
+      "limits": "例子非全品牌配方、現售材料或醫療認證。",
+      "locator": "PDF page 8",
+      "paragraph": null,
+      "pdf_page": 8,
+      "short_quote": "fifty-five durometer silicone",
+      "quote_sha256": "2ab2192d474f22bfe2137c9027200c7d097ad1d7ca83ccf049905c60429eaa96",
+      "context_sha256": "71842d1adef4e27679e2588b0b55aad4f354cb8246fafcd5eca21e9547812f18",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+      "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
+      "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A12",
+      "source_id": "PAT_BOTTLE_PDF",
+      "claim": "水瓶本案2005-12-20送件、2006-10-12公開；有可選咬口、吸管及轉動出口。",
+      "limits": "embodiments不全在同一實物；臨時案不等本案送件日。",
+      "locator": "PDF page 1",
+      "paragraph": null,
+      "pdf_page": 1,
+      "short_quote": "Dec. 20, 2005",
+      "quote_sha256": "c962b1907850e74013a6e3d7dc907b43f6c343a43f300f986f67f22156ae2bf4",
+      "context_sha256": "ab02e277e25f307f68ecdfb157628af2aa2b2def95f6fba89023147c8e52dc02",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.pdf",
+      "raw_sha256": "cb50c7c43873eae08ed50b467db550dcdb3edd3d7b4d95ad144e9b5d0a2b716a",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.txt",
+      "text_sha256": "81f0cdc60cb8819359d759efd2f1a31f8c18f0d26c413e4454bb6999a11baff2",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A13",
+      "source_id": "PAT_BOTTLE_PDF",
+      "claim": "0052說咬壓變形開、撤壓回閉；0055明引6070767。",
+      "limits": "文件對文件，不證某SKU全採同一結構。",
+      "locator": "PDF page 15",
+      "paragraph": null,
+      "pdf_page": 15,
+      "short_quote": "U.S. Pat. Nos. 6,070,767",
+      "quote_sha256": "30b0535696a7de7875ddf388b64045a87e6400b057e998d98db779f86fe12968",
+      "context_sha256": "e0b0e9443f63fa371fa7d894946d73aba9cd2c83d0d0f872c385b108922cc268",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.pdf",
+      "raw_sha256": "cb50c7c43873eae08ed50b467db550dcdb3edd3d7b4d95ad144e9b5d0a2b716a",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.txt",
+      "text_sha256": "81f0cdc60cb8819359d759efd2f1a31f8c18f0d26c413e4454bb6999a11baff2",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A14",
+      "source_id": "TRADE2006",
+      "claim": "2006展場報導見透明0.75L瓶，翻起咬口接短吸管，說沿用水袋包咬閥設計。",
+      "limits": "May為預告、防漏為公司說法；不認定每款BetterBottle同SKU。",
+      "locator": "HTML normalized text paragraph 143",
+      "paragraph": 143,
+      "pdf_page": null,
+      "short_quote": "same bite valve design",
+      "quote_sha256": "474bb8c620f3917a2df9a6ddc30d3e705c2e73b88c4fc1b479e6f002ed1517bf",
+      "context_sha256": "53b241b27e4c77a2d3973c56401d0c4648da6da2010ffd41a80fbf465cfa4b77",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.html",
+      "raw_sha256": "8ce965756660c47a2b9b1ae4e9a228eabbbfd8a136af2fe04a3346089e0bab68",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.txt",
+      "text_sha256": "8da2a93c4fbf7ce4602ca2dd3075e62112014e277fe54a8044cbbca02a9d9cd4",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A15",
+      "source_id": "CODI2014",
+      "claim": "年報回顧成立1989、首款ThermoBak與90年代初山地車追隨者。",
+      "limits": "公司回顧，不等同期訂單。",
+      "locator": "HTML normalized text paragraph 451",
+      "paragraph": 451,
+      "pdf_page": null,
+      "short_quote": "first product, the ThermoBak",
+      "quote_sha256": "f1ef9dfeb75b0870742d4f20c40bc34adf4330d3dceb9036fc67483529ec387e",
+      "context_sha256": "52f7fe556e78c0ece9f232ba9fa139d7ac9304d040388aae7249e60ebb77167c",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.html",
+      "raw_sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.txt",
+      "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A16",
+      "source_id": "CODI2014",
+      "claim": "年報記2006進瓶類及初期BetterBottle。",
+      "limits": "不是CEO單人起案或某專利導致上市的證據。",
+      "locator": "HTML normalized text paragraph 455",
+      "paragraph": 455,
+      "pdf_page": null,
+      "short_quote": "In 2006, CamelBak expanded",
+      "quote_sha256": "f296c008e80b8f381e9684d54fc95327537161279c32216c13576a6eeec4cc15",
+      "context_sha256": "db3fc8f7fcf3f06ef1f6ccbbec6d90ba6f6d15f4fb6e15fbcaf28bac7dc76e8d",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.html",
+      "raw_sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.txt",
+      "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A17",
+      "source_id": "CODI2014",
+      "claim": "2014核心系統為聚氨酯袋、管、自封口器；採購段另列聚氨酯膜。",
+      "limits": "2014產品描述，不回填IV原型或現售全部材料。",
+      "locator": "HTML normalized text paragraph 468",
+      "paragraph": 468,
+      "pdf_page": null,
+      "short_quote": "polyurethane reservoir",
+      "quote_sha256": "a669eb5dda387be77118ebabbe6c0652512d6f09c62ba9240f82be85fe6bc667",
+      "context_sha256": "2e878f4bb9e3902929232763cd75d426cd81385d443eb765b92edcb06e690642",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.html",
+      "raw_sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.txt",
+      "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW",
+      "corroborating_anchor_ids": [
+        "A30"
+      ]
+    },
+    {
+      "id": "A18",
+      "source_id": "SW_PDF",
+      "claim": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
+      "limits": "具名工程師供應商個案，不是最初發明／初代模具。",
+      "locator": "PDF page 3",
+      "paragraph": null,
+      "pdf_page": 3,
+      "short_quote": "one-piece, self-sealing, silicone bite valve",
+      "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
+      "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
+      "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
+      "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A19",
+      "source_id": "SW_PDF",
+      "claim": "工程師稱兩天有實體矽膠測試件，外部做可能兩個月。",
+      "limits": "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。",
+      "locator": "PDF page 3",
+      "paragraph": null,
+      "pdf_page": 3,
+      "short_quote": "actual silicone parts for testing in two days",
+      "quote_sha256": "50140394d4826e1615d9e2e268f8647846933e9da03d2c83e13c6f925eabd6d1",
+      "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
+      "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
+      "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A20",
+      "source_id": "SONOMA2015",
+      "claim": "2015記者現場看袋體受壓扭。",
+      "limits": "只有動作，沒有條件／通過率／精確壽命。",
+      "locator": "HTML normalized text paragraph 76",
+      "paragraph": 76,
+      "pdf_page": null,
+      "short_quote": "pressed and twisted",
+      "quote_sha256": "2f794a2dbf35989ca7d087e50f9e073480901ecf8149461a983f9658d120e76b",
+      "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
+      "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
+      "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A21",
+      "source_id": "SONOMA2015",
+      "claim": "同段現場看十二咬閥在金屬間夾壓模擬牙齒。",
+      "limits": "不是保證每天千次或終身不壞。",
+      "locator": "HTML normalized text paragraph 76",
+      "paragraph": 76,
+      "pdf_page": null,
+      "short_quote": "a dozen bite valves",
+      "quote_sha256": "948d6fc3628e109dcd813c20dd03fd4cab34a29fc9ed52553e03ad0621e83c30",
+      "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
+      "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
+      "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A22",
+      "source_id": "CARE",
+      "claim": "現行官方列袋蓋漏水兩可能原因：螺紋砂粒、扭曲O-ring。",
+      "limits": "非完整故障診斷、非初代已發生故障。",
+      "locator": "HTML normalized text paragraph 73",
+      "paragraph": 73,
+      "pdf_page": null,
+      "short_quote": "grit in the cap threads, or a twisted O-ring",
+      "quote_sha256": "dc75706319f50bbfa25e91879e515b0844cef5833c31d78da6ec76562963b938",
+      "context_sha256": "891f9a5b093fb3ee8aebbdde0be0dac71415805953d2f21dd76708a3abc425db",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
+      "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
+      "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A23",
+      "source_id": "CARE",
+      "claim": "季前裝水後轉動／壓扭查漏；鄰段解釋砂粒或O-ring妨礙密封。",
+      "limits": "現行檢查指引，沒有本片實作，不作野外或醫療安全保證。",
+      "locator": "HTML normalized text paragraph 97",
+      "paragraph": 97,
+      "pdf_page": null,
+      "short_quote": "rotating/squishing the reservoir",
+      "quote_sha256": "85bbcde14a435234146875dac22a9c9e1190ff12c898cba044a0162b0b8e486d",
+      "context_sha256": "89d8375a854c0e48211b77f143f304d6b057d87a220be693bb3e95bab68a2c71",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
+      "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
+      "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A24",
+      "source_id": "CARE",
+      "claim": "官方要求收存前乾燥，避免內部困水。",
+      "limits": "不承諾無菌／防病，不教消毒配方。",
+      "locator": "HTML normalized text paragraph 71",
+      "paragraph": 71,
+      "pdf_page": null,
+      "short_quote": "no moisture is trapped inside",
+      "quote_sha256": "45e474367d4249e97132530966f285b768ab55d0e80202ab6330a416baea6b84",
+      "context_sha256": "89947ba908613ac61de83924c5c00afbbd9f333e67772f5fafca6bbb3839c377",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
+      "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
+      "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A25",
+      "source_id": "CLEAN",
+      "claim": "官方說洗後水仍可能留角落、管與咬口。",
+      "limits": "非獨立微生物實驗或感染事件。",
+      "locator": "HTML normalized text paragraph 121",
+      "paragraph": 121,
+      "pdf_page": null,
+      "short_quote": "corners, drinking tube and bite valve",
+      "quote_sha256": "7338b5e1a1cfa444b0e83369c664f77b5dc481f41be016dcd06be9685566e784",
+      "context_sha256": "388e4c507f3d5a13917e39ed01ff3f4a84cc0d417531bb1bedfb63e71ea03519",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
+      "raw_sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
+      "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A26",
+      "source_id": "CLEAN",
+      "claim": "撐開袋體讓空氣進內部、分開內壁利排水。",
+      "limits": "現行使用環節，不倒寫為早期研發原因；僅可拆件拆卸。",
+      "locator": "HTML normalized text paragraph 125",
+      "paragraph": 125,
+      "pdf_page": null,
+      "short_quote": "Prop the reservoir open",
+      "quote_sha256": "bc1e2f2842c99744745b69fe36184755e4f36f19bd51d9b828851b4eaf9e03f0",
+      "context_sha256": "369a41a16b6df8b363878cb031d530ac45a15a45dd62e6ac9a0e39aee8a5a068",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
+      "raw_sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
+      "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A27",
+      "source_id": "CLEAN",
+      "claim": "收前查接縫／角落／管／接口的殘滴或凝結。",
+      "limits": "可觀察要求，非本片已測結果。",
+      "locator": "HTML normalized text paragraph 131",
+      "paragraph": 131,
+      "pdf_page": null,
+      "short_quote": "droplets or condensation",
+      "quote_sha256": "bd5f831c5b7d8074331a58a1832bbed3873cb6ad17810f436fac033f302ab5db",
+      "context_sha256": "c1a5301d3d8e5475be615dab27daf3d4e3084e44c846b53292dd7a29ba630fef",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
+      "raw_sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
+      "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A28",
+      "source_id": "SWISS_CRUX",
+      "claim": "現行Crux列補水把手、開關與喝後自封口器。",
+      "limits": "官方功能聲稱；20%moreperSip不與MilSpec25%混用或當實測。",
+      "locator": "HTML normalized text paragraphs 91,93,97–98",
+      "paragraph": 97,
+      "pdf_page": null,
+      "short_quote": "On/off lever lets you seal your drinking tube shut",
+      "quote_sha256": "636ebe0876ea03c58ee44d042638c982f429aa4f1a206f0884b92a83554837c9",
+      "context_sha256": "6332cf2a5a1b035f1ae825a41dcc447a5e5bffef3804dba984e0e1b4a65b1ea4",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SWISS_CRUX.html",
+      "raw_sha256": "68f30fbda1816b0070b602a4107e1450924d1b291213fc6457df0ebb8c1efa2f",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SWISS_CRUX.txt",
+      "text_sha256": "7135274a89c443c84b317a5a6c15bd30549199ddccac2687695f2e8353b13722",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW",
+      "supporting_context_segments": [
+        {
+          "paragraph": 91,
+          "context_sha256": "4876e3502c3dbf7420fd41081d854f6930954a8afd91f48c1d22e59cbc4895fd"
+        },
+        {
+          "paragraph": 93,
+          "context_sha256": "be1fdaff6882ee3b9d5fed5e86ef68e08ec6068d15ad194b207f69979e3be3ca"
+        },
+        {
+          "paragraph": 97,
+          "context_sha256": "6332cf2a5a1b035f1ae825a41dcc447a5e5bffef3804dba984e0e1b4a65b1ea4"
+        },
+        {
+          "paragraph": 98,
+          "context_sha256": "ff3d4f46b963131c6bdb353ff0122bc3a63009fd8d299c96241e8fdafc2e0a3d"
+        }
+      ]
+    },
+    {
+      "id": "A29",
+      "source_id": "WEMMER2023",
+      "claim": "2022文引Wemmer個人很快喜歡上試用。",
+      "limits": "不等全場嘲笑／市場反對；不補同期台詞。",
+      "locator": "HTML normalized text paragraph 90",
+      "paragraph": 90,
+      "pdf_page": null,
+      "short_quote": "Within a day I was hooked",
+      "quote_sha256": "c4a93e5bdc88c14e7e00a926a88e2a0094935ed2b0c539fc2b07b3500e96128f",
+      "context_sha256": "3b29fec1d52f076de2354b9fb2415991df61abed89966ba642e23357318e5f50",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/WEMMER2023.html",
+      "raw_sha256": "bde8236f8a4004b4150491049f5ba5a69bc57089e292114b3bec2418c46c9c10",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/WEMMER2023.txt",
+      "text_sha256": "b8b1d8e4d518379a26661132503506bda7b340be865714744583da1267b0af61",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "A30",
+      "source_id": "CODI2014",
+      "claim": "2014年報採購段列原材料包括聚氨酯膜。",
+      "limits": "屬當年採購材料清單，不證特定SKU配方、原型材料或焊接工藝。",
+      "locator": "HTML normalized text paragraph 600",
+      "paragraph": 600,
+      "pdf_page": null,
+      "short_quote": "polyurethane film",
+      "quote_sha256": "6286e74a9879b6fbdc1601ee24f6ad6d9cbc5369d80511f500175025b7dab685",
+      "context_sha256": "f658eee224dc0ed7c2e189c806a1ef5f7b63ea8e845f6fa3c52d7350257bd2c7",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.html",
+      "raw_sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.txt",
+      "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    }
+  ],
+  "legacy_line_classifications": [
+    {
+      "id": "c14h01",
+      "script_label": "H01",
+      "old_text": "車架上的水瓶就在手邊，可騎到一半要喝水，手還是得離開原來的位置。",
+      "old_text_sha256": "3d558b17cfb4dad0c7e3c09c739bfb15de38f4e3aeaf2298cfee891b3c1153d5",
+      "classification": "REFRAME_GENERIC_CONTEXT",
+      "anchor_ids": [
+        "A09",
+        "A14"
+      ],
+      "reason": "泛用拿瓶動作可明示示意；不當Eidson當日裝備／碰撞事件。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14h02",
+      "script_label": "H02",
+      "old_text": "CamelBak 的品牌故事裡，一位騎士沒有換更大的瓶子，反而拿出一隻襪子。",
+      "old_text_sha256": "7cc9387203db4a852c90d08ad73614f64b1a34806db5ff4702da2b5769ab00e3",
+      "classification": "RETAIN_WITH_BRAND_ATTRIBUTION",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "只按後來品牌回顧；不定已確證賽事年、加同期台詞或醫療改裝。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14h03",
+      "script_label": "H03",
+      "old_text": "襪子裡塞進一袋水，一根管子垂到肩上，出口還被衣夾夾著。",
+      "old_text_sha256": "3dee978b482ade53ed69b2c3c2160b4e64711d46d0da2d8ce20e3c4b619858c8",
+      "classification": "RETAIN_WITH_BRAND_ATTRIBUTION",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "只按後來品牌回顧；不定已確證賽事年、加同期台詞或醫療改裝。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14h04",
+      "script_label": "H04",
+      "old_text": "你以為這只是一次騎乘的怪點子；幾年後，它竟被帶到別人的單車店推銷。",
+      "old_text_sha256": "e7e70d4963012a19e99d0cb6f0c331cc2cf17472550acd3787ecdd7c58a52192",
+      "classification": "OMIT_NEW_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "巡店支線不推新的水路與反覆使用旅程。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14h05",
+      "script_label": "H05",
+      "old_text": "可如果起點是騎車不用拿瓶，後來為什麼連水瓶都成了 CamelBak 的商品？",
+      "old_text_sha256": "da21e81383bb3589adf268b2a46bfaa70435c88b62b4800ae56c89ac6a1e13ba",
+      "classification": "REFRAME_RESEARCH_QUESTION",
+      "anchor_ids": [
+        "A14",
+        "A16"
+      ],
+      "reason": "以實物水路回答容器變化，不預許諾唯一商業動機。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o01",
+      "script_label": "O01",
+      "old_text": "品牌回顧說，那位騎士是急救醫療技術員 Michael Eidson。",
+      "old_text_sha256": "8cf15be86bc8c069a76baeba5dadd32152de05231743161d2c38a9b45c71fde9",
+      "classification": "RETAIN_WITH_BRAND_ATTRIBUTION",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "只按後來品牌回顧；不定已確證賽事年、加同期台詞或醫療改裝。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o02",
+      "script_label": "O02",
+      "old_text": "那次騎乘，他的第一步，是讓水跟著身體一起移動。",
+      "old_text_sha256": "10a71cf698eb7a758c083b3fb0870484f4eac1fb0a9a5e09e15249b83452a0dc",
+      "classification": "NARROW_EDITORIAL_INFERENCE",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "位置／部件作用是窄推論，不造逐步心理或自動防漏；衣夾仍可能需手操作。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o03",
+      "script_label": "O03",
+      "old_text": "Eidson 先把水裝進點滴袋，再把袋子塞進襪子，放到車衣背後。",
+      "old_text_sha256": "4d35f05554d5edb7da26dc1a18c7dce721e9861e3dfaee9ef49b07c7b7ced486",
+      "classification": "RETAIN_WITH_BRAND_ATTRIBUTION",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "只按後來品牌回顧；不定已確證賽事年、加同期台詞或醫療改裝。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o04",
+      "script_label": "O04",
+      "old_text": "襪子不負責裝水，裡面的袋子才是容器；襪子讓那袋水有個能背的位置。",
+      "old_text_sha256": "c7ceaa632710cb7012011a189fea42c4ca7fc71163b7f8bc43e3a2f7426f6314",
+      "classification": "NARROW_EDITORIAL_INFERENCE",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "位置／部件作用是窄推論，不造逐步心理或自動防漏；衣夾仍可能需手操作。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o05",
+      "script_label": "O05",
+      "old_text": "現在水跟著人走，卻還在背後；要喝時，出口離嘴巴仍然很遠。",
+      "old_text_sha256": "ab42b1cf226f4bc261d4705a08754dff76e1482035db4a7e3aa416dbcc9c291a",
+      "classification": "OMIT_STAGED_REPEAT",
+      "anchor_ids": [
+        "A02"
+      ],
+      "reason": "不把同次拼裝拆成假裝尚未想到管子的中間事件。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o06",
+      "script_label": "O06",
+      "old_text": "他讓管子越過肩膀，把出口帶到嘴邊，騎車時少了一個伸手取瓶的動作。",
+      "old_text_sha256": "c645194c44b57cf560cf84e2484d063e519aef058f4799e195070646238f3653",
+      "classification": "NARROW_EDITORIAL_INFERENCE",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "位置／部件作用是窄推論，不造逐步心理或自動防漏；衣夾仍可能需手操作。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o07",
+      "script_label": "O07",
+      "old_text": "但出口不能一直開著，品牌回顧說，他用衣夾把管口夾住。",
+      "old_text_sha256": "ec4d7a11ca2e806d1f234d6aa20c955adf729f80b2a63060c8255b7a0fc25c55",
+      "classification": "RETAIN_WITH_BRAND_ATTRIBUTION",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "只按後來品牌回顧；不定已確證賽事年、加同期台詞或醫療改裝。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o08",
+      "script_label": "O08",
+      "old_text": "衣夾讓管口能關上，但整套裝置仍是騎乘時的臨時拼裝。",
+      "old_text_sha256": "67bd451ca764e36bde6376d5e40b3e4ed48d33dd3ba856e6d401225ca5112215",
+      "classification": "NARROW_EDITORIAL_INFERENCE",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "位置／部件作用是窄推論，不造逐步心理或自動防漏；衣夾仍可能需手操作。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14o09",
+      "script_label": "O09",
+      "old_text": "後來母公司把首款商品寫進年報；它最先跟著哪些騎士走？",
+      "old_text_sha256": "a6351460346c0bca1f1f0e71af4ad0e5d3bba511e574d60d714671670d0349bf",
+      "classification": "OMIT_CATALOGUE_BRIDGE",
+      "anchor_ids": [
+        "A15"
+      ],
+      "reason": "名字不是製造成形或市場擴散的原因。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i01",
+      "script_label": "I01",
+      "old_text": "公司與母公司都把 CamelBak 的成立年記為一九八九年。",
+      "old_text_sha256": "b5f63445d7ade284ee40922f7531f6980ad7a60f5e0ef1761716a9fbb2a7c9e2",
+      "classification": "RETAIN_SEPARATE_EVENT_DATE",
+      "anchor_ids": [
+        "A01",
+        "A07",
+        "A15"
+      ],
+      "reason": "成立1989與1988/1989原型騎乘分開。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i02",
+      "script_label": "I02",
+      "old_text": "母公司二〇一四年回頭寫，第一款商品叫 ThermoBak。",
+      "old_text_sha256": "21226fe483f31fbab4b00be230f0f212664006ffe9d26a37089aa9c80f2ed7b8",
+      "classification": "SUPPORTED_BACKGROUND_OPTIONAL",
+      "anchor_ids": [
+        "A15"
+      ],
+      "reason": "ThermoBak與早期山地車追隨者可歸公司；只留必要背景。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i03",
+      "script_label": "I03",
+      "old_text": "商品一有了名字，就不再只跟著 Eidson 一個人騎車。",
+      "old_text_sha256": "63316e4a24a2f0a3d5fc3ddf53dabe4265ab521570fdc76bf4e7cf577b0b880a",
+      "classification": "OMIT_CATALOGUE_BRIDGE",
+      "anchor_ids": [
+        "A15"
+      ],
+      "reason": "名字不是製造成形或市場擴散的原因。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i04",
+      "script_label": "I04",
+      "old_text": "母公司回顧，九〇年代初，山地車騎士已成了它的早期追隨者。",
+      "old_text_sha256": "aa3c0d0ef9f305d27414fa5db4fd35b838f22bc2bda787529b854a6f44608a85",
+      "classification": "SUPPORTED_BACKGROUND_OPTIONAL",
+      "anchor_ids": [
+        "A15"
+      ],
+      "reason": "ThermoBak與早期山地車追隨者可歸公司；只留必要背景。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i05",
+      "script_label": "I05",
+      "old_text": "品牌另一篇回顧提到競技騎士 Jeff Wemmer，他把商品帶到賽場販賣。",
+      "old_text_sha256": "f7c71421e4868a76671d20a1a70991a0b6c13d6dae55f3e709590499b8694302",
+      "classification": "SUPPORTED_BRAND_LORE_OMIT_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "品牌回憶可窄用，未取得同期訂單，不推倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i06",
+      "script_label": "I06",
+      "old_text": "賽場和一個人的襪子不同；別的騎士現在有機會看見、摸到、買到已做成商品的背水裝備。",
+      "old_text_sha256": "9f1385453544a1067d26473760110eade77eff8bd45fc68ff92ef001eb4916ed",
+      "classification": "SUPPORTED_BRAND_LORE_OMIT_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "品牌回憶可窄用，未取得同期訂單，不推倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i07",
+      "script_label": "I07",
+      "old_text": "品牌回顧接著說，公司後來雇用了 Wemmer，讓他繼續把產品帶到更多騎士面前。",
+      "old_text_sha256": "4f54a9dd4ad322ee667df9edf0f76eff08e85628d98abccd1ae9a5cd1d0c1c1e",
+      "classification": "SUPPORTED_BRAND_LORE_OMIT_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "品牌回憶可窄用，未取得同期訂單，不推倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i08",
+      "script_label": "I08",
+      "old_text": "一九九三年，他又騎上機車，帶著產品去拜訪單車店。",
+      "old_text_sha256": "84ce80f015c28b83ac381a376241288a0099b55fe473d5e61618cd795c5352c0",
+      "classification": "SUPPORTED_BRAND_LORE_OMIT_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "品牌回憶可窄用，未取得同期訂單，不推倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i09",
+      "script_label": "I09",
+      "old_text": "地區品牌故事說，他一路從佛羅里達走到加州。",
+      "old_text_sha256": "d95f88bcd2138c4a334984a2ea57b9dddcc95e98c6f1c0531ac0f7b44148f457",
+      "classification": "SUPPORTED_BRAND_LORE_OMIT_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "品牌回憶可窄用，未取得同期訂單，不推倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i10",
+      "script_label": "I10",
+      "old_text": "品牌回憶說，他沿途接到的訂單，一筆筆傳真回工廠。",
+      "old_text_sha256": "f63a4e010b81d2ffca08ab8fc6682cfc6deddf5ebefc529f1dea451e5703a8b0",
+      "classification": "SUPPORTED_BRAND_LORE_OMIT_MAINLINE",
+      "anchor_ids": [
+        "A04"
+      ],
+      "reason": "品牌回憶可窄用，未取得同期訂單，不推倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i11",
+      "script_label": "I11",
+      "old_text": "一九九八年，一件列在 CamelBak 名下的改良口器專利送件。",
+      "old_text_sha256": "954a2205ab0177b809592ee6a009c3aa7a45d923e4055f817dbbfd68a3ac67a1",
+      "classification": "RETAIN_DOCUMENT_DATES",
+      "anchor_ids": [
+        "A10"
+      ],
+      "reason": "申請／授權分開，不當首款採用時間。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i12",
+      "script_label": "I12",
+      "old_text": "原型靠衣夾夾住管口；這份較晚的文件，把注意力放在牙齒碰到的出口。",
+      "old_text_sha256": "27e8cc4d523dc4410c64440ab2a9eb5e691bfa00d4d961a317a7a9645e456fa8",
+      "classification": "RETAIN_COMPONENT_DISTINCTION",
+      "anchor_ids": [
+        "A03",
+        "A10"
+      ],
+      "reason": "衣夾與後期自封狹縫不同，不編同批原型逐代升級。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14i13",
+      "script_label": "I13",
+      "old_text": "這個較晚的出口設計，後來為什麼會出現在水瓶申請裡？",
+      "old_text_sha256": "faa86729d8d96ee5d36837f9a84c875c31c6ae0ce408e05b021d16c14dc02837",
+      "classification": "QUESTION_REQUIRES_PHYSICAL_PAYOFF",
+      "anchor_ids": [
+        "A13",
+        "A14"
+      ],
+      "reason": "由文件引用與展場實物回答，不寫成商業因果。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e01",
+      "script_label": "E01",
+      "old_text": "同一件申請，一九九八年送件，到二〇〇〇年才獲得授權。",
+      "old_text_sha256": "213c24534f0478355131c121dd5e177e180dee8ea67fc4eab18a6e8c535349b4",
+      "classification": "RETAIN_DOCUMENT_DATES",
+      "anchor_ids": [
+        "A10"
+      ],
+      "reason": "申請／授權分開，不當首款採用時間。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e02",
+      "script_label": "E02",
+      "old_text": "它寫的是軟質咬口，不是那只襪子原型裡的衣夾。",
+      "old_text_sha256": "fd8ff739e4397ce2be56f49abea038ffd45b9f7b2d68f13f7cacff4dba11da05",
+      "classification": "RETAIN_COMPONENT_DISTINCTION",
+      "anchor_ids": [
+        "A03",
+        "A10"
+      ],
+      "reason": "衣夾與後期自封狹縫不同，不編同批原型逐代升級。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e03",
+      "script_label": "E03",
+      "old_text": "牙齒一壓，原本閉合的柔軟狹縫張開，水才流出。",
+      "old_text_sha256": "405448bf6dd3e6df3f9b22412d28fa8b4659a99ca6973e8549c225f785e0b5ff",
+      "classification": "RETAIN_PATENT_MECHANISM",
+      "anchor_ids": [
+        "A10",
+        "A11"
+      ],
+      "reason": "限該專利開閉設計，不是全商品零漏水實測。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e04",
+      "script_label": "E04",
+      "old_text": "鬆口後，材料讓狹縫重新合上。",
+      "old_text_sha256": "7a8ec3011e4b9318f1892fe8cf29a7fca64231f42c8468b0746fd79a79059b51",
+      "classification": "RETAIN_PATENT_MECHANISM",
+      "anchor_ids": [
+        "A10",
+        "A11"
+      ],
+      "reason": "限該專利開閉設計，不是全商品零漏水實測。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e05",
+      "script_label": "E05",
+      "old_text": "文件連嘴唇和牙齒該靠在哪裡，都寫得仔細。",
+      "old_text_sha256": "5a6d1be89a5a921d6bba2cbc1f01f286c37844521c41ae3d3caf52834df0c670",
+      "classification": "REFRAME_ENGINEERING_DETAIL",
+      "anchor_ids": [
+        "A10",
+        "A11"
+      ],
+      "reason": "改以具體材料／形變事實，不用「寫得仔細」撐內容。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e06",
+      "script_label": "E06",
+      "old_text": "出口之外還有個問題：除了騎士，誰需要把水背在身上？",
+      "old_text_sha256": "44d70bd466917f47879b12cf8cbad3847184efb4de6ee5e89c7f2cae7705b481",
+      "classification": "OMIT_MILITARY_DETOUR",
+      "anchor_ids": [],
+      "reason": "非目前單一水路旅程必要前提。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e07",
+      "script_label": "E07",
+      "old_text": "二〇〇三年，星條旗報寫到一批準備寄往伊拉克部隊的 CamelBak 背水裝備。",
+      "old_text_sha256": "24fba4dddb527da9d0fa098e040c79af8c8721fadd8bcd2205b536ade4b62b30",
+      "classification": "OMIT_NOT_REOPENED",
+      "anchor_ids": [],
+      "reason": "舊S10捐贈報導本輪未重取，不沿用舊PASS。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e08",
+      "script_label": "E08",
+      "old_text": "匿名捐贈者買下一千套，公司再加五百套並付運費，合起來一千五百套。",
+      "old_text_sha256": "0e1df127af12fd30cf942706da47eca11406d0adb3f0d09c94e880ef6b39572a",
+      "classification": "OMIT_NOT_REOPENED",
+      "anchor_ids": [],
+      "reason": "舊S10捐贈報導本輪未重取，不沿用舊PASS。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e09",
+      "script_label": "E09",
+      "old_text": "目的地變了，水仍是跟著人走的背水裝備。",
+      "old_text_sha256": "32178d799db34087dc41447395888abbd0a1834374480959bc4919c7c29d0d34",
+      "classification": "OMIT_MILITARY_DETOUR",
+      "anchor_ids": [],
+      "reason": "非目前單一水路旅程必要前提。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e10",
+      "script_label": "E10",
+      "old_text": "時間再往後兩年，另一份設計文件卻畫出不必背在身上的瓶子。",
+      "old_text_sha256": "ef0a44192ce27a7e55a8d4119c025ea2721f53585b33d038c972439afc95e690",
+      "classification": "REFRAME_AFTER_DETOUR_REMOVAL",
+      "anchor_ids": [
+        "A12"
+      ],
+      "reason": "刪軍用後不再用「再往後兩年」銜接。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14e11",
+      "script_label": "E11",
+      "old_text": "水改裝進瓶子，嘴邊那個出口又會怎麼跟過去？",
+      "old_text_sha256": "873e979c47375afd6e8a485eee78ea42c51487ac34520145d14197db0d261393",
+      "classification": "QUESTION_REQUIRES_PHYSICAL_PAYOFF",
+      "anchor_ids": [
+        "A13",
+        "A14"
+      ],
+      "reason": "由文件引用與展場實物回答，不寫成商業因果。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t01",
+      "script_label": "T01",
+      "old_text": "二〇〇五年年底，一件帶咬合口的水瓶專利送件。",
+      "old_text_sha256": "526c4f2097b64ccea1b2f107562ef719802b0fbee54328cfb55353252af347c8",
+      "classification": "RETAIN_PRIMARY_FILING_DATE",
+      "anchor_ids": [
+        "A12"
+      ],
+      "reason": "本案／臨時案／公開日期分開。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t02",
+      "script_label": "T02",
+      "old_text": "設計把容器改成瓶子，嘴邊仍有咬了才開的柔軟出口。",
+      "old_text_sha256": "4da70c92b982f5ecb1e91999fd4b9cebdfe33865c43f77fd5ee116fbdcc08988",
+      "classification": "RETAIN_OPTIONAL_PATENT_DESIGN",
+      "anchor_ids": [
+        "A12",
+        "A13"
+      ],
+      "reason": "可選構造不統稱單一量產瓶全採用。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t03",
+      "script_label": "T03",
+      "old_text": "文件還畫出能翻起的飲水口、瓶內吸管，以及不同的開關安排。",
+      "old_text_sha256": "f2dcbf85f20b72cf1ba294eb43d5622949002ea40d34970904205be15ae11db6",
+      "classification": "RETAIN_OPTIONAL_PATENT_DESIGN",
+      "anchor_ids": [
+        "A12",
+        "A13"
+      ],
+      "reason": "可選構造不統稱單一量產瓶全採用。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t04",
+      "script_label": "T04",
+      "old_text": "在其中一種設計裡，人得翻起飲水口，再咬住柔軟的出口喝水。",
+      "old_text_sha256": "9a85df2ac618be8a1c00f4e2c8307034cef2a2898120939d3ff7bc866007cb34",
+      "classification": "RETAIN_OPTIONAL_PATENT_DESIGN",
+      "anchor_ids": [
+        "A12",
+        "A13"
+      ],
+      "reason": "可選構造不統稱單一量產瓶全採用。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t05",
+      "script_label": "T05",
+      "old_text": "水瓶申請引用的，正是前面那件一九九八年送件、二〇〇〇年授權的口器專利。",
+      "old_text_sha256": "f872601c56c28dcb1487e0b9d90a44acc2f04b6cc6738d3ff4b188cdf504538d",
+      "classification": "RETAIN_DOCUMENT_LINK",
+      "anchor_ids": [
+        "A13"
+      ],
+      "reason": "6070767引用可核，不等SKU部件證明。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t06",
+      "script_label": "T06",
+      "old_text": "這份申請直到二〇〇六年十月才公開；更早的展會上，有人見到瓶子嗎？",
+      "old_text_sha256": "7a062f1545b1c2af601a51bcff6b732d2004fefd040aa6ceb327ae50b179761a",
+      "classification": "REORDER_FORWARD_EVENT_FLOW",
+      "anchor_ids": [
+        "A12",
+        "A14"
+      ],
+      "reason": "建議2005送件→2006二月展場→十月公開，避免先十月再回二月。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t07",
+      "script_label": "T07",
+      "old_text": "有。二〇〇六年二月的戶外用品展，記者就看到一支 CamelBak 新水瓶。",
+      "old_text_sha256": "e45ea0b082ad211b2972a9c36c1b2917450afe668017f8de22491b84d285120c",
+      "classification": "RETAIN_OBJECT_REPORT",
+      "anchor_ids": [
+        "A14"
+      ],
+      "reason": "實物報導可核；公司性能聲稱歸屬，同一資訊只用一次。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t08",
+      "script_label": "T08",
+      "old_text": "GearJunkie 的到場報導說，它把品牌水袋產品用過的咬合閥設計，帶到了水瓶上。",
+      "old_text_sha256": "3f5cbe9812f9462cff6982ac088a5a7f207408f71c1abee09e2d9b68464b87ca",
+      "classification": "RETAIN_OBJECT_REPORT",
+      "anchor_ids": [
+        "A14"
+      ],
+      "reason": "實物報導可核；公司性能聲稱歸屬，同一資訊只用一次。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t09",
+      "script_label": "T09",
+      "old_text": "那支透明瓶上有能翻起的飲水口，下方接短吸管；報導當時寫容量是四分之三公升。",
+      "old_text_sha256": "87ca48593cf36f742a87ca994c3c4bcf915c2a7ded652964355653bed02c64b8",
+      "classification": "RETAIN_OBJECT_REPORT",
+      "anchor_ids": [
+        "A14"
+      ],
+      "reason": "實物報導可核；公司性能聲稱歸屬，同一資訊只用一次。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t10",
+      "script_label": "T10",
+      "old_text": "記者當時還預告，這支瓶子可能在五月開始販售。",
+      "old_text_sha256": "11aaf912fdbf6a169f3237ee34800e76df358daf14787bfdda4d394c25eb364a",
+      "classification": "OMIT_FORECAST_AS_OUTCOME",
+      "anchor_ids": [
+        "A14"
+      ],
+      "reason": "五月是預告，不是實售／製造成果。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t11",
+      "script_label": "T11",
+      "old_text": "母公司後來把二〇〇六年記成進入可重用瓶類的一年；這條新線會把品牌帶到哪裡？",
+      "old_text_sha256": "d9fdfeee77221c426bbb07fdd73114885b79341885876e8a40d064aa09a1e591",
+      "classification": "REFRAME_CORPORATE_CORROBORATION",
+      "anchor_ids": [
+        "A16"
+      ],
+      "reason": "2006產品線可核，不再開通路百科。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t12",
+      "script_label": "T12",
+      "old_text": "新任執行長 Sally McCoy 那年上任；年報說，管理團隊開始往相鄰市場找新路。",
+      "old_text_sha256": "8e23421749b4f1ed66cf934ffe09f0b87db91557cfcfcbb97edc533b63cfdf8e",
+      "classification": "OMIT_MANAGEMENT_BRANCH",
+      "anchor_ids": [
+        "A16"
+      ],
+      "reason": "同年上任不證個人起案或專利決策。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t13",
+      "script_label": "T13",
+      "old_text": "早期瓶款叫 Better Bottle；母公司想藉瓶類接觸更廣的使用者。",
+      "old_text_sha256": "bd5f523f101a63f6b700e83b6b889905135a3eb22ef019ac625f8d47a8379bb7",
+      "classification": "SUPPORTED_BACKGROUND_OPTIONAL",
+      "anchor_ids": [
+        "A16"
+      ],
+      "reason": "BetterBottle名稱可核，不自認展場為每款同SKU。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t14",
+      "script_label": "T14",
+      "old_text": "公司還把少用一次性瓶裝水，寫成瓶類的願景。",
+      "old_text_sha256": "0a1b91c5783dfda076e4b5a1d5a0e857329cb42725be4687d74f65eb4784193a",
+      "classification": "OMIT_CORPORATE_VISION",
+      "anchor_ids": [
+        "A16"
+      ],
+      "reason": "減一次性瓶是願景，不是材料／測試結果。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t15",
+      "script_label": "T15",
+      "old_text": "可要讓人願意反覆拿起瓶子，外型與手感得回答什麼問題？",
+      "old_text_sha256": "0b22a58846e777287fb9729e2534f589eddf1def2712b896dd82f97ced44b5aa",
+      "classification": "REFRAME_PHYSICAL_TEST",
+      "anchor_ids": [
+        "A18",
+        "A19",
+        "A20"
+      ],
+      "reason": "追可咬的真矽膠樣件與夾壓測試，不泛問人體工學。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t16",
+      "script_label": "T16",
+      "old_text": "隔年公司新聞稿引 McCoy 回憶設計題目：瓶子要好看、實用，也要符合人體工學。",
+      "old_text_sha256": "a1253be7d0cad9f9ed79dd1b7c6249dae622361d14f6487c4b861559c86e5e9e",
+      "classification": "OMIT_UNREOPENED_PRESS_RELEASE",
+      "anchor_ids": [],
+      "reason": "舊S12設計簡報本輪未重取；泛稱美觀實用非測試。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14t17",
+      "script_label": "T17",
+      "old_text": "瓶類往外走了幾年；到了二〇一四年，母公司列出的店種還只有單車店嗎？",
+      "old_text_sha256": "b28f3a3f3575fd74c19d607016390ab9d515d1e24ca16bff890ed64222bf64ab",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n01",
+      "script_label": "N01",
+      "old_text": "母公司二〇一四年列出的零售店，不只單車店，還有戶外用品、家用品和自然食品店。",
+      "old_text_sha256": "87ef3eb900bfe663364c347e88717bec9289c8d4c38d66505e3bc16a1de812de",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n02",
+      "script_label": "N02",
+      "old_text": "它又說，瓶類讓整體通路變寬，也進入大學與企業贊助市場。",
+      "old_text_sha256": "03c0036d5095489036e6ddc2af77a2a2367d178cb977a3769b69679745c8f37f",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n03",
+      "script_label": "N03",
+      "old_text": "同一份報告還列出為騎車、步行等活動做的背水包和腰包。",
+      "old_text_sha256": "7a3213e1231b7a3f7c90a0408686b8bc19058b14dd9b32f5b58e7bdac0d33360",
+      "classification": "RETAIN_MATERIAL_ASSEMBLY",
+      "anchor_ids": [
+        "A17"
+      ],
+      "reason": "可用2014袋／管／口器構成，不念活動型號列表。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n04",
+      "script_label": "N04",
+      "old_text": "新瓶類與老背水包同時存在；水瓶在公司生意裡究竟占了多少？",
+      "old_text_sha256": "977cb9d8f4106d6a2c49ba2c68dd1a014a4644cf2d3192cdc96fe1703c68f4d6",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n05",
+      "script_label": "N05",
+      "old_text": "二〇一二年，瓶類占 CamelBak 毛銷售額約三成四。",
+      "old_text_sha256": "59e80c5c66158abe2b4796028303bd6d980a5f7d743b558af8685c6910bf8c0e",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n06",
+      "script_label": "N06",
+      "old_text": "到了二〇一四年，瓶類占 CamelBak 當年毛銷售額約一半。",
+      "old_text_sha256": "cb2d41aa4983611573cfda0051194565e6daf7d81e42deaeb69724fbb3beb695",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n07",
+      "script_label": "N07",
+      "old_text": "同一年，水袋背包占約三成七；瓶類在產品組合裡比背包還大。",
+      "old_text_sha256": "54b34758576996dfa5086185be8f476e390f49a0cf1879296d4fb072d84a6436",
+      "classification": "SUPPORTED_OMIT_COMMERCE",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "年報通路／同分母毛銷額占比可核但不推主線；34%→50%不是倍增銷量。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n08",
+      "script_label": "N08",
+      "old_text": "展場那支瓶子，手上拿的是瓶，嘴碰到的卻仍是翻起的咬合口。",
+      "old_text_sha256": "037d73373411c22d1207aa028f2261f75fde3d2554e874b871697725f4235a94",
+      "classification": "RETAIN_OBJECT_REPORT",
+      "anchor_ids": [
+        "A14"
+      ],
+      "reason": "實物報導可核；公司性能聲稱歸屬，同一資訊只用一次。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n09",
+      "script_label": "N09",
+      "old_text": "最初原型靠衣夾夾住管口；它和後來的咬合口不是同一個零件。",
+      "old_text_sha256": "6be71a75d545099aeaeb2657fc067729383a829178e4ce717f1e96dcae29956f",
+      "classification": "NARROW_EDITORIAL_COMPARISON",
+      "anchor_ids": [
+        "A02",
+        "A03",
+        "A14"
+      ],
+      "reason": "明示場景對照，不聲稱全程不用手／衣夾自封／同一零件。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n10",
+      "script_label": "N10",
+      "old_text": "一個背在身上，一個握在手裡；兩者都讓人決定什麼時候讓水從出口流出。",
+      "old_text_sha256": "57a998bad310cec723372f486a8051c9cbf73e3ae77a570aba33a13cd15c8fff",
+      "classification": "NARROW_EDITORIAL_COMPARISON",
+      "anchor_ids": [
+        "A02",
+        "A03",
+        "A14"
+      ],
+      "reason": "明示場景對照，不聲稱全程不用手／衣夾自封／同一零件。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n11",
+      "script_label": "N11",
+      "old_text": "假如你在騎車，背包讓手留在車把；坐在桌前，瓶子就放在手邊。",
+      "old_text_sha256": "f53decf4dc6dd8d3f98c6df96f78e66673445b028f207d6223da653256bff0b0",
+      "classification": "NARROW_EDITORIAL_COMPARISON",
+      "anchor_ids": [
+        "A02",
+        "A03",
+        "A14"
+      ],
+      "reason": "明示場景對照，不聲稱全程不用手／衣夾自封／同一零件。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n12",
+      "script_label": "N12",
+      "old_text": "母公司說，瓶類接觸到更廣的使用者，背水包也仍為不同活動而設計。",
+      "old_text_sha256": "f58e1b25bc01b30dd5befe0b271a956767cdb09ffc44de3087f49f2f2273f722",
+      "classification": "OMIT_BUSINESS_RECAP",
+      "anchor_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "並存可核，新主線不以型錄收束。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n13",
+      "script_label": "N13",
+      "old_text": "答案是，它沒有放棄背水，而是讓兩種容器各自在不同場合留了下來。",
+      "old_text_sha256": "b108e8bc3232607fc4b07227846a393fe41a2cc6345165467904619e4429dea4",
+      "classification": "REFRAME_UNPROVEN_MOTIVE",
+      "anchor_ids": [
+        "A14",
+        "A16"
+      ],
+      "reason": "可證兩容器存在，不能證推出瓶子的唯一動機。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n14",
+      "script_label": "N14",
+      "old_text": "換成你，什麼時候把水背上，什麼時候把瓶子放在手邊？",
+      "old_text_sha256": "55b404f0bf2625c0c576031a422502cb534b2d3297d060652ea3f92448f3e49e",
+      "classification": "EDITORIAL_NO_FACTUAL_CLAIM",
+      "anchor_ids": [],
+      "reason": "觀眾題／訂閱邀請，尚非新稿；後續按10-25新規則。",
+      "approved_for_new_narration": false
+    },
+    {
+      "id": "c14n15",
+      "script_label": "N15",
+      "old_text": "喜歡看日用品怎麼從臨時辦法走到另一種形狀，歡迎訂閱，繼續一起追問。",
+      "old_text_sha256": "f2dd0a9ce6ee6cf490f554d7ad57aa11db58be3fc644addb40e3b4519258ab13",
+      "classification": "EDITORIAL_NO_FACTUAL_CLAIM",
+      "anchor_ids": [],
+      "reason": "觀眾題／訂閱邀請，尚非新稿；後續按10-25新規則。",
+      "approved_for_new_narration": false
+    }
+  ],
+  "legacy_classification_counts": {
+    "REFRAME_GENERIC_CONTEXT": 1,
+    "RETAIN_WITH_BRAND_ATTRIBUTION": 5,
+    "OMIT_NEW_MAINLINE": 1,
+    "REFRAME_RESEARCH_QUESTION": 1,
+    "NARROW_EDITORIAL_INFERENCE": 4,
+    "OMIT_STAGED_REPEAT": 1,
+    "OMIT_CATALOGUE_BRIDGE": 2,
+    "RETAIN_SEPARATE_EVENT_DATE": 1,
+    "SUPPORTED_BACKGROUND_OPTIONAL": 3,
+    "SUPPORTED_BRAND_LORE_OMIT_MAINLINE": 6,
+    "RETAIN_DOCUMENT_DATES": 2,
+    "RETAIN_COMPONENT_DISTINCTION": 2,
+    "QUESTION_REQUIRES_PHYSICAL_PAYOFF": 2,
+    "RETAIN_PATENT_MECHANISM": 2,
+    "REFRAME_ENGINEERING_DETAIL": 1,
+    "OMIT_MILITARY_DETOUR": 2,
+    "OMIT_NOT_REOPENED": 2,
+    "REFRAME_AFTER_DETOUR_REMOVAL": 1,
+    "RETAIN_PRIMARY_FILING_DATE": 1,
+    "RETAIN_OPTIONAL_PATENT_DESIGN": 3,
+    "RETAIN_DOCUMENT_LINK": 1,
+    "REORDER_FORWARD_EVENT_FLOW": 1,
+    "RETAIN_OBJECT_REPORT": 4,
+    "OMIT_FORECAST_AS_OUTCOME": 1,
+    "REFRAME_CORPORATE_CORROBORATION": 1,
+    "OMIT_MANAGEMENT_BRANCH": 1,
+    "OMIT_CORPORATE_VISION": 1,
+    "REFRAME_PHYSICAL_TEST": 1,
+    "OMIT_UNREOPENED_PRESS_RELEASE": 1,
+    "SUPPORTED_OMIT_COMMERCE": 7,
+    "RETAIN_MATERIAL_ASSEMBLY": 1,
+    "NARROW_EDITORIAL_COMPARISON": 3,
+    "OMIT_BUSINESS_RECAP": 1,
+    "REFRAME_UNPROVEN_MOTIVE": 1,
+    "EDITORIAL_NO_FACTUAL_CLAIM": 2
+  },
+  "requested_unsupported_claim_checks": [
+    {
+      "claim": "原型必定1988或1989、等同成立年",
+      "decision": "HOLD_UNSETTLED",
+      "anchors": [
+        "A01",
+        "A02",
+        "A05",
+        "A06",
+        "A07"
+      ],
+      "reason": "主辦內部矛盾；公司成立與原型分開，缺同期參賽／採訪。"
+    },
+    {
+      "claim": "誰都笑Eidson／全場後來改觀",
+      "decision": "REMOVE",
+      "anchors": [
+        "A29"
+      ],
+      "reason": "只得Wemmer個人後來回憶；Sonoma自己說源頭故事來自公司。"
+    },
+    {
+      "claim": "先發明再克服整個市場反對",
+      "decision": "REMOVE",
+      "anchors": [
+        "A15",
+        "A29"
+      ],
+      "reason": "接納群體與回顧不同，不能剪成同時期衝突。"
+    },
+    {
+      "claim": "巡店或咬閥使銷量倍增",
+      "decision": "REMOVE",
+      "anchors": [
+        "A04"
+      ],
+      "reason": "未取得同期同分母銷量／歸因；產品占比不是絕對銷量。"
+    },
+    {
+      "claim": "Eidson瀕死脫水、IV材料救命或醫材改裝教程",
+      "decision": "REMOVE",
+      "anchors": [
+        "A02",
+        "A07"
+      ],
+      "reason": "沒有醫療／當年後果證據，本題不做醫療使用教學。"
+    },
+    {
+      "claim": "Crux20%更多每口是本片測得，或可互換MilSpec25%",
+      "decision": "OMIT_UNVALIDATED_COMPARISON",
+      "anchors": [
+        "A28"
+      ],
+      "reason": "原頁不給完整比較基線與方法。"
+    },
+    {
+      "claim": "兩天與兩個月是實跑A/B，已證10–20倍",
+      "decision": "NARROW",
+      "anchors": [
+        "A18",
+        "A19"
+      ],
+      "reason": "前者為具名回述，後者為likely反事實估計。"
+    }
+  ],
+  "concrete_action_payoff_candidates": [
+    {
+      "id": "P1",
+      "question": "水如何從車架轉到身體？",
+      "action_result": "品牌回顧中的袋置襪／車衣背後安放。",
+      "anchor_ids": [
+        "A02"
+      ],
+      "limits": "回顧歸屬，非可仿作醫材教程。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P2",
+      "question": "背後的水如何到嘴邊、如何停？",
+      "action_result": "管越肩帶出口，衣夾手動夾閉。",
+      "anchor_ids": [
+        "A02",
+        "A03"
+      ],
+      "limits": "原型不等自封咬閥。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P3",
+      "question": "不用衣夾時如何控制？",
+      "action_result": "專利彈性狹縫受咬壓開、撤壓閉。",
+      "anchor_ids": [
+        "A10",
+        "A11"
+      ],
+      "limits": "特定設計非全SKU性能測試。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P4",
+      "question": "回到手握瓶，控制能否留下？",
+      "action_result": "2006展場報導見翻起咬口接短吸管。",
+      "anchor_ids": [
+        "A12",
+        "A13",
+        "A14"
+      ],
+      "limits": "原件方案與實物分開，不混SKU。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P5",
+      "question": "電腦裡的口器怎麼交給真的嘴試？",
+      "action_result": "具名工程師以3D列印模做矽膠，稱兩天可拿測試件。",
+      "anchor_ids": [
+        "A18",
+        "A19"
+      ],
+      "limits": "兩天是回述，非對照倍率／耐久通過率。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P6",
+      "question": "能出一次水，能代表反覆咬嗎？",
+      "action_result": "記者看袋體壓扭、十二咬閥被金屬夾壓。",
+      "anchor_ids": [
+        "A20",
+        "A21"
+      ],
+      "limits": "有測試動作，無公開條件與失效率。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P7",
+      "question": "出口關了，為何蓋邊還漏？",
+      "action_result": "現行官方列砂粒／扭曲O-ring妨礙另一個密封界面。",
+      "anchor_ids": [
+        "A22",
+        "A23"
+      ],
+      "limits": "可能原因，非初代歷史故障。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P8",
+      "question": "看似蓋好，怎麼找漏？",
+      "action_result": "原廠季前指引裝水後轉／壓袋找漏。",
+      "anchor_ids": [
+        "A23"
+      ],
+      "limits": "不是本片親測結果。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "P9",
+      "question": "洗完怎麼才能再收存？",
+      "action_result": "清水走管／口器；分開內壁、分件乾燥，查殘滴凝結。",
+      "anchor_ids": [
+        "A24",
+        "A25",
+        "A26",
+        "A27"
+      ],
+      "limits": "器材反覆使用的物理環節，非醫療／防病保證。",
+      "status": "RESEARCH_CANDIDATE_PENDING_AUTHOR_AND_INDEPENDENT_REVIEW"
+    }
+  ],
+  "source_sufficiency": {
+    "status": "HOLD",
+    "concrete_candidates": 9,
+    "thirteen_minute_ready": false,
+    "target_minutes": 13,
+    "rough_body_native_units_goal": 3500,
+    "actual_duration_measured": false,
+    "target_body_seconds": [
+      720,
+      840
+    ],
+    "reason": "有可做新稿的單一物理旅程與九組動作，但原型年未定、同期製造連續過程與測試條件／結果缺。不能以來源文字多，宣稱自然旁白能到13分鐘；作者若不能不重述地展開，須做短或再找原件。",
+    "missing": [
+      "Eidson原採訪或同期賽事材料",
+      "初代商品製造及口器改版同期工程記錄",
+      "具名測試條件、循環數、失效／通過結果",
+      "若主張同零件，需2006展場實物與某專利／SKU橋"
+    ]
+  },
+  "media_availability": {
+    "source_HTML_PDF_bytes_acquired": true,
+    "patent_figures_available_for_research": true,
+    "brand_photos_acquired_as_video_media": false,
+    "embedded_videos_watched": false,
+    "embedded_video_files_acquired": false,
+    "generated_images": false,
+    "generated_audio": false,
+    "media_rights_approved": false,
+    "note": "來源圖可見不等可在影片複用；後續須image-01及唯一cute-mystery，匿名英文概念圖，不畫商標、可讀字、真人或醫療裝配／精密史料重建。"
+  },
+  "fetch_attempt_receipts": [
+    {
+      "id": "TRADE2006",
+      "url": "https://gearjunkie.com/uncategorized/outdoor-retailer-trade-show-winter-market-2006-gear-highlights",
+      "final_url": "https://gearjunkie.com/uncategorized/outdoor-retailer-trade-show-winter-market-2006-gear-highlights",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.519526+00:00",
+      "bytes": 463338,
+      "sha256": "8ce965756660c47a2b9b1ae4e9a228eabbbfd8a136af2fe04a3346089e0bab68",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.txt",
+      "text_sha256": "8da2a93c4fbf7ce4602ca2dd3075e62112014e277fe54a8044cbbca02a9d9cd4",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "PAT_MOUTH_PDF",
+      "url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.236824+00:00",
+      "bytes": 1071928,
+      "sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
+      "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
+      "extraction": "pdftotext -layout; page breaks retained"
+    },
+    {
+      "id": "ASBCA53896",
+      "url": "https://www.asbca.mil/Portals/143/Decisions/2009/53896.pdf?ver=WWgd0m9NFeLRy9-5rAE9Jw%3D%3D",
+      "final_url": "https://www.asbca.mil/Portals/143/Decisions/2009/53896.pdf?ver=WWgd0m9NFeLRy9-5rAE9Jw%3D%3D",
+      "http_status": 403,
+      "retrieved_at_utc": "2026-10-25T21:43:28.051020+00:00",
+      "bytes": 428,
+      "sha256": "c6d47301c2f5f05c5e7a71f9a72f21e8275c1a56a4a80591acbdea9ae0db7d5e",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/ASBCA53896.html"
+    },
+    {
+      "id": "PAT_FAUCE_PDF",
+      "url": "https://patentimages.storage.googleapis.com/b2/29/f0/7fff25c4487cb2/US5085349.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/b2/29/f0/7fff25c4487cb2/US5085349.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.237673+00:00",
+      "bytes": 931768,
+      "sha256": "02bb4b0f814ea155b1bfc35b34541cec8cf0debe73c8f66b0b11a1d1182771a2",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE_PDF.txt",
+      "text_sha256": "f8556395f612be21dc496c6a2cee3d7f3ed16aaa6b8b419d23c9966a7b6a7246",
+      "extraction": "pdftotext -layout; page breaks retained"
+    },
+    {
+      "id": "SOLIDWORKS",
+      "url": "https://www.solidworks.com/story/camelbak-products-llc",
+      "final_url": "https://www.solidworks.com/story/camelbak-products-llc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.051420+00:00",
+      "bytes": 32516,
+      "sha256": "32bc03ea992af955a9e182bb6917abeb7a73ad6363b66d6f3de8b5090caf4cc6",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SOLIDWORKS.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SOLIDWORKS.txt",
+      "text_sha256": "73050725cc0d13543bc3ab38530ed8c3b05525800c8a271b781e22b1a3641229",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "PAT_MOUTH",
+      "url": "https://patents.google.com/patent/US6070767A/en",
+      "final_url": "https://patents.google.com/patent/US6070767A/en",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.447722+00:00",
+      "bytes": 698807,
+      "sha256": "245aafc6a76bc3a8e6a2a77f0465aaec89e567ebc48a65ee46aa929f71ee170c",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH.txt",
+      "text_sha256": "285c6856ef8a90f8e3b9b5546e7d7bbae6260a68905181218a8c1a15fe32ae7a",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "TRADE25",
+      "url": "https://gearjunkie.com/food-hydration/camelbak-hydration-turns-25",
+      "final_url": "https://gearjunkie.com/food-hydration/camelbak-hydration-turns-25",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.749106+00:00",
+      "bytes": 458828,
+      "sha256": "cad82990e183b18994a903a41839cf558b494b940ef310feac50d48f541d2d1c",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE25.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE25.txt",
+      "text_sha256": "9da72e38c4186c06341c56c931539aeba80a6e0bc475939cafe0edffd619267e",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "PAT_FAUCE",
+      "url": "https://patents.google.com/patent/US5085349A/en",
+      "final_url": "https://patents.google.com/patent/US5085349A/en",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.448529+00:00",
+      "bytes": 421830,
+      "sha256": "8fb49b282809efd753f2666f6a569755839694466dca440281230fb0df7f3311",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_FAUCE.txt",
+      "text_sha256": "2ec3ef13a7f49c764cb1b3bf4d7dd91ce866eb2acd4f8eafffbec0b6c9eae2b1",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "COURT_MIRROR",
+      "url": "https://www.asbca-case-review.com/pdf/53896_3.pdf",
+      "final_url": "https://www.asbca-case-review.com/pdf/53896_3.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.236076+00:00",
+      "bytes": 59657,
+      "sha256": "bd009971fe97acbb35db4b0aa4e58d79efad48e5ed19241ca5fbe3825f4c4ac2",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/COURT_MIRROR.txt",
+      "text_sha256": "285dec724174bdd7d4a65856ad020a9c90eae601c1b201d93257ca05ef30a0d1",
+      "extraction": "pdftotext -layout; page breaks retained"
+    },
+    {
+      "id": "HH_HISTORY",
+      "url": "https://www.hh100.org/history",
+      "final_url": "https://hh100.org/history/",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.886655+00:00",
+      "bytes": 139498,
+      "sha256": "f8982ed017424aaefe2dec22652507c17bee1fa8de60331ad3f40e2ffade963a",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HH_HISTORY.txt",
+      "text_sha256": "28b280aca30588ff6d80199a9deb3ff6fa1b8b1245eb389ec4959ca07489de19",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "SWISS_CRUX",
+      "url": "https://www.camelbak.com/product/crux%C2%AE-3l-reservoir/CB-1228.html",
+      "final_url": "https://www.camelbak.com/product/crux%C2%AE-3l-reservoir/CB-1228.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.849602+00:00",
+      "bytes": 147697,
+      "sha256": "68f30fbda1816b0070b602a4107e1450924d1b291213fc6457df0ebb8c1efa2f",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SWISS_CRUX.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SWISS_CRUX.txt",
+      "text_sha256": "7135274a89c443c84b317a5a6c15bd30549199ddccac2687695f2e8353b13722",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "WEMMER2023",
+      "url": "https://www.backpacker.com/gear/these-20-pieces-of-gear-changed-backpacking-forever/?scope=anon",
+      "final_url": "https://www.backpacker.com/gear/these-20-pieces-of-gear-changed-backpacking-forever/?scope=anon",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:46:08.268380+00:00",
+      "bytes": 307354,
+      "sha256": "bde8236f8a4004b4150491049f5ba5a69bc57089e292114b3bec2418c46c9c10",
+      "content_type": "text/html; charset=utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/WEMMER2023.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/WEMMER2023.txt",
+      "text_sha256": "b8b1d8e4d518379a26661132503506bda7b340be865714744583da1267b0af61",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "PAT_BOTTLE",
+      "url": "https://patents.google.com/patent/US20060226110A1/en",
+      "final_url": "https://patents.google.com/patent/US20060226110A1/en",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.448169+00:00",
+      "bytes": 1083755,
+      "sha256": "d8503900672a80c56536504b1a390db34358c790604753f86a40556c12b1e4f5",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE.txt",
+      "text_sha256": "986531eb8a69eefbff5762180c5a69b4a76201e05c73cb85c97b974e16b80279",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "IHA2020",
+      "url": "https://www.theinspiredhomeshow.com/wp-content/uploads/2020/06/IHA-Webinar-CamelBak-Eastman-06252020.pdf",
+      "final_url": "https://www.theinspiredhomeshow.com/wp-content/uploads/2020/06/IHA-Webinar-CamelBak-Eastman-06252020.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.644216+00:00",
+      "bytes": 6800908,
+      "sha256": "51f0fca3ebaf2e934d0f18146f99f75657dad0ad5256e43500cc80a2f4c49e40",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/IHA2020.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/IHA2020.txt",
+      "text_sha256": "7ff6fa91c999af9518dba6cc3dc4cb647bbf98be8ee50f97713bf82d540dd736",
+      "extraction": "pdftotext -layout; page breaks retained"
+    },
+    {
+      "id": "BIKE2013",
+      "url": "https://www.bikemag.com/mountain-bike-gear/matter-bag-to-the-future-original-camelbak",
+      "final_url": "https://www.bikemag.com/mountain-bike-gear/matter-bag-to-the-future-original-camelbak",
+      "http_status": 403,
+      "retrieved_at_utc": "2026-10-25T21:43:28.051921+00:00",
+      "bytes": 771,
+      "sha256": "2ccb2b28bed59a5457c8fdb36fc25da86324456b8419b373776d7425b034a5d4",
+      "content_type": "text/html;charset=utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/BIKE2013.html"
+    },
+    {
+      "id": "CODI2014",
+      "url": "https://www.sec.gov/Archives/edgar/data/1345122/000134512615000005/codi-12312014x10k.htm",
+      "final_url": "https://www.sec.gov/Archives/edgar/data/1345122/000134512615000005/codi-12312014x10k.htm",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.490831+00:00",
+      "bytes": 4185716,
+      "sha256": "f97e0444c43af5bc0eb53bf9d102367c1bed7f2888a0192d3dc2d9447a1639f7",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CODI2014.txt",
+      "text_sha256": "5fe7736dbd52c52d31fa09442638970b318db419eae1f3d74b92512dc673b5e0",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "SONOMA2015",
+      "url": "https://www.sonomamag.com/hands-free-hydration/",
+      "final_url": "https://www.sonomamag.com/hands-free-hydration/",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
+      "bytes": 97870,
+      "sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
+      "content_type": "text/html; charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
+      "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "PAT_BOTTLE_PDF",
+      "url": "https://patentimages.storage.googleapis.com/b7/fc/e4/b884396c62943e/US20060226110A1.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/b7/fc/e4/b884396c62943e/US20060226110A1.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:45:31.237324+00:00",
+      "bytes": 2193418,
+      "sha256": "cb50c7c43873eae08ed50b467db550dcdb3edd3d7b4d95ad144e9b5d0a2b716a",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_BOTTLE_PDF.txt",
+      "text_sha256": "81f0cdc60cb8819359d759efd2f1a31f8c18f0d26c413e4454bb6999a11baff2",
+      "extraction": "pdftotext -layout; page breaks retained"
+    },
+    {
+      "id": "SW_PDF",
+      "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
+      "final_url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
+      "bytes": 350662,
+      "sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+      "content_type": "application/pdf",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
+      "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
+      "extraction": "pdftotext -layout; page breaks retained"
+    },
+    {
+      "id": "ASBCA_NOQUERY",
+      "url": "https://www.asbca.mil/Portals/143/Decisions/2009/53896.pdf",
+      "final_url": "https://www.asbca.mil/Portals/143/Decisions/2009/53896.pdf",
+      "http_status": 403,
+      "retrieved_at_utc": "2026-10-25T21:44:19.446361+00:00",
+      "bytes": 423,
+      "sha256": "43a8e19784ad255ea4009005daa2a9696e0cd355756cf2d25446ba901cb75e98",
+      "content_type": "text/html",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/ASBCA_NOQUERY.html"
+    },
+    {
+      "id": "NZ_HISTORY",
+      "url": "https://camelbak.co.nz/pages/about-us",
+      "final_url": "https://camelbak.co.nz/pages/about-us",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.050554+00:00",
+      "bytes": 391775,
+      "sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
+      "content_type": "text/html; charset=utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
+      "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "CARE",
+      "url": "https://www.camelbak.com/care-and-cleaning.html",
+      "final_url": "https://www.camelbak.com/care-and-cleaning.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.052662+00:00",
+      "bytes": 131072,
+      "sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
+      "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "C_HISTORY",
+      "url": "https://www.camelbak.com/company-history.html",
+      "final_url": "https://www.camelbak.com/company-history.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.049896+00:00",
+      "bytes": 159075,
+      "sha256": "406dca423e0616a268fcf79ecf8b8f0290900eab75a7cac143317bfebdd2e4e7",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/C_HISTORY.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/C_HISTORY.txt",
+      "text_sha256": "86e2e2b220a2786e084731a9495c8d8cd3a4fb55dad6bca192b18fe3f4d63601",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "HACKS",
+      "url": "https://www.camelbak.com/guide-camelhaks.html",
+      "final_url": "https://www.camelbak.com/guide-camelhaks.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.473694+00:00",
+      "bytes": 123514,
+      "sha256": "af6a85ae55bd999d74c14f9344ad69844f3f49a611aa206a3258928b4de113d8",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HACKS.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/HACKS.txt",
+      "text_sha256": "7098ff6e8a8e7f99736528d6fe4484d9b1bfad21a6556662b55f043d74041aef",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    },
+    {
+      "id": "CLEAN",
+      "url": "https://www.camelbak.com/how-to-clean-dry-store-hydration-reservoir.html",
+      "final_url": "https://www.camelbak.com/how-to-clean-dry-store-hydration-reservoir.html",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-25T21:43:28.265811+00:00",
+      "bytes": 125454,
+      "sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
+      "content_type": "text/html;charset=UTF-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
+      "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
+      "extraction": "HTMLParser text nodes, script/style/noscript excluded; each nonempty normalized node is a numbered paragraph"
+    }
+  ],
+  "not_adopted": [
+    "BIKE2013localrawHTTP403；web可讀不等已取本機原文章節bytes",
+    "ASBCA官方兩URL403；取得非官方鏡像原裁決，不能把錯誤頁SHA當PDF",
+    "SW_HTML與SW_PDF同作品，不能雙算證人",
+    "TRADE25FromOurPartners後期起源回顧非同期採訪",
+    "IHA2020只抽文線索，圖像時間線未逐頁核，不納主張",
+    "HACKS只有影片介紹，影片未看／取得，不報實作已查"
+  ],
+  "source_pass_issued": false,
+  "narrative_pass_issued": false,
+  "runtime_pass_issued": false,
+  "owner_approval": false,
+  "core_files_written": false,
+  "paid_calls": 0,
+  "provider_calls": 0,
+  "backend_mutations": 0,
+  "git_commands": 0,
+  "subagents_spawned": 0
+}

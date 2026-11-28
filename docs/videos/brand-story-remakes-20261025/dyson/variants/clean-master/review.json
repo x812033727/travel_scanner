@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T09:05:47.185Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the Dyson R5 current independently source-verified/native-merged narration and teaser plan source (owner reviews pending) or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-dyson-japan-first-20261021-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/variants/clean-master/video.json": "928d6705b9571608df4dbe07548fc14e07d3c9c3f5476738b09fedff3828adba",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/variants/clean-master/derivation.json": "bf70a320bbd9a63266a0d20fe8c9e41a14ae99d1b666575ef86ab260f57ed4a4",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/variants/clean-master/lint.json": "8bf0bf7ce0c4d1f60829843206cb837ed18945787013d76572968fdf61b80ed9",
+    "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+    "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/current.json": "7793b04bf4ffe93d4a3f2ae19ddb947a7ddb254a53034f63ef53faf917d88ed6"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "lexicon_sha256": "502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d",
+    "head_event_sha256": "9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339",
+    "sequence": 1,
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "8b090f8f0ac9b1e2",
+      "variant": "8b090f8f0ac9b1e2",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "da8c90e854a44e79",
+      "variant": "da8c90e854a44e79",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "f33261b99725401e",
+      "variant": "f33261b99725401e",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 1,
+    "saved_lint_exactly_matches": true
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}

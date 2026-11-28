@@ -1,0 +1,266 @@
+{
+  "narrative_hash": "54cb9746c31f3e48",
+  "script_hash": "a5cd3ae41568d2720cd4706ef699ceab7a2327a033125b02c22347661bbb37a9",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "cda30288bd7b5c952847791fedc37c9f504072c6ca82e7cef2447071d1e5defa",
+  "round": 9,
+  "passed": true,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20101] 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20106] 為了留下你穿慣的鞋面，換掉的到底會有哪些東西？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20603] 七月那位送修者則寫，維修方收鞋後幾天，就通知鞋已修好，正在回程。",
+      "yes_readers": 1
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20104] 我想跟著它看：修理要拆到哪裡？",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20301] 授權換底頁說，要先移走舊外底、沿條和縫線；示範裡，師傅倒放靴子，刀沿鞋底上緣走。",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20305] 我會盯著露出的接合位置：師傅接著會把這裡送向哪個工具？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20619] 對那位七月評論者來說，這次想留下的上半部，跟著修好的靴子一起回來了。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20414] 原廠說，冷卻後，沿條與外底便形成一件PVC，鞋底就接好了。",
+      "yes_readers": 1
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c7r20401] 輪到熱接了。師傅拿起新外底，放到已縫好沿條的鞋面下方。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20621] 訂閱品牌故事，我們繼續看熟悉的日用品，是怎麼被人做出、用過，再留在生活裡。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20101] 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20619] 對那位七月評論者來說，這次想留下的上半部，跟著修好的靴子一起回來了。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r20408] 熱刀加熱接合處，滾輪再把沿條和外底壓在一起。",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c7r20101] 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c7r20106] 為了留下你穿慣的鞋面，換掉的到底會有哪些東西？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c7r20603] 七月那位送修者則寫，維修方收鞋後幾天，就通知鞋已修好，正在回程。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c7r20104] 我想跟著它看：修理要拆到哪裡？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c7r20301] 授權換底頁說，要先移走舊外底、沿條和縫線；示範裡，師傅倒放靴子，刀沿鞋底上緣走。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c7r20305] 我會盯著露出的接合位置：師傅接著會把這裡送向哪個工具？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c7r20619] 對那位七月評論者來說，這次想留下的上半部，跟著修好的靴子一起回來了。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c7r20517] 授權維修方把自己的做法寫成相同的機器、相同的方法、相同的材料，接回原來的構造。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c7r20401] 輪到熱接了。師傅拿起新外底，放到已縫好沿條的鞋面下方。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c7r20621] 訂閱品牌故事，我們繼續看熟悉的日用品，是怎麼被人做出、用過，再留在生活裡。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c7r20101] 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c7r20619] 對那位七月評論者來說，這次想留下的上半部，跟著修好的靴子一起回來了。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c7r20408] 熱刀加熱接合處，滾輪再把沿條和外底壓在一起。"
+        }
+      ],
+      "failed": [
+        "no_recap"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c7r20101] 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c7h04b1] 包裹回來時，又多了什麼？"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[c7r20610] 另一位送修者在二〇二五年一月寫下，腳穿回去時，最滿意的是什麼？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c7r20105] 我們就看這一雙馬汀靴，能不能把主人穿慣的鞋面留下來。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c7r20301] 授權換底頁說，要先移走舊外底、沿條和縫線；示範裡，師傅倒放靴子，刀沿鞋底上緣走。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c7r20417] 可是鞋接好了，新底邊緣還得怎麼處理，才輪得到鞋主人重新穿？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c7r20607] 評論還特別提到，維修方多添了一組全新鞋帶。"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[c7r20414] 原廠說，冷卻後，沿條與外底便形成一件PVC，鞋底就接好了。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c7r20401] 輪到熱接了。師傅拿起新外底，放到已縫好沿條的鞋面下方。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c7r20621] 訂閱品牌故事，我們繼續看熟悉的日用品，是怎麼被人做出、用過，再留在生活裡。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c7r20106] 為了留下你穿慣的鞋面，換掉的到底會有哪些東西？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c7r20619] 對那位七月評論者來說，這次想留下的上半部，跟著修好的靴子一起回來了。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c7r20517] 授權維修方把自己的做法寫成相同的機器、相同的方法、相同的材料，接回原來的構造。"
+        }
+      ],
+      "failed": [
+        "one_line"
+      ],
+      "advisory": []
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+{
+  "source_video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+  "reviewer": "/root/seiko_six_fixes_independent",
+  "independent": true,
+  "role_disclosure": "I did not author or apply these translations and am a new targeted rechecker, distinct from the frozen full reviewer seiko_eight_text_independent_r4. I independently read the six corrected source/target leaves across the four companion rechecks and the listed necessary context; I deep-compared every worksheet/native JSON leaf with frozen before files, or required exact baseline SHAs for untouched ja/th. The original independent full review supplies the unchanged 145-line/7-chapter coverage and full metadata review. I do not claim a second full semantic reading. ja/th have zero fresh semantic checks and inherit their original TEXT_PASS by exact bytes. Root assertions and author receipts are not semantic acceptance evidence. TEXT_PASS is text only; no audio, video, timeline, SRT, actual timing or rendered media QA was done.",
+  "review_type": "TARGETED_RECHECK",
+  "created_at_utc": "2026-10-26T06:53:23.013799+00:00",
+  "baseline_review": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-ko-es.json",
+  "baseline_review_sha256": "3a03ca6b4edab33948801901f8fe7de21aca552072a0b1ec3b1426a7e462fa92",
+  "baseline_full_reviewer": "seiko_eight_text_independent_r4",
+  "original_review_preserved": true,
+  "baseline_full_review_coverage": {
+    "lines_per_locale": 145,
+    "chapters_per_locale": 7,
+    "metadata": "title, full description with source URLs, tags, thumbnail tag/headline/sub",
+    "scope": "Inherited frozen original independent full review for unchanged text; not freshly reread in this recheck."
+  },
+  "applied_fixes_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-ko-es.json",
+  "applied_fixes_sha256": "8549fe00c424e951c09afb6cd49e9ffb3a343d047567a7de4e198f3a07e26a56",
+  "original_required_and_advisory_history_preserved": true,
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/ko.todo.json",
+      "translation_path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/ko.json",
+      "worksheet_sha256": "8743c64bd780a477ba59ee8c87f5f140c567a0d18d257b77e3388b7a980b4376",
+      "translation_sha256": "831143339b059cdb56dbd6805608bded98f5d235d7b8e8398dd1179d380698d1",
+      "status": "TEXT_PASS",
+      "review_mode": "FROZEN_FULL145_LINE_7_CHAPTER_REVIEW_PLUS_EXACT_ONE_LEAF_TARGETED_RECHECK",
+      "checked_lines": 2,
+      "checked_chapters": 0,
+      "fresh_read_line_ids": [
+        "skr1f07",
+        "skr1f08"
+      ],
+      "fresh_read_chapter_ids": [],
+      "fresh_read_metadata_targets": [],
+      "fresh_read_context_line_ids": [
+        "skr1f08"
+      ],
+      "fresh_read_count_definition": "Fresh source/target semantic readings listed here, including context; no second full reading is claimed. Runtime title observations are mechanical checks.",
+      "inherited_lines": 143,
+      "inherited_chapters": 7,
+      "covered_lines": 145,
+      "covered_chapters": 7,
+      "baseline_review": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-ko-es.json",
+      "baseline_review_sha256": "3a03ca6b4edab33948801901f8fe7de21aca552072a0b1ec3b1426a7e462fa92",
+      "baseline_full_reviewer": "seiko_eight_text_independent_r4",
+      "current_targeted_reviewer": "/root/seiko_six_fixes_independent",
+      "baseline_status": "FIXES_REQUIRED",
+      "baseline_worksheet_sha256": "d6e2c376cf94cea52d6f489a0719b7ae0eb82df4bf5bcdd47243634b62147c64",
+      "baseline_translation_sha256": "e0d6ba8de9aae73ea9025c7909f842d1f8e1d3263c6bd8ba7d2c9f6113c52028",
+      "original_full_review_inherited_for_unchanged_text": true,
+      "original_findings_preserved": [
+        {
+          "target": "lines.skr1f07",
+          "current": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 설정을 누가 기록했을까요?",
+          "proposed": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?",
+          "reason": "Source asks whether anyone recorded each setting (有人記下每次怎麼設嗎？), leaving the existence of records open. 누가 기록했을까요? asks who recorded them and shifts the question toward an existing recorder; the next source line specifically says no temperature data were recorded. Restore the yes/no uncertainty and what was set each time.",
+          "required": true
+        }
+      ],
+      "original_advisory_preserved": [],
+      "worksheet_native_exact": true,
+      "worksheet_source_fields_exact_to_current_source": true,
+      "description_urls_exact_same_order": true,
+      "source_urls": [
+        "https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html",
+        "https://www.seikowatches.com/jp-ja/products/astron/special/story_qa50th_1",
+        "https://ethw.org/Milestones:Electronic_Quartz_Wristwatch,_1969",
+        "https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf",
+        "https://global.toyota/jp/detail/14002042/",
+        "https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf",
+        "https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf"
+      ],
+      "actual_timing_review": false,
+      "actual_audio_or_video_review": false,
+      "actual_media_review": false,
+      "findings": [],
+      "advisory": [],
+      "original_FIXES_REQUIRED_preserved": true,
+      "history_worksheet_before_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/ko/worksheet-before.json",
+      "history_translation_before_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/ko/translation-before.json",
+      "history_worksheet_before_sha256": "d6e2c376cf94cea52d6f489a0719b7ae0eb82df4bf5bcdd47243634b62147c64",
+      "history_translation_before_sha256": "e0d6ba8de9aae73ea9025c7909f842d1f8e1d3263c6bd8ba7d2c9f6113c52028",
+      "applied_fixes_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-ko-es.json",
+      "applied_fixes_sha256": "8549fe00c424e951c09afb6cd49e9ffb3a343d047567a7de4e198f3a07e26a56",
+      "applied_receipt_crosschecked_against_actual_files": true,
+      "worksheet_leaf_diffs": [
+        {
+          "path": "lines.89.text",
+          "old": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 설정을 누가 기록했을까요?",
+          "new": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?"
+        }
+      ],
+      "native_leaf_diffs": [
+        {
+          "path": "lines.skr1f07.text",
+          "old": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 설정을 누가 기록했을까요?",
+          "new": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?"
+        }
+      ],
+      "native_hash_leaf_diffs": [],
+      "native_hash_fields_changed_count": 0,
+      "native_hash_field_disclosure": "No native source_hashes.* or lines.*.source_hash leaf changed; the normal merge introduced no hash-field changes.",
+      "all_other_lines_metadata_chapters_source_hashes_exact": true,
+      "required_findings_count": 1,
+      "required_resolved_count": 1,
+      "required_remaining_count": 0,
+      "resolution_checks": [
+        {
+          "target": "lines.skr1f07",
+          "baseline_required": true,
+          "before": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 설정을 누가 기록했을까요?",
+          "proposed": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?",
+          "current_worksheet": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?",
+          "current_native": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?",
+          "proposed_equals_current": true,
+          "result": "PASS",
+          "reason": "있었을까요? asks whether any person existed who recorded how each setting was made; 매번 어떻게 설정했는지 retains each setting and how it was set. This restores the source yes/no uncertainty rather than asking the identity of an assumed recorder. The unchanged next line skr1f08 states that the set temperature was not recorded as data.",
+          "fresh_source_context": {
+            "chapter.skr1f01": "走到爐邊，才看見少記的事",
+            "skr1f07": "我聽到這裡，會想再找當時留下的數據：有人記下每次怎麼設嗎？",
+            "skr1f08": "回顧認為更大的問題，是設定溫度沒有作為資料記錄下來。"
+          },
+          "claim_context": {
+            "claim_id": "C22",
+            "source_id": "S7_SHMJ",
+            "source_claim": "管理者到現場檢查工作發現低溫；源文認為未記錄設定也是問題。",
+            "short_quote": "設定温度をデータとして記録していなかった",
+            "scope": "Context attribution only; no new independent historical source QA is claimed."
+          }
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "worksheet_path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/es.todo.json",
+      "translation_path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/es.json",
+      "worksheet_sha256": "3a8a60f3dc9768fbd56a06c64eaba6e22a2340873b517dd0ad475888d105a81f",
+      "translation_sha256": "6e2d88010f9ee9fae8d12c8fcd37c169d8889e08b14d9558adba8051f27db7bc",
+      "status": "TEXT_PASS",
+      "review_mode": "FROZEN_FULL145_LINE_7_CHAPTER_REVIEW_PLUS_EXACT_ONE_LEAF_TARGETED_RECHECK",
+      "checked_lines": 2,
+      "checked_chapters": 1,
+      "fresh_read_line_ids": [
+        "skr1f07",
+        "skr1f08"
+      ],
+      "fresh_read_chapter_ids": [
+        "skr1f01"
+      ],
+      "fresh_read_metadata_targets": [],
+      "fresh_read_context_line_ids": [
+        "skr1f07",
+        "skr1f08"
+      ],
+      "fresh_read_count_definition": "Fresh source/target semantic readings listed here, including context; no second full reading is claimed. Runtime title observations are mechanical checks.",
+      "inherited_lines": 143,
+      "inherited_chapters": 6,
+      "covered_lines": 145,
+      "covered_chapters": 7,
+      "baseline_review": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-ko-es.json",
+      "baseline_review_sha256": "3a03ca6b4edab33948801901f8fe7de21aca552072a0b1ec3b1426a7e462fa92",
+      "baseline_full_reviewer": "seiko_eight_text_independent_r4",
+      "current_targeted_reviewer": "/root/seiko_six_fixes_independent",
+      "baseline_status": "FIXES_REQUIRED",
+      "baseline_worksheet_sha256": "ab3007182102981fb1832ed57a523e29ff6fd3120f70b2b85f7da2ed15cf5e9b",
+      "baseline_translation_sha256": "a4dfbaa0b8cc0be9fb20888e4485f7eb9070bfa70ac27b9603ddaf9ca9dfbe52",
+      "original_full_review_inherited_for_unchanged_text": true,
+      "original_findings_preserved": [
+        {
+          "target": "chapters.skr1f01",
+          "current": "Junto al horno aparece un registro que faltaba",
+          "proposed": "Junto al horno se descubre la falta de un registro",
+          "reason": "Source chapter describes discovering an omission in recording, and skr1f08 says the settings had not been recorded. aparece un registro que faltaba instead says the missing record appears, suggesting a recovered record. State that the absence of a record is discovered.",
+          "required": true
+        }
+      ],
+      "original_advisory_preserved": [],
+      "worksheet_native_exact": true,
+      "worksheet_source_fields_exact_to_current_source": true,
+      "description_urls_exact_same_order": true,
+      "source_urls": [
+        "https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html",
+        "https://www.seikowatches.com/jp-ja/products/astron/special/story_qa50th_1",
+        "https://ethw.org/Milestones:Electronic_Quartz_Wristwatch,_1969",
+        "https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf",
+        "https://global.toyota/jp/detail/14002042/",
+        "https://www.jstage.jst.go.jp/article/jjspe1933/43/513/43_513_998/_pdf",
+        "https://sts.kahaku.go.jp/albums/abm.php?d=3277&f=abm00011060.pdf&n=102.pdf"
+      ],
+      "actual_timing_review": false,
+      "actual_audio_or_video_review": false,
+      "actual_media_review": false,
+      "findings": [],
+      "advisory": [],
+      "original_FIXES_REQUIRED_preserved": true,
+      "history_worksheet_before_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/es/worksheet-before.json",
+      "history_translation_before_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/es/translation-before.json",
+      "history_worksheet_before_sha256": "ab3007182102981fb1832ed57a523e29ff6fd3120f70b2b85f7da2ed15cf5e9b",
+      "history_translation_before_sha256": "a4dfbaa0b8cc0be9fb20888e4485f7eb9070bfa70ac27b9603ddaf9ca9dfbe52",
+      "applied_fixes_path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-ko-es.json",
+      "applied_fixes_sha256": "8549fe00c424e951c09afb6cd49e9ffb3a343d047567a7de4e198f3a07e26a56",
+      "applied_receipt_crosschecked_against_actual_files": true,
+      "worksheet_leaf_diffs": [
+        {
+          "path": "chapters.4.text",
+          "old": "Junto al horno aparece un registro que faltaba",
+          "new": "Junto al horno se descubre la falta de un registro"
+        }
+      ],
+      "native_leaf_diffs": [
+        {
+          "path": "chapters.skr1f01",
+          "old": "Junto al horno aparece un registro que faltaba",
+          "new": "Junto al horno se descubre la falta de un registro"
+        }
+      ],
+      "native_hash_leaf_diffs": [],
+      "native_hash_fields_changed_count": 0,
+      "native_hash_field_disclosure": "No native source_hashes.* or lines.*.source_hash leaf changed; the normal merge introduced no hash-field changes.",
+      "all_other_lines_metadata_chapters_source_hashes_exact": true,
+      "required_findings_count": 1,
+      "required_resolved_count": 1,
+      "required_remaining_count": 0,
+      "resolution_checks": [
+        {
+          "target": "chapters.skr1f01",
+          "baseline_required": true,
+          "before": "Junto al horno aparece un registro que faltaba",
+          "proposed": "Junto al horno se descubre la falta de un registro",
+          "current_worksheet": "Junto al horno se descubre la falta de un registro",
+          "current_native": "Junto al horno se descubre la falta de un registro",
+          "proposed_equals_current": true,
+          "result": "PASS",
+          "reason": "se descubre la falta de un registro makes the discovered thing the absence of a record. The source chapter 少記的事 and unchanged skr1f08 concern unrecorded temperature settings; the new chapter does not claim that an existing lost record was recovered.",
+          "fresh_source_context": {
+            "chapter.skr1f01": "走到爐邊，才看見少記的事",
+            "skr1f07": "我聽到這裡，會想再找當時留下的數據：有人記下每次怎麼設嗎？",
+            "skr1f08": "回顧認為更大的問題，是設定溫度沒有作為資料記錄下來。"
+          },
+          "claim_context": {
+            "claim_id": "C22",
+            "source_id": "S7_SHMJ",
+            "source_claim": "管理者到現場檢查工作發現低溫；源文認為未記錄設定也是問題。",
+            "short_quote": "設定温度をデータとして記録していなかった",
+            "scope": "Context attribution only; no new independent historical source QA is claimed."
+          }
+        }
+      ]
+    }
+  ],
+  "title_runtime_observations": [
+    {
+      "locale": "ko",
+      "input": "세이코 45만 엔 시계, 왜 공장에서 다시 조정해야 했을까? | 브랜드 스토리",
+      "output": "세이코 45만 엔 시계, 왜 공장에서 다시 조정해야 했을까?｜브랜드 스토리",
+      "story_tag": "｜브랜드 스토리",
+      "output_equals_input": false
+    },
+    {
+      "locale": "es",
+      "input": "Seiko: ¿Por qué un reloj de ¥450,000 volvía a la fábrica para un ajuste? | Historias de marcas",
+      "output": "Seiko: ¿Por qué un reloj de ¥450,000 volvía a la fábrica para un ajuste? | Historias de marcas",
+      "story_tag": "｜Historia de marca",
+      "output_equals_input": true
+    }
+  ],
+  "title_runtime_observation_scope": "Actual withStoryTag output only. EN actual duplicate suffix is resolved. No other locale is assigned a style must-fix when the runtime output has no actual repetition.",
+  "required_findings_count": 2,
+  "required_resolved_count": 2,
+  "required_remaining_count": 0,
+  "protected_inputs_before_after": [
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/author-freeze-r4.json",
+      "before_sha256": "7fdc3571eccb0cfbb3652831a92b0d77a19e80dded788beb9e8b3bee436f86b5",
+      "after_sha256": "7fdc3571eccb0cfbb3652831a92b0d77a19e80dded788beb9e8b3bee436f86b5",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/author-revision-r4.json",
+      "before_sha256": "57bb519eb7738c3e8f306fa44c9e8c376eaf39aa90555970ecb345cafb02f10d",
+      "after_sha256": "57bb519eb7738c3e8f306fa44c9e8c376eaf39aa90555970ecb345cafb02f10d",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/author-source-additions.json",
+      "before_sha256": "6751d73432f92c6375c0e770fdb88ee1e65d1e0e3000014d6422749bc19e722c",
+      "after_sha256": "6751d73432f92c6375c0e770fdb88ee1e65d1e0e3000014d6422749bc19e722c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/claims.json",
+      "before_sha256": "11a2682835efc9ccf28f4a8a09541df81c45f2dc11520a2a6b702b0c9238a32b",
+      "after_sha256": "11a2682835efc9ccf28f4a8a09541df81c45f2dc11520a2a6b702b0c9238a32b",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/claims.md",
+      "before_sha256": "594fd91423d58a6683685baeda7eb0abb338a7154b6099473021a3ce3d3edde8",
+      "after_sha256": "594fd91423d58a6683685baeda7eb0abb338a7154b6099473021a3ce3d3edde8",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/original-preservation.json",
+      "before_sha256": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc",
+      "after_sha256": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/research-original.claims.json",
+      "before_sha256": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+      "after_sha256": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/research-original.md",
+      "before_sha256": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+      "after_sha256": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/script.md",
+      "before_sha256": "5e1da3a3adfb0121e8e11cb4c4f573340b5e60da9e1681c1eb7fb224673c912a",
+      "after_sha256": "5e1da3a3adfb0121e8e11cb4c4f573340b5e60da9e1681c1eb7fb224673c912a",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/series.json",
+      "before_sha256": "131e6e254d98822c6adbb8f500e2dbb8fa96c21c20130d584591eb7994169d4d",
+      "after_sha256": "131e6e254d98822c6adbb8f500e2dbb8fa96c21c20130d584591eb7994169d4d",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/video.json",
+      "before_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "after_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/tools/video/core/metadata.mjs",
+      "before_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "after_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/en.todo.json",
+      "before_sha256": "759fa1a2bf0ce07fdfbb03c636ebefecb8eb6e43b831bc82937e4cf0276fa9c2",
+      "after_sha256": "759fa1a2bf0ce07fdfbb03c636ebefecb8eb6e43b831bc82937e4cf0276fa9c2",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/es.todo.json",
+      "before_sha256": "3a8a60f3dc9768fbd56a06c64eaba6e22a2340873b517dd0ad475888d105a81f",
+      "after_sha256": "3a8a60f3dc9768fbd56a06c64eaba6e22a2340873b517dd0ad475888d105a81f",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/id.todo.json",
+      "before_sha256": "b4756425c9cb8cd8407fcc7799d6fa64f65223adffcbde5acfe501f9212f630f",
+      "after_sha256": "b4756425c9cb8cd8407fcc7799d6fa64f65223adffcbde5acfe501f9212f630f",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/ja.todo.json",
+      "before_sha256": "dc61e64cacc02f041201bbff8118b07249534e9dc32f7883819f665d85018c27",
+      "after_sha256": "dc61e64cacc02f041201bbff8118b07249534e9dc32f7883819f665d85018c27",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/ko.todo.json",
+      "before_sha256": "8743c64bd780a477ba59ee8c87f5f140c567a0d18d257b77e3388b7a980b4376",
+      "after_sha256": "8743c64bd780a477ba59ee8c87f5f140c567a0d18d257b77e3388b7a980b4376",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/pt.todo.json",
+      "before_sha256": "d09a216382b32aad43e1ad8ef6ca9c46179273f814d592a6e3c69cd0db62f251",
+      "after_sha256": "d09a216382b32aad43e1ad8ef6ca9c46179273f814d592a6e3c69cd0db62f251",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/th.todo.json",
+      "before_sha256": "697dcc57d41244fa70f421c053a0a5545004c7e555712b968a326ef4676af64a",
+      "after_sha256": "697dcc57d41244fa70f421c053a0a5545004c7e555712b968a326ef4676af64a",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-adapt-seiko-quartz-astron-remake-20261025/i18n/vi.todo.json",
+      "before_sha256": "eb912ef0315a3f296fe17d5f1ecfb8fb5b9658b560e9c5f4e6c48fbdc0778e5b",
+      "after_sha256": "eb912ef0315a3f296fe17d5f1ecfb8fb5b9658b560e9c5f4e6c48fbdc0778e5b",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-en-ja.json",
+      "before_sha256": "01ba3133745b456f4652288a7e1db436d89bf9dc274384751ca3b40c0c202558",
+      "after_sha256": "01ba3133745b456f4652288a7e1db436d89bf9dc274384751ca3b40c0c202558",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-ko-es.json",
+      "before_sha256": "8549fe00c424e951c09afb6cd49e9ffb3a343d047567a7de4e198f3a07e26a56",
+      "after_sha256": "8549fe00c424e951c09afb6cd49e9ffb3a343d047567a7de4e198f3a07e26a56",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-pt-id.json",
+      "before_sha256": "6e1c80eac1eb8940d69c3004ac2ba759effc50d5617cb60af4a3d6eb8217bd61",
+      "after_sha256": "6e1c80eac1eb8940d69c3004ac2ba759effc50d5617cb60af4a3d6eb8217bd61",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/applied-fixes-vi-th.json",
+      "before_sha256": "6c4dec49ca80bf378b0789c4484553e92f887649714fc55a403cb9d1316eb2fc",
+      "after_sha256": "6c4dec49ca80bf378b0789c4484553e92f887649714fc55a403cb9d1316eb2fc",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/author-all-eight.json",
+      "before_sha256": "2539ff790028678ff0abb97bd623e161115b695ec00abe9ee60b933c9f0d0210",
+      "after_sha256": "2539ff790028678ff0abb97bd623e161115b695ec00abe9ee60b933c9f0d0210",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/author-en-ja.json",
+      "before_sha256": "efb16114af2331f2a7baef2532bc23c4835b6bdd496767a886da41291c57bb6c",
+      "after_sha256": "efb16114af2331f2a7baef2532bc23c4835b6bdd496767a886da41291c57bb6c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/author-ko-es.json",
+      "before_sha256": "79d0f8efac513b60d339b57953ac01efa85ecf44c844b953801dfac63c678ab2",
+      "after_sha256": "79d0f8efac513b60d339b57953ac01efa85ecf44c844b953801dfac63c678ab2",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/author-pt-id.json",
+      "before_sha256": "7b4e551e99d4996d876093d611dab893aa1ea3abd429ee6a88e1e9b52fa44dd4",
+      "after_sha256": "7b4e551e99d4996d876093d611dab893aa1ea3abd429ee6a88e1e9b52fa44dd4",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/author-vi-th.json",
+      "before_sha256": "c0bfd3ad37f821afdb5564a0fe84443d4215d8588f64b61b093ccdee29f5e21e",
+      "after_sha256": "c0bfd3ad37f821afdb5564a0fe84443d4215d8588f64b61b093ccdee29f5e21e",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/author-work.py",
+      "before_sha256": "a1512502f6545fdb6910c1fc3523539ef60a7ec4afe0fff64bc041569026bd6b",
+      "after_sha256": "a1512502f6545fdb6910c1fc3523539ef60a7ec4afe0fff64bc041569026bd6b",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/eight-language-independent-verification.json",
+      "before_sha256": "c8d30a1604e13fe2a6e585adb3667afa7bfa287dae64feef183f6419793cf04c",
+      "after_sha256": "c8d30a1604e13fe2a6e585adb3667afa7bfa287dae64feef183f6419793cf04c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-en.py",
+      "before_sha256": "f0d35f7fc698a5538a763e9399b08827a6d42cbaa00aac0bff9d1faf166393ab",
+      "after_sha256": "f0d35f7fc698a5538a763e9399b08827a6d42cbaa00aac0bff9d1faf166393ab",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-es.py",
+      "before_sha256": "b212ac71e945e2d3fd40b4db808d9641dc5068dffcd39e00a540e7fdb56b7fc7",
+      "after_sha256": "b212ac71e945e2d3fd40b4db808d9641dc5068dffcd39e00a540e7fdb56b7fc7",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-id.py",
+      "before_sha256": "0e6b46337937eeeea0865f218b36a72ce62a4d9de68e5676525022740c474797",
+      "after_sha256": "0e6b46337937eeeea0865f218b36a72ce62a4d9de68e5676525022740c474797",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-ja.py",
+      "before_sha256": "2bb07e4a601aedd909935c5cd819526c72d87be8854600b086b60831fd5a599c",
+      "after_sha256": "2bb07e4a601aedd909935c5cd819526c72d87be8854600b086b60831fd5a599c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-ko.py",
+      "before_sha256": "2a8748397f9658da73feeb503c6a47b2e56a3f3bd82f2872943999ce18925f55",
+      "after_sha256": "2a8748397f9658da73feeb503c6a47b2e56a3f3bd82f2872943999ce18925f55",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-pt.py",
+      "before_sha256": "2f08aa3f58f2cb3d4718cbd0b2567da87b2d7fce546f35a195f0eaa836ce9a4d",
+      "after_sha256": "2f08aa3f58f2cb3d4718cbd0b2567da87b2d7fce546f35a195f0eaa836ce9a4d",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-th.py",
+      "before_sha256": "fd0bcf08097861133b509608af1b8e24a9e2c349abf9f56cec4622126a4349bb",
+      "after_sha256": "fd0bcf08097861133b509608af1b8e24a9e2c349abf9f56cec4622126a4349bb",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/fill-vi.py",
+      "before_sha256": "d9f3c4d29fa85cb1114f5796b1f92515e733c39e1cab761e7a5c12b2ade13bb8",
+      "after_sha256": "d9f3c4d29fa85cb1114f5796b1f92515e733c39e1cab761e7a5c12b2ade13bb8",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/finalize-author.py",
+      "before_sha256": "8cc0f37ede37c9a5df009382f960c6884bec536baca905663263b2ccab161d99",
+      "after_sha256": "8cc0f37ede37c9a5df009382f960c6884bec536baca905663263b2ccab161d99",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-en.json",
+      "before_sha256": "f81183238311aeb618304325626b02c11106330577d77226c93387f83902752d",
+      "after_sha256": "f81183238311aeb618304325626b02c11106330577d77226c93387f83902752d",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-es.json",
+      "before_sha256": "df182150e77eeb72a3ad8a70f5d7a36138e6579db611397128cb7e464631366b",
+      "after_sha256": "df182150e77eeb72a3ad8a70f5d7a36138e6579db611397128cb7e464631366b",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-id.json",
+      "before_sha256": "c80d90ff75f9b4052daa9ab8518744e842d5300b94b6984dc7b0b6d0d67cd088",
+      "after_sha256": "c80d90ff75f9b4052daa9ab8518744e842d5300b94b6984dc7b0b6d0d67cd088",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-ja.json",
+      "before_sha256": "e99b4cccb33471595112aad16c19cd65998bba2ca8c7c55e68f6ad3689e1ffc6",
+      "after_sha256": "e99b4cccb33471595112aad16c19cd65998bba2ca8c7c55e68f6ad3689e1ffc6",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-ko.json",
+      "before_sha256": "78f291416b4173eab2b9b1b5fe8001e471b672cab19285bc8524246bb02d7932",
+      "after_sha256": "78f291416b4173eab2b9b1b5fe8001e471b672cab19285bc8524246bb02d7932",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-pt.json",
+      "before_sha256": "7d62bdefcc44a6685359e0780fb32e16efaf22cf714e3eb01d03972e8e414223",
+      "after_sha256": "7d62bdefcc44a6685359e0780fb32e16efaf22cf714e3eb01d03972e8e414223",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-th.json",
+      "before_sha256": "c7c29918358b1b5c6ba056f93f203277ae4d5b5458a848150df914f33607e94d",
+      "after_sha256": "c7c29918358b1b5c6ba056f93f203277ae4d5b5458a848150df914f33607e94d",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/native-merge-vi.json",
+      "before_sha256": "ea718e0033b152c2903f1bbf416ce82c60dc0c73f8f8a8033c73823a132cc058",
+      "after_sha256": "ea718e0033b152c2903f1bbf416ce82c60dc0c73f8f8a8033c73823a132cc058",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-en-ja.json",
+      "before_sha256": "9ddbcf0a8dddc6c9db7c4a066803d6c537c9bf59c0a8d5e4515225c2f53c30d6",
+      "after_sha256": "9ddbcf0a8dddc6c9db7c4a066803d6c537c9bf59c0a8d5e4515225c2f53c30d6",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-ko-es.json",
+      "before_sha256": "3a03ca6b4edab33948801901f8fe7de21aca552072a0b1ec3b1426a7e462fa92",
+      "after_sha256": "3a03ca6b4edab33948801901f8fe7de21aca552072a0b1ec3b1426a7e462fa92",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-pt-id.json",
+      "before_sha256": "d761e9df96628300405bde03e58c5d97647b5ae203fac270b2a328ad611ff789",
+      "after_sha256": "d761e9df96628300405bde03e58c5d97647b5ae203fac270b2a328ad611ff789",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/review-vi-th.json",
+      "before_sha256": "460502691aec993c7f1de41d6083cc9e86f8f0b02168b5bb056dd73156402ab7",
+      "after_sha256": "460502691aec993c7f1de41d6083cc9e86f8f0b02168b5bb056dd73156402ab7",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/root-last-two-native-merge.log",
+      "before_sha256": "0295e1759dbf7a4d6f0b36ceb69861d09c7880755845dff3f3f516762cfcee30",
+      "after_sha256": "0295e1759dbf7a4d6f0b36ceb69861d09c7880755845dff3f3f516762cfcee30",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/root-six-fixes-native-merge.log",
+      "before_sha256": "cb87a29732f7857072e2c508eebcd4b9056be324f7ec73fdabe0212dcaf45fd1",
+      "after_sha256": "cb87a29732f7857072e2c508eebcd4b9056be324f7ec73fdabe0212dcaf45fd1",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/root-six-native-merge.log",
+      "before_sha256": "e40f27f48834524522b6e81051377d4276d63984460d43ad9b8db08a4a70b059",
+      "after_sha256": "e40f27f48834524522b6e81051377d4276d63984460d43ad9b8db08a4a70b059",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/text-current.json",
+      "before_sha256": "823ac5db057f4b238ee9a1477ba90afb662b58d9c811ae470f3a344b1b04e09c",
+      "after_sha256": "823ac5db057f4b238ee9a1477ba90afb662b58d9c811ae470f3a344b1b04e09c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-plan.json",
+      "before_sha256": "749baf7d4fa20a91f8696bc3288ede63184588bbf73f4c838a31f13b971d1c06",
+      "after_sha256": "749baf7d4fa20a91f8696bc3288ede63184588bbf73f4c838a31f13b971d1c06",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/en/translation-before.json",
+      "before_sha256": "5b24ef3cbd6c7c52e4ece2a0f08fd74fd7590898e140f76b3379a0e2ab4820f8",
+      "after_sha256": "5b24ef3cbd6c7c52e4ece2a0f08fd74fd7590898e140f76b3379a0e2ab4820f8",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/en/worksheet-before.json",
+      "before_sha256": "075be5388bee91b0ec410987bcd3aa9d92e02f31a488fb14600002b08409b054",
+      "after_sha256": "075be5388bee91b0ec410987bcd3aa9d92e02f31a488fb14600002b08409b054",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/es/translation-before.json",
+      "before_sha256": "a4dfbaa0b8cc0be9fb20888e4485f7eb9070bfa70ac27b9603ddaf9ca9dfbe52",
+      "after_sha256": "a4dfbaa0b8cc0be9fb20888e4485f7eb9070bfa70ac27b9603ddaf9ca9dfbe52",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/es/worksheet-before.json",
+      "before_sha256": "ab3007182102981fb1832ed57a523e29ff6fd3120f70b2b85f7da2ed15cf5e9b",
+      "after_sha256": "ab3007182102981fb1832ed57a523e29ff6fd3120f70b2b85f7da2ed15cf5e9b",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/id/translation-before.json",
+      "before_sha256": "d762404bad0a72d751dce184127c9ccf7eefdcf2905f2ea11d51fb99ca2501aa",
+      "after_sha256": "d762404bad0a72d751dce184127c9ccf7eefdcf2905f2ea11d51fb99ca2501aa",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/id/worksheet-before.json",
+      "before_sha256": "5ab39d095319a48ea6a31fe58721593af079c51d7c1a146f3aa171da5f961569",
+      "after_sha256": "5ab39d095319a48ea6a31fe58721593af079c51d7c1a146f3aa171da5f961569",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/ko/translation-before.json",
+      "before_sha256": "e0d6ba8de9aae73ea9025c7909f842d1f8e1d3263c6bd8ba7d2c9f6113c52028",
+      "after_sha256": "e0d6ba8de9aae73ea9025c7909f842d1f8e1d3263c6bd8ba7d2c9f6113c52028",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/ko/worksheet-before.json",
+      "before_sha256": "d6e2c376cf94cea52d6f489a0719b7ae0eb82df4bf5bcdd47243634b62147c64",
+      "after_sha256": "d6e2c376cf94cea52d6f489a0719b7ae0eb82df4bf5bcdd47243634b62147c64",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/pt/translation-before.json",
+      "before_sha256": "02357997b6092a1ae6a6746149d61d9c84d52ffc2f4c228d4282dc8a95a2abc3",
+      "after_sha256": "02357997b6092a1ae6a6746149d61d9c84d52ffc2f4c228d4282dc8a95a2abc3",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/pt/worksheet-before.json",
+      "before_sha256": "34ad1cc6e2dd865b2d424a5cff81af7b7fa35380baea34b78aeaa01e45da1eed",
+      "after_sha256": "34ad1cc6e2dd865b2d424a5cff81af7b7fa35380baea34b78aeaa01e45da1eed",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/vi/translation-before.json",
+      "before_sha256": "029d4f25200af9a53cbff54205ef98fd2b83551e55b339411895e3ac34138873",
+      "after_sha256": "029d4f25200af9a53cbff54205ef98fd2b83551e55b339411895e3ac34138873",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-review-history/vi/worksheet-before.json",
+      "before_sha256": "6a6fc52966c9080c321fff0dc83226d4badce062f93fd849b09f9915ee78d790",
+      "after_sha256": "6a6fc52966c9080c321fff0dc83226d4badce062f93fd849b09f9915ee78d790",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/en.json",
+      "before_sha256": "97a4c9398471bb716173a575384d5f74c29ae7ba0073fc89524ade7f2d681dce",
+      "after_sha256": "97a4c9398471bb716173a575384d5f74c29ae7ba0073fc89524ade7f2d681dce",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/es.json",
+      "before_sha256": "3f3bb0b251a14df99119053269c1eeb142342d8a07faf28e3ab36184b35214e7",
+      "after_sha256": "3f3bb0b251a14df99119053269c1eeb142342d8a07faf28e3ab36184b35214e7",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/id.json",
+      "before_sha256": "e87c83ae4c0fb056f7cfa37945d66fad5e25b7dd6254ac765e67a7cb384b2f5f",
+      "after_sha256": "e87c83ae4c0fb056f7cfa37945d66fad5e25b7dd6254ac765e67a7cb384b2f5f",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/ja.json",
+      "before_sha256": "f46293dd72d8c0b375fe59b24bb288b54290bb6cbc432c7773dd1486dc0fff29",
+      "after_sha256": "f46293dd72d8c0b375fe59b24bb288b54290bb6cbc432c7773dd1486dc0fff29",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/ko.json",
+      "before_sha256": "c7cca90a10704222fcbaf0b2ab5684b2cf52a9502a838fd3a60d028df4eb5d94",
+      "after_sha256": "c7cca90a10704222fcbaf0b2ab5684b2cf52a9502a838fd3a60d028df4eb5d94",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/pt.json",
+      "before_sha256": "2f7c44a3c889672d1e61cb40f6517be1e86ae2c570abe2513edcff4cd15b16f8",
+      "after_sha256": "2f7c44a3c889672d1e61cb40f6517be1e86ae2c570abe2513edcff4cd15b16f8",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/th.json",
+      "before_sha256": "ce2bd4a387567dd7148818680470b666b662e5efc023bd106615f8996ab62276",
+      "after_sha256": "ce2bd4a387567dd7148818680470b666b662e5efc023bd106615f8996ab62276",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/text-r4/translation-source-sheets/vi.json",
+      "before_sha256": "57db15b3831613e987cbd3ce6661882222d2513be103bb1a09b12c1a74d5afc7",
+      "after_sha256": "57db15b3831613e987cbd3ce6661882222d2513be103bb1a09b12c1a74d5afc7",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/brief.md",
+      "before_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+      "after_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/claims.md",
+      "before_sha256": "594fd91423d58a6683685baeda7eb0abb338a7154b6099473021a3ce3d3edde8",
+      "after_sha256": "594fd91423d58a6683685baeda7eb0abb338a7154b6099473021a3ce3d3edde8",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/en.json",
+      "before_sha256": "203a5b65706c5dd4011afb975926fc34d5aecd4f67ed6f0739d76b5469fd99cf",
+      "after_sha256": "203a5b65706c5dd4011afb975926fc34d5aecd4f67ed6f0739d76b5469fd99cf",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/es.json",
+      "before_sha256": "6e2d88010f9ee9fae8d12c8fcd37c169d8889e08b14d9558adba8051f27db7bc",
+      "after_sha256": "6e2d88010f9ee9fae8d12c8fcd37c169d8889e08b14d9558adba8051f27db7bc",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/id.json",
+      "before_sha256": "ab803b8202d8081011b8c1ce9dea97fdfb797362785f14774531b760f4ca20e5",
+      "after_sha256": "ab803b8202d8081011b8c1ce9dea97fdfb797362785f14774531b760f4ca20e5",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/ja.json",
+      "before_sha256": "5ed511533af888bab782a8f0c17e5f9cfebb20b6bdc4b7b99dce4ab463f67e45",
+      "after_sha256": "5ed511533af888bab782a8f0c17e5f9cfebb20b6bdc4b7b99dce4ab463f67e45",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/ko.json",
+      "before_sha256": "831143339b059cdb56dbd6805608bded98f5d235d7b8e8398dd1179d380698d1",
+      "after_sha256": "831143339b059cdb56dbd6805608bded98f5d235d7b8e8398dd1179d380698d1",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/pt.json",
+      "before_sha256": "0b6fab601fd109aef7de2112f961a507ce0993695dd6332d0f81c396f2681f40",
+      "after_sha256": "0b6fab601fd109aef7de2112f961a507ce0993695dd6332d0f81c396f2681f40",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/th.json",
+      "before_sha256": "b22d5722b54fbfd951f1d1efb4c2669fb21aff60d91f285ffa6d7d8aa29b0136",
+      "after_sha256": "b22d5722b54fbfd951f1d1efb4c2669fb21aff60d91f285ffa6d7d8aa29b0136",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/i18n/vi.json",
+      "before_sha256": "c08f1c48018046eb921b5fcb12e0cd0c55e498d3fc0a909bb4a92487ec738069",
+      "after_sha256": "c08f1c48018046eb921b5fcb12e0cd0c55e498d3fc0a909bb4a92487ec738069",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/script.md",
+      "before_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+      "after_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/series.json",
+      "before_sha256": "131e6e254d98822c6adbb8f500e2dbb8fa96c21c20130d584591eb7994169d4d",
+      "after_sha256": "131e6e254d98822c6adbb8f500e2dbb8fa96c21c20130d584591eb7994169d4d",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/verify-1.md",
+      "before_sha256": "39b05fc18fdb573e9daa154cd90697ae69b6a73ac63855a7a22d27e00823bcd5",
+      "after_sha256": "39b05fc18fdb573e9daa154cd90697ae69b6a73ac63855a7a22d27e00823bcd5",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/video.json",
+      "before_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "after_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "unchanged_during_recheck": true
+    }
+  ],
+  "source_research_and_recheck_inputs_unchanged": true,
+  "actual_timing_review": false,
+  "actual_audio_or_video_review": false,
+  "actual_media_review": false,
+  "scope": "Only recheck-en-ja.json, recheck-ko-es.json, recheck-pt-id.json, recheck-vi-th.json and recheck-completion.json are newly written by this rechecker. No translation/source/author/source-sheet/Git/backend/media/paid mutation; no collection or merge.",
+  "paid_calls": 0
+}

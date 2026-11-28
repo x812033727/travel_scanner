@@ -1,0 +1,72 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "review_file_sha256": "b50f7b9cbedd951595dd314e01e70074c9ebd2f21c3b321c738bb1da406081f9",
+  "locales": [
+    {
+      "locale": "vi",
+      "previous_worksheet_sha256": "5774a219329533f257ec951cc204645bbca614450a84beadba73662e10b429de",
+      "previous_translation_sha256": "d9bde38ec7df50a92582f255b8371b243a7b02d37fd352088427db7b6e4527ea",
+      "new_worksheet_sha256": "e30dcd3bdfb526e098758c917cf264eb2350bc8f2423323ab23abb11bdaac30b",
+      "changes": [
+        {
+          "target": "thumbnail.sub",
+          "before": "2024: hãng nói >500 triệu hũ",
+          "after": "2024: hãng nói hơn 500 triệu hũ",
+          "reason": "必修：原文含 >，原生合併已因此整個略過thumbnail。改用越南語hơn，保留2024、公司說法、逾五億及罐數單位；套修後須重新原生merge確認縮圖三欄入檔。"
+        },
+        {
+          "target": "lines.c6sh031",
+          "before": "Nhưng ngay trước mắt bạn, muội than trên tường đang ít dần. Vật liệu lấy ra vẫn mềm tốt, chỉ có điều phải tìm một lý do",
+          "after": "Nhưng ngay trước mắt bạn, muội than trên tường đang ít dần. Bạn lấy vật liệu ra, cầm lên vẫn thấy ổn, nhưng phải tìm một lý do",
+          "reason": "mềm tốt不是自然越南語搭配，且把原文「手感還好」額外具體化成柔軟程度；改回手持感受仍好，並保留向下一句找理由的跨句承接。"
+        },
+        {
+          "target": "lines.c6sk011",
+          "before": "Đôi bàn tay không muốn lau tường ấy đến từ trường mẫu giáo. Theo lịch sử công ty Kutol, cô giáo Kay Zufall có quan hệ thông gia với Joseph.",
+          "after": "Đôi bàn tay không muốn lau tường ấy đến từ trường mẫu giáo. Theo lịch sử công ty Kutol, cô giáo Kay Zufall có quan hệ họ hàng với Joseph qua hôn nhân.",
+          "reason": "quan hệ thông gia với Joseph容易限定成子女結婚後的通家／親家關係；原文只稱姻親，須保留廣義婚姻親屬，不自行指定成親家、嫂嫂或其他精確輩分。"
+        },
+        {
+          "target": "lines.c6sb022",
+          "before": "Chỉ nghiêng hẳn về một phía đều sẽ mắc kẹt.",
+          "after": "Nếu chỉ đáp ứng một trong hai yêu cầu, bạn vẫn sẽ gặp vướng mắc.",
+          "reason": "Chỉ...một phía đều...的語法不自然；此句承接可塑與保形兩項要求，改成只滿足其中之一仍會遇阻，沒有新增條件。"
+        },
+        {
+          "target": "lines.c6sb10c1",
+          "before": "Hãy tưởng tượng bạn đang ép một mặt phẳng mà dưới ngón tay bỗng gặp cục cứng. Bạn có còn đẩy với lực như trước được không?",
+          "after": "Hãy tưởng tượng bạn đang ép vật liệu cho phẳng thì dưới ngón tay bỗng gặp một cục cứng. Bạn còn đẩy với lực như trước được không?",
+          "reason": "ép một mặt phẳng像在按壓一個既存平面；原文是把材料壓成平面時碰到硬塊，改清楚動作對象及成形方向。"
+        },
+        {
+          "target": "lines.c6sn091",
+          "before": "Nếu đặt nó bên bàn mình, công việc của vật liệu chỉ kết thúc vào lúc bạn buông tay thôi sao?",
+          "after": "Nếu đặt nó bên bàn mình, công việc của vật liệu chỉ kéo dài đến lúc bạn buông tay thôi sao?",
+          "reason": "chỉ kết thúc vào lúc可讀成「只有到放手時才結束」；原文問工作是否「只持續到放手那刻」，改用kéo dài đến保留延續到展示使用的問題。"
+        }
+      ]
+    },
+    {
+      "locale": "th",
+      "previous_worksheet_sha256": "68803b6c7375085532c87ef42c9c1a72a87de11d1d0703efdd9938cc0c3b6cd1",
+      "previous_translation_sha256": "179cb7e87744298d8510def10f3cd3a7027563080e96a4eca1b35f5e92cc76e7",
+      "new_worksheet_sha256": "7bd8ac2bbec18e689a33ddc829f3690d4633161e78ff0ab5135c1ce404b30050",
+      "changes": [
+        {
+          "target": "lines.c6sb101",
+          "before": "เอกสารอธิบายต่อว่า อนุภาคแป้งสาลีที่เคลือบไว้จะเกิดเจลเมื่อได้รับความร้อนชื้น รวมเป็นวัสดุที่นุ่ม สม่ำเสมอ และไม่จับตัวเป็นก้อนแข็ง",
+          "after": "เอกสารอธิบายต่อว่า อนุภาคแป้งสาลีที่เคลือบไว้จะเกิดเจลาติไนเซชันเมื่อได้รับความร้อนชื้น รวมเป็นวัสดุที่นุ่ม สม่ำเสมอ และไม่จับตัวเป็นก้อน",
+          "reason": "原文是澱粉顆粒經濕熱「糊化」（gelatinization），目前เกิดเจล泛稱成膠，易與gelation混淆；保留文件歸因並譯出正確過程，也不把原文「不結塊」額外限定為只有硬塊。"
+        },
+        {
+          "target": "lines.c6sn102",
+          "before": "จึงมีโอกาสถูกต้องการอีกครั้ง",
+          "after": "จึงจะมีโอกาสเป็นที่ต้องการอีกครั้ง",
+          "reason": "ถูกต้องการ是生硬的逐字被動譯法；泰文以เป็นที่ต้องการ表達再次被需要，保留「先做到前句，才有機會」的條件關係。"
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r5",
+  "author": "/root/rolling_visual_r2_author",
+  "status": "HOLD_CAPACITY_SOURCE_VISUAL_AND_FRESH_READERS",
+  "counts": {
+    "lines": 100,
+    "chapters": 7,
+    "scenes": 98,
+    "shots": 97,
+    "cards": 0,
+    "outro": 1,
+    "loops": 25
+  },
+  "capacity": {
+    "whole_raw_spoken_units": 2363,
+    "coldopen": 125,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1137,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      472.6,
+      590.75
+    ],
+    "planning_at_4_5": 525.1111111111111,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_dictionary_copied": false
+  },
+  "single_spine": "Jet Eze → SEA drawing → one week waiting → one more week refusal → own integrated case → second bag",
+  "new_source_anchors": 5,
+  "source_pass_claimed": false,
+  "native_input_prepared": false,
+  "native_reader_calls": 6,
+  "actual_native_round_count": 3,
+  "narrative_pass_claimed": false,
+  "pronunciation_review": "PENDING_OTHER_REVIEWER",
+  "owner_approval_created": false,
+  "actual_same_image_verified": false,
+  "actual_media_generated": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r5/runtime-root",
+  "media_base": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r5/media",
+  "image_reuse_plan_sha256": "00debd426452ee28daff1ca33dd76aa3146f1c7404d5f5dbb3396486df834b07",
+  "prior_native_round_3_verdict": "HOLD_CHAPTERS_LINK_NO_RECAP_OPENING_HOOKS",
+  "current_revision_native_reader_calls": 0,
+  "r5_edit_scope": "Move verbatim rs0003 from opening to immediately after rs0026 as chapter2 first action; delete rs0004 and its graph-related loop, the rs0027/rs0028 reset, and rs0072 recap; rs0007 promises the concrete dismantling problem without graph clue; rs0073 asks only about cabin fit. Preserve all retained prompt/camera values and both image pairs.",
+  "r5_primary_action_readback_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r5/source-action-readback-r5.json",
+  "r5_primary_action_readback_sha256": "cc91911b8375ef5d6a0a508a9764507012fd3b5c79523dd130c4408daf8eb0d7",
+  "moved_scene_id": "rs0003",
+  "opening_preview_scene_ids": [
+    "rs0005",
+    "rs0006"
+  ],
+  "nonnarrated_research_ids": [
+    "rs0091",
+    "rs0092",
+    "rs0093",
+    "rs0094",
+    "rs0095"
+  ],
+  "nonnarrated_research_source_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+  "unused_verified_work_nodes_not_added": [],
+  "unused_verified_work_nodes_note": "No new historical claim or unused-source expansion is mixed into this narrow revision; material capacity remains HOLD."
+}

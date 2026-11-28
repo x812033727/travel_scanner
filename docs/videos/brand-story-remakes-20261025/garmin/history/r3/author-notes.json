@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "garmin-r3",
+  "status": "HOLD_PENDING_SOURCE_WRITTEN_VISUAL_FRESH_NATIVE",
+  "counts": {
+    "lines": 137,
+    "scenes": 135,
+    "shots": 134,
+    "cards": 0,
+    "outro": 1,
+    "chapters": 7,
+    "loops": 35
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 2922,
+    "coldopen": 184,
+    "voiced_CTA": 45,
+    "target": 3500,
+    "actual_body_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false,
+    "planning_at_4_to_5_units_per_second": [
+      584.4,
+      730.5
+    ],
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "extra_bookends_seconds": 26,
+    "body_includes_coldopen_and_voiced_CTA": true
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_episode_dictionary_copied": false
+  },
+  "research_sha256": {
+    "research-original.md": "4ef55d45d582152d9e21077f093bacfbd1e38b3d753e62fe19224c6220837206",
+    "research-original.claims.json": "9dd303580d2de5c75082e1450e1ba7f0165fe2084263fad22091edbbeaa8ee35",
+    "original-preservation.json": "d7848567a1182efecf63c387216b60c4a1ed49d041813039d19e19ad240ea5f7"
+  },
+  "author_new_anchors": 14,
+  "engineering_repost_used": false,
+  "source_pass_claimed": false,
+  "native_pass_claimed": false,
+  "actual_native_round_count": 1,
+  "owner_approvals_created": false,
+  "generated_story_media": 0,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "image_reuse_plan_sha256": "540dcbcac495d9289125ef998a457f11a21f0af41b0ffdcae041221da24a5779",
+  "frozen_at_utc": "2026-10-26T06:04:24.317366+00:00",
+  "native_state": "R2_NATIVE1_HOLD_ARCHIVED_R3_NATIVE2_NOT_PREPARED",
+  "previous_r2_source_receipt_sha256": "ac565ffb5d81410f137cca2743a0c5e26e7da810533f0df73a979218b69cd3d2",
+  "previous_native1_receipt_sha256": "5c00d08f80cfb0fdafea5df8b6976145be1eecd9cabc06a45517322b7486b818",
+  "source_delta": "PENDING_OTHER_REVIEWER",
+  "source_delta_manifest": "changes-r3.json",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"adult\" is in 125 of 134 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"wrist\" is in 115 of 134 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"device\" is in 102 of 134 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "「三零五」 is said in 5 lines (gr1a01, gr1a12, gr1a15, gr1d01, gr1v01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ],
+    "receipt": "native-author-lint-r3.json",
+    "receipt_sha256": "af3c9d2604a1de01bf40690f2ceb5bf3bdf8b7b712a3ad3951418c00ce0646d7",
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "canonical_runtime_script_sha256": "363a35d518fafa6cf4381bbe3dcbb564532fa0a0cd4145902074184dcbf35cb7"
+  },
+  "reproducible_build_receipt": "/workspace/work/brand-story-20261025/garmin-audit/author-r3/reproducible-build-r3.json",
+  "author_caveats": [
+    "137narration rows,21removed, existing retainedIDs stayinorder. Sourceprojections use35priorgroups; all38historicalgroups/raw are hashpreserved.",
+    "13min and actualbody720–840seconds remain required.2922units predict584.4–730.5seconds at4–5units/s,649.3seconds at4.5. Capacityrisk only; no actualaudioFAIL or durationPASS.",
+    "Native1 actualtwo-reader mergedHOLD is preserved; author did not prepare or run native2.",
+    "No source or native selfapproval, newraw, paidprovider, backend, owner or Git mutation."
+  ]
+}

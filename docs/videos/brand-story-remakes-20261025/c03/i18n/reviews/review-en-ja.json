@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "review_type": "independent_caption_metadata_text_review",
+  "translator": false,
+  "translator_critique_read": false,
+  "reviewed_at_utc": "2026-10-25T14:40:13.752715+00:00",
+  "scope": "All 143 zh-TW narration lines against EN/JA translations; six chapters, title, description, tags and three thumbnail text fields per locale; claims and worksheet glossary/boundaries. Text semantics/preparation only.",
+  "limitations": [
+    "No audio, timeline or SRT exists for this remake. Cue clause order was checked against worksheet boundaries only.",
+    "Actual caption segmentation, reading speed, synchronization, pronunciation, dubbing fit, media QA, final video and owner approval are unverified.",
+    "Soft line-length guidance was not used to drop clauses or fail otherwise faithful text. No max_chars budgets were supplied."
+  ],
+  "inputs": {
+    "video": {
+      "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+      "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+    },
+    "claims": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+      "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+    },
+    "review_prompt": {
+      "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+      "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a"
+    },
+    "lexicon": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+      "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+    }
+  },
+  "locales": {
+    "en": {
+      "status": "FIXES_REQUIRED",
+      "translation_file": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/en.json",
+      "input_sha256": "2cdfecd5943d0dd3e891cfdf5610164f5eae36dc91940d6f729fab1e444f8bba",
+      "worksheet_file": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/en.todo.json",
+      "worksheet_sha256": "61c060905c1991974abd977d38f6eba13c23d5e72b5860d65cefaf76a4b16da1",
+      "lines_reviewed": 143,
+      "chapters_reviewed": 6,
+      "metadata_fields_reviewed": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "all_line_ids_present": true,
+      "all_line_source_hashes_current": true,
+      "title_characters": 70,
+      "timing_status": "UNVERIFIED",
+      "soft_length_only": {
+        "threshold": 80,
+        "over_threshold_line_count": 70,
+        "no_automatic_failure": true
+      },
+      "fix_counts": {
+        "meaning": 1,
+        "facts": 0,
+        "glossary": 0,
+        "cue order": 1,
+        "readability": 0,
+        "budget": 0,
+        "metadata": 2,
+        "thumbnail": 0
+      },
+      "fixes": [
+        {
+          "id": "r305031",
+          "kind": "meaning",
+          "problem": "發行人 here is the listing issuer/company. Publisher changes the attributed party to a book publisher.",
+          "current": "In the publisher's vision, buyers took on the author's role along with the notebook.",
+          "suggested": "In the company's vision, buyers took on the author's role along with the notebook."
+        },
+        {
+          "id": "r320041",
+          "kind": "cue order",
+          "problem": "The worksheet places the invitation to subscribe at the end of the second cue. Subscribe has moved ahead of both topic clauses. Retain their order for later cue preparation.",
+          "current": "Subscribe to keep exploring how names on everyday things become businesses, and the practical tests they face.",
+          "suggested": "To keep exploring how names on everyday things become businesses, and the practical tests they face, subscribe."
+        },
+        {
+          "id": "chapter:c03r-p05s01",
+          "kind": "metadata",
+          "problem": "Market drops the explicit stock-market meaning of 股市 and can read as a retail market. Keep the financial destination clear.",
+          "current": "From Bookstores to the Market",
+          "suggested": "Bookstores to the Stock Market"
+        },
+        {
+          "id": "tags",
+          "kind": "metadata",
+          "problem": "The worksheet has six source tags; 品牌故事 and 日用品的意外轉身 have no translated tags. Restore both metadata topics.",
+          "current": [
+            "Moleskine",
+            "notebooks",
+            "bookstores",
+            "brand history"
+          ],
+          "suggested": [
+            "Moleskine",
+            "notebooks",
+            "brand stories",
+            "unexpected transformations of everyday goods",
+            "bookstores",
+            "brand history"
+          ]
+        }
+      ],
+      "optional_suggestions": [
+        {
+          "id": "chapter:c03r-h01",
+          "kind": "metadata",
+          "problem": "Optional compactness: 31 characters. This is a soft suggestion, not a semantic failure or a hard limit.",
+          "current": "A Blank Notebook's Market Value",
+          "suggested": "Blank Notebook's Market Value"
+        },
+        {
+          "id": "chapter:c03r-p13s01",
+          "kind": "metadata",
+          "problem": "Optional compactness: 31 characters. This is a soft suggestion, not a semantic failure or a hard limit.",
+          "current": "A New Owner's Stores & Products",
+          "suggested": "New Owner, Stores and Products"
+        }
+      ],
+      "verified_constraints": [
+        "All dates, numerical amounts and percentage comparisons match zh-TW.",
+        "Listing market capitalization is distinguished from revenue; share valuation is distinguished from cash paid into the company.",
+        "1997-11-26 remains first trademark filing; the historical writers did not use the later modern brand.",
+        "2013 contracts are historical, and 3–6 months remains production-to-launch rather than manufacturing time.",
+        "79 stores is year-end 2016; fiscal-2025 impairment is not retimed to 2026 publication.",
+        "2026 H1 comparisons remain half-year-on-half-year, and only part of shareholder-loan principal is waived.",
+        "Narrator opinions and company/source attributions remain explicit apart from the issuer fix listed above.",
+        "Moleskine, Modo&Modo and D’Ieteren retain their Latin brand/company forms.",
+        "Thumbnail has all three nonempty fields; meaning, amounts and source formatting are retained."
+      ]
+    },
+    "ja": {
+      "status": "FIXES_REQUIRED",
+      "translation_file": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/ja.json",
+      "input_sha256": "070f882dd21254518bc6e37dfe478932b4465e9622276df0fe90cc3ef9e6d957",
+      "worksheet_file": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/ja.todo.json",
+      "worksheet_sha256": "78306d4221e31b25ad9860b7108a391f7cee55c01a4c17a8eb25333afd2b8577",
+      "lines_reviewed": 143,
+      "chapters_reviewed": 6,
+      "metadata_fields_reviewed": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "all_line_ids_present": true,
+      "all_line_source_hashes_current": true,
+      "title_characters": 38,
+      "timing_status": "UNVERIFIED",
+      "soft_length_only": {
+        "threshold": 40,
+        "over_threshold_line_count": 63,
+        "no_automatic_failure": true
+      },
+      "fix_counts": {
+        "meaning": 1,
+        "facts": 0,
+        "glossary": 0,
+        "cue order": 0,
+        "readability": 0,
+        "budget": 0,
+        "metadata": 1,
+        "thumbnail": 0
+      },
+      "fixes": [
+        {
+          "id": "r305031",
+          "kind": "meaning",
+          "problem": "發行人 is the listing issuer/company here; 出版社 assigns its stated vision to a book publisher. Use 会社 to retain the correct attribution.",
+          "current": "出版社の構想では、買った人はノートとともに、作者の立場も受け取ります。",
+          "suggested": "会社の構想では、買った人はノートとともに、作者の立場も受け取ります。"
+        },
+        {
+          "id": "tags",
+          "kind": "metadata",
+          "problem": "The worksheet has six source tags; 品牌故事 and 日用品的意外轉身 have no translated tags. Restore both metadata topics.",
+          "current": [
+            "Moleskine",
+            "ノート",
+            "書店",
+            "ブランドの歴史"
+          ],
+          "suggested": [
+            "Moleskine",
+            "ノート",
+            "ブランドストーリー",
+            "日用品の意外な転身",
+            "書店",
+            "ブランドの歴史"
+          ]
+        }
+      ],
+      "optional_suggestions": [],
+      "verified_constraints": [
+        "All dates, numerical amounts and percentage comparisons match zh-TW.",
+        "Listing market capitalization is distinguished from revenue; share valuation is distinguished from cash paid into the company.",
+        "1997-11-26 remains first trademark filing; the historical writers did not use the later modern brand.",
+        "2013 contracts are historical, and 3–6 months remains production-to-launch rather than manufacturing time.",
+        "79 stores is year-end 2016; fiscal-2025 impairment is not retimed to 2026 publication.",
+        "2026 H1 comparisons remain half-year-on-half-year, and only part of shareholder-loan principal is waived.",
+        "Narrator opinions and company/source attributions remain explicit apart from the issuer fix listed above.",
+        "Moleskine, Modo&Modo and D’Ieteren retain their Latin brand/company forms.",
+        "Thumbnail has all three nonempty fields; meaning, amounts and source formatting are retained."
+      ]
+    }
+  }
+}

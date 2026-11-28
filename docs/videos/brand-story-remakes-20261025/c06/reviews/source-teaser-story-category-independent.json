@@ -1,0 +1,3162 @@
+{
+  "schema_version": 1,
+  "review_type": "INDEPENDENT_EXACT_SOURCE_TYPE_METADATA_DELTA",
+  "reviewer": "/root/approved_visual_source_delta",
+  "independent": true,
+  "date": "2026-10-26",
+  "revision": "c06-teaser-story-category",
+  "slug": "story-everyday-play-doh-c06-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "metadata_delta_verdict": "PASS",
+  "actualasset_verified": false,
+  "input_sha256": {
+    "video.json": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+    "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+    "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926"
+  },
+  "plan_sha256": "5d6f9c6bc6e91d960b5575652b263f7d55bd3ff785162ac2d12801a0891d5523",
+  "teaser_input_sha256": "14bf41c89fd5f4367433b53c8eb56be349074a67b32da9d9d2d1feca4cce6bcb",
+  "source_verified_baseline_sha256": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+  "immutable_source_verified_baseline": {
+    "directory": "history/teaser-plan-before-story-category",
+    "source_video_sha256": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+    "plan_sha256": "567791635dbe5240461ec41f5bc3546e4363a48bf624dd6023235dd7e941ff18",
+    "source_visual_report_sha256": "abfaa703a0daa7429d81eb549f95975d719698ec75a24bf70c13d688ceff3a40",
+    "verify_sha256": "c77bd25f53b0f53051c018a52ec78eee5c22c03b7ea1e4fd57c09ff8ee32f1a4",
+    "snapshot_manifest_sha256": "7da516d88a3f2c7fc0d55f6b7dbf3090a3596542e86e37c63eb5d5f0faa03539",
+    "underlying_original_r3_source_verified_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "all_archived_files": {
+      "checked": 56,
+      "all_match": true,
+      "mismatches": []
+    },
+    "all_auxiliary_files": {
+      "checked": 78,
+      "all_match": true,
+      "mismatches": []
+    }
+  },
+  "scope": "Only category explainer -> story metadata; all source facts, narration, written visuals and existing narrative approval inputs inherited by exact immutable SHA comparison. No new narrative judgment, original-source discovery, generated image QA or backend category readback is claimed.",
+  "method": "獨立遞迴實比兩份完整video物件，只有/category葉節點變更。163句逐ID/scene/text SHA對原PASS收據全同；138景完整物件逐一相同，所有source/claim/prompt/camera/loop/voice/look/subtitle及其他meta不變。原來源表、限制與書面圖結論按精確0636基線繼承，沒有重新發明claims。",
+  "counts": {
+    "narration_lines": 163,
+    "source_pass": 163,
+    "source_hold": 0,
+    "scenes": 138,
+    "shots": 137,
+    "outro": 1,
+    "written_visual_scene_pass": 138,
+    "written_visual_scene_hold": 0,
+    "changed_metadata_leaves": 1,
+    "changed_complete_scenes": 0
+  },
+  "video_exact_delta": [
+    {
+      "path": "/category",
+      "before": "explainer",
+      "after": "story"
+    }
+  ],
+  "plan_exact_delta": [
+    {
+      "path": "/revision",
+      "before": "c06-teaser-image-plan-v1",
+      "after": "c06-teaser-image-plan-v1-story-category"
+    },
+    {
+      "path": "/candidate_binding/core_four_sha256/video.json",
+      "before": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+      "after": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11"
+    },
+    {
+      "path": "/story_category_delta",
+      "after": {
+        "baseline_visual_source_sha256": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+        "source_category": "story",
+        "only_additional_video_leaf_changed": "category",
+        "delta_receipt": "story-category-delta.json",
+        "pairs_native_request_inputs_unchanged": true,
+        "native_lint_status": "NATIVE_LINT_ZERO_ERRORS",
+        "native_lint_errors": 0
+      }
+    }
+  ],
+  "teaser_input_exact_delta": [
+    {
+      "path": "/source_after_sha256",
+      "before": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+      "after": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11"
+    },
+    {
+      "path": "/additional_allowed_video_metadata_paths",
+      "after": [
+        "category"
+      ]
+    },
+    {
+      "path": "/story_category_delta",
+      "after": {
+        "baseline_visual_source_sha256": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+        "category_before": "explainer",
+        "category_after": "story",
+        "delta_receipt": "story-category-delta.json"
+      }
+    }
+  ],
+  "unchanged_byte_proof": [
+    {
+      "path": "script.md",
+      "baseline_sha256": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+      "current_sha256": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+      "bytes_identical": true
+    },
+    {
+      "path": "narration-only.json",
+      "baseline_sha256": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+      "current_sha256": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+      "bytes_identical": true
+    },
+    {
+      "path": "claims.json",
+      "baseline_sha256": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+      "current_sha256": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+      "bytes_identical": true
+    },
+    {
+      "path": "claims.md",
+      "baseline_sha256": "895efa36cd77f914b68c1f739419ddf77f56c6c97cced0dd4768a705ec62af2d",
+      "current_sha256": "895efa36cd77f914b68c1f739419ddf77f56c6c97cced0dd4768a705ec62af2d",
+      "bytes_identical": true
+    },
+    {
+      "path": "brief.md",
+      "baseline_sha256": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+      "current_sha256": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+      "bytes_identical": true
+    },
+    {
+      "path": "series.json",
+      "baseline_sha256": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+      "current_sha256": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+      "bytes_identical": true
+    },
+    {
+      "path": "source-catalog.json",
+      "baseline_sha256": "47f19df90381c6b9899297b8c00948c1c84849873fe6ba271b50adfd7c43fbae",
+      "current_sha256": "47f19df90381c6b9899297b8c00948c1c84849873fe6ba271b50adfd7c43fbae",
+      "bytes_identical": true
+    },
+    {
+      "path": "source-anchors.json",
+      "baseline_sha256": "253bf703622299e39256c91cf387c6399a7390535dda680f2b6fbfc1c76188be",
+      "current_sha256": "253bf703622299e39256c91cf387c6399a7390535dda680f2b6fbfc1c76188be",
+      "bytes_identical": true
+    },
+    {
+      "path": "research-original.md",
+      "baseline_sha256": "e8aebb384d90c07d5e14606f28fc8f576065e2dcd2ac8eeef2cce5f3167547b2",
+      "current_sha256": "e8aebb384d90c07d5e14606f28fc8f576065e2dcd2ac8eeef2cce5f3167547b2",
+      "bytes_identical": true
+    },
+    {
+      "path": "research-original.claims.json",
+      "baseline_sha256": "13cb977822387cd2019d8daf490eb85e8d62722ca6edfdc503e7056bc0e82ac4",
+      "current_sha256": "13cb977822387cd2019d8daf490eb85e8d62722ca6edfdc503e7056bc0e82ac4",
+      "bytes_identical": true
+    },
+    {
+      "path": "backend-script.md",
+      "baseline_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+      "current_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+      "bytes_identical": true
+    },
+    {
+      "path": "reviews/source-teaser-visual-independent.json",
+      "baseline_sha256": "abfaa703a0daa7429d81eb549f95975d719698ec75a24bf70c13d688ceff3a40",
+      "current_sha256": "abfaa703a0daa7429d81eb549f95975d719698ec75a24bf70c13d688ceff3a40",
+      "bytes_identical": true
+    }
+  ],
+  "all_lines_exact_to_prior": true,
+  "line_results": [
+    {
+      "line_id": "c6sh001",
+      "scene_id": "c06r2-h00",
+      "line_text_sha256": "26138557fd072c6d3658929873d41f59ad235742a1715a72df772bb1405aa79f",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh021",
+      "scene_id": "c06r2-h02",
+      "line_text_sha256": "148ce38f8113c41a93664aecbd9c638e144b4667ba90da17f3165efd83506c70",
+      "source_anchor_ids": [
+        "H1-scale"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh011",
+      "scene_id": "c06r2-h01",
+      "line_text_sha256": "571bb47873d7e319ccdd8a61960d458fa8af1af44f07efac0e45ef6a4f102bf1",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh031",
+      "scene_id": "c06r2-h03",
+      "line_text_sha256": "9e583146241f652be7391aa69fead89ea67ad3e28bd25728d61d5885bdf89092",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh032",
+      "scene_id": "c06r2-h03-p2",
+      "line_text_sha256": "36f00e230b9987ecb656ef2d8d1dadfef4ea50fa090ac81aff91e8da7d497aa0",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh041",
+      "scene_id": "c06r2-h04",
+      "line_text_sha256": "abd9bf120c82cb8a49ff3d85a9cb35d228c442c1cb9bde06fa7feccc8431789c",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh051",
+      "scene_id": "c06r2-h05",
+      "line_text_sha256": "d2842c5050f94d4ddfb65470338c08bcd51edf3601d75969ab63b93094f56f10",
+      "source_anchor_ids": [
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh061",
+      "scene_id": "c06r2-h06",
+      "line_text_sha256": "09b753432f946642f460fb7fbca775eeb91a924dc976606122f4bf28b979b96e",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh071",
+      "scene_id": "c06r2-h07",
+      "line_text_sha256": "f91cab977341b502e9711adcb913216c60beca1ad81636020bda9dcb4ba3b65b",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sh081",
+      "scene_id": "c06r2-h08",
+      "line_text_sha256": "002b3d73f5735222b01724320b4d29ff57ee095aa051b4feffa70182786f5c10",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-goals",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so011",
+      "scene_id": "c06r2-o01",
+      "line_text_sha256": "e61024b751c98e5ae97b60bde64436a83024cb03e552b2efd5f5872e1125c4b8",
+      "source_anchor_ids": [
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so012",
+      "scene_id": "c06r2-o01",
+      "line_text_sha256": "d07c09a334878b285e5fed476dbee2b3b38d15d50ec1b3a74a32f70c9a30756b",
+      "source_anchor_ids": [
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so021",
+      "scene_id": "c06r2-o02",
+      "line_text_sha256": "d5bf88b6b1e84172da39bf952d717fd696fe039874bdfee8bf9fc1a9a254e7b8",
+      "source_anchor_ids": [
+        "K1-cleo",
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so031",
+      "scene_id": "c06r2-o03",
+      "line_text_sha256": "810d5372c961e8632a2d4134159c80fee5797b09b2f31c369fc78fe30451abce",
+      "source_anchor_ids": [
+        "M1-kroger"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so041",
+      "scene_id": "c06r2-o04",
+      "line_text_sha256": "34c3b29fa683c636aa66608a294852f1a00edd09b89e0016c64536114b5f6e54",
+      "source_anchor_ids": [
+        "M1-noah"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so042",
+      "scene_id": "c06r2-o04-p2",
+      "line_text_sha256": "bb16327b763352e929bf95fc3cccab915385472a48de7da7db76eb79c0566a49",
+      "source_anchor_ids": [
+        "M1-noah"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so051",
+      "scene_id": "c06r2-o05",
+      "line_text_sha256": "ea63d92afb92b8aa9ca27d71711e8ee538bd05b30e0e6988c795983dd928a7da",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so052",
+      "scene_id": "c06r2-o05",
+      "line_text_sha256": "e7a528275fdf291f5302a5d487cf0d4e6bb380d42e97eee7998d0e80dbba4ba9",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so061",
+      "scene_id": "c06r2-o06",
+      "line_text_sha256": "62cd61c4f33266fda7a0b612ed43c2fe001f03aeae62ed94494ff8249eca5b8e",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so071",
+      "scene_id": "c06r2-o07",
+      "line_text_sha256": "c49316cd8846454842eb3b2d3365adff308e924b5cc92e632fdb6fcfacaa3b4b",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so072",
+      "scene_id": "c06r2-o07-p2",
+      "line_text_sha256": "d5746bbe8d4ed1691d26c985c066405dceaba4ce8713035ae5a568cd61e65722",
+      "source_anchor_ids": [
+        "M1-wall"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so081",
+      "scene_id": "c06r2-o08",
+      "line_text_sha256": "4e10a099284cbac9533ead8d044f38c576a7ed59b4802e8b2a318802ed2b418b",
+      "source_anchor_ids": [
+        "M1-1949"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so082",
+      "scene_id": "c06r2-o08-p2",
+      "line_text_sha256": "cb0ba244aa437028197dd7f6cad59bd3443117853eb704ddf32f255a18afc94b",
+      "source_anchor_ids": [
+        "M1-1949"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so091",
+      "scene_id": "c06r2-o09",
+      "line_text_sha256": "86c8ac1833d8315326c25cf8003b2a6e4b8794d8b043a40c09e532ef2cfc02e5",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so101",
+      "scene_id": "c06r2-o10",
+      "line_text_sha256": "edfb031b020bcbf2a986e3f22ddd435f1838b524eacb551a994cf034bfb10ba3",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so102",
+      "scene_id": "c06r2-o10-p2",
+      "line_text_sha256": "2d9af28e68086b3f4bc815dc56d7a05b906d3389afaadb7c36c1a2ae96bd82ba",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so111",
+      "scene_id": "c06r2-o11",
+      "line_text_sha256": "bf28e864891cc824640985f2f3b850e3d22614b298ee9f9a409aafb2ec7cf3b5",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so112",
+      "scene_id": "c06r2-o11-p2",
+      "line_text_sha256": "3fd3ae5974d683e31953221133f624579d573ede86fc49e6d75d4ba2d4031714",
+      "source_anchor_ids": [
+        "M1-demand"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so131",
+      "scene_id": "c06r2-o13",
+      "line_text_sha256": "2e5c72499772aa3ca5644ee2fca3c0ef94f66a13443dc88e784898bb294f522d",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6so132",
+      "scene_id": "c06r2-o13",
+      "line_text_sha256": "c289b1e352e82d737065ae058b762d7e15dae28fc3962c99768b80ed7e1f3624",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk011",
+      "scene_id": "c06r2-k01",
+      "line_text_sha256": "0c271d0da845d075a8f460274a8beaf4fe3a6fc29f4ec845d16f636964356b29",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk021",
+      "scene_id": "c06r2-k02",
+      "line_text_sha256": "db67d34a58288cbc83146ab285d1067399169e87dfa502d68ccd9dc3ed739698",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk022",
+      "scene_id": "c06r2-k02-p2",
+      "line_text_sha256": "9ec398b0514062a500214ac348e2261b8cc62474bd2ea50e30e5174ea8f02ec1",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk031",
+      "scene_id": "c06r2-k03",
+      "line_text_sha256": "29bd33b3a33560048956730ad07e03802cd71580f8d81d7ed08dd557314c09a8",
+      "source_anchor_ids": [
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk032",
+      "scene_id": "c06r2-k03",
+      "line_text_sha256": "cef248442d4a41ebb1369d2fbb6e5e925bbe384e1ca927b19bfca7c363979d2f",
+      "source_anchor_ids": [
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk041",
+      "scene_id": "c06r2-k04",
+      "line_text_sha256": "ab64250c711199eed77a5ebcb7961aaa29c8c01c8c3b62ac6d5b5b32210e7924",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk042",
+      "scene_id": "c06r2-k04-p2",
+      "line_text_sha256": "ec0ef1f0c53819c20d8214e093ee2625f67436203a9a05512d45d2745910edcd",
+      "source_anchor_ids": [
+        "K1-kay",
+        "M2-hard"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk051",
+      "scene_id": "c06r2-k05",
+      "line_text_sha256": "fdd88ad3ca5fc420eefddd4f7b4456c42c10516c8066751529d1232f4f2fe9b3",
+      "source_anchor_ids": [
+        "M2-hard",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk052",
+      "scene_id": "c06r2-k05-p2",
+      "line_text_sha256": "be04791b0b3cb5e27b73c42f9841c8419e76afd10a035242b24107cc7ceda28e",
+      "source_anchor_ids": [
+        "M2-hard",
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk061",
+      "scene_id": "c06r2-k06",
+      "line_text_sha256": "a503d5cd1fc61248b2c84e372e485d79e94e32449642f7910760442501ae1460",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk062",
+      "scene_id": "c06r2-k06-p2",
+      "line_text_sha256": "1fbe238b3c7cadaded2d00f3aadd4171f993da742e40e5834baab783ea0adfdb",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk071",
+      "scene_id": "c06r2-k07",
+      "line_text_sha256": "9fa261960a0d45f0c778e172d4f71e5783fd856e792a525d2b3d2c823f3e1892",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk072",
+      "scene_id": "c06r2-k07-p2",
+      "line_text_sha256": "36d5b37f42e14b2c48b1f3b84673d47cfbd56db6a3ca573bf7493afffefd2f46",
+      "source_anchor_ids": [
+        "M1-kay"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk081",
+      "scene_id": "c06r2-k08",
+      "line_text_sha256": "c3c45bf47f2da56f562115f84fb2c06cabc5087762973caf3cf3cf3799757313",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk082",
+      "scene_id": "c06r2-k08",
+      "line_text_sha256": "db195afece35d772093fb6a80049abbf3b62ad6f869d9a8ab0cab7c9ea61f5ff",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk091",
+      "scene_id": "c06r2-k09",
+      "line_text_sha256": "2d050fefa36722de7aedff7833c462e83db25189e73a1a17fb622c4ae119bd20",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk092",
+      "scene_id": "c06r2-k09",
+      "line_text_sha256": "1612a28686fbec3052a18e8efbc801da7a1b071232f987cb247fe8841c1a3f80",
+      "source_anchor_ids": [
+        "M1-brand",
+        "H2-birthday"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk101",
+      "scene_id": "c06r2-k10",
+      "line_text_sha256": "e34c113e4e53232345d8927f71416056c83ab326832f18933de12dd3026eae9e",
+      "source_anchor_ids": [
+        "M1-colors",
+        "M2-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk111",
+      "scene_id": "c06r2-k11",
+      "line_text_sha256": "cf6d93821f4afd50741174d327f6f7b794348f4ace5448be0fc8402941dce6ea",
+      "source_anchor_ids": [
+        "M1-colors",
+        "M2-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk121",
+      "scene_id": "c06r2-k12",
+      "line_text_sha256": "4713374040ad56afeb5dcb005a0bf05f68bb04b7da017d6fc5f03918a00e684e",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk122",
+      "scene_id": "c06r2-k12-p2",
+      "line_text_sha256": "417c295bfb937771881da493a2ff6eeeda8aa3843e1ca64e6e2fff57b24e694c",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk131",
+      "scene_id": "c06r2-k13",
+      "line_text_sha256": "573930e1393ab86cb7920da39147a95db2237ec6817ceae89f49e02dad51db28",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk132",
+      "scene_id": "c06r2-k13-p2",
+      "line_text_sha256": "de7024c15069f403daa2a7dcc3d5d772e0692d516435881625b3b8ca686ee79f",
+      "source_anchor_ids": [
+        "M1-colors"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13a1",
+      "scene_id": "c06r2-k13a",
+      "line_text_sha256": "d4232b8fe174449772b02dadcfc0d3d68fb6f94e9b92967c255efbc0ee759ca6",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13a2",
+      "scene_id": "c06r2-k13a",
+      "line_text_sha256": "6136774a7eff1dedbfcb1e7ab9fa774fabd3ca388bba2fb864fd0627638fddde",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13b1",
+      "scene_id": "c06r2-k13b",
+      "line_text_sha256": "9eb195a8c01d30399891636f6e04364cf104230e2156b25e7828e81867a1de54",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13b2",
+      "scene_id": "c06r2-k13b-p2",
+      "line_text_sha256": "5043803e94eca8d64978a8b26d2dfc605118a432494886f6e935a87d5520af1e",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13c1",
+      "scene_id": "c06r2-k13c",
+      "line_text_sha256": "52a61a1788d5157761c1d7581b70cd79309f5ae288ab03def097bb4fd1a42f84",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13c2",
+      "scene_id": "c06r2-k13c-p2",
+      "line_text_sha256": "0863ffab6bac257df6821d340d2b2989a9aba58595c04ea1684d7978dbccf5c5",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13d1",
+      "scene_id": "c06r2-k13d",
+      "line_text_sha256": "146745a625a430e2ee48a2dfd9b9a9232fe9c38c2fdf710e9f4d5b50d8e4d683",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk13d2",
+      "scene_id": "c06r2-k13d-p2",
+      "line_text_sha256": "70315794fdf915170c4d200e587285bbbd15c6a92d0378b21c4a89d831217819",
+      "source_anchor_ids": [
+        "M1-television"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sk141",
+      "scene_id": "c06r2-k14",
+      "line_text_sha256": "4a0fc2f630abc75ddc4baf42a42396b0f72a355e92a6d147056bea0778ea3479",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st011",
+      "scene_id": "c06r2-t01",
+      "line_text_sha256": "4152018067f0994aea4c27da42fde2f77cc30025c8af50350742d835d69cfaad",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st012",
+      "scene_id": "c06r2-t01-p2",
+      "line_text_sha256": "c2e70ea1db7b2f11025030ae12bc01a1a6b8e15172d7590399d5ff9baac794f4",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st021",
+      "scene_id": "c06r2-t02",
+      "line_text_sha256": "39bed0c8756c7fd206e5e74cc8b69f9c7d18176d765c3c536c4b6de5e96885f3",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st022",
+      "scene_id": "c06r2-t02-p2",
+      "line_text_sha256": "098cb7787353c71301f8bcf9bfcecc0a49aa9fc4c7f893deb4eb8323f6ac5bcd",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st031",
+      "scene_id": "c06r2-t03",
+      "line_text_sha256": "6262ac10c756f47b983428a0d25031ba7f0fb1a14703f9987da215fa40b6c13e",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st032",
+      "scene_id": "c06r2-t03",
+      "line_text_sha256": "97049eb3a86c2cc1c41f6be5d7d5673c0b439c6e9241d6f55bf9d21581c5d74d",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st041",
+      "scene_id": "c06r2-t04",
+      "line_text_sha256": "7cf66e803a2d79baf910b2bc1bc62e636a3e6835b3f7e43c0583c82679a96fd4",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st042",
+      "scene_id": "c06r2-t04",
+      "line_text_sha256": "9220bd95cab7c02f5ced701d91e13fc558ffbb559607b30251cf5ea46fe158d6",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st051",
+      "scene_id": "c06r2-t05",
+      "line_text_sha256": "c08b99f36286f9e56d42664a142ce5f61ee857ad627e7e39845880defcd43b0b",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st052",
+      "scene_id": "c06r2-t05-p2",
+      "line_text_sha256": "739df9fb9e11f9a02c79f16ebcd06d6d3ea819d28d9391a4cd12a846036341b6",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st05a1",
+      "scene_id": "c06r2-t05a",
+      "line_text_sha256": "97705da3c2ba15fe18e9d92bb446c00db88218869f93c61fa202e3f5b6528ab8",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st05a2",
+      "scene_id": "c06r2-t05a",
+      "line_text_sha256": "252fd98e96ee49e4d020c5bb32e03729b503283c5edde926e26684bf9b3d0219",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st05b1",
+      "scene_id": "c06r2-t05b",
+      "line_text_sha256": "ab8ee2b5160e5bd51311014851495fedd2de71ffb3cef49f2d21b9dba19fa335",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st05b2",
+      "scene_id": "c06r2-t05b-p2",
+      "line_text_sha256": "6661e138fd48f1d66f8b824c999801fdf94159c2bd6763d141764597a96d98e2",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st061",
+      "scene_id": "c06r2-t06",
+      "line_text_sha256": "6ef4fe73452731c613cbd1cdaa11d2df3c30ae58246e56d24e7c156f4bcce893",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st062",
+      "scene_id": "c06r2-t06-p2",
+      "line_text_sha256": "45c84208341a19515406813abd182700af44350e7f32243f7a3ab08c7eaa0027",
+      "source_anchor_ids": [
+        "M1-factory"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st071",
+      "scene_id": "c06r2-t07",
+      "line_text_sha256": "56e5de943489491391414e9c0e8c469ecfec61813185699c2d89898f9f345154",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st072",
+      "scene_id": "c06r2-t07",
+      "line_text_sha256": "8b00277a71520d0b61e19486f72977e16253b61b8b4ae0b38e2868f9a1a07133",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st081",
+      "scene_id": "c06r2-t08",
+      "line_text_sha256": "840838c0840908b0dc896212b9b2ede3e4f54cb4def070d6c67f8e24a999ca14",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st091",
+      "scene_id": "c06r2-t09",
+      "line_text_sha256": "0c01acec7b82e24c2be0ced96329e27d775297cb2b9ad46db9cc7df03fd8fd27",
+      "source_anchor_ids": [
+        "P1-header"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st101",
+      "scene_id": "c06r2-t10",
+      "line_text_sha256": "eb76f44cfbb3c2d5de151c1cd56e2f6c00697e0c62754dfb41b978e8e3c6286c",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st102",
+      "scene_id": "c06r2-t10-p2",
+      "line_text_sha256": "f2af35a1710875cbca146d4531b635e5e523906dcd4b14d3d8d10dfb13756ecc",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st111",
+      "scene_id": "c06r2-t11",
+      "line_text_sha256": "44e4583a40444fdc4a6cdacfcbff981399b5fa2f7945fcc95288f57eca884afd",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6st112",
+      "scene_id": "c06r2-t11",
+      "line_text_sha256": "691f1653e48ea11ac28a56874d07949e06828e3bae3265a572042f99b0160bf6",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb011",
+      "scene_id": "c06r2-b01",
+      "line_text_sha256": "0cfe5e6bbd75dbcc5ad07ff7571516eae983ea2c21c33c237c63f9cfe055ef12",
+      "source_anchor_ids": [
+        "P1-header",
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb012",
+      "scene_id": "c06r2-b01-p2",
+      "line_text_sha256": "f400fd08bb5d3259482f8beb4adadf7a6db631e3a39546830126d02cc31f9341",
+      "source_anchor_ids": [
+        "P1-header",
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb021",
+      "scene_id": "c06r2-b02",
+      "line_text_sha256": "71ff501182ebd2507e93ac5c7655271ab41bf500c2676153afbbc550b3628bbc",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb022",
+      "scene_id": "c06r2-b02-p2",
+      "line_text_sha256": "9bcaea0379f1de8b2463460ea4f9d97bd956003dafa960d0c313e5abda2f2e30",
+      "source_anchor_ids": [
+        "P1-shape"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb031",
+      "scene_id": "c06r2-b03",
+      "line_text_sha256": "7e8d3d592d863d806146d0d37373a705f3fb568a210d5f708df4e8c2b76dbcd4",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb032",
+      "scene_id": "c06r2-b03",
+      "line_text_sha256": "b21b2cde68dd635fe2c298ede251bc458ef7e7d2c9176be488aca662f31a75b3",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb041",
+      "scene_id": "c06r2-b04",
+      "line_text_sha256": "3558020e4c92c66acd63fe83a91440c4b9440e3f7f6cf2cadecf2ebe28b82277",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb042",
+      "scene_id": "c06r2-b04",
+      "line_text_sha256": "a463e534508b3e7e07d2f4325a7139151289a96e5a6630449f4204cc38a14083",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb051",
+      "scene_id": "c06r2-b05",
+      "line_text_sha256": "49f1f78ec0125a2e0557f21650a0116833ec5c2d43038f3e038b360cdccd8022",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb052",
+      "scene_id": "c06r2-b05-p2",
+      "line_text_sha256": "e9f4e7a293c42e41570fec957f48f1c3a763fbee85acc2bc22a87af0feb8cb59",
+      "source_anchor_ids": [
+        "P1-goals"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb061",
+      "scene_id": "c06r2-b06",
+      "line_text_sha256": "6fec7ecc4a207659e3e06911c44a95bb7cf26f0b32c2b62c9d76fe079eb7a8d5",
+      "source_anchor_ids": [
+        "P1-clean"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb071",
+      "scene_id": "c06r2-b07",
+      "line_text_sha256": "a3c2c3fa26d314e687e365b030eb9d5fa1fdb2e8ef759c68ee1c75611ea95ba1",
+      "source_anchor_ids": [
+        "P1-clean"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb072",
+      "scene_id": "c06r2-b07",
+      "line_text_sha256": "b968acbf807703aa3d4c980f87664cb602e30e64e8d9b936e6925204be25d006",
+      "source_anchor_ids": [
+        "P1-clean"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb081",
+      "scene_id": "c06r2-b08",
+      "line_text_sha256": "e5381b6f8f992a66e71c41db4ec4faec835f6f57ceeaa8973718aa3a4873cc42",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb091",
+      "scene_id": "c06r2-b09",
+      "line_text_sha256": "c319c5002d0392c19b11035d5a865dc75c2518dce941bf5ce4aeeefd4a779101",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb092",
+      "scene_id": "c06r2-b09",
+      "line_text_sha256": "07ab5075aa5573e148ae0c0eaac00d699d146c5db6bf1587679bcb396b0f6d5a",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb101",
+      "scene_id": "c06r2-b10",
+      "line_text_sha256": "04395b9a75534c74e2355310f6c7ab8504c7067cbfa0762fad1b0581874dd9f0",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb102",
+      "scene_id": "c06r2-b10-p2",
+      "line_text_sha256": "96b8201b6c385fd8941328eb81dada205e9d86551af79e1cb5848e37aa57e0c5",
+      "source_anchor_ids": [
+        "P1-film"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb111",
+      "scene_id": "c06r2-b11",
+      "line_text_sha256": "5c2491a016ec8aae58cf63486f8ba20e8c686030e104bcc4f3bfaf7a0b6073bc",
+      "source_anchor_ids": [
+        "P1-binding"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb112",
+      "scene_id": "c06r2-b11",
+      "line_text_sha256": "72438063ab369fd756f2a30234c17e5990b8839303d419d549b53c02f29a6e08",
+      "source_anchor_ids": [
+        "P1-binding"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10a1",
+      "scene_id": "c06r2-b10a",
+      "line_text_sha256": "5be10027a6054a8701386e8b1189c9704a0d5160dfe4e13ab6e3b9b905552671",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10a2",
+      "scene_id": "c06r2-b10a",
+      "line_text_sha256": "7b33dd14fbb3245c0c6b6ee62fbeeeef0004b87ef8b42538e0eaa17f31486a48",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10b1",
+      "scene_id": "c06r2-b10b",
+      "line_text_sha256": "2cf576ca894cfb9c392fd677c2914d05289848a920f75bdce10723689e466376",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10b2",
+      "scene_id": "c06r2-b10b-p2",
+      "line_text_sha256": "9f03d9f899eac98c2651fdaa0590010b9ac229538439e484951c5184a75b3587",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10c1",
+      "scene_id": "c06r2-b10c",
+      "line_text_sha256": "79beef0a4c9c8e93df1150196027192cf8d699a924e89563100797532ae1994d",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10c2",
+      "scene_id": "c06r2-b10c-p2",
+      "line_text_sha256": "fc66f19e1578e343339b6214e0c82e12e08251327e5b808a4f4bd34480a5a456",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10d1",
+      "scene_id": "c06r2-b10d",
+      "line_text_sha256": "7acef2da65f84d6587c08681cd0fdd22f62be1c5bf36ca36a267ce2496414073",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10d2",
+      "scene_id": "c06r2-b10d-p2",
+      "line_text_sha256": "5d4788cd09a0ecf1e8fb51b4a56a8276055a81ff3f1acc6658dd7f9c04dfce54",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10e1",
+      "scene_id": "c06r2-b10e",
+      "line_text_sha256": "ec1ee74ea308bef4bcbf25777b79aef0b9fda33ea3b84636ffc1ce1e631d3e0b",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb10e2",
+      "scene_id": "c06r2-b10e-p2",
+      "line_text_sha256": "2f67f52d04198d8a470cbbd3ac234dcfa3c785a55bb3ffe1b9c98a0ed0a1e887",
+      "source_anchor_ids": [
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb121",
+      "scene_id": "c06r2-b12",
+      "line_text_sha256": "3052e5bc042e1db88641a6a1ccc0c54eaa67e0b68c7f84b43cdb2b07622a0a2a",
+      "source_anchor_ids": [
+        "P1-color"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb122",
+      "scene_id": "c06r2-b12",
+      "line_text_sha256": "9d9e17c5e2ccf4afa7b80a743c4bb9b80c69b7363b584064231c4299417ccef3",
+      "source_anchor_ids": [
+        "P1-color"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb131",
+      "scene_id": "c06r2-b13",
+      "line_text_sha256": "a6f6cbe5b6a9ad0bb4ccb86c43c453944117358e119c53c3cb9bc49e80e4ece1",
+      "source_anchor_ids": [
+        "P1-color"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb141",
+      "scene_id": "c06r2-b14",
+      "line_text_sha256": "65c5b85bf027ab3564c530774bf3ab8bc78d24605f259205aa9695d74cfb7527",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb142",
+      "scene_id": "c06r2-b14-p2",
+      "line_text_sha256": "f5d2cdb2d566427e88c2c6e1097131d8067230c033a3bfb15c78729c0c329498",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-mixing"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb151",
+      "scene_id": "c06r2-b15",
+      "line_text_sha256": "76fc5313ac228f30d4edb7690524cafb7a646a11e2169cda5b82ea1b2129f465",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb152",
+      "scene_id": "c06r2-b15-p2",
+      "line_text_sha256": "7784f6afcf9487d86650cd857a2ae066516d882e2ffa7c4e1f11b6b6adb2d288",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb15a1",
+      "scene_id": "c06r2-b15a",
+      "line_text_sha256": "53574cc036385f6090235910262af5766c37db4d155c03baf158c9db7deca220",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb15a2",
+      "scene_id": "c06r2-b15a-p2",
+      "line_text_sha256": "2cfe4002bf2bbb977f3ff8be4e059baf7b9a94db7d98cad4ec292e7dc316212f",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb15a3",
+      "scene_id": "c06r2-b15a-p3",
+      "line_text_sha256": "5b6176b1d1e9da9f06c1bede45cc1afe40fab1cbcdf27872c8dc58d965d28c6e",
+      "source_anchor_ids": [
+        "P1-store"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb161",
+      "scene_id": "c06r2-b16",
+      "line_text_sha256": "c54703987e68624e93591ef8281c833454e97eac7f1b745a42292a92bdecae8c",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb162",
+      "scene_id": "c06r2-b16",
+      "line_text_sha256": "00949cbd109428440bc5fb294b4d6ca5c22dcf711af4d919cee70061d0eaf6e0",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb171",
+      "scene_id": "c06r2-b17",
+      "line_text_sha256": "3bea4d354d9c47bc35ff4e71757fc773a36b8f5dd0d99605921e9a91ef55ed00",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb172",
+      "scene_id": "c06r2-b17-p2",
+      "line_text_sha256": "03424e1a0a0a454e44ce88bf2dd759c88f7f59c79f9f51582a649551d0e5b994",
+      "source_anchor_ids": [
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb17b1",
+      "scene_id": "c06r2-b17b",
+      "line_text_sha256": "0788e5379ab3ff1f07451b0a64b93891d2a2a6442cf5fe0a0b9029f8fae8ef0c",
+      "source_anchor_ids": [
+        "P1-color",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb17b2",
+      "scene_id": "c06r2-b17b-p2",
+      "line_text_sha256": "f01c561d5f64f008d11f8589d8669c3cb2e3495f8ed18f73930f9bcb8afe1afe",
+      "source_anchor_ids": [
+        "P1-color",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb181",
+      "scene_id": "c06r2-b18",
+      "line_text_sha256": "99fef003827e57f0ee494a17aaeeb5bb31589e363ddaa9b88a29fa1d3c8852f5",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb182",
+      "scene_id": "c06r2-b18",
+      "line_text_sha256": "231da65b9c43b0d636eb0025e0bc58cfd09511d19faf416cc6c712c5650f2078",
+      "source_anchor_ids": [
+        "P1-store",
+        "P1-dry"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sb201",
+      "scene_id": "c06r2-b20",
+      "line_text_sha256": "ec6b2f574cd70d370c1e43ee32d2e406a1b70e382d56f983b4714f3c7a4c2cd5",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn011",
+      "scene_id": "c06r2-n01",
+      "line_text_sha256": "ccc2b8245befc47067f38e1c4f4b60121fbe7fac16257a80e40d69cbbf7ac9ab",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn012",
+      "scene_id": "c06r2-n01-p2",
+      "line_text_sha256": "8407a92dcbee22e971fa5e59c9eba7c954b9e81847d148ea7d99d30b5034a50e",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn021",
+      "scene_id": "c06r2-n02",
+      "line_text_sha256": "3cd5d4a31208e006430a7090ea9de55027ac1759de9f221e292f53831ae1a4f9",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn022",
+      "scene_id": "c06r2-n02-p2",
+      "line_text_sha256": "b8c75a4c072c2ab9154f94944236a942a67d7b593316493852b07aa732c72f6f",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn031",
+      "scene_id": "c06r2-n03",
+      "line_text_sha256": "46a42836e28f35a8e83c03f5c60fecb6b5da3d7f61c7ce07da4ab0c0d3e45068",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn032",
+      "scene_id": "c06r2-n03",
+      "line_text_sha256": "35b2fe52cd43eaba1a93ad810ceef868dfa8c163b66ac5d7e8c4e98b92f4d402",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn041",
+      "scene_id": "c06r2-n04",
+      "line_text_sha256": "54d27cbd05901a25053a6092707281a9b3b31f585e8dec98dcf4008df38440ef",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn042",
+      "scene_id": "c06r2-n04-p2",
+      "line_text_sha256": "3cc37e48444c2eb28d30b35f6eb09532afc476c69a82fd2de659d04318761185",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn04a1",
+      "scene_id": "c06r2-n04a",
+      "line_text_sha256": "4293894583511f232f142296d746d5599aef241f977f2c2e5ba8329ce76cc222",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn04a2",
+      "scene_id": "c06r2-n04a-p2",
+      "line_text_sha256": "d2b3e7c2d51b421f2332c83944284f001f7727bac5d9a0044897c5c85f6f7ac7",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn04b1",
+      "scene_id": "c06r2-n04b",
+      "line_text_sha256": "8bd21a02e6413711f749389e6bceb6677ca878d3b21ff1623359e16a785f7f37",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn04b2",
+      "scene_id": "c06r2-n04b",
+      "line_text_sha256": "07970fdc480adfe7f33fbdd08904a3c40b75b61a5eb69a395eafd13c65e562f2",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn04c1",
+      "scene_id": "c06r2-n04c",
+      "line_text_sha256": "5df66d3a5a7c5fc8d6914be8d0ae2f1d52c6eea77c19f80fda57c5ccdc047a92",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn04c2",
+      "scene_id": "c06r2-n04c-p2",
+      "line_text_sha256": "0b62f2bcd8b772f273b1c974293663507f3e6480b5055c8ad8c81ad380fa9c3a",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn051",
+      "scene_id": "c06r2-n05",
+      "line_text_sha256": "6c45212e2589c38a4731553ab3d97026b5152b7b0dfbc428081aceaeabf3ff20",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn052",
+      "scene_id": "c06r2-n05-p2",
+      "line_text_sha256": "a169a61d5184ff0f8ecdbb0a70f10b057a00916e2cb615bc2c94b0776aa33f39",
+      "source_anchor_ids": [
+        "H3-kit"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn061",
+      "scene_id": "c06r2-n06",
+      "line_text_sha256": "306520f88716784c8e6c513b04533eca935076ff7f83588a6dd062db4522e7c3",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn062",
+      "scene_id": "c06r2-n06",
+      "line_text_sha256": "e505fb02b67af21ab26e5898d7cb105b8a51d4e3c60a0d5a6880168f2329629d",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn071",
+      "scene_id": "c06r2-n07",
+      "line_text_sha256": "aa499270dc82f73f22184bf3200545d13a84ff60dfd8f2fe8ba49144a67d62a6",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn072",
+      "scene_id": "c06r2-n07-p2",
+      "line_text_sha256": "6d116c39546abeda6e648d8b78d407a3ba6d2423c8c34062759bf7cabec80501",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn081",
+      "scene_id": "c06r2-n08",
+      "line_text_sha256": "6a328f291ccfb364b7421889c1a6ec8664e41bcc5d1cce3af667d58133b35d45",
+      "source_anchor_ids": [
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn082",
+      "scene_id": "c06r2-n08-p2",
+      "line_text_sha256": "f45df6a1a4c863d8a4b7368e61d36bd7e7998b97a2b0f4ba1b5aa75b5c1817b6",
+      "source_anchor_ids": [
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn091",
+      "scene_id": "c06r2-n09",
+      "line_text_sha256": "542922bf6aa8cd9d6010c7b1f981fbec99bdc30371a679e3741ff74684f1d86e",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn092",
+      "scene_id": "c06r2-n09-p2",
+      "line_text_sha256": "8713dfc93398071f3f47626b6cedb25d34a013e8d0b04b993f2c50f7608e2fb6",
+      "source_anchor_ids": [
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn101",
+      "scene_id": "c06r2-n10",
+      "line_text_sha256": "d15a30f5f21cb8f4690865fdcca028d01fcecb5afd9b2878cc8ee141372576bd",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6sn102",
+      "scene_id": "c06r2-n10-p2",
+      "line_text_sha256": "9c05d647a4fcc7993e63451cc332deaebc7bf88c1e529772d0cb8b70bacf7846",
+      "source_anchor_ids": [
+        "K1-kay",
+        "P1-store",
+        "H3-display"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6snct1",
+      "scene_id": "c06r2-outro",
+      "line_text_sha256": "a1be14cc45bed808a5f34070af06c9b25b148070d11cfebf7f0f2f0550ed5a32",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    },
+    {
+      "line_id": "c6snct2",
+      "scene_id": "c06r2-outro",
+      "line_text_sha256": "b953528109311979c61318d4f8e6cf7852f4e4ba9dcd927f5116f85a7f7a7fc4",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "exact_to_prior": true
+    }
+  ],
+  "category_schema_review": {
+    "source_category_before": "explainer",
+    "source_category_after": "story",
+    "authorized_scope": "root explicitly authorizes C06 story metadata correction; no authorization for source narrative edits",
+    "native_schema_and_lint_accepted": true,
+    "template_compatibility": "137 shot plus 1 outro remain valid under category=story; no stats/big/compare card conversion or new scene authored",
+    "backend_category_readback_performed": false,
+    "backend_category_change_authorized_or_performed": false,
+    "contract_background": "Official sync.mjs reviewPush sends valid source category, and the parent supplied the server guard that only files an unfiled project. No claim is made that this local metadata correction is needed to overwrite or prevent overwriting an existing owner-selected backend category."
+  },
+  "native_read_only": {
+    "canonical_new_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "canonical_old_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "runtime_canonical_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "canonical_bytes_identical": true,
+    "hashes": {
+      "narrative": {
+        "before": "81af9e35ef603e7f",
+        "after": "81af9e35ef603e7f",
+        "equal": true
+      },
+      "speech": {
+        "before": "3ea6ba231f7d8b58",
+        "after": "3ea6ba231f7d8b58",
+        "equal": true
+      },
+      "look": {
+        "before": "98a370ae40badbaf",
+        "after": "98a370ae40badbaf",
+        "equal": true
+      },
+      "pictures": {
+        "before": "ae9ed620bc7ab673",
+        "after": "ae9ed620bc7ab673",
+        "equal": true
+      },
+      "mix": {
+        "before": "71ecdd098c551254",
+        "after": "71ecdd098c551254",
+        "equal": true
+      }
+    },
+    "lexicon_sha256": "88d56a0e7edfdd645d605193f653640121702d2fc2c819731966c8f545499416",
+    "lexicon_mode": "snapshot",
+    "native_record_sha256": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+    "narrativeReviewMatches_old": true,
+    "narrativeReviewMatches_new": true,
+    "lint_before": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"window\" is in 72 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"expression\" is in 68 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"viewer\" is in 67 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[10] (c06r2-o01)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[15] (c06r2-o05)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[40] (c06r2-k09)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[59] (c06r2-t03)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[68] (c06r2-t07)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[73] (c06r2-t11)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[79] (c06r2-b04)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[83] (c06r2-b07)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[85] (c06r2-b09)",
+          "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[88] (c06r2-b11)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[98] (c06r2-b12)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[112] (c06r2-b18)",
+          "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "youtube/es",
+          "message": "es.title: 45 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "youtube/pt",
+          "message": "pt.title: 41.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        }
+      ],
+      "summary": {
+        "minutes": 16.188333333333333,
+        "lines": 163,
+        "spoken_units": 3428,
+        "billable_characters": 12194,
+        "chapters": [
+          "00:00 一罐材料等著再被打開",
+          "00:57 煤灰變少，清潔工作縮小",
+          "03:01 孩子把材料捏成作品",
+          "06:19 手指的工作交給一個出口",
+          "08:35 作者把蓋子寫進了專利",
+          "13:20 花束留在了桌上"
+        ]
+      }
+    },
+    "lint_after": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"window\" is in 72 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"expression\" is in 68 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"viewer\" is in 67 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[10] (c06r2-o01)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[15] (c06r2-o05)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[40] (c06r2-k09)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[59] (c06r2-t03)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[68] (c06r2-t07)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[73] (c06r2-t11)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[79] (c06r2-b04)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[83] (c06r2-b07)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[85] (c06r2-b09)",
+          "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[88] (c06r2-b11)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[98] (c06r2-b12)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[112] (c06r2-b18)",
+          "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes",
+          "message": "about 16.2 minutes; the target is 12-14"
+        },
+        {
+          "path": "scenes[137] (c06r2-outro)",
+          "message": "the outro has 2 sentences; the close is 3: the answer with its number, a comment question, a subscribe invitation with a reason"
+        },
+        {
+          "path": "youtube/es",
+          "message": "es.title: 45 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "youtube/pt",
+          "message": "pt.title: 41.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        }
+      ],
+      "summary": {
+        "minutes": 16.188333333333333,
+        "lines": 163,
+        "spoken_units": 3428,
+        "billable_characters": 12194,
+        "chapters": [
+          "00:00 一罐材料等著再被打開",
+          "00:57 煤灰變少，清潔工作縮小",
+          "03:01 孩子把材料捏成作品",
+          "06:19 手指的工作交給一個出口",
+          "08:35 作者把蓋子寫進了專利",
+          "13:20 花束留在了桌上"
+        ]
+      }
+    },
+    "runtime_source_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "approval_file_sha256": "c18ec7ebbff12af8151e10ee4fbb1ba72fd8f59d59223e0a29303715471bc534",
+    "lint_context": "Existing approved runtime immutable story lexicon, unchanged source brief and story series plus all eight existing i18n translations; no runtime preparation or dictionary write",
+    "lint_soft_warning_delta": {
+      "before": 17,
+      "after": 19,
+      "added": [
+        {
+          "path": "scenes",
+          "message": "about 16.2 minutes; the target is 12-14"
+        },
+        {
+          "path": "scenes[137] (c06r2-outro)",
+          "message": "the outro has 2 sentences; the close is 3: the answer with its number, a comment question, a subscribe invitation with a reason"
+        }
+      ],
+      "classification": "Native soft warnings retained verbatim; estimated duration is not measured TTS, and outro warning is not a new narrative verdict or authorization to rewrite."
+    }
+  },
+  "native_pair_requests": [
+    {
+      "pair_id": "small-hands-firm-clay",
+      "versions": [
+        {
+          "version": "old",
+          "ends": [
+            {
+              "scene_id": "c06r2-k02-p2",
+              "camera": "push in",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "ca2d9db260953b4f58278b23def291651e49c94fc2f4b5dae9e75aa0c87bf33d",
+              "keys": {
+                "1K": "132306c2f7b44c85",
+                "2K": "00295b1753b9796e"
+              }
+            },
+            {
+              "scene_id": "c06r2-h05",
+              "camera": "push in",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "ca2d9db260953b4f58278b23def291651e49c94fc2f4b5dae9e75aa0c87bf33d",
+              "keys": {
+                "1K": "132306c2f7b44c85",
+                "2K": "00295b1753b9796e"
+              }
+            }
+          ]
+        },
+        {
+          "version": "new",
+          "ends": [
+            {
+              "scene_id": "c06r2-k02-p2",
+              "camera": "push in",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "ca2d9db260953b4f58278b23def291651e49c94fc2f4b5dae9e75aa0c87bf33d",
+              "keys": {
+                "1K": "132306c2f7b44c85",
+                "2K": "00295b1753b9796e"
+              }
+            },
+            {
+              "scene_id": "c06r2-h05",
+              "camera": "push in",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "ca2d9db260953b4f58278b23def291651e49c94fc2f4b5dae9e75aa0c87bf33d",
+              "keys": {
+                "1K": "132306c2f7b44c85",
+                "2K": "00295b1753b9796e"
+              }
+            }
+          ]
+        }
+      ],
+      "old_new_full_request_equal": true,
+      "both_new_ends_request_equal": true,
+      "plan_keys_match": true,
+      "live": [
+        {
+          "size": "1K",
+          "key": "132306c2f7b44c85",
+          "cache_entry_exists": false,
+          "file": null,
+          "file_exists": false,
+          "file_sha256": null,
+          "entry_sha256": null,
+          "bytes_match": false
+        },
+        {
+          "size": "2K",
+          "key": "00295b1753b9796e",
+          "cache_entry_exists": false,
+          "file": null,
+          "file_exists": false,
+          "file_sha256": null,
+          "entry_sha256": null,
+          "bytes_match": false
+        }
+      ],
+      "actualasset_verified": false
+    },
+    {
+      "pair_id": "modeled-bouquet-before-finishing",
+      "versions": [
+        {
+          "version": "old",
+          "ends": [
+            {
+              "scene_id": "c06r2-n06",
+              "camera": "pan left",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "6e1d50ec239a618cd43cea29d86a797fd2e4a346fcff4810605777fa0f56e8f6",
+              "keys": {
+                "1K": "310552f52e4fb3c6",
+                "2K": "f2c7373fe2c7100e"
+              }
+            },
+            {
+              "scene_id": "c06r2-h06",
+              "camera": "pan left",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "6e1d50ec239a618cd43cea29d86a797fd2e4a346fcff4810605777fa0f56e8f6",
+              "keys": {
+                "1K": "310552f52e4fb3c6",
+                "2K": "f2c7373fe2c7100e"
+              }
+            }
+          ]
+        },
+        {
+          "version": "new",
+          "ends": [
+            {
+              "scene_id": "c06r2-n06",
+              "camera": "pan left",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "6e1d50ec239a618cd43cea29d86a797fd2e4a346fcff4810605777fa0f56e8f6",
+              "keys": {
+                "1K": "310552f52e4fb3c6",
+                "2K": "f2c7373fe2c7100e"
+              }
+            },
+            {
+              "scene_id": "c06r2-h06",
+              "camera": "pan left",
+              "cast": [],
+              "references": [],
+              "negative": "",
+              "seed": 1,
+              "composed": {
+                "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+                "droppedFixes": 0,
+                "cutChars": 0
+              },
+              "composed_sha256": "6e1d50ec239a618cd43cea29d86a797fd2e4a346fcff4810605777fa0f56e8f6",
+              "keys": {
+                "1K": "310552f52e4fb3c6",
+                "2K": "f2c7373fe2c7100e"
+              }
+            }
+          ]
+        }
+      ],
+      "old_new_full_request_equal": true,
+      "both_new_ends_request_equal": true,
+      "plan_keys_match": true,
+      "live": [
+        {
+          "size": "1K",
+          "key": "310552f52e4fb3c6",
+          "cache_entry_exists": false,
+          "file": null,
+          "file_exists": false,
+          "file_sha256": null,
+          "entry_sha256": null,
+          "bytes_match": false
+        },
+        {
+          "size": "2K",
+          "key": "f2c7373fe2c7100e",
+          "cache_entry_exists": false,
+          "file": null,
+          "file_exists": false,
+          "file_sha256": null,
+          "entry_sha256": null,
+          "bytes_match": false
+        }
+      ],
+      "actualasset_verified": false
+    }
+  ],
+  "plan_pairs_section_bytes_equivalent": true,
+  "plan_production_handoff_unchanged": true,
+  "plan_actual_asset_flags_false": true,
+  "same_image_stop_line": {
+    "cache_file": "/workspace/work/brand-story-20261025/media/story-everyday-play-doh-c06-remake-20261025/media/cache.json",
+    "cache_file_exists": false,
+    "all_four_planned_keys_currently_missing": true,
+    "second_teaser_command_permitted": false,
+    "stop_on_missing_live_cache_or_accepted_payoff_file_SHA": true,
+    "no_dispatch_or_substitute_purchase_on_miss": true,
+    "both_official_judges_required": true,
+    "judge_or_retake_difference_stops_pair": true,
+    "trim_selected_derived_file_SHA_must_match": true,
+    "final_manifest_render_assembly_and_actual_file_SHA_must_match": true,
+    "actualasset_verified": false
+  },
+  "producer_memory_only_replay": {
+    "video.json": {
+      "sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+      "exact": true
+    },
+    "script.md": {
+      "sha256": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+      "exact": true
+    },
+    "claims.json": {
+      "sha256": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+      "exact": true
+    },
+    "narration-only.json": {
+      "sha256": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+      "exact": true
+    },
+    "claims.md": {
+      "sha256": "895efa36cd77f914b68c1f739419ddf77f56c6c97cced0dd4768a705ec62af2d",
+      "exact": true
+    }
+  },
+  "producer_diff": "Only an explanatory comment and video['category']='story' assignment were added to the previous exact producer. All writes intercepted in memory; the four current inputs plus unchanged claims.md exactly reproduced.",
+  "source_table": {
+    "H1-scale": {
+      "url": "https://newsroom.hasbro.com/node/34691",
+      "locator": "2024公告About PLAY-DOH：over500Mcans shipped a year。",
+      "scope": "公司年出貨罐數口徑，不是使用人數、營收或零售成交。",
+      "raw_document_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78"
+    },
+    "H2-birthday": {
+      "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+      "locator": "2018公告：brand inception in1956。",
+      "scope": "公司回顧的品牌生日，不是本次已見首單發票。",
+      "raw_document_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc"
+    },
+    "H3-display": {
+      "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+      "locator": "2026-07-09公告：首個專為成人設計系列、adult crafting/home decor、preserved/displayed與finishing spray幫助維持結構數月。",
+      "scope": "成人線定位與保存數月均保留公司公告歸屬，非本次實測或銷售成功；不聲稱經典材料全改成永久保存。",
+      "raw_document_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392"
+    },
+    "H3-kit": {
+      "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+      "locator": "2026-07-09公告：shaping individual petals to arranging a finished bouquet；tools/molds/vase/spray；每款how-to videos。",
+      "scope": "限該花藝套件的公司介紹；匿名假想手作動作不是親測或歷史重建。",
+      "raw_document_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392"
+    },
+    "K1-cleo": {
+      "url": "https://www.kutol.com/kutols-story/",
+      "locator": "公司史Cleo被派清算卻買下生意、Kroger壁紙清潔用品段。",
+      "scope": "企業多年後的回顧，不是同期合約或交易帳簿。",
+      "raw_document_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209"
+    },
+    "K1-kay": {
+      "url": "https://www.kutol.com/kutols-story/",
+      "locator": "公司史Joseph的sister-in-law Kay Zufall、kindergarten、材料受歡迎與Rainbow分支段。",
+      "scope": "教師姓名與身分來自本公司回顧；M2的a teacher不獨自承擔Kay身分。",
+      "raw_document_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209"
+    },
+    "M1-kroger": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "2016回顧1933 Kroger合同段，含從前未做過壁紙清潔材料。",
+      "scope": "館方明轉引Tim Walsh後出書籍，不是本次已讀1933原始合約。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-noah": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1933段：brother Noah, a product developer、winning formula及malleable clay-like compound。",
+      "scope": "館方回顧的開發分工；不倒推1965專利配方為1933原配方。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-wall": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "壁紙清潔用途與煤灰需求段：wallpaper cleaner、soot residue。",
+      "scope": "柔軟清潔材料與壁紙用途；觀眾壓、捏是明示假想動作，不聲稱已見當年操作影片或性能測試。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-1949": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "Following Cleo death in1949, son Joseph took over。",
+      "scope": "館方回顧；本稿置於1950年代需求改變之前。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-demand": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "early1950s sales plummet、二戰後家庭由coal-based furnaces轉oil/gas、減少soot residue段。",
+      "scope": "館方回顧的需求變化，不升格成帳本驗證或唯一破產原因。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-kay": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1955 Kay schoolteacher提出handicraft/play、Joseph拜訪看作品、reformulate/repurpose並沿用設備空間。",
+      "scope": "公司/館方回顧，非同期教室紀錄；不補洗劑/香料改配方細節。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-brand": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1956 Rainbow Crafts subsidiary、repackaged Play-Doh、向Cincinnati elementary schools行銷段。",
+      "scope": "公司與推廣脈絡，不宣稱1956是已證第一筆出售。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-colors": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "By1957 available in three new colors red/yellow/blue。",
+      "scope": "館方回顧顏色加入，不推1956所有色系或現代全配方。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-television": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "1956/1957發展段後：缺大筆廣告預算、Captain Kangaroo主持人安排至少每週使用一次。",
+      "scope": "館方回顧的推廣動作，沒有精確合作日/費率，不宣稱本次驗證全國銷量因果。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M1-factory": {
+      "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+      "locator": "In1960 two engineers、multiple ways、Fun Factory minimal force extrude shapes/designs段。",
+      "scope": "1960工具功能的館方回顧；配鏡為匿名一般槓桿/出口示意，無現代兩軌倒配。",
+      "raw_document_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4"
+    },
+    "M2-hard": {
+      "url": "https://www.toyhalloffame.org/toys/play-doh/",
+      "locator": "Joe learned from a teacher、kids usually found modeling clay too hard to manipulate、送材料試用與學校反應。",
+      "scope": "M2不具名的teacher；Kay姓名由K1/M1補，非正式兒童試驗/療效。",
+      "raw_document_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6"
+    },
+    "M2-colors": {
+      "url": "https://www.toyhalloffame.org/toys/play-doh/",
+      "locator": "1957 softer version in primary colors段。",
+      "scope": "同The Strong機構回顧，不當另一個獨立同期見證。",
+      "raw_document_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6"
+    },
+    "P1-header": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1標頭：NoahW./JosephS.、assignors to Rainbow、Filed May17,1960、Patented Jan26,1965；文首兒童用途。",
+      "scope": "申請與核發分開。後來核發的文本不充當1955實際配方或現代每罐的規格。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-shape": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF4印刷欄7–8 claim9：moldable into any desired shape、consistency to retain its shape；特性段。",
+      "scope": "專利主張/設計要求，不是作者獨立性能試驗。注意原件是claim9，不沿用r1作者表的claim8誤定位。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-goals": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1文首objects：soft/pliable、slow drying、re-worked/re-molded。",
+      "scope": "該文本的設計目標；匿名假想變形不代表歷史或現代產品全數實測。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-clean": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1 objects：cleanliness、notsticky/non-staining；後段特性。",
+      "scope": "設計主張，非當代安全/可食或本次效果保證。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-film": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1印刷欄2：It is believed hydrocarbon distillate thin film around solid particles；coated flour particles濕熱糊化與thin film滑順不黏段。",
+      "scope": "保留作者認為/文件描述的假說層級；概念模型不是顯微實測或1933配方。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-mixing": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF3印刷欄6：preferred method、ordinary bakery dough mixer、熱水與材料混合成homogenous mass、type of mixer not critical。 同PDF3印刷欄6製法結尾：混成可塑團塊後immediately placed in air tight containers。",
+      "scope": "專利描述的一種製法；不列比例/溫度/時間作DIY配方，不稱親見工廠實際照此生產。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-color": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1 objects：different colors incorporated without affecting moldable consistency。",
+      "scope": "加色與可塑性兼顧的設計要求，不證1957工廠實際色方或當代全系列同方。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-store": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF4印刷欄7：normally stored in air tight container、玩後可放回、此方式聲稱工作特性up to3years。",
+      "scope": "1965核發文本對該組成的保存主張，非本次三年試驗/今日產品保存期限；正文保留文本聲稱。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-dry": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF3–4印刷欄6–7：open air幾天乾硬、painted with oil/water/poster paints、once thoroughly dry not reclaimed、乾硬後crayons。",
+      "scope": "該文本的描述及不可重塑取捨；不稱所有現代產品同一乾燥時間或永久保存。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    },
+    "P1-binding": {
+      "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+      "locator": "核發PDF1–2：hardener/astringent為可選成分，其功能bind components into cohesive mass；另見claims的binder說明。",
+      "scope": "該文本的可選黏結作用主張，不宣稱每一當代產品必含或本次獨立實驗證實。",
+      "raw_document_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6"
+    }
+  },
+  "source_catalog": {
+    "schema_version": 1,
+    "sources": [
+      {
+        "id": "K1",
+        "url": "https://www.kutol.com/kutols-story/",
+        "status": 200,
+        "final_url": "https://www.kutol.com/kutols-story/",
+        "bytes": 314017,
+        "raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Kutol's Story",
+          "article:publisher": "https://www.facebook.com/KutolProductsCompany",
+          "article:modified_time": "2024-09-09T19:39:47+00:00"
+        },
+        "title": "Kutol’s Story",
+        "publisher": "Kutol",
+        "kind": "corporate_retrospective",
+        "published_on": null,
+        "modified_on": "2024-09-09",
+        "locator": "開頭沿革；Cleo/Kroger段；Kay Zufall/Rainbow段；Bill/液體皂與後續經營段",
+        "excerpt": "introduced Kutol’s wallpaper cleaner to her kindergarten class",
+        "confidence": "高：公司確如此回顧；中：多年以前事件本身",
+        "limits": "不是1933合約、教室紀錄或逐年帳本。largest-world等公司自評不作本片核心。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "M1",
+        "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+        "status": 200,
+        "final_url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+        "bytes": 415288,
+        "raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "The History of Play-Doh: Good, Clean Fun! - The Strong National Museum of Play",
+          "article:publisher": "https://www.facebook.com/TheStrongMuseum/",
+          "article:published_time": "2016-11-03T04:00:00+00:00",
+          "article:modified_time": "2022-07-13T14:28:37+00:00"
+        },
+        "title": "The History of Play-Doh: Good, Clean Fun!",
+        "publisher": "The Strong National Museum of Play",
+        "kind": "official_institution_retrospective",
+        "published_on": "2016-11-03",
+        "modified_on": "2022-07-13",
+        "locator": "正文1933/early1950s/1955/1956/1957/1960/1964/1965段；文末出版日",
+        "excerpt": "According to Tim Walsh’s book",
+        "confidence": "中：館方回顧，早史部分轉引後出書籍",
+        "limits": "不是同期帳本；1955推出與1956公司/校園推廣分開。不可將其與Toy Hall條目算兩獨立機構。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "M2",
+        "url": "https://www.toyhalloffame.org/toys/play-doh/",
+        "status": 200,
+        "final_url": "https://www.toyhalloffame.org/toys/play-doh/",
+        "bytes": 399945,
+        "raw_sha256": "7139f8584fb3c72dcf3b4fce6c7f9399199b426cb879a3d8327934cc203f03e6",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Play-Doh | National Toy Hall of Fame | The Strong",
+          "article:publisher": "https://www.facebook.com/TheStrongMuseum/",
+          "article:modified_time": "2026-10-23T22:54:36+00:00"
+        },
+        "title": "Play-Doh — National Toy Hall of Fame",
+        "publisher": "The Strong",
+        "kind": "official_institution_retrospective",
+        "published_on": "2021-08-20",
+        "modified_on": "2026-10-23",
+        "locator": "Inducted Year；正文教師/1955教育展/百貨/1956/1957段",
+        "excerpt": "kids usually found modeling clay too hard to manipulate",
+        "confidence": "中：官方館方回顧，非當年教師試驗報告",
+        "limits": "與M1同機構；不證孩子比例、轉換率、百貨採購量。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "P1",
+        "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+        "status": 200,
+        "final_url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+        "bytes": 699681,
+        "raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+        "content_type": "application/pdf",
+        "title": "US3167440 — Plastic modeling composition of a soft, pliable working consistency",
+        "publisher": "United States Patent Office（原始核發掃描，Google Patent Images保存）",
+        "kind": "primary_patent_scan",
+        "published_on": "1965-01-26",
+        "filing_on": "1960-05-17",
+        "locator": "PDF1（印刷欄1–2）：標頭、用途、CIP、目標、機制說明；後頁claims",
+        "excerpt": "a modeling composition for children's play",
+        "confidence": "高：原件人名、日期、申請內容；不證市售批次或效果",
+        "limits": "早申請735,985，1958-05-19，文內稱now abandoned。不是1933原配方、1956首賣證據或今天安全/成分保證。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "G1",
+        "url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/87335817/registration-certificate/5467089_87335817_051518_ORC.pdf",
+        "status": 200,
+        "final_url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/87335817/registration-certificate/5467089_87335817_051518_ORC.pdf",
+        "bytes": 50733,
+        "raw_sha256": "62126abb502d40e723087e392491ceb5123d49bf44fd226fd5f6da42e93be1b2",
+        "content_type": "application/pdf;charset=UTF-8",
+        "title": "US trademark registration certificate 5,467,089 / serial 87-335,817",
+        "publisher": "USPTO",
+        "kind": "primary_official_registration",
+        "published_on": "2018-05-15",
+        "filing_on": "2017-02-14",
+        "locator": "PDF1：registration/date/Class28/first use/mark description",
+        "excerpt": "Registered May 15, 2018",
+        "confidence": "高：登記與證書所載；首次使用是申請人歷史聲明",
+        "limits": "氣味商標，不是配方專利。1955-09-12 first-use不是本次獨立核到的首筆發票。未查2026維持/續展狀態，不宣稱今日仍有效。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "G2",
+        "url": "https://tsdrsec.uspto.gov/ts/cd/casedoc/sn87335817/RFA20170217125306/1/webcontent?scale=1",
+        "status": 200,
+        "final_url": "https://tsdrsec.uspto.gov/ts/cd/casedoc/sn87335817/RFA20170217125306/1/webcontent?scale=1",
+        "bytes": 27932,
+        "raw_sha256": "38400b68c170110e5dda782d87ae8a905b8f5a362ce59130bfe905d048cb018c",
+        "content_type": "text/html;charset=UTF-8",
+        "publication_meta": {},
+        "title": "Original trademark application, serial 87335817",
+        "publisher": "USPTO / Hasbro applicant",
+        "kind": "primary_applicant_declaration",
+        "published_on": null,
+        "filing_on": "2017-02-14",
+        "locator": "FIRST USE ANYWHERE/IN COMMERCE；miscellaneous statement；declaration",
+        "excerpt": "At least as early as 09/12/1955",
+        "confidence": "高：申請人作此聲明；非獨立首單查核",
+        "limits": "與1956品牌生日未必矛盾；不可寫成政府獨立證明1955-09-12首次售出。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false,
+        "document_date": "2017-02-14"
+      },
+      {
+        "id": "H1",
+        "url": "https://newsroom.hasbro.com/node/34691",
+        "status": 200,
+        "final_url": "https://newsroom.hasbro.com/node/34691",
+        "bytes": 35397,
+        "raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "HASBRO AND HORIZON GROUP USA SIGN A STRATEGIC PLAY-DOH LICENSING DEAL | Hasbro"
+        },
+        "title": "Hasbro and Horizon Group USA sign a strategic Play-Doh licensing deal",
+        "publisher": "Hasbro",
+        "kind": "contemporary_corporate_announcement",
+        "published_on": "2024-04-02",
+        "dateline_on": "2024-04-03",
+        "locator": "About PLAY-DOH；Horizon agreement段",
+        "excerpt": "over 500M cans of PLAY-DOH shipped a year",
+        "confidence": "高：2024公司公布口徑；非獨立銷量稽核",
+        "limits": "頁首4/2與內文4/3不一致，口播用2024年公告；5億是罐/年出貨，不是用戶或收入。2025供應新材質是當時計畫，不能單憑宣布證明完成。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H2",
+        "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+        "status": 200,
+        "final_url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+        "bytes": 36534,
+        "raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Hasbro Trademarks a Favorite Smell from Childhood: The PLAY-DOH Scent | Hasbro, Inc."
+        },
+        "title": "Hasbro trademarks a favorite smell from childhood: the Play-Doh scent",
+        "publisher": "Hasbro",
+        "kind": "contemporary_corporate_announcement",
+        "published_on": "2018-05-18",
+        "locator": "宣布氣味商標、1956 brand inception、recipe largely unchanged段",
+        "excerpt": "the brand’s inception in 1956",
+        "confidence": "高：當年宣布與品牌自述；註冊日另依G1",
+        "limits": "1956為品牌回顧起點，不是首張訂單；largely unchanged不能倒推1930清潔膏相同、所有新品皆同方。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H3",
+        "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+        "status": 200,
+        "final_url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+        "bytes": 34631,
+        "raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+        "content_type": "text/html; charset=UTF-8",
+        "publication_meta": {
+          "og:title": "Hasbro Introduces Blooms by Play-Doh, A New Creative Experience Designed for Adults | Hasbro"
+        },
+        "title": "Hasbro introduces Blooms by Play-Doh, a new creative experience designed for adults",
+        "publisher": "Hasbro",
+        "kind": "contemporary_corporate_announcement",
+        "published_on": "2026-07-09",
+        "locator": "首段成人線；kit步驟；finishing spray段；當時上架段",
+        "excerpt": "the first-ever Play-Doh line designed specifically for adults",
+        "confidence": "高：公司當時推出/定位；保存效果未獨立測試",
+        "limits": "成人產品線『首次』是公司措辭；噴霧維持花型數月是廠商聲稱。不可說臨床減壓或所有Play-Doh配方已改為永久定型。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H4",
+        "url": "https://consumercare.hasbro.com/en-ca/product/play-doh-fun-factory-set/2DE0510A-5056-9047-F548-E6B3E3FFF561",
+        "status": 200,
+        "final_url": "https://consumercare.hasbro.com/en-ca/product/play-doh-fun-factory-set/2DE0510A-5056-9047-F548-E6B3E3FFF561",
+        "bytes": 82119,
+        "raw_sha256": "e550e157362877e22a491eaca409eda472dce54951155fef01b21ffde4a619c1",
+        "content_type": "text/html; charset=utf-8",
+        "publication_meta": {
+          "og:title": "Play-Doh Fun Factory Set"
+        },
+        "title": "Play-Doh Fun Factory Set — Item B5554",
+        "publisher": "Hasbro Consumer Care",
+        "kind": "current_official_product_description",
+        "published_on": null,
+        "locator": "商品玩法/2 rails/lever；內容物與標示",
+        "excerpt": "choose a shape ... and press the lever",
+        "confidence": "高：當前型號說明；非1960歷史設計原件",
+        "limits": "只能示範此型號壓柄/形狀軌機制，不拿今天組件數或外形當1960原件。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      },
+      {
+        "id": "H5",
+        "url": "https://consumercare.hasbro.com/en-ca/product/play-doh-4-pack-of-classic-colors/9BD4A680-3966-49AF-8A1A-147D584ABE32",
+        "status": 200,
+        "final_url": "https://consumercare.hasbro.com/en-ca/product/play-doh-4-pack-of-classic-colors/9BD4A680-3966-49AF-8A1A-147D584ABE32",
+        "bytes": 82663,
+        "raw_sha256": "eeb3b221395f8e57a078d976e7e99606139bf6ebd602f6ab827e0fcd056261c1",
+        "content_type": "text/html; charset=utf-8",
+        "publication_meta": {
+          "og:title": "Play-Doh 4-Pack of Classic Colors"
+        },
+        "title": "Play-Doh 4-Pack of Classic Colors — Item B5517",
+        "publisher": "Hasbro Consumer Care",
+        "kind": "current_official_product_description",
+        "published_on": null,
+        "locator": "Original quality；Notice to Parents/compound labels",
+        "excerpt": "made primarily with wheat, water, and salt",
+        "confidence": "高：當前型號廠商成分/用途標示",
+        "limits": "primarily不是完整配方；contains wheat/not intended to be eaten，不能由專利non-toxic變成可食或全齡安全建議。",
+        "accessed_on": "2026-10-25",
+        "raw_document_saved": false
+      }
+    ],
+    "original_sha256": "13cb977822387cd2019d8daf490eb85e8d62722ca6edfdc503e7056bc0e82ac4",
+    "status": "RESEARCH_RECORD_NOT_NEW_SCRIPT_APPROVAL"
+  },
+  "original_source_binding_inherited_from_exact_PASS": {
+    "source_verified_baseline_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "original_sources": [
+      {
+        "id": "H1",
+        "url": "https://newsroom.hasbro.com/node/34691",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H1.html",
+        "actual_raw_bytes": 35397,
+        "actual_raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H1.paragraphs.txt",
+        "actual_text_sha256": "13458933b4268d94ed73d32f5372a9ab2fd16012937d57ea040349ee13fa276e",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:50.521603+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "H2",
+        "url": "https://corp.hasbro.com/news-releases/news-release-details/hasbro-trademarks-favorite-smell-childhood-play-doh-scent",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H2.html",
+        "actual_raw_bytes": 36534,
+        "actual_raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H2.paragraphs.txt",
+        "actual_text_sha256": "34162b528215843c25220900ca97bbb8abaacf369a55ed71553922e3e7d5038e",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:50.491058+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "H3",
+        "url": "https://newsroom.hasbro.com/news-releases/news-release-details/hasbro-introduces-blooms-play-doh-new-creative-experience",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.html",
+        "actual_raw_bytes": 34631,
+        "actual_raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.paragraphs.txt",
+        "actual_text_sha256": "5a15b960eae5c4a0a44ce1fc92c041d87f79eecd0acf48d2f2f779babfe0ce9a",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:49.846752+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "K1",
+        "url": "https://www.kutol.com/kutols-story/",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.html",
+        "actual_raw_bytes": 314017,
+        "actual_raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.paragraphs.txt",
+        "actual_text_sha256": "611ee7b20284dd0a626442328e437e3332d8f4a792a3b7d18299577b6db684e3",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:49.580220+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "M1",
+        "url": "https://www.museumofplay.org/blog/the-history-of-play-doh-good-clean-fun/",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M1.html",
+        "actual_raw_bytes": 415288,
+        "actual_raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M1.paragraphs.txt",
+        "actual_text_sha256": "6b780e6af3945049f4b9065b58c4b889a9c22e37d250a38558ce5095399e527a",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:49.621447+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "M2",
+        "url": "https://www.toyhalloffame.org/toys/play-doh/",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.html",
+        "actual_raw_bytes": 399913,
+        "actual_raw_sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.paragraphs.txt",
+        "actual_text_sha256": "eea5bd7b304073f99eb9dac8669b88eb5579391022c8ce5f8fdbda3b858d6fdc",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:50.487239+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      },
+      {
+        "id": "P1",
+        "url": "https://patentimages.storage.googleapis.com/04/b2/91/3e71db79829152/US3167440.pdf",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/P1.pdf",
+        "actual_raw_bytes": 699681,
+        "actual_raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+        "text_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/P1.txt",
+        "actual_text_sha256": "d0aea6d6ff899ba81abc24d5376cc71c91ddfd071c603e74905b9ed08b17b0f4",
+        "original_fetch_http_status": 200,
+        "original_fetch_at_utc": "2026-10-25T16:42:48.952143+00:00",
+        "r3_method": "Reopened actual original-document cache; recomputed raw/text byte hashes and reread cited paragraphs or patent text. P1 original scan pages 3 and 4 also visually reread. No new HTTP request claimed."
+      }
+    ],
+    "all_seven_raw_and_text_sha_verified": true,
+    "source_cache_checks": [
+      {
+        "id": "H1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H1.html",
+        "raw_sha256": "12c3a40ee1f8b19012447903cfbcad820ee55bc6e80fde8cd494b948b164ee78",
+        "raw_match": true,
+        "text_sha256": "13458933b4268d94ed73d32f5372a9ab2fd16012937d57ea040349ee13fa276e",
+        "text_match": true
+      },
+      {
+        "id": "H2",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H2.html",
+        "raw_sha256": "faf0487550b58005ae7f073583ab5a07f9cdabab37cc769e966884d3be8d8cfc",
+        "raw_match": true,
+        "text_sha256": "34162b528215843c25220900ca97bbb8abaacf369a55ed71553922e3e7d5038e",
+        "text_match": true
+      },
+      {
+        "id": "H3",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/H3.html",
+        "raw_sha256": "59479f5fd92ec190bccbf0dad30d3be50d096ccab14b36ad5f8e5b193f1a1392",
+        "raw_match": true,
+        "text_sha256": "5a15b960eae5c4a0a44ce1fc92c041d87f79eecd0acf48d2f2f779babfe0ce9a",
+        "text_match": true
+      },
+      {
+        "id": "K1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/K1.html",
+        "raw_sha256": "e703d65813edf4c52278228a431f9394b953f88cd3e96239b15bf2252ad2a209",
+        "raw_match": true,
+        "text_sha256": "611ee7b20284dd0a626442328e437e3332d8f4a792a3b7d18299577b6db684e3",
+        "text_match": true
+      },
+      {
+        "id": "M1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M1.html",
+        "raw_sha256": "704a6072eefcdab78b8a1d52ee49c23d936ac67a5ace7b3566cdc1f14db42fc4",
+        "raw_match": true,
+        "text_sha256": "6b780e6af3945049f4b9065b58c4b889a9c22e37d250a38558ce5095399e527a",
+        "text_match": true
+      },
+      {
+        "id": "M2",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/M2.html",
+        "raw_sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+        "raw_match": true,
+        "text_sha256": "eea5bd7b304073f99eb9dac8669b88eb5579391022c8ce5f8fdbda3b858d6fdc",
+        "text_match": true
+      },
+      {
+        "id": "P1",
+        "raw_path": "/workspace/work/brand-story-20261025/c06-audit/source-cache/P1.pdf",
+        "raw_sha256": "725a8c64f41c4eedd8c69202e047e19f447f49eadd3adcb1e8708c0faaab27f6",
+        "raw_match": true,
+        "text_sha256": "d0aea6d6ff899ba81abc24d5376cc71c91ddfd071c603e74905b9ed08b17b0f4",
+        "text_match": true
+      }
+    ],
+    "actual_M2_raw_cache_sha256": "5295caa008a71a3c7a618974131735d7c316022171ef4868e4278b9a93969b77",
+    "earlier_author_M2_bytes_not_used": true
+  },
+  "preservation": {
+    "prior_current_report_exact_and_not_overwritten": true,
+    "current_prior_report_sha256": "abfaa703a0daa7429d81eb549f95975d719698ec75a24bf70c13d688ceff3a40",
+    "archived": {
+      "checked": 56,
+      "all_match": true,
+      "mismatches": []
+    },
+    "auxiliary": {
+      "checked": 78,
+      "all_match": true,
+      "mismatches": []
+    },
+    "protected_runtime": {
+      "checked": 17,
+      "all_match": true,
+      "mismatches": []
+    },
+    "protected_media": {
+      "checked": 11,
+      "all_match": true,
+      "mismatches": []
+    },
+    "original53": {
+      "checked": 53,
+      "all_match": true,
+      "mismatches": []
+    },
+    "original53_all_match": true
+  },
+  "findings": [],
+  "advisories": [
+    {
+      "id": "C06-CATEGORY-LINT-SOFT",
+      "severity": "NONBLOCKING_WITHIN_THIS_METADATA_REVIEW",
+      "detail": "Full-context native lint rises from 17 to 19 soft warnings, with 0 errors. Preserve 16.2-minute estimate/12–14 target and 2-sentence outro/3-sentence rule warnings without calling them measured duration or issuing a new narrative verdict."
+    },
+    {
+      "id": "C06-CATEGORY-SYNC-RATIONALE",
+      "severity": "BACKGROUND_CORRECTION",
+      "detail": "Author delta's explanation about preventing backend overwrite is not used as evidence. Existing owner-selected backend category is preserved under the parent-supplied official server guard; no actual backend readback performed here."
+    }
+  ],
+  "scope_limits": {
+    "new_blind_answers_read": false,
+    "existing_native_record_used_only_for_narrativeReviewMatches": true,
+    "new_narrative_verdict": false,
+    "actual_original_source_reread_this_metadata_round": false,
+    "source_and_visual_inherited_by_exact_SHA": true,
+    "actual_images_QA": false,
+    "actual_shared_asset_proved": false,
+    "actual_tts_or_12_14_minute_measured": false,
+    "runtime_writes": 0,
+    "media_writes": 0,
+    "approval_writes": 0,
+    "provider_calls": 0,
+    "backend_calls": 0,
+    "git_actions": 0
+  }
+}

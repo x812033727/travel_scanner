@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_targeted_caption_metadata_text_recheck",
+  "reviewed_on_utc": "2026-10-25T14:42:02.234273+00:00",
+  "scope": "TEXT_ONLY",
+  "original_review_receipt": {
+    "path": "/workspace/work/brand-story-20261025/c03-audit/review-ko-es.json",
+    "sha256": "721182cb9afe735bfb29a03c263b3720c137969074dac15291ea636a9af27ec8"
+  },
+  "common_input_checks": [
+    {
+      "input": "video",
+      "receipt_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+      "current": {
+        "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+        "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+      },
+      "matches_original_review_input": true
+    },
+    {
+      "input": "claims",
+      "receipt_sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb",
+      "current": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+        "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+      },
+      "matches_original_review_input": true
+    },
+    {
+      "input": "lexicon",
+      "receipt_sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5",
+      "current": {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+        "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+      },
+      "matches_original_review_input": true
+    },
+    {
+      "input": "review_prompt",
+      "receipt_sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a",
+      "current": {
+        "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+        "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a"
+      },
+      "matches_original_review_input": true
+    }
+  ],
+  "locales": {
+    "ko": {
+      "verdict": "TEXT_PASS",
+      "scope": "TEXT_ONLY_TARGETED_CORRECTION_RECHECK",
+      "current_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/ko.json",
+          "sha256": "324f3142584229d1cabece1102691e49fb4a35b5fddf45d24c8a0b3f45ff7584"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/ko.todo.json",
+          "sha256": "68a7e063d7ceaf098dabd3b3e92db7d09ff425ac6ae691c5250263ccc5089c5a"
+        }
+      },
+      "pre_fix_history_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/ko/translation-before.json",
+          "sha256": "2bf3d36cb1ec35872c5b81cc336534df315687564b92cad4dd958d191276f97d"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/ko/worksheet-before.json",
+          "sha256": "c7e3534006471f2cf0984f2094b43f8ca8c3bf0e2684b5633835ec3af245a5a8"
+        }
+      },
+      "original_receipt_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/ko.json",
+          "sha256": "2bf3d36cb1ec35872c5b81cc336534df315687564b92cad4dd958d191276f97d"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/ko.todo.json",
+          "sha256": "c7e3534006471f2cf0984f2094b43f8ca8c3bf0e2684b5633835ec3af245a5a8"
+        }
+      },
+      "expected_fix_count": 3,
+      "observed_translation_change_count": 3,
+      "observed_worksheet_change_count": 3,
+      "checks": {
+        "old_translation_sha_matches_original_receipt": true,
+        "old_worksheet_sha_matches_original_receipt": true,
+        "original_review_markdown_unchanged": true,
+        "translation_changes_exactly_requested": true,
+        "worksheet_changes_exactly_requested": true,
+        "all_non_target_text_and_non_text_fields_unchanged": true,
+        "all_requested_fixes_applied_in_both": true,
+        "current_full_worksheet_line_text_matches_merged_translation": true,
+        "native_merge_exit_zero": true,
+        "native_log_translation_sha_matches_current": true,
+        "native_log_worksheet_sha_matches_current": true,
+        "native_log_source_sha_matches_current": true,
+        "protected_source_invariants_pass_reported_by_native_log": true
+      },
+      "semantic_recheck": [
+        {
+          "id": "r305031",
+          "field": "lines.r305031.text",
+          "current": "발행사의 구상에서 구매자는 노트를 넘겨받으며 저자의 자리도 넘겨받습니다.",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        },
+        {
+          "id": "thumbnail:headline",
+          "field": "thumbnail.headline",
+          "current": "빈 페이지를 전 세계에 팔다",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        },
+        {
+          "id": "r320012",
+          "field": "lines.r320012.text",
+          "current": "저는 더욱 이렇게 생각합니다. 브랜드는 창작을 권하지만, 회사가 이익을 내는 결말까지 써 놓지는 않았습니다.",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        }
+      ],
+      "translation_differences": [
+        {
+          "path": "/lines/r305031/text",
+          "before": "출판사의 구상에서 구매자는 노트를 넘겨받으며 저자의 자리도 넘겨받습니다.",
+          "after": "발행사의 구상에서 구매자는 노트를 넘겨받으며 저자의 자리도 넘겨받습니다."
+        },
+        {
+          "path": "/lines/r320012/text",
+          "before": "저는 더욱 이렇게 생각합니다. 브랜드는 창작을 권하지만, 회사의 이익 결말까지 써 놓지는 않았습니다.",
+          "after": "저는 더욱 이렇게 생각합니다. 브랜드는 창작을 권하지만, 회사가 이익을 내는 결말까지 써 놓지는 않았습니다."
+        },
+        {
+          "path": "/thumbnail/headline",
+          "before": "빈 페이지를 세계로",
+          "after": "빈 페이지를 전 세계에 팔다"
+        }
+      ],
+      "worksheet_differences": [
+        {
+          "path": "/lines/25/text",
+          "before": "출판사의 구상에서 구매자는 노트를 넘겨받으며 저자의 자리도 넘겨받습니다.",
+          "after": "발행사의 구상에서 구매자는 노트를 넘겨받으며 저자의 자리도 넘겨받습니다."
+        },
+        {
+          "path": "/lines/138/text",
+          "before": "저는 더욱 이렇게 생각합니다. 브랜드는 창작을 권하지만, 회사의 이익 결말까지 써 놓지는 않았습니다.",
+          "after": "저는 더욱 이렇게 생각합니다. 브랜드는 창작을 권하지만, 회사가 이익을 내는 결말까지 써 놓지는 않았습니다."
+        },
+        {
+          "path": "/thumbnail/text/headline",
+          "before": "빈 페이지를 세계로",
+          "after": "빈 페이지를 전 세계에 팔다"
+        }
+      ],
+      "native_merge_log": {
+        "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-ko.json",
+        "sha256": "68d5fe494aa90ec452016831b2a7f8ed98b270843bccab4bace7b7752a7c1224"
+      },
+      "remaining_issues": [],
+      "timing_verified": false,
+      "media_approval": false,
+      "owner_approval": false
+    },
+    "es": {
+      "verdict": "TEXT_PASS",
+      "scope": "TEXT_ONLY_TARGETED_CORRECTION_RECHECK",
+      "current_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/es.json",
+          "sha256": "a31a4a8fbee744f184183727125e6844ca6a0a724f0d2d0016d93353c9a6b0a4"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/es.todo.json",
+          "sha256": "a567113612c720ae7f02ef8a36821f78e4dfa73a6ad311e9f31037b5f0cc9957"
+        }
+      },
+      "pre_fix_history_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/es/translation-before.json",
+          "sha256": "97ea1a57e434a0de9cdf7224b4d30d5c15c931c42ab75e42e03b259de36edeac"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/es/worksheet-before.json",
+          "sha256": "36d15421e3b717ef810ee1e083c5ac709d600b9647279ecea6101eecec1def64"
+        }
+      },
+      "original_receipt_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/es.json",
+          "sha256": "97ea1a57e434a0de9cdf7224b4d30d5c15c931c42ab75e42e03b259de36edeac"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/es.todo.json",
+          "sha256": "36d15421e3b717ef810ee1e083c5ac709d600b9647279ecea6101eecec1def64"
+        }
+      },
+      "expected_fix_count": 5,
+      "observed_translation_change_count": 5,
+      "observed_worksheet_change_count": 5,
+      "checks": {
+        "old_translation_sha_matches_original_receipt": true,
+        "old_worksheet_sha_matches_original_receipt": true,
+        "original_review_markdown_unchanged": true,
+        "translation_changes_exactly_requested": true,
+        "worksheet_changes_exactly_requested": true,
+        "all_non_target_text_and_non_text_fields_unchanged": true,
+        "all_requested_fixes_applied_in_both": true,
+        "current_full_worksheet_line_text_matches_merged_translation": true,
+        "native_merge_exit_zero": true,
+        "native_log_translation_sha_matches_current": true,
+        "native_log_worksheet_sha_matches_current": true,
+        "native_log_source_sha_matches_current": true,
+        "protected_source_invariants_pass_reported_by_native_log": true
+      },
+      "semantic_recheck": [
+        {
+          "id": "r305031",
+          "field": "lines.r305031.text",
+          "current": "Para la empresa emisora, al llevarte la libreta también asumías el lugar del autor.",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        },
+        {
+          "id": "r3i032",
+          "field": "lines.r3i032.text",
+          "current": "y por eso eran adecuadas para llegar al público que buscaba la empresa. Elegir el estante ya cuenta una historia.",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        },
+        {
+          "id": "thumbnail:sub",
+          "field": "thumbnail.sub",
+          "current": "Valor bursátil: casi €500 M",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        },
+        {
+          "id": "thumbnail:headline",
+          "field": "thumbnail.headline",
+          "current": "Vende páginas vacías al mundo",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        },
+        {
+          "id": "r3h021",
+          "field": "lines.r3h021.text",
+          "current": "El 3 de abril de 2013, la bolsa italiana anunció su cotización; al abrir su producto estrella, solo había páginas en blanco.",
+          "matches_requested_replacement": true,
+          "worksheet_matches_requested_replacement": true,
+          "semantic_recheck": "PASS",
+          "finding": "Requested correction is faithful to its canonical source and coherent with surrounding unchanged text; no introduced meaning error identified."
+        }
+      ],
+      "translation_differences": [
+        {
+          "path": "/lines/r305031/text",
+          "before": "Para el editor, al llevarte la libreta también asumías el lugar del autor.",
+          "after": "Para la empresa emisora, al llevarte la libreta también asumías el lugar del autor."
+        },
+        {
+          "path": "/lines/r3h021/text",
+          "before": "El 3 de abril de 2013, la bolsa italiana anunció su cotización; su producto estrella abría en blanco.",
+          "after": "El 3 de abril de 2013, la bolsa italiana anunció su cotización; al abrir su producto estrella, solo había páginas en blanco."
+        },
+        {
+          "path": "/lines/r3i032/text",
+          "before": "y así llegaban al público que buscaba la empresa. Elegir estante cuenta una historia.",
+          "after": "y por eso eran adecuadas para llegar al público que buscaba la empresa. Elegir el estante ya cuenta una historia."
+        },
+        {
+          "path": "/thumbnail/headline",
+          "before": "Vende páginas vacías",
+          "after": "Vende páginas vacías al mundo"
+        },
+        {
+          "path": "/thumbnail/sub",
+          "before": "Bolsa: casi €500 M",
+          "after": "Valor bursátil: casi €500 M"
+        }
+      ],
+      "worksheet_differences": [
+        {
+          "path": "/lines/1/text",
+          "before": "El 3 de abril de 2013, la bolsa italiana anunció su cotización; su producto estrella abría en blanco.",
+          "after": "El 3 de abril de 2013, la bolsa italiana anunció su cotización; al abrir su producto estrella, solo había páginas en blanco."
+        },
+        {
+          "path": "/lines/25/text",
+          "before": "Para el editor, al llevarte la libreta también asumías el lugar del autor.",
+          "after": "Para la empresa emisora, al llevarte la libreta también asumías el lugar del autor."
+        },
+        {
+          "path": "/lines/33/text",
+          "before": "y así llegaban al público que buscaba la empresa. Elegir estante cuenta una historia.",
+          "after": "y por eso eran adecuadas para llegar al público que buscaba la empresa. Elegir el estante ya cuenta una historia."
+        },
+        {
+          "path": "/thumbnail/text/headline",
+          "before": "Vende páginas vacías",
+          "after": "Vende páginas vacías al mundo"
+        },
+        {
+          "path": "/thumbnail/text/sub",
+          "before": "Bolsa: casi €500 M",
+          "after": "Valor bursátil: casi €500 M"
+        }
+      ],
+      "native_merge_log": {
+        "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-es.json",
+        "sha256": "390dc7b9796986619af58394c8e609712ebe138e0dfb6ae63e1c35c613a8c90b"
+      },
+      "remaining_issues": [],
+      "timing_verified": false,
+      "media_approval": false,
+      "owner_approval": false
+    }
+  },
+  "limitations": [
+    "Targeted recheck of exactly the original 3 Korean and 5 Spanish requested fixes, including complete structural diff against immutable pre-fix history. No new broad review was performed.",
+    "No actual timed SRT, narration audio or final timeline exists for this held-TTS submission. Timing and actual cue fit remain unverified.",
+    "TEXT_PASS means these text corrections pass; it does not grant media PASS, final approval or owner approval."
+  ],
+  "original_review_reports_rewritten": false,
+  "translations_or_worksheets_edited_by_reviewer": false
+}

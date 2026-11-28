@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+  "source_renderer_category": "story",
+  "series_kind": "story",
+  "backend_category_before": "story",
+  "backend_category_after": "story",
+  "normal_official_report_only": true,
+  "optional_category_omission_required": false,
+  "new_reviews_submitted": 0,
+  "protected_admin_called": false,
+  "locales_and_decision_time_unchanged": true,
+  "code_contract_evidence": [
+    {
+      "ref": "HEAD",
+      "commit": "26090b0c2c58829e7c965d3565b41b6c2f2df9fc",
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "contract": "Normal report sets category only for an unfiled project; an existing owner story category remains unchanged."
+    },
+    {
+      "ref": "HEAD",
+      "commit": "26090b0c2c58829e7c965d3565b41b6c2f2df9fc",
+      "path": "apps/api/app/video_reviews/admin_service.py",
+      "sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c",
+      "contract": "Normal report sets category only for an unfiled project; an existing owner story category remains unchanged."
+    },
+    {
+      "ref": "origin/main",
+      "commit": "444835b3da80f8e5356c497f7ea4e000a2969410",
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "contract": "Normal report sets category only for an unfiled project; an existing owner story category remains unchanged."
+    },
+    {
+      "ref": "origin/main",
+      "commit": "444835b3da80f8e5356c497f7ea4e000a2969410",
+      "path": "apps/api/app/video_reviews/admin_service.py",
+      "sha256": "d5ae4b273efdb679fa51a3086479f6d68d0a8182acf86051e11c3c441cc56053",
+      "contract": "Normal report sets category only for an unfiled project; an existing owner story category remains unchanged."
+    }
+  ],
+  "readback": "report-only-teaser-plan-readback.json",
+  "actual_clean_master_verified": false,
+  "actual_dub_eligibility": false,
+  "paid_calls": 0
+}

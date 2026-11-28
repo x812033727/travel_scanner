@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r1",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_GENERATION_AND_REAL_FILE_SHA_VERIFICATION",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "no_assets_generated": true,
+  "actual_same_asset_verified": false,
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "314cafc2fbf4e06ebf4eee4ebfa1e6fb683fafffe5f002075fcbbafc6aa46dbe",
+      "script.md": "eadf5f5456a3dd3b0469c05149510d96ade6f99a55040d9dac1b3520158b797e",
+      "narration-only.json": "2bad0f6690b4e118bacb66bbb7092d8eb23e3811fab0a76dd6d6bb9864c30dab",
+      "claims.json": "ee3ed5e3280271ad47aa5756efab5681e83c90026d05dc34c05283af48b2a9a4"
+    },
+    "claims_md_sha256": "48a2f9893a7726dfa2e641f290128bce19449b7bae00a38e0d53a559d2ae2a3e",
+    "brief_sha256": "3b45e6d514b5ffe447e7de60c8774ab52f987a6062f4fcc2287634e80f4750e2",
+    "series_sha256": "1b640f18e734128298df588740f4492be667f9cfb08a48b3f7de05aa107bbeda"
+  },
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_field_available": false,
+    "clip_source_field_not_applicable": "Still data.source is unsupported; no alias or custom video schema field was invented.",
+    "native_supported_route": "Official keyframes --shot with the ordinary exact-request cache, independently judged at both endpoints.",
+    "cache_identity": "The pure local Stage.imageKey was called with declared model/version/size and full request inputs. Scene ID and output target do not enter the native key.",
+    "camera_matters": "Camera is part of composed prompt and must be identical.",
+    "guard_is_read_only": "Use readCache plus existsSync and SHA of actual bytes. Never use cached() as a read-only guard: it can delete an invalid entry and write cache.json."
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "branch-tissue-packet",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "source_scene_id": "c19r1a18",
+      "source_line_id": "c19r1a18",
+      "reuse_scene_id": "c19r1h05",
+      "reuse_line_id": "c19r1h05",
+      "narration_setup_text": "合作銀行分行裡的一包面紙，又怎麼參與這張網？",
+      "narration_payoff_text": "開頭那包面紙，就是合作金融機構製作、在自家分行發送的宣傳物。",
+      "source_prompt_sha256": "be0e11a00850b0742b6ca775cc37691b165a5373bff1fa208224680e9d2e37fd",
+      "reuse_prompt_sha256": "be0e11a00850b0742b6ca775cc37691b165a5373bff1fa208224680e9d2e37fd",
+      "prompt_exact_match": true,
+      "source_camera": "push in",
+      "reuse_camera": "push in",
+      "composed_prompt_sha256": "278737e97de32f36c15505a69bf89df04bfdcbd787fc2305a22374e6141dcfe0",
+      "no_result_drawn_in_teaser": "A worker holds a closed blank packet before distribution; no recipient, completed handoff, promotional wording or usage-growth result is shown.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Medium close-up at a plain bank branch counter, an anonymous employee holding a small unmarked tissue packet beside a blank folded poster, mild overhead light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "aspect": "16:9",
+        "requested_size": null,
+        "nominal_image_size": "1K",
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "4297efec8b809bb9",
+        "native_stage_key": "405c4c491292b652",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "cash-management-container",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "source_scene_id": "c19r1n10",
+      "source_line_id": "c19r1n10",
+      "reuse_scene_id": "c19r1h06",
+      "reuse_line_id": "c19r1h06",
+      "narration_setup_text": "而機器裡的鈔票，真的是裝得越多越好嗎？",
+      "narration_payoff_text": "回到開頭那個問題：多放現金，能少補幾次，卻會讓資金成本上升。",
+      "source_prompt_sha256": "97239d01f6e482f6a0874285497e68dd0e7abc475698813d1a40aebabee304a7",
+      "reuse_prompt_sha256": "97239d01f6e482f6a0874285497e68dd0e7abc475698813d1a40aebabee304a7",
+      "prompt_exact_match": true,
+      "source_camera": "pan right",
+      "reuse_camera": "pan right",
+      "composed_prompt_sha256": "b9168a6fa8f5bfee58d971da631f266930f1bb028369caf46648b6579a4cea44",
+      "no_result_drawn_in_teaser": "An analyst holds a blank clipboard beside a closed container; no cash quantity, replenishment trip, funding-cost comparison or immediate cash recycling is shown.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft interior light from the right.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "aspect": "16:9",
+        "requested_size": null,
+        "nominal_image_size": "1K",
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "e2a0ce4e330f4805",
+        "native_stage_key": "6085c591ab5a127d",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "Current exact independent source/visual and fresh-reader reviews, owner approvals, actual production admission and all-in quote are still pending. This plan executes nothing.",
+      "Read actual provider/model/version/prompt limit/size/negative/references/seed/fixes before admission and recompute each native key from that readback; planned example values are not a live cache receipt.",
+      "Same immutable project/workdir, exact request, default seed offset 0 and takes1 at both endpoints."
+    ],
+    "official_command_recipe_only": [
+      {
+        "purpose": "PAYOFF FIRST only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c19-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-seven-bank-c19-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c19r1a18",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READ-ONLY LIVE CACHE GUARD BEFORE THE SECOND COMMAND",
+        "required_checks": [
+          "Read keyframes/manifest.json shots[c19r1a18]; require passed judge, needs_review false, seed1, one take, no fixes, key equal to live-recomputed native Stage.imageKey.",
+          "Hash the actual selected file bytes; match selected.sha256. Trimmed selected file may differ from the original cache file.",
+          "Read media/cache.json using readCache(workdir); require entries[live-key] exists, provider/model equal the live request, actual file exists, actual bytes SHA equal entry.sha256.",
+          "Any missing/mismatching file, key, model, selection or SHA: STOP. Do not issue teaser command, clear cache, submit another purchase or hand-edit a manifest."
+        ]
+      },
+      {
+        "purpose": "TEASER only after the real cache guard succeeds; exact cache hit prevents duplicate image purchase",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c19-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-seven-bank-c19-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c19r1h05",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "PAYOFF FIRST only after normal production admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c19-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-seven-bank-c19-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c19r1n10",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READ-ONLY LIVE CACHE GUARD BEFORE THE SECOND COMMAND",
+        "required_checks": [
+          "Read keyframes/manifest.json shots[c19r1n10]; require passed judge, needs_review false, seed1, one take, no fixes, key equal to live-recomputed native Stage.imageKey.",
+          "Hash the actual selected file bytes; match selected.sha256. Trimmed selected file may differ from the original cache file.",
+          "Read media/cache.json using readCache(workdir); require entries[live-key] exists, provider/model equal the live request, actual file exists, actual bytes SHA equal entry.sha256.",
+          "Any missing/mismatching file, key, model, selection or SHA: STOP. Do not issue teaser command, clear cache, submit another purchase or hand-edit a manifest."
+        ]
+      },
+      {
+        "purpose": "TEASER only after the real cache guard succeeds; exact cache hit prevents duplicate image purchase",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/c19-submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-seven-bank-c19-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c19r1h06",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "on_any_failure_or_changed_request": "Stop the pair. No separate reroll, force, accept-best bypass, independent look-alike purchase or hand-written manifest. Correct both endpoints together, repeat normal bound source/visual review and admission.",
+    "actual_verification_required": [
+      "Both endpoints must pass their own ordinary official judge verdict.",
+      "After the official commands, read manifest shots for the pair, require identical selected file reference and SHA, then hash the actual bytes.",
+      "If trimming occurs, require identical final trimmed selected file and SHA at both endpoints; matching original-generated hashes alone is insufficient.",
+      "Hash original cache bytes and final selected bytes separately; do not assume original and trimmed SHA are equal.",
+      "Read final assembly inputs and require the same selected file at teaser and payoff. Preserve normal job/cache/ledger receipts."
+    ],
+    "executed": false
+  },
+  "provider_calls": 0,
+  "paid_calls": 0
+}

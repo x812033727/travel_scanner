@@ -1,0 +1,276 @@
+{
+  "narrative_hash": "8619e5ab2b78f0d5",
+  "script_hash": "bd02434a2364a426b48fb090618d735fb29ef0c2eb9286f25a819e0366955895",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "47cab0359d42901301878de30ba06fa33220746cfb2a3b0fd062fed09dc79c24",
+  "round": 6,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c8r10102] 一九六一年上市的龜甲萬玻璃桌上瓶，容量是一百五十毫升。；讀者二：[c8r10102] 一九六一年上市的龜甲萬玻璃桌上瓶，容量是一百五十毫升。",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10106] 最後一點倒不出來時，整座瓶蓋還藏著一個選擇。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10413] 那能不能讓外形站住，裡面卻仍保留隔絕空氣的安排？",
+      "yes_readers": 1
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10107] 我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10301] 榮久庵回述這個難題時，先拿茶壺的嘴作比較。",
+      "yes_readers": 1
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10513] 只把通往內袋的路關住，嘴口裡的殘液就會自己消失嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10520] 文件說，擴大的空間能把嘴端殘液拉進蓋內，這個位置和裝醬油的內袋分開。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c8r10509] 後來的官方教材，把兩百毫升密封桌上瓶，連到一份日本專利。；讀者二：[c8r10509] 後來的官方教材，把兩百毫升密封桌上瓶，連到一份日本專利。",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c8r10503] 公告說，出去多少醬油，便有相當量的空氣進入外瓶和內袋之間。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10632] 訂閱品牌故事，我們繼續看日用品怎麼把看不見的取捨，放進你的每一個動作。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10107] 我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c8r10630] 開場你想留下的那一滴，最後連著的，是瓶子允許你開哪一個口、又得重新守哪一道界線。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c8r6g02] 恩田說，現行主流瓶型要顧到握持的貼合，放桌上還要避免擋住孩子的視線。；讀者二：[c8r10222] 紅蓋與醬油的紅褐色，則是公司後來說明的色彩對比。",
+      "yes_readers": 0
+    }
+  ],
+  "failed": [
+    "scene_first",
+    "no_recap",
+    "no_detour"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": false,
+          "evidence": "[c8r10102] 一九六一年上市的龜甲萬玻璃桌上瓶，容量是一百五十毫升。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c8r10106] 最後一點倒不出來時，整座瓶蓋還藏著一個選擇。"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[c8r6h01] 恩田後來回顧，公司在一九六六年就曾賣過生醬油。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c8r10107] 我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c8r10301] 榮久庵回述這個難題時，先拿茶壺的嘴作比較。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c8r10513] 只把通往內袋的路關住，嘴口裡的殘液就會自己消失嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c8r10520] 文件說，擴大的空間能把嘴端殘液拉進蓋內，這個位置和裝醬油的內袋分開。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c8r10509] 後來的官方教材，把兩百毫升密封桌上瓶，連到一份日本專利。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c8r10503] 公告說，出去多少醬油，便有相當量的空氣進入外瓶和內袋之間。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c8r10632] 訂閱品牌故事，我們繼續看日用品怎麼把看不見的取捨，放進你的每一個動作。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c8r10107] 我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c8r10630] 開場你想留下的那一滴，最後連著的，是瓶子允許你開哪一個口、又得重新守哪一道界線。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c8r6g02] 恩田說，現行主流瓶型要顧到握持的貼合，放桌上還要避免擋住孩子的視線。"
+        }
+      ],
+      "failed": [
+        "scene_first",
+        "one_line",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": false,
+          "evidence": "[c8r10102] 一九六一年上市的龜甲萬玻璃桌上瓶，容量是一百五十毫升。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c8r10106] 最後一點倒不出來時，整座瓶蓋還藏著一個選擇。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c8r10413] 那能不能讓外形站住，裡面卻仍保留隔絕空氣的安排？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c8r10107] 我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c8r10601] 你拿起現行這款密封瓶，透明瓶身裡卻一時看不出那個內袋。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c8r10423] 空氣究竟該進哪裡，才不會把保鮮的工作一起拆掉？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c8r10520] 文件說，擴大的空間能把嘴端殘液拉進蓋內，這個位置和裝醬油的內袋分開。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c8r10509] 後來的官方教材，把兩百毫升密封桌上瓶，連到一份日本專利。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c8r10623] 但這個動作也會切斷密封；取下以後，官方要求改放冰箱。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c8r10632] 訂閱品牌故事，我們繼續看日用品怎麼把看不見的取捨，放進你的每一個動作。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c8r10107] 我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c8r10630] 開場你想留下的那一滴，最後連著的，是瓶子允許你開哪一個口、又得重新守哪一道界線。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c8r10222] 紅蓋與醬油的紅褐色，則是公司後來說明的色彩對比。"
+        }
+      ],
+      "failed": [
+        "scene_first",
+        "chapters_link",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    }
+  ]
+}

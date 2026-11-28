@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r5",
+  "role": "AUTHOR_LOCAL_CHECKS_NOT_SOURCE_OR_NATIVE_APPROVAL",
+  "checked_at_utc": "2026-10-26T07:37:11.260Z",
+  "core_four_sha256": {
+    "video.json": "401b161a4547e6e0eea9c7033c3cc35fa20dc5d7eafd127e729cd066fa3f78e7",
+    "script.md": "549fd60b3bc713a4a725cdc5f5e4b4bedbeff459db7b065229a70019ddc13553",
+    "narration-only.json": "d864a51a13deae76673d7774ffac7ec027a80c8864ae3636c1f9d83b3f741f38",
+    "claims.json": "3a4a342ea7b7419b56270a6b3ae657a85fd882407f1859dd0c75864bf1f09bdd"
+  },
+  "content_changes": [
+    {
+      "id": "rs0003",
+      "action": "move_verbatim_scene_from_opening_to_chapter2_first_action_after_rs0026",
+      "text_data_prompt_camera_unchanged": true
+    },
+    {
+      "id": "rs0007",
+      "action": "promise_concrete_dismantling_problem_without_third_graph_clue",
+      "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。",
+      "after": "今天我想跟你看普拉斯的輪子行李箱，追查一台外架帶來的拆裝難題。"
+    },
+    {
+      "id": "rs0073",
+      "action": "ask_only_new_cabin_fit_question",
+      "before": "把手收好，輪子也藏進角落，箱子就一定放得進機艙嗎？",
+      "after": "這只箱子，就一定放得進機艙嗎？"
+    },
+    {
+      "id": "rs0004",
+      "action": "delete_scene_and_narration",
+      "before": "我也想問你：已經能拖了，為什麼還要另畫？"
+    },
+    {
+      "id": "rs0027",
+      "action": "delete_scene_and_narration",
+      "before": "艾默回憶，他和普拉斯同組飛行，有一次在西雅圖機場往登機門走。"
+    },
+    {
+      "id": "rs0028",
+      "action": "delete_scene_and_narration",
+      "before": "地點是南衛星航廈，路上碰到製作舊輪箱的穆林斯。"
+    },
+    {
+      "id": "rs0072",
+      "action": "delete_scene_and_narration",
+      "before": "拉起與壓回，是手對同一組零件做的兩個不同方向的動作。"
+    }
+  ],
+  "other_retained_narration_ids_and_values_unchanged": true,
+  "all_retained_prompt_camera_and_data_values_unchanged": true,
+  "rs0021_retying_preserved": true,
+  "all_25_retained_loops_exactly_unchanged": true,
+  "removed_graph_preview_loop": {
+    "setup": "rs0004",
+    "payoff": "rs0029"
+  },
+  "nonnarrated_research_appendix_exactly_unchanged": true,
+  "rs0071_new_mechanism_action_preserved": true,
+  "primary_action_readback_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r5/source-action-readback-r5.json",
+  "primary_action_readback_sha256": "cc91911b8375ef5d6a0a508a9764507012fd3b5c79523dd130c4408daf8eb0d7",
+  "projections_exact": true,
+  "counts": {
+    "lines": 100,
+    "chapters": 7,
+    "scenes": 98,
+    "shots": 97,
+    "cards": 0,
+    "outro": 1,
+    "loops": 25
+  },
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "開場｜兩個包與一張圖",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "一｜輪架已經能走",
+      "you": 3,
+      "I": 3
+    },
+    {
+      "chapter": "二｜圖紙等了兩週",
+      "you": 1,
+      "I": 3
+    },
+    {
+      "chapter": "三｜把輪子放進箱角",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "四｜拉把靠摩擦留住",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "五｜讓第二個包一起站",
+      "you": 1,
+      "I": 2
+    },
+    {
+      "chapter": "六｜別人也要一只",
+      "you": 3,
+      "I": 3
+    }
+  ],
+  "normal_lint": {
+    "observed_exit_code": 0,
+    "errors": [],
+    "soft_warnings": [
+      {
+        "path": "scenes",
+        "message": "\"luggage\" is in 48 of 97 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"suitcase\" is in 37 of 97 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "about 11.1 minutes; the target is 12-14"
+      }
+    ],
+    "object_word_warnings": 2,
+    "planning_duration_warnings": 1,
+    "planning_duration_warning_is_not_actual_audio_verdict": true,
+    "hook_cadence_gaps": 0,
+    "near_identical_adjacent_shots": 0,
+    "output_sha256": "2d9605b56d8d40275038232c18d3ff1a2151212d14eec358c04bb660bc5dba5d"
+  },
+  "free_planner": {
+    "ordinary_cli": "tts --dry-run",
+    "observed_exit_code": 0,
+    "credential_context": "empty same-task home and empty env; no credentials read",
+    "network_attempts": 0,
+    "requests": 98,
+    "unchanged_request_objects": 96,
+    "changed_request_ids": [
+      "rs0007",
+      "rs0073"
+    ],
+    "deleted_request_ids": [
+      "rs0004",
+      "rs0027",
+      "rs0028",
+      "rs0072"
+    ],
+    "moved_request_id": "rs0003",
+    "moved_request_bytes_unchanged": true,
+    "ordinary_output_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r5/ordinary-free-planner-r5.txt",
+    "ordinary_output_sha256": "f61f3d88dcfa646363438ea6b8f436e2dd0f075f213786c9071fca3a138424f7",
+    "speech_hash": "8aa60c920e846170",
+    "speech_hash_changed_from_r4": true
+  },
+  "stage_imageKey_rehearsal": {
+    "pure_local_only": true,
+    "all_pair_plan_objects_exactly_equal_r4": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      }
+    ]
+  },
+  "normal_lexicon": {
+    "sequence": 1,
+    "lexicon_sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+    "files": [
+      {
+        "relative_path": "current.json",
+        "sha256": "29516c8a1aba3ae0a4d226747bd172be4db3c832feeca27f9c3aeb190edcece1",
+        "bytes": 287
+      },
+      {
+        "relative_path": "events/93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32.json",
+        "sha256": "93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32",
+        "bytes": 298
+      },
+      {
+        "relative_path": "versions/5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a.json",
+        "sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+        "bytes": 6778
+      }
+    ],
+    "original_r1_r2_r3_r4_and_r5_bytes_equal": true,
+    "initialize_returned_existing_snapshot": true,
+    "reinitialized_or_rebuilt": false
+  },
+  "runtime_manifest_sha256": "84965f730db0d31cdfe6223f8712f1712246c30d491135c7257cbefb54d1c5d3",
+  "runtime_script_sha256": "d7d59e8bb5c010758ff83526b4afa81abbb676d8438e4245021abc88c178ac66",
+  "protected_readback": {
+    "prior_protected_1013": 1013,
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "total_unique_original_files_checked": 1124,
+    "archived_r4_files_checked": 57,
+    "old_r4_runtime_files": 10,
+    "r1_r2_r3_history_unchanged": true,
+    "all_sha_and_bytes_match": true,
+    "history_r4_manifest_sha256": "ec724f451086dcd9c98fee015c8bbf2e59cefbbc0ba658190a3f63c5533b0d89"
+  },
+  "facts": {
+    "ok": false,
+    "detail": "no verify-*.md beside video.json: the script has not been fact-checked"
+  },
+  "current_verify_present": false,
+  "capacity": {
+    "whole_raw_spoken_units": 2363,
+    "coldopen": 125,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1137,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      472.6,
+      590.75
+    ],
+    "planning_at_4_5": 525.1111111111111,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "actual_native_round_count": 3,
+  "native_input_prepared": false,
+  "native_reader_calls": 6,
+  "current_revision_native_reader_calls": 0,
+  "prior_native_round_3_verdict": "HOLD_CHAPTERS_LINK_NO_RECAP_OPENING_HOOKS",
+  "source_review": "PENDING_R5_DELTA_QA",
+  "written_visual_review": "PENDING_R5_DELTA_QA",
+  "next_gate": "INDEPENDENT_R5_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_4",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "owner_approvals_created": 0
+}

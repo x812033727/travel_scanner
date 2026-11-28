@@ -1,0 +1,474 @@
+{
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_DELTA_AND_TWO_NEW_ISOLATED_READERS",
+  "revision": "length-extension-r6",
+  "author": "/root/c09_r5_author",
+  "author_is_not_source_reviewer": true,
+  "r5_input_sha256": {
+    "video.json": "22029a19ce8643fc7694ee78b186f68db93acbde9ce7ae70cd3d5928dfee1ff1",
+    "script.md": "0ddbec18d204ecc22fe210c915f618636c224ebb823a86d81d22bccfa503d64a",
+    "narration-only.json": "ace0923859bd9ecf2d85a0feb225cadbcee7eda1475b4beb6d519bc0041c56a6",
+    "claims.json": "9d22c84c69a70d31fceec4bc6a986081fe8a335211c7baa867dea37e169fd12d"
+  },
+  "current_input_sha256": {
+    "video.json": "f12dd1a611783ccbfd94377d5c79b7099d9b14541f49d602e6a8abe9ec228962",
+    "script.md": "be8d0331bb468c9c33ac4cd17670e13503f0594455aceb9504fea1a117edc88f",
+    "narration-only.json": "9fb48e140406d089e4555e8a26c47cc7a12b4d4e62477428d915167e35dc23d4",
+    "claims.json": "edc8bbf93db92cb206851f11e92539327d095eb39121f67840e1bc847e10aea1",
+    "claims.md": "94a4b2ed94c8264a9dee41806b48f62075bd2009db92cf5930beb77a8ba5c836",
+    "brief.md": "644390f586a1c8bd5bb91101137ace1c400a90502ad51e48df9a22acbca7c784",
+    "series.json": "752c84b6e254c83857133c00ec72cc87fa6224c7fcbff8b8c9ace03892f53a73",
+    "r6-lines.json": "e4b9e93e6ed0d6e3289f21353cbb7d2fbf45bed38d476be99abee7bc1397505b",
+    "build-r6.py": "97a6b335858cef7b0a46e08d6e125b85e42f7762c0a8c7bddfb9128b4086ed51",
+    "author-delta-r6.json": "74658ba809ea724d62e58257a57c0245b7fab76361df2460c52d8d81c6adedf6"
+  },
+  "editorial_delta": {
+    "revision": "length-extension-r6",
+    "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_DELTA_AND_TWO_NEW_ISOLATED_READERS",
+    "baseline": "history/r5",
+    "baseline_input_sha256": {
+      "video.json": "22029a19ce8643fc7694ee78b186f68db93acbde9ce7ae70cd3d5928dfee1ff1",
+      "script.md": "0ddbec18d204ecc22fe210c915f618636c224ebb823a86d81d22bccfa503d64a",
+      "narration-only.json": "ace0923859bd9ecf2d85a0feb225cadbcee7eda1475b4beb6d519bc0041c56a6",
+      "claims.json": "9d22c84c69a70d31fceec4bc6a986081fe8a335211c7baa867dea37e169fd12d"
+    },
+    "retained_ids_and_unmodified_visuals_preserved": true,
+    "deleted_ids": [
+      "c09r5042",
+      "c09r5071",
+      "c09r5072",
+      "c09r5073",
+      "c09r5085"
+    ],
+    "modified_lines": [
+      {
+        "id": "c09r5043",
+        "key": "use_rockhard",
+        "before_text": "他們後來在型錄寫得很直接：花崗岩比合金鋼釘軟，敲拔還會讓薄岩片鬆動、剝落。",
+        "after_text": "回到開場的釘孔，型錄把原因寫得很直接：花崗岩比合金鋼釘軟，敲拔會使薄岩片鬆落。",
+        "before_anchor": "S2:029",
+        "after_anchor": "S2:029"
+      },
+      {
+        "id": "c09r5068",
+        "key": "resistance_viewer",
+        "before_text": "換成你，前面的人用過一種辦法，輪到你卻叫你收起來，你會只點頭嗎？",
+        "after_text": "我更想問，提出這個要求的修納德，自己能不能帶著楔塊完成一條大岩壁路線？",
+        "before_anchor": "S3:005",
+        "after_anchor": "S3:005;S4:009;S8:011;S8:019"
+      }
+    ],
+    "modified_visuals": [
+      {
+        "scene_id": "c09r5-shot-068",
+        "field": "data.prompt",
+        "before": "Medium shot at a quiet camp beside a plain rock wall, one anonymous craftsperson holding a small hammer while facing a closed gear bag, soft side light from the left.",
+        "after": "Medium shot at a plain granite practice area, one unidentified person examining a small unmarked metal wedge below a tall rock surface, soft overcast light."
+      }
+    ],
+    "loop_changes": [
+      {
+        "operation": "rebind",
+        "before": {
+          "setup": "c09r5041",
+          "payoff": "c09r5042",
+          "what": "重複敲拔在岩壁留下的實際痕跡"
+        },
+        "after": {
+          "setup": "c09r5041",
+          "payoff": "c09r5043",
+          "what": "花崗岩與鋼釘的材質差異，怎樣使薄岩片鬆落"
+        }
+      },
+      {
+        "operation": "replace",
+        "before": {
+          "setup": "c09r5071",
+          "payoff": "c09r5072",
+          "what": "商業身分面對的具體批評"
+        },
+        "after": {
+          "setup": "c09r5068",
+          "payoff": "c09r5106",
+          "what": "提出換用楔塊要求的人，能否親自完成一條大岩壁路線"
+        }
+      },
+      {
+        "operation": "delete",
+        "before": {
+          "setup": "c09r5085",
+          "payoff": "c09r5091",
+          "what": "賣家到大岩壁時第一步的實際結果"
+        }
+      }
+    ],
+    "units_by_line": [
+      {
+        "id": "c09r5042",
+        "operation": "delete",
+        "before_units": 30,
+        "after_units": 0,
+        "net_units": -30
+      },
+      {
+        "id": "c09r5043",
+        "operation": "replace",
+        "before_units": 33,
+        "after_units": 35,
+        "net_units": 2
+      },
+      {
+        "id": "c09r5068",
+        "operation": "replace",
+        "before_units": 28,
+        "after_units": 32,
+        "net_units": 4
+      },
+      {
+        "id": "c09r5071",
+        "operation": "delete",
+        "before_units": 29,
+        "after_units": 0,
+        "net_units": -29
+      },
+      {
+        "id": "c09r5072",
+        "operation": "delete",
+        "before_units": 33,
+        "after_units": 0,
+        "net_units": -33
+      },
+      {
+        "id": "c09r5073",
+        "operation": "delete",
+        "before_units": 36,
+        "after_units": 0,
+        "net_units": -36
+      },
+      {
+        "id": "c09r5085",
+        "operation": "delete",
+        "before_units": 27,
+        "after_units": 0,
+        "net_units": -27
+      }
+    ],
+    "net_spoken_units": -149,
+    "unchanged_retained_narration_lines": 105,
+    "unchanged_retained_scene_visuals": 104,
+    "source_bytes_changed": false,
+    "new_sources": [],
+    "actual_audio_measured": false,
+    "runtime_risk": "Body after the cold opening is 2918 spoken units; natural 4–5 units per second may miss 720–840 seconds. No runtime approval, slowdown, pauses, or inventory padding."
+  },
+  "new_primary_source": {
+    "id": "S8",
+    "title": "Some Clean Wall Climbs in Yosemite",
+    "author": "Bruce Carson",
+    "url": "https://publications.americanalpineclub.org/articles/12197405800/Some-Clean-Wall-Climbs-in-Yosemite",
+    "publication_year": 1974,
+    "event_year": 1973,
+    "printed_pages": "58–61",
+    "html_sha256": "d250cd07512be13f66ae7f8219f5b1024574846f20d555dfec9e0f2ea9aa2b28",
+    "pdf_sha256": "8cbc2bba3bf9a39035dc9167bb9a303acce4ac9bdb45b5810d8380648ad2bfdc",
+    "paragraph_cache_sha256": "f5fc4349ca8cd548dd4077164eca37cc88d3952ccc826dba62ee6fe5d92c3c88",
+    "pdf_pages_visually_read": [
+      2,
+      3
+    ],
+    "pdf_actual_bytes_local_only": true,
+    "search_result_is_not_evidence": true,
+    "limits": [
+      "one of these not expanded into never used any chocks",
+      "a sinking placement is not rewritten as a fall",
+      "spring trial uses existing bolts as explicitly stated",
+      "no claim the catalog caused Carson to attempt these routes",
+      "Nose carry choice excludes pitons, not rope or other gear",
+      "same-year follow-up team is reported by Carson, not population-wide adoption"
+    ]
+  },
+  "r5_source_qa_advisories_retained": [
+    {
+      "id": "c09r5030",
+      "limit": "「希望」是原文流程概述，不把它當成忽略外傾地形例外的操作法。"
+    },
+    {
+      "ids": [
+        "c09r5111",
+        "c09r5-outro.data.cta"
+      ],
+      "limit": "假設性觀眾問題，非修納德曾出版、授權或有意披露不順利的史實。"
+    }
+  ],
+  "native_initialized_context_lint": {
+    "context_binding": {
+      "canonical_video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+      "canonical_file": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/video.json",
+      "lexicon_initialized_terms": 293,
+      "lexicon_sha256": "c45d0c9b68792f6bab39819a0a91de4e6123649b7fd7f15b732d8b855cab228a",
+      "preserved_fields": [
+        "lexicon",
+        "shelfLexicon",
+        "translations",
+        "others",
+        "pack",
+        "file",
+        "dir"
+      ]
+    },
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"wall\" is in 42 of 104 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"workbench\" is in 36 of 104 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[63] (c09r5-shot-065)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[89] (c09r5-shot-095)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "loops",
+          "message": "the condensation plants 2 loops; after its one scene it teases at least 3 later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)",
+          "kind": "narrative"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/id",
+          "message": "id.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/vi",
+          "message": "vi.title: 38.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "107 lines not translated: c09r5001, c09r5002, c09r5003, c09r5004, c09r5005, c09r5006, c09r5007, c09r5008, c09r5009, c09r5010, c09r5011, c09r5012, c09r5013, c09r5014, c09r5015, c09r5016, c09r5017, c09r5018, c09r5019, c09r5020, c09r5021, c09r5022, c09r5023, c09r5024, c09r5025, c09r5026, c09r5027, c09r5028, c09r5029, c09r5030, c09r5031, c09r5032, c09r5033, c09r5034, c09r5035, c09r5036, c09r5037, c09r5038, c09r5039, c09r5040, c09r5041, c09r5043, c09r5044, c09r5045, c09r5046, c09r5047, c09r5048, c09r5049, c09r5050, c09r5051, c09r5052, c09r5053, c09r5054, c09r5055, c09r5056, c09r5057, c09r5058, c09r5059, c09r5060, c09r5061, c09r5062, c09r5063, c09r5064, c09r5065, c09r5066, c09r5067, c09r5068, c09r5069, c09r5070, c09r5074, c09r5075, c09r5076, c09r5077, c09r5078, c09r5079, c09r5080, c09r5081, c09r5082, c09r5083, c09r5084, c09r5086, c09r5087, c09r5088, c09r5089, c09r5090, c09r5091, c09r5092, c09r5093, c09r5094, c09r5095, c09r5096, c09r5097, c09r5098, c09r5099, c09r5100, c09r5101, c09r5102, c09r5103, c09r5104, c09r5105, c09r5106, c09r5107, c09r5108, c09r5109, c09r5110, c09r5111, c09r5112"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "not translated: chapter c09r5-shot-001, chapter c09r5-shot-009, chapter c09r5-shot-028, chapter c09r5-shot-048, chapter c09r5-shot-065, chapter c09r5-shot-086"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "translations older than the zh-TW text: title, description"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c09r-shot-001, c09r-shot-008, c09r-shot-026, c09r-shot-053, c09r-shot-071, c09r-shot-085; i18n-merge drops them"
+        }
+      ],
+      "summary": {
+        "minutes": 14.184444444444445,
+        "lines": 107,
+        "spoken_units": 3097,
+        "billable_characters": 9790,
+        "chapters": [
+          "00:00 一本型錄，為何勸你少敲？",
+          "00:51 他先教會你相信這枚釘子",
+          "03:16 順手的工具，留下另一筆帳",
+          "05:50 十四頁，要改掉一個動作",
+          "08:10 顧客問：你自己敢不敢？",
+          "10:32 賣家把重量交給了楔塊"
+        ]
+      }
+    },
+    "units": {
+      "total": 3097,
+      "opening": 179,
+      "body_after_opening": 2918,
+      "closing": 88,
+      "body_excluding_opening_and_closing": 2830
+    },
+    "line_count": 107,
+    "scene_count": 105,
+    "shot_count": 104,
+    "chapter_count": 6,
+    "loop_count": 28,
+    "max_estimated_shot_seconds": 10.366666666666667,
+    "shot_time_share": 0.9723092589691366,
+    "cadence_problems": [],
+    "timeline_estimated_minutes": 14.184444444444445,
+    "default_cpm": 250,
+    "actual_timing_verified": false,
+    "delta": [
+      {
+        "id": "c09r5042",
+        "operation": "delete",
+        "before_units": 30,
+        "after_units": 0,
+        "net_units": -30
+      },
+      {
+        "id": "c09r5043",
+        "operation": "replace",
+        "before_units": 33,
+        "after_units": 35,
+        "net_units": 2
+      },
+      {
+        "id": "c09r5068",
+        "operation": "replace",
+        "before_units": 28,
+        "after_units": 32,
+        "net_units": 4
+      },
+      {
+        "id": "c09r5071",
+        "operation": "delete",
+        "before_units": 29,
+        "after_units": 0,
+        "net_units": -29
+      },
+      {
+        "id": "c09r5072",
+        "operation": "delete",
+        "before_units": 33,
+        "after_units": 0,
+        "net_units": -33
+      },
+      {
+        "id": "c09r5073",
+        "operation": "delete",
+        "before_units": 36,
+        "after_units": 0,
+        "net_units": -36
+      },
+      {
+        "id": "c09r5085",
+        "operation": "delete",
+        "before_units": 27,
+        "after_units": 0,
+        "net_units": -27
+      }
+    ]
+  },
+  "legacy_opening_loop_count_warning": "Native generic loop lint asks for three opening loops, but current owner series rule permits at most two future teaser moments. The actual opening is kept concise instead of adding a third teaser to silence that legacy warning.",
+  "protected_existing_files_count": 618,
+  "protected_existing_files_unchanged": true,
+  "protected_manifest_sha256": "77e9123c5a6b4c14df3dcded4d69853541d4d1b8e3e9681d3a0cdd1ffc188605",
+  "old_approvals_inherited": false,
+  "verify_written_by_author": false,
+  "actual_audio_measured": false,
+  "media_generated": false,
+  "backend_calls": 0,
+  "paid_calls": 0
+}

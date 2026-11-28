@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "review_id": "c03-host-budget-metadata-independent-20261026",
+  "status": "MUST_FIX",
+  "production_authorized": false,
+  "host_executed": false,
+  "review_scope": "Independent local source and isolated fixture review of the fixed old/new C03 read-only metadata probe. No live host, database, Docker, Git, network or provider commands were executed.",
+  "review_order": [
+    "Read AGENTS.md and prod-host-ops SKILL.md.",
+    "Read the actual models, service, reconcile CLI and worker admission guard, then probe Python/shell; locked preliminary code findings before reading author documentation/sourcebinding.",
+    "Read the requested documentation/sourcebinding only after the initial code judgment. Did not read or reuse author fixture files.",
+    "Created independent arithmetic/async-engine stubs and an entirely mocked host wrapper. Ran only local Python, Bash syntax and Node guard imports."
+  ],
+  "source_commit": {
+    "declared_by_author_sourcebinding": "8c338dfc264dedaf200e4e50da816631285c207a",
+    "verified_with_git": false,
+    "binding_method": "Actual SHA-256 of the files read; no claim that the declared commit is the current checkout or a production version."
+  },
+  "actual_sha256": {
+    "docs/videos/brand-story-remakes-20261025/c03/host-budget-metadata-readback.py": "3d6156d543596c28058ad3191322ca5868d513d3c0dbd88bda1c192716db49d9",
+    "docs/videos/brand-story-remakes-20261025/c03/host-budget-metadata-readback.sh": "cee0db54b2a7dff522b28bf4eff8261e6198997efcd698c8d1bc4a607035f81f",
+    "docs/videos/brand-story-remakes-20261025/c03/host-budget-metadata-readback.md": "931ec4cbe946fd1e973fa16923775a3cdfe4ee90b7d0f5389eaf49445b7ccd23",
+    "docs/videos/brand-story-remakes-20261025/c03/host-budget-metadata-sourcebinding.json": "420c12fc7d08f4de8bdecdd449d10fd1dcdbfdbaa9c3c1a7861a6c346891e02c",
+    "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+    "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf",
+    "apps/api/app/db.py": "5fa7d7036175ab6a891408982d2eac27b8dfcebefc5791c2e04db15f82584997",
+    "apps/api/app/schema.py": "9deef8ae92447bde10916d7383c62a939d7153587ae5458715b9a15df313f9a2",
+    "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93",
+    "apps/api/app/video_budget/reconcile_cli.py": "88e4dbb4d42fb939d583884cd7ad147ab8a150c58730a36eb2f6b99a3ad90957",
+    "docker-compose.prod.yml": "2b25837ce2fc297f3fdce38d1cb05caea84269455ee63efa5b664e89997fc1b8"
+  },
+  "findings": [
+    {
+      "id": "C03-METADATA-01",
+      "status": "MUST_FIX",
+      "severity": "medium",
+      "title": "Non-full-ceiling historical settlement is still excluded and produces a full fresh balance",
+      "locations": [
+        "host-budget-metadata-readback.py:49-55",
+        "host-budget-metadata-readback.py:149-156",
+        "apps/api/app/video_budget/service.py:97-106"
+      ],
+      "evidence": "The owner_closed CASE checks the exact old slug, operation label, status, receipt and actual_usd = max_usd, but never checks max_usd = actual_usd = 25. The independent SQL-condition/arithmetic fixture used the same exact receipt and pre-ledger label with max_usd = actual_usd = 1. The result reported historical_closed_usd=1.000000, settled_usd=0.000000, available_usd=25.000000 and only the generic probe_does_not_authorize_provider_dispatch reason.",
+      "risk": "This is faithful to the current service predicate, but it does not prove the full US$25 closure promised by the reviewed models/documentation. An anomalous same-receipt historical row can manufacture an apparently fresh US$25 arithmetic balance. The probe still says NOT_READY and never authorizes payment; the defect affects the trustworthiness of the requested conservative readback.",
+      "required_change": "Recognize the old closure only after verifying the full reviewed US$25 historical amount and its required row invariants. For a missing or anomalous historical closure, flag it explicitly and keep the unresolved full-ceiling exposure charged or report the old available balance unknown. Add independent fixtures for matching-receipt amounts below and above 25. Do not rely solely on matching the current service's equality predicate."
+    },
+    {
+      "id": "C03-METADATA-02",
+      "status": "MUST_FIX",
+      "severity": "medium",
+      "title": "An unrecognized database revision value is reflected into the safe summary",
+      "locations": [
+        "host-budget-metadata-readback.py:247-251",
+        "host-budget-metadata-readback.sh:99-120"
+      ],
+      "evidence": "The valid_revisions filter accepts any alphanumeric/underscore database string up to 100 characters. With the synthetic alembic_version value PRIVATE_DB_TEXT_CANARY_123, schema compatibility was false and account metadata correctly stayed unknown, but current_revisions contained that exact arbitrary string. The fully mocked wrapper printed and retained it unchanged in safe-summary.json, even while exiting 4/UNKNOWN.",
+      "risk": "Character filtering is not a metadata allowlist. This contradicts the code's promise never to output arbitrary database text and the requested bounded, non-secret summary. No real secret was read: the test used an intentionally synthetic canary.",
+      "required_change": "Emit only revision identifiers known to the reviewed migration/source allowlist. For unknown revisions, emit a fixed UNKNOWN value or a bounded count and reason code without the database string. Ensure the wrapper's retained/printed summary does not reintroduce unknown component fields."
+    }
+  ],
+  "verified_properties": {
+    "fixed_scope": "Only the two hardcoded C03 slugs are used in account/operation SELECT parameters; no command-line slug or arbitrary ID input is accepted.",
+    "database_statements": "Probe-issued data reads are fixed SELECTs. SET TRANSACTION establishes REPEATABLE READ, READ ONLY; both SHOW checks precede every probe-issued schema/account/ledger SELECT. False read-only or wrong isolation aborts before those SELECTs. Normal paths explicitly roll back and dispose the engine.",
+    "transaction_limit": "This is a source/stub ordering check, not live PostgreSQL validation. SQLAlchemy/driver connection initialization can issue its own initialization metadata queries before the explicit transaction; the review does not claim those are covered by the probe's SHOW ordering.",
+    "no_mutations_or_dispatch": "No account creation, reconciliation CLI invocation, ORM session/flush, deployment, restart or provider request is present in the reviewed probe path. The shell uses existing Compose exec -T, not run.",
+    "ledger_arithmetic": "Reserved includes uncertain exactly once; settled totals use actual amounts; released rows do not consume the balance. Wrong receipt, unequal actual/max and source-hash mismatch do not trigger the closure exemption. Missing settled actuals and invalid aggregate amounts become unknown. Overrun rows force zero admissible balance.",
+    "unknown_new_slug": "The metadata SELECT distinguishes a returned account row from explicit absence, independently of native summary/reconcile admission holds. A held unknown new slug with an existing row remains account_exists=true.",
+    "account_200": "The stored cap is reported as 200.000000, never relabeled as an approved US$25 account; registration/cap mismatch keeps admissible_available_usd at zero.",
+    "source_hashes": "All five reviewed runtime source hashes currently match the sourcebinding and embedded baselines. On a stubbed API-source mismatch the history stays fully counted and per-account reasons require review. The wrapper still classifies that as completed NOT_READY metadata with exit 3; that means metadata obtained, not trusted source approval or production activation.",
+    "secrets_and_details": "The reviewed normal output excludes operation IDs, receipt values, providers/tasks, DSNs and environments. Exceptions are reduced to a fixed reason. Synthetic stderr and exception-message canaries were suppressed. Unknown revision reflection remains the blocking exception recorded above.",
+    "wrapper": "Mocked Compose ps/inspect/exec flow completed using the documented image reference shapes. The wrapper limited inspect to four metadata fields, created private directory mode 0700 and JSON mode 0600, discarded component stderr, and always returned production_authorized=false. No actual container state or production execution was observed."
+  },
+  "independent_validation": {
+    "bash_syntax": "PASS",
+    "python_ast_syntax": "PASS",
+    "python_fixture_assertions_passed": 24,
+    "adversarial_acceptance_failures": 2,
+    "wrapper_fixture_cases": [
+      {"case": "normal metadata", "exit": 3, "result": "NOT_READY", "production_authorized": false},
+      {"case": "unknown schema revision", "exit": 4, "result": "UNKNOWN", "production_authorized": false, "arbitrary_revision_canary_reflected": true},
+      {"case": "API source mismatch", "exit": 3, "result": "NOT_READY", "production_authorized": false, "reviewed_budget_semantics_match": false}
+    ],
+    "real_node_guard": "The original wrapper's hashbound Node guard snippet ran locally in each of the three mocked wrapper cases; only the reviewed pure guard module was imported.",
+    "fixture_limit": "Async-engine/SQL result stubs checked flow and arithmetic. SQL expressions were reviewed against actual source and independently modeled; no live SQL execution, schema inspection, provider billing or host/container readback was fabricated.",
+    "external_artifacts": {
+      "/workspace/work/brand-story-20261025/probe-independent-review.py": "2c9510b911a9c718c50cbcbba97a675eaaed161a608a640bb2f21d2ae4fa6a35",
+      "/workspace/work/brand-story-20261025/probe-independent-results.json": "16cb956d932cdaa63570c647d7d90a6fa84793f9b5b38fd7b8a36c2a79588e01",
+      "/workspace/work/brand-story-20261025/probe-independent-wrapper-review.py": "49720b9467aaf4a16af9decf70f9cc4787da0b7fb3dcecec726610ee6aae9d95",
+      "/workspace/work/brand-story-20261025/probe-independent-wrapper-env.bash": "e5bd05678bb80b923dcce6fbf62376c68c4e8b4354d039f5731b8be62f43f3ca",
+      "/workspace/work/brand-story-20261025/probe-independent-wrapper-results.json": "c123c1438264a179e772d3ab78ec5627d77f7ad14dab207c9c1ff8b9e042e272"
+    }
+  },
+  "disposition": "Do not use this review as production readback or spending approval. Resolve both metadata correctness/output-boundary findings, update sourcebinding to the resulting exact hashes, and rerun independent local fixtures before an already-connected operator executes the host probe."
+}
