@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="zh-CN" xml:lang="zh-CN" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK SC','Noto Sans SC','Noto Sans CJK KR','Noto Sans KR','PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+  <title id="title">首尔五个住宿区域与机场交通示意图 / Seoul areas to stay and airport links</title>
+  <desc id="desc">简化的首尔示意地图，左侧为仁川机场，右侧由西向东依次为弘大、钟路与光化门、明洞、东大门，汉江以南为江南。实线代表机场铁路：普通列车经金浦机场至弘大入口与首尔站，T1 到弘大 4,650 韩元、T2 到弘大 5,250 韩元、T1 到首尔站 4,750 韩元；直达列车不停站直达首尔站，成人 13,000 韩元，T1 43 分钟、T2 51 分钟。虚线代表机场巴士，成人 17,000 韩元：6001 与 6015 经首尔站至明洞与东大门，6002 至弘大、光化门、钟路与东大门，6703 KAL 巴士至江南 COEX。点线代表首尔站换乘地铁：4 号线 2 站到明洞、1 号线到钟阁。各区方框内另标深夜巴士：N6002 到弘大约 45 分钟、到光化门约 60 分钟，N6701 到首尔站约 60 分钟、乙支路约 65 分钟、东大门设计广场约 70 分钟，N6000 到江南高速巴士客运站约 70 分钟，N6703 到 COEX 约 65 分钟。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+  <text x="60" y="62" font-size="36" font-weight="700" fill="#102A2B">首尔住哪一区　五区位置与机场交通</text>
+  <text x="60" y="96" font-size="20" font-weight="700" fill="#5C6B6B">Where to stay in Seoul · 示意图，非精确比例 · 票价为成人单程，2026 年 9 月核实</text>
+
+  <!-- Han river -->
+  <path d="M 0 660 C 300 640, 600 700, 900 670 C 1150 645, 1350 700, 1600 680 L 1600 720 C 1350 740, 1150 685, 900 710 C 600 740, 300 680, 0 700 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="560" y="704" font-size="18" font-weight="700" fill="#3F6C7A">汉江 한강 Han River</text>
+
+  <!-- bus 6002 over the top -->
+  <path d="M 165 482 C 225 128, 680 112, 861 215" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <path d="M 1185 224 L 1243 288" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="355" y="138" font-size="15" font-weight="700" fill="#9A4F12">6002 机场巴士 17,000 韩元 → 弘大入口 → 光化门·钟路 → 东大门</text>
+
+  <!-- bus 6001/6015 to Myeongdong -->
+  <path d="M 165 480 C 315 255, 720 242, 911 428" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="360" y="256" font-size="15" font-weight="700" fill="#9A4F12">6001／6015 机场巴士 공항리무진 17,000 韩元</text>
+  <text x="360" y="278" font-size="15" font-weight="700" fill="#9A4F12">→ 首尔站·明洞（乐天酒店）·东大门</text>
+
+  <!-- AREX all-stop -->
+  <path d="M 165 504 L 370 504 L 598 504 L 865 565" fill="none" stroke="#0D6B68" stroke-width="6"/>
+  <text x="205" y="485" font-size="15" font-weight="700" fill="#0D6B68">AREX 普通列车 일반열차 T1→弘大 4,650 韩元</text>
+
+  <!-- AREX express -->
+  <path d="M 165 520 C 380 638, 670 638, 865 565" fill="none" stroke="#2F6F9F" stroke-width="8"/>
+  <text x="355" y="646" font-size="15" font-weight="700" fill="#2F6F9F">AREX 直达 직통열차：不停站到首尔站 13,000 韩元，T1 43 分／T2 51 分</text>
+
+  <!-- bus 6703 to Gangnam -->
+  <path d="M 165 540 C 165 860, 680 830, 926 792" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="310" y="844" font-size="15" font-weight="700" fill="#9A4F12">6703 KAL 리무진 机场巴士 → 江南·COEX 一带（票价官网未列）</text>
+
+  <!-- subway links -->
+  <g stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7" fill="none">
+    <path d="M 865 565 L 955 518"/>
+    <path d="M 865 565 L 885 284"/>
+    <path d="M 1235 435 L 1296 366"/>
+  </g>
+  <text x="920" y="558" font-size="15" fill="#5C6B6B">4 号线 2 站</text>
+  <text x="898" y="344" font-size="15" fill="#5C6B6B">1 号线 → 钟阁 종각</text>
+  <text x="1282" y="420" font-size="15" fill="#5C6B6B">4 号线</text>
+
+  <!-- nodes -->
+  <circle cx="165" cy="504" r="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="140" y="490" font-size="18" font-weight="700" fill="#102A2B" text-anchor="end">仁川机场</text>
+  <text x="140" y="512" font-size="15" font-weight="700" fill="#5C6B6B" text-anchor="end">인천공항</text>
+  <text x="140" y="533" font-size="15" font-weight="700" fill="#5C6B6B" text-anchor="end">ICN (T1/T2)</text>
+
+  <circle cx="370" cy="504" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="370" y="535" font-size="15" fill="#5C6B6B" text-anchor="middle">金浦机场 김포공항</text>
+
+  <circle cx="598" cy="504" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="582" y="538" font-size="15" fill="#5C6B6B" text-anchor="middle">弘大入口站 홍대입구</text>
+
+  <circle cx="865" cy="565" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="884" y="596" font-size="17" font-weight="700" fill="#102A2B">首尔站 서울역 Seoul Station</text>
+
+  <!-- Jongno -->
+  <rect x="865" y="160" width="320" height="124" rx="20" fill="#FFFFFF" stroke="#7E57C2" stroke-width="5"/>
+  <text x="1025" y="192" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">钟路·光化门</text>
+  <text x="1025" y="218" font-size="15" fill="#5C6B6B" text-anchor="middle">종로·광화문 Jongno · 1、3、5 号线</text>
+  <text x="1025" y="243" font-size="15" fill="#5C6B6B" text-anchor="middle">景福宫、北村、仁寺洞、清溪川</text>
+  <text x="1025" y="268" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6002 → 光化门约 60 分</text>
+
+  <!-- Dongdaemun -->
+  <rect x="1246" y="242" width="332" height="124" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1412" y="274" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">东大门</text>
+  <text x="1412" y="300" font-size="15" fill="#5C6B6B" text-anchor="middle">동대문 Dongdaemun · 2、4、5 号线</text>
+  <text x="1412" y="325" font-size="15" fill="#5C6B6B" text-anchor="middle">DDP、批发商场、广藏市场</text>
+  <text x="1412" y="350" font-size="15" fill="#5C6B6B" text-anchor="middle">6001 到拜顿酒店；深夜 N6701 约 70 分</text>
+
+  <!-- Hongdae -->
+  <rect x="455" y="346" width="286" height="114" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="598" y="376" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">弘大·延南洞</text>
+  <text x="598" y="400" font-size="15" fill="#5C6B6B" text-anchor="middle">홍대 Hongdae · 2 号线、AREX</text>
+  <text x="598" y="424" font-size="15" fill="#5C6B6B" text-anchor="middle">T2→弘大 5,250 韩元；6002 也停</text>
+  <text x="598" y="447" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6002 约 45 分</text>
+
+  <!-- Myeongdong -->
+  <rect x="915" y="394" width="320" height="124" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="1075" y="426" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">明洞</text>
+  <text x="1075" y="452" font-size="15" fill="#5C6B6B" text-anchor="middle">명동 Myeongdong · 4 号线</text>
+  <text x="1075" y="477" font-size="15" fill="#5C6B6B" text-anchor="middle">南大门市场、南山、清溪川</text>
+  <text x="1075" y="502" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6701：首尔站 60 分 · 乙支路 65 分</text>
+
+  <!-- Gangnam -->
+  <rect x="930" y="736" width="520" height="120" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1190" y="767" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">江南 강남 Gangnam</text>
+  <text x="1190" y="793" font-size="15" fill="#5C6B6B" text-anchor="middle">2、9 号线、新盆唐线 · COEX、蚕室乐天世界塔</text>
+  <text x="1190" y="818" font-size="15" fill="#5C6B6B" text-anchor="middle">铁路无直达，首尔站换乘地铁；白天 6703 巴士到 COEX</text>
+  <text x="1190" y="842" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6000 → 高速巴士客运站约 70 分 · N6703 → COEX 约 65 分</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="60" y1="880" x2="108" y2="880" stroke="#0D6B68" stroke-width="6"/><text x="118" y="885">AREX 普通列车</text>
+    <line x1="256" y1="880" x2="304" y2="880" stroke="#2F6F9F" stroke-width="8"/><text x="314" y="885">AREX 直达列车</text>
+    <line x1="452" y1="880" x2="504" y2="880" stroke="#D97A2B" stroke-width="5" stroke-dasharray="12 8"/><text x="514" y="885">机场巴士（虚线）</text>
+    <line x1="664" y1="880" x2="707" y2="880" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7"/><text x="717" y="885">首尔站换乘地铁</text>
+    <text x="1540" y="885" fill="#8A8F8F" font-size="15" text-anchor="end">© Mokaair 制图 2026</text>
+  </g>
+</svg>

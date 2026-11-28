@@ -28,7 +28,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject
 from app.video_reviews.storage import ReviewStore
-from app.video_shorts import rules
+from app.video_shorts import hand_upload, rules
 from app.video_shorts.errors import ShortsRefused
 from app.video_shorts.models import VideoShortsSettings, VideoShortsSlot
 from app.video_shorts.quota import QUOTA_REASONS, Quota, pacific_day
@@ -222,6 +222,7 @@ async def send_due(
     places = await _places(
         session, [slot for slot, _project in due], str((scope or {}).get("timezone") or "UTC")
     )
+    by_hand = await hand_upload.hand_uploaded(session, [project for _slot, project in due])
     sent = held = 0
     for slot, project in due:
         slug = project.slug
@@ -248,6 +249,8 @@ async def send_due(
         waits: str | None = None
         if project.dropped_at is not None:
             waits = "這支已經被放棄了"
+        elif slug in by_hand:
+            waits = hand_upload.NOT_SENT
         elif not allowed:
             waits = reason
         elif outside is not None:

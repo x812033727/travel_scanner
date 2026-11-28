@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" lang="en" xml:lang="en" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Noto Sans CJK JP','Noto Sans JP',system-ui,sans-serif">
+  <title id="title">Nagoya, Takayama, Shirakawa-go, and Kanazawa Transit Map</title>
+  <desc id="desc">Two options run between Nagoya and Takayama: the JR Limited Express Hida (solid line, about 140 min, ¥2,730 ordinary-car reserved limited express ticket plus base fare) and the highway bus (dashed line, about 2 hr 45 min, ¥3,600 or ¥3,300 online, 12 departures daily, all seats reserved). Gifu Bus also operates a direct Nagoya–Shirakawa-go route (dashed line, about 2 hr 42 min, ¥3,600–¥4,700 depending on travel date, reservation priority). Between Takayama and Shirakawa-go, only the Shirakawa-go Line bus operated by Nohi Bus and partners runs (dashed line, about 50 min, ¥2,800, all departures reservation-only; first bus from Takayama at 7:20, last bus from Shirakawa-go back to Takayama at 17:30). The same line continues to Kanazawa: Shirakawa-go to Kanazawa takes about 1 hr 15 min (listed as about 1 hr 20 min by the Shirakawa-go Tourist Association) and costs ¥2,800 (reservation required). Near Shirakawa-go Bus Terminal, an observatory shuttle bus runs for ¥300 one-way.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="70" y="76" font-size="36" font-weight="700" fill="#102A2B">Nagoya → Takayama → Shirakawa-go → Kanazawa Transit Map</text>
+  <text x="70" y="114" font-size="20" fill="#5C6B6B">Verified Sep 2026 · Travel times are approximate; check official timetables · Solid = rail, dashed = bus</text>
+
+  <!-- Gifu Bus direct: Nagoya -> Shirakawa-go (highway bus, dashed coral) -->
+  <path d="M 205 520 C 205 265, 660 230, 1100 350" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- JR Hida: Nagoya -> Takayama (solid teal) -->
+  <line x1="350" y1="580" x2="760" y2="580" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Highway bus: Nagoya -> Takayama (dashed coral) -->
+  <path d="M 350 610 C 475 725, 650 725, 766 598" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- Shirakawa-go line bus: Takayama -> Shirakawa-go -> Kanazawa (dashed mocha) -->
+  <line x1="796" y1="566" x2="1104" y2="366" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <line x1="1136" y1="344" x2="1420" y2="178" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- Nagoya -->
+  <rect x="60" y="520" width="290" height="120" rx="24" fill="#0D6B68"/>
+  <text x="205" y="572" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">Nagoya</text>
+  <text x="205" y="608" font-size="16" fill="#E6F2F1" text-anchor="middle">Meitetsu Bus Ctr · JR Nagoya Sta.</text>
+
+  <!-- Takayama -->
+  <circle cx="780" cy="580" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="812" y="622" font-size="26" font-weight="700" fill="#102A2B">Takayama</text>
+  <text x="812" y="650" font-size="16" fill="#5C6B6B">Takayama Nohi Bus Center</text>
+  <text x="812" y="674" font-size="16" fill="#5C6B6B">JR Takayama Station</text>
+
+  <!-- Shirakawa-go -->
+  <circle cx="1120" cy="355" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1152" y="388" font-size="26" font-weight="700" fill="#102A2B">Shirakawa-go</text>
+  <text x="1152" y="416" font-size="16" fill="#5C6B6B">Shirakawa-go Bus Terminal</text>
+  <text x="1152" y="440" font-size="16" fill="#5C6B6B">Observatory shuttle ¥300 one-way</text>
+
+  <!-- Kanazawa -->
+  <circle cx="1435" cy="170" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1435" y="134" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">Kanazawa</text>
+
+  <!-- Route labels -->
+  <text x="410" y="196" font-size="21" font-weight="700" fill="#B8442D">Gifu Bus Direct (Nagoya–Shirakawa-go) · ~2 hr 42 min</text>
+  <text x="410" y="224" font-size="17" fill="#5C6B6B">¥3,600–¥4,700 by travel date · Reservation priority</text>
+
+  <text x="555" y="520" font-size="21" font-weight="700" fill="#0D6B68" text-anchor="middle">JR Limited Express Hida · ~140 min</text>
+  <text x="555" y="548" font-size="16" fill="#5C6B6B" text-anchor="middle">¥2,730 reserved limited express + base fare</text>
+
+  <text x="560" y="744" font-size="21" font-weight="700" fill="#B8442D" text-anchor="middle">Highway Bus · ~2 hr 45 min</text>
+  <text x="560" y="772" font-size="16" fill="#5C6B6B" text-anchor="middle">¥3,600 (¥3,300 online) · 12/day each way · All seats reserved</text>
+
+  <text x="985" y="518" font-size="20" font-weight="700" fill="#6B4A3A">Nohi Bus · ~50 min · ¥2,800</text>
+  <text x="985" y="546" font-size="16" fill="#5C6B6B">All departures reservation-only</text>
+  <text x="985" y="572" font-size="16" fill="#5C6B6B">First from Takayama 7:20 · Last back 17:30</text>
+
+  <text x="1310" y="276" font-size="18" font-weight="700" fill="#6B4A3A">Bus · ~1 hr 15 min</text>
+  <text x="1310" y="302" font-size="16" fill="#5C6B6B">¥2,800 · Reservation required</text>
+
+  <!-- Legend -->
+  <line x1="70" y1="850" x2="126" y2="850" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="138" y="856" font-size="18" fill="#102A2B">JR Limited Express</text>
+  <line x1="365" y1="850" x2="421" y2="850" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="433" y="856" font-size="18" fill="#102A2B">Highway bus (from Nagoya)</text>
+  <line x1="730" y1="850" x2="786" y2="850" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="798" y="856" font-size="18" fill="#102A2B">Shirakawa-go Line bus</text>
+  <text x="1530" y="856" font-size="16" fill="#5C6B6B" text-anchor="end">© Mokaair 2026</text>
+</svg>

@@ -47,6 +47,8 @@ class Pairing:
     colab: bool = False
     # The tool asked to start RunPod GPU pods through the site; the token gets `runpod_access`.
     runpod: bool = False
+    # The tool asked to call Google Flow & Flow Music MCP through the site (`flow_access`).
+    flow: bool = False
 
     def as_record(self) -> dict[str, Any]:
         return {
@@ -58,6 +60,7 @@ class Pairing:
             "device_hash": self.device_hash,
             "colab": self.colab,
             "runpod": self.runpod,
+            "flow": self.flow,
         }
 
 
@@ -69,6 +72,7 @@ class Grant:
     client_name: str
     colab: bool = False
     runpod: bool = False
+    flow: bool = False
 
 
 def new_device_code() -> str:
@@ -124,6 +128,7 @@ def _pairing(code: str, raw: str) -> Pairing:
         device_hash=str(record["device_hash"]),
         colab=record.get("colab") is True,
         runpod=record.get("runpod") is True,
+        flow=record.get("flow") is True,
     )
 
 
@@ -135,6 +140,7 @@ async def start_pairing(
     now: datetime | None = None,
     colab: bool = False,
     runpod: bool = False,
+    flow: bool = False,
 ) -> tuple[str, Pairing]:
     """Open a pairing; return the device code (for the tool only) and the pairing record."""
     moment = now or datetime.now(UTC)
@@ -152,6 +158,7 @@ async def start_pairing(
             device_hash=digest,
             colab=colab,
             runpod=runpod,
+            flow=flow,
         )
         stored = await redis.set(
             _code_key(code), json.dumps(pairing.as_record()), nx=True, ex=PAIRING_TTL_SECONDS
@@ -187,6 +194,7 @@ async def decide(redis: Redis, pairing: Pairing, *, approve: bool, actor_id: UUI
         device_hash=pairing.device_hash,
         colab=pairing.colab,
         runpod=pairing.runpod,
+        flow=pairing.flow,
     )
     if approve:
         grant = {
@@ -194,6 +202,7 @@ async def decide(redis: Redis, pairing: Pairing, *, approve: bool, actor_id: UUI
             "client_name": pairing.client_name,
             "colab": pairing.colab,
             "runpod": pairing.runpod,
+            "flow": pairing.flow,
         }
         await redis.set(_grant_key(pairing.device_hash), json.dumps(grant), ex=ttl)
     await redis.set(_code_key(pairing.user_code), json.dumps(decided.as_record()), ex=ttl)
@@ -215,6 +224,7 @@ async def collect(redis: Redis, device_code: str) -> tuple[PollStatus, Grant | N
             client_name=str(grant["client_name"]),
             colab=grant.get("colab") is True,
             runpod=grant.get("runpod") is True,
+            flow=grant.get("flow") is True,
         )
     pairing = await find_pairing(redis, code)
     if pairing is None:

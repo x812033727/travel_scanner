@@ -287,7 +287,7 @@ export const CHANNEL_RULES_LOCALE = "zh-TW";
  * instead of six characters in the column; the drama layout (THUMB_DRAMA_LAYOUT) to one big line
  * across the frame and at most DRAMA_HEADLINE_MAX characters.
  * `sub` is the thumbnail's second line: one that says the title again warns. `curio` holds the
- * headline to the 2026-11-03 review's shape (.agents/skills/curio-episode/SKILL.md §標題與縮圖):
+ * headline to the 2026-11-03 review's shape (rules on Drive since 2026-11-25, `npm run vdrive -- pull-rules curio`):
  * the famous name on line 1, the reversal with a question mark on line 2; in the heimao look
  * (one top line) the name and the stake as one question.
  */

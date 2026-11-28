@@ -80,3 +80,7 @@ out this way without hand fixes.
   no line break). The qa curio warning now asks a heimao headline for one question (name + stake) and keeps the
   two-line shape for layouts d/e, which the host worker still draws (its thumbnailGuide writes no layout). The
   reference file says heimao rules win for new episodes.
+- 2026-11-28: main moved every curio rule to Google Drive as the single source (#2224, 路線 B), so the skill
+  text this branch added (CC tag line, qa warnings, the 2026-11-03 reference file) was dropped in the merge.
+  What stays in the repo is code: the worker thumbnailGuide, the qa warnings and their tests. Putting the
+  2026-11-03 reasons into Drive `_規則/` goes through `npm run vdrive -- push-rule` once the owner confirms.

@@ -58,6 +58,8 @@ services:
       - /run/travel-scanner-deployer:/run/travel-scanner-deployer:ro
       # The AI accounts agent (ops/ai-accounts); the same travel-api group opens it.
       - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+      # Host Flow & Flow Music MCP gateway (ops/flow-gateway); opened through travel-api.
+      - /run/mokaair-flow-gateway:/run/mokaair-flow-gateway:ro
       # Independent YouTube uploader RPC secret. Empty until explicitly provisioned;
       # URL unset keeps this mode disabled. Google credentials remain in its own service.
       - ${MOKAAIR_VPS_UPLOADER_SECRET_DIR:-/etc/mokaair-uploader/api}:/run/mokaair-uploader:ro

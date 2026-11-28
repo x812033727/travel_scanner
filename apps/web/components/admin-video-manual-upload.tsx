@@ -177,7 +177,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
         return <li key={file.role}><DownloadFile slug={project.slug} file={file} label={reviewText("downloadLocaleThumbnail", { locale: localeName(locale) })} name={`thumbnail.${locale}.${file.content_type === "image/png" ? "png" : "jpg"}`} /></li>;
       })}</ul>}
     </section>
-    <section className={stepClass} aria-label={t("captionsStep")}>
+    {metadata.silent !== true && <section className={stepClass} aria-label={t("captionsStep")}>
       <h3 className="font-bold">{t("captionsStep")}</h3>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("captionsHelp")}</p>
       <ul className="flex flex-wrap gap-2">{captionFiles.map((file) => {
@@ -186,7 +186,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
       })}</ul>
       {captionFiles.length === 0 && <p className="text-sm text-amber-900">{t("captionsMissing")}</p>}
       {id && <a href={`https://studio.youtube.com/video/${id}/translations`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--teal)] underline"><ExternalLink aria-hidden size={16} />{t("openCaptions")}</a>}
-    </section>
+    </section>}
     <section className={stepClass} aria-label={t("settingsStep")}>
       <h3 className="font-bold">{t("settingsStep")}</h3>
       <dl className="grid gap-3 text-sm">
@@ -219,6 +219,20 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   </div>;
 }
 
+/** A package's metadata.json, read from the review store; a failed read leaves it empty and says so. */
+async function readMetadata(url: string | undefined, signal: AbortSignal): Promise<{ metadata: Record<string, unknown>; metadataFailed: boolean }> {
+  if (!url) return { metadata: {}, metadataFailed: true };
+  try {
+    const response = await fetch(url, { credentials: "same-origin", cache: "no-store", signal });
+    if (!response.ok) throw new Error("metadata");
+    const value: unknown = await response.json();
+    if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("metadata");
+    return { metadata: record(value), metadataFailed: false };
+  } catch {
+    return { metadata: {}, metadataFailed: true };
+  }
+}
+
 /** A new mount reads the current approved package; closing or reloading aborts that read. */
 function ManualPackage({ slug, draft, onReload }: { slug: string; draft?: Draft; onReload: () => void }) {
   const t = useTranslations("admin.videoYoutube.manual");
@@ -245,20 +259,7 @@ function ManualPackage({ slug, draft, onReload }: { slug: string; draft?: Draft;
         const dubFiles = newestDubs && Date.parse(newestDubs.created_at) > Date.parse(review.created_at) ? newestDubs.files.filter((file) => file.role.startsWith(DUB)) : [];
         const files = [...new Map([...review.files, ...(languages?.files ?? []), ...dubFiles].map((file) => [file.role, file])).values()];
         // Its metadata.json is the package's own, written again with every language translated since.
-        const metadataUrl = fileUrl(slug, (languages && fileFor(languages, "metadata")) || fileFor(review, "metadata"));
-        let metadata: Record<string, unknown> = {};
-        let metadataFailed = !metadataUrl;
-        if (metadataUrl) {
-          try {
-            const response = await fetch(metadataUrl, { credentials: "same-origin", cache: "no-store", signal: controller.signal });
-            if (!response.ok) throw new Error("metadata");
-            const value: unknown = await response.json();
-            if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("metadata");
-            metadata = record(value);
-          } catch {
-            metadataFailed = true;
-          }
-        }
+        const { metadata, metadataFailed } = await readMetadata(fileUrl(slug, (languages && fileFor(languages, "metadata")) || fileFor(review, "metadata")), controller.signal);
         if (current) setData({ project, review, languages, files, metadata, metadataFailed });
       } catch {
         if (current) setError("loadFailed");
@@ -284,4 +285,58 @@ export function YoutubeManualUpload({ slug, draft, children, disabled = false }:
     <div><Button secondary disabled={disabled} aria-expanded={open} onClick={() => setOpen((value) => !value)}><Hand aria-hidden size={16} />{open ? t(children ? "backToAutomatic" : "close") : t("open")}</Button></div>
     {open ? <ManualPackage key={`${slug}-${attempt}`} slug={slug} draft={draft} onReload={() => setAttempt((value) => value + 1)} /> : children}
   </div>;
+}
+
+const isLive = (review: Review) => review.status === "pending" || review.status === "approved";
+
+/**
+ * What a Short's guide is read from, with the cut the owner reviews as its "final" file. The publish
+ * review of that final review (`final_review_id`), waiting or approved, has the newest package: a
+ * push of a cut already approved can only send it there, the approved final is left as it is
+ * (tools/video/shorts/push.mjs). Without one, it is the metadata.json on the final review itself.
+ */
+export function shortPackageReview(project: Project): Review | null {
+  if (!project.shorts_line || project.dropped_at) return null;
+  const final = project.reviews.find((review) => review.gate === "final" && !review.subject && isLive(review));
+  if (!final) return null;
+  const cut = final.files.map((file) => (file.role === "preview" ? { ...file, role: "final" } : file));
+  const publish = project.reviews.find((review) => review.gate === "publish" && isLive(review) && review.payload.final_review_id === final.id && fileFor(review, "metadata"));
+  if (!publish) return fileFor(final, "metadata") ? { ...final, files: cut } : null;
+  // The cut and the cover stay the final review's: the publish review has no cover.
+  const files = new Map([...publish.files, ...cut.filter((file) => file.role !== "metadata")].map((file) => [file.role, file]));
+  return { ...publish, files: [...files.values()] };
+}
+
+/**
+ * A Short's hand upload (owner, 2026-11-21: Shorts are uploaded by hand, not by the site): the same
+ * guide as a long video's, read from the Short's package (shortPackageReview). It calls neither
+ * YouTube nor anything that publishes.
+ */
+export function ShortManualUpload({ project }: { project: Project }) {
+  const [attempt, setAttempt] = useState(0);
+  const review = shortPackageReview(project);
+  if (!review) return null;
+  // A new package (or a reload) mounts a new reader, as ManualPackage does.
+  return <ShortPackage key={`${review.id}:${fileFor(review, "metadata")?.sha256}:${attempt}`} project={project} review={review} onReload={() => setAttempt((value) => value + 1)} />;
+}
+
+function ShortPackage({ project, review, onReload }: { project: Project; review: Review; onReload: () => void }) {
+  const t = useTranslations("admin.videoYoutube.manual");
+  const [data, setData] = useState<Package | null>(null);
+  const [error, setError] = useState<"loadFailed" | null>(null);
+  useEffect(() => {
+    let current = true;
+    const controller = new AbortController();
+    readMetadata(fileUrl(project.slug, fileFor(review, "metadata")), controller.signal)
+      .then(({ metadata, metadataFailed }) => { if (current) setData({ project, review, languages: null, files: review.files, metadata, metadataFailed }); })
+      .catch(() => { if (current) setError("loadFailed"); });
+    return () => { current = false; controller.abort(); };
+    // Read once per mount: the parent keys this by the package, and the project is new on every refresh.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return <section aria-label={t("title")} className="grid min-w-0 gap-4 rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-4">
+    <h2 className="text-lg font-bold">{t("title")}</h2>
+    {error ? <p role="alert" className="text-sm text-amber-900">{t(error)}</p> : data ? <ManualGuide data={data} /> : <p role="status" className="text-sm">{t("loading")}</p>}
+    {(error || data?.metadataFailed) && <div><Button secondary onClick={onReload}>{t("reload")}</Button></div>}
+  </section>;
 }

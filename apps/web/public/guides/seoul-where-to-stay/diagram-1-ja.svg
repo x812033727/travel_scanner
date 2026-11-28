@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="ja" xml:lang="ja" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK JP','Noto Sans JP','Noto Sans KR','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ソウル5大宿泊エリアと空港アクセス路線図 / Seoul areas to stay and airport links</title>
+  <desc id="desc">ソウルの簡易模式図です。左側に仁川国際空港、右側に西から東へ弘大・延南洞、鐘路・光化門、明洞、東大門、漢江の南側に江南を配置しています。実線は空港鉄道AREXで、一般列車は金浦空港を経由して弘大入口駅とソウル駅へ結び、T1発は弘大入口まで4,650ウォン、ソウル駅まで4,750ウォン、T2発は弘大入口まで5,250ウォンです。直通列車は途中停車なしでソウル駅まで13,000ウォン、所要時間はT1から43分、T2から51分です。破線はリムジンバス（大人17,000ウォン）で、6001・6015はソウル駅経由で明洞・東大門へ、6002は弘大入口・光化門・鐘路・東大門へ、6703 KALリムジンバスは江南・COEX周辺へ向かいます。点線はソウル駅からの地下鉄乗り換えで、4号線で2駅の明洞、1号線で鐘閣へ接続します。各エリア枠内には地下鉄路線（1・2・3・4・5・9号線、新盆唐線）と深夜バスも記載しており、N6002は弘大入口まで約45分・光化門まで約60分、N6701はソウル駅まで約60分・乙支路入口まで約65分・東大門デザインプラザまで約70分、N6000は江南高速バスターミナルまで約70分、N6703はCOEXまで約65分です。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+  <text x="60" y="64" font-size="34" font-weight="700" fill="#102A2B">ソウル宿泊エリアガイド　5エリアの位置と空港アクセス</text>
+  <text x="60" y="98" font-size="19" font-weight="700" fill="#5C6B6B">Where to stay in Seoul・模式図（縮尺は正確ではありません）・大人片道運賃・2026年9月確認</text>
+
+  <!-- Han river -->
+  <path d="M 0 660 C 300 640, 600 700, 900 670 C 1150 645, 1350 700, 1600 680 L 1600 720 C 1350 740, 1150 685, 900 710 C 600 740, 300 680, 0 700 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="560" y="706" font-size="18" font-weight="700" fill="#3F6C7A">漢江 한강 Han River</text>
+
+  <!-- bus 6002 over the top -->
+  <path d="M 205 480 C 265 130, 700 110, 886 225" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <path d="M 1210 225 L 1266 300" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="360" y="138" font-size="15" font-weight="700" fill="#9A4F12">6002 リムジンバス 17,000ウォン → 弘大入口 → 光化門・鐘路 → 東大門</text>
+
+  <!-- bus 6001/6015 to Myeongdong -->
+  <path d="M 205 480 C 335 245, 755 245, 946 435" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="355" y="276" font-size="15" font-weight="700" fill="#9A4F12">6001／6015 リムジンバス 17,000ウォン → ソウル駅・明洞・東大門</text>
+
+  <!-- AREX all-stop -->
+  <path d="M 205 500 L 395 500 L 611 500 L 900 560" fill="none" stroke="#0D6B68" stroke-width="6"/>
+  <text x="224" y="482" font-size="15" font-weight="700" fill="#0D6B68">AREX 一般列車（T1→弘大 4,650ウォン）</text>
+
+  <!-- AREX express -->
+  <path d="M 205 520 C 440 635, 720 635, 900 560" fill="none" stroke="#2F6F9F" stroke-width="8"/>
+  <text x="390" y="646" font-size="15" font-weight="700" fill="#2F6F9F">AREX 直通列車：ソウル駅までノンストップ 13,000ウォン（T1 43分／T2 51分）</text>
+
+  <!-- bus 6703 to Gangnam -->
+  <path d="M 205 540 C 205 845, 680 825, 926 795" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="265" y="845" font-size="15" font-weight="700" fill="#9A4F12">6703 KALリムジンバス → 江南・COEX周辺（運賃は公式サイト未掲載）</text>
+
+  <!-- subway links -->
+  <g stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7" fill="none">
+    <path d="M 900 560 L 986 510"/>
+    <path d="M 900 560 L 905 282"/>
+    <path d="M 1236 448 L 1280 368"/>
+  </g>
+  <text x="946" y="550" font-size="15" fill="#5C6B6B">4号線 2駅</text>
+  <text x="914" y="340" font-size="15" fill="#5C6B6B" text-anchor="start">1号線 → 鐘閣 종각</text>
+  <text x="1272" y="422" font-size="15" fill="#5C6B6B">4号線</text>
+
+  <!-- nodes -->
+  <circle cx="205" cy="500" r="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="184" y="494" font-size="18" font-weight="700" fill="#102A2B" text-anchor="end">仁川国際空港</text>
+  <text x="184" y="517" font-size="15" font-weight="700" fill="#5C6B6B" text-anchor="end">인천공항 ICN</text>
+  <text x="184" y="538" font-size="15" fill="#5C6B6B" text-anchor="end">T1／T2</text>
+
+  <circle cx="395" cy="500" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="395" y="530" font-size="15" fill="#5C6B6B" text-anchor="middle">金浦空港 김포공항</text>
+
+  <circle cx="611" cy="500" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="611" y="530" font-size="15" fill="#5C6B6B" text-anchor="middle">弘大入口駅 홍대입구</text>
+
+  <circle cx="900" cy="560" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="918" y="592" font-size="17" font-weight="700" fill="#102A2B">ソウル駅 서울역 Seoul Station</text>
+
+  <!-- Jongno -->
+  <rect x="886" y="168" width="324" height="114" rx="20" fill="#FFFFFF" stroke="#7E57C2" stroke-width="5"/>
+  <text x="1048" y="198" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">鐘路・光化門</text>
+  <text x="1048" y="223" font-size="15" fill="#5C6B6B" text-anchor="middle">종로・광화문 Jongno・1・3・5号線</text>
+  <text x="1048" y="246" font-size="15" fill="#5C6B6B" text-anchor="middle">景福宮・北村韓屋村・仁寺洞・清渓川</text>
+  <text x="1048" y="269" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6002 → 光化門まで約60分</text>
+
+  <!-- Dongdaemun -->
+  <rect x="1266" y="246" width="308" height="122" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1420" y="277" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">東大門</text>
+  <text x="1420" y="302" font-size="15" fill="#5C6B6B" text-anchor="middle">동대문 Dongdaemun・2・4・5号線</text>
+  <text x="1420" y="326" font-size="15" fill="#5C6B6B" text-anchor="middle">DDP・卸売モール・広蔵市場</text>
+  <text x="1420" y="350" font-size="15" fill="#5C6B6B" text-anchor="middle">6001 ベイトンホテル／N6701 約70分</text>
+
+  <!-- Hongdae -->
+  <rect x="466" y="348" width="290" height="112" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="611" y="378" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">弘大・延南洞</text>
+  <text x="611" y="402" font-size="15" fill="#5C6B6B" text-anchor="middle">홍대 Hongdae・2号線・AREX</text>
+  <text x="611" y="425" font-size="15" fill="#5C6B6B" text-anchor="middle">T2→弘大 5,250ウォン・6002停車</text>
+  <text x="611" y="448" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6002 → 弘大入口 約45分</text>
+
+  <!-- Myeongdong -->
+  <rect x="950" y="388" width="286" height="122" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="1093" y="418" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">明洞</text>
+  <text x="1093" y="443" font-size="15" fill="#5C6B6B" text-anchor="middle">명동 Myeongdong・4号線</text>
+  <text x="1093" y="467" font-size="15" fill="#5C6B6B" text-anchor="middle">南大門市場・南山・清渓川</text>
+  <text x="1093" y="491" font-size="15" fill="#5C6B6B" text-anchor="middle">N6701 ソウル駅約60分・乙支路約65分</text>
+
+  <!-- Gangnam -->
+  <rect x="930" y="736" width="520" height="114" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1190" y="766" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">江南 강남 Gangnam</text>
+  <text x="1190" y="791" font-size="15" fill="#5C6B6B" text-anchor="middle">2・9号線・新盆唐線・COEX・蚕室ロッテワールドタワー</text>
+  <text x="1190" y="815" font-size="15" fill="#5C6B6B" text-anchor="middle">鉄道直通なし（ソウル駅で乗換）・日中 6703 バスでCOEXへ</text>
+  <text x="1190" y="838" font-size="15" fill="#5C6B6B" text-anchor="middle">深夜 N6000 高速バスターミナル約70分・N6703 COEX約65分</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="60" y1="880" x2="108" y2="880" stroke="#0D6B68" stroke-width="6"/><text x="118" y="885">AREX 一般列車</text>
+    <line x1="255" y1="880" x2="303" y2="880" stroke="#2F6F9F" stroke-width="8"/><text x="313" y="885">AREX 直通列車</text>
+    <line x1="450" y1="880" x2="498" y2="880" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10"/><text x="508" y="885">リムジンバス（破線）</text>
+    <line x1="685" y1="880" x2="733" y2="880" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7"/><text x="743" y="885">ソウル駅で地下鉄乗換</text>
+    <text x="1540" y="885" fill="#8A8F8F" font-size="15" text-anchor="end">© Mokaair 制作 2026</text>
+  </g>
+</svg>

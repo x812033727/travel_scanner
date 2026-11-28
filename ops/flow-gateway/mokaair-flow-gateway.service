@@ -1,0 +1,29 @@
+[Unit]
+Description=Mokaair Flow & Flow Music MCP Unix-Socket Gateway (Xvfb + Chrome CDP)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=flowbot
+Group=flowbot
+WorkingDirectory=/opt/mokaair-flow-gateway/travel_scanner
+EnvironmentFile=/etc/travel-scanner/flow-gateway.env
+Environment=HOME=/home/flowbot
+Environment=PATH=/home/flowbot/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=GFLOW_CLI_OUTPUT_DIR=/home/flowbot/.mokaair-flow/tmp
+Environment=FLOW_MCP_GATEWAY_SOCKET=/run/mokaair-flow-gateway/gateway.sock
+# /run is tmpfs: recreate the socket directory with the group the API container joins.
+# `+` runs these with root privileges; the gateway itself runs as non-root flowbot.
+ExecStartPre=+/bin/sh -c 'install -d -m 0750 -o flowbot -g travel-api /run/mokaair-flow-gateway && rm -f /run/mokaair-flow-gateway/gateway.sock'
+# Run inside xvfb-run so headed Chrome/Playwright (gflow credits/generation, music_generate)
+# always inherits a live private X11 display that starts and stops with the service.
+ExecStart=/usr/bin/xvfb-run -a -s "-screen 0 1366x900x24 -nolisten tcp" /usr/bin/node tools/video/flow-mcp/gateway.mjs
+ExecStartPost=+/bin/sh -c 'for i in $(seq 1 100); do [ -S /run/mokaair-flow-gateway/gateway.sock ] && chgrp travel-api /run/mokaair-flow-gateway/gateway.sock && chmod 0660 /run/mokaair-flow-gateway/gateway.sock && exit 0; sleep 0.1; done; echo "gateway.sock never appeared" >&2; exit 1'
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

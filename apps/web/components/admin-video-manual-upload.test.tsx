@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { YoutubeManualUpload } from "./admin-video-manual-upload";
+import { ShortManualUpload, shortPackageReview, YoutubeManualUpload } from "./admin-video-manual-upload";
 import { type Project, type Review, type YoutubeSync } from "./admin-video-review-card";
 import { type YoutubeConnection, YoutubePublishForm, YoutubeSyncPanel } from "./admin-video-youtube";
 
@@ -283,5 +283,95 @@ describe("manual YouTube upload", () => {
     fireEvent.click(screen.getByRole("button", { name: /手動模式/ }));
     expect((await screen.findByRole("alert")).textContent).toContain("讀取上傳包失敗");
     expect(screen.queryByRole("link")).toBeNull();
+  });
+});
+
+describe("a Short's hand upload", () => {
+  const short: Review = {
+    id: "short-final", gate: "final", status: "pending", content_sha256: hash(2), summary: "Shorts 10.4 秒",
+    payload: { line: "drama", hand_pushed: true },
+    files: [
+      { role: "preview", sha256: hash(2), size: 9000, content_type: "video/mp4" },
+      { role: "thumbnail", sha256: hash(4), size: 500, content_type: "image/png" },
+      { role: "metadata", sha256: hash(5), size: 800, content_type: "application/json" },
+    ],
+    choice: null, note: null, created_at: "2026-11-21T00:00:00Z", decided_at: null,
+  };
+  const silent = {
+    silent: true, title: "準時下班 #社畜地獄", description: "員工是狗，老闆是貓。", tags: ["社畜地獄", "貓老闆"], default_language: "zh-TW",
+    made_for_kids: false, contains_synthetic_media: true, disclosure_reason: "畫面與配樂是 AI 生成的零台詞短劇", category_id: "24", locales: [],
+    localizations: Object.fromEntries(["en", "ja", "ko", "es", "pt", "id", "vi", "th"].map((locale) => [locale, { title: `${locale} title`, description: `${locale} description` }])),
+  };
+  const shortProject: Project = { ...project, slug: "test-video", stage: "final", shorts_line: "drama", reviews: [short] };
+
+  it("offers the cut, the cover, nine languages and the disclosure from the final review", async () => {
+    stub(shortProject, silent);
+    render(<ShortManualUpload project={shortProject} />);
+    await screen.findByRole("region", { name: "1. 開啟或上傳影片" });
+    expect(screen.getByRole("link", { name: "下載影片 · final.mp4" }).getAttribute("href")).toBe(`/api/admin-video-files/test-video/${hash(2)}`);
+    expect(screen.getByRole("link", { name: "下載縮圖" }).getAttribute("download")).toBe("thumbnail.png");
+    expect(screen.getByLabelText("標題")).toHaveProperty("value", "準時下班 #社畜地獄");
+    expect(screen.getByLabelText("標籤")).toHaveProperty("value", "社畜地獄, 貓老闆");
+    const language = screen.getByRole("combobox", { name: "語言" });
+    expect(within(language).getAllByRole("option")).toHaveLength(9);
+    fireEvent.change(language, { target: { value: "th" } });
+    expect(screen.getByLabelText("標題")).toHaveProperty("value", "th title");
+    const settings = screen.getByRole("region", { name: "5. 確認設定並在 Studio 儲存" });
+    expect(within(settings).getByText("畫面與配樂是 AI 生成的零台詞短劇")).toBeTruthy();
+    expect(within(settings).getByText("否，這不是兒童專屬的影片")).toBeTruthy();
+    expect(screen.queryByRole("region", { name: "4. 逐語言上傳字幕" })).toBeNull();
+    const zip = screen.getByRole("link", { name: "下載整包 zip（3 個檔案）" }).getAttribute("href") ?? "";
+    expect(new URLSearchParams(zip.split("?")[1]).getAll("file")).toEqual([`${hash(2)}:final.mp4`, `${hash(4)}:thumbnail.png`, `${hash(5)}:metadata.json`]);
+    for (const [, init] of vi.mocked(fetch).mock.calls) expect(init?.method ?? "GET").toBe("GET");
+  });
+
+  // An approved cut pushed again: the final stays as it was, the package is on a publish review.
+  const approved: Review = { ...short, status: "approved", files: short.files.slice(0, 2) };
+  const packaged: Review = {
+    id: "short-publish", gate: "publish", status: "pending", content_sha256: hash(5), summary: "Shorts 上傳包",
+    payload: { final_review_id: short.id, locales: [], hand_pushed: true },
+    files: [
+      { role: "metadata", sha256: hash(5), size: 800, content_type: "application/json" },
+      { role: "final", sha256: hash(2), size: 9000, content_type: "video/mp4" },
+      { role: "description_zh-TW", sha256: hash(6), size: 90, content_type: "text/plain" },
+    ],
+    choice: null, note: null, created_at: "2026-11-22T00:00:00Z", decided_at: null,
+  };
+
+  it.each(["pending", "approved"] as const)("reads the package from a %s publish review when the approved final has none", async (status) => {
+    const value: Project = { ...shortProject, reviews: [{ ...packaged, status }, approved] };
+    stub(value, silent);
+    render(<ShortManualUpload project={value} />);
+    await screen.findByRole("region", { name: "1. 開啟或上傳影片" });
+    expect(screen.getByLabelText("標題")).toHaveProperty("value", "準時下班 #社畜地獄");
+    const zip = screen.getByRole("link", { name: "下載整包 zip（4 個檔案）" }).getAttribute("href") ?? "";
+    expect(new URLSearchParams(zip.split("?")[1]).getAll("file")).toEqual([`${hash(2)}:final.mp4`, `${hash(4)}:thumbnail.png`, `${hash(6)}:description.zh-TW.txt`, `${hash(5)}:metadata.json`]);
+  });
+
+  it("takes the publish review's package over an older one on the final, and keeps the final's cut", () => {
+    const older = { ...short, status: "approved" as const, files: short.files.map((file) => (file.role === "metadata" ? { ...file, sha256: hash(7) } : file)) };
+    const other = { ...packaged, files: packaged.files.map((file) => (file.role === "final" ? { ...file, sha256: hash(8) } : file)) };
+    const read = shortPackageReview({ ...shortProject, reviews: [other, older] });
+    expect(read?.files.find((file) => file.role === "metadata")?.sha256).toBe(hash(5));
+    expect(read?.files.find((file) => file.role === "final")?.sha256).toBe(hash(2));
+  });
+
+  it.each([
+    ["of another cut", { payload: { final_review_id: "an-older-final" } }],
+    ["sent back", { status: "rejected" }],
+    ["replaced", { status: "superseded" }],
+  ] as const)("takes no package from a publish review %s", (_name, change) => {
+    expect(shortPackageReview({ ...shortProject, reviews: [{ ...packaged, ...change }, approved] })).toBeNull();
+  });
+
+  it("shows nothing for a Short whose final review has no package, or a video that is not a Short", () => {
+    stub();
+    const { container, rerender } = render(<ShortManualUpload project={{ ...shortProject, reviews: [{ ...short, files: short.files.slice(0, 2) }] }} />);
+    expect(container.innerHTML).toBe("");
+    rerender(<ShortManualUpload project={{ ...shortProject, shorts_line: null }} />);
+    expect(container.innerHTML).toBe("");
+    rerender(<ShortManualUpload project={{ ...shortProject, reviews: [{ ...short, status: "rejected" }] }} />);
+    expect(container.innerHTML).toBe("");
+    expect(fetch).not.toHaveBeenCalled();
   });
 });
